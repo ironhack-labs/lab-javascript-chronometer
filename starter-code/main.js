@@ -3,15 +3,14 @@ var crono = new Cronometer();
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function() {
   console.log("Left button clicked");
-
   var classLeft = document.getElementById("btnLeft");
 
   if (classLeft.className === "btn start") {
     crono.starClick();
-  } else {
+  }
+  else {
     crono.stopClick();
   }
-
 });
 
 // Reset/Split Button
