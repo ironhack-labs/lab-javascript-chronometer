@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,35 @@
   <title>Chronometer</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <div id="split-times">
+    <h4 id="h4">Splits</h4>
+    <ul id="list">
+    </ul>
+  </div>
+  <div id="full-clock">
+    <div class="leash leash-top"></div>
+    <section id="clock">
+      <div id="sphere">
+        <div id="numbers">
+          <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span>
+          <span>:</span>
+          <span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
+        </div>
+        <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+      </div>
 
-  <div class="leash leash-top"></div>
-  <section id="clock">
-    <div id="sphere">
-      <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
-
-      <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+    </section>
+    <div class="leash leash-bottom">
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
     </div>
-  </section>
-  <div class="leash leash-bottom">
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
   </div>
 
+  <script src="chronometer.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
