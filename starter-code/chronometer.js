@@ -14,6 +14,8 @@ Chronometer.prototype.startClick = function(){
     var btnRight = document.getElementById('btnRight');
     btnRight.innerHTML = "SPLIT";
     btnRight.className = "btn split";
+
+    console.log('entro al startClick()');
 };
 
 Chronometer.prototype.stopClick = function(){
@@ -24,6 +26,8 @@ Chronometer.prototype.stopClick = function(){
     var btnRight = document.getElementById('btnRight');
     btnRight.innerHTML = "RESET";
     btnRight.className = "btn reset";
+
+    console.log('entro al stopClick()');
 };
 
 Chronometer.prototype.startTime = function(){
@@ -67,4 +71,34 @@ Chronometer.prototype.startTime = function(){
 
 Chronometer.prototype.stopTime = function(){
   clearInterval(this.time);
+};
+
+Chronometer.prototype.splitClick = function (){
+  var node = document.createElement("li");
+  var concat = document.getElementById('minDec').innerHTML +
+                document.getElementById('minCen').innerHTML + ":" +
+                document.getElementById('secDec').innerHTML +
+                document.getElementById('secCen').innerHTML;
+  var textnode = document.createTextNode(concat);
+  node.appendChild(textnode);
+  document.getElementById("ol").appendChild(node);
+};
+
+Chronometer.prototype.resetClick = function() {
+  this.seconds = 0;
+  this.sec_ten = 0;
+  this.minutes = 0;
+  this.min_ten = 0;
+
+  document.getElementById('minCen').innerHTML = 0;
+  document.getElementById('minDec').innerHTML = 0;
+  document.getElementById('secCen').innerHTML = 0;
+  document.getElementById('secDec').innerHTML = 0;
+  document.getElementsByTagName('ol').innerHTML = "";
+
+  // Removing all children from an element
+  var element = document.getElementById("ol");
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 };

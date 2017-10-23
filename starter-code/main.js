@@ -9,14 +9,16 @@ document.getElementById("btnLeft").addEventListener("click", function () {
     chrono.startTime();
   } else {
     chrono.stopClick();
+    chrono.stopTime();
   }
 });
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  if(document.getElementsByClassName("btn stop").length == 1){
-    chrono.stopClick();
+  if(document.getElementsByClassName("btn reset").length == 1){
+    chrono.resetClick();
   } else {
-    console.log('entro al split');
+    chrono.splitClick();
+    console.log('entro al reset/split del main.js');
   }
 });
