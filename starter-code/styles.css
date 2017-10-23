@@ -25,7 +25,7 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
   font-family: "Digi";
-  font-size: 80px;
+  font-size: 43px;
   height: 210px;
   margin: 0 auto;
   padding: 35px 0;
@@ -92,7 +92,10 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
+.btn.start { 
+  background: #5fca5f; 
+}
+
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
