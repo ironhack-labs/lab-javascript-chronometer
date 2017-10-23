@@ -18,11 +18,7 @@ var milDec = document.getElementById("milDec");
 var splitList = document.getElementById("split");
 var btnLeft = document.getElementById("btnLeft");
 var btnRight = document.getElementById("btnRight");
-
-//Check
-
 var showInterval;
-var milInterval;
 
 Crono.prototype.startCount = function() {
   var thisCrono = this;
@@ -96,7 +92,6 @@ Crono.prototype.splitTime = function() {
   var newItem = document.createElement("li");
   newItem.innerHTML =  this.currentTime();
   splitList.appendChild(newItem);
-
 }
 
 Crono.prototype.currentTime = function() {
