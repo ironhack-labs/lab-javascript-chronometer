@@ -49,3 +49,10 @@ Chronometer.prototype.stopClick = function() {
 
     clearInterval(this.intervalId);
 }
+
+Chronometer.prototype.splitClick = function() {
+    var splitList = document.getElementById("split");
+    var splitItem = document.createElement("li");
+    splitItem.textContent = this.minutes + ":" + this.seconds;
+    splitList.appendChild(splitItem);
+}

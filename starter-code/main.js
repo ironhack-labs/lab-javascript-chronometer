@@ -14,7 +14,12 @@ window.onload = function(){
     });
 
     // Reset/Split Button
-    document.getElementById("btnRight").addEventListener("click", function () {
+    document.getElementById("btnRight").addEventListener("click", function (event) {
     console.log("Right button clicked");
+    if(event.currentTarget.classList.value == "btn split"){
+        chronometer.splitClick();
+    }else if(event.currentTarget.classList.value == "btn reset"){
+        chronometer.resetClick();
+    }
     });
 }
