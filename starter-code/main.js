@@ -1,9 +1,20 @@
+var chrono = new Chronometer(0, 0);
+var chrono2 = new Chronometer(10, 10);
+
+
+
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+  if(document.getElementsByClassName("btn start").length == 1){
+    chrono.startClick();
+  } else {
+    chrono.stopClick();
+  }
 });
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+  if(document.getElementsByClassName("btn stop").length == 1){
+    chrono.stopClick();
+  }
 });
