@@ -12,13 +12,12 @@ btnLeft.addEventListener("click", function () {
   }
 });
 
-// // Reset/Split Button
-// btnRight.addEventListener("click", function () {
-//   if(btnRight.className == "btn reset") {
-//     btnRight.className = "btn split";
-//     btnRight.innerHTML = "SPLIT";
-//   } else {
-//     btnRight.innerHTML = "RESET";
-//     btnRight.className ="btn reset";
-//   }
-// });
+// Reset/Split Button
+btnRight.addEventListener("click", function () {
+  
+  if(btnRight.className === "btn split") {
+    crono.splitTime();
+  } else {
+    crono.resetTime();
+  }
+});

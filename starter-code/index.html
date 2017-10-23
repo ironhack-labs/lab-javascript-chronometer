@@ -10,18 +10,30 @@
 </head>
 
 <body>
-
-  <div class="leash leash-top"></div>
-  <section id="clock">
-    <div id="sphere">
-      <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
-      <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+  <div class="chrono">
+    <div>
+      <h2>Splits</h2>
+      <ol id="split">
+      </ol>
     </div>
-  </section>
-  <div class="leash leash-bottom">
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
+
+    <div class="clock-holder">
+      <div class="leash leash-top"></div>
+      <section id="clock">
+        <div id="sphere">
+          <div>
+            <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
+          </div>
+          <span id="milDec">00</span>
+          <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+        </div>
+      </section>
+      <div class="leash leash-bottom">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+      </div>
+    </div>
   </div>
 
   <script src="chronemeter.js"></script>
