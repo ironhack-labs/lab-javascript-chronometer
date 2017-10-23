@@ -4,10 +4,22 @@
 }
 
 body {
+  display: flex;
   font-family: Arial;
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  width: 700px;
+}
+
+#split-times {
+  width: 100%;
+  height: -webkit-fill-available;
+  font-size: 30px;
+}
+
+#list {
+  font-family: "Digi";
 }
 
 #clock {
@@ -32,6 +44,10 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
+}
+
+#full-clock {
+  display: block;
 }
 
 .leash {
@@ -82,17 +98,26 @@ body {
   width: 50px;
 }
 
-.btn.start,
-.btn.stop {
+.btn.start, .btn.stop {
   left: 10px;
 }
 
-.btn.reset,
-.btn.split {
+.btn.reset, .btn.split {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+
+.btn.stop {
+  background: #f14949;
+}
+
+.btn.reset {
+  background: #908e8e;
+}
+
+.btn.split {
+  background: #0851ab;
+}

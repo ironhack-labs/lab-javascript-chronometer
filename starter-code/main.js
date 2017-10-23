@@ -1,9 +1,34 @@
+"use strict";
+
+var chronometer = new Chronometer();
+
 // Start/Stop Button
-document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+var leftButton = document.getElementById("btnLeft");
+leftButton.addEventListener("click", function() {
+  if (!chronometer.started) {
+    leftButton.setAttribute('class', 'btn stop');
+    leftButton.innerText = 'STOP';
+    rightButton.setAttribute('class', 'btn split');
+    rightButton.innerText = 'SPLIT';
+    chronometer.start();
+  } else {
+    leftButton.setAttribute('class', 'btn start');
+    leftButton.innerText = 'START';
+    rightButton.setAttribute('class', 'btn reset');
+    rightButton.innerText = 'RESET';
+    chronometer.stop();
+  }
 });
 
 // Reset/Split Button
-document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+var rightButton = document.getElementById("btnRight");
+rightButton.addEventListener("click", function() {
+  if (rightButton.className === 'btn split') {
+    chronometer.split();
+  } else {
+    rightButton.setAttribute('class', 'btn reset');
+    chronometer.reset();
+  }
+
+  // console.log("Right button clicked");
 });
