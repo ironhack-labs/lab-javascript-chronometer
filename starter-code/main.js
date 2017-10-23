@@ -6,6 +6,7 @@ var objeto = new Chronometer();
 document.getElementById("btnLeft").addEventListener("click", function () {
   if(classLeft == "btn start"){
     objeto.startClick();
+    objeto.setIntervalId();
   }
   if(classLeft == "btn stop") {
     objeto.stopClick();
