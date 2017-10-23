@@ -1,13 +1,7 @@
 function Crono(){
-  this.minutos = 0;
-  this.segundos = 0;
-  this.milisegundos = 0;
-}
-
-Crono.prototype.startClick = function() {
-  this.startCount();
-  this.changeButtonLeft();
-  this.changeButtonRight();
+  this.minutes = 0;
+  this.seconds = 0;
+  this.miliseconds = 0;
 }
 
 var minDec = document.getElementById("minDec");
@@ -20,51 +14,64 @@ var btnLeft = document.getElementById("btnLeft");
 var btnRight = document.getElementById("btnRight");
 var showInterval;
 
-Crono.prototype.startCount = function() {
-  var thisCrono = this;
-
-  showInterval = setInterval(function(){
-
-  thisCrono.milisegundos++;
-
-  if(thisCrono.milisegundos == 99) {
-    thisCrono.segundos++;
-    thisCrono.milisegundos = 0;
-  }
-
-  if(thisCrono.milisegundos < 10) {
-    milDec.innerHTML = "0" + thisCrono.milisegundos;
-  } else {
-    milDec.innerHTML = thisCrono.milisegundos;
-  }
-
-   if(thisCrono.segundos >= 60){
-     thisCrono.segundos = 0;
-     thisCrono.minutos += 1;
-   }
-
-   if(thisCrono.minutos < 10) {
-     minDec.innerHTML = 0;
-     minCen.innerHTML = thisCrono.minutos;
-   } else {
-     minDec.innerHTML = thisCrono.minutos.toString().split('')[0];
-     minCen.innerHTML = thisCrono.minutos.toString().split('')[1];
-   }
-
-   if(thisCrono.segundos < 10) {
-     secDec.innerHTML = 0;
-     secCen.innerHTML = thisCrono.segundos;
-   } else {
-     secDec.innerHTML = thisCrono.segundos.toString().split('')[0];
-     secCen.innerHTML = thisCrono.segundos.toString().split('')[1];
-   }
- } ,10);
+Crono.prototype.startClick = function() {
+  this.startCount();
+  this.changeButtonLeft();
+  this.changeButtonRight();
 }
 
 Crono.prototype.stopClick = function() {
   clearInterval(showInterval);
   this.changeButtonLeft();
   this.changeButtonRight();
+}
+
+Crono.prototype.startCount = function() {
+  var thisCrono = this;
+  showInterval = setInterval(function(){
+  thisCrono.miliseconds++;
+  thisCrono.updateMiliseconds(thisCrono);
+  thisCrono.updateSeconds(thisCrono);
+  thisCrono.updateMinutes(thisCrono);
+ } ,10);
+}
+
+Crono.prototype.updateMiliseconds = function(thisCrono) {
+  if(thisCrono.miliseconds == 99) {
+    thisCrono.seconds++;
+    thisCrono.miliseconds = 0;
+  }
+
+  if(thisCrono.miliseconds < 10) {
+    milDec.innerHTML = "0" + thisCrono.miliseconds;
+  } else {
+    milDec.innerHTML = thisCrono.miliseconds;
+  }
+}
+
+Crono.prototype.updateSeconds = function(thisCrono) {
+  if(thisCrono.seconds >= 60){
+    thisCrono.seconds = 0;
+    thisCrono.minutes += 1;
+  }
+
+  if(thisCrono.seconds < 10) {
+    secDec.innerHTML = 0;
+    secCen.innerHTML = thisCrono.seconds;
+  } else {
+    secDec.innerHTML = thisCrono.seconds.toString().split('')[0];
+    secCen.innerHTML = thisCrono.seconds.toString().split('')[1];
+  }
+}
+
+Crono.prototype.updateMinutes = function(thisCrono) {
+  if(thisCrono.minutes < 10) {
+     minDec.innerHTML = 0;
+     minCen.innerHTML = thisCrono.minutes;
+   } else {
+     minDec.innerHTML = thisCrono.minutes.toString().split('')[0];
+     minCen.innerHTML = thisCrono.minutes.toString().split('')[1];
+   }
 }
 
 Crono.prototype.changeButtonLeft = function() {
@@ -95,9 +102,9 @@ Crono.prototype.splitTime = function() {
 }
 
 Crono.prototype.currentTime = function() {
-  return ((this.minutos < 10) ? '0' + this.minutos : this.minutos) + ":" +
-     ((this.segundos < 10) ? '0' + this.segundos : this.segundos) + ":" +
-     ((this.milisegundos < 10) ? '0' + this.milisegundos : this.milisegundos);
+  return ((this.minutes < 10) ? '0' + this.minutes : this.minutes) + ":" +
+     ((this.seconds < 10) ? '0' + this.seconds : this.seconds) + ":" +
+     ((this.miliseconds < 10) ? '0' + this.miliseconds : this.miliseconds);
 }
 
 Crono.prototype.resetTime = function() {
@@ -109,7 +116,6 @@ Crono.prototype.resetTime = function() {
   while(splitList.firstChild) {
     splitList.removeChild(splitList.firstChild);
   }
-
-  this.minutos = 0;
-  this.segundos = 0;
+  this.minutes = 0;
+  this.seconds = 0;
 }
