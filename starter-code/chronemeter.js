@@ -14,18 +14,34 @@ var minDec = document.getElementById("minDec");
 var minCen = document.getElementById("minCen");
 var secDec = document.getElementById("secDec");
 var secCen = document.getElementById("secCen");
+var milDec = document.getElementById("milDec");
 var splitList = document.getElementById("split");
+var btnLeft = document.getElementById("btnLeft");
+var btnRight = document.getElementById("btnRight");
 
 //Check
 
 var showInterval;
+var milInterval;
 
 Crono.prototype.startCount = function() {
   var thisCrono = this;
 
   showInterval = setInterval(function(){
 
-   thisCrono.segundos = thisCrono.segundos + 1;
+  thisCrono.milisegundos++;
+
+  if(thisCrono.milisegundos == 99) {
+    thisCrono.segundos++;
+    thisCrono.milisegundos = 0;
+  }
+
+  if(thisCrono.milisegundos < 10) {
+    milDec.innerHTML = "0" + thisCrono.milisegundos;
+  } else {
+    milDec.innerHTML = thisCrono.milisegundos;
+  }
+
    if(thisCrono.segundos >= 60){
      thisCrono.segundos = 0;
      thisCrono.minutos += 1;
@@ -46,10 +62,7 @@ Crono.prototype.startCount = function() {
      secDec.innerHTML = thisCrono.segundos.toString().split('')[0];
      secCen.innerHTML = thisCrono.segundos.toString().split('')[1];
    }
-
-  },1000);
-
-  console.log(showInterval);
+ } ,10);
 }
 
 Crono.prototype.stopClick = function() {
@@ -57,9 +70,6 @@ Crono.prototype.stopClick = function() {
   this.changeButtonLeft();
   this.changeButtonRight();
 }
-
-var btnLeft = document.getElementById("btnLeft");
-var btnRight = document.getElementById("btnRight");
 
 Crono.prototype.changeButtonLeft = function() {
   if(btnLeft.className == "btn start") {
@@ -69,7 +79,6 @@ Crono.prototype.changeButtonLeft = function() {
   } else {
     btnLeft.innerHTML = "START";
     btnLeft.className ="btn start";
-
   }
 }
 
@@ -90,10 +99,10 @@ Crono.prototype.splitTime = function() {
 
 }
 
-
 Crono.prototype.currentTime = function() {
   return ((this.minutos < 10) ? '0' + this.minutos : this.minutos) + ":" +
-     ((this.segundos < 10) ? '0' + this.segundos : this.segundos);
+     ((this.segundos < 10) ? '0' + this.segundos : this.segundos) + ":" +
+     ((this.milisegundos < 10) ? '0' + this.milisegundos : this.milisegundos);
 }
 
 Crono.prototype.resetTime = function() {
