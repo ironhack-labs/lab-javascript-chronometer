@@ -1,3 +1,36 @@
+function Newchronometer(){
+  this.hours=0; // FROM 0 to 24
+  this.minutes=0; // FROM 0 to 60
+  this.seconds=0; // FROM 0 to 60
+  this.decs=0; // FROM 0 to 99
+  this.status="OFF";
+  this.times=[];
+};
+
+Newchronometer.prototype.countTime = function(){
+    this.status="ON";
+    var time = this;
+    var counter = setInterval(function(){
+      drawTime();
+      if(time.status == "OFF"){
+        clearInterval(counter);
+      }
+      time.decs += 1;
+      if (time.decs == 100){
+        time.seconds += 1;
+        time.decs = 0;
+        if (time.seconds == 60){
+          time.minutes += 1;
+          time.seconds = 0;
+          if (time.minutes == 60){
+            time.hours +=1;
+            time.minutes = 0;
+          }
+        }
+      }
+    },10);
+};
+
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
   var buttonLeft = document.querySelector('#btnLeft');
@@ -9,7 +42,6 @@ document.getElementById("btnLeft").addEventListener("click", function () {
     buttonRight.innerHTML = 'SPLIT';
     buttonRight.setAttribute("class","btn split");
     // Hago lo que tenga que hacer START
-    console.log("Left button clicked");
   }else{
     // Hago lo que tenga que hacer STOP
     stopClick();
@@ -23,10 +55,12 @@ document.getElementById("btnLeft").addEventListener("click", function () {
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
   console.log("Right button clicked");
-  if(document.querySelector('#btnLeft').innerHTML == 'RESET'){
+  if(document.querySelector('#btnRight').innerHTML == 'RESET'){
+    resetTime();
     // Hago lo que tenga que hacer RESET
     console.log("Left button clicked");
   }else{
+    splitTime();
     // Hago lo que tenga que hacer SPLIT
   }
 });

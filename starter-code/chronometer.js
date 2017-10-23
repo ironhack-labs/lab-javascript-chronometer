@@ -1,50 +1,77 @@
+var clockWorking;
 function Newchronometer(){
   this.hours=0; // FROM 0 to 24
   this.minutes=0; // FROM 0 to 60
   this.seconds=0; // FROM 0 to 60
   this.decs=0; // FROM 0 to 99
-};
-// decToSec --> 100dec -> 1sec
-// secToMin --> 60sec -> 1min
-// MinToHour --> 60min -> 1hr
-// countTime --> Count our time.
-// CHRONOMETER: <<(minDec)(minCen):(secDec)(secCen):(decDe)(decCen)>>
-Newchronometer.prototype.decToSec = function(){
-
+  this.status="OFF";
+  this.times=[];
 };
 
-Newchronometer.prototype.secToMin = function(){
-
-};
-
-Newchronometer.prototype.MinToHour = function(){
-
-};
 Newchronometer.prototype.countTime = function(){
+    this.status="ON";
     var time = this;
-    setInterval(function(){
-      console.log(time.seconds);
+    var counter = setInterval(function(){
+      drawTime();
+      if(time.status == "OFF"){
+        clearInterval(counter);
+      }
       time.decs += 1;
       if (time.decs == 100){
-        this.second += 1;
+        time.seconds += 1;
+        time.decs = 0;
         if (time.seconds == 60){
-          this.minutes += 1;
+          time.minutes += 1;
+          time.seconds = 0;
           if (time.minutes == 60){
-            this.hours +=1;
+            time.hours +=1;
+            time.minutes = 0;
           }
         }
       }
     },10);
 };
 
-function countMiliseconds(objChronometer){
-
-};
-
 function startClick(){
-  var reloj = new Newchronometer();
-  reloj.countTime();
+  if (!clockWorking){
+  var clock = new Newchronometer();
+  clockWorking = clock;
+  }
+  clockWorking.countTime();
 };
 function stopClick(){
+  clockWorking.status="OFF";
   // LO que tenga que hacer al pulsar el botón STOP.
+}
+function splitTime(){
+  clockWorking.times.push(("0"+clockWorking.minutes).slice(-2)+":"+("0"+clockWorking.seconds).slice(-2)+":"+("0"+clockWorking.decs).slice(-2));
+}
+
+function resetTime (){
+  clockWorking.hours = 0;
+  clockWorking.minutes = 0;
+  clockWorking.seconds = 0;
+  clockWorking.decs = 0;
+  drawTime();
+
+}
+
+// decToSec --> 100dec -> 1sec
+// secToMin --> 60sec -> 1min
+// MinToHour --> 60min -> 1hr
+// countTime --> Count our time.
+// CHRONOMETER: <<(minDec)(minCen):(secDec)(secCen):(decDe)(decCen)>>
+
+
+function drawTime (){
+  var minDec = document.querySelector('#minDec');
+  var minCen = document.querySelector('#minCen');
+  var secDec = document.querySelector('#secDec');
+  var secCen = document.querySelector('#secCen');
+  var min = ("0" + clockWorking.minutes).slice(-2);
+  var sec = ("0" + clockWorking.seconds).slice(-2);
+  minDec.innerHTML = min[0];
+  minCen.innerHTML = min[1];
+  secDec.innerHTML = sec[0];
+  secCen.innerHTML = sec[1];
 }
