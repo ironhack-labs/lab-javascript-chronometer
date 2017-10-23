@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: local("DS-Digital"),
+       url("fonts/ds-digib.ttf");
 }
 
 body {
