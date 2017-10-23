@@ -61,6 +61,5 @@ document.getElementById("btnRight").addEventListener("click", function () {
     console.log("Left button clicked");
   }else{
     splitTime();
-    // Hago lo que tenga que hacer SPLIT
   }
 });

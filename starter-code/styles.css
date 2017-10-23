@@ -96,3 +96,15 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+.splitTime {
+  position: absolute;
+  width: 10%;
+  font-size: 23px;
+  margin-left: 250px;
+  margin-top: 15px;
+}
+
+.splits {
+  margin-bottom: 30px;
+}

@@ -45,6 +45,7 @@ function stopClick(){
 }
 function splitTime(){
   clockWorking.times.push(("0"+clockWorking.minutes).slice(-2)+":"+("0"+clockWorking.seconds).slice(-2)+":"+("0"+clockWorking.decs).slice(-2));
+  document.querySelector('.time').innerHTML = clockWorking.times.join("\n");
 }
 
 function resetTime (){
@@ -53,6 +54,7 @@ function resetTime (){
   clockWorking.seconds = 0;
   clockWorking.decs = 0;
   drawTime();
+  document.querySelector('.time').innerHTML = "";
 
 }
 
