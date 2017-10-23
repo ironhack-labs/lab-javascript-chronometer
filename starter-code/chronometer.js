@@ -56,6 +56,7 @@ Chronometer.prototype.stopClick = function() {
   clearInterval(chrono);
   this.min = mins;
   this.sec = secs;
+  this.mili = milis;
 };
 
 Chronometer.prototype.getSplits = function() {
