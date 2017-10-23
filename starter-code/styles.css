@@ -8,6 +8,10 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 #clock {
@@ -18,6 +22,11 @@ body {
   margin: 0 auto;
   padding: 18px 0;
   width: 245px;
+}
+
+#time {
+  display: flex;
+  justify-content: center;
 }
 
 #sphere {
@@ -92,7 +101,25 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+.btn.stop {
+  background: #f14949;
+}
+.btn.reset {
+  background: #908e8e;
+}
+.btn.split {
+  background: #0851ab;
+}
+
+h1 {
+  font-family: "Digi";
+  font-size: 45px;
+}
+
+li {
+  font-family: "Digi";
+  font-size: 45px;
+}
