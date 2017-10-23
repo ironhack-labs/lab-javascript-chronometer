@@ -5,6 +5,7 @@ document.getElementById("btnLeft").addEventListener("click", function() {
     console.log("Left button clicked");
     if (this.classList.contains("stop")) {
       myChrono.startClick();
+      // myChrono.startCounting();
     } else {
       myChrono.resetClick();
     }
