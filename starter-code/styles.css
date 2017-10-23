@@ -5,7 +5,7 @@
 
 body {
   font-family: Arial;
-  font-size: 80px;
+  font-size: 26px;
   font-weight: bold;
   padding: 40px 0;
 }
@@ -18,6 +18,7 @@ body {
   margin: 0 auto;
   padding: 18px 0;
   width: 245px;
+  font-size: 80px;
 }
 
 #sphere {
@@ -96,3 +97,9 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+
+.chrono {
+  display: flex;
+  justify-content: space-around;
+}
