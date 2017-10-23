@@ -1,10 +1,22 @@
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
-  if(document.querySelector('#btnLeft').innerHTML == 'START'){
+  var buttonLeft = document.querySelector('#btnLeft');
+  var buttonRight = document.querySelector('#btnRight');
+  if(buttonLeft.innerHTML == 'START'){
+    startClick();
+    buttonLeft.innerHTML = 'STOP';
+    buttonLeft.setAttribute("class","btn stop");
+    buttonRight.innerHTML = 'SPLIT';
+    buttonRight.setAttribute("class","btn split");
     // Hago lo que tenga que hacer START
     console.log("Left button clicked");
   }else{
     // Hago lo que tenga que hacer STOP
+    stopClick();
+    buttonLeft.innerHTML = 'START';
+    buttonLeft.setAttribute("class","btn start");
+    buttonRight.innerHTML = 'RESET';
+    buttonRight.setAttribute("class","btn reset");
   }
   });
 
@@ -17,5 +29,4 @@ document.getElementById("btnRight").addEventListener("click", function () {
   }else{
     // Hago lo que tenga que hacer SPLIT
   }
-  });
 });
