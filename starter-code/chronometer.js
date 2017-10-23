@@ -7,9 +7,9 @@ function Chronometer() {
     this.secDec = document.getElementById("secDec");
     this.secCen = document.getElementById("secCen");
     this.intervalId = 0;
-    this.currentTime = 0.0;
-    this.minutes = 0.0;
-    this.seconds = 0.0;
+    this.currentTime = 0;
+    this.minutes = 0;
+    this.seconds = 0;
 }
 
 Chronometer.prototype.startClick = function() {
@@ -55,4 +55,18 @@ Chronometer.prototype.splitClick = function() {
     var splitItem = document.createElement("li");
     splitItem.textContent = this.minutes + ":" + this.seconds;
     splitList.appendChild(splitItem);
+}
+
+
+Chronometer.prototype.resetClick = function() {
+    this.minDec.textContent = 0;
+    this.minCen.textContent = 0;
+    this.secDec.textContent = 0;
+    this.secCen.textContent = 0;
+    this.currentTime = 0;
+    this.minutes = 0;
+    this.seconds = 0;
+
+    var splitList = document.getElementById("split");
+    splitList.innerHTML = "";
 }
