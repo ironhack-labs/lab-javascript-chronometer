@@ -108,3 +108,21 @@ body {
 .splits {
   margin-bottom: 30px;
 }
+
+span#miliseconds1 {
+  font-size: 40px;
+  margin: 0;
+  position: absolute;
+  padding: 0;
+  top: 100px;
+  right: 30px;
+}
+
+span#miliseconds2 {
+  font-size: 40px;
+  margin: 0;
+  position: absolute;
+  padding: 0;
+  top: 100px;
+  right: 10px;
+}

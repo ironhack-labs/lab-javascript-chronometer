@@ -70,10 +70,16 @@ function drawTime (){
   var minCen = document.querySelector('#minCen');
   var secDec = document.querySelector('#secDec');
   var secCen = document.querySelector('#secCen');
+  var decDe = document.querySelector('#miliseconds1');
+  var decCen = document.querySelector('#miliseconds2');
   var min = ("0" + clockWorking.minutes).slice(-2);
   var sec = ("0" + clockWorking.seconds).slice(-2);
+  var dec = ("0" + clockWorking.decs).slice(-2);
   minDec.innerHTML = min[0];
   minCen.innerHTML = min[1];
   secDec.innerHTML = sec[0];
   secCen.innerHTML = sec[1];
+  decDe.innerHTML = dec[0];
+  decCen.innerHTML = dec[1];
+
 }
