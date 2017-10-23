@@ -53,6 +53,7 @@ function resetTime (){
   clockWorking.minutes = 0;
   clockWorking.seconds = 0;
   clockWorking.decs = 0;
+  clockWorking.times = [];
   drawTime();
   document.querySelector('.time').innerHTML = "";
 
