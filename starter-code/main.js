@@ -1,9 +1,23 @@
+//Chronometer
+var chrono = new Chronometer("stopped");
+
+
 // Start/Stop Button
-document.getElementById("btnLeft").addEventListener("click", function () {
+document.getElementById("btnLeft").addEventListener("click", function() {
   console.log("Left button clicked");
+  if (chrono.status == "stopped") {
+    chrono.startClick();
+    chrono.resetStyle();
+  } else if (chrono.status == "running") {
+    chrono.stopClick();
+    chrono.splitStyle();
+  }
 });
 
 // Reset/Split Button
-document.getElementById("btnRight").addEventListener("click", function () {
+document.getElementById("btnRight").addEventListener("click", function() {
   console.log("Right button clicked");
+
+
+
 });
