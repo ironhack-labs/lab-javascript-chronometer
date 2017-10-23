@@ -69,7 +69,13 @@ body {
   display: inline-block;
   width: 80px;
 }
-
+.small-number {
+  width: 40px;
+  font-size: 50%;
+  position: relative;
+  left: 68px;
+  top: -45px;
+}
 .btn {
   border: 0;
   border-radius: 50%;
