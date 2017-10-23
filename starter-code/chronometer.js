@@ -11,28 +11,33 @@ Cronometer.prototype.starClick = function() {
   this.changeRightButton();
   var that = this;
   this.status = setInterval(function() {
-    that.secCen++;
-
-    if (that.secCen > 9) {
-      that.secDec++;
-      that.secCen = 0;
-    }
-    if (that.secDec >= 6) {
-      that.minCen++;
-      that.secDec = 0;
-    }
-    if (that.minCen > 9) {
-      that.minDec++;
-      that.minCen = 0;
-    }
-    if (that.minDec >= 6) {
-      that.minDec = 0;
-      that.minCen = 0;
-      that.secDec = 0;
-      that.secCen = 0;
-    }
-    that.paintingNumbers();
+    that.runCount();
   }, 1 * 1000);
+
+};
+
+Cronometer.prototype.runCount = function() {
+  this.secCen++;
+
+  if (this.secCen > 9) {
+    this.secDec++;
+    this.secCen = 0;
+  }
+  if (this.secDec >= 6) {
+    this.minCen++;
+    this.secDec = 0;
+  }
+  if (this.minCen > 9) {
+    this.minDec++;
+    this.minCen = 0;
+  }
+  if (this.minDec >= 6) {
+    this.minDec = 0;
+    this.minCen = 0;
+    this.secDec = 0;
+    this.secCen = 0;
+  }
+  this.paintingNumbers();
 };
 
 Cronometer.prototype.changeLeftButton = function() {
