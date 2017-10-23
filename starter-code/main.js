@@ -7,8 +7,7 @@ document.getElementById("btnLeft").addEventListener("click", function() {
 
   if (classLeft.className === "btn start") {
     crono.starClick();
-  }
-  else {
+  } else {
     crono.stopClick();
   }
 });
@@ -16,5 +15,11 @@ document.getElementById("btnLeft").addEventListener("click", function() {
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function() {
   console.log("Right button clicked");
+  var classRight= document.getElementById('btnRight');
+  if(classRight.className === "btn split"){
+      crono.paintSplit();
+  }else{
+    crono.reset();
+  }
 
 });
