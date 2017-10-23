@@ -59,5 +59,8 @@ Chronometer.prototype.startClick = function () {
 
 Chronometer.prototype.startChronometer = function () {
     var time = document.getElementById("secCen");
-         
-    }
+   var number = time.innerHTML;
+   number++;
+   time.innerHTML = number;
+}
+
