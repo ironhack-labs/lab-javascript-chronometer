@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: local("DS-Digital"),
+       url("fonts/ds-digib.ttf");
 }
 
 body {
@@ -67,12 +68,18 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 80px;
 }
-
+.small-number {
+  width: 40px;
+  font-size: 50%;
+  position: relative;
+  left: 68px;
+  top: -45px;
+}
 .btn {
   border: 0;
-  border-radius: 100%;
+  border-radius: 50%;
   bottom: 10px;
   color: #fff;
   cursor: pointer;
@@ -81,7 +88,12 @@ body {
   position: absolute;
   width: 50px;
 }
-
+.splits {
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 .btn.start,
 .btn.stop {
   left: 10px;
