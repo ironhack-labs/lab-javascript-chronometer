@@ -17,7 +17,7 @@ Chronometer.prototype.startClick = function() {
   minDec = this.minDec;
   minCen = this.minCen;
   chrono = setInterval(function() {
-    if (secCen == 10) {
+    if (secCen >= 10) {
       secCen = 0;
       secDec += 1;
     }
@@ -55,18 +55,28 @@ Chronometer.prototype.stopClick = function() {
 Chronometer.prototype.getSplits = function() {
   var list = document.getElementById('splitsList');
   var newElement = document.createElement('li');
-  var splitMins, splitSecs, splitMilis;
-  if (mins == 0) {
-    splitMins = "0" + mins;
+  var splitMinDec,splitMinCen, splitSecDec,splitSecCen;
+  if (splitMinDec == 0) {
+    splitMinDec = "0" + minDec;
   } else {
-    splitMins = mins;
+    splitMinDec = minDec;
   }
-  if (secs == 0) {
-    splitSecs = "0" + secs;
+  if (splitMinCen == 0) {
+    splitMinCen = "0" + minCen;
   } else {
-    splitSecs = secs;
+    splitMinCen = minCen;
   }
-  newElement.innerHTML = splitMins + ":" + splitSecs;
+  if (splitSecDec == 0) {
+    splitSecDec = "0" + secDec;
+  } else {
+    splitSecDec = secDec;
+  }
+  if (splitSecCen == 0) {
+    splitSecCen = "0" + secCen;
+  } else {
+    splitSecCen = secCen;
+  }
+  newElement.innerHTML = splitMinDec + splitMinCen+ ":" + splitSecDec + splitSecCen ;
   list.appendChild(newElement);
 };
 Chronometer.prototype.doReset = function() {
