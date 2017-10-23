@@ -1,8 +1,11 @@
 var btnLeft = document.getElementById("btnLeft");
 var btnRight = document.getElementById("btnRight");
+var secCen = document.getElementById("secCen");
+var secDec = document.getElementById("secDec");
+
 var classLeft = btnLeft.className;
-var i = 0;
-var stopSec = 9;
+var iCen = 0;
+var iDec = 0;
 
 function Chronometer(min,seg){
   this.min = min;
@@ -17,14 +20,24 @@ Chronometer.prototype.startClick = function(){
 
 };
 
-Chronometer.prototype.setIntervalId = function(){
-  setInterval(function(){
-      console.log(i);
-    i++;
-    if( i < 9){
-      clearInterval();
+
+
+Chronometer.prototype.StopSec = function(){
+  var StopSec = setInterval(function(){
+
+    if( iCen == 10){
+      iCen = 0;
+      iDec++;
+      secDec.innerHTML = iDec;
+      //clearInterval(StopSec);
     }
-  },1000);
+      secCen.innerHTML = iCen;
+
+    if (iDec == 5){
+          iDec = 0;
+      }
+        iCen++;
+    },500);
 };
 
 Chronometer.prototype.stopClick = function(){
