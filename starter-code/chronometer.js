@@ -6,10 +6,13 @@ function Chronometer() {
     this.minCen = document.getElementById("minCen");
     this.secDec = document.getElementById("secDec");
     this.secCen = document.getElementById("secCen");
+    this.milDec = document.getElementById("milDec");
+    this.milCen = document.getElementById("milCen");
     this.intervalId = 0;
     this.currentTime = 0;
     this.minutes = 0;
     this.seconds = 0;
+    this.miliseconds = 0;
 }
 
 Chronometer.prototype.startClick = function() {
@@ -23,12 +26,18 @@ Chronometer.prototype.startClick = function() {
     this.intervalId = setInterval(function() {
         chrono.currentTime++;
 
-        chrono.minutes = parseInt(chrono.currentTime / 60).toString();
+        chrono.miliseconds = (chrono.currentTime % 100).toString();
+        if (chrono.miliseconds.length == 1) {
+            chrono.miliseconds = '0'.concat(chrono.miliseconds);
+        }
+
+        var seconds = parseInt(chrono.currentTime / 100).toString();
+        chrono.minutes = parseInt(seconds / 60).toString();
         if (chrono.minutes.length == 1) {
             chrono.minutes = '0'.concat(chrono.minutes);
         }
 
-        chrono.seconds = (chrono.currentTime % 60).toString();
+        chrono.seconds = (seconds % 60).toString();
         if (chrono.seconds.length == 1) {
             chrono.seconds = '0'.concat(chrono.seconds);
         }
@@ -37,7 +46,9 @@ Chronometer.prototype.startClick = function() {
         chrono.minCen.textContent = chrono.minutes[1];
         chrono.secDec.textContent = chrono.seconds[0];
         chrono.secCen.textContent = chrono.seconds[1];
-    }, 1000);
+        chrono.milDec.textContent = chrono.miliseconds[0];
+        chrono.milCen.textContent = chrono.miliseconds[1];
+    }, 10);
 }
 
 Chronometer.prototype.stopClick = function() {
@@ -53,7 +64,7 @@ Chronometer.prototype.stopClick = function() {
 Chronometer.prototype.splitClick = function() {
     var splitList = document.getElementById("split");
     var splitItem = document.createElement("li");
-    splitItem.textContent = this.minutes + ":" + this.seconds;
+    splitItem.textContent = this.minutes + ":" + this.seconds + ":" + this.miliseconds;
     splitList.appendChild(splitItem);
 }
 
@@ -63,6 +74,8 @@ Chronometer.prototype.resetClick = function() {
     this.minCen.textContent = 0;
     this.secDec.textContent = 0;
     this.secCen.textContent = 0;
+    this.milDec.textContent = 0;
+    this.milCen.textContent = 0;
     this.currentTime = 0;
     this.minutes = 0;
     this.seconds = 0;

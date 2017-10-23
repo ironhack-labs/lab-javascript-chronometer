@@ -1,5 +1,5 @@
 window.onload = function() {
-    //instancia de cronometro
+    // Chronometer instance
     var chronometer = new Chronometer();
 
     // Start/Stop Button
