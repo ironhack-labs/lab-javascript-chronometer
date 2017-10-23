@@ -1,5 +1,4 @@
-var chrono = new Chronometer(0, 0);
-var chrono2 = new Chronometer(10, 10);
+var chrono = new Chronometer(0, 0, 0);
 
 
 
@@ -7,6 +6,7 @@ var chrono2 = new Chronometer(10, 10);
 document.getElementById("btnLeft").addEventListener("click", function () {
   if(document.getElementsByClassName("btn start").length == 1){
     chrono.startClick();
+    chrono.startTime();
   } else {
     chrono.stopClick();
   }
@@ -16,5 +16,7 @@ document.getElementById("btnLeft").addEventListener("click", function () {
 document.getElementById("btnRight").addEventListener("click", function () {
   if(document.getElementsByClassName("btn stop").length == 1){
     chrono.stopClick();
+  } else {
+    console.log('entro al split');
   }
 });

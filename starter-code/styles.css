@@ -34,6 +34,20 @@ body {
   width: 220px;
 }
 
+#split-times {
+  position: absolute;
+  width: 150px;
+  height: 210px;
+  padding: 20px;
+  left: 50px;
+  top: 50px;
+  background-color: tomato;
+}
+
+#split-times h2 {
+  font-size: 18px;
+}
+
 .leash {
   background: rgb(204, 84, 87);
   border: 2px solid rgb(134, 59, 61);
