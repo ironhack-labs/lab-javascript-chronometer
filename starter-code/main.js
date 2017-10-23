@@ -1,6 +1,11 @@
+var reloj = new Chronometer(0, 0);
+
+console.log("esto vale mi objeto en el main" );
+console.log(reloj);
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+ reloj.startClick();
+
 });
 
 // Reset/Split Button
