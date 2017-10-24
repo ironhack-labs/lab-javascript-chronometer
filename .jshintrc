@@ -1,0 +1,12 @@
+{
+  "undef": true,
+  "unused": true,
+  "strict": "global",
+  "globals": {
+    "console": true,
+    "document": true,
+    "setInterval": true,
+    "clearInterval": true,
+    "Chronometer": true
+  }
+}
