@@ -9,6 +9,8 @@ Chronometer.prototype.leftBtnClicked = function(){
     var stop = document.getElementById("btnLeft");
     stop.innerHTML = "STOP";
     stop.className = "btn stop";
+    this.startClick ();
+
 
     var split = document.getElementById("btnRight");
     split.innerHTML = "SPLIT";
@@ -26,4 +28,15 @@ Chronometer.prototype.leftBtnClicked = function(){
 
 Chronometer.prototype.rigthtBtnClicked = function(){
 
+}
+Chronometer.prototype.startClick = function(){
+  var that = this;
+  var interval = setInterval (function (){
+    that.second ++;
+    console.log(that.second);
+    if(that.second == 60){
+      that.min ++;
+      that.second = 0;
+    }
+  }, 1000);
 }
