@@ -1,14 +1,8 @@
 // Start/Stop Button
 var startBtn = document.getElementById("btnLeft");
-
-// Reset/Split Button
-var stopBtn = document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
-});
-
 var intervalId;
-
 startBtn.addEventListener("click", function () {
+  intervalId =
   setInterval(function() {
     var seconds = document.querySelector('#secCen');
     var toNum = parseInt(seconds.innerHTML);
@@ -44,11 +38,17 @@ startBtn.addEventListener("click", function () {
       minDec.innerHTML = increaseTimerMinDec;
     }
 
-
-
+      startBtn.innerHTML = 'STOP';
+      startBtn.iD = 'btn-right';
     console.log(increaseTimer);
   },
-  100
+  1000
 );
+});
 
+// Reset/Split Button
+var stopBtn = document.getElementById("btnRight");
+
+stopBtn.addEventListener("click", function () {
+  console.log("Right button clicked");
 });
