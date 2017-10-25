@@ -17,18 +17,12 @@ startBtn.addEventListener("click", function () {
 
     if (seconds.innerHTML > 9 ){
       seconds.innerHTML = 0;
+
+      var secondsDec = document.querySelector('#secDec');
+      var toNumDec = parseInt(secondsDec.innerHTML);
+      var increaseTimerDec = toNumDec += 1;
+      secondsDec.innerHTML = increaseTimerDec;
     }
-
-      setTimeout(function() {
-        secondsDec = document.querySelector('#secDec');
-        toNumDec = parseInt(secondsDec.innerHTML);
-        increaseTimerDec = toNumDec += 1;
-        secondsDec.innerHTML = increaseTimerDec;
-    },
-    10000
-  );
-
-
 
 
     console.log(increaseTimer);
