@@ -40,11 +40,18 @@ startBtn.addEventListener("click", function () {
 
       startBtn.innerHTML = 'STOP';
 
+      if (startBtn.innerHTML === 'STOP') {
+        startBtn.classList.remove('start');
+        startBtn.classList.add('stop');
+      }
+
     console.log(increaseTimer);
   },
   1000
 );
 });
+
+
 
 // Reset/Split Button
 var resetBtn = document.getElementById("btnRight");
