@@ -47,21 +47,20 @@ startBtn.addEventListener("click", function () {
 });
 
 // Reset/Split Button
-var stopBtn = document.getElementById("btnRight");
+var resetBtn = document.getElementById("btnRight");
 
-stopBtn.addEventListener("click", function () {
+// gives reset functionality
+resetBtn.addEventListener("click", function () {
   var seconds = document.querySelector('#secCen');
   var seconds2 = document.querySelector('#secDec');
   var minutes = document.querySelector('#minCen');
   var minutes2 = document.querySelector('#minDec');
       clearInterval(intervalId);
-  if (stopBtn) {
+  if (resetBtn) {
     seconds.innerHTML = 0;
     seconds2.innerHTML = 0;
     minutes.innerHTML = 0;
     minutes2.innerHTML = 0;
-
   }
-
-  console.log("Right button clicked");
+  startBtn.innerHTML = 'START';
 });
