@@ -92,7 +92,15 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+.btn.stop {
+  background: #f14949;
+}
+.btn.reset {
+  background: #908e8e;
+}
+.btn.split {
+  background: #0851ab;
+}
