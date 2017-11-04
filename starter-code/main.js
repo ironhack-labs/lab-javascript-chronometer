@@ -1,9 +1,22 @@
+var chronometer = new Chronometer();
+
+
 // Start/Stop Button
-document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+$("#btnLeft").click(function () {
+  if ($("#btnLeft").attr("class") === "btn start"){
+    chronometer.startClick();
+  }
+  else {
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
-document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+$("#btnRight").click(function () {
+  if ($("#btnRight").attr("class") === "btn reset"){
+    chronometer.startClick();
+  }
+  else {
+    chronometer.stopClick();
+  }
 });
