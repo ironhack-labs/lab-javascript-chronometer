@@ -1,8 +1,14 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("fonts/ds-digib.TTF");
 }
 
+h1 {
+  font-size: 30px;
+}
+li {
+  font-size: 16px;
+}
 body {
   font-family: Arial;
   font-size: 80px;
