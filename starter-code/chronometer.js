@@ -1,14 +1,14 @@
 function Chronometer() {
-    this.currentSecUn;
-    this.currentMinUn;
-    this.currentSecDec;
-    this.currentMinDec;
+    this.currentMinDec = 0;
+    this.currentMinUn = 0;
+    this.currentSecDec = 0;
+    this.currentSecUn = 0;
     this.leftBut = document.getElementById("btnLeft");
     this.rightBut = document.getElementById("btnRight");
-    this.minDec = document.getElementById("minCen");
-    this.minUni = document.getElementById("minDec");
-    this.secDec = document.getElementById("secCen");
-    this.secUni = document.getElementById("secDec");  
+    this.minCen = document.getElementById("minCen");
+    this.minDec = document.getElementById("minDec");
+    this.secCen = document.getElementById("secCen");
+    this.secDec = document.getElementById("secDec");  
     
     this.startClick = function(){
         this.leftBut.innerHTML = "STOP";
@@ -31,11 +31,11 @@ function Chronometer() {
     this.secondsUnits = function(){
         if(this.currentSecUn<9){
             ++this.currentSecUn;
-            this.secUni.innerHTML = this.currentSecUn;
+            this.secCen.innerHTML = this.currentSecUn;
         }
         else{
             this.currentSecUn=0;
-            this.secondsDecs();
+            this.secondsDecs;
         }
     }
 
@@ -46,14 +46,14 @@ function Chronometer() {
         }
         else{
             this.currentSecUn = 0;
-            this.minUnits();
+            this.minUnits;
         }
     }
 
     this.minUnits = function(){
         if(this.currentMinUn<9){
             ++this.currentMinUn;
-            this.minUn.innerHTML = this.currentMinUn;
+            this.minCen.innerHTML = this.currentMinUn;
         }
         else{
             this.currentMinUn = 0;
