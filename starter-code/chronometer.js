@@ -55,7 +55,8 @@ Chronometer.prototype.runCounter = function() {
         seconds = 0;
         minutes += 1;
         if (minutes > 59) {
-            alert("STOP MAN!!");
+            minutes = 0;
+            console.log("STOP MAN!!");
         }
     }
     //console.log("M: " + minutes + " S: " + seconds);
@@ -86,18 +87,18 @@ Chronometer.prototype.setStop = function() {
     this.status = "Stopped";
     this.btnLeft.innerHTML = "START";
     this.btnLeft.className = "btn start";
-    clearInterval(this.intervalID);
 }
 
 Chronometer.prototype.startClick = function() {
     console.log("START CLICK");
     this.setStart();
     this.setSplit();
-    this.intervalID = window.setInterval(this.runCounter, 1000);
+    this.intervalID = window.setInterval(this.runCounter, 1);
 }
 
 Chronometer.prototype.stopClick = function() {
     console.log("STOP CLICK");
+    clearInterval(this.intervalID);
     this.setStop();
     this.setReset();
     this.stopTime = this.getChronoTime();
