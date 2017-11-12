@@ -21,10 +21,6 @@ function Chronometer() {
                 this.leftBut.setAttribute('class','btn stop');
                 this.rightBut.innerHTML = "SPLIT";
                 this.rightBut.setAttribute('class','btn split');
-                this.currentMinDec = 0;
-                this.currentMinUn = 0;
-                this.currentSecDec = 0;
-                this.currentSecUn = 0;
                 this.id = setInterval( function() {
                     that.secondsUnits();
                 },1000);
@@ -87,14 +83,20 @@ function Chronometer() {
             this.secDec.innerHTML = 0;
             this.minDec.innerHTML = 0;
             clearInterval(this.id);
+            var lis = document.getElementsByClassName('split-element');
+            var len = lis.length;
+            for(var i=0; i<len; i++) {
+                lis[0].parentNode.removeChild(lis[0]);
+            }
         };
 
         Chronometer.prototype.splitClick = function(){
             var that = this;
             var list = document.getElementById('split-list');
             var node = document.createElement("li");  
+            node.setAttribute('class','split-element');
             var value = this.currentMinDec+""+this.currentMinUn+":"+this.currentSecDec+""+this.currentSecUn;               // Create a <li> node
-            var textnode = document.createTextNode(value);         // Create a text node
+            var textnode = document.createTextNode(value)         // Create a text node
             node.appendChild(textnode);                              // Append the text to <li>
             list.appendChild(node);
                  // Append <li> to <ul> with id="myList"

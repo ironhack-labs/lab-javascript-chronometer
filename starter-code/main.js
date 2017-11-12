@@ -13,11 +13,11 @@ document.getElementById("btnLeft").addEventListener("click", function () {
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  eleClass = this.getAttribute('class');
-  if( eleClass === 'btn split'){
+  eleClass2 = this.getAttribute('class');
+  if( eleClass2 === 'btn split'){
     chrono.splitClick();
   }
   else{
-    chrono.stopClick();
+    chrono.resetClick();
   }
 });
