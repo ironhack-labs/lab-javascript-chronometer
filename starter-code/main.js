@@ -20,7 +20,14 @@ document.getElementById("btnLeft").addEventListener("click", function () {
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
   console.log("Right button clicked");
-  if(document.getElementById("btnRight").className === "btn split") {
-    chrono.getSplitTime();
+  switch(document.getElementById("btnRight").className) {
+    case "btn split":
+      chrono.getSplitTime();
+      break;
+    case "btn reset":
+      chrono.doReset();
+      break;
+    default:
+      alert("WTF2");
   }
 });

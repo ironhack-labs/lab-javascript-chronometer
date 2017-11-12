@@ -5,9 +5,22 @@ function Chronometer(btnLeft, btnRight, sphere) {
     // status = "Running | Stopped (default)"
     this.status = "Stopped";
     //this.startTime = 0;
-    this.stopTime = 0;
+    this.stopTime = "00:00";
     this.splitTimes = [];
     this.intervalID = null;
+}
+
+Chronometer.prototype.doReset = function() {
+    this.stopTime = 0;
+    document.getElementById("minDec").innerHTML = "0";
+    document.getElementById("minCen").innerHTML = "0";
+    document.getElementById("secDec").innerHTML = "0";
+    document.getElementById("secCen").innerHTML = "0";
+    // remove li elements 
+    var ol = document.getElementById("splits-ol");
+    while (ol.firstChild) {
+      ol.removeChild(ol.firstChild);
+    }
 }
 
 Chronometer.prototype.getChronoTime = function() {
