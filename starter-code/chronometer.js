@@ -11,33 +11,25 @@ function Chronometer(btnLeft, btnRight, sphere) {
 }
 
 Chronometer.prototype.runCounter = function() {
-    var minDec = parseInt((document.getElementById("minDec").innerHTML),10);
-    var minCen = parseInt((document.getElementById("minCen").innerHTML),10);
-    var secDec = parseInt((document.getElementById("secDec").innerHTML),10);
-    var secCen = parseInt((document.getElementById("secCen").innerHTML),10);
-    // Always sum 1 to secCen
-    secCen += 1;
-    if(secCen > 9) {
-        secCen = 0;
-        secDec += 1;
-        if(secDec > 9) {
-            secDec = 0;
-            minCen += 1;
-            if(minCen > 9) {
-                minCen = 0;
-                minDec += 1;
-                if(minDec > 9) {
-                    alert("PARA YA!!");
-                }
-            }
+    var minDec = document.getElementById("minDec").innerHTML;
+    var minCen = document.getElementById("minCen").innerHTML;
+    var secDec = document.getElementById("secDec").innerHTML;
+    var secCen = document.getElementById("secCen").innerHTML;
+    var minutes = parseInt((minDec + minCen), 10);
+    var seconds = parseInt((secDec + secCen), 10);
+    seconds += 1;
+    if(seconds > 59) {
+        seconds = 0;
+        minutes += 1;
+        if (minutes > 59) {
+            alert("STOP MAN!!");
         }
     }
-    console.log("M:" + minDec + "m:" + minCen + "S:" + secDec + "s:" + secCen);
-    // Print values
-    document.getElementById("minDec").innerHTML = minDec;
-    document.getElementById("minCen").innerHTML = minCen;
-    document.getElementById("secDec").innerHTML = secDec;
-    document.getElementById("secCen").innerHTML = secCen;
+    console.log("M: " + minutes + " S: " + seconds);
+    document.getElementById("minDec").innerHTML = minutes.toString().length > 1 ? minutes.toString()[0] : 0;
+    document.getElementById("minCen").innerHTML = minutes.toString().length > 1 ? minutes.toString()[1] : minutes.toString()[0];
+    document.getElementById("secDec").innerHTML = seconds.toString().length > 1 ? seconds.toString()[0] : 0;
+    document.getElementById("secCen").innerHTML = seconds.toString().length > 1 ? seconds.toString()[1] : seconds.toString()[0];
 }
 
 Chronometer.prototype.setReset = function() {    
