@@ -1,4 +1,4 @@
-var chrono = new Chronometer();
+var chrono = new Chronometer;
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
   eleClass = this.getAttribute('class');
