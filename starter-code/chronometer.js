@@ -34,13 +34,13 @@ Chronometer.prototype.startClick = function () {
             if (secCenCont == 10) {
                 secCenCont = 0;
                 secDecCont++
-            } else if (secDecCont == 7) {
+            } else if (secDecCont == 6) {
                 secDecCont = 0;
                 minCenCont++
-            } else if (minCenCont == 7) {
+            } else if (minCenCont == 6) {
                 minCenCont = 0;
                 minDecCont++
-            } else if (minDecCont == 10) {
+            } else if (minDecCont == 99) {
                 minDecCont = 0;
             }
         }, 1000);
