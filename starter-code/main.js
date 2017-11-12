@@ -1,9 +1,8 @@
 var chrono = new Chronometer("btnLeft", "btnRight", "sphere");
-console.log(chrono);
 
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+  //console.log("Left button clicked");
   switch(chrono.status) {
     case "Stopped":
       chrono.startClick();
@@ -14,12 +13,11 @@ document.getElementById("btnLeft").addEventListener("click", function () {
     default:
       alert("WTF");
   }
-  console.log(chrono);
 });
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+  //console.log("Right button clicked");
   switch(document.getElementById("btnRight").className) {
     case "btn split":
       chrono.getSplitTime();

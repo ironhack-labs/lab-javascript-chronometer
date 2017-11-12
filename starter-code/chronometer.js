@@ -90,14 +90,14 @@ Chronometer.prototype.setStop = function() {
 }
 
 Chronometer.prototype.startClick = function() {
-    console.log("START CLICK");
+    //console.log("START CLICK");
     this.setStart();
     this.setSplit();
-    this.intervalID = window.setInterval(this.runCounter, 1);
+    this.intervalID = window.setInterval(this.runCounter, 1000);
 }
 
 Chronometer.prototype.stopClick = function() {
-    console.log("STOP CLICK");
+    //console.log("STOP CLICK");
     clearInterval(this.intervalID);
     this.setStop();
     this.setReset();
