@@ -21,11 +21,15 @@ Chronometer.prototype.startClick = function () {
         secDecCont = 0;
         minCenCont = 0;
         minDecCont = 0;
+        milSecLeft = 0;
+        milSecRight = 0;
         id = setInterval(function () {
             secCen.innerHTML = secCenCont;
             secDec.innerHTML = secDecCont;
             minCen.innerHTML = minCenCont;
             minDec.innerHTML = minDecCont;
+            milSecLeft.innerHTML = milSecLeft
+            milSecRight.innerHTML = milSecRight;
             secCenCont++;
             if (secCenCont == 10) {
                 secCenCont = 0;
@@ -57,10 +61,18 @@ Chronometer.prototype.recordTime = function () {
     btnRight = document.getElementById('btnRight');
     timeList = document.getElementById('timeList');
     totalTime = [minDecCont + '' + minCenCont + '' + ':' + secDecCont + '' + secCenCont];
-
     if (btnRight.className == 'btn split') {
         item = document.createElement('li');
         timeList.appendChild(item);
         item.innerHTML = (totalTime);
     }
+}
+Chronometer.prototype.resetTime = function () {
+    btnRight = document.getElementById('btnRight');
+    timeList = document.getElementById('timeList');
+    secCen.innerHTML = 0;
+    secDec.innerHTML = 0;
+    minCen.innerHTML = 0;
+    minDec.innerHTML = 0;
+    while (timeList.hasChildNodes()) timeList.removeChild(timeList.firstChild);
 }
