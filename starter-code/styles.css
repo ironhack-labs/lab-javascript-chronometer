@@ -1,9 +1,11 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("fonts/ds-digib.TTF");
 }
 
 body {
+  display: flex;
+  justify-content: space-around;
   font-family: Arial;
   font-size: 80px;
   font-weight: bold;
@@ -32,6 +34,7 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
+  padding: 18px;
 }
 
 .leash {
@@ -69,7 +72,15 @@ body {
   display: inline-block;
   width: 40px;
 }
-
+.litle-number {
+  font-size: 40px;
+  width: 20px;
+}
+.numbers {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
 .btn {
   border: 0;
   border-radius: 100%;
@@ -96,3 +107,19 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+.split-container {
+  display: flex;
+  flex-flow: column;
+}
+.split-list {
+  margin: unset;
+}
+.split-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.split-time {
+  font-size: 14px;
+  font-weight: normal;
+}
