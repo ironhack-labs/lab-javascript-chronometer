@@ -4,8 +4,15 @@ console.log(chrono);
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
   console.log("Left button clicked");
-  if(this.className === "btn start") {
-    chrono.startClick();  
+  switch(chrono.status) {
+    case "Stopped":
+      chrono.startClick();
+      break; 
+    case "Running":
+      chrono.stopClick();
+      break;
+    default:
+      alert("WTF");
   }
   console.log(chrono);
 });
