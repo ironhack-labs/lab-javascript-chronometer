@@ -43,7 +43,7 @@ Chronometer.prototype.startClick = function () {
             } else if (minDecCont == 99) {
                 minDecCont = 0;
             }
-        }, 10);
+        }, 1000);
     }
 };
 Chronometer.prototype.stopClick = function () {
