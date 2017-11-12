@@ -10,7 +10,27 @@ function Chronometer(btnLeft, btnRight, sphere) {
     this.intervalID = null;
 }
 
+Chronometer.prototype.getChronoTime = function() {
+    var minDec = document.getElementById("minDec").innerHTML;
+    var minCen = document.getElementById("minCen").innerHTML;
+    var secDec = document.getElementById("secDec").innerHTML;
+    var secCen = document.getElementById("secCen").innerHTML;
+    var chronoTime = minDec + minCen + ":" + secDec + secCen;
+    return chronoTime;
+}
+
+Chronometer.prototype.getSplitTime = function() {
+    this.stopTime = this.getChronoTime();
+    console.log(this.stopTime);
+    var node = document.createElement("li");
+    var splitTime = document.createTextNode(this.stopTime);
+    node.appendChild(splitTime);
+    document.getElementById("splits-ol").appendChild(node);
+}
+
 Chronometer.prototype.runCounter = function() {
+    // this is a window object because setInterval calls the function
+    // console.log(this);
     var minDec = document.getElementById("minDec").innerHTML;
     var minCen = document.getElementById("minCen").innerHTML;
     var secDec = document.getElementById("secDec").innerHTML;
@@ -25,7 +45,7 @@ Chronometer.prototype.runCounter = function() {
             alert("STOP MAN!!");
         }
     }
-    console.log("M: " + minutes + " S: " + seconds);
+    //console.log("M: " + minutes + " S: " + seconds);
     document.getElementById("minDec").innerHTML = minutes.toString().length > 1 ? minutes.toString()[0] : 0;
     document.getElementById("minCen").innerHTML = minutes.toString().length > 1 ? minutes.toString()[1] : minutes.toString()[0];
     document.getElementById("secDec").innerHTML = seconds.toString().length > 1 ? seconds.toString()[0] : 0;
@@ -60,11 +80,12 @@ Chronometer.prototype.startClick = function() {
     console.log("START CLICK");
     this.setStart();
     this.setSplit();
-    this.intervalID = setInterval(this.runCounter, 1000);
+    this.intervalID = window.setInterval(this.runCounter, 1000);
 }
 
 Chronometer.prototype.stopClick = function() {
     console.log("STOP CLICK");
     this.setStop();
     this.setReset();
+    this.stopTime = this.getChronoTime();
 }
