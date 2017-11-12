@@ -13,5 +13,11 @@ document.getElementById("btnLeft").addEventListener("click", function () {
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+  eleClass = this.getAttribute('class');
+  if( eleClass === 'btn split'){
+    chrono.splitClick();
+  }
+  else{
+    chrono.stopClick();
+  }
 });
