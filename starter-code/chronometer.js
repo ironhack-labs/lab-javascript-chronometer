@@ -44,7 +44,7 @@ function Chronometer() {
             else{
                 this.currentSecDec = 0;
                 this.secDec.innerHTML = this.currentSecDec;
-                this.minUnits;
+                this.minUnits();
             }
         };
     
@@ -70,7 +70,7 @@ function Chronometer() {
                 else{
                     this.currentSecUn=0;
                     this.secCen.innerHTML = this.currentSecUn;
-                    this.secondsCen;
+                    this.secondsCen();
                 }
         };
     
