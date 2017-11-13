@@ -9,18 +9,31 @@
 </head>
 <body>
 
-  <div class="leash leash-top"></div>
-  <section id="clock">
-    <div id="sphere">
-      <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
+  <div id="chronoContainer">
+    <div id="splitsList">
+      <h1 id="splitsHeader">Splits</h1>
+      <ol id="lista">
 
-      <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+      </ol>
     </div>
-  </section>
-  <div class="leash leash-bottom">
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
+
+    <div id="watch">
+      <div class="leash leash-top"></div>
+      <section id="clock">
+        <div id="sphere">
+          <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
+          <div id="miliSeconds">
+            <span id="miliDec" class="number mili">0</span><span id="miliCen" class="number mili">0</span>
+          </div>
+          <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+        </div>
+      </section>
+      <div class="leash leash-bottom">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>
