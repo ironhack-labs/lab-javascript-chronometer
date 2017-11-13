@@ -1,36 +1,41 @@
 
 var loopId;
+var counter = count0 = count1 = count2 = count3 = count4 = 1;
+// var miliCen = document.getElementById("miliCen"); //aunque no defina esto el crono funciona
+// var miliDec = document.getElementById("miliDec"); //aunque no defina esto el crono funciona
+// var secCen = document.getElementById("secCen"); //aunque no defina esto el crono funciona
+// var secDec = document.getElementById("secDec"); //aunque no defina esto el crono funciona
+// var minCen = document.getElementById("minCen"); //aunque no defina esto el crono funciona
+// var minDec = document.getElementById("minDec"); //aunque no defina esto el crono funciona
+
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function() {
-  var btnR = document.getElementById("btnRight");
   if(this.className === "btn start"){
-    loopId = setInterval(loop, 10);
-    this.className = "btn stop";
-    this.innerHTML = "STOP";
-    btnR.className = "btn split";
-    btnR.innerHTML = "SPLIT";
+    start(this);
   } else {
-    clearInterval(loopId);
-    this.className = "btn start";
-    this.innerHTML = "START";
-    btnR.className = "btn reset";
-    btnR.innerHTML = "RESET";
+    stop(this);
   }
 });
 
-var count = count0 = count1 = count2 = count3 = count4 = 1;
+// Reset/Split Button
+document.getElementById("btnRight").addEventListener("click", function () {
+  if(this.className === "btn reset"){
+    reset();
+  } else{
+    split();
+  }
+});
 
-var miliCen = document.getElementById("miliCen"); //aunque no defina esto el crono funciona
+
 function loop(){
-  if(count === 10){
-    count = 0;
+  if(counter === 10){
+    counter = 0;
     incrementMiliDec();
   }
-  miliCen.innerHTML = count;
-  count++;
+  miliCen.innerHTML = counter;
+  counter++;
 }
 
-var miliDec = document.getElementById("miliDec"); //aunque no defina esto el crono funciona
 function incrementMiliDec(){
   if(this.count0 === 10){
     this.count0 = 0;
@@ -40,7 +45,6 @@ function incrementMiliDec(){
   this.count0++;
 }
 
-var secCen = document.getElementById("secCen"); //aunque no defina esto el crono funciona
 function incrementSecCen() {
   if (this.count1 === 10) {
     this.count1 = 0;
@@ -50,7 +54,6 @@ function incrementSecCen() {
   this.count1++;
 }
 
-var secDec = document.getElementById("secDec"); //aunque no defina esto el crono funciona
 function incrementSecDec() {
   if (this.count2 === 6) {
     this.count2 = 0;
@@ -61,7 +64,6 @@ function incrementSecDec() {
   this.count2++;
 }
 
-var minCen = document.getElementById("minCen"); //aunque no defina esto el crono funciona
 function incrementMinCen() {
   if (this.count3 === 10) {
     this.count3 = 0;
@@ -72,7 +74,6 @@ function incrementMinCen() {
   this.count3++;
 }
 
-var minDec = document.getElementById("minDec"); //aunque no defina esto el crono funciona
 function incrementMinDec() {
   if (this.count4 === 6) {
     this.count4 = 0;
@@ -89,22 +90,39 @@ function deleteItem(){
   }
 }
 
-// Reset/Split Button
-document.getElementById("btnRight").addEventListener("click", function () {
-  if(this.className === "btn reset"){
-    secCen.innerHTML = 0;
-    secDec.innerHTML = 0;
-    minCen.innerHTML = 0;
-    minDec.innerHTML = 0;
-    miliCen.innerHTML = 0;
-    miliDec.innerHTML = 0;
-    count = count0 = count1 = count2 = count3 = count4 = 1;
-    deleteItem();
-  } else{
-    var splitsNode = document.getElementById("lista");
-    var listElement = document.createElement('li');
-    listElement.className = "listNode";
-    listElement.innerHTML = minDec.innerHTML + minCen.innerHTML + ":" + secDec.innerHTML + secCen.innerHTML + ":" + miliDec.innerHTML + miliCen.innerHTML;
-    splitsNode.appendChild(listElement);
-  }
-});
+function start(btn){
+  var btnR = document.getElementById("btnRight");
+  loopId = setInterval(loop, 10);
+  btn.className = "btn stop";
+  btn.innerHTML = "STOP";
+  btnR.className = "btn split";
+  btnR.innerHTML = "SPLIT";
+}
+
+function stop(btn){
+  var btnR = document.getElementById("btnRight");
+  clearInterval(loopId);
+  btn.className = "btn start";
+  btn.innerHTML = "START";
+  btnR.className = "btn reset";
+  btnR.innerHTML = "RESET";
+}
+
+function reset(){
+  secCen.innerHTML = 0;
+  secDec.innerHTML = 0;
+  minCen.innerHTML = 0;
+  minDec.innerHTML = 0;
+  miliCen.innerHTML = 0;
+  miliDec.innerHTML = 0;
+  count = count0 = count1 = count2 = count3 = count4 = 1;
+  deleteItem();
+}
+
+function split(){
+  var splitsNode = document.getElementById("lista");
+  var listElement = document.createElement('li');
+  listElement.className = "listNode";
+  listElement.innerHTML = minDec.innerHTML + minCen.innerHTML + ":" + secDec.innerHTML + secCen.innerHTML + ":" + miliDec.innerHTML + miliCen.innerHTML;
+  splitsNode.appendChild(listElement);
+}
