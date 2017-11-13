@@ -4,14 +4,15 @@ function Chronometer(btnLeft, btnRight, sphere) {
     this.sphere = document.getElementById(sphere);
     // status = "Running | Stopped (default)"
     this.status = "Stopped";
-    //this.startTime = 0;
+    this.startTimes = 0;
     this.stopTime = "00:00";
     this.splitTimes = [];
     this.intervalID = null;
 }
 
 Chronometer.prototype.doReset = function() {
-    this.stopTime = 0;
+    this.stopTime = "00:00";
+    this.startTimes = 0;
     document.getElementById("minDec").innerHTML = "0";
     document.getElementById("minCen").innerHTML = "0";
     document.getElementById("secDec").innerHTML = "0";
@@ -34,6 +35,7 @@ Chronometer.prototype.getChronoTime = function() {
 
 Chronometer.prototype.getSplitTime = function() {
     this.stopTime = this.getChronoTime();
+    this.splitTimes.push(this.stopTime);
     console.log(this.stopTime);
     var node = document.createElement("li");
     var splitTime = document.createTextNode(this.stopTime);
@@ -78,6 +80,7 @@ Chronometer.prototype.setSplit = function() {
 
 Chronometer.prototype.setStart = function() {
     this.status = "Running";
+    this.startTimes += 1;
     this.stopTime = 0;
     this.btnLeft.innerHTML = "STOP";
     this.btnLeft.className = "btn stop";
