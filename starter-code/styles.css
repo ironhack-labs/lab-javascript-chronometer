@@ -10,6 +10,16 @@ body {
   padding: 40px 0;
 }
 
+#splitList li {
+  width: 100px;
+  font-size: 16px;
+  float: left;
+  margin-left: 200px;
+  display: inline;
+}
+
+
+
 #clock {
   border: 2px solid #000;
   border-radius: 20px;
