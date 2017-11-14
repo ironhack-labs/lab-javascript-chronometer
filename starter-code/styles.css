@@ -96,3 +96,24 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+.timeList{
+  font-size: 30px;
+  position: fixed;
+  top: 0;
+  right: 30;
+}
+.timeList li{
+  margin-left: 30px;
+}
+.mil-seconds{
+  display: flex;
+  justify-content: flex-end;
+}
+#milDec{
+  font-size: 30px;
+  text-align: right;
+}
+#milCen{
+  font-size: 30px;
+  text-align: left;
+}
