@@ -5,19 +5,22 @@ function Chronometer(btnLeft, btnRight, sphere) {
     // status = "Running | Stopped (default)"
     this.status = "Stopped";
     this.startTimes = 0;
-    this.stopTime = "00:00";
+    this.stopTime = "00:00.000";
     this.splitTimes = [];
     this.intervalID = null;
 }
 
 Chronometer.prototype.doReset = function() {
-    this.stopTime = "00:00";
+    this.stopTime = "00:00.000";
     this.startTimes = 0;
     // Set display to 0
     document.getElementById("minDec").innerHTML = "0";
     document.getElementById("minCen").innerHTML = "0";
     document.getElementById("secDec").innerHTML = "0";
     document.getElementById("secCen").innerHTML = "0";
+    document.getElementById("msH").innerHTML = "0";
+    document.getElementById("msM").innerHTML = "0";
+    document.getElementById("msL").innerHTML = "0";
     // remove li elements 
     var ol = document.getElementById("splits-ol");
     while (ol.firstChild) {
@@ -34,7 +37,7 @@ Chronometer.prototype.getChronoTime = function() {
     var msH = document.getElementById("msH").innerHTML;
     var msM = document.getElementById("msM").innerHTML;
     var msL = document.getElementById("msL").innerHTML;
-    var chronoTime = minDec + minCen + ":" + secDec + secCen + ":" + msH + msM + msL;
+    var chronoTime = minDec + minCen + ":" + secDec + secCen + "." + msH + msM + msL;
     return chronoTime;
 }
 
