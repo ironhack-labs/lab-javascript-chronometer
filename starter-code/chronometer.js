@@ -38,28 +38,6 @@ Chronometer.prototype.getChronoTime = function() {
     return chronoTime;
 }
 
-// Convert time to string
-Chronometer.prototype.timeToString = function(d) {
-    if(!d) {
-        d = new Date();
-    }
-    var m = (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
-    var s = (d.getSeconds() < 10 ? "0" : "") + d.getSeconds();
-    var ms = d.getMilliseconds();
-    return m + ":" + s + ":" + ms;
-}
-
-// Convert string to time
-Chronometer.prototype.stringToTime = function(d) {
-    var dNew = new Date();
-    d = d.split(":");
-    dNew.setMinutes(d[0]);
-    dNew.setSeconds(d[1]);
-    dNew.setMilliseconds(d[2]);
-    return dNew;
-}
-
-
 Chronometer.prototype.getSplitTime = function() {
     this.stopTime = this.getChronoTime();
     this.splitTimes.push(this.stopTime);
@@ -120,10 +98,6 @@ Chronometer.prototype.runCounter = function() {
     document.getElementById("msH").appendChild((document.createTextNode(msH)));
     document.getElementById("msM").appendChild((document.createTextNode(msM)));
     document.getElementById("msL").appendChild((document.createTextNode(msL)));
-}
-
-Chronometer.prototype.runChrono = function() {
-
 }
 
 Chronometer.prototype.setReset = function() {    
