@@ -1,13 +1,15 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("fonts/ds-digib.TTF");
 }
 
 body {
   font-family: Arial;
   font-size: 80px;
   font-weight: bold;
-  padding: 40px 0;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 #clock {
@@ -28,9 +30,9 @@ body {
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 20px 0;
   position: relative;
-  text-align: center;
+  text-align: -webkit-right;
   width: 220px;
 }
 
@@ -69,6 +71,10 @@ body {
   display: inline-block;
   width: 40px;
 }
+#milSec{
+  display: flex;
+  font-size: 40px;
+}
 
 .btn {
   border: 0;
@@ -90,6 +96,18 @@ body {
 .btn.reset,
 .btn.split {
   right: 10px;
+}
+
+.split-container{
+  font-family: Arial;
+  font-size: 60px;
+  font-weight: bold;
+  padding-left:80px;
+
+}
+
+.full-clock{
+  padding-right: 80px;
 }
 
 .btn.start { background: #5fca5f; }
