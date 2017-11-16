@@ -39,6 +39,7 @@ var chronometer = new Chronometer();
 chronometer.btnLeft.addEventListener("click", function () {
   if (btnLeft.className === "btn start") {
     chronometer.startClick();
+    chronometer.startCounting();
   } else {
     chronometer.stopClick();
   }
