@@ -1,10 +1,4 @@
-/*clase o prototipo va en mayuscula*/ /*(parametros)*/
-/* tiene atributos y métodos*/
-/*this.objeto el this llama al objeto del objeto*/
-
 function Chronometer() {}
-
-/*definicion de un objeto*/
 
 secCenCont = 0;
 secDecCont = 0;
