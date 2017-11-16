@@ -10,6 +10,18 @@ body {
   padding: 40px 0;
 }
 
+.main-div{
+  display: flex;
+  align-items: row;
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.splits{
+  width: 30%;
+}
+
 #clock {
   border: 2px solid #000;
   border-radius: 20px;
@@ -96,3 +108,14 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+#splits h1{
+  font-size: 60px;
+  margin-left: 2%;
+}
+
+#splits ol{
+  margin-left: 2%;
+  font-size: 15px;
+  list-style-type: decimal;
+}
