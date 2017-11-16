@@ -35,7 +35,7 @@ body {
 }
 
 .leash {
-  background: rgb(204, 84, 87);
+  background: orangered;
   border: 2px solid rgb(134, 59, 61);
   height: 50px;
   margin: 0 auto;
@@ -70,6 +70,10 @@ body {
   width: 40px;
 }
 
+.number-mini {
+  font-size: 15px;
+}
+
 .btn {
   border: 0;
   border-radius: 100%;
@@ -96,3 +100,10 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+
+.splits {
+  float: right;
+  font-size: 16px;
+  color: #0851ab;
+}
