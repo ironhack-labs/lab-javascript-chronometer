@@ -20,7 +20,7 @@ Chronometer.prototype.stopClick = function () {
   this.timmerStop();
 };
 
-var counter = 50;
+var counter = 0;
 var seconds = 0;
 var minutes = 0;
 var minDecV = 0;
@@ -69,21 +69,22 @@ Chronometer.prototype.timmerSetup = function () {
       clearInterval(this.counterID);
     };
 
-    Chronometer.prototype.splitClick = function () {
-        var splitList = document.getElementById("splitList");
-        var newLi = document.createElement('li');
-        newLi.innerHTML = minDec.innerHTML + minCen.innerHTML + ":" + secDec.innerHTML + secCen.innerHTML;
-        splitList.appendChild(newLi);
+Chronometer.prototype.splitClick = function () {
+    var splitList = document.getElementById("splitList");
+    var newLi = document.createElement('li');
+    newLi.innerHTML = minDec.innerHTML + minCen.innerHTML + ":" + secDec.innerHTML + secCen.innerHTML;
+    splitList.appendChild(newLi);
     };
 
 
-    Chronometer.prototype.reset = function () {
-      this.counter = 0;
-      minDec.innerHTML = 0;
-      minCen.innerHTML = 0;
-      secDec.innerHTML = 0;
-      secCen.innerHTML = 0;
-      while (splitList.hasChildNodes()) {
+Chronometer.prototype.reset = function () {
+    this.counter = 0;
+    minDec.innerHTML = 0;
+    minCen.innerHTML = 0;
+    secDec.innerHTML = 0;
+    secCen.innerHTML = 0;
+
+    while (splitList.hasChildNodes()) {
         splitList.removeChild(splitList.firstChild);
       }
 
