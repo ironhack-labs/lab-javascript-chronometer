@@ -1,9 +1,17 @@
 // Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
-  console.log("Left button clicked");
+  if(btnLeft.className === "btn start") {
+    chronometer.startClick();
+  } else {
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
 document.getElementById("btnRight").addEventListener("click", function () {
-  console.log("Right button clicked");
+  if(btnRight.className === "btn split"){
+    chronometer.splitClick();
+  } else {
+    chronometer.reset();
+  }
 });
