@@ -6,14 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Chronometer</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="chronometer.js"></script>
 </head>
 <body>
+  <div class="splits">
+    <h1>Split times:</h1>
+    <ol id="splits-ol">
+    </ol>
+  </div>
 
   <div class="leash leash-top"></div>
   <section id="clock">
     <div id="sphere">
       <span id="minDec" class="number">0</span><span id="minCen" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secCen" class="number">0</span>
-
+      <span id="msH" class="number-ms">0</span><span id="msM" class="number-ms">0</span><span id="msL" class="number-ms">0</span>
       <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
     </div>
   </section>
