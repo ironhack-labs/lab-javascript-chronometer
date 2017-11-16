@@ -1,4 +1,5 @@
-// Start/Stop Button
+
+}// Start/Stop Button
 document.getElementById("btnLeft").addEventListener("click", function () {
   console.log("Left button clicked");
 });
