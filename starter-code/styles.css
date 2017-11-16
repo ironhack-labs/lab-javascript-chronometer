@@ -1,16 +1,33 @@
 @font-face {
-  font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  font-family: 'Digi';
+  src: url('fonts/ds-digib.ttf');
 }
-
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: Arial;
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
 }
-
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.time-record {
+  width: 20%;
+}
+.time-record p {
+  margin-left: -90px;
+}
+.clock {
+  display: flex;
+  flex-direction: column;
+}
 #clock {
+  width: 80%;
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
@@ -24,11 +41,11 @@ body {
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  font-family: "Digi";
+  font-family: 'Digi';
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 23px 16px 0 0px;
   position: relative;
   text-align: center;
   width: 220px;
@@ -67,7 +84,10 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 20px;
+}
+.number-min {
+  font-size: 45px;
 }
 
 .btn {
@@ -92,7 +112,15 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+.btn.stop {
+  background: #f14949;
+}
+.btn.reset {
+  background: #908e8e;
+}
+.btn.split {
+  background: #0851ab;
+}
