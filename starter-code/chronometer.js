@@ -33,6 +33,7 @@ Chronometer.prototype.startClick = function(whichBtn) {
     btnLeft.setAttribute('class', 'btn stop');
     document.getElementById('btnLeft').innerHTML = 'STOP';
     countSecondsMinutes(secCen, secDec, minCen, minDec);
+    
     return "startClick";
   } else if (whichBtn === "btnRight") {
     btnRight = document.getElementById('btnRight');
