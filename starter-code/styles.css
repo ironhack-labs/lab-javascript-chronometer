@@ -105,3 +105,15 @@ body {
 .timeList li{
   margin-left: 30px;
 }
+.mil-seconds{
+  display: flex;
+  justify-content: flex-end;
+}
+#milDec{
+  font-size: 30px;
+  text-align: right;
+}
+#milCen{
+  font-size: 30px;
+  text-align: left;
+}
