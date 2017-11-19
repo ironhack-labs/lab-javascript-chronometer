@@ -96,3 +96,8 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+.timeList{
+  position: fixed;
+  top: 0;
+  right: 0;
+}
