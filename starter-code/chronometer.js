@@ -14,7 +14,7 @@ var eliminateTimeList = function() {
   document.getElementById('secDec').innerHTML = "0";
   document.getElementById('minCen').innerHTML = "0";
   document.getElementById('minDec').innerHTML = "0";
-  document.getElementById('olTimeList').innerHTML='Times Stop';
+  document.getElementById('olTimeList').innerHTML='Split';
 
 };
 var countSecondsMinutes = function(secCen, secDec, minCen, minDec) {
