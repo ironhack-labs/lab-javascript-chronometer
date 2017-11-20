@@ -1,19 +1,19 @@
+var crono = new Chronometer('btnLeft', 'btnRight', 'secCen', 'secDec', 'minCen', 'minDec', 'milCen', 'milDec');
+
 // Start/Stop Button
-document.getElementById("btnLeft").addEventListener("click", function () {
-  crono=new Chronometer();
-  if(document.getElementById('btnLeft').innerText === 'START'){
+document.getElementById("btnLeft").addEventListener("click", function() {
+  if (crono.leftBtn.innerText === 'START') {
     crono.startClick("btnLeft");
-  }else if(document.getElementById('btnLeft').innerText === 'STOP'){
+  } else if (crono.leftBtn.innerText === 'STOP') {
     crono.stopClick("btnLeft");
   }
 });
 
 // Reset/Split Button
-document.getElementById("btnRight").addEventListener("click", function () {
-  crono=new Chronometer();
-  if(document.getElementById('btnRight').innerText === 'SPLIT'){
+document.getElementById("btnRight").addEventListener("click", function() {
+  if (crono.rightBtn.innerText === 'SPLIT') {
     crono.startClick("btnRight");
-  }else if(document.getElementById('btnRight').innerText === 'RESET'){
+  } else if (crono.rightBtn.innerText === 'RESET') {
     crono.stopClick("btnRight");
   }
 });

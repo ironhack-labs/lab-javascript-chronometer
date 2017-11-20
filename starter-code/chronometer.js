@@ -1,27 +1,33 @@
-function Chronometer() {
-
+function Chronometer(leftBtnId, rightBtnId, secCenId, secDecId, minCenId, minDecId, milCenId, milDecId) {
+  this.leftBtn = document.getElementById(leftBtnId);
+  this.rightBtn = document.getElementById(rightBtnId);
+  this.secCen = document.getElementById(secCenId);
+  this.secDec = document.getElementById(secDecId);
+  this.minCen = document.getElementById(minCenId);
+  this.minDec = document.getElementById(minDecId);
+  this.milCen = document.getElementById(milCenId);
+  this.milDec = document.getElementById(milDecId);
 }
-var createPartialTimeLi = function(secCen, secDec, minCen, minDec, milCen, milDec) {
+var addTimeIntoTheList = function(secCen, secDec, minCen, minDec, milCen, milDec) {
   olTag = document.getElementById('olTimeList');
   liTag = document.createElement('li');
   liTag.setAttribute('class', 'li-time-list');
-  text = document.createTextNode(minDec + minCen + ':' + secDec + secCen + ':' + milDec + milCen+"\"");
+  text = document.createTextNode(minDec + minCen + ':' + secDec + secCen + ':' + milDec + milCen + "\"");
   liTag.appendChild(text);
   olTag.appendChild(liTag);
 };
 var eliminateTimeList = function() {
-  document.getElementById('secCen').innerHTML = "0";
-  document.getElementById('secDec').innerHTML = "0";
-  document.getElementById('minCen').innerHTML = "0";
-  document.getElementById('minDec').innerHTML = "0";
-  document.getElementById('milCen').innerHTML = "0";
-  document.getElementById('milDec').innerHTML = "0";
+  this.secCen.innerHTML = "0";
+  this.secDec.innerHTML = "0";
+  this.minCen.innerHTML = "0";
+  this.minDec.innerHTML = "0";
+  this.milCen.innerHTML = "0";
+  this.milDec.innerHTML = "0";
   document.getElementById('olTimeList').innerHTML = 'Split';
-
 };
-var countSecondsMinutes = function(secCen, secDec, minCen, minDec, milCen, milDec) {
+var doDisplayStarts = function(secCen, secDec, minCen, minDec, milCen, milDec) {
   milCen += 1;
-  startZeroSeconds = setInterval(function() {
+  idIntervalDisplay = setInterval(function() {
     if (milCen === 10) {
       milCen = 0;
       milDec += 1;
@@ -42,55 +48,37 @@ var countSecondsMinutes = function(secCen, secDec, minCen, minDec, milCen, milDe
         }
       }
     }
-    document.getElementById('secCen').innerHTML = secCen;
-    document.getElementById('secDec').innerHTML = secDec;
-    document.getElementById('minCen').innerHTML = minCen;
-    document.getElementById('minDec').innerHTML = minDec;
-    document.getElementById('milCen').innerHTML = milCen;
-    document.getElementById('milDec').innerHTML = milDec;
+    this.secCen.innerHTML = secCen;
+    this.secDec.innerHTML = secDec;
+    this.minCen.innerHTML = minCen;
+    this.minDec.innerHTML = minDec;
+    this.milCen.innerHTML = milCen;
+    this.milDec.innerHTML = milDec;
     milCen++;
   }, 10);
 };
 
-Chronometer.prototype.startClick = function(whichBtn) {
-  secCen = document.getElementById('secCen').innerHTML;
-  secDec = document.getElementById('secDec').innerHTML;
-  minCen = document.getElementById('minCen').innerHTML;
-  minDec = document.getElementById('minDec').innerHTML;
-  milCen = document.getElementById('milCen').innerHTML;
-  milDec = document.getElementById('milDec').innerHTML;
-  if (whichBtn === "btnLeft") {
-    btnLeft = document.getElementById('btnLeft');
-    btnLeft.setAttribute('class', 'btn stop');
-    document.getElementById('btnLeft').innerHTML = 'STOP';
-    btnRight = document.getElementById('btnRight');
-    btnRight.setAttribute('class', 'btn split');
-    document.getElementById('btnRight').innerHTML = 'SPLIT';
-    countSecondsMinutes(parseInt(secCen), parseInt(secDec), parseInt(minCen), parseInt(minDec), parseInt(milCen), parseInt(milDec));
-    return "startClick";
-  } else if (whichBtn === "btnRight") {
-    //HACER QUE SE GUARDE EL TIEMPO EN LA LISTA
-    if (document.getElementById('btnLeft').innerHTML === 'STOP') {
-      createPartialTimeLi(secCen, secDec, minCen, minDec, milCen, milDec);
-    }
-    return "startClick";
+Chronometer.prototype.startClick = function() {
+  if (this.leftBtn.innerHTML === "START") {
+    this.leftBtn.innerHTML = "STOP";
+    this.leftBtn.setAttribute('class', 'btn stop');
+    this.rightBtn.setAttribute('class', 'btn split');
+    this.rightBtn.innerHTML = 'SPLIT';
+    doDisplayStarts(parseInt(this.secCen.innerHTML), parseInt(this.secDec.innerHTML), parseInt(this.minCen.innerHTML), parseInt(this.minDec.innerHTML), parseInt(this.milCen.innerHTML), parseInt(this.milDec.innerHTML));
+  } else if (this.rightBtn.innerHTML === "SPLIT") {
+    addTimeIntoTheList(this.secCen.innerHTML, this.secDec.innerHTML, this.minCen.innerHTML, this.minDec.innerHTML, this.milCen.innerHTML, this.milDec.innerHTML);
   }
+  return "startClick";
 };
-Chronometer.prototype.stopClick = function(whichBtn) {
-  if (whichBtn === "btnLeft") {
-    clearInterval(startZeroSeconds);
-    btnLeft = document.getElementById('btnLeft');
-    btnLeft.setAttribute('class', 'btn start');
-    document.getElementById('btnLeft').innerHTML = 'START';
-    btnRight = document.getElementById('btnRight');
-    btnRight.setAttribute('class', 'btn reset');
-    document.getElementById('btnRight').innerHTML = 'RESET';
-    return "stopClick";
-  } else if (whichBtn === "btnRight") {
-    //HACER QUE EL TIEMPO Y LA LISTA SE BORRE
-    if (document.getElementById('btnLeft').innerHTML === 'START') {
+Chronometer.prototype.stopClick = function() {
+  if (this.leftBtn.innerHTML === "STOP") {
+    clearInterval(idIntervalDisplay);
+    this.leftBtn.setAttribute('class', 'btn start');
+    this.leftBtn.innerHTML = 'START';
+    this.rightBtn.setAttribute('class', 'btn reset');
+    this.rightBtn.innerHTML = 'RESET';
+  } else if (this.rightBtn.innerHTML === 'RESET') {
       eliminateTimeList();
-    }
-    return "stopClick";
   }
+  return "stopClick";
 };
