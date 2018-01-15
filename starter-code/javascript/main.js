@@ -42,7 +42,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-
+   
 }
 
 function setResetBtn() {
@@ -51,7 +51,23 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    var btnRight = document.getElementById("btnRight");
+      var btnLeft = document.getElementById("btnLeft");
+      if (btnLeft.innerText == "START") {
+        btnLeft.innerText = "STOP";
+        btnLeft.className = "btn stop";
+        chronometer.startClick();
+        printTime();
+        btnRight.innerText = "SPLIT";
+        btnRight.className = "btn split";
+      } else {
+        btnLeft.innerText = "START";
+        btnLeft.className = "btn start";
+        chronometer.stopClick();
+        clearInterval(set);
+        btnRight.innerText = "RESET";
+        btnRight.className = "btn reset";
+      }
 });
 
 // Reset/Split Button
