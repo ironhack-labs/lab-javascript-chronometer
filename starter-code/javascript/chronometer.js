@@ -2,6 +2,8 @@
 function Chronometer() {
   this.currentTime = 0;
   this.intervalId = 0;
+  this.sec = 0;
+  this.min = 0;
 }
 
 //context
@@ -32,6 +34,8 @@ Chronometer.prototype.twoDigitsNumber = function(number) {
 Chronometer.prototype.setTime = function () {
  var min = this.twoDigitsNumber(this.setMinutes());
  var sec = this.twoDigitsNumber(this.setSeconds());
+ this.min = min;
+ this.sec = sec;
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
