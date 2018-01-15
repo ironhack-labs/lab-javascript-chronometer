@@ -1,39 +1,83 @@
 // Constructor
-// function Chronometer() {
+ function Chronometer() {
+    this.currentTime = 0;
+    this.intervalId = 0;  
+}
 
-// }
+Chronometer.prototype.startClick = function () {
+    var that = this;
+    
+    setInterval(function(){
+        that.currentTime += 1;
+        chronometer.setTime();     
+    }, 1000);
+};
 
-// Chronometer.prototype.startClick = function () {
+var min = 0;
 
-// };
+Chronometer.prototype.setMinutes = function () {
 
-// Chronometer.prototype.setMinutes = function () {
+        var that = this;
   
-// };
+        min = parseInt(that.currentTime / 60);
 
-// Chronometer.prototype.setSeconds = function () {
+  return min;
+};
+
+var sec = 0;
+
+Chronometer.prototype.setSeconds = function () {
+
+    var that = this;
+
+    min = that.currentTime/60;
+
+    sec = that.currentTime - parseInt(min)*60; 
   
-// };
+    return sec;
+};
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+var number = '';
 
-// Chronometer.prototype.setTime = function () {
+Chronometer.prototype.twoDigitsNumber = function (val) {
 
-// };
+    if(val < 10){
+        number = '0' + val;
+    }else{
+        number = val + '';        
+    }
 
-// Chronometer.prototype.setMilliseconds = function () {
+    return number;
+};
 
-// };
+ Chronometer.prototype.setTime = function () {
+    var min = chronometer.setSeconds();
+    chronometer.twoDigitsNumber(min);
+    var sec = chronometer.setMinutes();  
+    chronometer.twoDigitsNumber(sec);
+};
 
-// Chronometer.prototype.stopClick = function () {
-  
-// };
+var mil = 0;
 
-// Chronometer.prototype.resetClick = function () {
+ Chronometer.prototype.setMilliseconds = function () {
+    var that = this;
 
-// };
+    setInterval(function(){
+        mil++; 
+        console.log(mil);
+    },1000);
+
+    return mil;
+
+};
+
+Chronometer.prototype.stopClick = function () {
+    clearInterval(); 
+ };
+
+ Chronometer.prototype.resetClick = function () {
+    clearInterval(chronometer.startClick());
+ };
 
 // Chronometer.prototype.splitClick = function () {
 
