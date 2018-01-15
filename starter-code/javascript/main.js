@@ -33,16 +33,17 @@ function printSeconds() {
 function printMilliseconds() {}
 
 function printSplit() {
-    console.log("hola")
     var liSplit = document.createElement("li");
-    console.log(liSplit)
     liSplit.innerText = chronometer.min + ":" + chronometer.sec;
     var padreLi = document.getElementById('splits')
-    console.log(padreLi)
     padreLi.appendChild(liSplit);
 }
 
-function clearSplits() {}
+function clearSplits() {
+    var padreLi = document.getElementById('splits');
+    while (padreLi.firstChild) {
+        padreLi.removeChild(padreLi.firstChild);
+    }}
 
 function setStopBtn() {}
 
@@ -79,6 +80,9 @@ btnRight.addEventListener("click", function() {
   var btnLeft = document.getElementById("btnLeft");
   if (btnRight.innerText == "RESET") {
     chronometer.resetClick();
+    printSeconds();
+    printMinutes();
+    clearSplits();
   } else {
       printSplit();
   }
