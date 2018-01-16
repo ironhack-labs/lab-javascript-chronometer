@@ -7,9 +7,9 @@
 Chronometer.prototype.startClick = function () {
     var that = this;
     
-    setInterval(function(){
+    that.intervalId = setInterval(function(){
         that.currentTime += 1;
-        chronometer.setTime();     
+        that.setTime();     
     }, 1000);
 };
 
@@ -65,18 +65,18 @@ var mil = 0;
     setInterval(function(){
         mil++; 
         console.log(mil);
-    },1000);
+    },100);
 
     return mil;
 
 };
 
 Chronometer.prototype.stopClick = function () {
-    clearInterval(); 
+    clearInterval(this.intervalId); 
  };
 
  Chronometer.prototype.resetClick = function () {
-    clearInterval(chronometer.startClick());
+    this.currentTime = 0;
  };
 
 // Chronometer.prototype.splitClick = function () {
