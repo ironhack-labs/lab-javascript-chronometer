@@ -24,13 +24,12 @@ Chronometer.prototype.setSeconds = function () {
     return self.currentTime % 60;
 };
 
-Chronometer.prototype.twoDigitsNumber = function () {
+Chronometer.prototype.twoDigitsNumber = function (num) {
     var self = this;
-    var seconds = self.currentTime % 60;
-    if (seconds < 10){
-        return "0" + seconds;  
+    if (num < 10){
+        return "0" + num;  
     }
-    return seconds.toString();
+    return num.toString();
 };
 
 // Chronometer.prototype.setTime = function () {
