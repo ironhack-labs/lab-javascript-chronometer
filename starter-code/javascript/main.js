@@ -8,11 +8,6 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
-
-function printTime() {
-
-}
-
 function printMinutes() {
 
 }
@@ -50,11 +45,11 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+// btnLeft.addEventListener('click', function () {
 
-});
+// });
 
-// Reset/Split Button
-btnRight.addEventListener('click', function () {
+// // Reset/Split Button
+// btnRight.addEventListener('click', function () {
 
-});
+// });
