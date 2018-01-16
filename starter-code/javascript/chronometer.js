@@ -10,13 +10,13 @@ Chronometer.prototype.startClick = function () {
 
     self.intervalId = window.setInterval(function() {
         self.currentTime = self.currentTime + 1;
+        self.setTime(); 
     },1000);
 };
 
 Chronometer.prototype.setMinutes = function () {
     var self = this;
-    self.currentTime = Math.floor(self.currentTime/60);
-    return self.currentTime;
+    return Math.floor(self.currentTime / 60);
 };
 
 Chronometer.prototype.setSeconds = function () {
@@ -33,7 +33,12 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 };
 
 Chronometer.prototype.setTime = function () {
-
+    var self = this;
+    var minutes = self.setMinutes();
+    var seconds = self.setSeconds();
+    var minutesStr = self.twoDigitsNumber(minutes);
+    var secondsStr = self.twoDigitsNumber(seconds);
+    
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
