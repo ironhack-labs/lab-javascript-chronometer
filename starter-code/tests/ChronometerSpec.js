@@ -69,7 +69,7 @@ describe('', function () {
       chronometer.currentTime = 65;
       expect(typeof chronometer.setMinutes()).toEqual('number');
     });
-
+    60
     it('Should return a number without decimals', function () {
       chronometer.currentTime = 65;
 
