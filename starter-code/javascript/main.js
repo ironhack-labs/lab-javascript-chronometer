@@ -10,11 +10,15 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+    if (Chronometer.setMinutes() > 10) {
+        minDec.innerText = Chronometer.setMinutes().slice(0,1);
+        minUni.innerText = Chronometer.setMinutes().slice(1,2);
+    } else {
+        minUni.innerText = Chronometer.setMinutes();
+    }
 }
 
 function printMinutes() {
-
 }
 
 function printSeconds() {
