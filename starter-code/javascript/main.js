@@ -51,10 +51,27 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    if(document.getElementsByClassName("btn start")){
+        btnLeft.removeAttribute("class")
+        btnLeft.innerHTML("STOP"); 
+        btnLeft.setAttribute("class","btn stop");
+    }else{
+        btnLeft.removeAttribute("class")
+        btnLeft.innerHTML("START"); 
+        btnLeft.setAttribute("class","btn start");
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
-});
+if(document.getElementsByClassName("btn reset")){
+    btnRight.removeAttribute("class")
+    btnRight.innerHTML("SPLIT");
+    btnRight.setAttribute("class","btn split");
+}else{
+    btnRight.removeAttribute("class")
+    btnRight.innerHTML("RESET");
+    btnRight.setAttribute("class","btn reset");
+    }  
+})
+;
