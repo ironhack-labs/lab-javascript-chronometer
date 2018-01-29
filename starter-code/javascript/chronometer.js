@@ -8,8 +8,8 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(() => {
     this.currentTime += 1;
     this.setTime();
-    printMinutes();
-    printSeconds();
+    console.log(this.currentTime)
+    printTime()
   }, 1000);
 };
 
@@ -41,9 +41,6 @@ Chronometer.prototype.stopClick = function () {
 Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;              
   this.setTime();
-  printMinutes();
-  printSeconds();
-  clearSplits();
 };
 
 // Chronometer.prototype.splitClick = function () {

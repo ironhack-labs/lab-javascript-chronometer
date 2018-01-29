@@ -67,13 +67,25 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
-  startOrStop === 'start' ? chronometer.stopClick() :  chronometer.startClick();
-  startOrStop === 'start' ? setStartBtn() : setStopBtn();
-  startOrStop === 'start' ? setSplitBtn() : setResetBtn();
+  if (startOrStop === 'start') {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  } else {
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  startOrStop === 'start' ? printSplit() : chronometer.resetClick();
+  if (startOrStop === 'start') {
+    printSplit();
+  } else {
+    chronometer.resetClick();
+    printMinutes();
+    printSeconds();
+    clearSplits();
+  }
 });
