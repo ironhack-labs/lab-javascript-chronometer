@@ -50,6 +50,7 @@ function clearSplits() {
 function setStopBtn() {
   btnLeft.innerHTML =  'STOP';
   startOrStop = 'start';
+  btnLeft.style.backgroundColor = "red";
 }
 
 function setSplitBtn() {
@@ -59,6 +60,7 @@ function setSplitBtn() {
 function setStartBtn() {
   btnLeft.innerHTML = 'START';
   startOrStop = 'stop';
+  btnLeft.style.backgroundColor = "green"
 }
 
 function setResetBtn() {
