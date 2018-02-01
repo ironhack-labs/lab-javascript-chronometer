@@ -14,11 +14,11 @@ function printTime() {
 }
 
 function printMinutes() {
-
+    this.setMinutes();
 }
 
 function printSeconds() {
-
+    this.setSeconds();
 }
 
 function printMilliseconds() {
@@ -50,11 +50,28 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+var stopped = true;
+var reset = true;
 
+btnLeft.addEventListener('click', function () {
+    if(stopped === true){
+        btnLeft.classList.add("stop");
+        stopped = false;
+        btnLeft.innerHTML = 'STOP';
+        btnRight.classList.add("split");
+        reset = false;
+        btnRight.innerHTML = 'SPLIT';
+    }else{
+        btnLeft.classList.remove("stop");
+        stopped = true;
+        btnLeft.innerHTML = "START";
+        btnRight.classList.remove("reset");
+        reset = true;
+        btnRight.innerHTML = 'RESET';
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
 
-});
+})
