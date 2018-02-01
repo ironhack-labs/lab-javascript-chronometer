@@ -9,16 +9,21 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
-function printTime() {
-
+function printTime(minutes, seconds) {
+    if (minutes > 0){
+     this.printMinutes(minutes);
+    } 
+    this.printSeconds(seconds);
 }
 
-function printMinutes() {
-
+function printMinutes(minutes) {
+    minDec.innerHTML = minutes[0];
+    minUni.innerHTML = minutes[1];
 }
 
-function printSeconds() {
-
+function printSeconds(seconds) {
+    secDec.innerHTML = seconds[0];
+    secUni.innerHTML = seconds[1];
 }
 
 function printMilliseconds() {
@@ -51,6 +56,15 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if(btnLeft.className.indexOf('start')>0){
+        chronometer.startClick();
+        setStopBtn();
+        setSplitBtn();
+    } else {
+        chronometer.stopClick();
+        setStopBtn();
+        setResetBtn();
+    }
 
 });
 

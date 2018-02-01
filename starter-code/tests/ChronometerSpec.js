@@ -2,7 +2,7 @@ describe('', function () {
   beforeEach(function () {
     chronometer = new Chronometer();
   });
-
+ 
   describe('constructor function', function () {
     it('Should declare a Chronometer function', function () {
       expect(typeof Chronometer).toEqual('function');
