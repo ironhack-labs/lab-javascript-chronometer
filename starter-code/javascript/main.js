@@ -34,7 +34,8 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+    btnLeft.className = "btn stop";
+    btnLeft.innerText = "STOP";
 }
 
 function setSplitBtn() {
@@ -42,6 +43,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+    btnLeft.className = "btn start";
+    btnLeft.innerText = "START";
 
 }
 
@@ -50,8 +53,18 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
 
+
+var started = false;
+btnLeft.addEventListener('click', function () {
+    if(started === false){
+        chronometer.startClick();
+        setStopBtn();
+      } else {
+        chronometer.stopClick();
+        setStartBtn();
+      }
+    started = !started;
 });
 
 // Reset/Split Button
