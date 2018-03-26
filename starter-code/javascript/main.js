@@ -10,14 +10,24 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+    printMinutes();
+    printSeconds();
 }
 
 function printMinutes() {
-
+    var minutes = chronometer.setTime()[1].toString();
+    var units = minutes[1];
+    var decs = minutes[0];
+    minDec.textContent = decs;
+    minUni.textContent = units;
 }
 
 function printSeconds() {
+    var seconds = chronometer.setTime()[0].toString();
+    var units = seconds[1];
+    var decs = seconds[0];
+    secDec.textContent = decs;
+    secUni.textContent = units;
 
 }
 
@@ -63,8 +73,13 @@ btnLeft.addEventListener('click', function () {
     if(this.className == "btn stop"){
         setStartBtn();
         setResetBtn();
+        chronometer.stopClick();
     }
     else{
+        setInterval(function() {
+            printTime();
+        }, 1000); 
+        chronometer.startClick();
         setStopBtn();
         setSplitBtn();
     }
