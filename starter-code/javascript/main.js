@@ -7,10 +7,10 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
+var intervalRefresco; 
 
 function printTime() {
- var a =  setInterval(function(){
+  intervalRefresco =  setInterval(function(){
     printMinutes();
     printSeconds();
   }, 1000)
@@ -81,6 +81,10 @@ btnLeft.addEventListener('click', function () {
     btnLeft.classList.remove("start");
     btnLeft.classList.add("stop");
     btnLeft.innerHTML = "STOP";
+
+    btnRight.classList.remove("reset");
+    btnRight.classList.add("split");
+    btnRight.innerHTML = "SPLIT";
     chronometer.startClick();
     printTime();
   
@@ -89,7 +93,13 @@ btnLeft.addEventListener('click', function () {
     btnLeft.classList.remove("stop");
     btnLeft.classList.add("start");
     btnLeft.innerHTML = "START";
+
+    btnRight.classList.remove("split");
+    btnRight.classList.add("reset");
+    btnRight.innerHTML = "RESET";
     chronometer.stopClick();
+    
+    clearInterval(intervalRefresco);
 
   }
 
