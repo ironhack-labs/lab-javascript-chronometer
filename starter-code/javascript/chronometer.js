@@ -13,25 +13,21 @@ Chronometer.prototype.startClick = function() {
 };
 
  Chronometer.prototype.setMinutes = function () {
- var that = this;
-
-  var  minuto = setMinutes(function() {
-    that.currentTime;
-  },1000/60)
-  return
+  return Math.floor(this.currentTime/60);
  };
 
-// Chronometer.prototype.setSeconds = function () {
+ Chronometer.prototype.setSeconds = function () {
+  return (this.currentTime)-Math.floor(this.currentTime/60)*60;
+};
 
-// };
+ Chronometer.prototype.twoDigitsNumber = function (value) {
+  return ("0" + value).slice(-2);
+ };
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-
-// };
-
-// Chronometer.prototype.setTime = function () {
-
-// };
+Chronometer.prototype.setTime = function () {
+var minutes = this.twoDigitsNumber(this.setMinutes)
+var seconds = this.twoDigitsNumber(this.setSeconds(minutes))
+};
 
 // Chronometer.prototype.setMilliseconds = function () {
 
