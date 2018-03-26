@@ -7,7 +7,7 @@ function Chronometer() {
 Chronometer.prototype.startClick = function () {
     var that = this;
     
-    setInterval(function(){ 
+    this.intervalo = setInterval(function(){ 
       chronometer.setTime();
       that.currentTime +=1;
       
@@ -49,7 +49,7 @@ Chronometer.prototype.setMilliseconds = function () {
 Chronometer.prototype.stopClick = function () {
   var that = this;
 
-  clearInterval(that.intervalId);
+  clearInterval(that.intervalo);
 };
 
 Chronometer.prototype.resetClick = function () {

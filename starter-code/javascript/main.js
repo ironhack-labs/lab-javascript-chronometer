@@ -40,6 +40,7 @@ function setStopBtn() {
   document.getElementById("btnLeft").setAttribute("class","btn start");
   document.getElementById("btnLeft").innerText="START";
   chronometer.stopClick();
+
 }
 
 function setSplitBtn() {
@@ -50,6 +51,7 @@ function setSplitBtn() {
 function setStartBtn() {
   document.getElementById("btnLeft").setAttribute("class","btn stop");
   document.getElementById("btnLeft").innerText = "STOP";
+  setSplitBtn();  
   chronometer.startClick();
   
   setInterval(function() {
@@ -60,6 +62,8 @@ function setStartBtn() {
 function setResetBtn() {
   document.getElementById("btnRight").setAttribute("class","btn reset");
   document.getElementById("btnRight").innerText = "RESET";
+  chronometer.resetClick();
+
 }
 
 // Start/Stop Button
