@@ -58,7 +58,7 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  btnRight.innerText== "RESET";
+  btnRight.innerText= "RESET";
   btnRight.classList.remove("split");
   btnRight.classList.add("reset");
 
@@ -70,8 +70,10 @@ btnLeft.addEventListener('click', function () {
   
   if(btnLeft.innerText=== "STOP") {
     setStartBtn();
+    chronometer.startClick(chronometer.currentTime, chronometer.intervalId);
   } else {
     setStopBtn();
+    chronometer.stopClick();
   }
 
 
