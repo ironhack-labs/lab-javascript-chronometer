@@ -6,11 +6,13 @@ function Chronometer() {
 
 Chronometer.prototype.startClick = function () {
     var that = this;
-
+    
     setInterval(function(){ 
+      chronometer.setTime();
       that.currentTime +=1;
+      
        }, 1000);
-
+       
 };
 
 
@@ -28,28 +30,29 @@ Chronometer.prototype.setSeconds = function () {
 };
 
 Chronometer.prototype.twoDigitsNumber = function (n) {
-  if(n < 9) {
-    return "0" + 9;
+  if(n <= 9) {
+    return "0" + n;
   } else {
-    return n;
+    return "" + n;
   }
 };
 
-// Chronometer.prototype.setTime = function () {
+Chronometer.prototype.setTime = function () {
+  var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
+  var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
+};
 
-// };
+Chronometer.prototype.setMilliseconds = function () {
 
-// Chronometer.prototype.setMilliseconds = function () {
+};
 
-// };
+Chronometer.prototype.stopClick = function () {
+  clearInterval(this.intervalId);
+};
 
-// Chronometer.prototype.stopClick = function () {
-  
-// };
+Chronometer.prototype.resetClick = function () {
 
-// Chronometer.prototype.resetClick = function () {
-
-// };
+};
 
 // Chronometer.prototype.splitClick = function () {
 
