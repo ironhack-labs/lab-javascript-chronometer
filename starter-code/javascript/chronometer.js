@@ -5,10 +5,12 @@ function Chronometer() {
 }
 
 Chronometer.prototype.startClick = function() {
+
   var that = this;
   this.intervalId = setInterval(function() {
     that.currentTime++;
     console.log(that.currentTime);
+    that.setTime();
   }, 1000);
 };
 
@@ -37,21 +39,22 @@ Chronometer.prototype.twoDigitsNumber = function (numero) {
   }
 };
 
-// Chronometer.prototype.setTime = function () {
-
-// };
+Chronometer.prototype.setTime = function () {
+  // var second =  this.twoDigitsNumber(this.setSeconds());
+  // var minute = this.twoDigitsNumber(this.setMinutes());
+};
 
 // Chronometer.prototype.setMilliseconds = function () {
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
+Chronometer.prototype.stopClick = function () {
+  this.intervalId = clearInterval();
+};
 
-// };
+Chronometer.prototype.resetClick = function () {
 
-// Chronometer.prototype.resetClick = function () {
-
-// };
+};
 
 // Chronometer.prototype.splitClick = function () {
 
