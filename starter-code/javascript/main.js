@@ -23,7 +23,7 @@ function printMinutes() {
 }
 
 function printSeconds() {
-    var seconds = parseInt(chronometer.setTime()[0]).toString();
+    var seconds = chronometer.setTime()[0];
     var units = seconds[1];
     var decs = seconds[0];
     secDec.textContent = decs;
