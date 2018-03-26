@@ -3,28 +3,25 @@
 
 function Chronometer() {
     this.currentTime = 0,
-    this.intervalId = 0,
-    startClick = function (){
-        setInterval (function(){
-            currentTime ++;
-        },1000)
-    },
-    setMinutes = function(){
-
-    }
+    this.intervalId = 0
 }
 
-// Chronometer.prototype.startClick = function () {
+Chronometer.prototype.startClick = function () {
+    
+        var that = this
+        setInterval (function(){
+            that.currentTime ++;
+        },1000)
 
-// };
+    };
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+Chronometer.prototype.setMinutes = function () {
+    return parseInt(this.currentTime/60);
+ };
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+Chronometer.prototype.setSeconds = function () {
+  return Math.round(this.currentTime - 60 * this.setMinutes())
+ };
 
 // Chronometer.prototype.twoDigitsNumber = function () {
   
