@@ -35,26 +35,55 @@ function clearSplits() {
 
 function setStopBtn() {
 
+  btnLeft.innerText = "START";
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+
+
 }
 
 function setSplitBtn() {
+  btnRight.innerText = "SPLIT";
+  btnRight.classList.remove("reset");
+  btnRight.classList.add("split")
 
 }
 
 function setStartBtn() {
+  
+  btnLeft.innerText = "STOP";
+  btnLeft.classList.remove("start");
+  btnLeft.classList.add("stop");
 
 }
 
 function setResetBtn() {
+  btnRight.innerText== "RESET";
+  btnRight.classList.remove("split");
+  btnRight.classList.remove("reset");
 
 }
 
 // Start/Stop Button
+
 btnLeft.addEventListener('click', function () {
+  
+  if(btnLeft.innerText== "STOP") {
+    setStartBtn();
+  } else {
+    setStopBtn();
+  }
+
 
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+if(btnRight.innerText=="RESET"){
+  setSplitBtn();
+} else {
+  setResetBtn();
+}
+
 
 });
