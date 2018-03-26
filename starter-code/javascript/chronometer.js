@@ -40,10 +40,9 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
 
 Chronometer.prototype.setTime = function () {
     
-    // this.startClick ();
-    // this.setSeconds ();
-    // this.setMinutes ();
-    // this.twoDigitsNumber ();
+    this.setSeconds ();
+    this.setMinutes ();
+    this.twoDigitsNumber ();
 
 };
 
