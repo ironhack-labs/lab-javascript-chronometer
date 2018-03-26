@@ -1,23 +1,33 @@
 // Constructor
-// function Chronometer() {
+function Chronometer() {
+    this.currentTime = 0;
+    this.intervalId = null;
 
-// }
+}
 
-// Chronometer.prototype.startClick = function () {
+Chronometer.prototype.startClick = function () {
+    this.intervalId = window.setInterval(this.startClick,1000);
+    this.currentTime++;
 
-// };
+};
 
-// Chronometer.prototype.setMinutes = function () {
+Chronometer.prototype.setMinutes = function () {
+
+    return this.currentTime%60;
+
+};
+
+Chronometer.prototype.setSeconds = function () {
+
+    return this.currentTime;
   
-// };
+};
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+Chronometer.prototype.twoDigitsNumber = function (value) {
 
-// Chronometer.prototype.twoDigitsNumber = function () {
+    
   
-// };
+};
 
 // Chronometer.prototype.setTime = function () {
 
@@ -27,9 +37,11 @@
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
+Chronometer.prototype.stopClick = function () {
+
+    this.intervalId = window.clearInterval(this.currentTime);
   
-// };
+};
 
 // Chronometer.prototype.resetClick = function () {
 
