@@ -64,13 +64,14 @@ btnRight.addEventListener('click', function() {
 		var parent = document.getElementById('splits');
 		parent.appendChild(element);
 		element.innerHTML = chronometer.minutes + ':' + chronometer.seconds;
-	} else{
-    chronometer.resetClick();
-    var element = document.getElementsByTagName('li');
-    var parent = document.getElementById('splits');
-   for(var i =0;i < element.length;i++){
-    parent.removeChild(element[i]);
-   }
-
-  }
+	} else {
+		chronometer.resetClick();
+		var parent = document.getElementById('splits');
+		parent.innerHTML = '';
+		minDec.innerHTML = "0";
+		minUni.innerHTML = "0";
+		secDec.innerHTML = "0";
+		secUni.innerHTML = "0";
+		
+	}
 });
