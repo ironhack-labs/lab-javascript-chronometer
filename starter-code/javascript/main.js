@@ -35,11 +35,10 @@ function clearSplits() {
 
 function setStopBtn() {
 
-  btnLeft.innerText = "START";
-  btnLeft.classList.remove("stop");
-  btnLeft.classList.add("start");
 
-
+  btnLeft.innerText = "STOP";
+  btnLeft.classList.remove("start");
+  btnLeft.classList.add("stop");
 }
 
 function setSplitBtn() {
@@ -50,17 +49,18 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  
-  btnLeft.innerText = "STOP";
-  btnLeft.classList.remove("start");
-  btnLeft.classList.add("stop");
+ 
+  btnLeft.innerText = "START";
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+
 
 }
 
 function setResetBtn() {
   btnRight.innerText== "RESET";
   btnRight.classList.remove("split");
-  btnRight.classList.remove("reset");
+  btnRight.classList.add("reset");
 
 }
 
@@ -68,7 +68,7 @@ function setResetBtn() {
 
 btnLeft.addEventListener('click', function () {
   
-  if(btnLeft.innerText== "STOP") {
+  if(btnLeft.innerText=== "STOP") {
     setStartBtn();
   } else {
     setStopBtn();
@@ -79,7 +79,7 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-if(btnRight.innerText=="RESET"){
+if(btnRight.innerText==="RESET"){
   setSplitBtn();
 } else {
   setResetBtn();
