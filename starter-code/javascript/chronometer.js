@@ -1,11 +1,20 @@
 // Constructor
-// function Chronometer() {
+function Chronometer() {
+  this.currentTime = 0;
+  this.intervalId = 1000;
 
-// }
+}
 
-// Chronometer.prototype.startClick = function () {
+Chronometer.prototype.startClick = function (currentTime, intervalId) {
+  var time = this.currentTime;
+  var interval = setInterval(function() {
+     time++;
+     console.log(time);
+  },1000)
 
-// };
+  this.currentTime = time;
+
+};
 
 // Chronometer.prototype.setMinutes = function () {
   
