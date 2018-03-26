@@ -18,9 +18,8 @@ function printTime() {
 
 function printMinutes() {
   var timeSplit = chronometer.setTime().split(" ");
-  console.log(timeSplit);
+ 
   var minDecenas = timeSplit[0][0];
-  console.log(minDec);
   var minUnidades = timeSplit[0][1];
 
   minDec.innerHTML = minDecenas;
@@ -38,7 +37,13 @@ function printSeconds() {
 
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+//tiene que escribir los tiempos
+var lista = document.getElementById("splits");
+var elemento = document.createElement("li");
+elemento.innerHTML = minDec.innerHTML +  minUni.innerHTML +":"+secDec.innerHTML  +  secUni.innerHTML;
+lista.appendChild(elemento);
+}
 
 function clearSplits() {}
 
@@ -55,6 +60,12 @@ function setResetBtn() {
   secUni.innerHTML = "0";
   clearInterval(intervalRefresco);
   chronometer.resetClick();
+  
+  var lista = document.getElementById("splits");
+  while (lista.hasChildNodes()) {
+    lista.removeChild(lista.lastChild);
+}
+
 }
 
 // Start/Stop Button
@@ -87,8 +98,11 @@ btnLeft.addEventListener("click", function() {
 btnRight.addEventListener("click", function() {
   if (btnRight.classList.contains("reset")) {
     setResetBtn();
-  } 
-  printSplit();
+  }
+  if(btnRight.classList.contains("split")){
+    printSplit();
+  }
+  
 });
 
 // chronometer.startClick()
