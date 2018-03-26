@@ -36,7 +36,7 @@ Chronometer.prototype.twoDigitsNumber = function (numero) {
   }
 };
 
-Chronometer.prototype.setTime = function (print) {
+Chronometer.prototype.setTime = function () {
   var second =  this.twoDigitsNumber(this.setSeconds(this.currentTime));
   var minute = this.twoDigitsNumber(this.setMinutes(this.currentTime));
   var time = minute +" "+ second;
