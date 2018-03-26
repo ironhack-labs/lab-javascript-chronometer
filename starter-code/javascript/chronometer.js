@@ -22,7 +22,7 @@ Chronometer.prototype.setSeconds = function () {
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
     var s = num+"";
-    s = "0" + s;
+    while (s.length < 2) s = "0" + s;
     return s;
 };
 

@@ -42,8 +42,11 @@ function printSplit() {
     var li = document.createElement("li");
     var minutes = chronometer.setTime()[1].toString();
     var seconds = chronometer.setTime()[0].toString();
-    li.textContent = minutes + ":" + seconds;
+    var ms = chronometer.setMilliseconds().toString();
+    var units = ms[ms.length-1];
+    var decs = ms[ms.length-2];
 
+    li.textContent = minutes + ":" + seconds + ":" + decs +  units;
     document.getElementById("splits").appendChild(li);
 }
 
