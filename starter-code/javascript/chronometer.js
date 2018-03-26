@@ -29,8 +29,8 @@ Chronometer.prototype.twoDigitsNumber = function(valor) {
 };
 
 Chronometer.prototype.setTime = function() {
-	var minutes = this.twoDigitsNumber(this.setMinutes());
-	var seconds = this.twoDigitsNumber(this.setSeconds());
+	this.minutes = this.twoDigitsNumber(this.setMinutes());
+	this.seconds = this.twoDigitsNumber(this.setSeconds());
 };
 
  //Chronometer.prototype.setMilliseconds = function () {
@@ -48,3 +48,5 @@ Chronometer.prototype.resetClick = function () {
 // Chronometer.prototype.splitClick = function () {
 
 // };
+
+
