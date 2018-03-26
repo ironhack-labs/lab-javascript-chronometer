@@ -47,12 +47,15 @@ Chronometer.prototype.setMilliseconds = function () {
 };
 
 Chronometer.prototype.stopClick = function () {
-  clearInterval(this.intervalId);
+  var that = this;
+
+  clearInterval(that.intervalId);
 };
 
 Chronometer.prototype.resetClick = function () {
-
+  this.currentTime = 0;
 };
+
 
 // Chronometer.prototype.splitClick = function () {
 
