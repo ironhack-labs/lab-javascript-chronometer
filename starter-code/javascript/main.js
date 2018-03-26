@@ -33,25 +33,41 @@ function clearSplits() {
 
 }
 
-function setStopBtn() {
-
+function setStartBtn() {
+    var btnStop = document.getElementById("btnLeft");
+    btnStop.setAttribute("class","btn start");
+    btnStop.textContent = "START";
 }
 
 function setSplitBtn() {
-
+    var btnReset = document.getElementById("btnRight");
+    btnReset.setAttribute("class","btn split");
+    btnReset.textContent = "SPLIT";
 }
 
-function setStartBtn() {
-
+function setStopBtn() {
+    var btnStart = document.getElementById("btnLeft");
+    btnStart.setAttribute("class","btn stop");
+    btnStart.textContent = "STOP";
 }
 
 function setResetBtn() {
-
+    var btnReset = document.getElementById("btnRight");
+    btnReset.setAttribute("class","btn reset");
+    btnReset.textContent = "RESET";
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    
+    if(this.className == "btn stop"){
+        setStartBtn();
+        setResetBtn();
+    }
+    else{
+        setStopBtn();
+        setSplitBtn();
+    }
 });
 
 // Reset/Split Button
