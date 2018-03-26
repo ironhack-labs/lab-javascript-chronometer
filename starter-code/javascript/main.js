@@ -20,13 +20,13 @@ function printTime() {
 }
 
 function printMinutes() {
-    milDec.innerHTML = chronometer.setTime(chronometer.setMinutes[0]);
-    milUni.innerHTML = chronometer.setTime(chronometer.setMinutes[1]);
+    milDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.setMinutes()))[0];
+    milUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.setMinutes()))[1];
 }
 
 function printSeconds() {
-    secDec.innerHTML = chronometer.setTime(chronometer.setSeconds[0]);
-    secUni.innerHTML = chronometer.setTime(chronometer.setSeconds[1]);
+    secDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.setSeconds()))[0];
+    secUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.setSeconds()))[1];
 }
 
 function printMilliseconds() {
@@ -60,7 +60,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
     if ( btnLeft.classList.contains("start") ){
-        chronometer.startClick()
+        chronometer.startClick(printTime)
         btnLeft.setAttribute('class', 'btn stop')
         btnLeft.innerHTML ='STOP'
         btnRight.setAttribute('class', 'btn split')
