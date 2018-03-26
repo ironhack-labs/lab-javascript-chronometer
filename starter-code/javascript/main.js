@@ -9,21 +9,24 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-var btnStart    = document.getElementsByClassName('start')[0];
-var btnReset    = document.getElementsByClassName('reset')[0];
-var btnStop     = document.getElementsByClassName('stop')[0];
-var btnSplit    = document.getElementsByClassName('split')[0];
+// var btnStart    = document.getElementsByClassName('start')[0];
+// var btnReset    = document.getElementsByClassName('reset')[0];
+// var btnStop     = document.getElementsByClassName('stop')[0];
+// var btnSplit    = document.getElementsByClassName('split')[0];
 
 function printTime() {
-
+    printMinutes() 
+    printSecond()
 }
 
 function printMinutes() {
-
+    milDec.innerHTML = chronometer.setTime(chronometer.setMinutes[0]);
+    milUni.innerHTML = chronometer.setTime(chronometer.setMinutes[1]);
 }
 
 function printSeconds() {
-
+    secDec.innerHTML = chronometer.setTime(chronometer.setSeconds[0]);
+    secUni.innerHTML = chronometer.setTime(chronometer.setSeconds[1]);
 }
 
 function printMilliseconds() {
@@ -56,23 +59,25 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-    if ( chronometer.currentTime === 0 ){
-        //chronometer.startClick()
+    if ( btnLeft.classList.contains("start") ){
+        chronometer.startClick()
         btnLeft.setAttribute('class', 'btn stop')
         btnLeft.innerHTML ='STOP'
         btnRight.setAttribute('class', 'btn split')
         btnRight.innerHTML = 'SPLIT'
     } else {
-        chronometer.startClick()
+        chronometer.stopClick()
         btnLeft.setAttribute('class', 'btn start')
         btnLeft.innerHTML = 'START'
         btnRight.setAttribute('class', 'btn reset')
         btnRight.innerHTML = 'RESET'
     }
 });
-btnStart.onclick = chronometer.startClick
-btnReset.onclick = chronometer.resetClick
+
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    chronometer.resetClick()
+    if(btnLeft.classList.contains("reset")){
+        chronometer.resetClick()
+    }else {
+    }
 });

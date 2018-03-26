@@ -35,7 +35,7 @@ Chronometer.prototype.twoDigitsNumber = function (zegar) {
  Chronometer.prototype.setTime = function () {
      var minuta = this.twoDigitsNumber(this.setMinutes); 
      var secunda = this.twoDigitsNumber(this.setSeconds);
-
+    
 
  };
 
