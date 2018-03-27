@@ -14,6 +14,7 @@ var booleano = false;
 function printTime() {
     printMinutes();
     printSeconds();
+    printMilliseconds();
 }
 
 function printMinutes() {
@@ -27,7 +28,8 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds())[0];
+    milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds())[1];
 }
 
 function printSplit() {
@@ -49,7 +51,7 @@ function setStopBtn() {
 
 function setSplitBtn() {
     var newli = document.createElement("li");
-    var contenido = document.createTextNode(milDec.textContent + milUni.textContent + ":" + secDec.textContent + secUni.textContent);
+    var contenido = document.createTextNode(minDec.textContent + minUni.textContent + ":" + secDec.textContent + secUni.textContent + ":" +milDec.textContent + milUni.textContent);
     newli.appendChild(contenido);
     ol.appendChild(newli);
 
@@ -60,7 +62,7 @@ function setStartBtn() {
     chronometer.startClick();
     var Start = setInterval(function(){
         printTime();
-    },1000);
+    },10);
     
 }
 
