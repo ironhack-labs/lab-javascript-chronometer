@@ -14,12 +14,12 @@ Chronometer.prototype.startClick = function() {
 
 Chronometer.prototype.setMinutes = function() {
   var minutos = parseInt(this.currentTime / 100 / 60);
-  return minutos;
+  return minutos % 60;
 };
 
 Chronometer.prototype.setSeconds = function() {
   var segundos = parseInt(this.currentTime / 100);
-  return segundos;
+  return segundos % 60;
 };
 
 Chronometer.prototype.twoDigitsNumber = function(digitos2) {
