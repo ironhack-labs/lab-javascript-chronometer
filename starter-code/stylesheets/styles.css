@@ -1,44 +1,56 @@
-@font-face {
-  font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
-}
+
+
 
 body {
-  font-family: Arial;
+  font-family: 'Open Sans', sans-serif;
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
 }
 
-#clock {
-  border: 2px solid #000;
-  border-radius: 20px;
-  box-sizing: border-box;
-  height: 250px;
-  margin: 0 auto;
-  padding: 18px 0;
-  width: 245px;
+main {
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
 }
 
+
+
 #sphere {
-  border: 2px solid #000;
-  border-radius: 20px;
+  color: white;
   box-sizing: border-box;
-  font-family: "Digi";
-  font-size: 80px;
-  height: 210px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 60px;
+  font-weight: 300;
+  height: 215px;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
+  top: 80px;
+  right: 2px;
   text-align: center;
-  width: 220px;
+  width: 180px;
 }
 
 #splits-container {
+  color: black;
   font-size: 20px;
   font-weight: 100;
-  position: absolute;
-  left: 50px;
+  min-width: 100px;
+  text-align: left;
+  
+}
+
+
+.face {
+  font-size:12px;
+  width: 228px;
+  height: 420px;
+  background-image: url('http://www.demoapplewatch.com/images/watch3.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #splits-container li {
@@ -47,46 +59,16 @@ body {
 }
 
 #milliseconds {
-  font-size: 36px;
-  margin-top: -15px;
+  font-size: 26px;
+  margin-top: -12px;
   position: absolute;
-  right: 20px;
-}
+  right: 18px;
 
-.leash {
-  background: rgb(204, 84, 87);
-  border: 2px solid rgb(134, 59, 61);
-  height: 50px;
-  margin: 0 auto;
-  width: 120px;
-}
-
-.leash-top {
-  border-bottom: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.leash-bottom {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top: 0;
-  height: 270px;
-  padding-top: 50px;
-}
-
-.hole {
-  background: #fff;
-  border: 2px solid rgb(134, 59, 61);
-  border-radius: 100%;
-  height: 20px;
-  margin: 0 auto 50px;
-  width: 20px;
 }
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 34px;
 }
 
 .btn {
@@ -115,3 +97,5 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+

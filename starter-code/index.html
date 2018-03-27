@@ -5,38 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Chronometer</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
   <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
 <body>
 
-  <section id="splits-container">
-    <h3>Splits</h3>
-    <ol id="splits">
-    </ol>
-  </section>
+  <main class="flex">
 
-  <div class="leash leash-top"></div>
+      <div class="face">
+          <section id="">
+            <div id="sphere">
+              <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span id="dotdot">:</span><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
+        
+              <div id="milliseconds">
+                <span id="milDec">0</span><span id="milUni">0</span>
+              </div>
+        
+              <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+            </div>
+          </section>
+        </div>
 
-  <section id="clock">
-    <div id="sphere">
-      <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span>:</span><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
 
-      <div id="milliseconds">
-        <span id="milDec">0</span><span id="milUni">0</span>
-      </div>
-
-      <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+    <div id="splits-container">
+        <h3>Splits</h3>
+        <div>
+            <ol id="splits">
+              </ol>
+        </div>
+        
     </div>
-  </section>
 
-  <div class="leash leash-bottom">
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-  </div>
+  
 
-  <!--<script src="javascripts/utils.js"></script>-->
+</main>
+  
+
+
   <script src="javascript/chronometer.js"></script>
   <script src="javascript/main.js"></script>
+  
 </body>
 </html>
