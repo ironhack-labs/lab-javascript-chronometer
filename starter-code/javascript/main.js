@@ -70,14 +70,16 @@ function setResetBtn() {
   btnRight.innerText = "RESET";
 }
 
-// Start/Stop Button
+// Start/Stop Button  
 btnLeft.addEventListener("click", function() {
   if (btnLeft.className.includes("start")) {
+    setSplitBtn();
     setStopBtn();
     chronometer.startClick();
     printTime();
   } else {
     setStartBtn();
+    setResetBtn();
     chronometer.stopClick();
   }
 });
@@ -85,10 +87,8 @@ btnLeft.addEventListener("click", function() {
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
   if (btnRight.className.includes("split")) {
-    setResetBtn();
     printSplit();
   } else {
-    setSplitBtn();
     minDec.innerHTML = "0";
     minUni.innerHTML = "0";
     secDec.innerHTML = "0";
@@ -96,4 +96,5 @@ btnRight.addEventListener("click", function() {
     chronometer.resetClick();
     clearInterval(intervalId);
   }
+
 });
