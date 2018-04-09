@@ -1,7 +1,7 @@
 // Constructor
 // function Chronometer() {
-
-// }
+ //	this.current
+ //}
 
 // Chronometer.prototype.startClick = function () {
 
