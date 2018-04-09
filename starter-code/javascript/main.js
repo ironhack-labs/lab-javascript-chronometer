@@ -39,16 +39,16 @@ function printSeconds() {
 //    milUni.innerHTML=chronometer.milliSeconds[1];
 // }
 
-// function printSplit() {
-//    splitList.innerHTML+= "<li>" +minDec.innerHTML+minUni.innerHTML+":"+secDec.innerHTML+secUni.innerHTML+":"+milDec.innerHTML+milUni.innerHTML+"</li>";
-// }
+function printSplit() {
+   splitList.innerHTML+= "<li>" +minDec.innerHTML+minUni.innerHTML+":"+secDec.innerHTML+secUni.innerHTML+":"+milDec.innerHTML+milUni.innerHTML+"</li>";
+}
 
-// function clearSplits() {
-//    splitList.innerHTML = "";
-//    chronometer.resetClick();
-//    chronometer.currentTime=0;
-//    printTime();
-// }
+function clearSplits() {
+   splitList.innerHTML = "";
+   chronometer.resetClick();
+   chronometer.currentTime=0;
+   printTime();
+}
 
 function setStopBtn() {
 

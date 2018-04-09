@@ -44,7 +44,7 @@ Chronometer.prototype.stopClick = function () {
 };
 
 Chronometer.prototype.resetClick = function () {
-
+  
 };
 
 Chronometer.prototype.splitClick = function () {
