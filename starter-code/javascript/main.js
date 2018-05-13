@@ -10,30 +10,49 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-    printMinutes();
-    printSeconds();
+    printMinutes(chronometer.twoDigitsNumber(chronometer.setMinutes()));
+    printSeconds(chronometer.twoDigitsNumber(chronometer.setSeconds()));
+    printMilliseconds();
+    //console.log(cronometer.setTime());
+    }
+
+function printMinutes(minutes) {
+    minDec.innerHTML=minutes[0];
+    minUni.innerHTML=minutes[1];
 }
 
-function printMinutes() {
-    minDec.innerHTML=chronometer.twoDigitsNumber(chronometer.setMinutes)[0];
-    minUni.innerHTML=chronometer.twoDigitsNumber(chronometer.setMinutes)[1];
-}
-
-function printSeconds() {
-    secDec.innerHTML=chronometer.twoDigitsNumber(chronometer.setSeconds)[0];
-    secUni.innerHTML=chronometer.twoDigitsNumber(chronometer.setSeconds)[1];
+function printSeconds(seconds) {
+    secDec.innerHTML=seconds[0];
+    secUni.innerHTML=seconds[1];
 }
 
 function printMilliseconds() {
-
+    var milTwo=chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+    console.log("milis: "+milTwo);//.slice(0,2));
+    //var tdig=milTwo.slice(0,2);
+    //printMilliseconds(chronometer.twoDigitsNumber(milTwo));
+    milDec.innerHTML=milTwo[0];
+    milUni.innerHTML=milTwo[1];
 }
-
+let lista=document.getElementById('splits');
 function printSplit() {
-
+    let elemento=document.createElement('li');
+    elemento.innerHTML=chronometer.twoDigitsNumber(chronometer.setMinutes())+":"+chronometer.twoDigitsNumber(chronometer.setSeconds())+":"+chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+    lista.appendChild(elemento);
 }
 
 function clearSplits() {
-
+    console.log(document.getElementById("splits").children.length);
+    let splitsList=document.getElementById("splits");
+    let len=splitsList.children.length;
+    while(splitsList.firstChild){
+        splitsList.removeChild(splitsList.firstChild);
+    }
+  
+    //for(let i=0;i<len;i++){
+      //  splitsList.removeChild(splitsList.childNodes[i]);
+    //    console.log(i);
+//    }
 }
 
 function setStopBtn() {
@@ -41,15 +60,22 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-
+    
 }
 
 function setStartBtn() {
     chronometer.startClick();
-    chronometer.printTime();
+    var intervalId=setInterval(function(){
+        printTime();    
+    },10);
+    
+    
 }
 
 function setResetBtn() {
+    chronometer.resetClick();
+    //clearInterval(chronometer.intervalId);
+    
 
 }
 
@@ -59,22 +85,26 @@ btnLeft.addEventListener('click', function () {
     if(btnLeft.innerHTML=="START"){
         btnLeft.innerHTML="STOP";
         btnLeft.setAttribute('class','btn stop');
-        chronometer.setStartBtn();
+        btnRight.innerHTML="SPLIT";
+        btnRight.setAttribute('class','btn split');
+        setStartBtn();
     }else{
         btnLeft.innerHTML="START";
         btnLeft.setAttribute('class','btn start');
+        btnRight.innerHTML="RESET";
+        btnRight.setAttribute('class','btn reset');
         chronometer.stopClick();
     }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    if(btnRight.innerHTML=="RESET"){
-        btnRight.innerHTML="SPLIT";
-        btnRight.setAttribute('class','btn split');
-        
+    if(btnRight.innerHTML=="SPLIT"){
+        printSplit();
+
     }else{
-        btnRight.innerHTML="RESET";
-        btnRight.setAttribute('class','btn reset');
+        clearSplits();
+        setResetBtn();
     }
+    
 });
