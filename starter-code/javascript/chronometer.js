@@ -37,7 +37,7 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
-    milisegundos = this.currentTime * 1000;
+    
 };
 
 Chronometer.prototype.stopClick = function () {
@@ -45,7 +45,9 @@ Chronometer.prototype.stopClick = function () {
 };
 
 Chronometer.prototype.resetClick = function () {
-
+    minutos = 0;
+    segundos = 0;
+    milisegundos = 0;
 };
 
 Chronometer.prototype.splitClick = function () {

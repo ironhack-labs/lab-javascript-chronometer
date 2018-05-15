@@ -70,7 +70,8 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-	if (btnRight.innerHTML === "RESET"){        
+	if (btnRight.innerHTML === "RESET"){
+        chronometer.resetClick();
         btnRight.innerHTML = "SPLIT";
         btnRight.setAttribute("class","btn split");
     } else {    	
