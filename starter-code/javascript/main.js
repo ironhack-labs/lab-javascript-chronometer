@@ -10,7 +10,7 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  
 }
 
 function printMinutes() {
@@ -34,19 +34,23 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  btnLeft.className('btn start');
+  btnLeft.textContent('START');
 }
 
 function setSplitBtn() {
-
+  btnRight.className('btn reset');
+  btnRight.textContent('RESET');
 }
 
 function setStartBtn() {
-
+  btnLeft.className('btn stop');
+  btnLeft.textContent('STOP');
 }
 
 function setResetBtn() {
-
+  btnRight.className('btn split');
+  btnRight.textContent('SPLIT');
 }
 
 // Start/Stop Button
