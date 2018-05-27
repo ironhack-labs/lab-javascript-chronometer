@@ -20,7 +20,7 @@ function printTime() {
 
 function printMinutes() {
   minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.setMinutes()).slice(0, 1);
-  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.setMinutes()).slice(1, 2 );
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.setMinutes()).slice(1, 2);
 }
 
 function printSeconds() {
@@ -29,8 +29,8 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-  milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).slice(0, 1);
-  milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).slice(1, 2);
+  milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).slice(-2, -1);
+  milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).slice(-1);
 }
 
 function printSplit() {
