@@ -48,8 +48,8 @@ describe('', function () {
     });
 
     it('should increment 1 to currentTime property on every 1 second interval', function () {
-      jasmine.clock().tick(1000);
 
+      jasmine.clock().tick(1000);
       expect(chronometer.currentTime).toEqual(1);
     });
 
