@@ -34,6 +34,8 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+    btnLeft.setAttribute("class", "btn stop");
+    btnLeft.innerHTML = "STOP";
 
 }
 
@@ -42,7 +44,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-
+    btnLeft.setAttribute("class", "btn start");
+    btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
@@ -51,6 +54,19 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+
+    //if running
+    if (chronometer.intervalId) {
+        chronometer.stopClick();
+        setStartBtn();
+        setResetBtn();
+    }
+    //if stopped
+    else {
+        chronometer.startClick();
+        setStopBtn();
+        setSplitBtn();
+    }
 
 });
 
