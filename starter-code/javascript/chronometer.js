@@ -23,9 +23,8 @@ Chronometer.prototype.setSeconds = function () {
 };
 
 Chronometer.prototype.twoDigitsNumber = function (value) {
-  var format = "00" + value;
-
-  return format = format.substring(format.length - 2, format.length);
+  var strFormat = "00" + value;
+  return strFormat = strFormat.substring(strFormat.length - 2, strFormat.length);
 }
 
 Chronometer.prototype.setTime = function () {
