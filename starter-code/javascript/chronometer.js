@@ -7,12 +7,21 @@ function Chronometer() {
 }
 
 Chronometer.prototype.startClick = function () {
-    this.intervalId = setInterval(() => this.currentTime++;)
+
+    var _this = this;
+
+    this.intervalId = setInterval(function () {
+
+        _this.currentTime++;
+
+    }
+        , 1000);
+
 };
 
-// Chronometer.prototype.setMinutes = function () {
-
-// };
+Chronometer.prototype.setMinutes = function () {
+    return Math.floor(this.currentTime / 60);
+};
 
 // Chronometer.prototype.setSeconds = function () {
 
