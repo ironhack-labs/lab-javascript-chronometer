@@ -29,9 +29,17 @@ Chronometer.prototype.setSeconds = function () {
 
 };
 
-// Chronometer.prototype.twoDigitsNumber = function () {
+Chronometer.prototype.twoDigitsNumber = function (digits) {
 
-// };
+    var digitString = "" + digits;
+
+    if (digitString.length == 1) {
+        digitString = "0" + digitString;
+    }
+
+    return digitString;
+
+};
 
 // Chronometer.prototype.setTime = function () {
 
