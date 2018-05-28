@@ -53,9 +53,11 @@ Chronometer.prototype.setTime = function () {
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
+Chronometer.prototype.stopClick = function () {
 
-// };
+    clearInterval(this.intervalId);
+
+};
 
 // Chronometer.prototype.resetClick = function () {
 
