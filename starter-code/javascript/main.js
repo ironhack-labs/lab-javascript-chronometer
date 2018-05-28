@@ -9,16 +9,23 @@ var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
 
 
-function printTime() {
+function printTime(mins, secs) {
+
+    printMinutes(mins);
+    printSeconds(secs);
 
 }
 
-function printMinutes() {
+function printMinutes(mins) {
 
+    minDec.innerHTML = mins.charAt(0);
+    minUni.innerHTML = mins.charAt(1);
 }
 
-function printSeconds() {
+function printSeconds(secs) {
 
+    secDec.innerHTML = secs.charAt(0);
+    secUni.innerHTML = secs.charAt(1);
 }
 
 function printMilliseconds() {
