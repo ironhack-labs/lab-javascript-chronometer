@@ -14,6 +14,8 @@ Chronometer.prototype.startClick = function () {
 
         _this.currentTime++;
 
+        _this.setTime();
+
     }
         , 1000);
 
@@ -41,9 +43,11 @@ Chronometer.prototype.twoDigitsNumber = function (digits) {
 
 };
 
-// Chronometer.prototype.setTime = function () {
+Chronometer.prototype.setTime = function () {
 
-// };
+
+
+};
 
 // Chronometer.prototype.setMilliseconds = function () {
 
