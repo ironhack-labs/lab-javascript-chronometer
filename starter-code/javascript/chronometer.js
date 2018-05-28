@@ -10,11 +10,13 @@ Chronometer.prototype.startClick = function() {
   this.intervalId = setInterval(function() {
     that.setTime();
     x++
-    if (x == 60) {
+    if (x > 99) {
       that.currentTime++;
       x = 0;
     }
-    that.milliseconds++
+  that.milliseconds++;
+  if (that.milliseconds > 99)
+    that.milliseconds = 0;
   }, 10);
 }
 
@@ -39,12 +41,8 @@ Chronometer.prototype.setTime = function () {
   document.getElementById('minUni').innerText = this.twoDigitsNumber(this.minutes)[1];
   document.getElementById('secDec').innerText = this.twoDigitsNumber(this.seconds)[0];
   document.getElementById('secUni').innerText = this.twoDigitsNumber(this.seconds)[1];
-  // document.getElementById('milDec').innerText = this.twoDigitsNumber(this.milliseconds)[0];
-  // document.getElementById('milUni').innerText = this.twoDigitsNumber(this.milliseconds)[1];
-  // console.log(minUni)
-  // min.innerText = this.twoDigitsNumber(this.minutes)
-  // sec.innerText = this.twoDigitsNumber(this.seconds)
-
+  document.getElementById('milDec').innerText = this.twoDigitsNumber(this.milliseconds)[1];
+  document.getElementById('milUni').innerText = this.twoDigitsNumber(this.milliseconds)[0];
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
@@ -57,7 +55,7 @@ Chronometer.prototype.stopClick = function () {
 
 Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
-
+  this.milliseconds = 0;
 };
 
 // Chronometer.prototype.splitClick = function () {

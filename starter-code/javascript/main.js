@@ -65,7 +65,7 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
   if (btnLeft.classList.contains("stop")) {
-    var minsec = chrono.twoDigitsNumber(chrono.minutes) + ":" + chrono.twoDigitsNumber(chrono.seconds)
+    var minsec = chrono.twoDigitsNumber(chrono.minutes) + ":" + chrono.twoDigitsNumber(chrono.seconds) + ":" + chrono.twoDigitsNumber(chrono.milliseconds)
 
     document.getElementById('splits-container').innerHTML += "<li>" + minsec + "</li>"
   }

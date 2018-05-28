@@ -49,7 +49,6 @@ describe('', function () {
 
     it('should increment 1 to currentTime property on every 1 second interval', function () {
       jasmine.clock().tick(1000);
-
       expect(chronometer.currentTime).toEqual(1);
     });
 
@@ -178,7 +177,6 @@ describe('', function () {
     it('setTime should declare a `seconds` variable to store the 2 characters length seconds value', function () {
       spyOn(chronometer, 'setTime').and.callFake(function () {
         var seconds = this.twoDigitsNumber(this.setSeconds(2));
-
         expect(seconds).toBeDefined();
       });
       chronometer.setTime();
@@ -188,7 +186,6 @@ describe('', function () {
       chronometer.currentTime = 0;
       spyOn(chronometer, 'setTime').and.callFake(function () {
         var minutes = this.twoDigitsNumber(this.setMinutes());
-
         expect(minutes).toEqual('00');
       });
       chronometer.setTime();
