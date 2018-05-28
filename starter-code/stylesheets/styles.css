@@ -112,6 +112,10 @@ body {
 }
 
 .btn.start { background: #5fca5f; }
+.btn.start:before { content: "START"}
 .btn.stop  { background: #f14949; }
+.btn.stop:before { content: "STOP"}
 .btn.reset { background: #908e8e; }
+.btn.reset:before { content: "RESET"}
 .btn.split { background: #0851ab; }
+.btn.split:before { content: "SPLIT"}

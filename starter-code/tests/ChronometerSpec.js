@@ -54,7 +54,7 @@ describe('', function () {
     });
 
     it('after 3 seconds, currentTime should be 3', function () {
-      jasmine.clock().tick(3000);
+      jasmine.clock().tick(3010);
 
       expect(chronometer.currentTime).toEqual(3);
     });
