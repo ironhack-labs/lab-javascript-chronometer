@@ -23,9 +23,11 @@ Chronometer.prototype.setMinutes = function () {
     return Math.floor(this.currentTime / 60);
 };
 
-// Chronometer.prototype.setSeconds = function () {
+Chronometer.prototype.setSeconds = function () {
 
-// };
+    return this.currentTime - this.setMinutes() * 60;
+
+};
 
 // Chronometer.prototype.twoDigitsNumber = function () {
 
