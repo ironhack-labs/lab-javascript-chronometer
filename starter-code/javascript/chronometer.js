@@ -18,7 +18,7 @@ Chronometer.prototype.setMinutes = function () {
 };
 
 Chronometer.prototype.setSeconds = function () {
-   return this.currentTime-this.setMinutes()*60;
+   return this.currentTime%60;
 };
 
 Chronometer.prototype.twoDigitsNumber = function (x) {
@@ -36,15 +36,9 @@ Chronometer.prototype.setTime = function () {
 
  Chronometer.prototype.stopClick = function () {
     clearInterval(this.intervalId);
-    //this.intervalId;
-
-  
 };
 
 Chronometer.prototype.resetClick = function () {
     this.currentTime=0;
 };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
