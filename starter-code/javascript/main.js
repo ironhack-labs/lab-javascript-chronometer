@@ -13,7 +13,8 @@ function printTime() {
     setInterval(function () {
         printMinutes();
         printSeconds();
-    },100)
+        printMilliseconds();
+    },10)
     
 }
 
@@ -32,12 +33,15 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    milUni = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).charAt(1);
+    milDec = chronometer.twoDigitsNumber(chronometer.setMilliseconds()).charAt(0);
+    document.getElementById("milUni").innerText = milUni;
+    document.getElementById("milDec").innerText = milDec;
 }
 
 function printSplit() {
     var y = document.createElement("LI");
-    var t = document.createTextNode(chronometer.twoDigitsNumber(chronometer.setMinutes())+" : "+chronometer.twoDigitsNumber(chronometer.setSeconds()));
+    var t = document.createTextNode(chronometer.twoDigitsNumber(chronometer.setMinutes())+" : "+chronometer.twoDigitsNumber(chronometer.setSeconds())+" : "+chronometer.twoDigitsNumber(chronometer.setMilliseconds()));
     y.appendChild(t);
     document.getElementById("splits").appendChild(y);
 
