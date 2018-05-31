@@ -1,58 +1,45 @@
-// Constructor
+/// Constructor
 function Chronometer() {
-  this.currentTime = 0,
-  this.intervalId = ""
+this.currentTime = 0; // represents the number of seconds
+this.intervalId = 0;
 }
 
 Chronometer.prototype.startClick = function() {
-  var that = this;
-  that.intervalId = setInterval(function() {
-    that.currentTime++;
-  }, 1000);
+var chronometer = this;
+// we need to store our current object into sth else, so we can use it later!
+// if a pass a lambda into the interval function this is not going to change
+this.intervalId = setInterval(function() {
+  chronometer.setTime();
+  chronometer.currentTime++;
+}, 1000);
 };
 
-// document.getElementById("btnLeft").onclick = function() {
-//   chronometer.startClick();
-// };
-
-
 Chronometer.prototype.setMinutes = function() {
-    return Math.floor(this.currentTime / 60);
-  };
+return Math.floor(this.currentTime / 60);
+};
 
+Chronometer.prototype.setSeconds = function() {
+return Math.floor(this.currentTime % 60);
+};
 
+Chronometer.prototype.twoDigitsNumber = function(number) {
+if (number < 10) return "0" + number;
+return number.toString();
+};
 
- Chronometer.prototype.setSeconds = function () {
-  return this.currentTime - (Math.floor(this.currentTime / 60)*60);
- };
-
-Chronometer.prototype.twoDigitsNumber = function (val) {
-  if(typeof val == 'undefined'){
-    return "00";
-  }
-  val = toString(val);
-  if(val.length == 1){
-    return "0" + val;
-  }else{
-    return val;
-  }
- };
-
-// Chronometer.prototype.setTime = function () {
-
-// };
+Chronometer.prototype.setTime = function() {};
 
 // Chronometer.prototype.setMilliseconds = function () {
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
+Chronometer.prototype.stopClick = function() {
+clearInterval(this.intervalId);
+};
 
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
+Chronometer.prototype.resetClick = function() {
+this.currentTime = 0;
+};
 
 // Chronometer.prototype.splitClick = function () {
 
