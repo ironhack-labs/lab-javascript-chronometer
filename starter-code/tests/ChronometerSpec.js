@@ -35,6 +35,8 @@ describe('', function () {
       jasmine.clock().uninstall();
     });
 
+// DOESNT WORK ---------------------------------------------------
+
     it('Declare a startClick method', function () {
       expect(typeof chronometer.startClick).toEqual('function');
     });
@@ -59,7 +61,7 @@ describe('', function () {
       expect(chronometer.currentTime).toEqual(3);
     });
   });
-
+//  ---------------------------------------------------
   describe('setMinutes function', function () {
     it('Should be declare', function () {
       expect(typeof chronometer.setMinutes).toEqual('function');
