@@ -23,16 +23,15 @@ function printSeconds() {
   document.querySelector("#secUni").innerHTML = chronometer.seconds[1];
 }
 
-function printHundredthSeconds() {
-  document.querySelector("#milDec").innerHTML = chronometer.hundredthSeconds[0];
-  document.querySelector("#milUni").innerHTML = chronometer.hundredthSeconds[1];
+function printMilliseconds() {
+
 }
 
 function printSplit() {
   parentNode = document.getElementById('splits');
   var child = document.createElement("li");
   parentNode.appendChild(child);
-  child.innerHTML = chronometer.minutes + ":" + chronometer.seconds + ":" + chronometer.hundredthSeconds;
+  child.innerHTML = chronometer.minutes + ":" + chronometer.seconds;
 }
 
 function clearSplits() {
@@ -71,7 +70,6 @@ btnLeft.addEventListener('click', function () {
     chronometer.startClick();
     printMinutes();
     printSeconds();
-    printHundredthSeconds();
   } else {
     document.getElementById("btnLeft").innerHTML = "START";
     document.getElementById("btnLeft").className = "btn start";
