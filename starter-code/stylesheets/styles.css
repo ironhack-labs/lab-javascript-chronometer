@@ -87,6 +87,7 @@ body {
 .number {
   display: inline-block;
   width: 40px;
+  margin-left: -120px;
 }
 
 .btn {
