@@ -46,8 +46,10 @@ btnLeft.addEventListener("click", function() {
 			minDec.innerText = chronometer.minutes[0];
 			minUni.innerText = chronometer.minutes[1];
 			secUni.innerText = chronometer.seconds[1];
-			secDec.innerText = chronometer.seconds[0];
-		}, 1000);
+            secDec.innerText = chronometer.seconds[0];
+            milDec.innerText=chronometer.miliseconds[0];
+            milUni.innerText=chronometer.miliseconds[1];
+		}, 1);
 	} else {
 		btnLeft.innerText = "START";
 		btnLeft.classList.remove("stop");
@@ -71,7 +73,10 @@ btnRight.addEventListener("click", function() {
 				chronometer.minutes[1] +
 				":" +
 				chronometer.seconds[0] +
-				chronometer.seconds[1]
+                chronometer.seconds[1] +
+                ":" +
+				chronometer.miliseconds[0] +
+				chronometer.miliseconds[1] 
 		);
 		padre.appendChild(lista);
 		lista.appendChild(texto);
@@ -91,11 +96,6 @@ btnRight.addEventListener("click", function() {
 		minUni.innerHTML = "0";
 		secDec.innerHTML = "0";
 		secUni.innerHTML = "0";
-		/* minDec.innerHTML=chronometer.minutes[0];
-          minUni.innerHTML=chronometer.minutes[1];
-          secDec.innerHTML=chronometer.seconds[0];
-          secUni.innerHTML=chronometer.seconds[1];*/
-		//chronometer.resetClick();
 	} else if (btnRight.innerText == "SPLIT" && btnLeft.innerText == "START") {
 		btnRight.innerText = "RESET";
 		btnRight.classList.remove("split");
