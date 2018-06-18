@@ -3,9 +3,9 @@
 
  }
 
-// Chronometer.prototype.startClick = function () {
+ Chronometer.prototype.startClick = function () {
 
-// };
+ };
 
 // Chronometer.prototype.setMinutes = function () {
   
