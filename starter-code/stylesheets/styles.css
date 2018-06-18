@@ -84,7 +84,7 @@ body {
   width: 20px;
 }
 
-.number {
+.sphere .number {
   display: inline-block;
   width: 40px;
 }
