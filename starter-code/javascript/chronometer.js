@@ -10,7 +10,7 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(function(){
     that.currentTime++
     that.setTime()
-  }, 1000)//cambiar para los milisegundos
+  }, )
 };
 
 //Function that sets the minutes
@@ -20,9 +20,10 @@ Chronometer.prototype.setMinutes = function () {
 
 //Function that sets the seconds
 Chronometer.prototype.setSeconds = function () {
-  return Math.round(this.currentTime % 60)
+  return Math.round(this.currentTime % 100)
 };
 
+//Function that returns a two digit number even if the input is < 10
 Chronometer.prototype.twoDigitsNumber = function (number) {
   if (number < 10) {
     return "0" + number
@@ -31,13 +32,14 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 };
 
 Chronometer.prototype.setTime = function () {
-  this.minutes = this.twoDigitsNumber(this.setMinutes())
-  this.seconds = this.twoDigitsNumber(this.setSeconds())
+  this.minutes      = this.twoDigitsNumber(this.setMinutes())
+  this.seconds      = this.twoDigitsNumber(this.setSeconds())
+  this.milliseconds = this.twoDigitsNumber(this.setMilliseconds())
 };
 
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
+Chronometer.prototype.setMilliseconds = function () {
+  return this.currentTime
+};
 
 Chronometer.prototype.stopClick = function () {
   clearInterval(this.intervalId)
@@ -48,6 +50,6 @@ Chronometer.prototype.resetClick = function () {
   this.currentTime = 0
 };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+  return this.minutes + ':' + this.seconds + ':' + this.milliseconds
+};

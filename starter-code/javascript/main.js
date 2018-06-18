@@ -17,7 +17,8 @@ function printTime() {
   var id = setInterval(function () {
     printMinutes(chronometer.minutes)
     printSeconds(chronometer.seconds)
-  }, 1000)
+    printMilliseconds(chronometer.milliseconds)
+  }, )
   return id
 }
 
@@ -31,13 +32,14 @@ function printSeconds(seconds) {
   secUni.innerHTML = seconds.charAt(1)
 }
 
-function printMilliseconds() {
-
+function printMilliseconds(milliseconds) {
+  milDec.innerHTML = milliseconds.charAt(0)
+  milUni.innerHTML = milliseconds.charAt(1)
 }
 
 function printSplit() {
   var split = document.createElement('li')
-  split.innerHTML = chronometer.minutes + ':' + chronometer.seconds
+  split.innerHTML = chronometer.splitClick()
   splits.appendChild(split)
 }
 
@@ -71,6 +73,8 @@ function setResetBtn() {
   minUni.innerHTML = '0'
   secDec.innerHTML = '0'
   secUni.innerHTML = '0'
+  milDec.innerHTML = '0'
+  milUni.innerHTML = '0'
   splits.innerHTML = ''
 }
 
