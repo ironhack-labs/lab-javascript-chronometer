@@ -20,7 +20,7 @@ Chronometer.prototype.setMinutes = function () {
 
 //Function that sets the seconds
 Chronometer.prototype.setSeconds = function () {
-  return Math.round(this.currentTime / 100)
+  return Math.floor((this.currentTime / 100) % 60)
 };
 
 //Function that returns a two digit number even if the input is < 10
