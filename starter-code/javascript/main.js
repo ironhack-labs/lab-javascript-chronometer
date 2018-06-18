@@ -15,7 +15,6 @@ function printTime() {
     printSeconds();
     printMinutes();
     printMilliseconds();
-    console.log("dfsd")
   }, 10);
   return interval;
 }
@@ -103,8 +102,6 @@ btnRight.addEventListener("click", function() {
     setSplitBtn();
   }
   else {
-    chronometer.stopClick();
     printSplit()
-    printTime();
   }
 });
