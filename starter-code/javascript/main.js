@@ -15,13 +15,11 @@ function printTime(minutos, segundos) {
 }
 
 function printMinutes(minutos) {
- // var minutos=chronometer.twoDigitsNumber(chronometer.setMinutes());
-  minDec.innerHTML=minutos.split("")[0];
+   minDec.innerHTML=minutos.split("")[0];
   minUni.innerHTML=minutos.split("")[1];
 }
 
 function printSeconds(segundos) {
- // var segundos=chronometer.twoDigitsNumber(chronometer.setSeconds());
   secDec.innerHTML=segundos.split("")[0];
   secUni.innerHTML=segundos.split("")[1];
 }
