@@ -43,7 +43,17 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  chronometer.resetClick();
+  var splitContainer=document.getElementById("splits");
+ /* var lista=document.getElementsByTagName("li");
+  var parentLi=lista[0].parentNode;*/
+  minDec.innerHTML="0";
+  minUni.innerHTML="0";
+  secDec.innerHTML="0";
+  secUni.innerHTML="0";
+  for (var i=splitContainer.childNodes.length-1; i >= 0; i--){
+    splitContainer.removeChild(splitContainer.childNodes[i]);
+  }
 }
 
 function setStopBtn() {
@@ -71,7 +81,6 @@ btnLeft.addEventListener('click', function () {
     btnRight.innerHTML = "SPLIT";
     btnRight.setAttribute("class", 	"btn split");
     chronometer.startClick();
-    printTime();
   } else {
     btnLeft.innerHTML = "START";
     btnLeft.setAttribute("class", "btn start");
@@ -87,9 +96,10 @@ btnRight.addEventListener('click', function () {
   if (btnRight.innerHTML=="RESET"){
     btnRight.innerHTML="SPLIT";
     btnRight.setAttribute("class", "btn split");
+    clearSplits();
   } else {
    /* btnRight.innerHTML="RESET";
     btnRight.setAttribute("class", "btn reset");*/
-    printSplit();
+      printSplit();
   }
 });
