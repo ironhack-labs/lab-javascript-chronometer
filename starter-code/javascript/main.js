@@ -24,13 +24,14 @@ function printSeconds(seconds) {
     secUni.innerHTML=seconds[1];
 }
 
-//function printMilliseconds() {
-
-//}
+function printMilliseconds(miliseconds) {
+    milDec.innerHTML=miliseconds[0];
+    milUni.innerHTML=miliseconds[1];
+}
 
 function printSplit() {
     var splittime=document.createElement("li");
-    splittime.innerHTML= chronometer.setTime()[0]+":"+chronometer.setTime()[1];
+    splittime.innerHTML= chronometer.setTime()[0]+":"+chronometer.setTime()[1]+":"+chronometer.setTime()[2];
     document.getElementById('splits').appendChild(splittime);
 }
 
@@ -80,6 +81,8 @@ btnRight.addEventListener('click', function () {
         minUni.innerHTML=0;
         secDec.innerHTML=0;
         secUni.innerHTML=0;
+        milDec.innerHTML=0;
+        milUni.innerHTML=0;
         clearSplits();
     }else{
         printSplit();
