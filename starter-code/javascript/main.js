@@ -13,6 +13,8 @@ function resetChrono(){
   document.getElementById('minUni').innerText = 0;
   document.getElementById('secDec').innerText = 0;
   document.getElementById('secUni').innerText = 0;
+  document.getElementById('milDec').innerText = 0;
+  document.getElementById('milUni').innerText = 0;
   chronometer.currentTime = 0;
   clearInterval(intervalPrint);
 
@@ -22,7 +24,8 @@ function printTime() {
   intervalPrint = setInterval(function(){
     printSeconds();
     printMinutes();
-  }, 1000); 
+    printMilliseconds();
+  }, 10); 
 }
 
 function printMinutes() {
@@ -36,7 +39,8 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-  
+    document.getElementById('milDec').innerText = chronometer.milliseconds[0];
+    document.getElementById('milUni').innerText = chronometer.milliseconds[1];
 }
 
 function printSplit() {
