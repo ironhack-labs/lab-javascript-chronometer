@@ -51,5 +51,6 @@ Chronometer.prototype.resetClick = function () {
 Chronometer.prototype.splitClick = function () {
   var minutes = this.twoDigitsNumber(this.setMinutes())
   var seconds = this.twoDigitsNumber(this.setSeconds())
+  
   return minutes + ":" + seconds;
 };
