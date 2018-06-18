@@ -31,7 +31,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+var splits = document.getElementById("splits");
+var newSplit = document.createElement("li");
+splits.appendChild(newSplit);
+newSplit.innerText = chronometer.minutes[0]+chronometer.minutes[1] + ":" + chronometer.seconds[0]+chronometer.seconds[1];
 }
 
 function clearSplits() {
@@ -76,5 +79,9 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    if (btnRight.getAttribute("class") == "btn split"){
+printSplit();
+    }else {
+        resetEverything
+    }
 });
