@@ -62,6 +62,8 @@ btnLeft.addEventListener('click', function () {
       minUni.innerHTML = chronometer.setTime()[1]
       secDec.innerHTML = chronometer.setTime()[2]
       secUni.innerHTML = chronometer.setTime()[3]
+      milDec.innerHTML = chronometer.setTime()[4]
+      milUni.innerHTML = chronometer.setTime()[5]
     },0)
   } else {
     btnLeft.setAttribute("class", "btn start")
@@ -85,6 +87,8 @@ btnRight.addEventListener('click', function () {
     minUni.innerHTML = chronometer.setTime()[1]
     secDec.innerHTML = chronometer.setTime()[2]
     secUni.innerHTML = chronometer.setTime()[3]
+    milDec.innerHTML = chronometer.setMilliseconds();
+    milUni.innerHTML = chronometer.setMilliseconds();
     var itemsUl = document.getElementsByTagName("ol")
     itemsUl[0].innerHTML = ''
     /* for(var i=0; i<items.length; i++){
