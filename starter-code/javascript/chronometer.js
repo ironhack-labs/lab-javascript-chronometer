@@ -32,12 +32,13 @@ Chronometer.prototype.twoDigitsNumber = function (n) {
 };
 
 Chronometer.prototype.setTime = function () {
-
+ 
 };
 
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
+Chronometer.prototype.setMilliseconds = function () {
+  //var mili = this.currentTime - (this.setSeconds()*1000);
+  //return mili;
+};
 
 Chronometer.prototype.stopClick = function () {
   return clearInterval(this.intervalId);
