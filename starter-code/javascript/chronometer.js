@@ -1,5 +1,7 @@
 // Constructor
 function Chronometer() {
+  this.seconds = 0;
+  this.minutes = 0;
   this.currentTime = 0;
   this.intervalId = "";
 }
@@ -26,8 +28,8 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 };
 
 Chronometer.prototype.setTime = function () {
-  printMinutes(this.twoDigitsNumber(this.setMinutes()));
-  printSeconds(this.twoDigitsNumber(this.setSeconds()));
+  this.seconds = this.twoDigitsNumber(this.setSeconds());
+  this.minutes = this.twoDigitsNumber(this.setMinutes());
 };
 
 Chronometer.prototype.setMilliseconds = function () {

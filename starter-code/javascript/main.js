@@ -7,20 +7,25 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splitList   = document.getElementById('splits');
+var intervalId  = "";
 
 
 function printTime() {
-
+  intervalId = setInterval(function() {
+    printMinutes();
+    printSeconds();
+  }, 1000);
 }
 
-function printMinutes(minutes) {
-  var min = minutes.split('');
+function printMinutes() {
+  var min = chronometer.minutes.split('');
   minDec.innerHTML = min[0];
   minUni.innerHTML = min[1];
 }
 
-function printSeconds(seconds) {
-  var sec = seconds.split('');
+function printSeconds() {
+  var sec = chronometer.seconds.split('');
   secDec.innerHTML = sec[0];
   secUni.innerHTML = sec[1];
 }
@@ -30,7 +35,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  var listItem = document.createElement('li');
+  var time = document.createTextNode(chronometer.minutes + ':' + chronometer.seconds);
 
+  listItem.appendChild(time);
+  splitList.appendChild(listItem);
 }
 
 function clearSplits() {
@@ -65,15 +74,19 @@ btnLeft.addEventListener('click', function () {
     setSplitBtn();
 
     chronometer.startClick();
+    printTime();
   } else {
     setStartBtn();
     setResetBtn();
 
     chronometer.stopClick();
+    clearInterval(intervalId);
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  
+  if (btnRight.getAttribute('class').indexOf('split') !== -1) {
+    printSplit();
+  }
 });
