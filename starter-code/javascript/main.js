@@ -51,10 +51,15 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  btnLeft.setAttribute("class", "btn stop");
+  btnLeft.innerHTML = "STOP";
+  newChrono.startClick();
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  btnRight.setAttribute("class", "btn split");
+  btnRight.innerHTML = "SPLIT";
 });
+
+var newChrono = new Chronometer();
