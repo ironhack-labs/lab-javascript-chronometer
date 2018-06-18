@@ -1,4 +1,19 @@
-var chronometer = new Chronometer();
+var start = document.getElementById("btnLeft");
+start.onclick = cronometro;
+
+var reset = document.getElementById("btnRight");
+reset.onclick = clear;
+
+var split = ""
+
+function splitF(){
+	var pantalla = document.getElementById("split");
+	pantalla.innerHTML = split;
+}
+
+
+
+/*var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -58,3 +73,4 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
 });
+*/
