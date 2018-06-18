@@ -13,6 +13,7 @@ var intervalId = "";
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -27,12 +28,20 @@ function printSeconds() {
   secUni.innerHTML = sec[1];
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+  var sec = chronometer.millisecondsToPrint.split("");
+  milDec.innerHTML = sec[0];
+  milUni.innerHTML = sec[1];
+}
 
 function printSplit() {
   var listItem = document.createElement("li");
   var time = document.createTextNode(
-    chronometer.minutes + ":" + chronometer.seconds
+    chronometer.minutes +
+      ":" +
+      chronometer.seconds +
+      ":" +
+      chronometer.millisecondsToPrint
   );
 
   listItem.appendChild(time);
@@ -76,7 +85,7 @@ btnLeft.addEventListener("click", function() {
     chronometer.startClick();
     intervalId = setInterval(function() {
       printTime();
-    }, 1000);
+    }, 10);
   } else {
     setStartBtn();
     setResetBtn();
