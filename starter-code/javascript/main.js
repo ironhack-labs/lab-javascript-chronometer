@@ -31,6 +31,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  var splitContainer=document.getElementById("splits");
+  var minutos=chronometer.twoDigitsNumber(chronometer.setMinutes());
+  var segundos=chronometer.twoDigitsNumber(chronometer.setSeconds());
+  var horaSplit=minutos+":"+segundos;
+  var splitDisplay=document.createElement('li');
+  splitDisplay.innerHTML=horaSplit;
+  splitContainer.appendChild(splitDisplay);
+
 
 }
 
@@ -80,7 +88,8 @@ btnRight.addEventListener('click', function () {
     btnRight.innerHTML="SPLIT";
     btnRight.setAttribute("class", "btn split");
   } else {
-    btnRight.innerHTML="RESET";
-    btnRight.setAttribute("class", "btn reset");
+   /* btnRight.innerHTML="RESET";
+    btnRight.setAttribute("class", "btn reset");*/
+    printSplit();
   }
 });
