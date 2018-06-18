@@ -13,10 +13,11 @@ function printTime() {
     setInterval(function (){
         var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
         var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
+        var ms = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
         printMinutes(minutes);
         printSeconds(seconds);
+        printMilliseconds(ms);
     }, 1);
-
 }
 
 function printMinutes(minutes) {
@@ -35,8 +36,12 @@ function printSeconds(seconds) {
     units.innerHTML = seconds [1];
 }
 
-function printMilliseconds() {
-
+function printMilliseconds(ms) {
+    var decens = document.getElementById("milDec");
+    decens.innerHTML = ms[0];
+    
+    var units = document.getElementById("milUni");
+    units.innerHTML = ms[1];
 }
 
 function printSplit() {
@@ -46,7 +51,9 @@ function printSplit() {
     var text = document.createTextNode( numbers[0].innerHTML+
                                         numbers[1].innerHTML+":"+
                                         numbers[2].innerHTML+
-                                        numbers[3].innerHTML);
+                                        numbers[3].innerHTML+":"+
+                                        numbers[4].innerHTML+
+                                        numbers[5].innerHTML);
     itemElement.appendChild(text);
     parent.appendChild(itemElement);
 
@@ -74,8 +81,6 @@ function setStartBtn() {
     var button=document.getElementsByClassName("btn stop")[0];
     button.setAttribute("class", "btn start");
     button.innerHTML="START";
-
-
 }
 
 function setResetBtn() {
@@ -102,9 +107,7 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
     if (btnRight.innerHTML === "RESET") {
         clearSplits();
-        printSeconds("00");
-        printMinutes("00");
-        chronometer.resetClick();
+        chronometer.splitClick();
     } else {
         printSplit();
     }
