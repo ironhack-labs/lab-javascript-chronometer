@@ -18,7 +18,7 @@ function printTime() {
     printMinutes(chronometer.minutes)
     printSeconds(chronometer.seconds)
     printMilliseconds(chronometer.milliseconds)
-  }, )
+  }, 10)
   return id
 }
 
