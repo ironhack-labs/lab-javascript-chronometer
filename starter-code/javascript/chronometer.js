@@ -18,10 +18,10 @@ Chronometer.prototype.startClick = function() {
     this.intervalMili=setInterval(function(){
         that.miliseconds++;
         that.setTime();
-        if(that.intervalMili>100){
-            that.miliseconds=1;
+        if(that.miliseconds>98){
+            that.miliseconds=0;
         }
-    },1);
+    },10);
 
 };
 
@@ -53,6 +53,7 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
+    console.log(this.miliseconds);
     return this.miliseconds
 };
 
