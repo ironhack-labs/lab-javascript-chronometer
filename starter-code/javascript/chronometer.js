@@ -6,18 +6,18 @@
  };
 
 Chronometer.prototype.startClick = function () {
- 
+  
 
-      var thisChronometer = this;
+      var self = this;
       
 
       this.intervalId = setInterval(function() {
-         thisChronometer.currentTime++; 
-         thisChronometer.setTime();
+        
+         self.currentTime++; 
+         self.setTime();
     }, 1000);
 
   
-
 };
 
 
