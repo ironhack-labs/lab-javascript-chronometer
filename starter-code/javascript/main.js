@@ -82,6 +82,11 @@ btnRight.addEventListener('click', function () {
     if (btnRight.getAttribute("class") == "btn split"){
 printSplit();
     }else {
-        resetEverything
+        chronometer.clearSplits();
+        chronometer.resetClick();
+        minDec.innerText = 0;
+        minUni.innerText = 0;
+        secDec.innerText = 0;
+        secUni.innerText = 0;
     }
 });
