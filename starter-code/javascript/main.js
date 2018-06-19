@@ -33,11 +33,19 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+    var itemContainer = document.getElementById("splits");
+    var sec = chronometer.twoDigitsNumber(chronometer.setSeconds());
+    var min = chronometer.twoDigitsNumber(chronometer.setMinutes());
+    var text= min[0]+min[1]+":"+sec[0]+sec[1];
+    var listItem = document.createElement("li")
+    listItem.innerHTML = text;
+    itemContainer.appendChild(listItem)
+    }
 
-}
 
 function clearSplits() {
-
+    var itemContainer = document.getElementById("splits");
+    itemContainer.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -79,7 +87,9 @@ btnRight.addEventListener('click', function () {
     if(btnLeft.innerText == "START"){
         setResetBtn();
         chronometer.resetClick();
+        clearSplits();
     }else{
         setSplitBtn();
+        printSplit();
     }
 });
