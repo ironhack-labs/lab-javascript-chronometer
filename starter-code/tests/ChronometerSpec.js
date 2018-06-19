@@ -1,3 +1,5 @@
+
+
 describe('', function () {
   beforeEach(function () {
     chronometer = new Chronometer();
