@@ -2,6 +2,7 @@
 function Chronometer() {
   this.currentTime = 0;
   this.intervalId = 0;
+  this.mili = 0;
 }
 
 Chronometer.prototype.startClick = function () {
@@ -10,6 +11,7 @@ Chronometer.prototype.startClick = function () {
     that.currentTime += 1;
     that.setTime();
   }, 1000);
+  chronometer.setMilliseconds();
 };
 
 Chronometer.prototype.setMinutes = function () {
@@ -36,6 +38,17 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
+  var that = this;
+  var intervalId = setInterval(function () {
+    console.log(that.mili)
+    that.mili += 1;
+    that.setTime();
+    if (that.mili > 99) {
+      //clearInterval(intervalId);
+      that.mili = 0
+    }
+  }, 1);
+  return this.mili;
   //var mili = this.currentTime - (this.setSeconds()*1000);
   //return mili;
 };

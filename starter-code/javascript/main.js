@@ -31,14 +31,14 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-  //var mil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
-  //milDec.innerText = mil[0];
-  //milUni.innerText = mil[1];
+  var mil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+  milDec.innerText = mil[0];
+  milUni.innerText = mil[1];
 }
 
 function printSplit() {
   var li = document.createElement("li");
-  li.innerText = chronometer.twoDigitsNumber(chronometer.setMinutes()) + ":" + chronometer.twoDigitsNumber(chronometer.setSeconds());
+  li.innerText = chronometer.twoDigitsNumber(chronometer.setMinutes()) + ":" + chronometer.twoDigitsNumber(chronometer.setSeconds()) + ":" + chronometer.twoDigitsNumber(chronometer.setMilliseconds());
   list.appendChild(li);
 }
 
