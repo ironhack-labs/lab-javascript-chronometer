@@ -68,13 +68,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-    var random = 0;
     if(btnLeft.innerHTML === "START"){
         setStopBtn()
         setSplitBtn()
 
         chronometer.startClick();
-        random = setInterval(printTime,1);
+        setInterval(printTime,1);
 
 
     } else if(btnLeft.innerHTML === "STOP"){
@@ -82,7 +81,6 @@ btnLeft.addEventListener('click', function () {
         setResetBtn();
         
         chronometer.stopClick();
-        clearInterval(random);
     }
 });
 
