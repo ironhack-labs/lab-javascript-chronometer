@@ -13,6 +13,7 @@ var splits      = document.getElementById("splits");
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -28,12 +29,14 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  var milliSeconds = chronometer.milliSeconds;
+  milDec.innerHTML = milliSeconds[0];
+  milUni.innerHTML = milliSeconds[1];
 }
 
 function printSplit() {
   var item = document.createElement("li");
-  var timeString = chronometer.minutes + ":" + chronometer.seconds;
+  var timeString = chronometer.minutes + ":" + chronometer.seconds + ":" + chronometer.milliSeconds;
   item.innerHTML = timeString;
   splits.appendChild(item);
 }
