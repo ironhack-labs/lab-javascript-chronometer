@@ -13,6 +13,7 @@ function printTime() {
     var time = chronometer.setTime()
     printMinutes(time[0])
     printSeconds(time[1])
+    printMilliseconds(time[2])
 
 }
 
@@ -26,7 +27,11 @@ function printSeconds(sec) {
     document.querySelector("#secUni").innerHTML = sec[1]
 }
 
-function printMilliseconds() {
+
+
+function printMilliseconds(milisec) {
+    document.querySelector("#milDec").innerHTML = milisec[0]
+    document.querySelector("#milUni").innerHTML = milisec[1]
 
 }
 
@@ -62,7 +67,7 @@ btnLeft.addEventListener('click', function () {
         chronometer.startClick();
         setInterval(function () {
             printTime();
-        }, 1000);
+        }, 1);
         btnLeft.innerHTML = "STOP"
         btnRight.innerHTML = "SPLIT"
         btnRight.classList.toggle("split")
