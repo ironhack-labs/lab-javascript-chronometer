@@ -7,6 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splits      = document.getElementById("splits");
 
 
 function printTime() {
@@ -31,11 +32,17 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  var item = document.createElement("li");
+  var timeString = chronometer.minutes + ":" + chronometer.seconds;
+  item.innerHTML = timeString;
+  splits.appendChild(item);
 }
 
 function clearSplits() {
-
+  var splitsarray = document.getElementsByTagName("li")
+    for (var i = (splitsarray.length-1); i >= 0; i--) {
+      splits.removeChild(splitsarray[i]);
+    }
 }
 
 function setStopBtn() {
@@ -64,15 +71,26 @@ btnLeft.addEventListener('click', function () {
       console.log("start");
       chronometer.startClick();
       setStopBtn();
+      setSplitBtn();
     }
     else if (btnLeft.getAttribute("class") == "btn stop") {
       console.log("stop");
       chronometer.stopClick();
       setStartBtn();
+      setResetBtn();
     }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  if (btnRight.getAttribute("class") == "btn reset") {
+    chronometer.resetClick();
+    clearSplits();
 
+
+
+  }
+  else if (btnLeft.getAttribute("class") == "btn stop") {
+    printSplit();
+  }
 });
