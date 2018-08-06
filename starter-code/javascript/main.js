@@ -19,6 +19,7 @@ function printMinutes() {
     var mins = Math.floor(chronometer.currentTime / 60);
 
     if (chronometer.currentTime > 60) {
+        secDec.innerHTML = '0';
         if (String(mins).length === 1) {
             minUni.innerHTML = mins;
             // console.log('test');
@@ -40,6 +41,9 @@ function printSeconds() {
     } else if (String(secs).length === 2) {
         secDec.innerHTML = String(secs)[0];
         secUni.innerHTML = String(secs)[1];
+    }
+
+    if (chronometer.currentTime > 60) {
     }
 
     // calculate dec seconds
