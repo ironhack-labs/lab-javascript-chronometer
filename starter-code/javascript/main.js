@@ -9,16 +9,42 @@ var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
 
 function printTime() {
-    var callSetTime = chronometer.setTime(printMinutes(), printSeconds(), chronometer.twoDigitsNumber());
-    console.log(callSetTime);
+    console.log('currentTime', chronometer.currentTime);
+    printSeconds();
+    printMinutes();
 }
 
 function printMinutes() {
-    chronometer.setMinutes();
+    // chronometer.setMinutes();
+    var mins = Math.floor(chronometer.currentTime / 60);
+
+    if (chronometer.currentTime > 60) {
+        if (String(mins).length === 1) {
+            minUni.innerHTML = mins;
+            // console.log('test');
+        } else if (String(mins).length === 2) {
+            minDec.innerHTML = String(mins)[0];
+            minUni.innerHTML = String(mins)[1];
+        }
+    }
 }
 
 function printSeconds() {
-    chronometer.setSeconds();
+    // calculate seconds from chronometer.seconds
+    var secs = chronometer.currentTime % 60;
+
+    // calculate uni seconds
+    if (String(secs).length === 1) {
+        secUni.innerHTML = secs;
+        // console.log('test');
+    } else if (String(secs).length === 2) {
+        secDec.innerHTML = String(secs)[0];
+        secUni.innerHTML = String(secs)[1];
+    }
+
+    // calculate dec seconds
+    // set innerHTML of uniSeconds element
+    // set innerHTML of decSeconds element
 }
 
 function printMilliseconds() {}
