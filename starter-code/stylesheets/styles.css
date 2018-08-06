@@ -32,7 +32,9 @@ body {
     position: relative;
     text-align: center;
     width: 220px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+    display: flex;
+    justify-content: space-between;
 }
 
 #splits-container {
@@ -52,6 +54,7 @@ body {
     margin-top: -15px;
     position: absolute;
     right: 20px;
+    bottom: 60px;
 }
 
 .leash {
@@ -123,4 +126,10 @@ body {
 }
 .btn.split {
     background: #0851ab;
+}
+
+.split-container {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
 }

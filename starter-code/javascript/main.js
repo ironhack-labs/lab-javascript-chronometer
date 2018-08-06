@@ -7,6 +7,7 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
+var splitList = document.querySelector('.split-list');
 
 function printTime() {
     console.log('currentTime', chronometer.currentTime);
@@ -15,14 +16,12 @@ function printTime() {
 }
 
 function printMinutes() {
-    // chronometer.setMinutes();
     var mins = Math.floor(chronometer.currentTime / 60);
 
     if (chronometer.currentTime > 60) {
         secDec.innerHTML = '0';
         if (String(mins).length === 1) {
             minUni.innerHTML = mins;
-            // console.log('test');
         } else if (String(mins).length === 2) {
             minDec.innerHTML = String(mins)[0];
             minUni.innerHTML = String(mins)[1];
@@ -37,18 +36,10 @@ function printSeconds() {
     // calculate uni seconds
     if (String(secs).length === 1) {
         secUni.innerHTML = secs;
-        // console.log('test');
     } else if (String(secs).length === 2) {
         secDec.innerHTML = String(secs)[0];
         secUni.innerHTML = String(secs)[1];
     }
-
-    if (chronometer.currentTime > 60) {
-    }
-
-    // calculate dec seconds
-    // set innerHTML of uniSeconds element
-    // set innerHTML of decSeconds element
 }
 
 function printMilliseconds() {}
@@ -70,6 +61,10 @@ function setSplitBtn() {
     btnRight.classList.add('split');
     btnRight.innerHTML = 'SPLIT';
     chronometer.resetClick();
+    secDec.innerHTML = '0';
+    secUni.innerHTML = '0';
+    minDec.innerHTML = '0';
+    minUni.innerHTML = '0';
 }
 
 function setStartBtn() {
@@ -83,6 +78,11 @@ function setResetBtn() {
     btnRight.classList.remove('split');
     btnRight.classList.add('reset');
     btnRight.innerHTML = 'RESET';
+
+    var newLi = document.createElement('li');
+    splitList.parentNode.appendChild(newLi);
+    newLi.innerHTML = chronometer.currentTime;
+    console.log(newLi);
 }
 
 // Start/Stop Button
