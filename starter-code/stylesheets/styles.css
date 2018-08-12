@@ -115,3 +115,9 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+#splits-container ol {
+  height: 572px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
