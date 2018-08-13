@@ -73,7 +73,6 @@ function setResetBtn() {
   btnRight.classList.remove();
   btnRight.innerHTML = "RESET";
   btnRight.className = "btn reset";
-  chronometer.splitClick();
 }
 
 // Start/Stop Button
