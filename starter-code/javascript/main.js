@@ -10,15 +10,18 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+    printMinutes();
+    printSeconds();
 }
 
 function printMinutes() {
-
+    minUni.innerHTML = chronometer.minutes[1]
+    minDec.innerHTML = chronometer.minutes[0]   
 }
 
 function printSeconds() {
-
+    secUni.innerHTML = chronometer.seconds[1]
+    secDec.innerHTML = chronometer.seconds[0]
 }
 
 function printMilliseconds() {
@@ -34,7 +37,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+    chronometer.stopClick();
 }
 
 function setSplitBtn() {
@@ -42,15 +45,28 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-
+    chronometer.startClick();   
 }
 
 function setResetBtn() {
-
+    
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if (btnLeft.className == "btn start"){
+        btnLeft.className = "btn stop"
+        btnLeft.innerHTML = "STOP"   
+        btnRight.className ="btn split"
+        btnRight.innerHTML = "SPLIT"
+        setStartBtn();
+    } else {
+        btnLeft.className = "btn start"
+        btnLeft.innerHTML = "START"   
+        btnRight.className ="btn reset"
+        btnRight.innerHTML = "RESET"          
+        setStopBtn();    
+    }
 
 });
 
