@@ -91,6 +91,8 @@ btnLeft.addEventListener("click", function() {
 btnRight.addEventListener("click", function() {
   if (btnRight.innerHTML == "RESET") {
     chronometer.resetClick();
+    clearTime();
+    clearSplits();
     return;
   }
   chronometer.splitClick();

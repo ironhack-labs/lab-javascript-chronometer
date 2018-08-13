@@ -44,8 +44,6 @@ Chronometer.prototype.stopClick = function () {
 
 Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
-  clearTime();
-  clearSplits();
 };
 
 Chronometer.prototype.splitClick = function () {
