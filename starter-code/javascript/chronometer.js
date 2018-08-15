@@ -41,8 +41,7 @@ Chronometer.prototype.setMilliseconds = function () {
 };  
 
 Chronometer.prototype.stopClick = function () {
-    console.log("parando")
-  clearInterval(this.intervalId)
+    clearInterval(this.intervalId)
 };
 
 Chronometer.prototype.resetClick = function () {
