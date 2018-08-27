@@ -7,18 +7,18 @@ function Chronometer() {
 
 Chronometer.prototype.startClick = function () {
 	var TIME = 1000;
-	var contador = 0;
 
 	setInterval(function(){
-		return contador++;
-	}, TIME);
-	
-	this.currentTime = contador;
+		this.currentTime++;
+	}.bind(this), TIME);
 };
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+Chronometer.prototype.setMinutes = function () {
+	var minutes = Math.floor(this.currentTime / 60);
+	
+	console.log('minutes', minutes);
+	return minutes;
+};
 
 // Chronometer.prototype.setSeconds = function () {
   
