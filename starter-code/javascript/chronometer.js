@@ -8,7 +8,7 @@ function Chronometer() {
 Chronometer.prototype.startClick = function () {
 	var TIME = 1000;
 
-	setInterval(function () {
+	var intervalId = setInterval(function () {
 		this.currentTime++;
 		this.setTime();
 	}.bind(this), TIME);
@@ -46,13 +46,13 @@ Chronometer.prototype.setTime = function () {
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
+Chronometer.prototype.stopClick = function () {
+	clearInterval(this.intervalId);
+};
 
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
+Chronometer.prototype.resetClick = function () {
+	this.currentTime = 0;
+};
 
 // Chronometer.prototype.splitClick = function () {
 
