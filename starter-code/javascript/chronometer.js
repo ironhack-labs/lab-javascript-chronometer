@@ -12,17 +12,16 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(function(){
     that.currentTime += 1; 
     that.setTime();
-  },1000);
+  },0,1);
 } 
 
-Chronometer.prototype.setMinutes = function () {
-  var minutes = Math.floor(this.currentTime / 60);
+Chronometer.prototype.setMinutes = function () { // (this.currentTime / (1000 * 60))
+  var minutes = Math.floor(this.currentTime / (1000 * 60));
   return minutes;
 };
 
 Chronometer.prototype.setSeconds = function () { 
-  return this.currentTime - this.setMinutes() * 60;
-  
+  return this.currentTime / 1000 - this.setMinutes() * 60;
 };
 
 Chronometer.prototype.twoDigitsNumber = function(value) {
@@ -39,7 +38,7 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
-return this.currentTime * 1000;
+return (this.currentTime - (setMinutes * 60 * 1000 + setSeconds * 1000 )) ;
 };
 
 Chronometer.prototype.stopClick = function () {
