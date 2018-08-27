@@ -40,6 +40,8 @@ Chronometer.prototype.twoDigitsNumber = function (val) {
 Chronometer.prototype.setTime = function () {
 	var minutes = this.twoDigitsNumber(this.setMinutes());
 	var seconds = this.twoDigitsNumber(this.setSeconds());
+
+	return time = {minutes: minutes, seconds: seconds};
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
