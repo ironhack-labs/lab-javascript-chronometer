@@ -1,3 +1,5 @@
+// variables globales
+
 var chronometer = new Chronometer();
 var btnLeft = document.getElementById('btnLeft');
 var btnRight = document.getElementById('btnRight');
@@ -8,6 +10,7 @@ var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
 
+
 function printTime() {
 
 }
@@ -15,7 +18,6 @@ function printTime() {
 function printMinutes() {
 
 }
-
 
 function printSeconds() {
 
@@ -51,7 +53,9 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  // cambia el valor a top
+  btnLeft.innerHTML = ``;
+  btnLeft.innerHTML = `<button id="btnLeft" class="btn stop">STOP</button>`;
 });
 
 // Reset/Split Button
