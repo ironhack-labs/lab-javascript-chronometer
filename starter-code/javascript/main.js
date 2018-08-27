@@ -12,7 +12,6 @@ var milUni      = document.getElementById('milUni');
 function printTime() {
   printMinutes();
   printSeconds();
-  printMilliseconds();
 }
 
 function printMinutes() {
@@ -69,8 +68,8 @@ if(btnLeft.innerHTML == "START"){
   setSplitBtn();
   chronometer.startClick();
   setInterval(function(){
-  printTime();
-  },0,1);
+    printTime();
+  },1000);
   
   
 }
