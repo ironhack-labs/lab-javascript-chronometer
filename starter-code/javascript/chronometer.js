@@ -16,13 +16,14 @@ Chronometer.prototype.startClick = function () {
 Chronometer.prototype.setMinutes = function () {
 	var minutes = Math.floor(this.currentTime / 60);
 	
-	console.log('minutes', minutes);
 	return minutes;
 };
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+Chronometer.prototype.setSeconds = function () {
+	var seconds = (this.currentTime % 3600 % 60);
+
+	return seconds;
+};
 
 // Chronometer.prototype.twoDigitsNumber = function () {
   
