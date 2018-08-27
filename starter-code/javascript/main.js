@@ -10,15 +10,15 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-
+  minUni.innerHTML =  chronometer.minutes
 }
 
 function printSeconds() {
-  console.log("print seconds");
  secUni.innerHTML =  chronometer.seconds
 }
 
@@ -27,7 +27,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  var split = document.createElement("li")
+  document.getElementById("splits").appendChild(split);
+  split.innerHTML = chronometer.minutes + " : " + chronometer.seconds;
 }
 
 function clearSplits() {
@@ -72,5 +74,10 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  chronometer.resetClick();
+  if(btnRight.className === "btn reset"){
+    chronometer.resetClick();
+  }
+  else{ //btn right split
+      printSplit();
+  }
 });
