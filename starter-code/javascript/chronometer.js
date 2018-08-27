@@ -8,14 +8,14 @@ function Chronometer() {
 Chronometer.prototype.startClick = function () {
 	var TIME = 1000;
 
-	setInterval(function(){
+	setInterval(function () {
 		this.currentTime++;
 	}.bind(this), TIME);
 };
 
 Chronometer.prototype.setMinutes = function () {
 	var minutes = Math.floor(this.currentTime / 60);
-	
+
 	return minutes;
 };
 
@@ -25,9 +25,16 @@ Chronometer.prototype.setSeconds = function () {
 	return seconds;
 };
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+Chronometer.prototype.twoDigitsNumber = function (val) {
+	var twoDigits = val;
+	var valToArr = val.toString();
+
+	if (valToArr.length === 1) {
+		twoDigits = ('0' + val).slice(-2);
+	}
+	return twoDigits.toString();
+
+};
 
 // Chronometer.prototype.setTime = function () {
 
@@ -38,7 +45,7 @@ Chronometer.prototype.setSeconds = function () {
 // };
 
 // Chronometer.prototype.stopClick = function () {
-  
+
 // };
 
 // Chronometer.prototype.resetClick = function () {
