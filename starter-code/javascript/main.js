@@ -9,8 +9,7 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
-function printTime() {
-	var time = chronometer.setTime();
+function printTime(time) {
 	printMinutes(time.minutes);
 	printSeconds(time.seconds);
 }
@@ -41,7 +40,6 @@ function clearSplits() {
 
 function setStopBtn() {
 	chronometer.stopClick();
-
 }
 
 function setSplitBtn() {
