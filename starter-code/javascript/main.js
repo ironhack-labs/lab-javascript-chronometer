@@ -7,7 +7,7 @@ var secDec = document.getElementById("secDec");
 var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
-
+var splits = document.getElementById("splits");
 function printTime() {
   console.log(chronometer.minutes);
   printMinutes(chronometer.minutes);
@@ -26,7 +26,14 @@ function printSeconds(sec) {
 
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+  console.log("Splitted")
+  var li=document.createElement('li');
+  li.innerHTML=chronometer.minutes+":"+chronometer.seconds
+  console.log(splits)
+  splits.appendChild(li) ;
+
+}
 
 function clearSplits() {}
 
@@ -61,7 +68,9 @@ btnLeft.addEventListener("click", function() {
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
   if (btnRight.getAttribute("class") == "btn reset") {
+    
   } else {
-    chronometer.setTime();
+    printSplit();
+    
   }
 });
