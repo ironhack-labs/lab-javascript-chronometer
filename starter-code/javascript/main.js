@@ -32,7 +32,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+	var time = chronometer.setTime();
+	var node = document.createElement('li');
+	var textNode = document.createTextNode(time.minutes + ':' + time.seconds);
+	node.appendChild(textNode);
+	splits.appendChild(node);
 }
 
 function clearSplits() {
@@ -44,10 +48,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-	var node = document.createElement('li');
-	var textNode = document.createTextNode('10:20');
-	node.appendChild(textNode);
-	splits.appendChild(node);
+
 }
 
 function setStartBtn() {
@@ -84,6 +85,6 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 	
 	if(btnRight.classList.contains('split')){
-		setSplitBtn();
+		printSplit();
 	}
 });
