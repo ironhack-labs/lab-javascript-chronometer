@@ -40,7 +40,12 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+	chronometer.resetClick();
+	chronometer.setTime();
+	
+	while(splits.firstChild){
+		splits.removeChild(splits.firstChild);
+	}
 }
 
 function setStopBtn() {
@@ -86,5 +91,7 @@ btnRight.addEventListener('click', function () {
 	
 	if(btnRight.classList.contains('split')){
 		printSplit();
+	}else if(btnRight.classList.contains('reset')){
+		clearSplits();
 	}
 });
