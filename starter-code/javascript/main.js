@@ -7,6 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splits 		= document.getElementById('splits');
 
 
 function printTime(time) {
@@ -43,7 +44,10 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-
+	var node = document.createElement('li');
+	var textNode = document.createTextNode('10:20');
+	node.appendChild(textNode);
+	splits.appendChild(node);
 }
 
 function setStartBtn() {
@@ -78,5 +82,8 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+	
+	if(btnRight.classList.contains('split')){
+		setSplitBtn();
+	}
 });
