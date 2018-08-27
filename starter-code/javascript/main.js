@@ -50,38 +50,38 @@ function clearSplits() {
 
 function setStopBtn() {
 	chronometer.stopClick();
+	btnLeft.classList.remove('btn', 'stop');
+	btnLeft.classList.add('btn','start');
+	btnLeft.innerHTML ='START';
 }
 
 function setSplitBtn() {
-
+	btnRight.classList.remove('btn', 'reset');
+	btnRight.classList.add('btn','split');
+	btnRight.innerHTML ='SPLIT';
 }
 
 function setStartBtn() {
 	chronometer.startClick();
+	btnLeft.classList.remove('btn', 'start');
+	btnLeft.classList.add('btn','stop');
+	btnLeft.innerHTML ='STOP';
 }
 
 function setResetBtn() {
-
+	btnRight.classList.remove('btn', 'split');
+	btnRight.classList.add('btn','reset');
+	btnRight.innerHTML ='RESET';
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
 
 	if(btnLeft.classList.contains('stop')){
-		btnLeft.classList.remove('btn', 'stop');
-		btnLeft.classList.add('btn','start');
-		btnRight.classList.remove('btn', 'split');
-		btnRight.classList.add('btn','reset');
-		btnRight.innerHTML ='RESET';
-		btnLeft.innerHTML ='START';
+		setResetBtn();
 		setStopBtn();
 	}else if(btnLeft.classList.contains('start')){
-		btnLeft.classList.remove('btn', 'start');
-		btnLeft.classList.add('btn','stop');
-		btnRight.classList.remove('btn', 'reset');
-		btnRight.classList.add('btn','split');
-		btnRight.innerHTML ='SPLIT';
-		btnLeft.innerHTML ='STOP';
+		setSplitBtn();
 		setStartBtn();
 	}
 });
