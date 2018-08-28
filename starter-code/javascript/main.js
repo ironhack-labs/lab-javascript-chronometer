@@ -52,7 +52,6 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
 
-});
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
