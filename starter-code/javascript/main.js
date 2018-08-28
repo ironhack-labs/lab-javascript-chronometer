@@ -22,41 +22,69 @@ function printTime(chronometer) {
 
 }
 
-function printMinutes() {
+unction printMinutes() {
+
+    var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
+    secDec.innerHTML = seconds[0];
+    secUni.innerHTML = seconds[1];
 
 }
 
 function printSeconds() {
 
+    var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
+    minDec.innerHTML = minutes[0];
+    minUni.innerHTML = minutes[1];
+
+
 }
 
 function printMilliseconds() {
 
+    var miliseconds = chronometer.twoDigitsMili(chronometer.setMilliseconds());
+    milDec.innerHTML = miliseconds[0];
+    milUni.innerHTML = miliseconds[1];
 }
 
 function printSplit() {
 
+    var newTime = document.createElement('li');
+    var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
+    var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
+    var miliseconds = chronometer.twoDigitsMili(chronometer.setMilliseconds());
+    newTime.innerHTML = minutes + ":" + seconds + ":" + miliseconds;
+    splits.appendChild(newTime);
 }
 
 function clearSplits() {
 
+    splits.innerHTML = "";
 }
 
 function setStopBtn() {
 
+    btnLeft.setAttribute('class', 'btn stop');
+    btnLeft.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
+    btnRight.innerHTML = "SPLIT";
+    btnRight.setAttribute('class', 'btn split');
 
 }
 
 function setStartBtn() {
 
+    btnLeft.setAttribute('class', 'btn start');
+    btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
 
+    btnRight.innerHTML = "RESET";
+    btnRight.setAttribute('class', 'btn reset');
 }
+var printInterval = 0;
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function(e) {
@@ -85,10 +113,12 @@ btnLeft.addEventListener('click', function(e) {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function() {
-    chronometer.resetClick();
-
-    return
-
-
+    if (btnRight.getAttribute('class') === "btn reset") {
+        chronometer.currentTime = 0;
+        printTime(chronometer);
+        clearSplits();
+    } else {
+        printSplit();
+    }
 
 });
