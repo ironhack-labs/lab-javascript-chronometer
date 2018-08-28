@@ -34,27 +34,38 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+    document.getElementById('btnLeft').innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-
+    document.getElementById('btnRight').innerHTML = 'SPLIT';
 }
 
 function setStartBtn() {
-
+    document.getElementById('btnLeft').innerHTML = "START";
 }
 
 function setResetBtn() {
-
+    document.getElementById('btnRight').innerHTML = 'RESET';
 }
-
+var newChrono = new Chronometer();
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if(document.getElementById('btnLeft').innerHTML === "START"){
+        setStopBtn();
+    }else{
+        setStartBtn();
+        newChrono.startClick();
+    }
 
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    if(document.getElementById('btnRight').innerHTML === "RESET"){
+        setSplitBtn();
+    }else{
+        setResetBtn();
+        newChrono.stopClick();
+    }
 });
