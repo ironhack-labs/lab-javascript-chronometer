@@ -10,7 +10,7 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+   
 }
 
 function printMinutes() {
@@ -51,10 +51,16 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    btnLeft.classList.remove('start') 
+    btnLeft.classList.add('stop') 
+    btnLeft.innerText = "STOP"
 });
+
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    btnRight.classList.remove('reset')
+    btnRight.classList.add('split')
+    btnRight.innerText = "SPLIT"
 });
