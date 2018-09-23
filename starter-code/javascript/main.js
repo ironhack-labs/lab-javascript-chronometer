@@ -18,19 +18,19 @@ function printTime() {
 }
 
 function printMinutes() {
-  var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes().toString());
+  var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
   minDec.innerText = minutes[0];
   minUni.innerText = minutes[1];
 }
 
 function printSeconds() {
-  var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds().toString());
+  var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
   secDec.innerText = seconds[0];
   secUni.innerText = seconds[1];
 }
 
 function printMilliseconds() {
-  var milliseconds = chronometer.twoDigitsNumber(chronometer.setMilliseconds().toString());
+  var milliseconds = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
   milDec.innerText = milliseconds[0];
   milUni.innerText = milliseconds[1];
 }
@@ -50,7 +50,6 @@ function clearSplits() {
 function setStopBtn() {
   btnLeft.className = 'btn stop';
   btnLeft.innerText = 'STOP';
-  chronometer.startClick();
   setSplitBtn();
 }
 
@@ -62,7 +61,6 @@ function setSplitBtn() {
 function setStartBtn() {
   btnLeft.className = 'btn start';
   btnLeft.innerText = 'START';
-  chronometer.stopClick();
   setResetBtn();
 }
 
@@ -76,6 +74,7 @@ btnLeft.addEventListener('click', function () {
   if (btnLeft.className === 'btn start') {
     setStopBtn();
     printTime();
+    chronometer.startClick();
   } else {
     setStartBtn();
     chronometer.stopClick();

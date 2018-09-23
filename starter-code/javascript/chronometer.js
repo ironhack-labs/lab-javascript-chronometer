@@ -47,9 +47,9 @@ Chronometer.prototype.resetClick = function () {
 };
 
 Chronometer.prototype.splitClick = function () {
-  var mins = chronometer.twoDigitsNumber(chronometer.setMinutes().toString());
-  var secs = chronometer.twoDigitsNumber(chronometer.setSeconds().toString());
-  var mills = chronometer.twoDigitsNumber(chronometer.setMilliseconds().toString());
+  var mins = chronometer.twoDigitsNumber(chronometer.setMinutes());
+  var secs = chronometer.twoDigitsNumber(chronometer.setSeconds());
+  var mills = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
   var time = mins + ':' + secs + ':' + mills;
   return time;
 };
