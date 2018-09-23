@@ -13,7 +13,7 @@ function printTime() {
   var intervalId = setInterval(function(){
     printMinutes();
     printSeconds();
-    //printMilliseconds();
+    printMilliseconds();
   }, 10)
 }
 
@@ -57,7 +57,6 @@ function setStopBtn() {
 function setSplitBtn() {
   btnRight.className = 'btn split';
   btnRight.innerText = 'SPLIT';
-  //chronometer.splitClick();
 }
 
 function setStartBtn() {
@@ -74,7 +73,6 @@ function setResetBtn() {
 
 // // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-  //console.log(btnLeft.className);
   if (btnLeft.className === 'btn start') {
     setStopBtn();
     printTime();
