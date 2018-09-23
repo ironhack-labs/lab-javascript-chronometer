@@ -63,6 +63,10 @@ Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
 };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+  var mins = chronometer.twoDigitsNumber(chronometer.setMinutes().toString());
+  var secs = chronometer.twoDigitsNumber(chronometer.setSeconds().toString());
+  //var mills = chronometer.twoDigitsNumber(chronometer.setMilliseconds().toString());
+  var time = mins + ':' + secs; //+ ':' + mills;
+  return time;
+};

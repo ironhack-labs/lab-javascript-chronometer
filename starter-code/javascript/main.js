@@ -38,11 +38,7 @@ function printMilliseconds() {
 function printSplit() {
   var splits = document.getElementById('splits');
   var split = document.createElement('li');
-  var mins = chronometer.twoDigitsNumber(chronometer.setMinutes().toString());
-  var secs = chronometer.twoDigitsNumber(chronometer.setSeconds().toString());
-  //var mills = chronometer.twoDigitsNumber(chronometer.setMilliseconds().toString());
-  var time = mins + ':' + secs; //+ ':' + mills;
-  split.innerHTML = time;
+  split.innerHTML = chronometer.splitClick();
   splits.appendChild(split);
 }
 
