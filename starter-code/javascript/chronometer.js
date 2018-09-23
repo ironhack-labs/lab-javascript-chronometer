@@ -1,40 +1,55 @@
 // Constructor
-// function Chronometer() {
+function Chronometer() {
+  this.currentTime = 0;
+  this.intervalId = 0;
+}
 
-// }
+Chronometer.prototype.startClick = function () {
+  that = this;
+  this.intervalId = setInterval(function () {
+    that.currentTime++;
+    that.setTime();
+  }, 10);
 
-// Chronometer.prototype.startClick = function () {
+  return that.currentTime;
+};
 
-// };
+Chronometer.prototype.setMinutes = function () {
+  //return Math.floor(this.currentTime / 60);
+  return Math.floor(this.currentTime / 6000);
+};
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+Chronometer.prototype.setSeconds = function () {
+  //return this.currentTime % 60;
+  return Math.floor(this.currentTime / 100) % 60;
+};
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+Chronometer.prototype.twoDigitsNumber = function (value) {
+  return value < 10 ? '0' + value : '' + value;
+};
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+Chronometer.prototype.setMilliseconds = function () {
+  return this.currentTime % 100;
+};
 
-// Chronometer.prototype.setTime = function () {
+Chronometer.prototype.setTime = function () {
+  this.minutes = this.twoDigitsNumber(this.setMinutes());
+  this.seconds = this.twoDigitsNumber(this.setSeconds());
+  this.milliseconds = this.twoDigitsNumber(this.setMilliseconds());
+};
 
-// };
+Chronometer.prototype.stopClick = function () {
+  clearInterval(this.intervalId);
+};
 
-// Chronometer.prototype.setMilliseconds = function () {
+Chronometer.prototype.resetClick = function () {
+  this.currentTime = 0;
+};
 
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+  var mins = chronometer.twoDigitsNumber(chronometer.setMinutes());
+  var secs = chronometer.twoDigitsNumber(chronometer.setSeconds());
+  var mills = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+  var time = mins + ':' + secs + ':' + mills;
+  return time;
+};
