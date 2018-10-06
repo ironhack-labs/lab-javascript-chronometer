@@ -58,8 +58,8 @@ btnLeft.addEventListener("click", function() {
     btnLeft.innerHTML = "START";
     btnRight.innerHTML = "RESET";
     btnRight.className = "btn reset";
-    if (-1 != winTimerId) {
-        window.clearInterval(winTimerId);
+    if (-1 != updateId) {
+        window.clearInterval(updateId);
   } 
 }
   else {
