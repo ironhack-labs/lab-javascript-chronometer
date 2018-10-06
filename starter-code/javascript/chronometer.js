@@ -15,20 +15,25 @@ function Chronometer() {
  };
 
  Chronometer.prototype.setMinutes = function () {
-     return 0;
+     this.min = Math.floor(this.currentTime / 60);
+     return this.min;     
 };
 
 Chronometer.prototype.setSeconds = function () {
-    this.sec = sec;
+    this.sec = this.currentTime % 60;
     return this.sec;
-  
 };
 
 Chronometer.prototype.twoDigitsNumber = function () {
-
+    if (number < 10) {
+        return "0" + number;
+      } else return "" + number;
 };
 
 Chronometer.prototype.setTime = function () {
+    var digitMin = twoDigitsNumber ( setMInutes(this.currentTime) );
+    var digitSec = twoDigitsNumber ( setSeconds(this.currentTime) );
+    return digitMin + digitSec;
 };
 
 Chronometer.prototype.setMilliseconds = function () {
@@ -36,13 +41,11 @@ Chronometer.prototype.setMilliseconds = function () {
 
 //this function stops the timerHandler
  Chronometer.prototype.stopClick = function () {
-     if (-1 != this.intervalId) {
-         clearInterval (this.intervalId);
-         this.intervalId = -1;
-     }
+    clearInterval(this.intervalId);
  };
 
  Chronometer.prototype.resetClick = function () {
+     this.currentTime = 0;
  };
 
  Chronometer.prototype.splitClick = function () {
