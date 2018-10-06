@@ -1,5 +1,7 @@
 // Constructor
 function Chronometer() {
+  this.minutes = 0;
+  this.second = 0;
   this.currentTime = 0;
   this.intervalId = 0;
 }
@@ -9,16 +11,13 @@ Chronometer.prototype.startClick = function() {
     function() {
       this.currentTime += 1;
       this.setTime();
+      console.log("current time ", this.currentTime);
+      console.log("current min ", this.minutes);
+      console.log("current second ", this.seconds);
     }.bind(this),
     1000
   );
 };
-
-var chr = new Chronometer();
-chr.startClick();
-setTimeout(function() {
-  console.log("current time ", chr.currentTime);
-}, 2000);
 
 Chronometer.prototype.setMinutes = function() {
   return parseInt(this.currentTime / 60);
