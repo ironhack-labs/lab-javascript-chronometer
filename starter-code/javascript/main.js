@@ -50,11 +50,28 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener('click', function (){
+  var currentClass = btnLeft.className;
+  if(currentClass === "btn start") {
+    console.log("Starting Chrono")
+    chronometer.startClick();
+    btnLeft.innerHTML="STOP";
+    btnRight.innerHTML="SPLIT";
+    btnLeft.className="btn stop";
+    btnRight.className="btn split";
+  }
+  else {
+    console.log("Stopping Chrono")
+    chronometer.stopClick();
+    btnLeft.innerHTML="START";
+    btnRight.innerHTML="RESET";
+    btnLeft.className="btn start";
+    btnRight.className="btn reset";
+  }
+  
 });
+
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
-});
+//btnRight.addEventListener('click', function () {
+//})
