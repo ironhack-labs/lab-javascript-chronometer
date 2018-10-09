@@ -50,8 +50,10 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener('click', function clickBtnLeft () {
+getElementById(btnLeft) (
+  background-color: red;
+)
 });
 
 // Reset/Split Button
