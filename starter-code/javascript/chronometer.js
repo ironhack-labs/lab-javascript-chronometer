@@ -2,17 +2,21 @@
 function Chronometer() {
     this.currentTime = 0;
     this.intervalId = 0;
+    //to test if we create each time a new chronometer 
+    //this.id = Math.floor(Math.random() * 1000);
  }
 
  //Callback function, will be called every 1000 millisec until call the StopClick
  Chronometer.prototype.timerHandler = function () {
      this.currentTime += 1; //seconds
      console.log("Incrementing currentTime... new val: " + this.currentTime);
+     //console.log("chronometer id is " + this.id);
      this.setTime();
+    
  };
 
  Chronometer.prototype.startClick = function () {
-     this.intervalId = setInterval(this.timerHandler.bind(this),1000);
+     this.intervalId = setInterval(this.timerHandler.bind(this),1000); 
  };
 
  Chronometer.prototype.setMinutes = function () {
@@ -32,8 +36,12 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 };
 
 Chronometer.prototype.setTime = function () {
-    var digitMin = twoDigitsNumber ( setMInutes(this.currentTime) );
-    var digitSec = twoDigitsNumber ( setSeconds(this.currentTime) );
+
+    var rawMinutes = this.setMinutes(this.currentTime);
+    var rawSeconds = this.setSeconds(this.currentTime);
+
+    var digitMin = this.twoDigitsNumber(rawMinutes);
+    var digitSec = this.twoDigitsNumber(rawSeconds);
     return digitMin + digitSec;
 };
 

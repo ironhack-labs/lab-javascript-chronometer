@@ -1,4 +1,6 @@
 var chronometer = new Chronometer();
+chronometer.startClick();
+
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -67,7 +69,7 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+/*btnLeft.addEventListener('click', function () {
 
 });
 
@@ -75,3 +77,4 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
 });
+*/
