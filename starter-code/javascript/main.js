@@ -1,5 +1,5 @@
 var chronometer = new Chronometer();
-chronometer.startClick();
+//chronometer.startClick();
 
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
