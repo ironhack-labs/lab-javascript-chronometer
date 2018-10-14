@@ -1,5 +1,4 @@
 var chronometer = new Chronometer();
-//chronometer.startClick();
 
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
@@ -22,18 +21,20 @@ var milUni      = document.getElementById('milUni');
 }*/
 
 function printTime() {
-    //appel printMinutes et printSecond
-
+    printMinutes();
+    printSeconds();
 }
 
 function printMinutes() {
-    //doit modifier les valeurs du html
-
+    var time = chronometer.setTime();
+    minDec.innerHTML = time.substr(0,1);
+    minUni.innerHTML = time.substr(1,1);
 }
 
 function printSeconds() {
-    //doit modifier les valeurs du html
-
+    var time = chronometer.setTime();
+    secDec.innerHTML = time.substr(2,1);
+    secUni.innerHTML = time.substr(3,1);
 }
 
 function printMilliseconds() {
@@ -49,32 +50,46 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+    btnLeft.innerHTML =  'STOP';
+    btnLeft.className = 'btn stop';
 }
 
 function setSplitBtn() {
-
+    btnRight.innerHTML = 'SPLIT';
+    btnRight.className = 'btn split';
 }
 
 function setStartBtn() {
-    //if 
-    //innerhtml
-    //class
-    //le bouton start doit devenir stop si activé et inversement
-
+    btnLeft.innerHTML =  'START';
+    btnLeft.className = 'btn start';
 }
 
 function setResetBtn() {
-
+    btnRight.innerHTML = 'RESET';
+    btnRight.className = 'btn reset'
 }
 
 // Start/Stop Button
-/*btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener('click', function() {
+    if (btnLeft.className === 'btn start') {
+        chronometer.startClick();
+        setStopBtn();
+    }
+    else {
+        chronometer.stopClick();
+        setStartBtn();
+    }
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
+btnRight.addEventListener('click', function() {
+    if (btnRight.className === 'btn reset') {
+        chronometer.resetClick();
+        setSplitBtn();
+    }
+    else {
+        //chronometer.resetClick() TODO:
+        setResetBtn();
+    }
 });
-*/
+

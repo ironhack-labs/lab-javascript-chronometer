@@ -8,8 +8,7 @@ function Chronometer() {
  Chronometer.prototype.timerHandler = function () {
      this.currentTime += 1; //seconds
      console.log("Incrementing currentTime... new val: " + this.currentTime);
-     this.setTime();
-    
+     printTime();
  };
 
  Chronometer.prototype.startClick = function () {
@@ -52,6 +51,7 @@ Chronometer.prototype.setMilliseconds = function () {
 
  Chronometer.prototype.resetClick = function () {
      this.currentTime = 0;
+     printTime();
  };
 
  Chronometer.prototype.splitClick = function () {
