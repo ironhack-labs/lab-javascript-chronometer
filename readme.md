@@ -12,7 +12,7 @@ Last, but not least, we are going to add a Split functionality, that will be ver
 
 ![](https://media.giphy.com/media/xT8qAZcty5f0BEm2lO/giphy.gif)
 
-### Requirements
+### Requerimientos
 
 - Use `setInterval` to update the chronometer each second.
 - Use Prototypal Inheritance to create a JavaScript object that encapsulates all the `Chronometer` functionalities.
