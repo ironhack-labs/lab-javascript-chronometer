@@ -19,8 +19,8 @@ btnLeft.onclick = () => {
     btnRight.classList.add("split");
     btnRight.innerText = "SPLIT";
     btnRight.classList.remove("reset");
-
     Clock.startClick();
+
   } else if (btnLeft.className.includes("stop")) {
     btnLeft.classList.remove("stop");
     btnLeft.classList.add("start");
@@ -34,11 +34,15 @@ btnLeft.onclick = () => {
 
 btnRight.onclick = () => {
   if (btnRight.className.includes("reset")) {
-    Clock.currentTime = 0;
+    Clock.resetClick();
     minDec.innerText = Clock.setTime()[0][0];
     minUni.innerText = Clock.setTime()[0][1];
     secDec.innerText = Clock.setTime()[1][0];
     secUni.innerText = Clock.setTime()[1][1];
+    milDec.innerText = "0";
+    milUni.innerText = "0";
+    
+
   } else if (btnRight.className.includes("split")) {
     var li = document.createElement("li");
     li.innerText =

@@ -5,7 +5,7 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = 0;
     this.currentTimeMs = 0;
-    this.IntervalIdMs = 0;
+    this.intervalIdMs = 0;
   }
 
   startClick() {
@@ -43,9 +43,11 @@ class Chronometer {
   }
   stopClick() {
     clearInterval(this.intervalId);
+    clearInterval(this.intervalIdMs);
   }
   resetClick() {
     this.currentTime = 0;
+    this.currentTimeMs = 0;
   }
 
   checkTimeMs(value) {
