@@ -15,6 +15,7 @@ function printTime() {
 }
 
 function printMinutes() {
+    console.log(document.getElementById('secDec'))
     minDec.innerHTML = chronometer.time.min;
 }
 
