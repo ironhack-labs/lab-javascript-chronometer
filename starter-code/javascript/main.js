@@ -72,5 +72,12 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if(chronometer.intervalId === 0) {
+    chronometer.resetClick();
+    chronometer.minutes = '00';
+    chronometer.seconds = '00';
+    printTime();
+  } else {
+    //split
+  }
 });
