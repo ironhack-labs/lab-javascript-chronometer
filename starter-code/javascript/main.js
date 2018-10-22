@@ -51,10 +51,10 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    chronometer.startClick();
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    chronometer.startClick();
 });
