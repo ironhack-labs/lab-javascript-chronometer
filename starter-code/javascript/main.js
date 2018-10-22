@@ -12,6 +12,7 @@ var milUni      = document.getElementById('milUni');
 function printTime() {
     printMinutes();
     printSeconds();
+    printMilliseconds();
 }
 
 function printMinutes() {
@@ -26,7 +27,9 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  let indexA = chronometer.miliseconds.length;
+  milDec.innerHTML = chronometer.miliseconds[indexA-2];
+  milUni.innerHTML = chronometer.miliseconds[indexA-1];
 }
 
 function printSplit() {
@@ -76,8 +79,19 @@ btnRight.addEventListener('click', function () {
     chronometer.resetClick();
     chronometer.minutes = '00';
     chronometer.seconds = '00';
+    chronometer.miliseconds = '00';
+    document.getElementById('splits').remove();
+    let olSplit = document.createElement('ol');
+    olSplit.setAttribute('id', 'splits');
+    document.getElementById('splits-container').appendChild(olSplit);
+
     printTime();
   } else {
-    //split
+    let split = chronometer.splitClick();
+    let text = document.createTextNode(split);
+    let li = document.createElement('li');
+    li.appendChild(text);
+    li.setAttribute('class', 'li-split');
+    document.getElementById('splits').appendChild(li);
   }
 });
