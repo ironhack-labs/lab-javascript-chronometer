@@ -115,3 +115,12 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+
+.flex {
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
