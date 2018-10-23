@@ -4,6 +4,7 @@ function Chronometer() {
     this.intervalId = 0;
 }
 
+
 Chronometer.prototype.startClick = function () {
     let self = this;
     self.intervalId = setInterval(function () {
