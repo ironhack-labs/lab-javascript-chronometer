@@ -95,7 +95,7 @@ Our chronometer has a super cool screen that needs two digits number to display 
 
 #### setTime()
 
-We are almost done! We need a `setTime` method that will be called on every **interval** of the `setInterval` in our `startClick` method. This function will create a `minutes` and `seconds` variable whit their values according the `currentTime`. We should use the `setMinutes`, `setMinutes` and `twoDigitsNumber` methods to do this :wink:
+We are almost done! We need a `setTime` method that will be called on every **interval** of the `setInterval` in our `startClick` method. This function will create a `minutes` and `seconds` variable with their values according the `currentTime`. We should use the `setMinutes`, `setSeconds` and `twoDigitsNumber` methods to do this :wink:
 
 #### stopClick()
 
