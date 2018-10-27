@@ -3,38 +3,48 @@
 
 // }
 
-// Chronometer.prototype.startClick = function () {
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = 0;
+  }
 
-// };
+  startClick() {
+    var _chronometer = this;
+    this.intervalId = setInterval(function() {
+      _chronometer.currentTime += 1;
+      _chronometer.setTime();
+    }, 1000);
+  }
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+  setMinutes() {      
+    return Math.floor(this.currentTime/60);
+  }
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+  setSeconds() {
+      return (this.currentTime % 60)
+  }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+  twoDigitsNumber(number) {
+      if (number < 10){
+          return '0'+number 
+      } else {
+          return '' +number;
+      }
+  }
 
-// Chronometer.prototype.setTime = function () {
+  setTime(){
+      var minutes = this.twoDigitsNumber(this.setMinutes);
+      var seconds = this.twoDigitsNumber(this.setSeconds);
+  }
 
-// };
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
 
-// Chronometer.prototype.setMilliseconds = function () {
+  resetClick() {
+      this.currentTime === 0;
+  }
 
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+  splitClick() {}
+}
