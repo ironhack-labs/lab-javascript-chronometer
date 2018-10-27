@@ -10,15 +10,19 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+    var time = chronometer.setTime()
+    printMinutes(time[0])  
+    printSeconds(time[1])  
 }
 
-function printMinutes() {
-
+function printMinutes(min) {
+    document.getElementById('minDec').innerText = min[0];
+    document.getElementById('minUni').innerText = min[1];
 }
 
-function printSeconds() {
-
+function printSeconds(sec) {
+    document.getElementById('secDec').innerText = sec[0];
+    document.getElementById('secUni').innerText = sec[1];
 }
 
 function printMilliseconds() {
@@ -50,11 +54,47 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+// this is the SAME as using .onclick !
 btnLeft.addEventListener('click', function () {
-
+    // NOTE btnLeft is defined at the top of the file already
+    if (btnLeft.innerText === 'STOP') { 
+        btnLeft.innerText = 'START' 
+        btnLeft.className = 'btn start'
+        chronometer.stopClick()
+    } else {
+        chronometer.startClick()
+        setInterval(function(){
+            printTime()
+        },500)
+        btnLeft.innerText = 'STOP' 
+        btnLeft.className = 'btn stop'
+    }    
 });
+printTime()
 
 // Reset/Split Button
+// this is the SAME as using .onclick !
 btnRight.addEventListener('click', function () {
-
+    btnLeft.innerText = 'START'
+    btnLeft.className = 'btn start'
+    chronometer.resetClick()
 });
+
+// // --> without declaration
+// // Start/Stop Button
+
+// btnLeft.addEventListener('click', function () {
+//     var leftButton = document.getElementById('btnLeft');
+
+//     if (leftButton.innerText === 'STOP'){
+//         leftButton.innerText = 'START'
+      
+//         leftButton.className = 'btn start'
+//     } else {
+//         leftButton.innerText = 'STOP'
+//         leftButton.innerText === 'START'
+     
+//         leftButton.className = 'btn stop'   
+//     }
+   
+// });
