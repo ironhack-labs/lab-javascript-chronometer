@@ -7,10 +7,11 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+// var curTime     =document.getElementById('curTime');
 
 
 function printTime() {
-
+    // curTime.innerHTML = setInterval((chronometer.setTime()),1000)
 }
 
 function printMinutes() {
@@ -51,10 +52,34 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if (btnLeft.classList.contains('start')) {
+        btnLeft.classList.remove('start');
+        btnLeft.classList.add('stop');
+        btnLeft.innerHTML = 'STOP';
+        chronometer.startClick();
+        // printTime();
 
+
+    } else {
+        btnLeft.classList.remove('stop');
+        btnLeft.classList.add('start');
+        btnLeft.innerHTML = 'START';
+        chronometer.stopClick();
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+    if (btnRight.classList.contains('reset')) {
+        btnRight.classList.remove('reset');
+        btnRight.classList.add('split');
+        btnRight.innerHTML = 'SPLIT';
+    } else {
+        btnRight.classList.remove('split');
+        btnRight.classList.add('reset');
+        btnRight.innerHTML = 'RESET';
+    }
 
 });
+
+
