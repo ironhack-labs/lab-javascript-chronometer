@@ -3,6 +3,8 @@
   src: url("fonts/ds-digib.ttf");
 }
 
+
+
 body {
   font-family: Arial;
   font-size: 80px;
@@ -30,7 +32,6 @@ body {
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
-  text-align: center;
   width: 220px;
 }
 
@@ -84,9 +85,13 @@ body {
   width: 20px;
 }
 
-.number {
+/* .number {
   display: inline-block;
   width: 40px;
+} */
+#myTime{
+  width: 100%;
+  text-align: center;
 }
 
 .btn {
@@ -97,18 +102,16 @@ body {
   cursor: pointer;
   height: 50px;
   outline: 0;
-  position: absolute;
   width: 50px;
+  font-size: 0.7rem;
 }
 
-.btn.start,
-.btn.stop {
-  left: 10px;
-}
-
-.btn.reset,
-.btn.split {
-  right: 10px;
+#myBtns{
+  width: 100%;
+  position:absolute;
+  bottom: 2px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .btn.start { background: #5fca5f; }
