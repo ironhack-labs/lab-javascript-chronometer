@@ -1,40 +1,50 @@
-// Constructor
-// function Chronometer() {
+//Constructor
+class Chronometer {
+    constructor() {
+        this.currentTime = 0;
+        this.intervalId = 0;
 
-// }
+    }
 
-// Chronometer.prototype.startClick = function () {
+    startClick() {
+        this.intervalId = setInterval(function () {
+            this.currentTime += 1;
+            this.setTime()
+            console.log(this.currentTime)
+        }.bind(this), 1000);
 
-// };
+    }
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+    setMinutes() {
+        return Math.floor(this.currentTime / 60);
+    }
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+    setSeconds() {
+        return this.currentTime % 60;
+    }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+    twoDigitsNumber(number) {
+        if (number < 10) {
+            number = "0" + number;   
+        }else{
+            return number + "";
+        }
+        return number
+    }
 
-// Chronometer.prototype.setTime = function () {
+    setTime(){
+     var minutes = this.twoDigitsNumber(this.setMinutes())
+     var seconds = this.twoDigitsNumber(this.setSeconds())
+     return [minutes, seconds] 
+    }
+    stopClick(){
+        clearInterval(this.intervalId)
+    }
+    resetClick(){
+        this.currentTime = 0;
+    }
+}
 
-// };
 
-// Chronometer.prototype.setMilliseconds = function () {
 
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+//document.getElementById("sphere").innetText = "60" there I get the element
