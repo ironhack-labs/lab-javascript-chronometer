@@ -76,7 +76,7 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    var rightbutton = document.getElementById("btnRight")
+    var rightButton = document.getElementById("btnRight")
     btnRight.addEventListener(this.addEventListener("click",function(){
         btnRight.innerText = "START"
         btnRight.className = "btn start"
