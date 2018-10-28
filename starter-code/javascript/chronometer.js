@@ -16,7 +16,6 @@ class Chronometer {
   }
 
   setMinutes() {
-    console.log(Math.floor(this.currentTime / 60));
     return Math.floor(this.currentTime / 60);
   }
 
@@ -28,7 +27,7 @@ class Chronometer {
   }
 
   twoDigitsNumber(number) {
-    if (number.toString().length === 1) {
+    if (number.toString().length < 2) {
       return "0" + number.toString();
     } else {
       return number.toString();
@@ -38,8 +37,21 @@ class Chronometer {
   setTime() {
     var minutes = this.setMinutes();
     var seconds = this.setSeconds();
-    this.twoDigitsNumber(minutes);
-    this.twoDigitsNumber(seconds);
+    // console.log(document.getElementById("minDec").innerText);
+    // console.log(this.twoDigitsNumber(minutes));
+    // console.log(this.twoDigitsNumber(seconds));
+    document.getElementById("minDec").innerText = this.twoDigitsNumber(
+      minutes
+    )[0];
+    document.getElementById("minUni").innerText = this.twoDigitsNumber(
+      minutes
+    )[1];
+    document.getElementById("secDec").innerText = this.twoDigitsNumber(
+      seconds
+    )[0];
+    document.getElementById("secUni").innerText = this.twoDigitsNumber(
+      seconds
+    )[1];
   }
 
   stopClick(interval) {
@@ -49,9 +61,8 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-
-  splitClick() {}
 }
+
 // function Chronometer() {
 
 // }

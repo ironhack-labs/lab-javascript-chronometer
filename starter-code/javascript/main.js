@@ -45,7 +45,23 @@ btnLeft.addEventListener("click", function() {
   }
 });
 
-function printTime(minutes, seconds) {}
-
 // Reset/Split Button
-btnRight.addEventListener("click", function() {});
+btnRight.addEventListener("click", function() {
+  if (btnLeft.innerText === "STOP") {
+    var minutes = chronometer.setMinutes();
+    var seconds = chronometer.setSeconds();
+    var currentMinutes = chronometer.twoDigitsNumber(minutes);
+    var currentSeconds = chronometer.twoDigitsNumber(seconds);
+    var split = document.createElement("li");
+    split.innerText = currentMinutes + ":" + currentSeconds;
+    // console.log(split);
+    document.getElementById("splits").appendChild(split);
+  } else {
+    chronometer.resetClick();
+    document.getElementById("minDec").innerText = 0;
+    document.getElementById("minUni").innerText = 0;
+    document.getElementById("secDec").innerText = 0;
+    document.getElementById("secUni").innerText = 0;
+    document.getElementById("splits").innerHTML = "";
+  }
+});
