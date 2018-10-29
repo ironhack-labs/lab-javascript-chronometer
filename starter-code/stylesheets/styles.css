@@ -44,6 +44,7 @@ body {
 #splits-container li {
   padding-bottom: 5px;
   text-align: right;
+  font-weight: bold;
 }
 
 #milliseconds {

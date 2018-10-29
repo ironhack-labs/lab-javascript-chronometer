@@ -4,6 +4,8 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
+    this.minutes = "";
+    this.seconds = "";
   }
 
   //   startClick() {
@@ -14,7 +16,7 @@ class Chronometer {
 
   startClick() {
     this.intervalId = setInterval(
-      function() {  
+      function() {
         this.currentTime++;
         this.setTime();
       }.bind(this),
@@ -49,31 +51,34 @@ class Chronometer {
     if (parameter === 0) {
       return "00";
     } else if (parameter > 9) {
-        return ""+parameter;
+      return "" + parameter;
     } else {
-      return "0"+parameter;
+      return "0" + parameter;
     }
   }
 
-  setTime(){
+  setTime() {
     var seconds = this.setSeconds();
     var minutes = this.setMinutes();
 
-    if(seconds.length<2){
-        seconds = this.twoDigitsNumber(seconds);
-    }
+    seconds = this.twoDigitsNumber(seconds);
 
-    if(minutes.length<2){
-        minutes = this.twoDigitsNumber(minutes);
-    }
+    minutes = this.twoDigitsNumber(minutes);
+
+    this.seconds = "" + seconds;
+    this.minutes = "" + minutes;
+
+    printTime(this.minutes, this.seconds);
   }
 
-  stopClick(){
-      window.clearInterval(this.intervalId);
+  stopClick() {
+    window.clearInterval(this.intervalId);
   }
 
-  resetClick(){
+  resetClick() {
     this.currentTime = 0;
+    this.minutes ="00";
+    this.seconds ="00";
   }
 }
 
