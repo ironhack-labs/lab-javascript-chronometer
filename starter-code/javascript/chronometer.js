@@ -39,7 +39,6 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 Chronometer.prototype.setTime = function () {
     var minutes=this.twoDigitsNumber(this.setMinutes());
     var seconds=this.twoDigitsNumber(this.setSeconds());
-   // debugger
     printTime(minutes,seconds);
     
 };
@@ -54,6 +53,7 @@ Chronometer.prototype.stopClick = function () {
 
 Chronometer.prototype.resetClick = function () {
     this.currentTime=0;
+    this.setTime();
 };
 
 Chronometer.prototype.splitClick = function () {
