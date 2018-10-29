@@ -25,15 +25,27 @@ function printSeconds(seconds) {
 }
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+  var splitsss = (minutes[0] + minutes [1] +":"+ seconds [0] + seconds [1]);
+  setSplitBtn(splitsss)
+}
 
 function clearSplits() {}
 
-function setStopBtn() {}
+function setStopBtn() {
+  chrono.stopClick();
+}
 
-function setSplitBtn() {}
+function setSplitBtn(textsplit) {
+  var parent = document.getElementById("splits");
+  var liTag = document.createElement("li");
+  var text = document.createTextNode(`${textsplit}`)
+  
+}
 
-function setStartBtn() {}
+function setStartBtn() {
+  chrono.startClick();
+}
 
 function setResetBtn() {}
 
@@ -43,11 +55,11 @@ btnLeft.addEventListener("click", function() {
  if (document.getElementById("btnLeft").textContent.includes("STOP")) {
    document.getElementById('btnLeft').innerHTML = "START";
    document.getElementById('btnLeft').setAttribute("class", "btn start")
-   chrono.startClick();
+   setStartBtn();
  } else {
     document.getElementById("btnLeft").innerHTML = "STOP";
     document.getElementById("btnLeft").setAttribute("class", "btn stop");
-    chrono.stopClick();
+    setStopBtn();
   }
 });
 
@@ -57,6 +69,7 @@ btnRight.addEventListener("click", function() {
  if(document.getElementById("btnRight").textContent.includes("SPLIT")){
    document.getElementById("btnRight").innerHTML = "RESET";
    document.getElementById("btnRight").setAttribute("class", "btn reset");
+   setSplitBtn();
  }
  
  else{
