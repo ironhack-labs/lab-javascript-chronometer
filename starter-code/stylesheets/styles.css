@@ -46,13 +46,6 @@ body {
   text-align: right;
 }
 
-#milliseconds {
-  font-size: 36px;
-  margin-top: -15px;
-  position: absolute;
-  right: 20px;
-}
-
 .leash {
   background: rgb(204, 84, 87);
   border: 2px solid rgb(134, 59, 61);
