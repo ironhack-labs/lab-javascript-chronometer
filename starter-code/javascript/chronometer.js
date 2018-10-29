@@ -25,5 +25,7 @@ var chronometer = {
     chronometer.seconds=0;
     chronometer.minutes=0;
     update(chronometer.minutes, chronometer.seconds, chronometer.miliseconds);
+    var parent = document.getElementById('splits');
+    parent.innerHTML="";
   }
 }
