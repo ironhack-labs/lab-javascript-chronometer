@@ -1,4 +1,4 @@
-var chronometer = new Chronometer();
+// var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
