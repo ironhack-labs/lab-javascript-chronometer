@@ -9,15 +9,19 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
-function printTime() {
-
+function printTime(minutes,seconds) {
+  printMinutes(minutes);
+  printSeconds(seconds);
 }
 
-function printMinutes() {
-
+function printMinutes(minutes) {
+  minDec.innerText=minutes[0];
+  minUni.innerText=minutes[1];
 }
 
-function printSeconds() {
+function printSeconds(seconds) {
+  secDec.innerText=seconds[0];
+  secUni.innerText=seconds[1];
 
 }
 
@@ -51,10 +55,29 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+if (this.classList.contains("start")){
+  this.classList.remove("start");
+  this.classList.add("stop");
+  this.innerText="STOP";
+  btnRight.classList.remove("reset");
+  btnRight.classList.add("split");
+  btnRight.innerText="SPLIT";
+  chronometer.startClick();
+}
+else{
+  this.classList.remove("stop");
+  this.classList.add("start");
+  this.innerText="START";
+  btnRight.classList.remove("split");
+  btnRight.classList.add("reset");
+  btnRight.innerText="RESET";
+  chronometer.stopClick();
+}
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
 
 });
+
+
