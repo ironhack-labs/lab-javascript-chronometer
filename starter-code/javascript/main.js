@@ -10,9 +10,11 @@ var milUni      = document.getElementById('milUni');
 var split      = document.getElementById('splits');
 
 
-function printTime(minutes,seconds) {
+function printTime(minutes,seconds,miliseconds) {
+    console.log(minutes+" - "+seconds+" - "+miliseconds);
     printMinutes(minutes);
     printSeconds(seconds);
+    printMilliseconds(miliseconds)
 }
 
 function printMinutes(minutes) {
@@ -25,12 +27,13 @@ function printSeconds(seconds) {
     secUni.innerHTML=seconds[1];
 }
 
-function printMilliseconds() {
-
+function printMilliseconds(miliseconds) {
+    milDec.innerHTML=miliseconds[0];
+    milUni.innerHTML=miliseconds[1];
 }
 
 function printSplit() {
-    split.innerHTML+="<li>"+document.getElementById("sphere").textContent.trim().slice(0,5)+"</li>";
+    split.innerHTML+="<li>"+document.getElementById("sphere").textContent.trim().slice(0,7)+"</li>";
 }
 
 function clearSplits() {
