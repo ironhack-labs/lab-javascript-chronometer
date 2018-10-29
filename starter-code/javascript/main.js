@@ -7,6 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var split      = document.getElementById('splits');
 
 
 function printTime(minutes,seconds) {
@@ -29,7 +30,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    split.innerHTML+="<li>"+document.getElementById("sphere").textContent.trim().slice(0,5)+"</li>";
 }
 
 function clearSplits() {
@@ -77,7 +78,6 @@ btnRight.addEventListener('click', function () {
         setStopBtn();
         setSplitBtn();
     }else{
-        setStartBtn();
-        setResetBtn();
+        printSplit();
     }
 });
