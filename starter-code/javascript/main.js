@@ -1,4 +1,4 @@
-var chronometer = new Chronometer();
+//var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -49,12 +49,35 @@ function setResetBtn() {
 
 }
 
+
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
-});
+  if (btnLeft.innerHTML === "START") {
+    myWatch.start();
+    btnLeft.innerHTML = "STOP";
+    btnLeft.classList.remove("start");
+    btnLeft.classList.add("stop");
+    btnRight.innerHTML = "SPLIT";
+    btnRight.classList.remove("reset");
+    btnRight.classList.add("split");
+    document.getElementById("secUni").innerHTML = myWatch.seconds;
+  } else {
+    myWatch.stop()
+    btnLeft.innerHTML = "START"
+    btnLeft.classList.toggle("stop")
+    btnLeft.classList.add("start")
+    btnRight.innerHTML = "RESET";
+    btnRight.classList.remove("split");
+    btnRight.classList.add("reset");
+  }
+  });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if (btnRight.innerHTML === "RESET") {
+    myWatch.reset()
+  } else {
+    myWatch.splits()
+  }
 });
+
