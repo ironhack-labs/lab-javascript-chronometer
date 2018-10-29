@@ -38,6 +38,8 @@ Chronometer.prototype.twoDigitsNumber = function (valor) {
 Chronometer.prototype.setTime = function () {
   var minutes = this.twoDigitsNumber (this.setMinutes());
   var seconds = this.twoDigitsNumber(this.setSeconds());
+
+  printTime(minutes,seconds)
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
@@ -45,7 +47,7 @@ Chronometer.prototype.setTime = function () {
 // };
 
 Chronometer.prototype.stopClick = function () {
-  clearInterval(this.currentTime);
+  clearInterval(this.intervalId);
 };
 
 Chronometer.prototype.resetClick = function () {
