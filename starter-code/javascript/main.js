@@ -45,22 +45,23 @@ function clearSplits() {
 
 function setStopBtn() {
   btnLeft.innerHTML = "STOP";
-  btnLeft.style.backgroundColor = "red";
+  btnLeft.setAttribute("class","btn stop");
 }
 
 function setSplitBtn() {
   btnRight.innerHTML = "SPLIT";
-  btnRight.style.backgroundColor = "rgb(3,57,157)";
+  btnRight.setAttribute("class","btn split");
 }
 
 function setStartBtn() {
   btnLeft.innerHTML = "START";
-  btnLeft.style.backgroundColor = "rgb(81,195,77)";
+  btnLeft.setAttribute("class","btn start");
 }
 
 function setResetBtn() {
   btnRight.innerHTML = "RESET";
-  btnRight.style.backgroundColor = "rgb(126,123,123)";
+  btnRight.setAttribute("class","btn reset");
+ 
 }
 
 // Start/Stop Button
