@@ -9,6 +9,18 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
+    btnLeft.onclick = function start(){ 
+    if (btnLeft.innerHTML === "START"){ 
+        console.log("dentro")
+    btnLeft.innerText = "STOP";
+
+    btnRight.innerText = "SPLIT";
+    }
+    else{
+        btnLeft.innerText = "START";
+        btnRight.innerText = "RESET"  
+    }
+    }
 function printTime() {
 
 }
@@ -49,12 +61,12 @@ function setResetBtn() {
 
 }
 
-// Start/Stop Button
-btnLeft.addEventListener('click', function () {
+// // Start/Stop Button
+// btnLeft.addEventListener('click', function () {
 
-});
+// });
 
-// Reset/Split Button
-btnRight.addEventListener('click', function () {
+// // Reset/Split Button
+// btnRight.addEventListener('click', function () {
 
-});
+// });
