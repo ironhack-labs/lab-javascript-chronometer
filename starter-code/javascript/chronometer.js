@@ -31,8 +31,9 @@ class Chronometer {
 
     setTime (){
 
-        var minutes = this.twoDigitsNumber(this.setMinutes);
-        var seconds = this.twoDigitsNumber(this.setSeconds);
+        var min = this.twoDigitsNumber(this.setMinutes);
+        var sec = this.twoDigitsNumber(this.setSeconds);
+        return [min,sec]
     }
 
     stopClick() {
@@ -40,7 +41,7 @@ class Chronometer {
     }
 
     resetClick() {
-
+        this.currentTime = 0;
     }
 
     splitClick() {

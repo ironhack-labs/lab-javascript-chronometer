@@ -10,16 +10,20 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
- document.getElementById("btnLeft").onclick = startClick();
+ var printTime = chronometer.setTime()
+    printMinutes(printTime[0])
+    printSeconds(printTime[1])
  
 }
 
 function printMinutes() {
-
+    document.getElementById('minDec').innerHTML = min[0];
+    document.getElementById('minUni').innerHTML = mon[1];
 }
 
 function printSeconds() {
-
+  document.getElementById('secDec').innerText = setTime()[1[1]];
+  document.getElementById("secUni").innerText = sec[1];
 }
 
 function printMilliseconds() {
