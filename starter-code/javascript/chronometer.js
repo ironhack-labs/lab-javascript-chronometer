@@ -96,12 +96,13 @@ let chronometer = {
     let parentSection = document.getElementById('splits-container');
     let childOl = document.getElementById('splits');
     parentSection.removeChild(childOl);
+
   },
 
   split: function() {
-    let parentSection = document.getElementById('splits-container');
+    let childOl = document.getElementById('splits');
     let childrenLi = document.createElement('li');
-    parentSection.appendChild(childrenLi);
+    childOl.appendChild(childrenLi);
     childrenLi.innerHTML = `${chronometer.minDec.innerHTML}${chronometer.minUni.innerHTML}:`;
     childrenLi.innerHTML += `${chronometer.secDec.innerHTML}${chronometer.secUni.innerHTML}:`;
     childrenLi.innerHTML += `${chronometer.milDec.innerHTML}${chronometer.milUni.innerHTML}`;
