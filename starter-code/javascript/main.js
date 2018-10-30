@@ -74,6 +74,12 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+
+  if (btnLeft.getAttribute("class") === 'btn start') {
+      newChrono.resetClick();
+  } else {
+
+  }
 });
 
 var newChrono = new Chronometer;
