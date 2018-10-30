@@ -1,60 +1,82 @@
+var divHours = document.getElementById("hours");
+var divMinutes = document.getElementById("minutes");
+var divSeconds = document.getElementById("seconds");
 var chronometer = {
     hours: 0,
     minutes: 0,
     seconds: 0,
-    divHours: document.getElementById("hours").innerHTML,
-    divMinutes: document.getElementById("minutes").innerHTML,
-    divSeconds: document.getElementById("seconds").innerHTML,
-    //algo esta mal en la declaracion
-    start: function(){
+    start: function(){ //remember the scope of "this"
 
-        this.seconds++;
-        this.divHours = this.hours.toString();
-        this.divMinutes = this.minutes.toString();
-        this.divSeconds = this.seconds.toString();
+        chronometer.seconds += 1;
 
-        document.getElementById("hours").innerHTML = divHours;
-        document.getElementById("minutes").innerHTML = divMinutes;
-        document.getElementById("seconds").innerHTML = divSeconds;
-
-        if(this.seconds == 60){
-            this.seconds = 0;
-            this.minutes++;
-        }
-        else if(minutes == 60 && seconds == 60){
-            this.hours++;
-            this.seconds = 0;
-            this.minutes = 0;
-        }
+        divHours.innerHTML = chronometer.hours;
+        divMinutes.innerHTML = chronometer.minutes;
+        divSeconds.innerHTML = chronometer.seconds;
         
+       if(chronometer.seconds == 60){
+            chronometer.seconds = 0;
+            chronometer.minutes++;
+        }
+       if(chronometer.minutes == 60 && chronometer.seconds == 60){
+            chronometer.hours++;
+            chronometer.seconds = 0;
+            chronometer.minutes = 0;
+        }  
     },
      //aqui pa parar el intervalo.
     reference: {},
 
-    stop: function(){
+    restart: function(){ //it doesnt execute the function startC again
         clearInterval(chronometer.reference);
-        this.divHours.innerHTML = this.hours.toString();
-        this.divMinutes.innerHTML = this.minutes.toString();
-        this.divSeconds.innerHTML = this.seconds.toString();
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0; 
+        document.getElementById("hours").innerHTML = this.hours.toString();
+        document.getElementById("minutes").innerHTML = this.minutes.toString();
+        document.getElementById("seconds").innerHTML = this.seconds.toString(); //reference error but executes until here alright
+        chronometer.startC();
     },
+    stop: function(){ //this function works
+        clearInterval(chronometer.reference);   
+        document.getElementById("hours").innerHTML = this.hours.toString();
+        document.getElementById("minutes").innerHTML = this.minutes.toString();
+        document.getElementById("seconds").innerHTML = this.seconds.toString();
 
-    whereYouWant: function(){
+    },
+    whereYouWant: function(){ //this function works
 
         var inputHours = document.createElement("input");
         var inputMinutes = document.createElement("input");
         var inputSeconds = document.createElement("input");
-        
-        
+        var accept = document.createElement("button");
+        var acceptText = document.createTextNode("Start");
+        var secondsInput = [];
+        var acceptValue;
+
+        accept.appendChild(acceptText);
+        accept.id = "Hello";
+
         document.body.appendChild(inputHours);
         document.body.appendChild(inputMinutes);
         document.body.appendChild(inputSeconds);
-        
-        this.inputHours.onChange = function(){this.divHours = this.inputHours.value;};
-        this.inputMinutes.onChange = function(){this.divMinutes = this.inputMinutes.value;};
-        this.inputSeconds.onChange = function(){this.divSeconds = this.inputSeconds.value;};
+        document.body.appendChild(accept);
+
+        secondsInput = document.getElementsByTagName("input");
+        acceptValue = document.getElementById("Hello");
+
+        acceptValue.onclick = function(){
+            divHours.innerHTML = secondsInput[0].value;
+            divMinutes.innerHTML = secondsInput[1].value;
+            divSeconds.innerHTML = secondsInput[2].value;
+
+            chronometer.hours = parseInt(secondsInput[0].value);
+            chronometer.minutes = parseInt(secondsInput[1].value);
+            chronometer.seconds = parseInt(secondsInput[2].value);
+        }
+
     },
-    startC: function(){
-        chronometer.reference = setInterval(chronometer.start(), 1000);
+    startC: function(){ //this works
+        chronometer.reference = setInterval(chronometer.start, 1000);
     }
 
 }
