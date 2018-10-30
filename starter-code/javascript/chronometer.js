@@ -31,18 +31,21 @@ function Chronometer() {
  
  };
  
- // Chronometer.prototype.setMilliseconds = function () {
+ Chronometer.prototype.setMilliseconds = function () {
  
- // };
+  };
  
  Chronometer.prototype.stopClick = function () {
-  clearInterval (this.intervalId);
+        clearInterval (this.intervalId);
  };
  
  Chronometer.prototype.resetClick = function () {
- this.currentTime = 0;
+        this.currentTime = 0;
+        this.setTime ();
+        printTime(this.minutes,this.seconds);
+        clearSplits();
  };
  
- // Chronometer.prototype.splitClick = function () {
- 
- // };
+ Chronometer.prototype.splitClick = function () {
+        printSplit(this.minutes,this.seconds);
+ };
