@@ -13,7 +13,7 @@ let chronometer = {
 
   run: function() {
     
-    if (chronometer.milliSecond === 59) {
+    if (chronometer.milliSecond === 99) {
       chronometer.milliSecond = 0;
       chronometer.second++;
     } else {
@@ -99,9 +99,9 @@ let chronometer = {
   },
 
   split: function() {
-    let parentOl = document.getElementById('splits');
+    let parentSection = document.getElementById('splits-container');
     let childrenLi = document.createElement('li');
-    parentOl.appendChild(childrenLi);
+    parentSection.appendChild(childrenLi);
     childrenLi.innerHTML = `${chronometer.minDec.innerHTML}${chronometer.minUni.innerHTML}:`;
     childrenLi.innerHTML += `${chronometer.secDec.innerHTML}${chronometer.secUni.innerHTML}:`;
     childrenLi.innerHTML += `${chronometer.milDec.innerHTML}${chronometer.milUni.innerHTML}`;
