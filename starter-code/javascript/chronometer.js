@@ -70,9 +70,9 @@
   printTime();
  };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+  printSplit();
+};
 
 
 

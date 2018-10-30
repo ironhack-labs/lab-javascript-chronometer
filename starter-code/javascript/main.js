@@ -29,7 +29,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+var splitLi = document.createElement("li");
+splitLi.innerHTML= newChrono.twoDigitsNumber(newChrono.setMinutes()) + ":" + newChrono.twoDigitsNumber(newChrono.setSeconds());
+document.querySelector('#splits').appendChild(splitLi);
 }
 
 function clearSplits() {
@@ -78,7 +80,7 @@ btnRight.addEventListener('click', function () {
   if (btnLeft.getAttribute("class") === 'btn start') {
       newChrono.resetClick();
   } else {
-
+    newChrono.splitClick();
   }
 });
 
