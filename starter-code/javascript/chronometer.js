@@ -77,7 +77,6 @@
       document.getElementById("secDec").innerHTML = myWatch.getDec(myWatch.seconds);
       document.getElementById("milUni").innerHTML = myWatch.getUni(myWatch.centisec);
       document.getElementById("milDec").innerHTML = myWatch.getDec(myWatch.centisec);
-      console.log(myWatch.minutes + ":" + myWatch.seconds + ":" + myWatch.centisec)
     },
     reference: {},
     start: function () {
@@ -87,7 +86,7 @@
       clearInterval(myWatch.reference)
     },
     splits: function (){
-      myWatch.time = myWatch.getDec(myWatch.minutes)+myWatch.getUni(myWatch.minutes)+":"+myWatch.getDec(myWatch.seconds)+myWatch.getUni(myWatch.seconds)+":"+myWatch.getDec(myWatch.centisec)+myWatch.getUni(myWatch.centisec)
+      myWatch.time = myWatch.getDec(myWatch.minutes).toString()+myWatch.getUni(myWatch.minutes)+":"+myWatch.getDec(myWatch.seconds)+myWatch.getUni(myWatch.seconds)+":"+myWatch.getDec(myWatch.centisec)+myWatch.getUni(myWatch.centisec)
       var newLi = document.createElement("li")
       newLi.innerHTML = myWatch.time
       document.getElementById("splits").appendChild(newLi)
@@ -105,21 +104,7 @@
       var ol = document.getElementById("splits");
       while(ol.firstChild) ol.removeChild(ol.firstChild);
     },
-    }
-  
+  }
 
-    // function printTime () {
-    //   // var currentMin = document.getElementById("minUni").innerHTML;
-    //   // var currentSec = document.getElementById("secUni").innerHTML;
-    //   // var currentCentisec = document.getElementById("milUni").innerHTML;
-
-    //   document.getElementById("secUni") = 1;
-      //currentMin = setInterval(myWatch.runWatch, 60000)
-      //currentSec = setInterval(myWatch.runWatch, 1000)
-      //currentCentisec = setInterval(myWatch.runWatch, 1000)
-
-    // }
-
-
-
+    
 

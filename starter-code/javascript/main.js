@@ -9,47 +9,47 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
-function printTime() {
+// function printTime() {
 
-}
+// }
 
-function printMinutes() {
+// function printMinutes() {
 
-}
+// }
 
-function printSeconds() {
+// function printSeconds() {
 
-}
+// }
 
-function printMilliseconds() {
+// function printMilliseconds() {
 
-}
+// }
 
-function printSplit() {
+// function printSplit() {
 
-}
+// }
 
-function clearSplits() {
+// function clearSplits() {
 
-}
+// }
 
-function setStopBtn() {
+// function setStopBtn() {
 
-}
+// }
 
-function setSplitBtn() {
+// function setSplitBtn() {
 
-}
+// }
 
-function setStartBtn() {
+// function setStartBtn() {
 
-}
+// }
 
-function setResetBtn() {
+// function setResetBtn() {
 
-}
+// }
 
-
+window.onload = function () {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
   if (btnLeft.innerHTML === "START") {
@@ -81,3 +81,4 @@ btnRight.addEventListener('click', function () {
   }
 });
 
+}
