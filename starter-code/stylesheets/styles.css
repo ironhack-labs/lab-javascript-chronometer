@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: "Digi";
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
@@ -38,7 +38,12 @@ body {
   font-size: 20px;
   font-weight: 100;
   position: absolute;
-  left: 50px;
+  left: 250px;
+}
+
+#splits-container h3{
+position: relative;
+left: 25px;
 }
 
 #splits-container li {
@@ -87,6 +92,7 @@ body {
 .number {
   display: inline-block;
   width: 40px;
+  margin-right: 40px;
 }
 
 .btn {
