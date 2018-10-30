@@ -63,7 +63,6 @@ btnLeft.addEventListener('click', function () {
     setStopBtn();
     setSplitBtn();
     newChrono.startClick();
-    printTime();
 
  } else {
    setStartBtn();
