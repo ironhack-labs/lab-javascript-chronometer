@@ -67,6 +67,7 @@
 
  Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
+  clearSplits();
   printTime();
  };
 

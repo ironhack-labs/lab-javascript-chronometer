@@ -35,7 +35,7 @@ document.querySelector('#splits').appendChild(splitLi);
 }
 
 function clearSplits() {
-
+  document.querySelector('#splits').innerHTML="";
 }
 
 function setStopBtn() {
