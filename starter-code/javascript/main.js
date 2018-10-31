@@ -51,6 +51,9 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if(btnLeft.)
+    chronometer.startClick();
+
 
 });
 
