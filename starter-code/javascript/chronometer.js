@@ -9,7 +9,7 @@ Chronometer.prototype.startClick = function () {
     this.currentTime = this.currentTime + 1
     console.log(this.currentTime)
     this.setTime()
-  },1000)
+  },10)
 };
 
 Chronometer.prototype.setMinutes = function () {
@@ -24,13 +24,15 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
   if(value < 10) {
     value = "0" + value
   }
+  return String(value)
 };
 
 Chronometer.prototype.setTime = function () {
   var minutes = this.setMinutes()
   var seconds = this.setSeconds()
-  minutes = this.twoDigitsNumber(minutes) 
+  minutes = this.twoDigitsNumber(minutes)
   seconds = this.twoDigitsNumber(seconds)
+  printTime(minutes,seconds)
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
