@@ -11,6 +11,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splitList   = document.getElementById("splits")
 
 
 function printTime(minutes,seconds) {
@@ -53,7 +54,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  splitList.innerHTML = ""
 }
 
 function setStopBtn() {
@@ -96,5 +97,9 @@ btnRight.addEventListener('click', function () {
   //Split clicked
   if(btnRight.innerHTML === "SPLIT"){
     printSplit()
-  } 
+  } else //Reset clicked
+  {
+    printTime("00","00")
+    clearSplits()
+  }
 });
