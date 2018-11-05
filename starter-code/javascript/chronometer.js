@@ -1,7 +1,9 @@
 // Constructor
-// function Chronometer() {
-
-// }
+function Chronometer(minutos, segundos, milisec) {
+  this.minutos = minutos ? minutos : "00"
+  this.segundos = segundos ? segundos : "00"
+  this.milisec = milisec ? milisec : "00"
+ }
 
 // Chronometer.prototype.startClick = function () {
 
