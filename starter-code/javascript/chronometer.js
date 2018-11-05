@@ -7,9 +7,9 @@ function Chronometer() {
 Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(() => {
     this.currentTime = this.currentTime + 1
-    console.log(this.currentTime)
+    // console.log(this.currentTime)
     this.setTime()
-  },10)
+  },100)
 };
 
 Chronometer.prototype.setMinutes = function () {
