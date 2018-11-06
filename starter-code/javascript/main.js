@@ -1,3 +1,5 @@
+//donw with Pily
+
 var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
