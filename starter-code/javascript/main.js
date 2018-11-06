@@ -14,11 +14,13 @@ function printTime() {
 }
 
 function printMinutes() {
-
+      minDec.innerText = chronometer.setMinutes().toString()
+      minUni.innerText = chronometer.setMinutes().toString()
 }
 
 function printSeconds() {
-
+      secDec.innerText =  (chronometer.setSeconds()).toString()
+      secUni.innerText = (chronometer.setSeconds()).toString ()
 }
 
 function printMilliseconds() {
@@ -51,7 +53,22 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    if (btnLeft.innerText === "START"){
+        btnLeft.innerText = "STOP"
+        btnLeft.className = 'btn stop'
+        btnRight.innerText = "SPLIT"
+        btnRight.className = 'btn split'
+        chronometer.startClick()
+        printMinutes()
+        printSeconds()
+      }
+    else {
+      btnLeft.innerText = 'START'
+      btnLeft.className = 'btn start'
+      btnRight.innerText = 'RESET'
+      btnRight.className = 'btn reset'
+      chronometer.stopClick()
+    }
 });
 
 // Reset/Split Button
