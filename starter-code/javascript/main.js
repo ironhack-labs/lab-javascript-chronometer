@@ -1,13 +1,14 @@
 var chronometer = new Chronometer();
 var btnLeft = document.getElementById("btnLeft");
 var btnRight = document.getElementById("btnRight");
-var minDec = document.getElementById("minDec");
-var minUni = document.getElementById("minUni");
-var secDec = document.getElementById("secDec");
-var secUni = document.getElementById("secUni");
+var minDec = (document.getElementById("minDec").innerText) 
+var minUni = (document.getElementById("minUni").innerText)
+var secDec = (document.getElementById("secDec").innerText)
+var secUni = (document.getElementById("secUni").innerText)
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
-
+var actual = 0;
+chronometer.formato=chronometer.twoDigitsNumber(chronometer.setMinutes,chronometer.setSeconds)
 function printTime() {}
 
 function printMinutes() {}
@@ -36,32 +37,27 @@ btnLeft.addEventListener("click", () => {
     document.getElementById("btnRight").innerText = "SPLIT";
     document.getElementById("btnRight").className.innerText = "btn split";
     chronometer.startClick();
+    actualizador();
   } else {
     document.getElementById("btnLeft").innerText = "START";
     document.getElementById("btnLeft").className.innerText = "btn start";
     document.getElementById("btnRight").innerText = "RESET";
     document.getElementById("btnRight").className.innerText = "btn reset";
     chronometer.stopClick();
+    stopper();
   }
 });
 
-// Reset/Split Button
-btnRight.addEventListener("click", function() {
-  // if(document.getElementById("btnRight").innerText === "RESET"){
-  //     document.getElementById("btnRight").innerText="SPLIT"
-  // }else {
-  //     document.getElementById("btnRight").innerText="RESET"
-  // }
-});
-var prueba = new Chronometer();
-console.log(prueba.twoDigitsNumber(prueba.setMinutes,prueba.setSeconds))
-prueba.twoDigitsNumber(prueba.setMinutes,prueba.setSeconds)
-console.log(prueba.formato)
-// setInterval(()=>{
-//
-//     minDec.innerText=chronometer.formato[0]
-//     minUni.innerText=chronometer.formato[1]
-//     secDec.innerText=chronometer.formato[2]
-//     secUni.innerText=chronometer.formato[3]
 
-// },1000)
+actualizador = function() {
+  actual = setInterval(() => {
+    minDec = chronometer.formato[0];
+    minUni = chronometer.formato[1];
+    secDec = chronometer.formato[2];
+    secUni = chronometer.formato[3];
+  }, 1000);
+};
+
+stopper = function() {
+  clearInterval(actual)}
+
