@@ -34,6 +34,10 @@ body {
   width: 220px;
 }
 
+#minDec{
+  padding-right: 40px;
+}
+
 #splits-container {
   font-size: 20px;
   font-weight: 100;
