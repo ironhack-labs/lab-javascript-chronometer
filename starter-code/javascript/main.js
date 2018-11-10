@@ -19,16 +19,12 @@ function printMinutes() {
   var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes()); //"09"
   minUni.innerHTML = minutes[1];
   minDec.innerHTML = minutes[0];
-
-  //Display en html
 }
 
 function printSeconds() {
   var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds()); //"25"
-  //Display en html
   secUni.innerHTML = seconds[1];
   secDec.innerHTML = seconds[0];
-
 }
 
 function printMilliseconds() {
