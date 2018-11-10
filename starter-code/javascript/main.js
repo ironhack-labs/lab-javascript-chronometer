@@ -51,10 +51,21 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  if(btnLeft.innerText = 'START'){
+    btnLeft.innerText = 'STOP';
+    btnRight.innerText = 'SPLIT';
+  }else{
+    btnLeft.innerText = 'START';
+    btnRight.innerText = 'STOP';
+  };
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if(btnRight.innerText = 'STOP'){
+    btnRight.innerText = 'SPLIT';
+    btnLeft.innerText = 'RESET';
+  }else{
+    
+  };
 });
