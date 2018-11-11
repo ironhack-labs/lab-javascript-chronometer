@@ -86,8 +86,9 @@ function Chronometer() {
 // con removeSplit limpiamos el ol de html cuando pulsamos reset
  Chronometer.prototype.removeSplit = function () {
     var ol = document.getElementById("splits");
-while(ol.firstChild) ol.removeChild(ol.firstChild);
-
+    while(ol.firstChild){
+        ol.removeChild(ol.firstChild)
+    };
  }
  
  
