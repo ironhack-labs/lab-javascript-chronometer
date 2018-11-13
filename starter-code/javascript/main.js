@@ -27,7 +27,9 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  var miliSeconds = chronometer.twoDigitsNumber(chronometer.setMilliseconds())
+  milDec.innerHTML = miliSeconds[1];
+  milDec.innerHTML = miliSeconds[0];
 }
 
 function printSplit() {
