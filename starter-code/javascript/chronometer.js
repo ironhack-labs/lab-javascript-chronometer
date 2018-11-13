@@ -8,25 +8,31 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(() => { //Lexically bind
     this.currentTime++;
     this.setTime();
-  }, 1000);
+  }, 10);
 };
 
 Chronometer.prototype.setMinutes = function () {
-  return Math.floor(this.currentTime / 60);
+  return Math.floor(this.currentTime / (60000/10));
 };
 
 Chronometer.prototype.setSeconds = function () {
-  return this.currentTime % 60;
+  return Math.floor(this.currentTime / (1000/10));
 };
+
+Chronometer.prototype.setMilliseconds = function () {
+  return Math.floor(this.currentTime/10)*1
+}
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
   return num.toString().padStart(2, '0');
 };
 
+
 Chronometer.prototype.setTime = function () {
   var minutes = this.twoDigitsNumber(this.setMinutes());
   var seconds = this.twoDigitsNumber(this.setSeconds());
-  return minutes + ":" + seconds; //Retomar
+  var milliseconds = this.twoDigitsNumber(this.setMilliseconds());
+  return minutes + ":" + seconds + "." + milliseconds; //Retomar
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
