@@ -65,7 +65,7 @@ function Chronometer() {
         this.time.setMilliseconds(0);
 
         this.updateDisplays();
-        this.removeSplit();
+        this.clearSplit();
     }
 
 };
@@ -78,7 +78,7 @@ Chronometer.prototype.splitClick = function () {
         ol.appendChild(li);
 };
 
-Chronometer.prototype.removeSplit = function () {
+Chronometer.prototype.clearSplit = function () {
     var ol = document.getElementById('splits');
     if(ol.firstChild){
         ol.removeChild(ol.firstChild);
