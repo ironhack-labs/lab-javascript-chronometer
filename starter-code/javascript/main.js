@@ -11,14 +11,17 @@ var milUni = document.getElementById(`milUni`);
 var list = document.getElementById(`splits`);
 
 function printTime() {
+    if (!btnLeft) {
+        return;
+    }
     printMinutes();
     printSeconds();
+    printMilliseconds();
 }
 
 function printMinutes() {
     minDec.innerHTML = chronometer.minutes[0];
     minUni.innerHTML = chronometer.minutes[1];
-
     return `${minDec.textContent}${minUni.textContent}`
 }
 
@@ -29,13 +32,15 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    milDec.innerHTML = chronometer.miliSeconds[0];
+    milUni.innerHTML = chronometer.miliSeconds[1];
+    return `${milDec.textContent}${milUni.textContent}`
 }
 
 function printSplit() {
     var splitPrint = document.createElement(`li`);
     list.appendChild(splitPrint);
-    splitPrint.innerHTML = `${printMinutes()}:${printSeconds()}`;
+    splitPrint.innerHTML = `${printMinutes()}:${printSeconds()}:${printMilliseconds()}`;
 
 }
 

@@ -4,6 +4,7 @@ function Chronometer() {
     this.intervalId = 0;
     this.minutes = 0;
     this.seconds = 0;
+    this.miliSeconds = 0;
 }
 
 Chronometer.prototype.startClick = function () {
@@ -11,7 +12,12 @@ Chronometer.prototype.startClick = function () {
         this.currentTime++;
         this.setTime();
         printTime();
-    }, 1000)
+    }, 1000);
+    this.intervalIdMiliSeconds = setInterval(() => {
+        this.miliSeconds < 100 ? this.miliSeconds++ : this.miliSeconds = 0;
+        this.setTime();
+        printTime();
+    }, 10)
 };
 
 Chronometer.prototype.setMinutes = function () {
@@ -20,6 +26,10 @@ Chronometer.prototype.setMinutes = function () {
 
 Chronometer.prototype.setSeconds = function () {
     return this.currentTime - (this.setMinutes() * 60);
+};
+
+Chronometer.prototype.setMilliseconds = function () {
+    return this.miliSeconds;
 };
 
 Chronometer.prototype.twoDigitsNumber = function (value) {
@@ -32,18 +42,18 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
 Chronometer.prototype.setTime = function () {
     this.minutes = this.twoDigitsNumber(this.setMinutes());
     this.seconds = this.twoDigitsNumber(this.setSeconds());
+    this.miliSeconds = this.twoDigitsNumber(this.setMilliseconds());
 };
 
-Chronometer.prototype.setMilliseconds = function () {
-
-};
 
 Chronometer.prototype.stopClick = function () {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId);
+    clearInterval(this.intervalIdMiliSeconds);
 };
 
 Chronometer.prototype.resetClick = function () {
     this.currentTime = 0;
+    this.miliSeconds = 0;
     this.setTime();
     printTime();
 };
