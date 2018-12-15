@@ -20,7 +20,7 @@ class Chronometer {
   }
 
   setMilliseconds (){
-    return parseInt((this.currentTime)/10);
+    return parseInt((this.currentTime%1000)/10);
   }
 
   twoDigitsNumber (number){
