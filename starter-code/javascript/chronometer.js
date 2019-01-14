@@ -1,40 +1,46 @@
-// Constructor
-// function Chronometer() {
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = 0;
+  }
 
-// }
+  // start counting, output "minutes:seconds"
+  startClick() {
+    var that = this;
+    that.intervalId = setInterval(function() {
+      that.currentTime += 1;
+      that.setTime();
+    }, 1000);
+  }
 
-// Chronometer.prototype.startClick = function () {
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
 
-// };
+  resetClick() {
+    this.currentTime = 0;
+  }
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+  setMinutes() {
+    var minutes = 0;
+    minutes = Math.floor(this.currentTime / 60);
+    return minutes;
+  }
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+  setSeconds() {
+    var seconds = 0;
+    seconds = this.currentTime % 60;
+    return seconds;
+  }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+  twoDigitsNumber(n) {
+    return ('0' + n).substr(-2);
+  }
 
-// Chronometer.prototype.setTime = function () {
-
-// };
-
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+  // return array of minutes and seconds in two digits format
+  setTime() {
+    var minutes = this.twoDigitsNumber(this.setMinutes());
+    var seconds = this.twoDigitsNumber(this.setSeconds());
+    return [minutes, seconds];
+  }
+}
