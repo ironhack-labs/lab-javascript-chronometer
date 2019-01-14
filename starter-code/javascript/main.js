@@ -15,18 +15,18 @@ var printMillisecondsId = 0;
 
 
 function printTime() {
-  secUni.innerText = chronometer.setSeconds() % 10;
-  secDec.innerText = chronometer.twoDigitsNumber(chronometer.setSeconds())[0];
+  printSeconds();
+  printMinutes();
+}
+
+function printMinutes() {
   minUni.innerText = chronometer.setMinutes() % 60;
   minDec.innerText = chronometer.twoDigitsNumber(chronometer.setMinutes())[0];
 }
 
-function printMinutes() {
-
-}
-
 function printSeconds() {
-
+  secUni.innerText = chronometer.setSeconds() % 10;
+  secDec.innerText = chronometer.twoDigitsNumber(chronometer.setSeconds())[0];
 }
 
 function printMilliseconds() {
@@ -40,26 +40,6 @@ function printSplit() {
   let splitMinutesUni = chronometer.setMinutes() % 60;
   let splitMinutesDec = chronometer.twoDigitsNumber(chronometer.setMinutes())[0];
   return splitMinutesDec + splitMinutesUni + ":" + splitSecondsDec + splitSecondsUni;
-}
-
-function clearSplits() {
-
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
 }
 
 // Start/Stop Button
@@ -98,7 +78,6 @@ btnRight.addEventListener('click', function () {
       let newElement = document.createElement("li");
       newElement.innerText = printSplit();
       orderedList.appendChild(newElement);
-
   }
 });
 
