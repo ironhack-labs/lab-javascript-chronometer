@@ -37,7 +37,7 @@ function printMilliseconds() {
 function printSplit() {
   let splitSecondsUni = chronometer.setSeconds() % 10;
   let splitSecondsDec = chronometer.twoDigitsNumber(chronometer.setSeconds())[0];
-  let splitMinutesUni = chronometer.setMinutes() % 60;
+  let splitMinutesUni = chronometer.setMinutes() % 10;
   let splitMinutesDec = chronometer.twoDigitsNumber(chronometer.setMinutes())[0];
   return splitMinutesDec + splitMinutesUni + ":" + splitSecondsDec + splitSecondsUni;
 }
