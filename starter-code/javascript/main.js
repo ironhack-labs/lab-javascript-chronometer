@@ -9,6 +9,7 @@ var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
 
 var startIntervalId = 0;
+var milliIntervalId = 0;
 
 /*********************************
  * Start/Stop Button
@@ -24,12 +25,17 @@ btnLeft.addEventListener('click', function() {
     startIntervalId = setInterval(function() {
       printTime();
     }, 1000);
+    // update millisecond
+    milliIntervalId = setInterval(function() {
+      printMilliseconds();
+    }, 10);
   } else if (btnLeft.classList.contains('stop')) {
     setStartBtn();
     setResetBtn();
     // stop clock
     chronometer.stopClick();
     clearInterval(startIntervalId);
+    clearInterval(milliIntervalId);
   }
 });
 
@@ -41,6 +47,7 @@ btnRight.addEventListener('click', function() {
     // reset clock
     chronometer.resetClick();
     printTime();
+    printMilliseconds();
     clearSplits();
   } else if (btnRight.classList.contains('split')) {
     // print split
@@ -63,7 +70,11 @@ function printSeconds() {
   secUni.innerHTML = seconds[1];
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+  var milliseconds = chronometer.twoDigitsNumber(chronometer.milliSeconds);
+  milDec.innerHTML = milliseconds[0];
+  milUni.innerHTML = milliseconds[1];
+}
 
 function printTime() {
   printMinutes();
@@ -74,7 +85,10 @@ function printTime() {
  * Print and Clear Split
  *********************************/
 function printSplit() {
-  var time = chronometer.setTime().join(':');
+  var time =
+    chronometer.setTime().join(':') +
+    ':' +
+    chronometer.twoDigitsNumber(chronometer.milliSeconds);
   var ol = document.getElementById('splits');
 
   var li = document.createElement('li');
