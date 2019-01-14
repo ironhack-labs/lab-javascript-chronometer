@@ -20,7 +20,7 @@ function printTime() {
 }
 
 function printMinutes() {
-  minUni.innerText = chronometer.setMinutes() % 60;
+  minUni.innerText = chronometer.setMinutes() % 10;
   minDec.innerText = chronometer.twoDigitsNumber(chronometer.setMinutes())[0];
 }
 
@@ -41,6 +41,8 @@ function printSplit() {
   let splitMinutesDec = chronometer.twoDigitsNumber(chronometer.setMinutes())[0];
   return splitMinutesDec + splitMinutesUni + ":" + splitSecondsDec + splitSecondsUni;
 }
+
+
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
