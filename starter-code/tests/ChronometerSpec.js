@@ -7,7 +7,6 @@ describe('', function () {
     it('Should declare a Chronometer function', function () {
       expect(typeof Chronometer).toEqual('function');
     });
-
     it('Should not receive any parameter', function () {
       expect(Chronometer.length).toEqual(0);
     });
