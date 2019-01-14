@@ -48,6 +48,6 @@ return clearInterval(this.intervalId)
 return this.currentTime = 0;
  };
 
-// Chronometer.prototype.splitClick = function () {
+ Chronometer.prototype.splitClick = function () {
 
-// };
+};
