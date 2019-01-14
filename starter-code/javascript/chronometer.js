@@ -11,7 +11,7 @@ class Chronometer {
   }
   startClick() {
     this.intervalID = setInterval(() => {
-      this.currentTime += 1;
+      this.currentTime++;
       this.counter++;
       if (this.counter == 6000) {
         this.currentTime = this.currentTime + 4000;
@@ -26,19 +26,10 @@ class Chronometer {
   }
 }
 function chronometerUpdate(obj) {
-  if (obj.currentTime < 10) {
-    var currentTime = "00000" + String(obj.currentTime);
-  } else if (obj.currentTime < 100) {
-    var currentTime = "0000" + String(obj.currentTime);
-  } else if (obj.currentTime < 1000) {
-    var currentTime = "000" + String(obj.currentTime);
-  } else if (obj.currentTime < 10000) {
-    var currentTime = "00" + String(obj.currentTime);
-  } else if (obj.currentTime < 100000) {
-    var currentTime = "0" + String(obj.currentTime);
-  } else {
-    var currentTime = String(obj.currentTime);
-  }
+  var currentTime = String(obj.currentTime);
+  while (currentTime.length < 6) {
+    currentTime = '0' + currentTime;
+  } 
   for (i = 0; i < currentTime.length; i++) {
     htmlCollection[i].innerHTML = currentTime[i];
   }
