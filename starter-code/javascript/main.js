@@ -7,12 +7,25 @@ var secDec = document.getElementById("secDec");
 var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
+var intervalId2 = 0;
+function printTime() {
+  intervalId2 = setInterval(function() {
+    var array = chronometer.setTime();
+    printMinutes(array[0])
+    printSeconds(array[1]);
+  }, 1000);
+}
+function printMinutes(minute) {
+  var minuteNumber = minute.split("")
+  minDec.innerHTML = minuteNumber[0]
+  minUni.innerHTML = minuteNumber[1]
+}
 
-function printTime() {}
-
-function printMinutes() {}
-
-function printSeconds() {}
+function printSeconds(second) {
+  var secondNumber = second.split("")
+  secDec.innerHTML = secondNumber[0]
+  secUni.innerHTML = secondNumber[1]
+}
 
 function printMilliseconds() {}
 
@@ -35,19 +48,22 @@ btnLeft.addEventListener("click", function() {
     btnLeft.innerHTML = "STOP";
     btnRight.className = "btn split";
     btnRight.innerHTML = "SPLIT";
-    chronometer.startClick()
-    console.log(chronometer)
+    chronometer.startClick();
+    printTime()
+    
   } else {
     btnLeft.className = "btn start";
     btnLeft.innerHTML = "START";
     btnRight.className = "btn reset";
     btnRight.innerHTML = "RESET";
+    chronometer.stopClick()
+    clearInterval(intervalId2)
   }
 });
 
 // Reset/Split Button
-btnRight.addEventListener("click", function() {
-  if (btnRight.className = "btn reset"){
-    btn
-  }
-});
+//btnRight.addEventListener("click", function() {
+//  if ((btnRight.className = "btn reset")) {
+//    btn;
+//  }
+//});

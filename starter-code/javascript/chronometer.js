@@ -24,16 +24,17 @@ Chronometer.prototype.setSeconds = function() {
 };
 
 Chronometer.prototype.twoDigitsNumber = function(num) {
-  if (num < 10) {
+  if (num <= 9) {
     return `0${num}`;
   } else {
-    return `${num}`;
+    return num.toString();
   }
 };
 
 Chronometer.prototype.setTime = function() {
-  var minutes = this.twoDigitsNumber(this.setMinutes);
-  var seconds = this.twoDigitsNumber(this.setSeconds);
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
+  return [minutes, seconds]
 };
 
  Chronometer.prototype.setMilliseconds = function () {
