@@ -34,15 +34,15 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.stopClick = function () {
-  clearInterval();
+  clearInterval(this.intervalId);
+};
+
+Chronometer.prototype.resetClick = function () {
+  this.currentTime = 0;
+  this.intervalId = 0;
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
-
-// };
-
-
-// Chronometer.prototype.resetClick = function () {
 
 // };
 
