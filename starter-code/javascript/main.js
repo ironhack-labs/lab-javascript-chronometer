@@ -58,3 +58,7 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
 });
+
+
+    chronometer.startClick()
+
