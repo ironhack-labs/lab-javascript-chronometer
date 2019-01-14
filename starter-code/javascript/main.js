@@ -18,7 +18,7 @@ function printMinutes() {
 }
 
 function printSeconds() {
-
+  secUni.innerHTML = setSeconds
 }
 
 function printMilliseconds() {
@@ -34,27 +34,46 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  // btnLeft.className="btn start"
+  // btnLeft.innerHTML = "START"
 }
 
 function setSplitBtn() {
-
+// btnRight.className = "btn split"
+// btnRight.innerHTML ="SPLIT"
 }
 
 function setStartBtn() {
-
+  // btnLeft.className="btn stop"
+  // btnLeft.innerHTML = "STOP"
 }
 
 function setResetBtn() {
-
+  // btnRight.className = "btn reset"
+  // btnRight.innerHTML = "RESET"
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
 
+btnLeft.addEventListener('click', function () {
+  if (btnLeft.className === "btn start"){
+    btnLeft.className = "btn stop"
+    btnLeft.innerHTML = "STOP"
+
+    printSeconds
+
+  } else {
+    btnLeft.className = "btn start"
+    btnLeft.innerHTML = "START"
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  if (btnLeft.className === "btn start"){
+    setResetBtn
+  } else {
+    setSplitBtn
+  }
 
 });

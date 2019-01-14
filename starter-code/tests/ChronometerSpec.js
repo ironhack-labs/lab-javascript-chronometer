@@ -244,6 +244,7 @@ describe('', function () {
     });
 
     it('Should clear the currentTime property', function () {
+      chronometer.currentTime = 100;
       chronometer.resetClick();
 
       expect(chronometer.currentTime).toEqual(0);
