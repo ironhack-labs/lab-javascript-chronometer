@@ -13,9 +13,8 @@ class Chronometer {
     this.intervalID = setInterval(() => {
       this.currentTime += 1;
       this.counter++;
-      if (this.counter == 5900) {
-        this.currentTime = this.currentTime - 5900;
-        this.currentTime += 10000;
+      if (this.counter == 6000) {
+        this.currentTime = this.currentTime + 4000;
         this.counter = 0;
       }
       chronometerUpdate(this);
