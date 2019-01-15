@@ -11,14 +11,14 @@
    var that = this;
    this.intervalId = setInterval(function(){
 
-   that.currentTime++;
-   that.setTime(that.currentTime)
+      that.currentTime++;
+      that.setTime(that.currentTime)
 
    },1000)
 };
 
  Chronometer.prototype.setMinutes = function () {
-   var minutes = Math.floor(this.currentTime/60)
+   var minutes = parseInt(this.currentTime/60)
    
    return minutes;
 };
@@ -45,7 +45,7 @@ if (str >= 10){
  Chronometer.prototype.setTime = function (num) {
      var minutes = this.twoDigitsNumber(this.setMinutes(num))
      var seconds = this.twoDigitsNumber(this.setSeconds(num))
-
+     return [minutes,seconds];
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
