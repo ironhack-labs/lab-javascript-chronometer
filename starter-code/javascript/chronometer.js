@@ -29,7 +29,7 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
-
+  
 };
 
 Chronometer.prototype.stopClick = function () {
