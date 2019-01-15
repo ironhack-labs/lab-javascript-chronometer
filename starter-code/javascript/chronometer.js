@@ -18,13 +18,17 @@ Chronometer.prototype.setSeconds = function () {
   return this.currentTime - (Math.floor(this.currentTime / 60) * 60);
 };
 
-Chronometer.prototype.twoDigitsNumber = function () {
-  
+Chronometer.prototype.twoDigitsNumber = function (number) {
+  var num = number.toString();
+  if (num.length === 1) {
+    num = "0" + num;
+  }
+  return num;
 };
 
-// Chronometer.prototype.setTime = function () {
+Chronometer.prototype.setTime = function () {
 
-// };
+};
 
 // Chronometer.prototype.setMilliseconds = function () {
 
