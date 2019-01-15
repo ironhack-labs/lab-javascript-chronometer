@@ -7,6 +7,9 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+
+var splitsOl    = document.getElementById('splits');
+
 var intervalId;
 
 function printTime() {
@@ -85,7 +88,13 @@ btnRight.addEventListener('click', function () {
     secDec.innerText = 0;
     secUni.innerText = 0;
     chronometer.resetClick();
+    while (splitsOl.hasChildNodes()) {
+      splitsOl.removeChild(splitsOl.lastChild);
+    }
   } else if(btnRight.className === "btn split") {
 
+    var li = document.createElement("li");
+    li.innerText = chronometer.split();
+    splitsOl.appendChild(li);
   }
 });
