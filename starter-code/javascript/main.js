@@ -7,10 +7,10 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
+var intervalId;
 
 function printTime() {
-  setInterval(function() {
+  intervalId = setInterval(function() {
     printMinutes();
     printSeconds();
   }, 1000);
@@ -79,4 +79,13 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  if (btnRight.className === "btn reset") {
+    minDec.innerText = 0;
+    minUni.innerText = 0;
+    secDec.innerText = 0;
+    secUni.innerText = 0;
+    chronometer.resetClick();
+  } else if(btnRight.className === "btn split") {
+
+  }
 });
