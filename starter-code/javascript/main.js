@@ -30,10 +30,14 @@ function printSeconds(second) {
 function printMilliseconds() {}
 
 function printSplit() {
-  var split = document.createElement('li')
-  split.innerHTML = (printMinutes(minutes) + ":" + chronometer.secondNumber)
-  var clock = document.getElementById("splits")
-  clock.appendChild(split)
+  splits.innerHTML +=
+    "<li>" +
+    minDec.innerHTML +
+    minUni.innerHTML +
+    ":" +
+    secDec.innerHTML +
+    secUni.innerHTML +
+    "</li>";
 }
 
 function clearSplits() {}
