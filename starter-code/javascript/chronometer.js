@@ -8,6 +8,7 @@ Chronometer.prototype.startClick = function () {
 
   this.intervalId = setInterval(function(){
     this.currentTime +=1;
+    this.setTime();
     
   }.bind(this),1000);
 
@@ -23,14 +24,14 @@ Chronometer.prototype.setSeconds = function () {
   
 };
 
-Chronometer.prototype.twoDigitsNumber = function () {
-  var result = "";
-  if(Chronometer.setMinutes() === 0 && Chronometer.setSeconds() === 0){
-    return result = "00";
+Chronometer.prototype.twoDigitsNumber = function (time) {
+  
+  if(time < 10){
+     time ="0" + time;
+  }else{
+    time = time.toString();
   }
-  else {
-    return "".concat(this.setMinutes());
-  }
+  return time;
 };
 
 
@@ -43,12 +44,12 @@ Chronometer.prototype.setMilliseconds = function () {
 };
 
 Chronometer.prototype.stopClick = function () {
-
+  clearInterval(this.intervalId);
   
 };
 
 Chronometer.prototype.resetClick = function () {
-
+  
 };
 
 Chronometer.prototype.splitClick = function () {
