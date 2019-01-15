@@ -29,7 +29,12 @@ function printSeconds(second) {
 
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+  var split = document.createElement('li')
+  split.innerHTML = (printMinutes(minutes) + ":" + chronometer.secondNumber)
+  var clock = document.getElementById("splits")
+  clock.appendChild(split)
+}
 
 function clearSplits() {}
 
@@ -61,9 +66,12 @@ btnLeft.addEventListener("click", function() {
   }
 });
 
-// Reset/Split Button
-//btnRight.addEventListener("click", function() {
-//  if ((btnRight.className = "btn reset")) {
-//    btn;
-//  }
-//});
+ //Reset/Split Button
+btnRight.addEventListener("click", function() {
+  if ((btnLeft.className = "btn stop")) {
+    printSplit();
+  }
+  else {
+    setResetBtn();
+  }
+});
