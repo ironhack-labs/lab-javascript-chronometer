@@ -9,6 +9,7 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval(function(){
     this.currentTime +=1;
     this.setTime();
+    console.log(this.currentTime);
     
   }.bind(this),1000);
 
@@ -36,6 +37,7 @@ Chronometer.prototype.twoDigitsNumber = function (time) {
 
 
 Chronometer.prototype.setTime = function () {
+
 
 };
 

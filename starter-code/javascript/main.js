@@ -1,4 +1,5 @@
 var chronometer = new Chronometer();
+
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -14,12 +15,15 @@ function printTime() {
 }
 
 function printMinutes() {
+  minDec.innerHTML = chronometer.setMinutes();
 
 }
 
 function printSeconds() {
-
+  minDec.innerHTML = chronometer.setSeconds();
+  
 }
+
 
 function printMilliseconds() {
 
@@ -51,10 +55,24 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  
+  if(btnLeft.classList.toggle("stop")){
+    btnLeft.innerHTML = "STOP";
+    chronometer.stopClick();
+  }  else{
+    btnLeft.innerHTML = "START";
+    chronometer.startClick();
+  }
+  
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if(btnRight.classList.toggle("split")){
+    btnRight.innerHTML = "SPLIT";
+  }
+  else{
+    btnRight.innerHTML = "RESET";
+  }
 });
