@@ -1,40 +1,102 @@
 // Constructor
-// function Chronometer() {
+// function Chronometer() {}
 
+// class Chronometer {
+//   constructor() {
+//     this.currentTime = 0;
+//     this.intervalId = 0;
+//     this.miliSecond = 0;
+//     this.IntervalId2 = 0;
+//   }
+
+//   startClick() {
+//     var that = this;
+//     this.IntervalId = setInterval(function() {
+//       that.currentTime++;
+//       that.setTime();
+//     }, 1000);
+
+//     this.setCentiSecond();
+//   }
+
+//   setMinutes() {
+//     return Math.floor(this.currentTime / 60);
+//   }
+
+//   setSeconds() {
+//     return this.currentTime % 60;
+//   }
+
+//   setCentiSecond() {
+//     var that = this;
+//     this.IntervalId2 = setInterval(function() {
+//       that.miliSecond++ % 100;
+//     }, 10);
+//   }
+
+//   twoDigitsNumber(a) {
+//     return ("0" + a.toString()).substr(-2);
+//   }
+
+//   setTime() {
+//     var minutes = this.twoDigitsNumber(this.setMinutes());
+//     var seconds = this.twoDigitsNumber(this.setSeconds());
+//     return minutes + seconds;
+//   }
+
+//   stopClick() {
+//     clearInterval(this.IntervalId);
+//     clearInterval(this.IntervalId2);
+//   }
+
+//   resetClick() {
+//     this.currentTime = 0;
+//     this.miliSecond = 0;
+//   }
 // }
 
-// Chronometer.prototype.startClick = function () {
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = 0;
+  }
 
-// };
+  startClick() {
+    var that = this;
+    this.IntervalId = setInterval(function() {
+      that.currentTime++;
+      that.setTime();
+    }, 10);
+  }
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+  setMinutes() {
+    return Math.floor(this.currentTime / 100 / 60);
+  }
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+  setSeconds() {
+    return Math.floor(this.currentTime / 100) % 60;
+  }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+  setCentiSecond() {
+    return Math.floor(this.currentTime % 100);
+  }
 
-// Chronometer.prototype.setTime = function () {
+  twoDigitsNumber(a) {
+    return ("0" + a.toString()).substr(-2);
+  }
 
-// };
+  setTime() {
+    var minutes = this.twoDigitsNumber(this.setMinutes());
+    var seconds = this.twoDigitsNumber(this.setSeconds());
+    var miliSecond = this.twoDigitsNumber(this.setCentiSecond());
+    return minutes + seconds + miliSecond;
+  }
 
-// Chronometer.prototype.setMilliseconds = function () {
+  stopClick() {
+    clearInterval(this.IntervalId);
+  }
 
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+  resetClick() {
+    this.currentTime = 0;
+  }
+}
