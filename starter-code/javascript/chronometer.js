@@ -3,6 +3,7 @@ function Chronometer() {
   this.intervalId = "";
   this.minutes = 0;
   this.seconds = 0;
+  this.miliseconds = 0;
 }
 
 Chronometer.prototype.startClick = function () {
@@ -11,6 +12,7 @@ Chronometer.prototype.startClick = function () {
     this.currentTime++;
     this.setTime();
     printTime();
+
   }).bind(this), 1000);
 };
 
@@ -37,7 +39,6 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
-
 };
 
 Chronometer.prototype.stopClick = function () {
@@ -51,5 +52,8 @@ Chronometer.prototype.resetClick = function () {
 };
 
 Chronometer.prototype.splitClick = function () {
-
+  var ol = document.getElementById("splits");
+  var li = document.createElement("li");  
+  li.appendChild(document.createTextNode(`${minDec.textContent}${minUni.textContent}:${secDec.textContent}${secUni.textContent}`));
+  ol.appendChild(li);
 };
