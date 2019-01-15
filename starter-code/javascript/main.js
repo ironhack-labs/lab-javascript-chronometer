@@ -34,27 +34,36 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  btnLeft = document.createTextNode('STOP');
+  btnLeft.className = "btn stop"
 }
 
 function setSplitBtn() {
-
+  btnRight = document.createTextNode('SPLIT');
+  btnRight.className = "btn split"
 }
 
-function setStartBtn() {
+var btnLeft = document.getElementById("btnleft")
 
+
+
+function setStartBtn() {
+    
 }
 
 function setResetBtn() {
-
+  
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  if (btnLeft.innerHTML === "START") {
+    setStopBtn()
+  }
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  setSplitBtn() 
 });
