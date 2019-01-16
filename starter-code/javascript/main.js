@@ -62,7 +62,6 @@ function reset() {
   secUni.innerText = "0";
   minDec.innerText = "0";
   minUni.innerText = "0";
-  clearInterval(counter);
 }
 
 function updateBtnLeft() {
@@ -97,7 +96,7 @@ btnLeft.addEventListener('click', function () {
     }, 1000);
   } else if(btnLeft.className.includes("stop")) {
     chronometer.stopClick();
-
+    clearInterval(counter);
   }
   updateBtnLeft();
   updateBtnRight();
