@@ -42,9 +42,11 @@ Chronometer.prototype.stopClick = function () {
 };
 
 Chronometer.prototype.resetClick = function () {
-
+  this.currentTime = 0;
 };
 
 Chronometer.prototype.splitClick = function () {
-
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
+  return `${minutes}:${seconds}`;
 };

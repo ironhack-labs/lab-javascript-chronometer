@@ -30,10 +30,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
-  var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
+  var time = chronometer.splitClick();
   var li = document.createElement("li");
-  li.innerText = `${minutes}:${seconds}`;
+  li.innerText = time;
   splitList.appendChild(li);
 }
 
@@ -58,7 +57,7 @@ function setResetBtn() {
 
 }
 function reset() {
-  chronometer.currentTime = 0;
+  chronometer.resetClick();
   secDec.innerText = "0";
   secUni.innerText = "0";
   minDec.innerText = "0";
@@ -100,10 +99,8 @@ btnLeft.addEventListener('click', function () {
     chronometer.stopClick();
 
   }
-
   updateBtnLeft();
   updateBtnRight();
-  
 });
 
 // Reset/Split Button
