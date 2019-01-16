@@ -64,6 +64,16 @@ function reset() {
   minUni.innerText = "0";
 }
 
+function startCounter() {
+  counter = setInterval(function() {
+    printTime();
+  }, 1000);
+}
+
+function stopCounter() {
+  clearInterval(counter);
+}
+
 function updateBtnLeft() {
   btnLeft.classList.toggle('start');
   btnLeft.classList.toggle('stop');
@@ -75,12 +85,10 @@ function updateBtnLeft() {
 }
 function updateBtnRight() {
   if(btnLeft.className.includes('stop')) {
-
     btnRight.classList.add('split');
     btnRight.classList.remove('reset');
     btnRight.innerText = 'SPLIT'
   } else {
-
     btnRight.classList.remove('split');
     btnRight.classList.add('reset');
     btnRight.innerText = 'RESET'
@@ -91,12 +99,10 @@ function updateBtnRight() {
 btnLeft.addEventListener('click', function () {
   if(btnLeft.className.includes("start")) {
     chronometer.startClick();
-    counter = setInterval(function() {
-      printTime();
-    }, 1000);
+    startCounter();
   } else if(btnLeft.className.includes("stop")) {
     chronometer.stopClick();
-    clearInterval(counter);
+    stopCounter();
   }
   updateBtnLeft();
   updateBtnRight();
