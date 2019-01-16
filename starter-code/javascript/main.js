@@ -13,6 +13,7 @@ var milUni = document.getElementById('milUni');
 function printTime() {
     printMinutes();
     printSeconds();
+    printMilliseconds();
 }
 
 function printMinutes() {
@@ -26,6 +27,8 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
+    milDec.textContent = miliseconds[0];
+    milUni.textContent = miliseconds[1];
 
 }
 
