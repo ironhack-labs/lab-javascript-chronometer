@@ -1,45 +1,25 @@
 // Constructor
 function Chronometer() {
-  this.currentTime = 0;
+  this.currentTime = 55; // Don't forget to change it!!!!!
   this.intervalId = 0;
+  this.minute = 0;
+  this.second = 0;
+  // this.splitText;
 }
 
-var minutes;
-var seconds;
-
-
-// console.log("first line");
-
-// setTimeout(function(){
-//   console.log("second line");
-// }, 200)
-
-// console.log("third line");
-
-
-// var i = 0;
-
-// setTimeout(function() {
-//   clearInterval(watchTime);
-//   console.log("stop the timer");
-// },10000);
-
-// var watchTime = setInterval(function(){
-//    i++;
-//    console.log(`${i} seconds`);
-
-// }, 1000);
 
 Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval((function() {
-  this.currentTime++;
-  this.setTime();
+    this.currentTime++;
+    this.setTime();
+    printTime();
   }).bind(this),1000);
   return;
 };
 
 Chronometer.prototype.setMinutes = function () {
-  return (this.currentTime - this.currentTime % 60) / 60 ;
+  return Math.floor(this.currentTime / 60);
+  // return (this.currentTime - this.currentTime % 60) / 60 ;
 };
 
 Chronometer.prototype.setSeconds = function () {
@@ -48,15 +28,15 @@ Chronometer.prototype.setSeconds = function () {
 
 Chronometer.prototype.twoDigitsNumber = function (time) {
   if(time < 10) {
-    return "0" + time;
+    return "0" + time.toString();
   } else {
     return time.toString();
   }
 };
 
 Chronometer.prototype.setTime = function () {
-  minutes = this.twoDigitsNumber(this.setMinutes());
-  seconds = this.twoDigitsNumber( this.setSeconds());
+  this.minute = this.twoDigitsNumber(this.setMinutes());
+  this.second = this.twoDigitsNumber( this.setSeconds());
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
@@ -69,8 +49,13 @@ Chronometer.prototype.stopClick = function () {
 
 Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
+  this.intervalId = 0;
+  this.minute = 0;
+  this.second = 0;
 };
 
-// Chronometer.prototype.splitClick = function () {
+Chronometer.prototype.splitClick = function () {
+    return this.minute + ":" + this.second;
+};
 
-// };
+
