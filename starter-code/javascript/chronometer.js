@@ -2,13 +2,15 @@
 function Chronometer() {
   this.currentTime = 0;
   this.intervalId;
+  this.minutes = 0;
+  this.seconds = 0;
 };
 
 Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval((function() {
     this.currentTime += 1;
     this.setTime();
-    printTime()
+    printTime();
   }).bind(this), 1000);
 };
 
@@ -39,6 +41,8 @@ Chronometer.prototype.stopClick = function () {
 
  Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
+  this.minutes = 0;
+  this.seconds = 0;
   clearInterval(intervalId);
 };
 

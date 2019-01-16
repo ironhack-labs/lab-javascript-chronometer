@@ -13,18 +13,18 @@ var splitsOl    = document.getElementById('splits');
 var intervalId;
 
 function printTime() {
-    printMinutes();
-    printSeconds();
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  minUni.innerText = this.chronometer.minutes[1];
-  minDec.innerText = this.chronometer.minutes[0];
+  minUni.innerText = chronometer.minutes[1];
+  minDec.innerText = chronometer.minutes[0];
 }
 
 function printSeconds() {
-  secUni.innerText = this.chronometer.seconds[1];
-  secDec.innerText = this.chronometer.seconds[0];
+  secUni.innerText = chronometer.seconds[1];
+  secDec.innerText = chronometer.seconds[0];
 }
 
 function printMilliseconds() {
@@ -65,7 +65,6 @@ function setStartBtn() {
   btnRight.classList.add("split");
   btnRight.innerText = "SPLIT";
   chronometer.startClick();
-  printTime();
 }
 
 function setResetBtn() {
@@ -74,7 +73,6 @@ function setResetBtn() {
   minDec.innerText = chronometer.currentTime;
   minUni.innerText = chronometer.currentTime;
   secDec.innerText = chronometer.currentTime;
-  
 }
 
 // Start/Stop Button
