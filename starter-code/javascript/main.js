@@ -14,8 +14,10 @@ function printTime() {
 
 }
 
-function printMinutes() {
-  minDec.innerHTML = chronometer.setMinutes();
+function printMinutes(minutes) {
+  
+  minDec.innerHTML = this.minutes[0];
+  minDec.innerHTML = this.minutes[1];
 
 }
 
