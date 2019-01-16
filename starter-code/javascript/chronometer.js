@@ -8,6 +8,7 @@ Chronometer.prototype.startClick = function () {
   this.intervalId = setInterval((function() {
     this.currentTime += 1;
     this.setTime();
+    printTime()
   }).bind(this), 1000);
 };
 
