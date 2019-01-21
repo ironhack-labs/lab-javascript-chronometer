@@ -26,7 +26,7 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
 Chronometer.prototype.setTime = function () {
     let segs = this.twoDigitsNumber(this.setSeconds())
     let mins = this.twoDigitsNumber(this.setMinutes())
-
+    return mins+segs
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
@@ -35,6 +35,7 @@ Chronometer.prototype.setTime = function () {
 
 Chronometer.prototype.stopClick = function () {
     clearInterval(this.intervalId)
+    this.intervalId = 0
 };
 
 Chronometer.prototype.resetClick = function () {
