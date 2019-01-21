@@ -18,7 +18,9 @@ function printTime() {
         minUni.innerText = time[1]
         secDec.innerText = time[2]
         secUni.innerText = time[3]
-    },1000)
+        milDec.innerText = time[4]
+        milUni.innerText = time[5]
+    },10)
 }
 
 function printMinutes() {
@@ -87,7 +89,7 @@ btnRight.addEventListener('click', function () {
         let sp = document.createElement('li')
         let tm = chronometer.setTime()
 
-        sp.innerText = tm[0]+tm[1]+":"+tm[2]+tm[3]
+        sp.innerText = tm[0]+tm[1]+":"+tm[2]+tm[3]+"."+tm[4]+tm[5]
         list.appendChild(sp)
     }
 });
