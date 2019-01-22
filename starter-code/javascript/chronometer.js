@@ -29,13 +29,17 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
 };
 
 Chronometer.prototype.setTime = function () {
-  let minutes = this.twoDigitsNumber( this.setMinutes )
-  let seconds = this.twoDigitsNumber( this.setSeconds )
+  let minutes = this.twoDigitsNumber( this.setMinutes() )
+  let seconds = this.twoDigitsNumber( this.setSeconds() )
+  printTime(seconds, minutes)
+  let complete = minutes + ":" + seconds
+  printSplit(complete)
 }
 
 
 Chronometer.prototype.stopClick = function () {
-  this.intervalId = clearInterval()
+  clearInterval(this.intervalId)
+  this.intervalId = 0
 };
 
 Chronometer.prototype.resetClick = function () {
