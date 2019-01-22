@@ -28,9 +28,9 @@ body {
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 35px 17px;
   position: relative;
-  text-align: center;
+  text-align: left;
   width: 220px;
 }
 
