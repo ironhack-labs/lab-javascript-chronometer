@@ -32,11 +32,20 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  let lista = document.getElementById("splits");
+  let split = document.createElement("li");
 
+  let min = chronometer.minutes; 
+  let seg = chronometer.seconds; 
+  let tiempo = min + ":" + seg;
+
+  split.innerText = tiempo;
+  lista.appendChild(split);
 }
 
 function clearSplits() {
-
+  let lista = document.getElementById("splits");
+  lista.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -81,5 +90,15 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  // si el cronometro esta corriendo
+  if (btnRight.innerText === "SPLIT"){
+    printSplit();
+  }else if(btnRight.innerText === "RESET"){
+    clearSplits();
+    minDec.innerText = "0";
+    minUni.innerText = "0";
+    secDec.innerText = "0";
+    secUni.innerText = "0";
+  }
 
 });
