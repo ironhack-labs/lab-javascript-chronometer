@@ -10,15 +10,21 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
+  let min = chronometer.minutes;
+  minUni.innerText = min.charAt(1);
+  minDec.innerText = min.charAt(0);
 
 }
 
 function printSeconds() {
-
+  let seg = chronometer.seconds;
+  secDec.innerText = seg.charAt(0);
+  secUni.innerText = seg.charAt(1);
 }
 
 function printMilliseconds() {
@@ -51,6 +57,25 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+  // console.log(btnLeft);
+  // si el cronometro esta parado
+  if (btnLeft.innerText === "START"){
+    btnLeft.innerText = "STOP";
+    btnLeft.setAttribute("class","btn stop");
+
+    btnRight.innerText = "SPLIT";
+    btnRight.setAttribute("class","btn split");
+
+    chronometer.startClick();    
+  }else if (btnLeft.innerText === "STOP"){
+    btnLeft.innerText = "START";
+    btnLeft.setAttribute("class","btn start");
+
+    btnRight.innerText = "RESET";
+    btnRight.setAttribute("class","btn reset");
+
+    chronometer.stopClick();    
+  }
 
 });
 
