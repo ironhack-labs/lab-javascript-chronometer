@@ -1,40 +1,59 @@
 // Constructor
-// function Chronometer() {
+ function Chronometer() {
+    this.currentTime = 0;
+    this.intervalId = 0;
+    this.segundos =0;
+    this.minutos = 0;
+    this.milis =0;
+ }
 
-// }
+ Chronometer.prototype.startClick = function () {
+    this.intervalId = setInterval(()=>{
+    this.currentTime ++;
+    this.setTime();
+    printTime() 
+    },1000);
+ };
 
-// Chronometer.prototype.startClick = function () {
+ Chronometer.prototype.setMinutes = function () {
+     minutos = Math.floor(this.currentTime/60);
+     return minutos;
+ };
 
-// };
+ Chronometer.prototype.setSeconds = function () {
+    segundos = this.currentTime % 60;
+    return segundos;
+ };
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+ Chronometer.prototype.twoDigitsNumber = function (valor) {
+     if ( valor < 10 ){
+         return "0" + valor;
+     }
+     return valor.toString();
+ };
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+ Chronometer.prototype.setTime = function () {
+     this.minutos=this.twoDigitsNumber(this.setMinutes());
+     this.segundos=this.twoDigitsNumber(this.setSeconds());
+     //this.milis=this.twoDigitsNumber(this.setMilliseconds());
+ };
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+ /*Chronometer.prototype.setMilliseconds = function () {
+     this.intervalId = setInterval(() => {
+     this.milis ++;
+      if (this.milis < 99) {
+        clearInterval(this.intervalIdMilis);
+      }
+      this.setTime();
+      printTime();
+    }, 1); return this.milis;
+     };*/
 
-// Chronometer.prototype.setTime = function () {
+ Chronometer.prototype.stopClick = function () {
+     clearInterval(this.intervalId);
+ };
 
-// };
-
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+ Chronometer.prototype.resetClick = function () {
+    clearInterval(this.intervalId);
+    this.setTime()=0;
+ };
