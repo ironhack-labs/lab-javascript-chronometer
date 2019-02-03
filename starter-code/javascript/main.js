@@ -49,40 +49,35 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  btnLeft.innerText = "STOP";
+  btnLeft.setAttribute("class","btn stop");
 }
 
 function setSplitBtn() {
-
+  btnRight.innerText = "SPLIT";
+  btnRight.setAttribute("class","btn split");
 }
 
 function setStartBtn() {
-
+  btnLeft.innerText = "START";
+  btnLeft.setAttribute("class","btn start");
 }
 
 function setResetBtn() {
-
+  btnRight.innerText = "RESET";
+  btnRight.setAttribute("class","btn reset");
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-  // console.log(btnLeft);
   // si el cronometro esta parado
   if (btnLeft.innerText === "START"){
-    btnLeft.innerText = "STOP";
-    btnLeft.setAttribute("class","btn stop");
-
-    btnRight.innerText = "SPLIT";
-    btnRight.setAttribute("class","btn split");
-
+    setStopBtn();
+    setSplitBtn()
     chronometer.startClick();    
-  }else if (btnLeft.innerText === "STOP"){
-    btnLeft.innerText = "START";
-    btnLeft.setAttribute("class","btn start");
-
-    btnRight.innerText = "RESET";
-    btnRight.setAttribute("class","btn reset");
-
+  } else if (btnLeft.innerText === "STOP"){
+    setStartBtn()
+    setResetBtn()
     chronometer.stopClick();    
   }
 
@@ -93,12 +88,13 @@ btnRight.addEventListener('click', function () {
   // si el cronometro esta corriendo
   if (btnRight.innerText === "SPLIT"){
     printSplit();
-  }else if(btnRight.innerText === "RESET"){
+  } else if(btnRight.innerText === "RESET"){
     clearSplits();
     minDec.innerText = "0";
     minUni.innerText = "0";
     secDec.innerText = "0";
     secUni.innerText = "0";
+    chronometer.resetClick();
   }
 
 });
