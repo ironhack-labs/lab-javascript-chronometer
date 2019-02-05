@@ -8,53 +8,53 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
+// btnLeft.onclick = chronometer.startClick();
 
-function printTime() {
+// function printTime() {
 
-}
+// }
 
-function printMinutes() {
+// function printMinutes() {
 
-}
+// }
 
-function printSeconds() {
+// function printSeconds() {
 
-}
+// }
 
-function printMilliseconds() {
+// function printMilliseconds() {
 
-}
+// }
 
-function printSplit() {
+// function printSplit() {
 
-}
+// }
 
-function clearSplits() {
+// function clearSplits() {
 
-}
+// }
 
-function setStopBtn() {
+// function setStopBtn() {
 
-}
+// }
 
-function setSplitBtn() {
+// function setSplitBtn() {
 
-}
+// }
 
-function setStartBtn() {
+// function setStartBtn() {
 
-}
+// }
 
-function setResetBtn() {
+// function setResetBtn() {
 
-}
+// }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+btnLeft.addEventListener('click', 
+() => chronometer.startClick()
 
-});
+);
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
-});
+btnRight.addEventListener('click', () => chronometer.resetClick());
