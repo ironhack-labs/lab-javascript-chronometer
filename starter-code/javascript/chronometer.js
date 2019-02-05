@@ -1,4 +1,3 @@
-//Constructor
 function Chronometer() {
   this.currentTime = 0;
   this.currentMinutes = 0;
@@ -13,33 +12,36 @@ function Chronometer() {
     }.bind(this), 10);
   }
 
-  this.setMinutes = function(){
-    this.currentMinutes = Math.floor(this.currentTime/6000);
-    $("#minUni").html(this.currentMinutes % 10);
-    $("#minDec").html(Math.floor(this.currentMinutes / 10))
+  this.setMilliseconds = function() {
+    this.currentMilliseconds = Math.floor(this.currentTime % 100);
+    $("#milUni").html(this.getFirstDigit(this.currentMilliseconds));
+    $("#milDec").html(this.getSecondDigit(this.currentMilliseconds));
   }
 
   this.setSeconds = function(){
-    this.currentSeconds = (this.currentTime / 100) % 60;
-    this.currentSeconds = Math.floor(this.currentSeconds)
-    $("#secUni").html(this.currentSeconds % 10);
-    $("#secDec").html(Math.floor(this.currentSeconds / 10));
+    this.currentSeconds = Math.floor((this.currentTime / 100) % 60);
+    $("#secUni").html(this.getFirstDigit(this.currentSeconds));
+    $("#secDec").html(this.getSecondDigit(this.currentSeconds));
   }
 
-  this.setMilliseconds = function() {
-    this.currentMilliseconds = this.currentTime % 100;
-    $("#milUni").html(Math.floor(this.currentMilliseconds % 10));
-    $("#milDec").html(Math.floor(this.currentMilliseconds / 10));
-  }
-
-  this.twoDigitsNumber = function(number) {
-    return number.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+  this.setMinutes = function(){
+    this.currentMinutes = Math.floor(this.currentTime / 6000);
+    $("#minUni").html(this.getFirstDigit(this.currentMinutes));
+    $("#minDec").html(this.getSecondDigit(this.currentMinutes));
   }
 
   this.setTime = function() {
     this.setMilliseconds();
     this.setSeconds();
     this.setMinutes();
+  }
+
+  this.getFirstDigit = function(number) {
+    return number % 10;
+  }
+
+  this.getSecondDigit = function(number) {
+    return Math.floor(number / 10);
   }
 
   this.stopTime = function() {
@@ -56,8 +58,40 @@ function Chronometer() {
     return this.humanReadable(this.currentTime);
   }
 
-  this.humanReadable = function (totalSeconds) {
-    return this.twoDigitsNumber(this.currentMinutes) + ":" + this.twoDigitsNumber(this.currentSeconds) + ":" + this.twoDigitsNumber(this.currentMilliseconds);
+  this.humanReadable = function () {
+    return this.getSecondDigit(this.currentMinutes).toString() + this.getFirstDigit(this.currentMinutes).toString() + ":" + this.getSecondDigit(this.currentSeconds).toString() + this.getFirstDigit(this.currentSeconds).toString() + ":" + this.getSecondDigit(this.currentMilliseconds).toString() + this.getFirstDigit(this.currentMilliseconds).toString();
   }
+}
 
+var chronometer = new Chronometer();
+
+var btnLeft     = $('#btnLeft');
+var btnRight    = $('#btnRight');
+
+$(btnLeft).click(function(){
+  if (btnLeft.hasClass(("start"))) {
+    chronometer.startClick();
+    btnLeft.html("STOP");
+    btnRight.html("SPLIT");
+    toggleClasses();
+  }else if (btnLeft.hasClass("stop")) {
+    chronometer.stopTime();
+    btnLeft.html("START");
+    btnRight.html("RESET");
+    toggleClasses();
+  }
+})
+$(btnRight).click(function(){
+  if (btnRight.hasClass("split")){
+    $("#splits").append(`<li>${chronometer.splitClick()}</li>`);
+  }else if (btnRight.hasClass("reset")){
+    chronometer.resetClick();
+  }
+});
+
+function toggleClasses() {
+  btnLeft.toggleClass("start");
+  btnLeft.toggleClass("stop");
+  btnRight.toggleClass("reset");
+  btnRight.toggleClass("split");
 }
