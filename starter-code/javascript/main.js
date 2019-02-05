@@ -1,12 +1,12 @@
 var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+var btnLeft     = $('#btnLeft');
+var btnRight    = $('#btnRight');
+var minDec      = $('#minDec');
+var minUni      = $('#minUni');
+var secDec      = $('#secDec');
+var secUni      = $('#secUni');
+var milDec      = $('#milDec');
+var milUni      = $('#milUni');
 
 
 function printTime() {
@@ -50,11 +50,33 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+$(btnLeft).click(function(){
+  if (btnLeft.hasClass(("start"))) {
+    chronometer.startClick();
+    btnLeft.removeClass("start");
+    btnLeft.addClass("stop");
+    btnLeft.html("STOP");
+    btnRight.removeClass("reset");
+    btnRight.addClass("split");
+    btnRight.html("SPLIT");
+  }else if (btnLeft.hasClass("stop")) {
+    chronometer.stopTime();
+    btnLeft.removeClass("stop");
+    btnLeft.addClass("start");
+    btnLeft.html("START");
+    btnRight.removeClass("split");
+    btnRight.addClass("reset");
+    btnRight.html("RESET");
+  }
+})
 
-});
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
+$(btnRight).click(function(){
+  if (btnRight.hasClass("split")){
+    var split = chronometer.splitClick();
+    $("#splits").append("<li>"+split+"</li>");
+  }else if (btnRight.hasClass("reset")){
+    chronometer.resetClick();
+  }
 });
