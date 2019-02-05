@@ -2,16 +2,20 @@
  function Chronometer() {
     this.currentTime = 0;
     this.intervalId = 0;
-    this.ms = 0;
+   // this.ms = 0;
  }
  Chronometer.prototype.startClick = function () {
     this.intervalId = setInterval( () => {  
         this.currentTime ++;
         this.setTime();
         printTime();
-        this.ms ++;
         }, 1000);
-        // con un intervalo de 10 y otra arrow function dentro de startClick funciona bien pero no logré hacer los cálculos 
+   //       con un intervalo de 10 y otra arrow function dentro de Chronometer.prototype.startClick funciona bien pero se descomponía el stop y reset.
+   //  this.intervalId = setInterval ( () => {
+   //     this.ms ++
+   //     this.setTime();
+   //     printTime()
+   //  },10)
  };
 
  Chronometer.prototype.setMinutes = function () {
@@ -38,7 +42,7 @@
  };
 
  Chronometer.prototype.setMilliseconds = function () {
-    let ms = (this.currentTime/60)/60;
+    let ms = (this.ms/100)
     return ms;
  };
 
