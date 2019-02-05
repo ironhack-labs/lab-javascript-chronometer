@@ -3,28 +3,33 @@ function Chronometer() {
   this.currentTime = 0;
   this.currentMinutes = 0;
   this.currentSeconds = 0;
+  this.currentMilliseconds = 0;
   this.intervalId = 0;
 
   this.startClick = function(){
     this.intervalId = setInterval(function(){ 
       this.currentTime += 1;
       this.setTime();
-      this.callIt();
-    }.bind(this), 100);
+    }.bind(this), 10);
   }
 
   this.setMinutes = function(){
-    this.currentMinutes = Math.floor(this.currentTime/60);
+    this.currentMinutes = Math.floor(this.currentTime/6000);
     $("#minUni").html(this.currentMinutes % 10);
     $("#minDec").html(Math.floor(this.currentMinutes / 10))
   }
 
   this.setSeconds = function(){
-    this.currentSeconds = this.currentTime % 60;
-    if (this.currentSeconds === 60) this.currentSeconds = 0;
-    console.log(this.currentSeconds); 
+    this.currentSeconds = (this.currentTime / 100) % 60;
+    this.currentSeconds = Math.floor(this.currentSeconds)
     $("#secUni").html(this.currentSeconds % 10);
-    $("#secDec").html(Math.floor(this.currentSeconds / 10))
+    $("#secDec").html(Math.floor(this.currentSeconds / 10));
+  }
+
+  this.setMilliseconds = function() {
+    this.currentMilliseconds = this.currentTime % 100;
+    $("#milUni").html(Math.floor(this.currentMilliseconds % 10));
+    $("#milDec").html(Math.floor(this.currentMilliseconds / 10));
   }
 
   this.twoDigitsNumber = function(number) {
@@ -32,6 +37,7 @@ function Chronometer() {
   }
 
   this.setTime = function() {
+    this.setMilliseconds();
     this.setSeconds();
     this.setMinutes();
   }
@@ -47,30 +53,11 @@ function Chronometer() {
   }
 
   this.splitClick = function() {
-    return  this.humanReadable(this.currentTime);
+    return this.humanReadable(this.currentTime);
   }
 
-  // from codewars exercise :)
   this.humanReadable = function (totalSeconds) {
-    var seconds = 00;
-    var minutes = 00;
-    if(totalSeconds < 60 && totalSeconds > 0){
-      seconds = totalSeconds;
-    }else if (totalSeconds < 3600){
-      seconds = totalSeconds % 60;
-      minutes = Math.floor(totalSeconds/60);
-    }
-    return this.twoDigitsNumber(minutes) + ":" + this.twoDigitsNumber(seconds)
+    return this.twoDigitsNumber(this.currentMinutes) + ":" + this.twoDigitsNumber(this.currentSeconds) + ":" + this.twoDigitsNumber(this.currentMilliseconds);
   }
 
-  this.callIt = function(){
-    console.log("minutes:" + this.currentMinutes + " seconds:" + this.currentSeconds);
-  }
 }
-
-
-
-
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
