@@ -1,60 +1,47 @@
+// Declaring variables
 var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+var btnLeft = $('#btnLeft');
+var btnRight = $('#btnRight');
+var minDec = $('#minDec');
+var minUni = $('#minUni');
+var secDec = $('#secDec');
+var secUni = $('#secUni');
+var milDec = $('#milDec');
+var milUni = $('#milUni');
+var ol = $('#splits');
+var counter = 0;
+
+// Event listener on left side button Start/Stop
+btnLeft.click(() => {
+    if(btnLeft.hasClass('start')) {
+        chronometer.startClick();
+        btnLeft.addClass("stop");
+        btnLeft.removeClass("start");
+        btnLeft.html("STOP");
+        btnRight.addClass("split");
+        btnRight.removeClass("reset");
+        btnRight.html("SPLIT");
+    } else if (btnLeft.hasClass('stop')) {
+        chronometer.stopClick();
+        btnLeft.addClass("start");
+        btnLeft.removeClass("stop");
+        btnLeft.html("START");
+        btnRight.addClass("reset");
+        btnRight.removeClass("split");
+        btnRight.html("RESET");
+    }
+})
 
 
-function printTime() {
-
-}
-
-function printMinutes() {
-
-}
-
-function printSeconds() {
-
-}
-
-function printMilliseconds() {
-
-}
-
-function printSplit() {
-
-}
-
-function clearSplits() {
-
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
-}
-
-// Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+var splitList = '';
+// Event listener on right side button Reset
+btnRight.click(() => {
+    if(btnRight.hasClass('reset')) {
+        chronometer.resetClick();
+    } else if (btnRight.hasClass('split')) {
+        splitList += `<li>${Math.floor(chronometer.minutes / 10) % 10}${chronometer.minutes % 10}:${Math.floor(chronometer.seconds / 10) % 10}${chronometer.seconds % 10}</li>`;
+        ol.html(splitList);
+    }
 });
 
-// Reset/Split Button
-btnRight.addEventListener('click', function () {
 
-});
