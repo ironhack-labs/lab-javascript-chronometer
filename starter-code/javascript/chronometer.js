@@ -61,6 +61,7 @@ class Chronometer {
     }
     setMinutes() {
         this.currentTime !==0 && this.currentTime % 60 === 0 ? this.minutes++ : "";
+        this.minutes === 60 ? this.minutes = 0 : "";        
     }
     printSplit(){
         this.splitTime = `${this.minutes > 9 ? this.minutes : '0' + this.minutes }:${this.seconds > 9 ? this.seconds : '0' + this.seconds}:${this.milliSeconds > 9 ? this.milliSeconds : '0' + this.milliSeconds}`
