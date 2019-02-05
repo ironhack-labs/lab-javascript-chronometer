@@ -4,6 +4,8 @@ function Chronometer() {
   this.currentSeconds = 0;
   this.currentMilliseconds = 0;
   this.intervalId = 0;
+  this.btnLeft = $('#btnLeft');
+  this.btnRight = $('#btnRight');
 }
 
 Chronometer.prototype = {
@@ -12,9 +14,18 @@ Chronometer.prototype = {
       this.currentTime += 1;
       this.setTime();
     }.bind(this), 10);
+    this.btnLeft.html("STOP");
+    this.btnRight.html("SPLIT");
+    this.toggleClasses();
+  },
+  stopTime : function() {
+    clearInterval(this.intervalId);
+    this.btnLeft.html("START");
+    this.btnRight.html("RESET");
+    this.toggleClasses();
   },
   setMilliseconds : function() {
-    this.currentMilliseconds = Math.floor(this.currentTime % 100);
+    this.currentMilliseconds = this.currentTime % 100;
     $("#milUni").html(this.getFirstDigit(this.currentMilliseconds));
     $("#milDec").html(this.getSecondDigit(this.currentMilliseconds));
   },
@@ -39,49 +50,38 @@ Chronometer.prototype = {
   getSecondDigit : function(number) {
     return Math.floor(number / 10);
   },
-  stopTime : function() {
-    clearInterval(this.intervalId);
-  },
   resetClick : function() {
     this.currentTime = 0;
     this.setTime();
     $("#splits").children("*").remove();
   },
   splitClick : function() {
-    return this.humanReadable(this.currentTime);
+    $("#splits").append(`<li>${this.humanReadable(this.currentTime)}</li>`);
   },
   humanReadable : function () {
     return this.getSecondDigit(this.currentMinutes).toString() + this.getFirstDigit(this.currentMinutes).toString() + ":" + this.getSecondDigit(this.currentSeconds).toString() + this.getFirstDigit(this.currentSeconds).toString() + ":" + this.getSecondDigit(this.currentMilliseconds).toString() + this.getFirstDigit(this.currentMilliseconds).toString();
+  },
+  toggleClasses : function () {
+    this.btnLeft.toggleClass("start");
+    this.btnLeft.toggleClass("stop");
+    this.btnRight.toggleClass("reset");
+    this.btnRight.toggleClass("split");
   }
 }
 
 var chronometer = new Chronometer();
-var btnLeft     = $('#btnLeft');
-var btnRight    = $('#btnRight');
 
-$(btnLeft).click(function(){
-  if (btnLeft.hasClass(("start"))) {
+$(chronometer.btnLeft).click(function(){
+  if (chronometer.btnLeft.hasClass(("start"))) {
     chronometer.startClick();
-    btnLeft.html("STOP");
-    btnRight.html("SPLIT");
-    toggleClasses();
-  }else if (btnLeft.hasClass("stop")) {
+  }else if (chronometer.btnLeft.hasClass("stop")) {
     chronometer.stopTime();
-    btnLeft.html("START");
-    btnRight.html("RESET");
-    toggleClasses();
   }
 })
-$(btnRight).click(function(){
-  if (btnRight.hasClass("split")){
-    $("#splits").append(`<li>${chronometer.splitClick()}</li>`);
-  }else if (btnRight.hasClass("reset")){
+$(chronometer.btnRight).click(function(){
+  if (chronometer.btnRight.hasClass("split")){
+    chronometer.splitClick();
+  }else if (chronometer.btnRight.hasClass("reset")){
     chronometer.resetClick();
   }
 });
-function toggleClasses() {
-  btnLeft.toggleClass("start");
-  btnLeft.toggleClass("stop");
-  btnRight.toggleClass("reset");
-  btnRight.toggleClass("split");
-}
