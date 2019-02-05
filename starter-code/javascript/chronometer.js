@@ -4,67 +4,58 @@ function Chronometer() {
   this.currentSeconds = 0;
   this.currentMilliseconds = 0;
   this.intervalId = 0;
+}
 
-  this.startClick = function(){
+Chronometer.prototype = {
+  startClick : function() {
     this.intervalId = setInterval(function(){ 
       this.currentTime += 1;
       this.setTime();
     }.bind(this), 10);
-  }
-
-  this.setMilliseconds = function() {
+  },
+  setMilliseconds : function() {
     this.currentMilliseconds = Math.floor(this.currentTime % 100);
     $("#milUni").html(this.getFirstDigit(this.currentMilliseconds));
     $("#milDec").html(this.getSecondDigit(this.currentMilliseconds));
-  }
-
-  this.setSeconds = function(){
+  },
+  setSeconds : function(){
     this.currentSeconds = Math.floor((this.currentTime / 100) % 60);
     $("#secUni").html(this.getFirstDigit(this.currentSeconds));
     $("#secDec").html(this.getSecondDigit(this.currentSeconds));
-  }
-
-  this.setMinutes = function(){
+  },
+  setMinutes : function(){
     this.currentMinutes = Math.floor(this.currentTime / 6000);
     $("#minUni").html(this.getFirstDigit(this.currentMinutes));
     $("#minDec").html(this.getSecondDigit(this.currentMinutes));
-  }
-
-  this.setTime = function() {
+  },
+  setTime : function() {
     this.setMilliseconds();
     this.setSeconds();
     this.setMinutes();
-  }
-
-  this.getFirstDigit = function(number) {
+  },
+  getFirstDigit : function(number) {
     return number % 10;
-  }
-
-  this.getSecondDigit = function(number) {
+  },
+  getSecondDigit : function(number) {
     return Math.floor(number / 10);
-  }
-
-  this.stopTime = function() {
+  },
+  stopTime : function() {
     clearInterval(this.intervalId);
-  }
-
-  this.resetClick = function() {
+  },
+  resetClick : function() {
     this.currentTime = 0;
     this.setTime();
     $("#splits").children("*").remove();
-  }
-
-  this.splitClick = function() {
+  },
+  splitClick : function() {
     return this.humanReadable(this.currentTime);
-  }
-
-  this.humanReadable = function () {
+  },
+  humanReadable : function () {
     return this.getSecondDigit(this.currentMinutes).toString() + this.getFirstDigit(this.currentMinutes).toString() + ":" + this.getSecondDigit(this.currentSeconds).toString() + this.getFirstDigit(this.currentSeconds).toString() + ":" + this.getSecondDigit(this.currentMilliseconds).toString() + this.getFirstDigit(this.currentMilliseconds).toString();
   }
 }
 
 var chronometer = new Chronometer();
-
 var btnLeft     = $('#btnLeft');
 var btnRight    = $('#btnRight');
 
@@ -88,7 +79,6 @@ $(btnRight).click(function(){
     chronometer.resetClick();
   }
 });
-
 function toggleClasses() {
   btnLeft.toggleClass("start");
   btnLeft.toggleClass("stop");
