@@ -50,9 +50,6 @@ function chronometerConstructor(minutes, seconds, someFunction, anotherFunction)
     };
 };
 
-//TO STOP SETINTERVAL
-//clearInterval(chronometer.setIntervalId)
-
 function addSeconds() {
     switch(true) {
         case (chronometer.seconds < 9):
