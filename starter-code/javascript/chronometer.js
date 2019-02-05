@@ -18,7 +18,7 @@ class Chronometer {
         this.currentTime ++;
         this.intervalRef = setInterval(()=>{
             this.setSeconds();
-            this.currentTime !==0 && this.currentTime % 60 === 0 ? this.minutes++ : "";
+            this.setMinutes();
             this.setHTML(); 
             this.currentTime ++;           
         }, 1000)
@@ -58,7 +58,7 @@ class Chronometer {
         this.seconds = this.currentTime % 60;
     }
     setMinutes() {
-        this.minutes = this.currentTime !==0 && this.currentTime % 60 === 0 ? this.minutes++ : "";
+        this.currentTime !==0 && this.currentTime % 60 === 0 ? this.minutes++ : "";
     }
     printSplit(){
         this.splitTime = `${this.minutes > 9 ? this.minutes : '0' + this.minutes }:${this.seconds > 9 ? this.seconds : '0' + this.seconds}`
