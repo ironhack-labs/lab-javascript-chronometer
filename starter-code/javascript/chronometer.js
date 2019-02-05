@@ -35,25 +35,44 @@
 
 // };
 
+$(document).ready(chronometerConstructor);
 
-// };
-
-function chronometerConstructor(minutes, seconds, testFunction) {
+function chronometerConstructor(minutes, seconds, someFunction) {
     this.minutes = minutes;
     this.seconds = seconds;
-    this.addSeconds = setInterval(testFunction, 1000);
+    this.setIntervalId = "";
+    this.startClick = function(){
+        var myVar = setInterval(someFunction, 1000);
+        chronometer.setIntervalId = myVar;
+    };
 };
 
-// currentTime, intervalId
+//TO STOP SETINTERVAL
+//clearInterval(chronometer.setIntervalId)
 
-var chronometer = new chronometerConstructor(0, 0, startClick);
+function myFunction() {
+    chronometer.seconds++;
+    console.log(chronometer.seconds);
+    if(chronometer.seconds == 60) {
+        chronometer.seconds = -1;
+        chronometer.minutes++;
+        console.log(chronometer.minutes);
+    }
+};
 
 
-// var chronometer = {
-//     startBtn: setInterval(myTimer, 1000)
-// };
+var chronometer = new chronometerConstructor(0, 0, myFunction);
 
-// function startClick() {
-//     chronometer.seconds++;
-//     console.log(chronometer.seconds);
-// }
+// $("#btnLeft").click(chronometer.startClick());
+
+// $(".paragraph").click(function(){
+//     alert("Yayyy it works!!!");
+// })
+
+// $(".p-btn").click(function(){
+//     $(this).siblings().remove();
+// })
+
+// $("#btn").click(function(){
+//     $("p").remove();
+// })
