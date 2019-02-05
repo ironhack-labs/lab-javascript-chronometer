@@ -17,13 +17,16 @@ function Chronometer() {
             secDec.html(Math.floor(this.seconds / 10) % 10);
             minUni.html(this.minutes % 10);
             minDec.html(Math.floor(this.minutes / 10) % 10);
+            if(this.minutes == 60) {
+                this.resetClick();
+            }
         }, 1000);
     },
+    
     // Milisecond function
     this.miliSec = function() {
         setInterval(() => {
             this.miliSeconds++;
-            console.log(this.miliSeconds++);
             milUni.html(this.miliSeconds % 10);
             milDec.html(Math.floor(this.miliSeconds / 10) % 10);
         }, 10);
