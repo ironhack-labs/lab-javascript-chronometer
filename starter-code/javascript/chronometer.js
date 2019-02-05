@@ -38,3 +38,23 @@
 // Chronometer.prototype.splitClick = function () {
 
 // };
+
+function chronometerConstructor(minutes, seconds, testFunction) {
+    this.minutes = minutes;
+    this.seconds = seconds;
+    this.addSeconds = setInterval(testFunction, 1000);
+};
+
+// currentTime, intervalId
+
+var chronometer = new chronometerConstructor(0, 0, startClick);
+
+
+// var chronometer = {
+//     startBtn: setInterval(myTimer, 1000)
+// };
+
+// function startClick() {
+//     chronometer.seconds++;
+//     console.log(chronometer.seconds);
+// }
