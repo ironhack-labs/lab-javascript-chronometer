@@ -35,7 +35,6 @@
 
 // };
 
-// Chronometer.prototype.splitClick = function () {
 
 // };
 
