@@ -4,23 +4,28 @@ function Chronometer() {
     this.intervalId = 0;
     this.minutes = 0;
     this.seconds = 0;
-}
+    this.miliseconds = 0;
+};
 
 Chronometer.prototype.startClick = function () {
     this.intervalId = setInterval( ()=> {
-        this.currentTime ++;
-        printTime()
+        this.currentTime++;
         this.setTime()
+	printTime()
     },1000);
-}
+    
+    
+};
 
+   
 
-
-Chronometer.prototype.setMinutes = function () {     
-  return Math.floor(this.currentTime / 60) // To Minutes, for example 1.3 --> 1 
+Chronometer.prototype.setMinutes = function () {
+    if(this.currentTime == 0) return 0
+  return parseInt(this.currentTime / 60) // To Minutes, for example 1.3 --> 1 
 };   
 
 Chronometer.prototype.setSeconds = function () {
+    if(this.currentTime == 0) return 0
     return parseInt(this.currentTime % 60)
 
 };
@@ -34,22 +39,34 @@ Chronometer.prototype.twoDigitsNumber = function (value) {
 Chronometer.prototype.setTime = function () {
     this.minutes = this.twoDigitsNumber(this.setMinutes());
     this.seconds = this.twoDigitsNumber(this.setSeconds());
-     
-    
+
 };
 
-// Chronometer.prototype.setMilliseconds = function () {
 
+
+// Chronometer.prototype.setMilliseconds = function () {
+ 
 // };
 
 Chronometer.prototype.stopClick = function () {
     clearInterval(this.intervalId)
+
 };
 
+
+
 Chronometer.prototype.resetClick = function () {
-    return this.currentTime = 0;
+    this.currentTime = 0;
+    this.setTime()
+    
 };
 
 // Chronometer.prototype.splitClick = function () {
     
 // };
+
+
+
+
+
+ 
