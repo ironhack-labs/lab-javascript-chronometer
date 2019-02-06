@@ -1,40 +1,3 @@
-// Constructor
-// function Chronometer() {
-
-// }
-
-// Chronometer.prototype.startClick = function () {
-
-// };
-
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
-
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
-
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
-
-// Chronometer.prototype.setTime = function () {
-
-// };
-
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
 $(document).ready(chronometerConstructor);
 
 function chronometerConstructor(minutes, seconds, someFunction, anotherFunction) {
@@ -43,9 +6,11 @@ function chronometerConstructor(minutes, seconds, someFunction, anotherFunction)
     this.secSetIntervalId = "";
     this.minSetIntervalId = "";
     this.startClick = function(){
+        $("#btnLeft").removeClass("start").addClass("stop").html("STOP");
+        $("#btnRight").removeClass("reset").addClass("split").html("SPLIT");
         var secId = setInterval(someFunction, 1000);
         chronometer.secSetIntervalId = secId;
-        var minId = setInterval(anotherFunction, 20000);
+        var minId = setInterval(anotherFunction, 60000);
         chronometer.minSetIntervalId = minId;
     };
 };
@@ -53,22 +18,20 @@ function chronometerConstructor(minutes, seconds, someFunction, anotherFunction)
 function addSeconds() {
     switch(true) {
         case (chronometer.seconds < 9):
-            chronometer.seconds++;
             $("#secUni").html(chronometer.seconds.toString()[0]);
-            console.log(chronometer.seconds);
+            chronometer.seconds++;
             break;
-        case (chronometer.seconds >= 9 && chronometer.seconds < 20):
+        case (chronometer.seconds >= 9 && chronometer.seconds < 60):
             chronometer.seconds++;
             $("#secDec").html(chronometer.seconds.toString()[0]);
             $("#secUni").html(chronometer.seconds.toString()[1]);
-            console.log(chronometer.seconds);
             break;
-        case (chronometer.seconds >= 20):
-            chronometer.seconds = -1;
+        case (chronometer.seconds >= 60):
+            $("#secDec").html(0);
+            $("#secUni").html(1);
+            chronometer.seconds = 0;
             chronometer.seconds++;
-            $("#secDec").html(chronometer.seconds.toString()[0]);
-            $("#secUni").html(chronometer.seconds.toString()[1]);
-            console.log(chronometer.seconds);
+            console.log("third case", chronometer.seconds);
             break;
     }
 };
@@ -77,12 +40,10 @@ function addMinutes() {
     switch(true) {
         case (chronometer.minutes < 9):
             chronometer.minutes++;
-            console.log("minutes" + chronometer.minutes);
             $("#minUni").html(chronometer.minutes.toString()[0]);
             break;
         case (chronometer.minutes >= 9 && chronometer.minutes < 60):
             chronometer.minutes++;
-            console.log("minutes" + chronometer.minutes);
             $("#minDec").html(chronometer.minutes.toString()[0]);
             $("#minUni").html(chronometer.minutes.toString()[1]);
             break;
@@ -92,94 +53,27 @@ function addMinutes() {
     }
 };
 
+function resetClick() {
+    chronometer.minutes = 0;
+    $("#minDec").html(0);
+    $("#minUni").html(0);
+    chronometer.seconds = 0;
+    $("#secDec").html(0);
+    $("#secUni").html(0);
+}
+
+function stop() {
+    clearInterval(chronometer.secSetIntervalId);
+    clearInterval(chronometer.minSetIntervalId);
+}
+
 var chronometer = new chronometerConstructor(0, 0, addSeconds, addMinutes);
 
-$("#btnLeft").click(chronometer.startClick);
+$(".start").click(chronometer.startClick);
 
-$("#btnRight").click(function(){
-    clearInterval(chronometer.secSetIntervalId);
-    clearInterval(chronometer.minSetIntervalId)
-});
+$("document").on("click", ".stop", stop);
 
-// $(".paragraph").click(function(){
-//     alert("Yayyy it works!!!");
-// })
-
-// $(".p-btn").click(function(){
-//     $(this).siblings().remove();
-// })
-
-// $("#btn").click(function(){
-//     $("p").remove();
-// })
-
-
-
-// function chronometerConstructor(minutes, seconds, someFunction) {
-//     this.minutes = minutes;
-//     this.seconds = seconds;
-//     this.setIntervalId = "";
-//     this.startClick = function(){
-//         var myVar = setInterval(someFunction, 1000);
-//         chronometer.setIntervalId = myVar;
-//     };
-// };
-
-// //TO STOP SETINTERVAL
-// //clearInterval(chronometer.setIntervalId)
-
-// function myFunction() {
-//     switch(true) {
-//         case (chronometer.seconds < 9 && chronometer.minutes < 9):
-//             chronometer.seconds++;
-//             $("#secUni").html(chronometer.seconds.toString()[0]);
-//             console.log(chronometer.seconds);
-//             break;
-//         case (chronometer.seconds >= 9 && chronometer.seconds < 20 && chronometer.minutes < 9):
-//             chronometer.seconds++;
-//             $("#secDec").html(chronometer.seconds.toString()[0]);
-//             $("#secUni").html(chronometer.seconds.toString()[1]);
-//             console.log(chronometer.seconds);
-//             break;
-//         case (chronometer.seconds >= 20 && chronometer.minutes < 9):
-//             chronometer.seconds = -1;
-//             chronometer.seconds++;
-//             $("#secDec").html(chronometer.seconds.toString()[0]);
-//             $("#secUni").html(chronometer.seconds.toString()[1]);
-//             chronometer.minutes++;
-//             $("#minUni").html(chronometer.minutes.toString()[0]);
-//             console.log("seconds" + chronometer.seconds);
-//             console.log("minutes" + chronometer.minutes);
-//             break;
-//         case (chronometer.seconds < 9 && chronometer.minutes >= 9):
-//             chronometer.seconds++;
-//             $("#secUni").html(chronometer.seconds.toString()[0]);
-//             chronometer.minutes++;
-//             $("#minUni").html(chronometer.minutes.toString()[1]);
-//             $("#minDec").html(chronometer.minutes.toString()[0]);
-//             console.log("seconds" + chronometer.seconds);
-//             console.log("minutes" + chronometer.minutes);
-//             break;
-//         case (chronometer.seconds >= 9 && chronometer.seconds < 20 && chronometer.minutes >= 9):
-//             chronometer.seconds++;
-//             $("#secDec").html(chronometer.seconds.toString()[0]);
-//             $("#secUni").html(chronometer.seconds.toString()[1]);
-//             chronometer.minutes++;
-//             $("#minUni").html(chronometer.minutes.toString()[1]);
-//             $("#minDec").html(chronometer.minutes.toString()[0]);
-//             console.log("seconds" + chronometer.seconds);
-//             console.log("minutes" + chronometer.minutes);
-//             break;
-//         case (chronometer.seconds >= 20 && chronometer.minutes >= 9):
-//             chronometer.seconds = -1;
-//             chronometer.seconds++;
-//             $("#secDec").html(chronometer.seconds.toString()[0]);
-//             $("#secUni").html(chronometer.seconds.toString()[1]);
-//             chronometer.minutes++;
-//             $("#minUni").html(chronometer.minutes.toString()[1]);
-//             $("#minDec").html(chronometer.minutes.toString()[0]);
-//             console.log("seconds" + chronometer.seconds);
-//             console.log("minutes" + chronometer.minutes);
-//             break;
-//     }
-// };
+// $(document).on("click", ".stop", function() {
+//     clearInterval(chronometer.secSetIntervalId);
+//     clearInterval(chronometer.minSetIntervalId);
+// });
