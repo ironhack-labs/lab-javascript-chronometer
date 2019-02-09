@@ -9,21 +9,21 @@ Chronometer.prototype.startClick = function () {
     
     chronometer.currentTime++
     
-  
+    chronometer.setTime();
     
   }, 1000);
 };
 
 Chronometer.prototype.setMinutes = function () {
-  var minutes = Math.floor(chronometer.currentTime/60);
+  var minutes = Math.floor(this.currentTime/60);
   return minutes;
   
 };
 
 Chronometer.prototype.setSeconds = function () {
-  var minutes = Math.floor(chronometer.currentTime/60);
+  var minutes = Math.floor(this.currentTime/60);
 
-  var seconds = chronometer.currentTime - (minutes*60);
+  var seconds = this.currentTime - (minutes*60);
 
   return seconds;
 };
@@ -39,8 +39,8 @@ Chronometer.prototype.twoDigitsNumber = function (n) {
 };
 
 Chronometer.prototype.setTime = function () {
-  var minutes = twoDigitsNumber(setMinutes());
-  var seconds = twoDigitsNumber(setSeconds());
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
