@@ -72,8 +72,16 @@ btnLeft.addEventListener("click", function() {
   console.log(chronometer.intervalId);
   if (chronometer.intervalId === null) {
     setStartBtn();
+    btnLeft.setAttribute("class", "btn stop");
+    btnLeft.innerHTML = "STOP";
+    btnRight.setAttribute("class", "btn split");
+    btnRight.innerHTML = "SPLIT";
   } else if (chronometer.currentTime !== null) {
     setStopBtn();
+    btnLeft.setAttribute("class", "btn start");
+    btnLeft.innerHTML = "START";
+    btnRight.setAttribute("class", "btn reset");
+    btnRight.innerHTML = "RESET";
   }
 });
 
@@ -83,8 +91,6 @@ btnRight.addEventListener("click", function() {
     setResetBtn();
     printTime();
   } else if (chronometer.intervalId !== null) {
-    console.log("chrono id " + chronometer.intervalId);
-    console.log("test split ");
     printSplit();
   }
 });
