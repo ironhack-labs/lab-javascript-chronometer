@@ -10,7 +10,7 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  // chronometer.startClick
 }
 
 function printMinutes() {
@@ -51,7 +51,9 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  chronometer.startClick();
+  // console.log(chronometer);
+  // console.log("start interval")
 });
 
 // Reset/Split Button
