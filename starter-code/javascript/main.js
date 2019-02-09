@@ -8,31 +8,6 @@ var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
 
-
-function printTime() {
-  
-}
-
-function printMinutes() {
-
-}
-
-function printSeconds() {
-
-}
-
-function printMilliseconds() {
-
-}
-
-function printSplit() {
-
-}
-
-function clearSplits() {
-
-}
-
 function setStopBtn() {
   btnLeft.className = "btn stop";
   btnLeft.innerHTML = "STOP";
@@ -65,7 +40,6 @@ btnLeft.addEventListener('click', function () {
     setResetBtn();
     chronometer.stopClick();
   }
-  // this.startClick();
 });
 
 // Reset/Split Button
