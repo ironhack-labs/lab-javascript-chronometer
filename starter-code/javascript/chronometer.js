@@ -33,9 +33,7 @@ Chronometer.prototype.twoDigitsNumber = function(e) {
 
 // };
 
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
+Chronometer.prototype.setMilliseconds = function() {};
 
 Chronometer.prototype.stopClick = function() {
   clearInterval(this.intervalId);
