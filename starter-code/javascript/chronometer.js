@@ -12,7 +12,7 @@ function Chronometer() {
 }
 
 Chronometer.prototype.startClick = function () {
-    intervalId = setInterval(function () {
+    chronometer.intervalId = setInterval(function () {
     
     chronometer.currentTime++;
     
