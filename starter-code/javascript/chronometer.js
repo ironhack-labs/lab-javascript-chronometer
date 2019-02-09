@@ -6,6 +6,7 @@ function Chronometer() {
 
 Chronometer.prototype.startClick = function () {
   // because of scoping, make a copy of this
+  // console.log("startClick called");
   var self = this;
   self.intervalId = setInterval(function() {
     self.currentTime ++;
@@ -35,8 +36,20 @@ Chronometer.prototype.twoDigitsNumber = function (number) {
 
 Chronometer.prototype.setTime = function () {
   // Taking the current time and set it in minutes and seconds (2 digits)
-  this.twoDigitsNumber(this.setMinutes());
-  this.twoDigitsNumber(this.setSeconds());
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
+  // console.log("test" + this.currentTime);
+  // display seconds
+  var secOne = document.getElementById("secDec");
+  secOne.innerHTML = seconds.substr(0,1);
+  var secTwo = document.getElementById("secUni");
+  secTwo.innerHTML = seconds.substr(1,1);
+  // display minutes
+  var minOne = document.getElementById("minDec");
+  minOne.innerHTML = minutes.substr(0,1);
+  var minTwo = document.getElementById("minUni");
+  minTwo.innerHTML = minutes.substr(1,1);
+  return minutes+":"+seconds;
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
@@ -45,14 +58,23 @@ Chronometer.prototype.setTime = function () {
 
 Chronometer.prototype.stopClick = function () {
   // stop the current interval
+  // console.log("stopClick called");
   clearInterval(this.intervalId);
 };
 
 Chronometer.prototype.resetClick = function () {
   // reset the current time to 0
   this.currentTime = 0;
+  // display 00:00
+  this.setTime();
 };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+  // get current time
+  timeValue = this.setTime();
+  // create list element and append to splits parent
+  listValue = document.createElement("li");
+  listValue.innerHTML = timeValue;
+  var orderedList = document.getElementById("splits");
+  orderedList.appendChild(listValue);
+};
