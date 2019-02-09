@@ -31,12 +31,12 @@ function printSeconds() {
   secUni.innerHTML = printSec[1];
 }
 
-function printMilliseconds() {
-  var printmil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+// function printMilliseconds() {
+//   var printmil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
 
-  milDec.innerHTML = printmil[0];
-  milUni.innerHTML = printmil[1];
-}
+//   milDec.innerHTML = printmil[0];
+//   milUni.innerHTML = printmil[1];
+// }
 
 function printSplit() {
   var split = document.createElement("li");
@@ -60,7 +60,7 @@ function setStartBtn() {
   chronometer.startClick();
   setInterval(printTime, 1000);
 }
-setInterval(printMilliseconds, 1);
+// setInterval(printMilliseconds, 1);
 
 function setResetBtn() {
   chronometer.resetClick();
