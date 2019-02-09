@@ -15,6 +15,7 @@ var splits = document.getElementById("splits");
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -31,18 +32,20 @@ function printSeconds() {
   secUni.innerHTML = printSec[1];
 }
 
-// function printMilliseconds() {
-//   var printmil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+function printMilliseconds() {
+  var printmil = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
 
-//   milDec.innerHTML = printmil[0];
-//   milUni.innerHTML = printmil[1];
-// }
+  milDec.innerHTML = printmil[0];
+  milUni.innerHTML = printmil[1];
+}
 
 function printSplit() {
   var split = document.createElement("li");
   split.innerHTML = `${chronometer.twoDigitsNumber(
     chronometer.setMinutes()
-  )}:${chronometer.twoDigitsNumber(chronometer.setSeconds())}`;
+  )}:${chronometer.twoDigitsNumber(
+    chronometer.setSeconds()
+  )}:${chronometer.twoDigitsNumber(chronometer.setMilliseconds())}`;
   splits.appendChild(split);
 }
 
@@ -58,7 +61,7 @@ function setSplitBtn() {}
 function setStartBtn() {
   // lancer le chrono sur l'instance
   chronometer.startClick();
-  setInterval(printTime, 1000);
+  setInterval(printTime, 10);
 }
 // setInterval(printMilliseconds, 1);
 
