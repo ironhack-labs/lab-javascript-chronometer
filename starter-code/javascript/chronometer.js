@@ -16,7 +16,6 @@ Chronometer.prototype.startClick = function () {
 Chronometer.prototype.setMinutes = function () {
   // return how many minutes (from seconds total). (10 * 6000 = 60.000 miliseconds which is 1 minute)
   return Math.floor(this.currentTime / 6000);
-
 };
 
 Chronometer.prototype.setSeconds = function () {
