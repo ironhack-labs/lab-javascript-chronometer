@@ -1,21 +1,23 @@
-$(document).ready(chronometerConstructor);
+$(document).ready(ChronometerConstructor);
 
-function chronometerConstructor(minutes, seconds, someFunction, anotherFunction) {
+function ChronometerConstructor(minutes, seconds) {
     this.minutes = minutes;
     this.seconds = seconds;
     this.secSetIntervalId = "";
     this.minSetIntervalId = "";
-    this.startClick = function(){
-        $("#btnLeft").removeClass("start").addClass("stop").html("STOP");
-        $("#btnRight").removeClass("reset").addClass("split").html("SPLIT");
-        var secId = setInterval(someFunction, 1000);
-        chronometer.secSetIntervalId = secId;
-        var minId = setInterval(anotherFunction, 60000);
-        chronometer.minSetIntervalId = minId;
+    this.startClick = () => {
+        $("#btnLeft").toggleClass("start stop").html("STOP");
+        $("#btnRight").toggleClass("reset split").html("SPLIT");
+        // $("#btnLeft").removeClass("start").addClass("stop").html("STOP");
+        // $("#btnRight").removeClass("reset").addClass("split").html("SPLIT");
+        var secId = setInterval(this.addSeconds, 1000);
+        this.secSetIntervalId = secId;
+        var minId = setInterval(this.addMinutes, 60000);
+        this.minSetIntervalId = minId;
     };
 };
 
-function addSeconds() {
+ChronometerConstructor.prototype.addSeconds = function() {
     switch(true) {
         case (chronometer.seconds < 9):
             $("#secUni").html(chronometer.seconds.toString()[0]);
@@ -36,7 +38,7 @@ function addSeconds() {
     }
 };
 
-function addMinutes() {
+ChronometerConstructor.prototype.addMinutes = function() {
     switch(true) {
         case (chronometer.minutes < 9):
             chronometer.minutes++;
@@ -53,7 +55,7 @@ function addMinutes() {
     }
 };
 
-function resetClick() {
+ChronometerConstructor.prototype.resetClick = function() {
     chronometer.minutes = 0;
     $("#minDec").html(0);
     $("#minUni").html(0);
@@ -62,18 +64,43 @@ function resetClick() {
     $("#secUni").html(0);
 }
 
-function stop() {
+ChronometerConstructor.prototype.stop = function() {
     clearInterval(chronometer.secSetIntervalId);
     clearInterval(chronometer.minSetIntervalId);
 }
 
-var chronometer = new chronometerConstructor(0, 0, addSeconds, addMinutes);
+var chronometer = new ChronometerConstructor(0, 0);
 
 $(".start").click(chronometer.startClick);
 
 $("document").on("click", ".stop", stop);
 
+$(".stop").click(chronometer.stop);
+
+$("#btnLeft.stop").click(function() {
+    clearInterval(chronometer.secSetIntervalId);
+    clearInterval(chronometer.minSetIntervalId);
+});
+
 // $(document).on("click", ".stop", function() {
 //     clearInterval(chronometer.secSetIntervalId);
 //     clearInterval(chronometer.minSetIntervalId);
 // });
+
+
+
+// function chronometerConstructor(minutes, seconds, someFunction, anotherFunction) {
+//     this.minutes = minutes;
+//     this.seconds = seconds;
+//     this.secSetIntervalId = "";
+//     this.minSetIntervalId = "";
+//     this.startClick = function(){
+//         $("#btnLeft").removeClass("start").addClass("stop").html("STOP");
+//         $("#btnRight").removeClass("reset").addClass("split").html("SPLIT");
+//         var secId = setInterval(someFunction, 1000);
+//         //CHANGE THIS INTO ARROW FUNCTION
+//         chronometer.secSetIntervalId = secId;
+//         var minId = setInterval(anotherFunction, 60000);
+//         chronometer.minSetIntervalId = minId;
+//     };
+// };
