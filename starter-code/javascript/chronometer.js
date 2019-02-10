@@ -22,11 +22,8 @@ Chronometer.prototype.setSeconds = function () {
 };
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
-    single = num.toString();
-    if (num < 10){
-        single = '0' + single;
-    }
-    return single;
+    single = num.toString();    
+    return (num < 10 ? '0' + num: num).toString();
 };
 
 Chronometer.prototype.setTime = function () {
