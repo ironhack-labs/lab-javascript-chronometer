@@ -45,12 +45,12 @@ Chronometer.prototype.setTime = function () {
 
 // };
 
-// Chronometer.prototype.stopClick = function () {
-  
-// };
+Chronometer.prototype.stopClick = function () {
+  clearInterval(this.startClick);
+};
 
 // Chronometer.prototype.resetClick = function () {
-
+    
 // };
 
 // Chronometer.prototype.splitClick = function () {
