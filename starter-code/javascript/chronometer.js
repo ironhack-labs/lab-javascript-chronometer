@@ -22,7 +22,6 @@ Chronometer.prototype.setSeconds = function () {
 };
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
-    single = num.toString();    
     return (num < 10 ? '0' + num: num).toString();
 };
 
