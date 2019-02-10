@@ -34,16 +34,23 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  setInterval(function(){
+  var milSec = chronometer.setMilliseconds();
+  var miliseconds = chronometer.twoDigitsNumber(milSec);
+  milDec.innerHTML = miliseconds[0]
+  milUni.innerHTML = miliseconds[1]
+  }, 10);
 }
 
 function printSplit() {
+  var mildec = chronometer.setMilliseconds();
+  var miliseconds = chronometer.twoDigitsNumber(mildec)
   var numSec = chronometer.setSeconds();
   var seconds = chronometer.twoDigitsNumber(numSec);
   var numMin = chronometer.setMinutes();
   var minutes = chronometer.twoDigitsNumber(numMin);
   var newSplit = document.createElement("li")
-  newSplit.innerHTML = minutes + ":" + seconds;
+  newSplit.innerHTML = minutes + ":" + seconds + ":" + miliseconds;
   splits.appendChild(newSplit);
   
 }
@@ -84,6 +91,7 @@ btnLeft.addEventListener('click', function () {
     chronometer.startClick();
     printMinutes();
     printSeconds();
+    printMilliseconds()
   }
   else if(btnLeft.getAttribute("class") === "btn stop"){
     setStartBtn();
