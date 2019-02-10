@@ -1,7 +1,8 @@
+
 //Constructor
 function Chronometer() {
   this.currentTime = 0,
-  this.intervalId =  "";
+  this.intervalId = "";
 }
 
 Chronometer.prototype.startClick = function () {
