@@ -44,7 +44,7 @@ function clearSplits() {
   var liChilds = document.querySelectorAll("li");
   for (var i = 0; i<liChilds.length;i++) {
     parent.removeChild(liChilds[i]);
-  }  
+  }
 }
 
 function setStopBtn() {
@@ -87,6 +87,7 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
   if (btnRight.classList[1] === "reset") {
     clearSplits();
+    chronometer.resetClick(); 
   } else {
     printSplit();
   }

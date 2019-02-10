@@ -43,6 +43,7 @@ Chronometer.prototype.stopClick = function () {
 };
 
 Chronometer.prototype.resetClick = function () {
+  this.currentTime = 0;
 
 };
 
