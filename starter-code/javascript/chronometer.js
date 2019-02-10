@@ -41,9 +41,9 @@ Chronometer.prototype.setTime = function () {
 
 };
 
-// Chronometer.prototype.setMilliseconds = function () {
+ Chronometer.prototype.setMilliseconds = function () {
 
-// };
+ };
 
 Chronometer.prototype.stopClick = function () {
   clearInterval(this.startClick);
@@ -53,6 +53,6 @@ Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;  
 };
 
-// Chronometer.prototype.splitClick = function () {
+ Chronometer.prototype.splitClick = function () {
 
-// };
+ };
