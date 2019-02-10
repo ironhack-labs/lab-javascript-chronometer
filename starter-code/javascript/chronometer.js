@@ -18,12 +18,7 @@ Chronometer.prototype.setMinutes = function () {
 };
 
 Chronometer.prototype.setSeconds = function () {
-    if (this.currentTime > 60){
-        sec = this.currentTime - (this.setMinutes() * 60);
-    } else {
-        sec = this.currentTime
-    }
-    return sec;
+    return this.currentTime - (this.setMinutes() * 60);
 };
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
