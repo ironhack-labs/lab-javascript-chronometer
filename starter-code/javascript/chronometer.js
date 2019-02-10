@@ -11,7 +11,8 @@ Chronometer.prototype.startClick = function () {
 };
 
 Chronometer.prototype.setMinutes = function () {
-  
+    minutes = this.currentTime / 60;
+    return Math.floor(minutes)
 };
 
 // Chronometer.prototype.setSeconds = function () {
