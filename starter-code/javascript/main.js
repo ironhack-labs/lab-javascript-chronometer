@@ -7,7 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
+var splits       = document.getElementById("splits");
 
 
 function printTime() {
@@ -38,11 +38,38 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  
+  /*if (splits != document.getElementById("splits")){
+  var splits1 = document.createElement("ol");
+  splits1.setAttribute("id", "splits");
+  var splitCon = document.getElementById("splits-container");
+  splitCon.appendChild(splits);
 
+  var numSec = chronometer.setSeconds();
+  var seconds = chronometer.twoDigitsNumber(numSec);
+  var numMin = chronometer.setMinutes();
+  var minutes = chronometer.twoDigitsNumber(numMin);
+  var newSplit = document.createElement("li")
+  newSplit.innerHTML = minutes + ":" + seconds;
+  splits.appendChild(newSplit);
+  }
+  else{*/
+  var numSec = chronometer.setSeconds();
+  var seconds = chronometer.twoDigitsNumber(numSec);
+  var numMin = chronometer.setMinutes();
+  var minutes = chronometer.twoDigitsNumber(numMin);
+  var newSplit = document.createElement("li")
+  newSplit.innerHTML = minutes + ":" + seconds;
+  splits.appendChild(newSplit);
+  
 }
 
 function clearSplits() {
-
+  var olTag = document.getElementById("splits");
+  while (olTag.hasChildNodes()) {
+    olTag.removeChild(olTag.firstChild);
+  }
+  
 }
 
 function setStopBtn() {
@@ -89,8 +116,9 @@ btnRight.addEventListener('click', function () {
     setStartBtn();
     chronometer.resetClick();
     chronometer.stopClick();
+    clearSplits();
   }
   else if(btnRight.getAttribute("class") === "btn split"){
-    
+    printSplit();
   }
 });

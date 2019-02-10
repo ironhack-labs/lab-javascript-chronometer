@@ -39,6 +39,8 @@ body {
   font-weight: 100;
   position: absolute;
   left: 50px;
+  top: 10%;
+  left: 25%;
 }
 
 #splits-container li {
