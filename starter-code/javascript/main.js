@@ -38,22 +38,6 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  
-  /*if (splits != document.getElementById("splits")){
-  var splits1 = document.createElement("ol");
-  splits1.setAttribute("id", "splits");
-  var splitCon = document.getElementById("splits-container");
-  splitCon.appendChild(splits);
-
-  var numSec = chronometer.setSeconds();
-  var seconds = chronometer.twoDigitsNumber(numSec);
-  var numMin = chronometer.setMinutes();
-  var minutes = chronometer.twoDigitsNumber(numMin);
-  var newSplit = document.createElement("li")
-  newSplit.innerHTML = minutes + ":" + seconds;
-  splits.appendChild(newSplit);
-  }
-  else{*/
   var numSec = chronometer.setSeconds();
   var seconds = chronometer.twoDigitsNumber(numSec);
   var numMin = chronometer.setMinutes();
