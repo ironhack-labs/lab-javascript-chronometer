@@ -26,9 +26,13 @@ Chronometer.prototype.setSeconds = function () {
     return this.seconds;
 };
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+Chronometer.prototype.twoDigitsNumber = function (num) {
+    single = num.toString();
+    if (num < 10){
+        single = '0' + single;
+    }
+    return single;
+};
 
 // Chronometer.prototype.setTime = function () {
 
