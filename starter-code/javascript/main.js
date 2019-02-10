@@ -15,37 +15,33 @@ var milUni      = document.getElementById('milUni');
 //document.getElementById("btnRight").innerHTML = "SPLIT"
 
 
-/* Trying to change the button's name when it is clicked
-function change() 
-{
-    var elem = document.getElementById("btnLeft)");
-    if (elem.value=="START") elem.value = "STOP";
-    else elem.value = "START";
+function toggleText() {
+    var startLeft = document.getElementById('btnLeft')
+    var startRight = document.getElementById('btnRight')
+   if (startLeft.innerHTML === 'START') {
+    startLeft.innerHTML = 'STOP';
+    startRight.innerHTML = 'SPLIT';
+   }else {
+    startLeft.innerHTML = 'START';
+    startRight.innerHTML = 'RESET';
+   }
 }
 
-function toggleText(btnLeft) 
-{
-   if (document.getElementById('btnLeft').textContent == 'START') 
-   {
-       document.getElementById('btnLeft').textContent = 'STOP';
-   }
-   else 
-   {
-     document.getElementById('btnLeft').textContent = 'START';
-   }
-}*/
+
 
 function printTime() {
-   
+   return printMinutes(), printSeconds();
 
 }
 
 function printMinutes() {
-
+    minDec.innerHTML = this.chronometer.minutes[0];
+    minUni.innerHTML = this.chronometer.minutes[1];
 }
 
 function printSeconds() {
-
+    secDec.innerHTML = this.chronometer.seconds[0];
+    secUni.innerHTML = this.chronometer.seconds[1];
 }
 
 function printMilliseconds() {
