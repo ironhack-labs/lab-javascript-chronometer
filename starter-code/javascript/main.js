@@ -25,7 +25,6 @@ function printSeconds() {
     var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
     secUni.innerText = seconds[1]; 
     secDec.innerText = seconds[0];
-  
   },1000);
 }
 
@@ -34,11 +33,18 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  var parent = document.getElementById("splits");
+  var liChild = document.createElement("li");
+  liChild.innerText =  chronometer.setTime();
+  parent.appendChild(liChild);
 }
 
 function clearSplits() {
-  
+  var parent = document.getElementById("splits");
+  var liChilds = document.querySelectorAll("li");
+  for (var i = 0; i<liChilds.length;i++) {
+    parent.removeChild(liChilds[i]);
+  }  
 }
 
 function setStopBtn() {
@@ -69,6 +75,7 @@ btnLeft.addEventListener('click', function () {
     chronometer.startClick();
     printSeconds();
     printMinutes();
+    printMilliseconds();
   } else {
     setStartBtn();
     setResetBtn();
@@ -78,6 +85,11 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+  if (btnRight.classList[1] === "reset") {
+    clearSplits();
+  } else {
+    printSplit();
+  }
 
 });
 
