@@ -11,10 +11,10 @@
  Chronometer.prototype.startClick = function () {
     this.intervalId = setInterval((function(){
         this.currentTime++;
+        this.setTime();
         //console.log(this.currentTime);
     }).bind(this),1000);
 };
-
 Chronometer.prototype.setMinutes = function () {// creo que no me redondea bien el 837... se puede usar math.round?
   var minutes= this.currentTime/60;
   var minutes1= minutes.toFixed(2)
@@ -51,7 +51,6 @@ Chronometer.prototype.setSeconds = function () {
     
 };
  Chronometer.prototype.setTime = function () {
-
  };
 
 // Chronometer.prototype.setMilliseconds = function () {
