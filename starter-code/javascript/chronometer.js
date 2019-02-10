@@ -14,17 +14,16 @@ Chronometer.prototype.startClick = function () {
 };
 
 Chronometer.prototype.setMinutes = function () {
-    this.minutes = this.currentTime / 60;
-    return Math.floor(this.minutes)
+    return Math.floor(this.currentTime / 60)
 };
 
 Chronometer.prototype.setSeconds = function () {
     if (this.currentTime > 60){
-        this.seconds = this.currentTime - 60;
+        sec = this.currentTime - (this.setMinutes() * 60);
     } else {
-        this.seconds = this.currentTime
+        sec = this.currentTime
     }
-    return this.seconds;
+    return sec;
 };
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
@@ -36,8 +35,10 @@ Chronometer.prototype.twoDigitsNumber = function (num) {
 };
 
 Chronometer.prototype.setTime = function () {
-    console.log(this.currentTime)
-    
+    this.minutes = this.twoDigitsNumber(this.setMinutes());
+    this.seconds = this.twoDigitsNumber(this.setSeconds());
+    console.log(this.seconds)
+
 };
 
 // Chronometer.prototype.setMilliseconds = function () {
