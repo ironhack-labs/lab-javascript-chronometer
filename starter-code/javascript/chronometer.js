@@ -18,27 +18,16 @@ Chronometer.prototype.setMinutes = function () {
 };
 
 Chronometer.prototype.setSeconds = function () {
-    if (this.currentTime > 60){
-        sec = this.currentTime - (this.setMinutes() * 60);
-    } else {
-        sec = this.currentTime
-    }
-    return sec;
+    return this.currentTime - (this.setMinutes() * 60);
 };
 
 Chronometer.prototype.twoDigitsNumber = function (num) {
-    single = num.toString();
-    if (num < 10){
-        single = '0' + single;
-    }
-    return single;
+    return (num < 10 ? '0' + num: num).toString();
 };
 
 Chronometer.prototype.setTime = function () {
     this.minutes = this.twoDigitsNumber(this.setMinutes());
     this.seconds = this.twoDigitsNumber(this.setSeconds());
-    console.log(this.seconds)
-
 };
 
  Chronometer.prototype.setMilliseconds = function () {
