@@ -15,30 +15,38 @@ function printTime() {
 
 function printMinutes() {
     
-    if(typeof minutes == "string"){
-    minDec.textContent = minutes[0] 
-    minUni.textContent = minutes[1]
-    }else if(typeof minutes == "number"){
-      var stringiFied = minutes.toString()
-      minDec.textContent = stringiFied[0]
-      minUni.textContent = stringiFied[1]
+    if (typeof minutes == "string") {
+        minDec.textContent = minutes[0] 
+        minUni.textContent = minutes[1]
+    } else if (typeof minutes == "number") {
+        var stringified = minutes.toString()
+        minDec.textContent = stringified[0]
+        minUni.textContent = stringified[1]
     }
 
 }
 
 function printSeconds() {
-    if(typeof seconds == "string"){
+    if (typeof seconds == "string"){
         secDec.textContent = seconds[0] 
         secUni.textContent = seconds[1]
-        }else if(typeof seconds == "number"){
-          var stringiFied = seconds.toString()
-          secDec.textContent = stringiFied[0]
-          secUni.textContent = stringiFied[1]
-        }
-
+    } else if (typeof seconds == "number") {
+        var stringified = seconds.toString()
+        secDec.textContent = stringified[0]
+        secUni.textContent = stringified[1]
+    }
 }
 
 function printMilliseconds() {
+   
+    if (typeof milliseconds == "string") {
+        milDec.textContent = milliseconds[0] 
+        milUni.textContent = milliseconds[1]
+    } else if (typeof milliseconds == "number") {
+        var stringified = milliseconds.toString()
+        milDec.textContent = stringified[0]
+        milUni.textContent = stringified[1]
+    }
 
 }
 
@@ -46,7 +54,7 @@ function printSplit() {
     var li = document.createElement("li")
     splits.appendChild(li)
     var lastLi = document.querySelector("#splits li:last-child")
-    lastLi.textContent = minutes + ":" + seconds
+    lastLi.textContent = minutes + ":" + seconds + ":" + milliseconds
 }
 
 function clearSplits() {
@@ -56,13 +64,16 @@ function clearSplits() {
 
     minutes = 0
     seconds = 0
+    milliseconds = 0
 
     clearInterval(chronometer.intervalId)
-
+    
     minDec.textContent = "0"
     minUni.textContent = "0"
     secDec.textContent = "0"
     secUni.textContent = "0"
+    milDec.textContent = "0"
+    milUni.textContent = "0"
 
 }
 
