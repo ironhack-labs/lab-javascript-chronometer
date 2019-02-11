@@ -1,40 +1,45 @@
-// Constructor
-// function Chronometer() {
 
-// }
+class Chronometer  {
+constructor(){
+    this.currentTime = 0; 
+    this.intervalId = 0;
+}
+startClick(){
+   function myTimer(){
+       this.currentTime++;
+       this.setTime();
+   }
+   setInterval(myTimer.bind(this), 1000);
+}
 
-// Chronometer.prototype.startClick = function () {
+setMinutes(){
+    return Math.floor(this.currentTime/60);
+}
 
-// };
+setSeconds(){
+    return Math.floor(this.currentTime%60);
+}
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+twoDigitsNumber(number){
+    if (number<10){
+        return "0" + number;
+    }
+    return number.toString();
+}
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+setTime() {
+    let minutes = this.twoDigitsNumber(this.setMinutes);
+    let seconds = this.twoDigitsNumber(this.setSeconds);
+    
+    }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+stopClick (){
+    clearInterval(this.intervalId);
+}
 
-// Chronometer.prototype.setTime = function () {
+resetClick (){
+    clearInterval(this.myTimer);
+}
 
-// };
 
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
-
-// Chronometer.prototype.stopClick = function () {
-  
-// };
-
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
+}
