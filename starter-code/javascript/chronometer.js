@@ -3,6 +3,8 @@ function Chronometer() {
     this.intervalId = 0;
     this.minutes = "" ;
     this.seconds = "" ;
+    this.split = "" ;
+    this.miliseconds = "" ;
 }
 
 Chronometer.prototype.startClick = function () {
@@ -44,9 +46,13 @@ Chronometer.prototype.resetClick = function () {
     this.currentTime = 0;
 };
 
-// Chronometer.prototype.splitClick = function () {
-
-// };
+Chronometer.prototype.splitClick = function () {
+    currentTime = this.setTime();
+    split = document.createElement("li");
+    split.innerHTML = currentTime;
+    var list = document.getElementById("splits");
+    list.appendChild(split);
+}
 
 // Chronometer.prototype.setMilliseconds = function () {
 

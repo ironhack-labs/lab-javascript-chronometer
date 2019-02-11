@@ -7,41 +7,38 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
-
+var splits      = document.getElementById("splits");
 
 
 function printTime() {
-
+    printMinutes();
+    printSeconds();
 }
     
-
-function printMinutes() {
-    minDec.innerHTML = chronometer.minutes[0];
-    minUni.innerHTML = chronometer.minutes[1];
+function printMinutes(){
+    var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
+    minUni.innerHTML = minutes[1];
+    minDec.innerHTML = minutes[0];
 }
-
-printMinutes();
-
 
 function printSeconds() {
-    secDec.innerHTML = chronometer.seconds[0];  
-    secUni.innerHTML = chronometer.seconds[1];
+    var seconds = chronometer.twoDigitsNumber(chronometer.setSeconds());
+    secDec.innerHTML = seconds[0];
+    secUni.innerHTML = seconds[1];
 }
 
-printSeconds();
-
-
 function printMilliseconds() {
-
+    var miliseconds = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+    milDec.innerHTML = miliseconds[0];
+    milUni.innerHTML = miliseconds[1];
 }
 
 function printSplit() {
-
+    split.innerHTML =  chronometer.minutes + " : " + chronometer.seconds ;
 }
 
 function clearSplits() {
-
+    splits.removeChild(list.childNodes[0]);
 }
 
 function setStopBtn() {
@@ -75,15 +72,15 @@ btnLeft.addEventListener('click', function () {
     console.log(btnLeft.innerHTML);
     if (btnLeft.innerHTML == "START") {    
         chronometer.startClick();
-        setInterval(printSeconds, 1000);
-        setInterval(printMinutes, 1000);
+        setInterval(printTime(), 1000);
         setStopBtn();
     } else {    
         chronometer.stopClick();
         setStartBtn();
-    }  
-    
+    }     
 });
+
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
@@ -92,6 +89,8 @@ btnRight.addEventListener('click', function () {
         setSplitBtn();
     }
     else {
+        chronometer.splitClick(); 
+        printSplit();
         setResetBtn();
     }  
 });
