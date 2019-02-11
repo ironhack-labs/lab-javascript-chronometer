@@ -28,9 +28,6 @@ class Chronometer{
   }
 
 
- // 1 min = 6.000 cs
-// 100 cs = 1 s
-
   twoDigitsNumber(num){
     if (num<10){
       return "0" + num;
