@@ -14,10 +14,13 @@ var splitlist = document.getElementById("splits")
 function printTime(arrayFromSetTime) {
     var min = arrayFromSetTime[0]
     var sec = arrayFromSetTime[1]
+    var csec = arrayFromSetTime[2]
     minDec.innerHTML = min[0]
     minUni.innerHTML = min[1]
     secDec.innerHTML = sec[0]
     secUni.innerHTML = sec[1]
+    milDec.innerHTML = csec[0]
+    milUni.innerHTML = csec[1]
 }
 
 function printMinutes() {
@@ -79,12 +82,12 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
     if (btnLeft.className.includes("stop")){
         var arrayminsec = chronometer.splitClick()
-        var timeformatted = arrayminsec[0]+":"+arrayminsec[1]
+        var timeformatted = arrayminsec[0]+":"+arrayminsec[1]+":"+arrayminsec[2]
         printSplit(timeformatted) 
     } else {
         clearSplits()
         chronometer.resetClick()
-        printTime(["00","00"])
+        printTime(["00","00","00"])
     }
 });
 

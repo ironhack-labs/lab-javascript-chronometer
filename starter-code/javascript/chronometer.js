@@ -10,15 +10,15 @@
      that.intervalId = setInterval(function(){
         that.currentTime++
         printTime(that.setTime())
-     },1000)
+     },10)
  }
 
  Chronometer.prototype.setMinutes = function () {
-    return Math.floor(this.currentTime/60)
+    return Math.floor(this.currentTime/6000)
  };
 
  Chronometer.prototype.setSeconds = function () {
-    return this.currentTime%60
+    return (Math.floor(this.currentTime/100))%60
  };
 
  Chronometer.prototype.twoDigitsNumber = function (num) {
@@ -29,14 +29,14 @@
  Chronometer.prototype.setTime = function () {
      var minutes = this.twoDigitsNumber(this.setMinutes())
      var seconds = this.twoDigitsNumber(this.setSeconds())
-     return [minutes,seconds]
+     var cseconds = this.twoDigitsNumber(this.setMilliseconds())
+     return [minutes,seconds,cseconds]
  };
 
 
- //Chronometer.prototype.setMilliseconds = function () {
-
-
-//};
+Chronometer.prototype.setMilliseconds = function () {
+    return this.currentTime%100
+};
 
  Chronometer.prototype.stopClick = function () {
     clearInterval(this.intervalId)
