@@ -17,6 +17,7 @@ class Chronometer  {
   setSeconds() {
     return this.currentTime - (Math.floor(this.currentTime/60))*60;
   }
+  
   twoDigitsNumber(n1) {
      if (n1 < 10) {
       return `0${n1}`

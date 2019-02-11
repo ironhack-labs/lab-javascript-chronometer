@@ -11,13 +11,16 @@ var milUni      = document.getElementById('milUni');
 //var chrono2 = new Chronometer;
 
 function printTime() {
-  setInterval (function(){
-    minDec.innerHTML = chronometer.setTime().minutes[0];
-    minUni.innerHTML = chronometer.setTime().minutes[1];
-    secDec.innerHTML = chronometer.setTime().seconds[0];
-    secUni.innerHTML = chronometer.setTime().seconds[1];
-  },1000)
-}
+  
+    chronometer.intervalId=setInterval(()=>{
+            minDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.setMinutes()))[0];
+            minUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.setMinutes()))[1];
+            secDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.setSeconds()))[0];
+            secUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.setSeconds()))[1];
+   }, 1000)
+  }
+
+
 
 function printMinutes() {
 
