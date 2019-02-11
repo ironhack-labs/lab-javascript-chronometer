@@ -3,38 +3,51 @@
 
 // }
 
-// Chronometer.prototype.startClick = function () {
+'use strict';
 
-// };
+class Chronometer {
+  constructor(){
+    this.currentTime = 0;
+    this.intervalId = 0;
+  }
+ 
+  startClick() {
+    const add = function(){ 
+      this.currentTime ++;
+      this.setTime()
+    }
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+    this.intervalId = setInterval(add.bind(this), 1000)
+  }
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+  setMinutes() {
+    return Math.floor(this.currentTime / 60);
+  }
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+  setSeconds() {
+    return this.currentTime % 60;
+  }
 
-// Chronometer.prototype.setTime = function () {
+  twoDigitsNumber(num) {
+      if(num < 10){
+       return `0${num}`;
+      } else {
+        return `${num}`;
+      }
+  }
 
-// };
+  setTime() {
+    let minutes = this.twoDigitsNumber(this.setMinutes);
+    let seconds = this.twoDigitsNumber(this.setSeconds)
+  }
 
-// Chronometer.prototype.setMilliseconds = function () {
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
 
-// };
+  resetClick(){
+    this.currentTime = 0;
+  }
 
-// Chronometer.prototype.stopClick = function () {
-  
-// };
+}
 
-// Chronometer.prototype.resetClick = function () {
-
-// };
-
-// Chronometer.prototype.splitClick = function () {
-
-// };
