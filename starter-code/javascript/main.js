@@ -17,7 +17,7 @@ function printMinutes() {
     var minutes = chronometer.twoDigitsNumber(chronometer.setMinutes());
     minUni.innerText = minutes[1];
     minDec.innerText = minutes[0];
-  });
+  },1000);
 }
 
 function printSeconds() {
@@ -29,7 +29,11 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  setInterval(()=>{
+    var miliSeconds = chronometer.twoDigitsNumber(chronometer.setMilliseconds());
+    milUni.innerText = miliSeconds[1];
+    milDec.innerText = miliSeconds[0];
+  },10);
 }
 
 function printSplit() {
