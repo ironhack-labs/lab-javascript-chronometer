@@ -1,48 +1,58 @@
 
-class Chronometer {
-  constructor(){ 
-    this.currentTIme = 0;
-    this.intervalId = 0;
-  }
+function Chronometer() {
+  this.currentTime = 0
+  this.intervalId = null
+  this.minutes = 0
+  this.seconds = 0
+  this.milliseconds = 0
 }
 
-startClick = function() {
-  var chronometer = this;
-  this.interval = setInterval (function () {
-    chronometer.currentTime +=1 ;
-  }, 1000);
+Chronometer.prototype.startClick = function () {
+  this.intervalId = setInterval(() => { 
+      this.currentTime += 1
+      this.setTime()
+      printTime()
+  }, 10)
+};
+
+Chronometer.prototype.setMinutes = function () {
+  var timeInMinutes = Math.floor(this.currentTime / 6000)
+  return timeInMinutes
+};
+
+Chronometer.prototype.setSeconds = function () {
+  var timeInSeconds = Math.floor(this.currentTime / 100) % 60
+  return timeInSeconds
+};
+
+Chronometer.prototype.twoDigitsNumber = function (value) {
+  twoDigits = '' + value 
+if (value <= 9) {
+  twoDigits = '0' + twoDigits
 }
+return twoDigits.toString()
+};
 
-setMinutes = function(){
-  return Math.floor (this.currentTIme/60);
-  }
+Chronometer.prototype.setTime = function () {
+  this.minutes = this.twoDigitsNumber(this.setMinutes())
+  this.seconds = this.twoDigitsNumber(this.setSeconds())
+  this.milliseconds = this.twoDigitsNumber(this.setMilliseconds())
+};
 
-setSeconds = function (){
-  return Math.floor(chronometer.currentTime%60)
+Chronometer.prototype.setMilliseconds = function () {
+  var timeInMilliSeconds = this.currentTime % 100
+  return timeInMilliSeconds
+};
 
-}
+Chronometer.prototype.stopClick = function () {
+  clearInterval(this.intervalId);
+};
 
-twoDigitsNumber = function (number){
-  if (number < 10){
-    return '0'+ numnber;
-  }else{
-    return ''+ number; 
-  }
-  }
+Chronometer.prototype.resetClick = function () {
+  this.currentTime = 0
+  printTime()
+};
 
-setTime = function (){
-  var minutes = this.setMinutes;
-  var seconds = this.setSeconds;
-}
-// Chronometer.prototype.setMilliseconds = function () {
-
-// };
-stopClick= function(){
-  stopInteral(this.intervalId)
-}
-
-resetClick = function () {
- }
-
- splittClick = function () {
-}
+Chronometer.prototype.splitClick = function () {
+  return this.minutes + ":" + this.seconds + ":" + this.milliseconds
+};
