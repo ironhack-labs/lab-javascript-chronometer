@@ -28,6 +28,10 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
+  setMilliseconds(){
+    return this.currentTime % 100;
+  }
+
   twoDigitsNumber(num) {
       if(num < 10){
        return `0${num}`;
