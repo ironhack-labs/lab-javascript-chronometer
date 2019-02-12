@@ -16,11 +16,7 @@ function printTime() {
   printTimeId = setInterval(function() {
     printMinutes();
     printSeconds();    
-  },1000);
-
-  printMiliId = iintervalId(function() {
-    printMilliseconds();
-  }, 1);
+  },1000); 
 };
 
 function printMinutes() {
@@ -33,13 +29,8 @@ function printSeconds() {
   secUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.setSeconds()))[1];
 };
 
-function printMilliseconds() {
-  let milisec = chronometer.setMilis().toString();
-  if (milisec > 10) {
-    milisec = `0${milisec}`
-  }
-  milDec.innerHTML = milisec[0];
-  milUni.innerHTML = milisec[1];
+function printMilliseconds() { 
+  
 };
 
 function printSplit() {
