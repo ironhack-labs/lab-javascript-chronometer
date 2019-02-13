@@ -28,13 +28,13 @@ Chronometer.prototype.setTime = function () {
 };
 
 Chronometer.prototype.setMilliseconds = function () {
-
+    this.millisconds = this.currentTime / 1000;
 };
 
 Chronometer.prototype.stopClick = function () {
-
+    clearInterval(this.intervalId);
 };
 
 Chronometer.prototype.resetClick = function () {
-
+    this.currentTime = 0;
 };
