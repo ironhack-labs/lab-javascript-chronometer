@@ -2,10 +2,9 @@
 function Chronometer() {
     this.currentTime = 0;
     this.intervalId = 1;    
-    this.minutes = 0;
-    this.seconds = 0;
+    // this.minutes = 0;
+    // this.seconds = 0;
 }
-
 Chronometer.prototype.startClick = function () {
     setInterval(() => {
         this.currentTime = this.currentTime + 1;
