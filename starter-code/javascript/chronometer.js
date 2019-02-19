@@ -32,6 +32,7 @@ Chronometer.prototype.setSeconds = function () {
  Chronometer.prototype.setTime = function () {
     var minutes = this.twoDigitsNumber(this.setMinutes());
     var seconds = this.twoDigitsNumber(this.setSeconds());
+    
  };
 
 Chronometer.prototype.setMilliseconds = function () {
