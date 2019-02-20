@@ -36,7 +36,6 @@ In the Pull request name, add your campus, name and last names separated by a da
 We have already created you the main structure you will need to create your chronometer. The project structure is the following:
 
 ```
-starter-code/
 ├── jasmine
 ├── javascript
 │   └── main.js
