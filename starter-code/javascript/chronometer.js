@@ -1,6 +1,9 @@
 //Constructor
 function Chronometer() {
 
+    this.intervalId = 0
+    this.currentTime = 0
+
 }
 
 
@@ -20,28 +23,46 @@ var minutos = 0;
 
 Chronometer.prototype.startClick = function () {
 
-    if (centesimas < 99) {
-		centesimas++;
-		if (centesimas >= 10) {
-             
-            milDec.style.display="none"
-            
-             }
-		milUni.innerHTML = centesimas;
-    }
-    
-	if (centesimas == 99) {
-		centesimas = -1;
-    }
-    
+     this.setMilliseconds()
+     this.setSeconds()
+     this.setMinutes()
 
-	if (centesimas == 0) {
+
+};
+
+Chronometer.prototype.setMinutes = function () {
+
+
+    if ( (centesimas == 0)&&(segundos == 0) ) {
+		minutos++;
+        if (minutos >= 10) { 
+            
+            var splitM =  this.twoDigitsNumber(minutos)
+            minDec.innerHTML = splitM[0]
+        
+            minUni.innerHTML = splitM[1]
+        }else{
+
+            minUni.innerHTML =minutos;
+        }
+	     
+	}
+	if (minutos == 59) {
+		minutos = -1;
+	}
+  
+};
+
+Chronometer.prototype.setSeconds = function () {
+
+
+    if (centesimas == 0) {
         segundos ++;
         
 
 		if (segundos >= 10) { 
             
-          var splitS = '' + segundos
+          var splitS = this.twoDigitsNumber(segundos)
             secDec.innerHTML=splitS[0]
         	secUni.innerHTML =splitS[1]
         }else{
@@ -58,36 +79,14 @@ Chronometer.prototype.startClick = function () {
     }
 
     
-
-	if ( (centesimas == 0)&&(segundos == 0) ) {
-		minutos++;
-        if (minutos >= 10) { 
-            
-            var splitM = ''+minutos
-            minDec.innerHTML = splitM[0]
-        
-            minUni.innerHTML = splitM[1]
-        }else{
-
-            minUni.innerHTML =minutos;
-        }
-	     
-	}
-	if (minutos == 59) {
-		minutos = -1;
-	}
-
-};
-
-Chronometer.prototype.setMinutes = function () {
   
 };
 
-Chronometer.prototype.setSeconds = function () {
-  
-};
+Chronometer.prototype.twoDigitsNumber = function (number) {
 
-Chronometer.prototype.twoDigitsNumber = function () {
+    var newNumberArray = '' + number
+
+    return newNumberArray
   
 };
 
@@ -97,6 +96,21 @@ Chronometer.prototype.setTime = function () {
 
 Chronometer.prototype.setMilliseconds = function () {
 
+    if (centesimas < 99) {
+		centesimas++;
+		if (centesimas >= 10) {
+             
+            milDec.style.display="none"
+            
+             }
+
+		milUni.innerHTML = centesimas;
+    }
+    
+	if (centesimas == 99) {
+		centesimas = -1;
+    }
+    
 };
 
 Chronometer.prototype.stopClick = function (stopTime) {
