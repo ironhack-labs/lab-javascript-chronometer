@@ -36,7 +36,9 @@ describe('', function () {
     });
 
     it('Declare a startClick method', function () {
-      expect(typeof chronometer.startClick).toEqual('function');
+
+      console.log("teste",typeof chronometer.startClick)
+      expect(typeof chronometer.startClick).toBe('function');
     });
 
     it('Should declare an intervalId property as part of Chronometer', function () {

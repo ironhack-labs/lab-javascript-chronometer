@@ -33,7 +33,12 @@ function printMilliseconds() {
 
 function printSplit() {
 
- chronometer.splitClick(milDec.textContent,milUni.textContent,secDec.textContent,secUni.textContent,minDec.textContent,minUni.textContent)
+ chronometer.splitClick(milDec.textContent,
+    milUni.textContent,
+    secDec.textContent,
+    secUni.textContent,
+    minDec.textContent,
+    minUni.textContent)
 }
 
 function clearSplits() {
@@ -42,9 +47,7 @@ function clearSplits() {
 
 function setStopBtn() {
 
- 
-
-  chronometer.stopClick(getIdSetTimeout)
+  chronometer.stopClick()
 
 }
 
@@ -55,20 +58,14 @@ function setSplitBtn() {
 function setStartBtn() {
 
 
-    getIdSetTimeout =  setInterval(function(){
 
-       chronometer.startClick()
+        chronometer.startClick()
 
-    },10)
- 
-   
-
-
-}
+}   
 
 function setResetBtn() {
 
-    chronometer.resetClick(getIdSetTimeout)
+    chronometer.resetClick()
 
 }
 
