@@ -38,15 +38,16 @@
  };
 
  Chronometer.prototype.setMilliseconds = function () {
-
+   return parseInt(this.currentTime);
  };
 
  Chronometer.prototype.stopClick = function () {
-  
+   clearInterval(this.intervalId);
+   this.intervalId=0;
  };
 
  Chronometer.prototype.resetClick = function () {
-  var currentTime = 0;
+   this.currentTime = 0;
  };
 
  Chronometer.prototype.splitClick = function () {
