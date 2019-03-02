@@ -90,7 +90,6 @@ describe('', function () {
 
     it('Should return the currentTime in minutes even for laaaarge numbers', function () {
       chronometer.currentTime = 50210;
-
       expect(chronometer.setMinutes()).toEqual(836);
     });
   });

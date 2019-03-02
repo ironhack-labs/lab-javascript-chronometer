@@ -1,114 +1,98 @@
-// var chronometer = new Chronometer();
+var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+var min         = document.getElementById('min');
+var sec         = document.getElementById('sec');
+var mil         = document.getElementById('mil');
+var splitBox    = document.getElementById('splits');
 
-var clickBtn = false;
+var arrSplits = [];
+
 
 function printTime() {
-    var countMilUni = 0;
-    var countMilDec = 0;
-    var countSecUni = 0;
-    var countSecDec = 0;
-    var countMinUni = 0;
-    var countMinDec = 0;
-
-    var interval = setInterval(function(){
-        if (countMilUni < 9){
-            countMilUni++;
-        } else {
-            countMilUni = 0;
-            countMilDec++;
-        }
-        if (countMilDec > 9){
-            countSecUni++;
-            countMilDec = 0;
-        }
-        if (countSecUni > 9) {
-            countSecDec++;
-            countSecUni = 0;
-        }
-        if (countSecDec > 5) {
-            countMinUni++;
-            countSecDec = 0;
-        }
-        if (countMilUni > 9) {
-            countMinDec++;
-            countMinUni = 0;
-        }
-        if (countMinDec > 5) {
-            countMilUni = 0;
-            countMilDec = 0;
-            countSecUni = 0;
-            countSecDec = 0;
-            countMinUni = 0;
-            countMinDec = 0;
-        }
-
-        milUni.innerHTML = countMilUni;
-        milDec.innerHTML = countMilDec;
-        secUni.innerHTML = countSecUni;
-        secDec.innerHTML = countSecDec;
-        minUni.innerHTML = countMinUni;
-        minDec.innerHTML = countMinDec;
-    }, 10)
-    
+    // var count = 0;
+    chronometer.intervalIdTwo = setInterval(() => {
+        // if(count < 99) {
+        //     count++
+        // } else {
+        //     count = 0;
+        // }
+        
+        // mil.innerText = chronometer.twoDigitsNumber(count);
+        
+        printMinutes();
+        printSeconds();
+    }, 10);
 }
 
+function printMinutes() {
+    let time = chronometer.setMinutes();
+    min.innerText = chronometer.twoDigitsNumber(time);
+}
 
-// function printMinutes() {
-
-// }
-
-// function printSeconds() {
-
-// }
+function printSeconds() {
+    let time = chronometer.setSeconds();
+    sec.innerText = chronometer.twoDigitsNumber(time);
+}
 
 function printMilliseconds() {
+}
+
+function printSplit() {
+    let arrEl = '<li>' + min.textContent + ':' + sec.textContent + '</li>';
+    arrSplits.push(arrEl);
+    splitBox.innerHTML = arrSplits.join("");
+}
+
+function clearSplits() {
 
 }
 
-// function printSplit() {
+function setStopBtn() {
 
-// }
+}
 
-// function clearSplits() {
+function setSplitBtn() {
 
-// }
+}
 
-// function setStopBtn() {
+function setStartBtn() {
+    printTime();
+}
 
-// }
-
-// function setSplitBtn() {
-
-// }
-
-// function setStartBtn() {
-
-// }
-
-// function setResetBtn() {
-
-// }
+function setResetBtn() {
+    chronometer.currentTime = 0;
+    printMinutes();
+    printSeconds();
+}
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function(){
-    if (clickBtn === false){
-    printTime();
-    } else {
-    clearInterval(interval);
-    clickBtn = true;
-    }
 
+var btnC = false;
+
+btnLeft.addEventListener('click', function () {
+    if (btnC == false) {
+        setStartBtn();
+        chronometer.startClick();
+        btnC = true;
+    } else {
+        chronometer.stopClick();
+        btnC = false;
+    }
 });
 
-// // Reset/Split Button
-// btnRight.addEventListener('click', function () {
+// Reset/Split Button
 
-// });
+var btnD = false;
+
+btnRight.addEventListener('click', function () {
+    if (chronometer.currentTime > 0){
+        if (btnD == false) {
+            printSplit();
+            btnD = true;
+        } else {
+            setResetBtn();
+            btnD = false;
+        }
+    }
+});
