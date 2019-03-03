@@ -6,10 +6,11 @@ class Chronometer {
         this.seconds=0
     }
     startClick() {
-        this.intervalId = setInterval(function () {            
+        this.intervalId = setInterval(function () { 
             this.currentTime += 1;
             this.setTime();
         }.bind(this), 1000);
+ 
     }
 
     setMinutes() {
@@ -25,16 +26,21 @@ class Chronometer {
         if (n.toString().length < 2) {
             n = "0" + n
         }
-        return n.toString()
+        return n
     }
     setTime(){
-        minutes = this.setMinutes();
-        seconds = this.setSeconds();
-        this.twoDigitsNumber(minutes);
-        this.twoDigitsNumber(seconds);
+        this.minutes = this.setMinutes();
+        this.seconds = this.setSeconds();
+        this.twoDigitsNumber(this.minutes);
+        this.twoDigitsNumber(this.seconds);
+        
+        
+        
 }
     stopClick() {
         clearInterval(this.intervalId);
+        console.log(this.intervalId)
+        
     }
 
     resetClick() {
@@ -42,6 +48,7 @@ class Chronometer {
     }
 
     splitClick() {
+      
 
     }
 }
