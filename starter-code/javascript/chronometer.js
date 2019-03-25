@@ -13,7 +13,14 @@ class Chronometer {
        this.currentTime += 1;
      }.bind(this),1000);
    }
-  // setMinutes() {}
+   setMinutes() {
+     
+  return Math.floor(this.currentTime/60)
+    
+    
+     
+
+   }
   // setSeconds() {}
   // twoDigitsNumber() {}
   // setTime() {}
