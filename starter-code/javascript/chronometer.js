@@ -1,13 +1,10 @@
 class Chronometer {
   constructor() {}
   // startClick() {}
-  // setMinutes() {}
-  // setSeconds() {}
+  // getMinutes() {}
+  // getSeconds() {}
   // twoDigitsNumber() {}
-  // setTime() {}
-  // setMilliseconds() {}
   // stopClick() {}
   // resetClick() {}
-  // splitClick() {}
   // splitClick() {}
 }
