@@ -3,6 +3,7 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = 0;
     this.time;
+    this.running = false;
   }
 
   startClick() {

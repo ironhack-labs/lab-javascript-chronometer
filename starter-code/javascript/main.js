@@ -49,21 +49,49 @@ function setSplitBtn() {
 function setStartBtn() {
   chronometer.startClick();
   setInterval(printTime, 1000);
-  // printTime();
+  printStopButton();
 }
 
 function setResetBtn() {
 
  chronometer.resetClick() 
+ printSplitButton()
+
   
+}
+
+
+function printStopButton(){
+  btnLeft.innerText = "STOP"
+  btnLeft.className = "btn stop"
+
+}
+function printSplitButton(){
+  btnRight.innerText = "SPLIT"
+  btnRight.className ="btn split"
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-  setStartBtn();
+ 
+  if(!chronometer.running){
+    chronometer.running=true;
+    setStartBtn();
+  }else{
+
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  setResetBtn();
+  if(!chronometer.running){
+ chronometer.running=true;
+    setResetBtn();
+    }else{
+      
+
+  }
+  
+  
+  
 });
