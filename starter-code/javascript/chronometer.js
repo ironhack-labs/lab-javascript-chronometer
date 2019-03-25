@@ -30,7 +30,17 @@ class Chronometer {
 
 
    }
-  // twoDigitsNumber() {}
+   twoDigitsNumber(number) {
+     if(number<10){
+       return "0" +number
+
+     }
+     else{
+       return "" + number
+     }
+      
+
+   }
   // setTime() {}
   // setMilliseconds() {}
   // stopClick() {}
