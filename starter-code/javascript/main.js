@@ -14,8 +14,11 @@ function printTime() {
   printInterval = setInterval(() => {
     printMinutes();
     printSeconds();
-    printMilliseconds()
+    printMilliseconds();
   }, 1000);
+  printInterval2 = setInterval(() => {
+    printMilliseconds();
+  }, 100);
 }
 
 function printMinutes() {
@@ -29,9 +32,14 @@ function printSeconds() {
   secDec.innerHTML = seconds[0];
   secUni.innerHTML = seconds[1];
 }
-
+let xan = 0;
 function printMilliseconds() {
   
+  milisegundos = setInterval(() => {
+    xan++;
+  }, 100);
+  milUni.innerHTML = xan;
+  // milDec.innerHTML = xan[1]
 }
 
 function printSplit() {
@@ -72,6 +80,7 @@ btnLeft.addEventListener("click", function() {
     setResetBtn();
     chronometer.stopClick();
     clearInterval(printInterval);
+    clearInterval(printInterval2);
   } else {
     setStopBtn();
     setSplitBtn();
