@@ -2,65 +2,48 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
+    this.time;
   }
 
-
-
-
-
-   startClick() {
-     this.intervalId = setInterval(function() {
-       this.currentTime += 1;
-       this.setTime();
-     }.bind(this),1000);
-   }
-   setMinutes() {
-     
-  return Math.floor(this.currentTime/60)
-    
-    
-     
-
-   }
-   setSeconds() {
-      
-    return this.currentTime % 60
-
-
-
-
-
-   }
-   twoDigitsNumber(number) {
-     if(number<10){
-       return "0" +number
-
-     }
-     else{
-       return "" + number
-     }
-      
-
-   }
+  startClick() {
+    this.intervalId = setInterval(
+      function() {
+        this.currentTime += 1;
+        this.time = this.setTime();
+      }.bind(this),
+      1000
+    );
+  }
+  setMinutes() {
+    return Math.floor(this.currentTime / 60);
+  }
+  setSeconds() {
+    return this.currentTime % 60;
+  }
+  twoDigitsNumber(number) {
+    if (number < 10) {
+      return "0" + number;
+    } else {
+      return "" + number;
+    }
+  }
   setTime() {
-  var minutes = this.twoDigitsNumber(this.setMinutes());
-  var seconds = this.twoDigitsNumber(this.setSeconds());
-
-
-
+    var minutes = this.twoDigitsNumber(this.setMinutes());
+    var seconds = this.twoDigitsNumber(this.setSeconds());
+    return {
+      minutes: minutes,
+      seconds: seconds
+    };
   }
-  // setMilliseconds() {}
-  
-  
   
   stopClick() {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId);
   }
-
-
-   resetClick() {
+  
+  resetClick() {
     this.currentTime = 0;
-   }
+  }
+  // setMilliseconds() {}
   // splitClick() {}
   // splitClick() {}
 }
