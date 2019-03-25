@@ -7,21 +7,26 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
+var intervalPrintTime = null;
 
 function printTime() {
-  printMinutes();
-  printSeconds();
+  var m1 = chronometer.minutes[0];
+  var m2 = chronometer.minutes[1];
+  var s1 = chronometer.seconds[0];
+  var s2 = chronometer.seconds[1];
+
+  printMinutes(m1, m2);
+  printSeconds(s1, s2);
 }
 
-function printMinutes() {
-  minDec.innerHTML = chronometer.minutes[0];
-  minUni.innerHTML = chronometer.minutes[1];
+function printMinutes(m1, m2) {
+  minDec.innerHTML = m1;
+  minUni.innerHTML = m2;
 }
 
-function printSeconds() {
-  secDec.innerHTML = chronometer.seconds[0];
-  secUni.innerHTML = chronometer.seconds[1];
+function printSeconds(s1, s2) {
+  secDec.innerHTML = s1;
+  secUni.innerHTML = s2;
 }
 
 function printMilliseconds() {
@@ -29,11 +34,24 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  var minDecLocal = chronometer.minutes[0];
+  var minUniLocal = chronometer.minutes[1];
+  var secDecLocal = chronometer.seconds[0];
+  var secUniLocal = chronometer.seconds[1];
+  
+  var splitTime = `${minDecLocal}${minUniLocal}:${secDecLocal}${secUniLocal}`
 
+  var node = document.createElement("li");
+  var textNode = document.createTextNode(splitTime);
+  node.appendChild(textNode);
+  document.getElementById("splits").appendChild(node);
 }
 
 function clearSplits() {
-
+  var myNode = document.getElementById ("splits");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
 }
 
 function setStopBtn() {
@@ -64,7 +82,7 @@ btnLeft.addEventListener('click', function () {
   if (btnLeft.className === "btn start") {
     setStopBtn();
     setSplitBtn();
-    setInterval(() => {
+    intervalPrintTime = setInterval(() => {
       printTime();      
     }, 1000);
     } else if (btnLeft.className === "btn stop") {
@@ -76,9 +94,15 @@ btnLeft.addEventListener('click', function () {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
   console.log(btnRight.className);
+  
   if (btnRight.className === "btn reset") {
-    setSplitBtn();
+    chronometer.stopClick();
+    chronometer.resetClick();
+    clearSplits();
+    printMinutes("0", "0");
+    printSeconds("0", "0" );
+    clearInterval(intervalPrintTime);
   } else if (btnRight.className === "btn split") {
-    setResetBtn();
+    printSplit();
   }
 });
