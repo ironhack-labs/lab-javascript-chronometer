@@ -1,7 +1,7 @@
 class Chronometer {
   constructor() {
-    this.currentTime;
-    this.intervalId;
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
 
 
@@ -9,9 +9,9 @@ class Chronometer {
 
 
    startClick() {
-     this.intervalId = setInterval(function(){
-       this.currentTime += 1
-     },1000)
+     this.intervalId = setInterval(function() {
+       this.currentTime += 1;
+     }.bind(this),1000);
    }
   // setMinutes() {}
   // setSeconds() {}
