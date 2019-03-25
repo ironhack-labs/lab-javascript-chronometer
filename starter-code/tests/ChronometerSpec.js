@@ -4,10 +4,6 @@ describe('', function () {
   });
 
   describe('constructor function', function () {
-    it('Should declare a Chronometer function', function () {
-      expect(typeof Chronometer).toEqual('function');
-    });
-
     it('Should not receive any parameter', function () {
       expect(Chronometer.length).toEqual(0);
     });
@@ -18,10 +14,6 @@ describe('', function () {
 
     it('`currentTime` should be equal to 0 at the beginning', function () {
       expect(chronometer.currentTime).toEqual(0);
-    });
-
-    it('Should declare a `intervalId` property', function () {
-      expect(chronometer.intervalId).toBeDefined();
     });
   });
 
@@ -60,68 +52,68 @@ describe('', function () {
     });
   });
 
-  describe('setMinutes function', function () {
+  describe('getMinutes function', function () {
     it('Should be declare', function () {
-      expect(typeof chronometer.setMinutes).toEqual('function');
+      expect(typeof chronometer.getMinutes).toEqual('function');
     });
 
     it('Should return a number', function () {
       chronometer.currentTime = 65;
-      expect(typeof chronometer.setMinutes()).toEqual('number');
+      expect(typeof chronometer.getMinutes()).toEqual('number');
     });
 
     it('Should return a number without decimals', function () {
       chronometer.currentTime = 65;
 
-      expect(chronometer.setMinutes() % 1).toEqual(0);
+      expect(chronometer.getMinutes() % 1).toEqual(0);
     });
 
     it('Should return the currentTime in minutes', function () {
       chronometer.currentTime = 65;
 
-      expect(chronometer.setMinutes()).toEqual(1);
+      expect(chronometer.getMinutes()).toEqual(1);
     });
 
     it('Should return 0 when the currentTime haven\'t start', function () {
       chronometer.currentTime = 0;
 
-      expect(chronometer.setMinutes()).toEqual(0);
+      expect(chronometer.getMinutes()).toEqual(0);
     });
 
     it('Should return the currentTime in minutes even for laaaarge numbers', function () {
       chronometer.currentTime = 50210;
 
-      expect(chronometer.setMinutes()).toEqual(836);
+      expect(chronometer.getMinutes()).toEqual(836);
     });
   });
 
-  describe('setSeconds function', function () {
+  describe('getSeconds function', function () {
     it('Should be declare', function () {
-      expect(typeof chronometer.setSeconds).toEqual('function');
+      expect(typeof chronometer.getSeconds).toEqual('function');
     });
 
     it('Should return a number', function () {
       chronometer.currentTime = 3;
 
-      expect(typeof chronometer.setSeconds(0)).toEqual('number');
+      expect(typeof chronometer.getSeconds(0)).toEqual('number');
     });
 
     it('Should return 0 when the currentTime haven\'t start', function () {
       chronometer.currentTime = 0;
 
-      expect(chronometer.setSeconds(0)).toEqual(0);
+      expect(chronometer.getSeconds(0)).toEqual(0);
     });
 
     it('Should return the seconds of the currentTime', function () {
       chronometer.currentTime = 15;
 
-      expect(chronometer.setSeconds(0)).toEqual(15);
+      expect(chronometer.getSeconds(0)).toEqual(15);
     });
 
     it('Should return the seconds that remain after removing the minutes to the currentTime', function () {
       chronometer.currentTime = 115;
 
-      expect(chronometer.setSeconds(1)).toEqual(55);
+      expect(chronometer.getSeconds(1)).toEqual(55);
     });
   });
 
@@ -148,80 +140,6 @@ describe('', function () {
 
     it('Should return \'03\' when the value is 3', function () {
       expect(chronometer.twoDigitsNumber(3)).toEqual('03');
-    });
-  });
-
-  describe('setTime function', function () {
-    it('Should be declare', function () {
-      expect(typeof chronometer.setTime).toEqual('function');
-    });
-
-    it('Should be called on each interval of our startClick setInterval', function () {
-      jasmine.clock().install();
-      chronometer.startClick();
-      spyOn(chronometer, 'setTime');
-      jasmine.clock().tick(1000);
-
-      expect(chronometer.setTime).toHaveBeenCalled();
-      jasmine.clock().uninstall();
-    });
-
-    it('setTime should declare a `minutes` variable to store the 2 characters length minutes value', function () {
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var minutes = this.twoDigitsNumber(this.setMinutes());
-
-        expect(minutes).toBeDefined();
-      });
-      chronometer.setTime();
-    });
-
-    it('setTime should declare a `seconds` variable to store the 2 characters length seconds value', function () {
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var seconds = this.twoDigitsNumber(this.setSeconds(2));
-
-        expect(seconds).toBeDefined();
-      });
-      chronometer.setTime();
-    });
-
-    it('`minutes` should equal \'00\' when currentTime is 0', function () {
-      chronometer.currentTime = 0;
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var minutes = this.twoDigitsNumber(this.setMinutes());
-
-        expect(minutes).toEqual('00');
-      });
-      chronometer.setTime();
-    });
-
-    it('`minutes` should equal \'00\' when currentTime is 0', function () {
-      chronometer.currentTime = 0;
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var seconds = this.twoDigitsNumber(this.setSeconds(0));
-
-        expect(seconds).toEqual('00');
-      });
-      chronometer.setTime();
-    });
-
-    it('`minutes` should equal the elapsed minutes of our currentTime', function () {
-      chronometer.currentTime = 121;
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var minutes = this.twoDigitsNumber(this.setMinutes());
-
-        expect(minutes).toEqual('02');
-      });
-      chronometer.setTime();
-    });
-
-    it('`seconds` should equal the seconds that remain after removing the minutes to the currentTime', function () {
-      chronometer.currentTime = 129;
-      spyOn(chronometer, 'setTime').and.callFake(function () {
-        var seconds = this.twoDigitsNumber(this.setSeconds(2));
-
-        expect(seconds).toEqual('09');
-      });
-      chronometer.setTime();
     });
   });
 
