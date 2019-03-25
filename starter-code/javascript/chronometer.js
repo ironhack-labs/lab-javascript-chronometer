@@ -50,7 +50,14 @@ class Chronometer {
 
   }
   // setMilliseconds() {}
-  // stopClick() {}
+  
+  
+  
+  stopClick() {
+    clearInterval(this.intervalId)
+  }
+
+
   // resetClick() {}
   // splitClick() {}
   // splitClick() {}
