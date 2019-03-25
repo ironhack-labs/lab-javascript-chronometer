@@ -3,7 +3,7 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = 0;
     this.time;
-    this.running = false;
+    this.splits = [];
   }
 
   startClick() {
@@ -44,7 +44,26 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  // setMilliseconds() {}
-  // splitClick() {}
-  // splitClick() {}
+  
+  setMilliseconds() {
+
+  }
+
+  toggleClick() {
+    if(this.running){
+      this.stopClick();
+      this.running = false;
+    }else{
+      this.startClick();
+      this.running = true;
+    }
+  }
+
+  splitClick() {
+
+  }
+
+  clearSplits(){
+    this.splits = [];
+  }
 }
