@@ -1,6 +1,18 @@
 class Chronometer {
-  constructor() {}
-  // startClick() {}
+  constructor() {
+    this.currentTime;
+    this.intervalId;
+  }
+
+
+
+
+
+   startClick() {
+     this.intervalId = setInterval(function(){
+       this.currentTime += 1
+     },1000)
+   }
   // setMinutes() {}
   // setSeconds() {}
   // twoDigitsNumber() {}
