@@ -15,7 +15,7 @@ function printTime() {
     printMinutes();
     printSeconds();
     printMilliseconds()
-  }, 100);
+  }, 1000);
 }
 
 function printMinutes() {
