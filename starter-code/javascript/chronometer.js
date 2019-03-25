@@ -21,7 +21,15 @@ class Chronometer {
      
 
    }
-  // setSeconds() {}
+   setSeconds() {
+      
+    return this.currentTime % 60
+
+
+
+
+
+   }
   // twoDigitsNumber() {}
   // setTime() {}
   // setMilliseconds() {}
