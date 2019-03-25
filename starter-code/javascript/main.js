@@ -14,7 +14,6 @@ function printTime() {
   printInterval = setInterval(() => {
     printMinutes();
     printSeconds();
-    printMilliseconds();
   }, 1000);
   printInterval2 = setInterval(() => {
     printMilliseconds();
@@ -35,10 +34,10 @@ function printSeconds() {
 let xan = 0;
 function printMilliseconds() {
   
-  milisegundos = setInterval(() => {
-    xan++;
-  }, 100);
-  milUni.innerHTML = xan;
+  // milisegundos = setInterval(() => {
+  //   xan++;
+  // }, 100);
+  // milUni.innerHTML = xan;
   // milDec.innerHTML = xan[1]
 }
 
