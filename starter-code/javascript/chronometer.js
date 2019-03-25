@@ -14,7 +14,7 @@ class Chronometer {
 
     setMinutes() {
         return parseInt(this.currentTime / 60);
-
+        //y
     }
 
     setSeconds() {
