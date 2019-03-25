@@ -15,7 +15,9 @@ function printTime() {
 }
 
 function printMinutes() {
-
+var minutes = chronometer.setTime().minutes;
+minDec.innerText = minutes[0];
+minUni.innerText = minutes[1];
 }
 
 function printSeconds() {
@@ -52,6 +54,8 @@ function setStartBtn() {
 
 function setResetBtn() {
 
+ chronometer.resetClick() 
+  
 }
 
 // Start/Stop Button
@@ -61,5 +65,5 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  setResetBtn();
 });
