@@ -11,6 +11,7 @@ class Chronometer {
    startClick() {
      this.intervalId = setInterval(function() {
        this.currentTime += 1;
+       this.setTime();
      }.bind(this),1000);
    }
    setMinutes() {
@@ -41,7 +42,13 @@ class Chronometer {
       
 
    }
-  // setTime() {}
+  setTime() {
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
+
+
+
+  }
   // setMilliseconds() {}
   // stopClick() {}
   // resetClick() {}
