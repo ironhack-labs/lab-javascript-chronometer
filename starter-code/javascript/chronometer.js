@@ -6,34 +6,36 @@ class Chronometer {
 
   startClick () {
     this.intervalId = setInterval(() => {
-      this.currentTime++ ;
+      this.currentTime++;      
+      this.setTime();
     }, 1000);
   }
 
   setMinutes () {
-    return this.currentTime%60;
+    return parseInt(this.currentTime/60);
   }
 
   setSeconds () {
-  
+    return parseInt(this.currentTime%60);
   }
 
-  twoDigitsNumber () {
-  
+  twoDigitsNumber (value) {
+    if (value < 10) return `0${value}`
+    else return `${value}`;
   }
 
   setTime () {
-
+    this.minutes = this.twoDigitsNumber(this.setMinutes ());
+    this.seconds = this.twoDigitsNumber(this.setSeconds ());
   }
   
   stopClick () {
-  
+    clearInterval(this.intervalId);
   }
 
   resetClick () {
-
+    this.currentTime = 0;
   }
-
 }
 
   
