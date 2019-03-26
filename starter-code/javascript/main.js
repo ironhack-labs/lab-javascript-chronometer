@@ -10,6 +10,8 @@ var milUni      = document.getElementById('milUni');
 
 var liSplit     = document.getElementById("splits");
 
+var intervalo = undefined
+
 
 function printTime() {
     this.intervalo = setInterval(() => {
@@ -47,6 +49,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+    clearInterval(this.intervalo);
     btnLeft.classList.toggle("stop");
     btnLeft.innerHTML = "START";
     btnRight.classList.toggle("reset");
@@ -74,7 +77,6 @@ function setResetBtn() {
     minUni.innerHTML = "0";
     secDec.innerHTML = "0";
     secUni.innerHTML = "0";
-    clearInterval(this.intervalo);
     clearSplits();
 }
 
