@@ -35,19 +35,22 @@ function clearSplits() {
 
 function setStopBtn() {
   btnLeft.classList.replace('start', 'stop');
-
+  btnLeft.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
   btnRight.classList.replace('reset', 'split');
+  btnRight.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
   btnLeft.classList.replace('stop', 'start');
+  btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
   btnRight.classList.replace('split', 'reset');
+  btnRight.innerHTML = "RESET";
 }
 
 // Start/Stop Button
