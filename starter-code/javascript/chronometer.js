@@ -5,7 +5,11 @@ class Chronometer {
   };
 
   startClick() {
-    var identifier = setInterval(() => this.currentTime++, 1000);
+    var identifier = setInterval(() => {
+      this.currentTime++;
+      printSeconds();
+      printMinutes();
+    }, 1000);
     this.intervalId = identifier;
   }
 

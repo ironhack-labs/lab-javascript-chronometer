@@ -14,11 +14,14 @@ function printTime() {
 }
 
 function printMinutes() {
+  minDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.getMinutes())).charAt(0);
+  minUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.getMinutes())).charAt(1);
 
 }
 
 function printSeconds() {
-
+  secDec.innerHTML = (chronometer.twoDigitsNumber(chronometer.getSeconds())).charAt(0);
+  secUni.innerHTML = (chronometer.twoDigitsNumber(chronometer.getSeconds())).charAt(1);
 }
 
 function printMilliseconds() {
@@ -36,6 +39,8 @@ function clearSplits() {
 function setStopBtn() {
   btnLeft.classList.replace('start', 'stop');
   btnLeft.innerHTML = "STOP";
+  chronometer.startClick();
+
 }
 
 function setSplitBtn() {
@@ -46,6 +51,10 @@ function setSplitBtn() {
 function setStartBtn() {
   btnLeft.classList.replace('stop', 'start');
   btnLeft.innerHTML = "START";
+  chronometer.stopClick();
+
+
+
 }
 
 function setResetBtn() {
@@ -69,4 +78,4 @@ btnRight.addEventListener('click', function () {
   } else {
     setResetBtn();
   };
-});
+})
