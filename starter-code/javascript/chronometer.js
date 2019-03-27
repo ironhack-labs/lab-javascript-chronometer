@@ -10,10 +10,12 @@ class Chronometer {
   }
 
   getMinutes() {
+    // if(!this.currentTime) 
     if (this.currentTime === 0) {
       return 0;
     } else {
-      return Math.trunc(this.currentTime / 60);
+      let minutes = Math.trunc(this.currentTime / 60)
+      return minutes;
     }
   }
 
@@ -21,7 +23,7 @@ class Chronometer {
     if (this.currentTime === 0) {
       return 0;
     } else {
-      console.log(this.courrentTime - (this.currentTime % 60));
+      return this.currentTime % 60;
     }
   }
   // twoDigitsNumber() {}
