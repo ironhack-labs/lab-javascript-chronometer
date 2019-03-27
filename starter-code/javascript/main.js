@@ -1,60 +1,14 @@
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
-
-
-function printTime() {
-
-}
-
-function printMinutes() {
-
-}
-
-function printSeconds() {
-
-}
-
-function printMilliseconds() {
-
-}
-
-function printSplit() {
-
-}
-
-function clearSplits() {
-
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
-}
-
-// Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
-});
-
-// Reset/Split Button
-btnRight.addEventListener('click', function () {
-
-});
+const appleWatch = new Chronometer ();
+let buttonStop; let buttonSplit
+// Selectionner des Elements 
+const olContainer = document.getElementById('splits');
+const updateSecondUni = document.getElementById('secUni');
+const updateSecondDec = document.getElementById('secDec');
+const updateMinuteUni = document.getElementById('minUni');
+const updateMinuteDec = document.getElementById('minDec');
+const updateMilUni = document.getElementById('milUni');
+const updateMilDec = document.getElementById('milDec');
+const buttonStart = document.querySelector('.btn.start');
+const buttonReset = document.querySelector('.btn.reset');
+// Rattacher les buttons avec des Evenements 
+buttonStart.onclick = appleWatch.startClick;
