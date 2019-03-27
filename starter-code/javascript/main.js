@@ -64,15 +64,38 @@ function printMilliseconds() {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+	if (btnRight.className === "btn split") {
+		printSplit();
 
+	} else {
+		chronometer.stopClick();
+		clearSplits();
+		clearTime();
+	}
 });
 
-function printSplit() {
+const splitList = document.getElementById("splits")
 
+
+function printSplit() {
+	var newSplit = document.createElement("li")
+	newSplit.innerHTML = chronometer.splitClick();
+	splitList.appendChild(newSplit);
 }
 
 function clearSplits() {
+	var allSplits = document.querySelectorAll("#splits li")
+	allSplits.forEach( splitItem => {
+		splitList.removeChild(splitItem);
+	})
+}
 
+function clearTime() {
+	minDec.innerHTML = "0"
+	minUni.innerHTML = "0"
+
+	secDec.innerHTML = "0"
+	secUni.innerHTML = "0"
 }
 
 function setStopBtn() {
