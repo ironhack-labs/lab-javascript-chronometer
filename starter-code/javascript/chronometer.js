@@ -8,8 +8,6 @@ class Chronometer {
     this.intervalId = setInterval( () => { 
       this.currentTime += 1;
     }, 1000)
-
-    console.log(this.currentTime)
   }
 
   // return total minutes that respond to current time
