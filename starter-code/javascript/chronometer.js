@@ -50,8 +50,8 @@ class Chronometer {
 
   }
   splitClick() {
-    var splitC = this.getMinutes() + ':' + this.getSeconds();
-    return splitC;
+    return this.getMinutes() + ':' + this.getSeconds();
+
   }
 }
 
