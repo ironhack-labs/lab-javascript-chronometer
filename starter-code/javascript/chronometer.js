@@ -5,7 +5,7 @@ class Chronometer {
     this.updateUI =0
   }
 
-  startClick() {
+  startClick= () =>{
     const add1Second = ()=> { this.currentTime +=1;  }
     const updateSecUI = () => {
     updateSecondUni.textContent=this.twoDigitsNumber(this.getSeconds()).charAt(1);
@@ -51,7 +51,7 @@ class Chronometer {
   }
   resetClick=()=> {
     this.currentTime =0;
-    clearInterval(updateUI)
+    clearInterval(this.updateUI)
     updateSecondUni.textContent="0";
     updateSecondDec.textContent="0";
     updateMinuteUni.textContent="0";
