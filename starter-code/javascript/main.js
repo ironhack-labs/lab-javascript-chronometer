@@ -29,6 +29,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  var parent = document.getElementById('splits-container');
+  var newList = document.createElement('li');
+  parent.appendChild(newList);
+  newList.innerHTML = chronometer.splitClick();
+
 
 }
 
@@ -40,7 +45,7 @@ function setStopBtn() {
   btnLeft.classList.replace('start', 'stop');
   btnLeft.innerHTML = "STOP";
   chronometer.startClick();
-
+  setSplitBtn();
 }
 
 function setSplitBtn() {
@@ -52,9 +57,7 @@ function setStartBtn() {
   btnLeft.classList.replace('stop', 'start');
   btnLeft.innerHTML = "START";
   chronometer.stopClick();
-
-
-
+  setResetBtn();
 }
 
 function setResetBtn() {
@@ -68,14 +71,15 @@ btnLeft.addEventListener('click', function () {
     setStopBtn();
   } else {
     setStartBtn();
+
   };
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
   if (btnRight.className === 'btn reset') {
-    setSplitBtn();
+    clearSplits();
   } else {
-    setResetBtn();
+    printSplit();
   };
 })

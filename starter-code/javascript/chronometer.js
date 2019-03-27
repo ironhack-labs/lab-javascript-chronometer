@@ -49,7 +49,10 @@ class Chronometer {
     this.currentTime = 0;
 
   }
-  splitClick() {}
+  splitClick() {
+    var splitC = this.getMinutes() + ':' + this.getSeconds();
+    return splitC;
+  }
 }
 
 const c = new Chronometer();
