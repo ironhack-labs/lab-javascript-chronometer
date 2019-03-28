@@ -3,13 +3,23 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = null;
   };
+  
   startClick() {
     var identifier = setInterval(() => {
-      this.currentTime++;
+      this.currentTime ++;
       printSeconds();
       printMinutes()}, 1000);
     this.intervalId = identifier;
   }
+
+  // // equivalent to what we have up with a different syntax
+  // startClick() {
+  //   var identifier = setInterval(function () {
+  //     this.currentTime++;
+  //     printSeconds();
+  //     printMinutes()}, 1000);
+  //   this.intervalId = identifier;
+  // }
 
   getMinutes() {
     // if(!this.currentTime) 

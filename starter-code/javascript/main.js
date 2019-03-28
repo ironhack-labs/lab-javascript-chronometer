@@ -36,7 +36,12 @@ function printSplit() {
 }
 
 function clearSplits() {
+  chronometer.resetClick();
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
+
 
 function setStopBtn() {
   btnLeft.classList.replace('start','stop');
