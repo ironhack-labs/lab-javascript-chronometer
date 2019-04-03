@@ -1,11 +1,10 @@
-//Iteration 1: The Logic
 //Chronometer Constructor
 function Chronometer (){
   this.currentTime = 0;
   this.intervalId = 0;
 }
 
-
+// 
 Chronometer.prototype.startClick = function(){
   this.intervalId = setInterval (()=>{
     this.currentTime +=1 
