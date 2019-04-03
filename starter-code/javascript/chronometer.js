@@ -4,12 +4,15 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick() {
-    this.intervalId = setInterval(()=>{ this.currentTime++}, 1000)
+    this.intervalId = setInterval(()=>{ 
+      this.currentTime++
+      console.log(this.currentTime)
+    },1000)
+      
   } 
+
   getMinutes() {
-
     return Math.floor(this.currentTime / 60)
-
   }
   
   getSeconds() {
@@ -24,7 +27,6 @@ class Chronometer {
   }
  }
   stopClick() {
-    this.currentTime = 0;
     clearInterval(this.intervalId)
   }
   resetClick() {

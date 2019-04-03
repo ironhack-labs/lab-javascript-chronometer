@@ -8,37 +8,41 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
-console.log(btnLeft)
+
 btnLeft.onclick = function () {
+
     if(btnLeft.innerHTML=="STOP"){
         btnLeft.innerHTML="START" ;
-        //btnLeft.classList.toggle('start',false)
-        btnLeft.classList.toggle('start',true)
+        btnLeft.setAttribute('class','btn start');
+        //console.log(chronometer.stopClick())
+        chronometer.stopClick()
     }else{
         btnLeft.innerHTML="STOP"
-        btnLeft.classList.toggle('stop',false)
+        btnLeft.setAttribute('class','btn stop');
+        //console.log(chronometer.startClick())
+        chronometer.startClick()
     } 
 }
 
-
-function changeStatus(btn) {
-    if (btn.classList === "active") {
-        btn.classList.toggle("inactive");
-    } else {
-        btn.classList.toggle("active");
-    }
+btnRight.onclick = function () {
+    if(btnRight.innerHTML=="SPLIT"){
+        btnRight.innerHTML="RESET" ;
+        btnRight.setAttribute('class','btn reset');
+    }else{
+        btnRight.innerHTML="SPLIT"
+        btnRight.setAttribute('class','btn split');
+    } 
 }
 
-
-
-
-
-function printTime() {
-
+function printTime(min,sec) {
+    
 }
 
 function printMinutes() {
-
+    let min=chronometer.getMinutes()
+    minTwoDigits = chronometer.twoDigitsNumber(min)
+    minDec.innerHTML = minTwoDigits.slice(0,1);
+    minUni
 }
 
 function printSeconds() {
@@ -82,3 +86,17 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
 });
+
+/* function changeState (innerStop,btn,){
+
+
+    if(btnLeft.innerHTML=="STOP"){
+        btnLeft.innerHTML="START" ;
+        btnLeft.setAttribute('class',strLClass);
+    }else{
+        btnLeft.innerHTML="STOP"
+        btnLeft.setAttribute('class',strLClass);
+    } 
+
+} */
+
