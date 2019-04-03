@@ -8,6 +8,30 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
+console.log(btnLeft)
+btnLeft.onclick = function () {
+    if(btnLeft.innerHTML=="STOP"){
+        btnLeft.innerHTML="START" ;
+        //btnLeft.classList.toggle('start',false)
+        btnLeft.classList.toggle('start',true)
+    }else{
+        btnLeft.innerHTML="STOP"
+        btnLeft.classList.toggle('stop',false)
+    } 
+}
+
+
+function changeStatus(btn) {
+    if (btn.classList === "active") {
+        btn.classList.toggle("inactive");
+    } else {
+        btn.classList.toggle("active");
+    }
+}
+
+
+
+
 
 function printTime() {
 
