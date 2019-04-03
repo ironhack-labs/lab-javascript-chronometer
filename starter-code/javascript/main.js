@@ -49,12 +49,33 @@ function setResetBtn() {
 
 }
 
-// Start/Stop Button
-btnLeft.addEventListener('click', function () {
+// Iteration 2: DOM Manipulation
 
-});
+// Start/Stop Button
+
+  btnLeft.addEventListener("click", function() {
+    
+    if (chronometer.intervalId === null) {
+      setStartBtn(); // Set the btnLeft button with the text STOP, and the class btn stop.
+      btnLeft.setAttribute("class", "btn stop");
+      btnLeft.innerHTML = "STOP";
+      btnRight.setAttribute("class", "btn split");
+      btnRight.innerHTML = "SPLIT";
+    } else if (chronometer.currentTime !== null) {
+      setStopBtn(); // Set the btnRight button with the text SPLIT, and the class btn split.
+      btnLeft.setAttribute("class", "btn start");
+      btnLeft.innerHTML = "START";
+      btnRight.setAttribute("class", "btn reset");
+      btnRight.innerHTML = "RESET";
+    }
+  })
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
-});
+btnRight.addEventListener('click', function () {    
+  if (chronometer.intervalId === null) {
+    setResetBtn();
+    printTime();
+  } else if (chronometer.intervalId !== null) {
+    printSplit();
+  }
+})

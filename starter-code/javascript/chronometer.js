@@ -1,28 +1,42 @@
-class Chronometer {
-  constructor( ) {
-    this.currenTime = 0
-    this.intervalId = 0
-  };
-   startClick() {
-    this.intervalId = setInterval(() => {this.currenTime += 1},1000)
-   }
-   getMinutes() {
-     let minutes = currenTime/60;
-     return Math.floor(minutes);
-
-   }
-  getSeconds() {
-    return currenTime%60;
-  }
-  twoDigitsNumber(arg) {
-   if ( arg < 10){
-    return "0"+arg;
-  } else {
-    return arg.toString();
-  }
-   }
-  }
-  // stopClick() {}
-  // resetClick() {}
-  // splitClick() {}
+//Iteration 1: The Logic
+//Chronometer Constructor
+function Chronometer (){
+  this.currentTime = 0;
+  this.intervalId = 0;
 }
+
+
+Chronometer.prototype.startClick = function(){
+  this.intervalId = setInterval (()=>{
+    this.currentTime +=1 
+  },1000)
+}
+
+Chronometer.prototype.getMinutes = function(){
+  let minutes = Math.floor(this.currentTime/60)
+  return minutes
+}
+
+Chronometer.prototype.getSeconds = function(){
+  let second = (this.currentTime%60)
+  return second
+}
+
+Chronometer.prototype.twoDigitsNumber = function(d){
+  var d = d.toString();
+  if (d.length < 2) {
+    return `0${d}`;
+  } else {
+    return `${d}`;
+  }
+}
+
+
+Chronometer.prototype.stopClick = function(){
+  clearInterval (this.intervalId)
+}
+
+Chronometer.prototype.resetClick = function() {
+  this.currentTime = 0;
+}
+
