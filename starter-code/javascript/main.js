@@ -1,3 +1,4 @@
+// DE MEX Felipe
 var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
@@ -10,7 +11,7 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  
 }
 
 function printMinutes() {
