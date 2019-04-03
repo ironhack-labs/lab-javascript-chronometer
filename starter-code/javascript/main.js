@@ -80,13 +80,13 @@ btnRight.addEventListener('click', function () {
      }
 
      function printMinutes() {
-        minUni.innerHTML=(chronometer.twoDigitsNumber(chronometer.setMinutes()))[1];
-        minDec.innerHTML=(chronometer.twoDigitsNumber(chronometer.setMinutes()))[0];
+        minUni.innerHTML=(chronometer.twoDigitsNumber(chronometer.getMinutes()))[1];
+        minDec.innerHTML=(chronometer.twoDigitsNumber(chronometer.getMinutes()))[0];
      }
 
      function printSeconds() {
-        secUni.innerHTML=(chronometer.twoDigitsNumber(chronometer.setSeconds()))[1];
-        secDec.innerHTML=(chronometer.twoDigitsNumber(chronometer.setSeconds()))[0];
+        secUni.innerHTML=(chronometer.twoDigitsNumber(chronometer.getSeconds()))[1];
+        secDec.innerHTML=(chronometer.twoDigitsNumber(chronometer.getSeconds()))[0];
         
      }
 
