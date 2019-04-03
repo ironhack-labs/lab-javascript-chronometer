@@ -15,17 +15,42 @@ function printTime() {
 }
 
 function printMinutes() {
-  //chronometer.getMinutes()
-  minFunct.innerHTML;
+  setTimeout(()=>{
+      setInterval(()=>{
+          if(minUni.innerHTML < 9){
+              minUni.innerHTML++
+          } else {
+              minUni.innerHTML = 0;
+              minDec.innerHTML < 5 ? minDec.innerHTML++ : minDec.innerHTML=0   
+          }
+      }, 60000)
+  }) 
 }
 
 function printSeconds() {
-  //console.log(`${chronometer.getSeconds()}`);
-  document.getElementsByName("chronometer.getSeconds()").innerHTML;
+  setTimeout(()=>{
+    setInterval(()=>{
+        if(secUni.innerHTML < 9){
+            secUni.innerHTML++
+        } else {
+            secUni.innerHTML = 0;
+            secDec.innerHTML < 5 ? secDec.innerHTML++ : secDec.innerHTML=0   
+        }
+    }, 1000)
+  }) 
 }
 
 function printMilliseconds() {
-
+  setTimeout(()=>{
+    setInterval(()=>{
+        if(milUni.innerHTML < 9){
+            milUni.innerHTML++
+        } else {
+            milUni.innerHTML = 0;
+            milDec.innerHTML < 9 ? milDec.innerHTML++ : milDec.innerHTML=0   
+        }
+    }, 10)
+  }) 
 }
 
 function printSplit() {
@@ -54,6 +79,9 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+  document.getElementsByName(`${printSeconds()}`);
+  document.getElementsByName(`${printMilliseconds()}`);
+  document.getElementsByName (`${printMinutes()}`);
  if (btnLeft.classList.contains("start")){
    btnLeft.className ="btn stop";
    btnLeft.textContent = "STOP";
@@ -72,6 +100,11 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  secUni.innerHTML = 0;
+  secDec.innerHTML = 0;
+  milUni.innerHTML = 0;
+  milDec.innerHTML = 0;
+  minDec.innerHTML = 0;
+  minUni.innerHTML = 0;
 });
 
