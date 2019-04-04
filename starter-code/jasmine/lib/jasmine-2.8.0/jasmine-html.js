@@ -61,7 +61,6 @@ jasmineRequire.HtmlReporter = function(j$) {
           createDom('span', {className: 'jasmine-version'}, j$.version)
         ),
         createDom('ul', {className: 'jasmine-symbol-summary'}),
-        createDom('div', {className: 'jasmine-labname'}),
         createDom('div', {className: 'jasmine-alert'}),
         createDom('div', {className: 'jasmine-results'},
           createDom('div', {className: 'jasmine-failures'})
@@ -151,11 +150,8 @@ jasmineRequire.HtmlReporter = function(j$) {
 
     this.jasmineDone = function(doneResult) {
       var banner = find('.jasmine-banner');
-      var labName = find('.jasmine-labname');
       var alert = find('.jasmine-alert');
       var order = doneResult && doneResult.order;
-      labName.appendChild(createDom('img', {src: 'jasmine/jasmine-2.8.0/ironhack.png'}, ''));
-      labName.appendChild(createDom('span', {}, 'Lab - JS | JavaScript Chronometer'));
       alert.appendChild(createDom('span', {className: 'jasmine-duration'}, 'finished in ' + timer.elapsed() / 1000 + 's'));
 
       banner.appendChild(
