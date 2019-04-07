@@ -1,89 +1,106 @@
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+let chronometer = new Chronometer();
+let btnLeft     = document.getElementById('btnLeft');
+let btnRight    = document.getElementById('btnRight');
+let minDec      = document.getElementById('minDec');
+let minUni      = document.getElementById('minUni');
+let secDec      = document.getElementById('secDec');
+let secUni      = document.getElementById('secUni');
+let milDec      = document.getElementById('milDec');
+let milUni      = document.getElementById('milUni');
+
+let listaSplits = document.getElementById('splits');
+
+let isRunning = false;
 
 
 function printTime() {
+  setInterval(() => {
+    printSeconds()
+    printMinutes()
+    printMilliseconds()
+  }, 10)
+  
 
 }
 
 function printMinutes() {
-  let minutes =chronometer.getMinutes
-  minutes =minDec.firstChild.data = (chronometer.getMinutes).substring(0,1)
-  minDec.firstChild.data = '${minutes}';
+  let arrMin = chronometer.twoDigitsNumber(chronometer.getMinutes()).split('')
+  minUni.innerText = arrMin[1]
+  minDec.innerText = arrMin[0]
 }
 
 function printSeconds() {
-
+  let arrSec = chronometer.twoDigitsNumber(chronometer.getSeconds()).split('')
+  secUni.innerText = arrSec[1]
+  secDec.innerText = arrSec[0]
 }
 
 function printMilliseconds() {
-
+  let miliSec = null;
+  miliSec = chronometer.getMiliSeconds().split('')
+  milUni.innerText = miliSec[1]
+  milDec.innerText = miliSec[0]
 }
 
 function printSplit() {
-
+  let capturaInfo = `${minDec.innerHTML}${minUni.innerHTML} : ${secDec.innerHTML}${secUni.innerHTML} : ${milDec.innerHTML}${milUni.innerHTML}`
+  let captura = document.createElement('li')
+  captura.innerHTML = capturaInfo
+  listaSplits.append(captura)
 }
 
 function clearSplits() {
-
+  listaSplits.innerHTML= null;
 }
 
 function setStopBtn() {
-  
+  chronometer.stopClick()
 }
 
 function setSplitBtn() {
-
+  printSplit()
 }
 
 function setStartBtn() {
-
+  chronometer.startClick()
+  printTime()
 }
 
 function setResetBtn() {
-
+  chronometer.resetClick()
+  milUni.innerText = "0"
+  milDec.innerText = "0"
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function() {
-  this.classList.toggle("stop")
-  btnRight.classList.toggle("split")
-  if (this.firstChild.data == "START") 
-   {
-      chronometer.startClick()
-       this.firstChild.data = "STOP";
-       btnRight.firstChild.data = "SPLIT";
-   }
-   else 
-   {
-     this.firstChild.data = "START";
-     chronometer.stopClick()
-   }
-  console.log(`Funciona ${this}}`)
+btnLeft.addEventListener('click', function () {
+  if(isRunning){
+    setStopBtn()
+    isRunning = false;
+  }else {
+    setStartBtn()
+    isRunning = true;
+  }
+  if(btnLeft.firstChild.data === "START"){
+    btnLeft.classList.toggle('stop')
+    btnLeft.firstChild.data = "STOP"
+    btnRight.classList.toggle('split')
+    btnRight.firstChild.data = "SPLIT"
+  }else {
+    btnLeft.classList.toggle('stop')
+    btnLeft.firstChild.data = "START"
+    btnRight.classList.toggle('split')
+    btnRight.firstChild.data = "RESET"
+  }
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  if (this.firstChild.data == "SPLIT") {   
-      this.classList.toggle("split")
-      this.firstChild.data = "RESET";   
-   }
-   else 
-   {
-     this.firstChild.data = "SPLIT";
-     this.classList.toggle("split")
-     btnLeft.classList.toggle("stop")
-     btnLeft.firstChild.data = "START";
-   }
-  console.log(`Funciona ${this}`)
-}
-  
-);
-
+  if(btnRight.firstChild.data === "RESET"){
+    clearSplits()
+    setResetBtn()    
+  }else {
+    setSplitBtn()
+  }
+});
