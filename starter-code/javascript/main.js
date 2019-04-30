@@ -37,8 +37,8 @@ function printMilliseconds() {}
 function printSplit() {
   const splitText = chronometer.currentTime;
   splits.innerHTML = splitText;
-  btnRight.onclick = splitText;
   const lis = document.createElement("li");
+  btnRight.onclick = lis;
   lis.appendChild(splitText);
 }
 
