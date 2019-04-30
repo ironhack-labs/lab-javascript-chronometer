@@ -4,6 +4,7 @@ class Chronometer {
     this.intervalId
   }
   startClick() {
+    console.log(`start click inicializado`)
     const interval = ()=>{
       this.currentTime ++
     }
