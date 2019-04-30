@@ -10,27 +10,35 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-    printMinutes()
-    printSeconds()
+    min.innerText = printMinutes()
+    sec.innerText = printSeconds()
 }
 
 function printMinutes() {
-    min.innerText =chronometer.twoDigitsNumber(chronometer.getMinutes())
+    return chronometer.twoDigitsNumber(chronometer.getMinutes())
 }
 
 function printSeconds() {
-    sec.innerText= chronometer.twoDigitsNumber(chronometer.getSeconds())
+    return chronometer.twoDigitsNumber(chronometer.getSeconds())
 }
 
 function printMilliseconds() {
 
 }
 
-function printSplit() {
-
+function printSplit(min,sec) {
+const newLi = document.createElement(`li`)
+newLi.innerText=`${min} : ${sec}`
+splits.appendChild(newLi)
 }
 
 function clearSplits() {
+const container = document.getElementsByTagName(`li`)
+const liArray = [...container]
+
+liArray.forEach(li => li.remove())
+console.log(liArray)
+/* container.children.forEach(child => container.removeChild()) */
 
 }
 
@@ -56,6 +64,8 @@ btnLeft.addEventListener('click', function () {
     if(btnLeft.className==`btn start`){
         btnLeft.innerText=`STOP`
         btnLeft.className=`btn stop`
+        btnRight.innerText=`SPLIT`
+        btnRight.className=`btn split`
         chronometer.startClick()
         time = setInterval (printTime,100)
         console.log(time)
@@ -65,6 +75,8 @@ btnLeft.addEventListener('click', function () {
     }else if(btnLeft.className==`btn stop`){
         btnLeft.innerText=`START`
         btnLeft.className=`btn start`
+        btnRight.innerText=`RESET`
+        btnRight.className=`btn reset`
         clearInterval(time)
         chronometer.stopClick()
     }
@@ -73,10 +85,11 @@ btnLeft.addEventListener('click', function () {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
     if(btnRight.className==`btn reset`){
-        btnRight.innerText=`SPLIT`
-        btnRight.className=`btn split`
+    clearSplits()
+    
     }else if (btnRight.className==`btn split`){
-        btnRight.innerText=`RESET`
-        btnRight.className=`btn reset`
+        
+        const printText = printSplit(printMinutes(),printSeconds())
+        console.log(printText)
     }
 });
