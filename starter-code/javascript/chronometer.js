@@ -7,6 +7,7 @@ class Chronometer {
     console.log(`start click inicializado`)
     const interval = ()=>{
       this.currentTime ++
+      printTime()
     }
     this.intervalId = setInterval(interval, 1000)  
   }
@@ -28,6 +29,8 @@ class Chronometer {
   }
   resetClick() {
     this.currentTime =0
+    min.innerText = '00'
+    sec.innerText = '00'
   }
   // splitClick() {}
 }
