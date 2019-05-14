@@ -8,10 +8,10 @@ var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
 let intervalId = 0;
-let time = 0;
 let minutes = 0;
 let milliseconds = 0;
 let interval;
+let minString ='00';
 
 let printTime = () => {
   printMinutes();
@@ -19,25 +19,27 @@ let printTime = () => {
 };
 
 function printMinutes() {
-  if (printSeconds() === "00") {
-      
-      printableMinutes = chronometer.twoDigitsNumber(minutes);
-      splitted = printableMinutes.split('');
-      document.getElementById("minUni").innerText = splitted[1];
-      document.getElementById("minDec").innerText = splitted[0];
-      minutes++;
-    }
 
-  if(minutes >= 59) {
+  if (printSeconds() === "00") {
+    let printableMinutes = chronometer.twoDigitsNumber(minutes);
+    splitted = printableMinutes.split('');
+    minUni.innerText = splitted[1];
+    minDec.innerText = splitted[0];
+    minString = printableMinutes;
+    minutes++;
+    }
+  
+  if(minutes > 59) {
     minutes = 0;
   } 
+  
 }
 
 function printSeconds() {
   let printableSeconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   splitted = printableSeconds.split('');
-  document.getElementById("secUni").innerText = splitted[1];
-  document.getElementById("secDec").innerText = splitted[0];
+  secUni.innerText = splitted[1];
+  secDec.innerText = splitted[0];
   return printableSeconds;
 }
 
@@ -45,14 +47,15 @@ function printMilliseconds() {
   
     let printableMilliseconds = chronometer.twoDigitsNumber(milliseconds);
     splitted = printableMilliseconds.split('');
-    document.getElementById("milUni").innerText = splitted[1];
-    document.getElementById("milDec").innerText = splitted[0];
+    milUni.innerText = splitted[1];
+    milDec.innerText = splitted[0];
     milliseconds++;
 
-    if(milliseconds >= 99){
+    if(milliseconds > 99){
       milliseconds = 0;
     }
 
+    return printableMilliseconds;
 }
 
 function printSplit() {}
@@ -79,7 +82,7 @@ btnLeft.addEventListener("click", function() {
     let countMilliseconds = () => {
       printMilliseconds();
     };
-    intervalId = setInterval(countMinutesSeconds, 1000);
+    intervalId = setInterval(countMinutesSeconds, 100);
     intervalIdMilliseconds = setInterval(countMilliseconds, 1)
   } else if (btnLeft.innerText === "STOP") {
     btnLeft.innerText = "START";
@@ -91,4 +94,33 @@ btnLeft.addEventListener("click", function() {
 });
 
 // Reset/Split Button
-btnRight.addEventListener("click", function() {});
+btnRight.addEventListener("click", function() {
+
+if(btnRight.innerText === "RESET"){
+  chronometer.resetClick();
+  minutes = 0;
+  minString = '00'
+  secUni.innerText = '0';
+  secDec.innerText = '0';
+  milUni.innerText = '0';
+  milDec.innerText = '0';
+  minUni.innerText = '0';
+  minDec.innerText = '0';
+  let cleanSplitList = () =>{
+    let ul = document.getElementById('splits');
+    ul.innerHTML = '';
+}
+cleanSplitList();
+}
+else if(btnRight.innerText === 'SPLIT'){
+  let li = document.createElement('li');
+  splitSec = printSeconds();
+  splitMil = printMilliseconds();
+
+  li.innerHTML = `${minString}:${splitSec}:${splitMil}`
+  document.getElementById('splits').appendChild(li);
+}
+
+
+
+});
