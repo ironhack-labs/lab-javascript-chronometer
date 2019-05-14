@@ -21,6 +21,9 @@ let printTime = () => {
 function printMinutes() {
 
   if (printSeconds() === "00") {
+    if(minutes === 0){
+      minutes = 1;
+    }
     let printableMinutes = chronometer.twoDigitsNumber(minutes);
     splitted = printableMinutes.split('');
     minUni.innerText = splitted[1];
@@ -82,7 +85,7 @@ btnLeft.addEventListener("click", function() {
     let countMilliseconds = () => {
       printMilliseconds();
     };
-    intervalId = setInterval(countMinutesSeconds, 100);
+    intervalId = setInterval(countMinutesSeconds, 1000);
     intervalIdMilliseconds = setInterval(countMilliseconds, 1)
   } else if (btnLeft.innerText === "STOP") {
     btnLeft.innerText = "START";
