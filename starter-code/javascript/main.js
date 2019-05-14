@@ -10,6 +10,8 @@ var milUni = document.getElementById("milUni");
 let intervalId = 0;
 let time = 0;
 let minutes = 0;
+let milliseconds = 0;
+let interval;
 
 let printTime = () => {
   printMinutes();
@@ -20,7 +22,7 @@ function printMinutes() {
   if (printSeconds() === "00") {
       
       printableMinutes = chronometer.twoDigitsNumber(minutes);
-      splitted = printableMinutes.split("");
+      splitted = printableMinutes.split('');
       document.getElementById("minUni").innerText = splitted[1];
       document.getElementById("minDec").innerText = splitted[0];
       minutes++;
@@ -29,20 +31,29 @@ function printMinutes() {
   if(minutes >= 59) {
     minutes = 0;
   } 
-  else{
-    minutes = minutes;
-  }
 }
 
 function printSeconds() {
   let printableSeconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
-  splitted = printableSeconds.split("");
+  splitted = printableSeconds.split('');
   document.getElementById("secUni").innerText = splitted[1];
   document.getElementById("secDec").innerText = splitted[0];
   return printableSeconds;
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+  
+    let printableMilliseconds = chronometer.twoDigitsNumber(milliseconds);
+    splitted = printableMilliseconds.split('');
+    document.getElementById("milUni").innerText = splitted[1];
+    document.getElementById("milDec").innerText = splitted[0];
+    milliseconds++;
+
+    if(milliseconds >= 99){
+      milliseconds = 0;
+    }
+
+}
 
 function printSplit() {}
 
@@ -62,15 +73,20 @@ btnLeft.addEventListener("click", function() {
     btnLeft.innerText = "STOP";
     btnRight.innerText = "SPLIT";
     chronometer.startClick();
-    let timeCount = () => {
+    let countMinutesSeconds = () => {
       printTime();
     };
-    intervalId = setInterval(timeCount, 1);
+    let countMilliseconds = () => {
+      printMilliseconds();
+    };
+    intervalId = setInterval(countMinutesSeconds, 1000);
+    intervalIdMilliseconds = setInterval(countMilliseconds, 1)
   } else if (btnLeft.innerText === "STOP") {
     btnLeft.innerText = "START";
     btnRight.innerText = "RESET";
     chronometer.stopClick();
     clearInterval(intervalId);
+    clearInterval(intervalIdMilliseconds)
   }
 });
 

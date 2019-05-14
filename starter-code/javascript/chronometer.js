@@ -8,7 +8,7 @@ class Chronometer {
   
   startClick() {
     let currentCounter = () => { this.currentTime++ };
-    this.intervalId = setInterval(currentCounter, 1);
+    this.intervalId = setInterval(currentCounter, 1000);
   }
 
   getSeconds() {
