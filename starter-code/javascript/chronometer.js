@@ -7,8 +7,6 @@ class Chronometer {
 
 
    startClick() {
-     console.log('----- chrono starts');
-     
      this.intervalId=setInterval( () => {this.currentTime++}, 1000)   
    }
 
@@ -28,9 +26,7 @@ class Chronometer {
       else return integer.toString() 
    }
 
-   stopClick() {
-     console.log('----- chrono stops-----');
-     
+   stopClick() {    
       return clearInterval(this.intervalId) 
    }
    

@@ -38,7 +38,10 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+    console.log('clearing the list of splits')
+    ol.innerHTML=''
+    console.log(ol.innerHTML);
+    
 }
 
 function setStopBtn() {
@@ -87,6 +90,7 @@ btnRightListener =() =>{
 
     if (btnRight.className=="btn reset" && btnRight.textContent=="RESET"){
         chrono.resetClick()
+        clearSplits()
     }
     else if(btnRight.className=="btn split" && btnRight.textContent=="SPLIT"){
         printSplit()
