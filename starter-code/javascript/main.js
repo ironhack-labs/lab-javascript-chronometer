@@ -38,10 +38,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-    console.log('clearing the list of splits')
-    ol.innerHTML=''
-    console.log(ol.innerHTML);
-    
+    ol.innerHTML=''  
 }
 
 function setStopBtn() {
