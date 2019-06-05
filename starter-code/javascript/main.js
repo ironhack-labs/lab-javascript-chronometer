@@ -1,4 +1,3 @@
-var chronometer = new Chronometer();
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -7,20 +6,27 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var ol          = document.getElementById('splits');
 
-
+// new instance of chronometer
 chrono=new Chronometer()
 
 function printTime() {
 
+    window.setInterval( () => {printMinutes(); printSeconds()}, 1000)
 }
 
 function printMinutes() {
-
+    min=chrono.twoDigitsNumber(chrono.getMinutes())
+    minDec.textContent=min.charAt(0)
+    minUni.textContent=min.charAt(1)
+   
 }
 
 function printSeconds() {
-
+    sec=chrono.twoDigitsNumber(chrono.getSeconds())
+    secDec.textContent=sec.charAt(0)
+    secUni.textContent=sec.charAt(1) 
 }
 
 function printMilliseconds() {
@@ -28,7 +34,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    ol.innerHTML += '<li>' + chrono.splitClick()+'</li>';   
 }
 
 function clearSplits() {
@@ -37,69 +43,54 @@ function clearSplits() {
 
 function setStopBtn() {
     btnLeft.textContent="STOP";
-    //btnLeft.className.replace("btn start", "btn stop")
-    //btnLeft.className.replace("btn start", "btn stop");
     btnLeft.className="btn stop";
-
-    console.log("set left btn to stop");
 }
 
 function setSplitBtn() {
     btnRight.textContent="SPLIT";
     btnRight.className= "btn split";
-    console.log("set right btn to split");
 }
 
 function setStartBtn() {
     btnLeft.textContent="START";
-    btnLeft.classList= "btn start"
-    console.log("set left btn to start");   
+    btnLeft.classList= "btn start";  
 }
 
 function setResetBtn() {
     btnRight.textContent="RESET";
     btnRight.classList= "btn reset";
-    console.log("set right btn to reset");
-    
 }
+
+
 
 // Start/Stop Button
 btnLeftListener = () =>{
 
     if (btnLeft.className=="btn start" && btnLeft.textContent=="START"){
-        console.log("left button clicked and btn =start");
+        chrono.startClick()
+        printTime()
         setStopBtn()
         setSplitBtn()     
-    }
-
-    
+    }    
     else if(btnLeft.className=="btn stop" && btnLeft.textContent=="STOP"){
+        chrono.stopClick() 
         setStartBtn()
         setResetBtn()
     }
-    
-
 }
 
 btnLeft.addEventListener('click', btnLeftListener);
 
+
 // Reset/Split Button
 btnRightListener =() =>{
 
-    if (btnRight.className=="btn reset" && btnRigth.textContent=="RESET"){}
-    if(btnRight.className=="btn split" && btnRigth.textContent=="SPLIT"){}
+    if (btnRight.className=="btn reset" && btnRight.textContent=="RESET"){
+        chrono.resetClick()
+    }
+    else if(btnRight.className=="btn split" && btnRight.textContent=="SPLIT"){
+        printSplit()
+    }
 
 }
 btnRight.addEventListener('click', btnRightListener);
-
-/*
-When the left button is clicked while the chronometer is stopped we need to:
-
-Set the btnLeft button with the text STOP, and the class btn stop.
-Set the btnRight button with the text SPLIT, and the class btn split.
-When the left button is clicked while the chronometer is running we need to:
-
-Set the btnLeft button with the text START, and the class btn start.
-Set the btnRight button with the text RESET, and the class btn reset.
-
-*/
