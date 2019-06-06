@@ -22,7 +22,7 @@ class Chronometer {
     if (a < 10) {
       return "0" + a;
     }
-    if (a > 10) {
+    if (a >= 10) {
       return a.toString();
     }
   }
