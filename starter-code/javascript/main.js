@@ -35,9 +35,7 @@ function printSeconds() {
   secUni.textContent = secondsUni;
 }
 
-function printMilliseconds() {
-  //quelles millisecondes ?
-}
+function printMilliseconds() {}
 
 function printSplit() {
   var splitsList = document.getElementById("splits");
@@ -53,52 +51,45 @@ function clearSplits() {
   splitsList.innerHTML = "";
 }
 
-function setStopBtn(target) {
-  target.textContent = "START";
-  target.classList.replace("stop", "start");
+function setStopBtn() {
+  btnLeft.textContent = "START";
+  btnLeft.classList.replace("stop", "start");
   chronometer.stopClick();
   btnRight.textContent = "RESET";
   btnRight.classList.replace("split", "reset");
 }
 
-function setSplitBtn(target) {
+function setSplitBtn() {
   printSplit();
 }
 
-function setStartBtn(target) {
+function setStartBtn() {
   chronometer.startClick();
   printTime();
-  target.textContent = "STOP";
-  target.classList.replace("start", "stop");
+  btnLeft.textContent = "STOP";
+  btnLeft.classList.replace("start", "stop");
   btnRight.textContent = "SPLIT";
   btnRight.classList.replace("reset", "split");
 }
 
-function setResetBtn(target) {
+function setResetBtn() {
   clearSplits();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener("click", function(event) {
-  btnLeft.onclick = function() {
-    let target = event.target;
-    if (target.classList.contains("stop")) {
-      setStopBtn(target);
-    } else if (target.classList.contains("start")) {
-      setStartBtn(target);
-    }
-  };
+  if (btnLeft.classList.contains("stop")) {
+    setStopBtn(btnLeft);
+  } else if (btnLeft.classList.contains("start")) {
+    setStartBtn(btnLeft);
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener("click", function(event) {
-  btnRight.onclick = function() {
-    let target = event.target;
-    if (target.classList.contains("split")) {
-      setSplitBtn(target);
-    } else if (target.classList.contains("reset")) {
-      setResetBtn(target);
-    }
-  };
+  if (btnRight.classList.contains("split")) {
+    setSplitBtn(btnRight);
+  } else if (btnRight.classList.contains("reset")) {
+    setResetBtn(btnRight);
+  }
 });
-//window.addEventListener("DOMContentLoaded");
