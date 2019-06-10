@@ -15,6 +15,7 @@ function printTime() {
 
 function printMinutes() {
 
+
 }
 
 function printSeconds() {
@@ -51,7 +52,16 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  if (btnLeft.className === "btn start") {
+    btnLeft.className = "btn stop";
+    btnLeft.innerHTML = "STOP";
+    chronometer.startClick();
+    console.log(chronometer.getSeconds())
+    // hfshfw
+  } else {
+    btnLeft.className = "btn start";
+    btnLeft.innerHTML = "START";
+  }
 });
 
 // Reset/Split Button
