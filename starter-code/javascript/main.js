@@ -1,4 +1,5 @@
 var chronometer = new Chronometer();
+
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
 var minDec      = document.getElementById('minDec');
@@ -7,6 +8,18 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+// var chronometer= {
+// btnLeft     : document.getElementById('btnLeft'),
+// btnRight    : document.getElementById('btnRight'),
+// minDec      : document.getElementById('minDec'),
+// minUni      : document.getElementById('minUni'),
+// secDec      : document.getElementById('secDec'),
+// secUni      : document.getElementById('secUni'),
+// milDec      : document.getElementById('milDec'),
+// milUni      : document.getElementById('milUni'),
+
+}
+
 
 
 function printTime() {
