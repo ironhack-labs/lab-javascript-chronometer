@@ -18,7 +18,7 @@ var milUni      = document.getElementById('milUni');
 // milDec      : document.getElementById('milDec'),
 // milUni      : document.getElementById('milUni'),
 
-}
+// }
 
 
 
@@ -64,6 +64,9 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+
+    document.getElementById(`btnLeft`).setAttribute("class", "btn stop" )
+document.getElementById(`btnLeft`).innerHTML=`STOP`
 
 });
 
