@@ -33,49 +33,51 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    newSplit = document.createElement('li') 
+    newSplit.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes()) + ":" + chronometer.twoDigitsNumber(chronometer.getSeconds())
+    splits.appendChild(newSplit)
 }
 
 function clearSplits() {
-
+    chronometer.resetClick()
+    while(splits.childNodes){
+    splits.removeChild(splits.childNodes[0])}
 }
 
 function setStopBtn() {
-
+  btnLeft.innerText = 'STOP'
+  btnLeft.setAttribute('class', 'btn stop')
 }
 
 function setSplitBtn() {
-
+  btnRight.innerText= 'SPLIT'
+  btnRight.setAttribute('class', 'btn split')
 }
 
 function setStartBtn() {
-
+  btnLeft.innerText = 'START'
+  btnLeft.setAttribute('class', 'btn start')
 }
 
 function setResetBtn() {
-
+  btnRight.innerText= 'RESET'
+  btnRight.setAttribute('class', 'btn reset')
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
   if(btnLeft.innerText=== 'START') {
 
-    btnLeft.innerText = 'STOP'
-    btnLeft.setAttribute('class', 'btn stop')
-
-    btnRight.innerText= 'SPLIT'
-    btnRight.setAttribute('class', 'btn split')
+    setStopBtn()
+    setSplitBtn()
 
     chronometer.startClick()
     printTime()
     
   } else {
 
-    btnLeft.innerText = 'START'
-    btnLeft.setAttribute('class', 'btn start')
-
-    btnRight.innerText= 'RESET'
-    btnRight.setAttribute('class', 'btn reset')
+    setStartBtn()
+    setResetBtn()
 
     chronometer.stopClick()
   }
@@ -83,15 +85,10 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  let splitsCounter = 0
   if(btnRight.innerText === 'SPLIT') {
-    newSplit = document.createElement('li') 
-    newSplit.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes()) + ":" + chronometer.twoDigitsNumber(chronometer.getSeconds())
-    splits.appendChild(newSplit)
+    printSplit()
   } else {
-    chronometer.resetClick()
-    while(splits.childNodes){
-    splits.removeChild(splits.childNodes[0])}
+    clearSplits()
   }
 });
 
