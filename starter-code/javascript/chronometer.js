@@ -1,11 +1,13 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = 0;
+    this.intervalId = 0;  
   }
+
   startClick() {
     this.intervalId = setInterval(()=> {this.currentTime++}, 1000)
   }
+
   getMinutes() {
     if(this.currentTime===0) return 0
     return parseInt(this.currentTime/60)

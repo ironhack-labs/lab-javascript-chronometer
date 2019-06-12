@@ -10,15 +10,21 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  let newInterval = setInterval(()=> {
+    printMinutes()
+    printSeconds()
+  }, 1000)
+  
 }
 
 function printMinutes() {
-
+  minDec.innerText = parseInt(chronometer.getMinutes()/10)
+  minUni.innerText = parseInt(chronometer.getMinutes()%10)
 }
 
 function printSeconds() {
-
+  secDec.innerText = parseInt(chronometer.getSeconds()/10)
+  secUni.innerText = parseInt(chronometer.getSeconds()%10)
 }
 
 function printMilliseconds() {
@@ -51,10 +57,30 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+  if(btnLeft.innerText=== 'START') {
+    btnLeft.innerText = 'STOP'
+    btnLeft.setAttribute('class', 'btn stop')
+    btnRight.innerText= 'SPLIT'
+    btnRight.setAttribute('class', 'btn split')
+  } else {
+    btnLeft.innerText = 'START'
+    btnLeft.setAttribute('class', 'btn start')
+    btnRight.innerText= 'RESET'
+    btnRight.setAttribute('class', 'btn reset')
+  }
 
+  if(btnLeft.getAttribute('class')=== 'btn start') {
+    chronometer.startClick()
+    printTime()
+  } else {
+      chronometer.stopClick()
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
 
 });
+
+
+
