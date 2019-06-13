@@ -14,7 +14,6 @@ class Chronometer {
   } */
 
   startClick() {
-    console.log('started!' + this.currentTime);
     this.milliId = setInterval(() => {
       this.milliseconds += 1;
       printMilliseconds();
@@ -26,7 +25,6 @@ class Chronometer {
     }, 1000);
   }
 
-
   getMinutes() {
     //return Math.floor(this.currentTime/6000);
     return Math.floor(this.currentTime/60);
@@ -36,7 +34,6 @@ class Chronometer {
     return this.currentTime % 60;
   }
   getMilliseconds() {
-    //console.log("mod 100 ", this.currentTime % 100, "no mod ", this.currentTime);
     //return this.currentTime % 100;
     return this.milliseconds % 100;
   }

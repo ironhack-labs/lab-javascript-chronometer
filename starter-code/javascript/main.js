@@ -17,7 +17,6 @@ function printTime() {
 
 function printMinutes() {
   const mins = chronometer.twoDigitsNumber(chronometer.getMinutes());
-  console.log(mins);
   minDec.innerText = mins[0];
   minUni.innerHTML = mins[1];
 }
