@@ -35,7 +35,7 @@ function printMilliseconds() {
   let miliSec = chronometer.getMilli();
   miliSec = chronometer.twoDigitsNumber(miliSec);
   $("#milDec").text(miliSec[0]);
-  $("#milDec").text(miliSec[1]);
+  $("#milUni").text(miliSec[1]);
 }
 
 function printSplit() {
