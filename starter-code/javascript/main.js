@@ -51,7 +51,13 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  $(this).toggleClass('stop');
+  chronometer.isRunning = !chronometer.isRunning;
+  if(chronometer.isRunning) {
+    $(this).html('STOP')
+  } else {
+    $(this).html('START')
+  }
 });
 
 // Reset/Split Button
