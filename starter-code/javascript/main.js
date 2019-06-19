@@ -1,60 +1,92 @@
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+let chronometer = new Chronometer();
+let btnLeft = document.getElementById('btnLeft');
+let btnRight = document.getElementById('btnRight');
+let minDec = document.getElementById('minDec');
+let minUni = document.getElementById('minUni');
+let secDec = document.getElementById('secDec');
+let secUni = document.getElementById('secUni');
+let milDec = document.getElementById('milDec');
+let milUni = document.getElementById('milUni');
+let splits = document.getElementById('splits')
 
-
-function printTime() {
-
+const printTime = () => {
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
-function printMinutes() {
 
-}
+const printMinutes = () => {
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minUni.innerHTML = minutes[1];
+  minDec.innerHTML = minutes[0];
+};
 
-function printSeconds() {
-
-}
+const printSeconds = () => {
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secUni.innerHTML = seconds[1];
+  secDec.innerHTML = seconds[0];
+};
 
 function printMilliseconds() {
+  let miliseconds = chronometer.twoDigitsNumber(chronometer.getMiliSeconds());
+  milDec.innerHTML = miliseconds[0];
+  milUni.innerHTML = miliseconds[1];
 
 }
 
-function printSplit() {
-
+const printSplit = () => {
+  splits.innerHTML += `<li>${chronometer.twoDigitsNumber(chronometer.getMinutes())}:${chronometer.twoDigitsNumber(chronometer.getSeconds())}:${chronometer.twoDigitsNumber(chronometer.getMiliSeconds())}</li>`
 }
 
-function clearSplits() {
+const clearSplits = () => {
+  splits.innerHTML = "";
+};
 
+const setStopBtn = () => {
+  btnLeft.classList.remove('start');
+  btnLeft.classList.add('stop');
+  btnLeft.innerHTML = 'STOP';
 }
 
-function setStopBtn() {
-
+const setSplitBtn = () => {
+  btnRight.classList.remove('reset');
+  btnRight.classList.add('split');
+  btnRight.innerHTML = 'SPLIT';
 }
 
-function setSplitBtn() {
-
+const setStartBtn = () => {
+  btnLeft.classList.remove('stop');
+  btnLeft.classList.add('start');
+  btnLeft.innerHTML = 'START';
 }
 
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
-}
+const setResetBtn = () => {
+  btnRight.classList.remove('split');
+  btnRight.classList.add('reset');
+  btnRight.innerHTML = 'RESET';
+};
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+  if (btnLeft.classList.contains('start')) {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.startClick();
+    interval = setInterval(printTime, 1)
+  } else {
+    setStartBtn();
+    setResetBtn();
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
-});
+  if (btnRight.classList.contains('split')) {
+    printSplit();
+  } else {
+    clearSplits();
+    chronometer.splitClick();
+  }
+})
