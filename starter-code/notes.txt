@@ -1,0 +1,4 @@
+
+setTimeout( ()=>{
+    chronometer.resetClick();
+}, 4000);
