@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("fonts/ds-digib.TTF");
 }
 
 body {
@@ -8,11 +8,15 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  background-image: url("https://50nx67a44a-flywheel.netdna-ssl.com/wp-content/uploads/2015/07/abstract-background-blur-255379.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #clock {
+  background-image: url("https://www.cpsresources.com/wp-content/uploads/2014/12/11543-Brown-Ashwood-Gloss.jpg");
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 50px;
   box-sizing: border-box;
   height: 250px;
   margin: 0 auto;
@@ -21,8 +25,9 @@ body {
 }
 
 #sphere {
+  background-image: url("https://us.123rf.com/450wm/kentoh/kentoh0908/kentoh090800124/5314086-metal-texture-of-smooth-brushed-steel-material.jpg?ver=6");
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 50px;
   box-sizing: border-box;
   font-family: "Digi";
   font-size: 80px;
@@ -39,6 +44,9 @@ body {
   font-weight: 100;
   position: absolute;
   left: 50px;
+  border: 4px solid purple;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 #splits-container li {
@@ -54,7 +62,8 @@ body {
 }
 
 .leash {
-  background: rgb(204, 84, 87);
+  background-image: url("https://previews.123rf.com/images/natalt/natalt1306/natalt130600036/20048473-light-yellow-leather-texture-can-be-used-as-background.jpg");
+  /* background: rgb(204, 84, 87); */
   border: 2px solid rgb(134, 59, 61);
   height: 50px;
   margin: 0 auto;
@@ -76,7 +85,7 @@ body {
 }
 
 .hole {
-  background: #fff;
+  background: rgb(213, 245, 211);
   border: 2px solid rgb(134, 59, 61);
   border-radius: 100%;
   height: 20px;
@@ -99,6 +108,7 @@ body {
   outline: 0;
   position: absolute;
   width: 50px;
+  font-size: 0.7rem;
 }
 
 .btn.start,
@@ -111,7 +121,10 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
+.btn.start { background: #2a8b2a; }
 .btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
+.btn.reset { 
+  background: #5f5e5e; 
+  border: 1px solid darkslategrey;
+}
 .btn.split { background: #0851ab; }
