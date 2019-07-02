@@ -1,18 +1,20 @@
 class Chronometer {
 
-  constructor() {
+  constructor(chronometerDisplayObj) {
     this.currentTime = 0;
     this.intervalId = 0;
     this.currentMins = 0;
     this.currentSecs = 0;
+    this.chronometerDisplay = chronometerDisplayObj;
   }
 
   startClick() {
     this.intervalId = setInterval(() => { 
       this.currentTime++;
       this.setTime();
+      this.chronometerDisplay.printTime(this.currentMins, this.currentSecs);
       console.log(this.currentTime, this.currentSecs, this.currentMins);
-    }, 1000);
+    }, 100);
   };
 
   stopClick() {
@@ -22,6 +24,7 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
     this.setTime();
+    this.chronometerDisplay.printTime(this.currentMins, this.currentSecs);
   }
 
   getCurrentTimeSecs() {
@@ -41,14 +44,13 @@ class Chronometer {
     this.currentSecs = this.twoDigitsNumber(this.getCurrentTimeSecs());
   }
 
-
 };
 
   
-// Testing
+// // Testing
 
-myChrono = new Chronometer();
-myChrono.startClick();
+// myChrono = new Chronometer();
+// myChrono.startClick();
 
-// myChrono.stopClick()
-// myChrono.resetClick()
+// // myChrono.stopClick()
+// // myChrono.resetClick()
