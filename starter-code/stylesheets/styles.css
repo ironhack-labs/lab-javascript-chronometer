@@ -8,7 +8,14 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  left: 250px;
 }
+
+ #splits-container h3{
+position: relative;
+left: 25px;
+}	
+
 
 #clock {
   border: 2px solid #000;
@@ -87,6 +94,7 @@ body {
 .number {
   display: inline-block;
   width: 40px;
+  margin-right: 40px;
 }
 
 .btn {
