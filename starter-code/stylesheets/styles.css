@@ -8,13 +8,14 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
-  background-image: url("https://50nx67a44a-flywheel.netdna-ssl.com/wp-content/uploads/2015/07/abstract-background-blur-255379.jpg");
+  background-image: url("https://images.pexels.com/photos/301664/pexels-photo-301664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #clock {
-  background-image: url("https://www.cpsresources.com/wp-content/uploads/2014/12/11543-Brown-Ashwood-Gloss.jpg");
+  background-image: url("https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
   border: 2px solid #000;
   border-radius: 50px;
   box-sizing: border-box;
@@ -25,7 +26,8 @@ body {
 }
 
 #sphere {
-  background-image: url("https://us.123rf.com/450wm/kentoh/kentoh0908/kentoh090800124/5314086-metal-texture-of-smooth-brushed-steel-material.jpg?ver=6");
+  background-image: url("https://images.pexels.com/photos/978504/pexels-photo-978504.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
   border: 2px solid #000;
   border-radius: 50px;
   box-sizing: border-box;
@@ -47,6 +49,7 @@ body {
   border: 4px solid purple;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.4);
+  width: 150px;
 }
 
 #splits-container li {
@@ -62,7 +65,8 @@ body {
 }
 
 .leash {
-  background-image: url("https://previews.123rf.com/images/natalt/natalt1306/natalt130600036/20048473-light-yellow-leather-texture-can-be-used-as-background.jpg");
+  background-image: url("https://images.pexels.com/photos/235525/pexels-photo-235525.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
   /* background: rgb(204, 84, 87); */
   border: 2px solid rgb(134, 59, 61);
   height: 50px;
@@ -85,7 +89,7 @@ body {
 }
 
 .hole {
-  background: rgb(213, 245, 211);
+  background: rgb(233, 205, 241);
   border: 2px solid rgb(134, 59, 61);
   border-radius: 100%;
   height: 20px;
