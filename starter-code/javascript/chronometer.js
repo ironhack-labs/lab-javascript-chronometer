@@ -35,14 +35,14 @@ class Chronometer {
   resetClick() {
     clearInterval(this.intervalId);
     this.intervalId = null;
+    this.currentTime = 0;
     printTime();
     clearSplits();
   }
 
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
-      this.getSeconds()
-    )}:${this.twoDigitsNumber(this.getMilliSeconds())}`;
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds()
+      )}:${this.twoDigitsNumber(this.getMilliSeconds())}`;
   }
   
 }
