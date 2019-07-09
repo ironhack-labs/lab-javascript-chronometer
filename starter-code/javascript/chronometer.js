@@ -49,7 +49,7 @@ class Chronometer {
     this.currentTime = 0;
   }
   stopClick() {
-    clearTimeout(this.intervalId);
+    clearInterval(this.intervalId);
   }
   // splitClick() {}
 }
