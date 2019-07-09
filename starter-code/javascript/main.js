@@ -8,6 +8,16 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
+var stopBtn = document.getElementsByClassName('stop')
+
+btnLeft.onclick = () => {
+    btnLeft.style.backgroundColor = "red"
+    btnLeft.innerHTML = 'STOP'
+    btnRight.style.backgroundColor ="blue"
+    btnRight.innerHTML = "SPLIT"
+}
+
+
 
 function printTime() {
 
