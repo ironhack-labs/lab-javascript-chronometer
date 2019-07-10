@@ -10,17 +10,26 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+ printMinutes()
+ printMinutes1()
+ printSeconds()
+ printSeconds1()
 }
 
 function printMinutes() {
-
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
 }
-
+function printMinutes1() {
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
+}
 function printSeconds() {
-
+    console.log(chronometer.twoDigitsNumber(chronometer.getSeconds())[0])
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
 }
-
+function printSeconds1() {
+    console.log(chronometer.twoDigitsNumber(chronometer.getSeconds())[0])
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
+}
 function printMilliseconds() {
 
 }
