@@ -31,7 +31,7 @@ function printMinutes() {
 }
 
 function printSeconds() {
-   let value = chronometer.twoDigitsNumber((chronometer.getSeconds()) ;
+   let value = chronometer.twoDigitsNumber(chronometer.getSeconds());
    let stringValue = value.split("");
    secDec.innerText = stringValue[0];
    secUni.innerText = stringValue[1];
@@ -44,8 +44,8 @@ function printMilliseconds() {
 
 
 function printSplit() {
-	let minutes = chronometer.getMinutes();
-	let seconds = chronometer.getSeconds();
+	let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+	let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
 	return `${minutes}:${seconds}`;
 
 }
