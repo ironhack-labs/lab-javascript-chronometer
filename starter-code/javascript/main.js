@@ -12,9 +12,9 @@ var milUni = document.getElementById('milUni');
 
 function printTime() {
 
-    printMinutes();
-    printSeconds();
     printMilliseconds();
+    printSeconds();
+    printMinutes();
 }
 
 function cleanEverything() {
@@ -31,7 +31,6 @@ function cleanEverything() {
 function printMinutes() {
 
     let value = chronometer.twoDigitsNumber(chronometer.getMinutes());
-    console.log(value);
     let stringValue = value.split("");
     minDec.innerText = stringValue[0];
     minUni.innerText = stringValue[1];
@@ -104,7 +103,7 @@ btnLeft.addEventListener('click', function() {
 
 
 btnRight.addEventListener('click', function() {
-	
+
     if (chronometer.status === "stopped") {
         chronometer.resetClick();
         cleanEverything();

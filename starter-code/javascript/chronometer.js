@@ -19,21 +19,15 @@ class Chronometer {
     }
     startClick(callback) {
 
-        console.log(this.currentTime);
         this.start();
-        this.intervalId = setInterval(() => {
-            this.currentTime += 1;
-            if (callback) callback();
-            console.log(this.currentTime);
-        }, 1000);
-
         this.miliIntervalId = setInterval(() => {
             this.Milisecond += 1;
             if (callback) callback();
-            console.log(this.currentTime);
         }, 1);
-
-
+        this.intervalId = setInterval(() => {
+            this.currentTime += 1;
+            if (callback) callback();
+        }, 1000);
     }
     getMinutes() {
 
