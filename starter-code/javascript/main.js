@@ -1,60 +1,46 @@
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+var chronometer = new Chronometer(printMinutes);
+var btnLeft = document.getElementById("btnLeft");
+var btnRight = document.getElementById("btnRight");
+var minDec = document.getElementById("minDec");
+var minUni = document.getElementById("minUni");
+var secDec = document.getElementById("secDec");
+var secUni = document.getElementById("secUni");
+var milDec = document.getElementById("milDec");
+var milUni = document.getElementById("milUni");
 
+function printTime() {}
 
-function printTime() {
-
+function printMinutes(min) {
+  minDec.innerText = min[0];
+  minUni.innerText = min[1];
 }
 
-function printMinutes() {
+function printSeconds() {}
 
-}
+function printMilliseconds() {}
 
-function printSeconds() {
+function printSplit() {}
 
-}
+function clearSplits() {}
 
-function printMilliseconds() {
+function setStopBtn() {}
 
-}
-
-function printSplit() {
-
-}
-
-function clearSplits() {
-
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
+function setSplitBtn() {}
 
 function setStartBtn() {
-
+  btnLeft.innerText = "stop!";
+  btnLeft.onclick = setStopBtn;
+  btnRight.onclick = setResetBtn;
+  start = new Date();
+  chronometer.startClick();
 }
 
-function setResetBtn() {
-
-}
+function setResetBtn() {}
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener("click", function() {
+  setStartBtn();
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
-});
+btnRight.addEventListener("click", function() {});
