@@ -26,10 +26,6 @@ function printSeconds(sec) {
   secUni.innerText = sSec.charAt(1);
 }
 
-function printMilliseconds() {
-
-}
-
 function printSplit(minutes, seconds) {
   const  splitsList = document.getElementById('splits');
   const splitLi = document.createElement('li');
@@ -43,23 +39,6 @@ function clearSplits() {
   while (splitsList.firstChild) {
     splitsList.removeChild(splitsList.firstChild);
   }
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-
-}
-
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
 }
 
 // Start/Stop Button
