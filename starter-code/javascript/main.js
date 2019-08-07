@@ -27,11 +27,14 @@ function printSeconds() {}
 function printMilliseconds() {}
 
 function printSplit() {
-  splits.appendChild((document.createElement("li").innerText = getTime()));
+  let newTime = document.createElement("li");
+  newTime.innerText = getCTime();
+  splits.appendChild(newTime);
+  //splits.innerHTML += `<li>${getCTime()}</li>`;
 }
 
 function clearSplits() {
-  splits.children = new HTMLCollection();
+  splits.innerHTML = "";
 }
 
 function setStopBtn() {}
@@ -43,9 +46,9 @@ function setStartBtn() {}
 function setResetBtn() {}
 
 function getCTime() {
-  let c = 0;
+  let c = chronometer;
   let tdn = chronometer.twoDigitsNumber;
-  return `${tdn(getCMinutes())}:${tdn(getCSeconds())}:00`;
+  return `${tdn(c.getMinutes())}:${tdn(c.getSeconds())}:00`;
 }
 // Start/Stop Button
 btnLeft.addEventListener("click", function() {
@@ -64,11 +67,11 @@ btnLeft.addEventListener("click", function() {
 
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
-  if (estado === "RESET") {
+  let context = btnRight.textContent;
+  if (context === "RESET") {
     chronometer.resetClick();
     clearSplits();
-    printTime();
   } else {
-    printSplit(chronometer.splitClick());
+    printSplit();
   }
 });
