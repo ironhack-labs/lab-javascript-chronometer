@@ -10,9 +10,12 @@ var milUni = document.getElementById("milUni");
 var splits = document.getElementById("splits");
 
 function printTime() {
-  printMinutes();
-  printSeconds();
-  printMilliseconds();
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  minDec.innerText = minutes.slice(0, 1);
+  minUni.innerText = minutes.slice(1, 2);
+  secDec.innerText = seconds.slice(0, 1);
+  secUni.innerText = seconds.slice(1, 2);
 }
 
 function printMinutes() {
@@ -64,6 +67,7 @@ btnRight.addEventListener("click", function() {
   if (estado === "RESET") {
     chronometer.resetClick();
     clearSplits();
+    printTime();
   } else {
     printSplit(chronometer.splitClick());
   }
