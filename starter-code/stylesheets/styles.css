@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("./fonts/ds-digib.TTF");
 }
 
 body {
@@ -24,7 +24,7 @@ body {
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  font-family: "Digi";
+  font-family: Digi;
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
