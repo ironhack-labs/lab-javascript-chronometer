@@ -30,13 +30,15 @@ class Chronometer {
     clearInterval(this.intervalmillisec)
   }
   resetClick() {
-    return this.currentTime = 0;
+    this.currentTime = 0;
+    this.milliTime=0;
   }
   splitClick() {
     let min = this.twoDigitsNumber(this.getMinutes());
-    let sec = this.twoDigitsNumber(this.getSeconds())
+    let sec = this.twoDigitsNumber(this.getSeconds());
+    let milisec = this.twoDigitsNumber(this.getMilliseconds())
 
-    return `${min} : ${sec}`
+    return `${min} : ${sec} : ${milisec}`
   
   }
 }

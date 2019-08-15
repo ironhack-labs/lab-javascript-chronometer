@@ -17,8 +17,8 @@ function printTime() {
 
 function printMinutes() {
   var min = chronometer.getMinutes();
-  minUni.innerHTML = min%10
-  minDec.innerHTML = Math.floor(min/10)
+  minUni.innerHTML = min%10;
+  minDec.innerHTML = Math.floor(min/10);
 }
 
 
@@ -38,15 +38,12 @@ function printSplit() {
   var ol= document.getElementById("splits");
   var li =document.createElement("li");
   ol.appendChild(li);
-  li.innerHTML = chronometer.splitClick()
-
+  li.innerHTML = chronometer.splitClick();
 }
 
 function clearSplits() {
-  
-  var ol= document.getElementById("splits");
-  var li =document.getElementsByTagName("li");
-  ol.remove(li);
+  var ol =document.getElementById("splits");
+  ol.innerHTML = ""
 }
 
 function setStopBtn() {
