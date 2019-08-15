@@ -12,10 +12,7 @@ class Chronometer {
       
   }, 1000)
 
-  /*this.intervalId = setInterval(() => {
-    this.currentTime++;
   
-}, 0,001) */
 }
 
   getMinutes() {
