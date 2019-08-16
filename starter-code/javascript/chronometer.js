@@ -1,7 +1,9 @@
+
+
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = 0;
+    this.intervalId = null;
   }
 
   startClick() {
@@ -14,7 +16,6 @@ class Chronometer {
   }
 
   getSeconds() {
-    //this.currentTime = 50;
     return this.currentTime % 60;
   }
 
