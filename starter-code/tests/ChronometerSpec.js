@@ -88,7 +88,7 @@ describe('', function () {
   });
 
   describe('getSeconds function', function () {
-    it('Should be declare', function () {
+    it('Should be declared', function () {
       expect(typeof chronometer.getSeconds).toEqual('function');
     });
 
@@ -98,7 +98,7 @@ describe('', function () {
       expect(typeof chronometer.getSeconds(0)).toEqual('number');
     });
 
-    it('Should return 0 when the currentTime haven\'t start', function () {
+    it('Should return 0 when the currentTime hasn\'t start', function () {
       chronometer.currentTime = 0;
 
       expect(chronometer.getSeconds(0)).toEqual(0);
