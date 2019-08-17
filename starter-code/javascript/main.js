@@ -11,6 +11,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+const splitList = document.getElementById('splits');
 
 
 function printTime() {
@@ -26,7 +27,6 @@ function printMinutes() {
     let obj = {}
     obj.min = [mins[0], mins[1]]
     return obj
-
 }
 
 function printSeconds() {
@@ -35,30 +35,26 @@ function printSeconds() {
     secUni.innerText = secs[1];
     let obj = {}
     obj.sec = [secs[0], secs[1]]
-    return obj
+    return obj;
 }
 
 function printMilliseconds() {
-
 }
 
 function printSplit() {
-    const splitList = document.getElementById('splits');
-// get the minutes and seconds with the functions printSeconds and printMinutes pic
     printMinutes();
     printSeconds();
     //console.log( printSeconds())
     let li = document.createElement('li');
     li.innerText = `${printMinutes().min[0]}${printMinutes().min[1]} : ${printSeconds().sec[0]}${printSeconds().sec[1]}`;
     //console.log(li)
-    splitList.appendChild(li);    
-    // intervalId and print in in li's under split's
-    //li's
-
+    splitList.appendChild(li);
 }
 
 function clearSplits() {
-
+    splitList.innerText = '';
+    secDec.innerHTML = 0;
+    secUni.innerHTML = 0;
 }
 
 function setStopBtn() {
@@ -88,14 +84,12 @@ function setResetBtn() {
 btnLeft.addEventListener('click', function(event) {
     if(btnLeft.classList.contains('start')) {
         setStopBtn();
-        setResetBtn();
+        setSplitBtn();
         chronometer.startClick()
         window.setInterval(printTime, 1000);
     } else {
         chronometer.stopClick()
-        setStartBtn();
-        // setSplitBtn();
-        
+        setStartBtn();        
     }
 });
 
@@ -104,10 +98,10 @@ btnLeft.addEventListener('click', function(event) {
 btnRight.addEventListener('click', function () {
     if(btnRight.classList.contains('reset')) {
         setResetBtn();
+        printSplit();
     } else {
         setSplitBtn();
-        printSplit();
-
+        clearSplits();
     }
 
 });
