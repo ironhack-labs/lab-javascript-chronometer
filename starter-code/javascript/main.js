@@ -42,6 +42,8 @@ btnRight.onclick = () => {
 };
 
 function printTime() {
+  // milDec.innerHTML = chronometer.getMiliseconds()[0];
+  // milUni.innerHTML = chronometer.getMiliseconds()[1];
   minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
   minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
   secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];

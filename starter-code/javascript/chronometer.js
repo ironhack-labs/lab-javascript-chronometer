@@ -2,12 +2,19 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId;
+    this.intervalTwoId;
+    this.miliseconds = 0;
   }
 
   startClick() {
     this.intervalId = setInterval(() => {
-      this.currentTime++;
-    }, 1000);
+      if (this.miliseconds % 100 === 0) this.currentTime++;
+      this.miliseconds++;
+    }, 1);
+    // this.intervalTwoId = setInterval(() => {
+    //   this.miliseconds++;
+    //   console.log(this.miliseconds);
+    // }, 100);
   }
 
   getMinutes() {
@@ -25,6 +32,15 @@ class Chronometer {
     }
     return formatedNumber;
   }
+
+  // getMiliseconds() {
+  //   let formatedNumber = this.miliseconds;
+  //   if (formatedNumber.length < 2) {
+  //     return `0${formatedNumber}`;
+  //   } else if (formatedNumber.length < 3) {
+  //     return `0${formatedNumber}`;
+  //   }
+  // }
   stopClick() {
     clearInterval(this.intervalId);
     this.intervalId = undefined;
