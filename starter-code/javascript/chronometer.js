@@ -36,7 +36,7 @@ function Chronometer() {
 
 
   this.resetClick = function (number) {
-
+    this.currentTime = 0
   }
 
   this.splitClick = function (number) {
