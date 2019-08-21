@@ -30,8 +30,8 @@ function Chronometer() {
   }
 
   this.stopClick = function (number) {
-    this.intervalId = clearInterval()
 
+    clearInterval(this.intervalId)
   }
 
 
