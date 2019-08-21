@@ -2,7 +2,6 @@
 //Chronometer.prototype = Object.create(Chronometer.prototype)
 //Chronometer.prototype.constructor = Chronometer
 const cronometro = new Chronometer()
-console.log(cronometro)
 
 var btnLeft     = document.getElementById('btnLeft');
 var btnRight    = document.getElementById('btnRight');
@@ -42,7 +41,12 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-     
+    // const miliseconds = cronometro.getMilliseconds()
+    // //console.log(miliseconds)
+    // if (miliseconds < 100){
+    //     milDec.innerHTML = 0
+    //     milUni.innerHTML = miliseconds
+    // }
 }
 
 function printSplit() {
@@ -85,6 +89,9 @@ btnLeft.addEventListener('click', function () {
     const intervalId = setInterval(() => {
         printTime()
     })
+    // const intervalMil = setInterval(() => {
+    //     printMilliseconds()
+    // })
     if(btnLeft.className == 'btn start'){
         setStopBtn()
         setSplitBtn()

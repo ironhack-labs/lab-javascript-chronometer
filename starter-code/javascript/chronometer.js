@@ -18,6 +18,10 @@ function Chronometer() {
       return restingSec
     }
   }
+  this.getMilliseconds = function(){
+    const miliSeconds = Math.floor(this.currentTime/100)
+    return miliSeconds
+  }
   this.twoDigitsNumber = function(value) {
     if (value == 0){
       return `00`
