@@ -48,6 +48,7 @@ btnLeft.addEventListener('click', function () {
 function printTime() {
   printMinutes()
   printSeconds()
+  
 }
 
 function printMinutes() {
@@ -75,7 +76,7 @@ function printMilliseconds() {
     milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
     milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
   
-  },10)
+  },10 )
 }
 
 function printSplit() {

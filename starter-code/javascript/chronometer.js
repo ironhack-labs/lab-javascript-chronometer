@@ -1,16 +1,13 @@
-let currentTime 
-let intervalId
+
 function Chronometer (){
-  
-    this.currentTime = currentTime;
-    currentTime = 0;
-    this.intervalId = intervalId;
+
+    this.currentTime = 0;
+    this.intervalId = 0;
 
 
    this.startClick =  () => {
        this.intervalId = setInterval( ()=> {
        this.currentTime +=1
-       console.log(currentTime)
      },1000);
    }
 
