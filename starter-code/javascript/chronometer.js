@@ -15,27 +15,31 @@ class Chronometer {
     }
     if (this.currentTime > 60) {
       return Math.floor(this.currentTime / 60);
+    } else {
+      return 0;
     }
   }
   getSeconds() {
     return this.currentTime % 60;
   }
-  twoDigitsNumber(time) {
-    let twoDigits = time.toString();
+  twoDigitsNumber(value) {
+    let twoDigits = value.toString();
 
     if (twoDigits.length === 1) {
       return "0" + twoDigits;
-    }
-    else {
+    } else {
       return twoDigits;
     }
   }
   stopClick() {
-
-    this.intervalId = clearInterval();
+    clearInterval(this.intervalId);
   }
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  splitClick() {
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
+      this.getSeconds()
+    )}:00`;
+  }
 }
