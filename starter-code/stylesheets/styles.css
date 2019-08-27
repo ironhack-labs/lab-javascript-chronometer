@@ -85,7 +85,7 @@ body {
 }
 
 .number {
-  display: inline-block;
+  /* display: inline-block; */
   width: 40px;
 }
 
