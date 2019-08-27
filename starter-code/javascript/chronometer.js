@@ -16,5 +16,4 @@ class Chronometer {
   stopClick() { clearInterval(this.intervalId) }
 
   resetClick() { this.currentTime = 0 }
-  // splitClick() {}
 }

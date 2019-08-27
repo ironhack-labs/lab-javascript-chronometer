@@ -1,14 +1,16 @@
 let chronometer = new Chronometer();
 
-let btnLeft = document.getElementById('btnLeft');
-let btnRight = document.getElementById('btnRight');
-let minDec = document.getElementById('minDec');
-let minUni = document.getElementById('minUni');
-let secDec = document.getElementById('secDec');
-let secUni = document.getElementById('secUni');
-let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
+const btnLeft = document.getElementById('btnLeft');
+const btnRight = document.getElementById('btnRight');
 
+const minDec = document.getElementById('minDec');
+const minUni = document.getElementById('minUni');
+const secDec = document.getElementById('secDec');
+const secUni = document.getElementById('secUni');
+const milDec = document.getElementById('milDec');
+const milUni = document.getElementById('milUni');
+
+const splitList = document.getElementById('splits');
 
 let totalMinutes, totalSeconds;
 
@@ -44,6 +46,10 @@ function printMilliseconds() {
 
 function printSplit() {
 
+  const splitListItem = document.createElement('li');
+  splitListItem.textContent = `${totalMinutes}:${totalSeconds}`;
+  
+  splitList.appendChild(splitListItem);
 }
 
 function clearSplits() {
@@ -52,7 +58,7 @@ function clearSplits() {
 
 
 function setSplitBtn() {
-
+    printSplit();
 }
 
 function setStopBtn() {
@@ -104,10 +110,5 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
 
-  if (isChronometerRunning) {
-
-  } else {
-    setResetBtn();
-  }
-
+  (isChronometerRunning) ? setSplitBtn() : setResetBtn();
 });
