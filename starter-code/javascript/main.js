@@ -12,7 +12,7 @@ const milUni = document.getElementById('milUni');
 
 const splitList = document.getElementById('splits');
 
-let totalMinutes, totalSeconds;
+let totalMinutes, totalSeconds, totalMilisegundos;
 
 let isChronometerRunning = false;
 let printTimeIntervalId;
@@ -22,6 +22,7 @@ function printTime() {
 
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -42,20 +43,23 @@ function printSeconds() {
 
 function printMilliseconds() {
 
+  totalMilisegundos = chronometer.twoDigitsNumber(chronometer.getMiliseconds());
+  
+  milDec.textContent = totalMilisegundos.charAt(0);
+  milUni.textContent = totalMilisegundos.charAt(1);
 }
 
 function printSplit() {
 
   const splitListItem = document.createElement('li');
-  splitListItem.textContent = `${totalMinutes}:${totalSeconds}`;
+  splitListItem.textContent = `${totalMinutes}:${totalSeconds}:${totalMilisegundos}`;
   
   splitList.appendChild(splitListItem);
 }
 
 function clearSplits() {
-
+  splitList.innerHTML = "";
 }
-
 
 function setSplitBtn() {
     printSplit();
@@ -79,13 +83,14 @@ function setStartBtn() {
   printTimeIntervalId = setInterval(() => {
 
     printTime();
-  }, 1000);
+  }, 1);
 }
 
 function setResetBtn() {
   
   chronometer.resetClick();
   printTime();
+  clearSplits();
 }
 
 // Start/Stop Button
