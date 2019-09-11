@@ -5,56 +5,81 @@ var minDec      = document.getElementById('minDec');
 var minUni      = document.getElementById('minUni');
 var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
 
-
-function printTime() {
-
+function printSeconds() {
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.seconds)[0]
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.seconds)[1]
 }
 
 function printMinutes() {
-
-}
-
-function printSeconds() {
-
-}
-
-function printMilliseconds() {
-
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.minutes)[0]
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.minutes)[1]    
 }
 
 function printSplit() {
+    chronometer.stopClick();
 
+    btnRight.innerHTML = "RESET"
+    btnRight.setAttribute("class", "btn reset")
+    
+    btnLeft.innerHTML = "START"
+    btnLeft.setAttribute("class", "btn start")
+    
+    var list = document.getElementById("splits");
+    var listItem = document.createElement("li");
+
+    listItem.innerHTML = 
+    chronometer.twoDigitsNumber(chronometer.minutes)[0] + 
+    chronometer.twoDigitsNumber(chronometer.minutes)[1] + 
+    ":" + 
+    chronometer.twoDigitsNumber(chronometer.seconds)[0] +
+    chronometer.twoDigitsNumber(chronometer.seconds)[1]
+
+    list.appendChild(listItem);
 }
 
-function clearSplits() {
+function setStopBtn() {  
+        btnLeft.innerHTML = "START"
+        btnLeft.setAttribute("class", "btn start")
 
+    chronometer.stopClick();
 }
 
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-
+function setStartBtn() {    
+        btnLeft.innerHTML = "STOP"
+        btnLeft.setAttribute("class", "btn stop")
+        
+        btnRight.innerHTML = "SPLIT"
+        btnRight.setAttribute("class", "btn split")
+        
+    chronometer.startClick(printSeconds, printMinutes);
 }
 
 function setResetBtn() {
+    chronometer.resetClick()
+    
+    minDec.innerHTML = "0";
+    minUni.innerHTML = "0";
+    secDec.innerHTML = "0";
+    secUni.innerHTML = "0";
 
+    document.getElementById("splits").innerHTML = "";
 }
 
-// Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    if(btnLeft.innerHTML === "START"){
+        setStartBtn();
+    } 
+    else if(btnLeft.innerHTML === "STOP") {
+        setStopBtn()
+    }
 });
 
-// Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    if(btnRight.innerHTML === "RESET"){
+        setResetBtn();
+    }
+    else if(btnRight.innerHTML === "SPLIT"){
+        printSplit();
+    }
 });
