@@ -14,7 +14,7 @@ function printTime() {
 }
 
 function printMinutes() {
-
+    document.getElementById('')
 }
 
 function printSeconds() {
@@ -51,10 +51,24 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    
+    if (btnLeft.className === "btn start") {
+        btnLeft.setAttribute("class", "btn stop")
+        btnLeft.innerText = "STOP"
+    } else {
+        btnLeft.setAttribute("class", "btn start")
+        btnLeft.innerText = "START"
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
 
+    if (btnRight.className === "btn reset") {
+        btnRight.setAttribute("class", "btn split")
+        btnRight.innerText = "SPLIT"
+    } else {
+        btnRight.setAttribute("class", "btn reset")
+        btnRight.innerText = "RESET"
+    }
 });
