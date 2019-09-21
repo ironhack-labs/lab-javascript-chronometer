@@ -14,7 +14,8 @@ function printTime() {
     let print = setInterval(()=> {
         printMinutes()
         printSeconds()
-    },1000)
+        printMilliseconds()
+    },10)
     
     
 }
@@ -34,7 +35,10 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    let miliSeconds = chronometer.getMiliseconds()
+    miliSeconds = chronometer.twoDigitsNumber(miliSeconds)
+    milUni.innerHTML = miliSeconds[1]
+    milDec.innerHTML = miliSeconds[0]
 }
 
 function printSplit() {
@@ -42,7 +46,9 @@ function printSplit() {
     minutes = chronometer.twoDigitsNumber(minutes)
     let seconds = chronometer.getSeconds()
     seconds =  chronometer.twoDigitsNumber(seconds)
-    let nowTime = `${minutes}:${seconds}`    
+    let miliSeconds = chronometer.getMiliseconds()
+    miliSeconds = chronometer.twoDigitsNumber(miliSeconds)
+    let nowTime = `${minutes}:${seconds}:${miliSeconds}`    
     let line = document.createElement('li')
     line.innerHTML = ` ${nowTime}`
     ol.appendChild(line)
@@ -82,7 +88,7 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-    if (chronometer.currentTime === 0){
+    if (btnLeft.classList[1] === 'start'){
         setStopBtn()
         setSplitBtn()
         chronometer.startClick()
@@ -103,7 +109,6 @@ btnRight.addEventListener('click', function () {
         clearSplits()
     }else{
         printSplit()
-
     }
    
 });

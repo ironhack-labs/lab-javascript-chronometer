@@ -6,15 +6,21 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(() => {
       this.currentTime += 1
-    }, 1000);
+    }, 10);
   }
   getMinutes() {
-      const minutes = Number((Math.floor(this.currentTime / 60)).toFixed(0))
+      const minutes = Number(Math.floor(this.currentTime / 6000).toFixed(0))
       return minutes
   }
   getSeconds() {
-      return this.currentTime % 60
+      return Number(Math.floor(this.currentTime / 100).toFixed(0))
   }
+
+  // al incluir milisegundos deja de funcionar todo Jasmine en verde antes, contando en segundos ha funcionad con todos a verde
+  getMiliseconds(){
+      return this.currentTime % 100
+  }
+
   twoDigitsNumber(item) {
     let result = ''
     if (item <10) {
