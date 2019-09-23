@@ -6,8 +6,9 @@ class Chronometer {
 
   startClick() {
     let i = 0
-    let intervalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++
+      printTime()
     }, 1000);
   }
 
@@ -22,7 +23,7 @@ class Chronometer {
     return seconds
   }
   twoDigitsNumber(value) {
-    if (value < 9) {
+    if (value < 10) {
       return `0${value}`
     }
     return `${value}`
@@ -35,6 +36,6 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0
   }
-  
+
   // splitClick() {}
 }
