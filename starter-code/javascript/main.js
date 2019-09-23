@@ -61,8 +61,11 @@ function printSplit() {
 
 function clearSplits() {
     const parentSplits = document.getElementById("splits")
-    const childSplits = document.getElementsByTagName("LI")[0]
-    parentSplits.removeChild(childSplits)
+    const childSplits = document.querySelectorAll("LI")
+    for(let i = 0; i<=childSplits.length; i++){
+        parentSplits.removeChild(childSplits[i])
+    }
+    
     
 
 }
