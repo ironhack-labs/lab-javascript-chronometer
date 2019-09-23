@@ -10,7 +10,7 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+printMilliseconds()
 printSeconds()
 printMinutes()
 }
@@ -39,8 +39,14 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
+    let num = chronometer.getmilSeconds()
+    milUni.innerText= chronometer.twoDigitsNumber(num)[1]
+    milDec.innerText= chronometer.twoDigitsNumber(num)[0]
 
+    return `${chronometer.twoDigitsNumber(num)[0]}${chronometer.twoDigitsNumber(num)[1]}`
 
+    
+    
 }
 
 function printSplit() {
@@ -66,7 +72,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-    return (`${printMinutes()}:${printSeconds()}`)    
+    return (`${printMinutes()}:${printSeconds()}:${printMilliseconds()}`)    
 }
 
 function setStartBtn() {

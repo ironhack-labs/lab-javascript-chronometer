@@ -1,17 +1,29 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0
-    this.intervalId 
+    this.intervalId
+    this.mSecond = 0
+    
   }
    startClick() {
-      this.currentTime = 0
+      
+      
       this.intervalId = setInterval(() =>{
-      this.currentTime++
-      printTime()
-    }, 1000);
-    
-
+        if (this.mSecond===100){
+          this.currentTime++
+          this.mSecond=0
+        }
+        this.mSecond++
+        
+        printTime()
+        
+          
+    },10);
+}
+  getmilSeconds() {
+    return this.mSecond
   }
+
   getMinutes() {
     return Math.floor(this.currentTime/60)
   }
@@ -31,6 +43,7 @@ class Chronometer {
    }
    resetClick() {
     this.currentTime = 0
+    this.mSecond = 0
     printTime()
    }
    splitClick() {
