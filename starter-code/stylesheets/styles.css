@@ -36,7 +36,7 @@ body {
 
 #splits-container {
   font-size: 20px;
-  font-weight: 100;
+  font-weight: 50;
   position: absolute;
   left: 50px;
 }
@@ -115,3 +115,13 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+#btnClean  { 
+  background: #f14949;
+  border: 0;
+  color: #fff;
+  font: bold;
+  font-size: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
