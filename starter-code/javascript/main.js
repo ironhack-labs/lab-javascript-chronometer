@@ -34,27 +34,40 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  document.getElementById("btnLeft").innerHTML = "STOP";
+  btnLeft.classList.toggle("stop")
 }
 
 function setSplitBtn() {
-
+  document.getElementById("btnRight").innerHTML = "SPLIT";
+  btnRight.classList.toggle("split")
 }
 
 function setStartBtn() {
-
+  document.getElementById("btnLeft").innerHTML = "START";
+  btnLeft.classList.toggle("start")
 }
 
 function setResetBtn() {
-
+  document.getElementById("btnRight").innerHTML = "RESET";
+  btnRight.classList.toggle("reset")
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener('click', function (e) {
+  //btnLeft.parentNode.querySelector(".start")
+  if(chronometer.currentTime === 0){
+    setStartBtn();
+    setResetBtn()
+  }
+  setStopBtn();
+  setSplitBtn();
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if(chronometer.currentTime !== 0){
+    //setSplitBtn();
+  }
+  //setResetBtn()
 });
