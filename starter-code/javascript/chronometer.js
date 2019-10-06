@@ -4,7 +4,6 @@ class Chronometer {
     this.intervalId = 0;
     this.minute = 0;
     this.second = 0;
-    this.milisec = 0;
     this.printTimeFunction = null;
   }
   startClick() {
@@ -15,24 +14,17 @@ class Chronometer {
       fixThis.printTimeFunction()
     }, 1000);
   }
+
   getMinutes() {
     var minute = Math.floor(this.currentTime / 60);
     return minute;
   }
+
   getSeconds() {
     var second = this.currentTime % 60;
     return second;
   }
-  getMiliseconds(){
 
-    this.milisec = setIntervalId(function(){
-      this.milisec++;
-      fixThis.setTime();
-      fixThis.printTimeFunction();
-    },
-    10)  
-    return milisec;
-  }
 
   twoDigitsNumber(a) {
 
@@ -53,7 +45,6 @@ class Chronometer {
   setTime() {
     this.minute = this.twoDigitsNumber(this.getMinutes());
     this.second = this.twoDigitsNumber(this.getSeconds());
-    this.milisec = this.twoDigitsNumber(this.getMiliseconds());
   }
 
   stopClick() {
@@ -70,7 +61,7 @@ class Chronometer {
   }
 
   splitClick() {
-    return `${this.minute}:${this.second}:${this.milisec}`;
+    return `${this.minute}:${this.second}`;
   }
 
   isRunning() {

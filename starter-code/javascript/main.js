@@ -13,7 +13,6 @@ var splitList   = document.getElementById('splits');
 function printTime() {
     printMinutes();
     printSeconds();
-    printMilliseconds();
 }
 chronometer.setUpdateFunction(printTime);
 
@@ -27,10 +26,6 @@ function printSeconds() {
     secUni.innerHTML = chronometer.second[1];
 }
 
-function printMilliseconds() {
-    milDec.innerHTML = chronometer.milisec[0];
-    milDec.innerHTML = chronometer.milisec[1];
-}
 
 function printSplit() {
     var element = document.createElement("li");
