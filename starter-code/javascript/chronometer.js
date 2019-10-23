@@ -7,18 +7,24 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
       printTime(chronometer);
-    }, 1000);
+    }, 10);
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
   }
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor((this.currentTime % 6000) / 100);
   }
+
+  getMilliSeconds() {
+    return this.currentTime % 100;
+  }
+
   twoDigitsNumber(value) {
     return value < 10 ? "0" + String(value) : String(value);
   }
+
   stopClick() {
     clearInterval(this.intervalId);
     this.intervalId = 0;

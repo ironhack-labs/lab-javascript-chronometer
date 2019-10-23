@@ -11,6 +11,7 @@ var milUni = document.getElementById("milUni");
 function printTime(chronometer) {
   printMinutes(chronometer);
   printSeconds(chronometer);
+  printMilliseconds(chronometer);
 }
 
 function printMinutes(chronometer) {
@@ -27,7 +28,12 @@ function printSeconds(chronometer) {
   secUni.innerHTML = sec[1];
 }
 
-function printMilliseconds() {}
+function printMilliseconds(chronometer) {
+  var mil = chronometer.twoDigitsNumber(chronometer.getMilliSeconds());
+
+  milDec.innerHTML = mil[0];
+  milUni.innerHTML = mil[1];
+}
 
 function printSplit() {
   var li = document.createElement("li");
@@ -35,7 +41,9 @@ function printSplit() {
   li.innerHTML =
     chronometer.twoDigitsNumber(chronometer.getMinutes()) +
     ":" +
-    chronometer.twoDigitsNumber(chronometer.getSeconds());
+    chronometer.twoDigitsNumber(chronometer.getSeconds()) +
+    ":" +
+    chronometer.twoDigitsNumber(chronometer.getMilliSeconds());
 }
 
 function clearSplits() {
