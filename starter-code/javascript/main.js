@@ -41,7 +41,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+    splitZone.innerHTML =""
 }
 
 function setStopBtn() {
@@ -63,26 +63,32 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
     btnLeft.classList.toggle("stop");
+    btnRight.classList.toggle("split")
+    
     printTime()
     if (btnLeft.innerHTML === "STOP") {
         btnLeft.innerHTML = "START";
         chronometer.stopClick();
+        
+        btnRight.innerHTML = "RESET"
     }
     else {
         btnLeft.innerHTML = "STOP";
         chronometer.startClick()
+        btnRight.innerHTML = "SPLIT"
     }
 }
 );
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    btnRight.classList.toggle("split");
-    if (btnRight.innerHTML === "RESET") {
-        btnRight.innerHTML = "SPLIT"
+    if (btnLeft.innerHTML === "START") {
+
+        clearSplits()
+
         
     } else { 
-        btnRight.innerHTML = "RESET";
+
         printSplit()
     }
 });
