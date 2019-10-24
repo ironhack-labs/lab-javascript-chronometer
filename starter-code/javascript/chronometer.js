@@ -7,7 +7,7 @@ class Chronometer {
 
   startClick() {
     this.intervalId = setInterval(() => {
-      this.currentTime ++;
+      this.currentTime++;
       console.log(this.currentTime);
     }, 1000)
 
@@ -23,7 +23,7 @@ class Chronometer {
 
   }
   twoDigitsNumber(a) {
-    return `${a}`.length >1 ? `${a}` : "0" + a
+    return `${a}`.length > 1 ? `${a}` : "0" + a
   }
 
   stopClick() {
@@ -31,8 +31,8 @@ class Chronometer {
   }
 
   resetClick() {
-    
+
   }
 
-  splitClick() {}
+  splitClick() { }
 }

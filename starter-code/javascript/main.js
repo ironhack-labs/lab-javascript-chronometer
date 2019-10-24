@@ -41,7 +41,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-    splitZone.innerHTML =""
+    splitZone.innerHTML = ""
 }
 
 function setStopBtn() {
@@ -57,19 +57,19 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-
+    chronometer.currentTime = 0
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
     btnLeft.classList.toggle("stop");
     btnRight.classList.toggle("split")
-    
+
     printTime()
     if (btnLeft.innerHTML === "STOP") {
         btnLeft.innerHTML = "START";
         chronometer.stopClick();
-        
+
         btnRight.innerHTML = "RESET"
     }
     else {
@@ -85,10 +85,9 @@ btnRight.addEventListener('click', function () {
     if (btnLeft.innerHTML === "START") {
 
         clearSplits()
+        setResetBtn()
 
-        
-    } else { 
-
+    } else {
         printSplit()
     }
 });
