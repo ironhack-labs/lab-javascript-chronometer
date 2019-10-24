@@ -18,6 +18,11 @@ class Chronometer {
   getSeconds() {
     return this.currentTime % 60;
   }
+
+  // getMilliseconds() {
+  //   return this.getSeconds() % 1000;
+  // }
+
   twoDigitsNumber(string) {
     var str = String(string);
     if (str.length == 2) {

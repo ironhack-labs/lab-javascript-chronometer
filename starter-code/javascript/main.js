@@ -7,25 +7,41 @@ var secDec = document.getElementById("secDec");
 var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
+var splits = document.getElementById("splits");
 
 function printTime() {
   const intervalId = setInterval(() => {
     printSeconds();
-    console.log("lalala");
+    printMinutes();
+    //printMilliseconds();
   }, 1000);
+
   return intervalId;
 }
 
-function printMinutes() {}
+function printMinutes() {
+  var minutes = chronometer.getMinutes();
+  var min = chronometer.twoDigitsNumber(minutes);
+  minDec.textContent = `${min[0]}`;
+  minUni.textContent = `${min[1]}`;
+  return min;
+}
 
 function printSeconds() {
   var seconds = chronometer.getSeconds();
   var sec = chronometer.twoDigitsNumber(seconds);
   secDec.textContent = `${sec[0]}`;
   secUni.textContent = `${sec[1]}`;
+  return sec;
 }
 
-function printMilliseconds() {}
+// function printMilliseconds() {
+//   var milliSeconds = chronometer.getMilliseconds();
+//   var milli = chronometer.twoDigitsNumber(milliSeconds);
+//   milDec.textContent = `${milli[0]}`;
+//   milUni.textContent = `${milli[1]}`;
+//   return milli;
+// }
 
 function printSplit() {}
 
@@ -58,4 +74,13 @@ btnLeft.addEventListener("click", function() {
 });
 
 // Reset/Split Button
-btnRight.addEventListener("click", function() {});
+btnRight.addEventListener("click", function() {
+  if (btnRight.textContent === "SPLIT") {
+    var splitTime =
+      printMinutes() + ":" + printSeconds(); //+ ":" + printMilliseconds();
+    splits.innerHTML += `<li>${splitTime}</li>`;
+  } else {
+    splits.innerHTML = "";
+    chronometer.resetClick();
+  }
+});
