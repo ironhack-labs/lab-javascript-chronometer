@@ -2,13 +2,13 @@ class Chronometer {
 
   constructor() {
     this.currentTime = 0;
-    this.intervalId = 1;
   }
 
 
   startClick() {
-    setInterval(() => {
-      this.currentTime ++
+    this.intervalId = setInterval(() => {
+      this.currentTime ++;
+      console.log(this.currentTime);
     }, 1000)
 
   }
@@ -25,13 +25,14 @@ class Chronometer {
   twoDigitsNumber(a) {
     return `${a}`.length >1 ? `${a}` : "0" + a
   }
+
   stopClick() {
-    clearInterval()
+    clearInterval(this.intervalId)
   }
 
   resetClick() {
     
   }
 
-  // splitClick() {}
+  splitClick() {}
 }
