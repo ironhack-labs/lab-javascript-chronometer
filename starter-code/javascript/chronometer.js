@@ -1,6 +1,7 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
+    this.currentTimeMilli = 0;
     this.intervalId = "";
   }
 
@@ -10,7 +11,11 @@ class Chronometer {
       this.currentTime += 1;
       console.log(this.currentTime);
     }, 1000);
+    this.intervalId2 = setInterval(() => {
+      this.currentTimeMilli += 1;
+    }, 10);
   }
+
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
@@ -19,9 +24,9 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
-  // getMilliseconds() {
-  //   return this.getSeconds() % 1000;
-  // }
+  getMilliseconds() {
+    return this.currentTimeMilli % 100;
+  }
 
   twoDigitsNumber(string) {
     var str = String(string);
@@ -38,8 +43,14 @@ class Chronometer {
     return clearInterval(this.intervalId);
   }
 
+
+  stopClickMilli() {
+    return clearInterval(this.intervalId2);
+  }
+
   resetClick() {
     this.currentTime = 0;
+    this.currentTimeMilli = 0;
   }
   // splitClick() {}
 }

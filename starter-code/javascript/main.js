@@ -19,6 +19,12 @@ function printTime() {
   return intervalId;
 }
 
+function printTimeMilli() {
+  const intervalId2 = setInterval(() => {
+    printMilliseconds();
+  }, 10);
+  return intervalId2;
+}
 function printMinutes() {
   var minutes = chronometer.getMinutes();
   var min = chronometer.twoDigitsNumber(minutes);
@@ -35,13 +41,13 @@ function printSeconds() {
   return sec;
 }
 
-// function printMilliseconds() {
-//   var milliSeconds = chronometer.getMilliseconds();
-//   var milli = chronometer.twoDigitsNumber(milliSeconds);
-//   milDec.textContent = `${milli[0]}`;
-//   milUni.textContent = `${milli[1]}`;
-//   return milli;
-// }
+function printMilliseconds() {
+  var milliSeconds = chronometer.getMilliseconds();
+  var milli = chronometer.twoDigitsNumber(milliSeconds);
+  milDec.textContent = `${milli[0]}`;
+  milUni.textContent = `${milli[1]}`;
+  return milli;
+}
 
 function printSplit() {}
 
@@ -64,12 +70,14 @@ btnLeft.addEventListener("click", function() {
     btnRight.className = "btn split";
     chronometer.startClick();
     printTime();
+    printTimeMilli();
   } else {
     btnLeft.textContent = "START";
     btnRight.textContent = "RESET";
     btnLeft.className = "btn start";
     btnRight.className = "btn reset";
     chronometer.stopClick();
+    chronometer.stopClickMilli();
   }
 });
 
@@ -77,7 +85,7 @@ btnLeft.addEventListener("click", function() {
 btnRight.addEventListener("click", function() {
   if (btnRight.textContent === "SPLIT") {
     var splitTime =
-      printMinutes() + ":" + printSeconds(); //+ ":" + printMilliseconds();
+      printMinutes() + ":" + printSeconds() + ":" + printMilliseconds();
     splits.innerHTML += `<li>${splitTime}</li>`;
   } else {
     splits.innerHTML = "";
