@@ -7,6 +7,7 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
+var splitZone = document.getElementById('splits')
 
 
 
@@ -14,27 +15,29 @@ function printTime() {
     setInterval(() => {
         printMinutes();
         printSeconds();
-      }, 1000)
+    }, 1000)
 }
 
 function printMinutes() {
-
-    minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
-    minUni.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
+    let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
+    minDec.innerHTML = minutes[0]
+    minUni.innerHTML = minutes[1]
 }
 
 function printSeconds() {
-    secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
-    secUni.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
+    let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
+    secDec.innerHTML = seconds[0]
+    secUni.innerHTML = seconds[1]
 }
 
 function printMilliseconds() {
-    milDec.textContent = chronometer.twoDigitsNumber(chronometer.currentTime)[0]
-    milUni.textContent = chronometer.twoDigitsNumber(chronometer.currentTime)[1]
+
 }
 
 function printSplit() {
-
+    let li = document.createElement("li");
+    li.textContent = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`;
+    splitZone.appendChild(li);
 }
 
 function clearSplits() {
@@ -60,29 +63,27 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
     btnLeft.classList.toggle("stop");
-
+    printTime()
     if (btnLeft.innerHTML === "STOP") {
         btnLeft.innerHTML = "START";
-
-
         chronometer.stopClick();
-
     }
     else {
         btnLeft.innerHTML = "STOP";
         chronometer.startClick()
-
-
     }
 }
-
 );
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
     btnRight.classList.toggle("split");
-    btnRight.innerHTML === "RESET" ? btnRight.innerHTML = "SPLIT" : btnRight.innerHTML = "RESET";
+    if (btnRight.innerHTML === "RESET") {
+        btnRight.innerHTML = "SPLIT"
+        
+    } else { 
+        btnRight.innerHTML = "RESET";
+        printSplit()
+    }
 });
 
-
-printTime()
