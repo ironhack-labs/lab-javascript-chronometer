@@ -182,3 +182,4 @@ If we want to add milliseconds to the chronometer, we will have to manipulate th
   - Clear the milliseconds when the Reset button is clicked.
 
 /Happy coding!
+Il 

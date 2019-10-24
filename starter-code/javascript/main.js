@@ -11,48 +11,48 @@ var milUni = document.getElementById("milUni");
 console.log("------print Time----->");
 
 function printTime() {
-  // ici faudraitrecupéréer que l'unitté de getseconds
-  secUni.innerHTML = chronometer.getSeconds();
-  let seconds = chronometer.getSeconds();
-  console.log("test sur l'unité", seconds.charAt(0));
-  minUni.innerHTML = chronometer.getMinutes();
-  // if second superieur à 9 alors
-  // on recuper la décimal et on l'affiche dans secDec
-  // sinon 0
-
-  //15 -> 015
-  // si les secondes sont superieur a 9 alors je veux stocker la décimal
-  // pour l'affiche ddans DECUNI
-  if (chronometer.getSeconds() > 9) {
-    secDec.textContent = getSeconds();
-  }
+  printSeconds();
+  printMinutes();
 }
 
 function printMinutes() {
-  chronometer.getMinutes();
+  minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+  minUni.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
 }
 
 function printSeconds() {
-  chronometer.getSeconds();
+  secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+  secUni.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
 }
 
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+  olElement = document.getElementById("splits");
+  var min = chronometer.getMinutes();
+  var sec = chronometer.getSeconds();
+  olElement.innerHTML += `<li>${chronometer.twoDigitsNumber(min)}:${chronometer.twoDigitsNumber(sec)}</li>`;
+}
 
-function clearSplits() {}
+function clearSplits() {
+  chronometer.resetClick();
+  olElement.innerHTML = "";
+}
 
 function setStopBtn() {
   btnLeft.classList.add("start");
   btnLeft.classList.remove("stop");
   btnLeft.textContent = "START";
   chronometer.stopClick();
+  btnRight.textContent = "RESET";
 }
 
 function setSplitBtn() {
+  chronometer.splitClick();
   btnRight.classList.remove("split");
   btnRight.classList.add("reset");
   btnRight.textContent = "RESET";
+  //chronometer.splitClick();
 }
 
 function setStartBtn() {
@@ -60,31 +60,36 @@ function setStartBtn() {
   btnLeft.classList.add("stop");
   btnLeft.textContent = "STOP";
   chronometer.startClick();
+  btnRight.textContent = "SPLIT";
 }
 
 function setResetBtn() {
   btnRight.classList.remove("reset");
   btnRight.classList.add("split");
   btnRight.textContent = "SPLIT";
+  chronometer.resetClick();
 }
-setInterval(function() {
-  printTime();
-}, 1000);
 
 // Start/Stop Button
 btnLeft.addEventListener("click", function() {
-  if (btnLeft.classList.contains("start")) {
+  if (btnLeft.className.includes("start")) {
     setStartBtn();
+    setResetBtn();
   } else {
     setStopBtn();
+    setSplitBtn();
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
-  if (btnRight.classList.contains("reset")) {
-    setResetBtn();
+  if (btnRight.className.includes("reset")) {
+    clearSplits();
   } else {
-    setSplitBtn();
+    printSplit();
   }
 });
+
+setInterval(function() {
+  printTime();
+}, 0);
