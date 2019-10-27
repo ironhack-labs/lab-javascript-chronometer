@@ -56,6 +56,7 @@ btnLeft.addEventListener("click", function() {
     btnLeft.innerHTML = "STOP";
     chronometer.stopClick();
   }
+  printTime();
 });
 
 // Reset/Split Button
