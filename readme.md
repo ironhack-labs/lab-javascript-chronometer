@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this Lab we are going to build a Chronometer. Chronometers are very common in a lot of sports, like athletism, like car racing, etc. In this case, we are going to create a Chronometer to count how many minutes and seconds we use to do the Ironhack Exercises!
+In this Lab we are going to build a Chronometer. Chronometers are very common in a lot of sports, like running, rowing, cycling, athletics, car racing or even chess. In this case, we are going to create a Chronometer to count how many minutes and seconds we use to do the Ironhack Exercises!
 
 Our Chronometer will have a LED Screen, where we will see the minutes and seconds moving forward. It will also have two different buttons, that will change their behavior depending on the status of the Chronometer. For example, the start button will become stop button when the Chronometer is running.
 
