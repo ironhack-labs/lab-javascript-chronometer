@@ -1,60 +1,39 @@
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
-var milDec      = document.getElementById('milDec');
-var milUni      = document.getElementById('milUni');
+const chronometer = new Chronometer();
+const btnLeft = document.getElementById('btn-left');
+const btnRight = document.getElementById('btn-right');
+const minDec = document.getElementById('min-dec');
+const minUni = document.getElementById('min-uni');
+const secDec = document.getElementById('sec-dec');
+const secUni = document.getElementById('sec-uni');
+const milDec = document.getElementById('mil-dec');
+const milUni = document.getElementById('mil-uni');
 
+function printTime() {}
 
-function printTime() {
+function printMinutes() {}
 
-}
+function printSeconds() {}
 
-function printMinutes() {
+function printMilliseconds() {}
 
-}
+function printSplit() {}
 
-function printSeconds() {
+function clearSplits() {}
 
-}
+function setStopBtn() {}
 
-function printMilliseconds() {
+function setSplitBtn() {}
 
-}
+function setStartBtn() {}
 
-function printSplit() {
-
-}
-
-function clearSplits() {
-
-}
-
-function setStopBtn() {
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-
-}
-
-function setResetBtn() {
-
-}
+function setResetBtn() {}
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
-
+btnLeft.addEventListener('click', () => {
+  // ..
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
-
+btnRight.addEventListener('click', () => {
+  // ..
 });
