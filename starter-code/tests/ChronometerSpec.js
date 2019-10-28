@@ -3,7 +3,7 @@ describe('', () => {
     chronometer = new Chronometer();
   });
 
-  describe('constructor function', () => {
+  describe('class constructor', () => {
     it('should not receive any parameter', () => {
       expect(Chronometer.length).toEqual(0);
     });
@@ -17,7 +17,7 @@ describe('', () => {
     });
   });
 
-  describe('startClick function', () => {
+  describe('startClick method', () => {
     beforeEach(() => {
       jasmine.clock().install();
       chronometer.startClick();
@@ -27,7 +27,7 @@ describe('', () => {
       jasmine.clock().uninstall();
     });
 
-    it('should declare a startClick method', () => {
+    it('should be declared', () => {
       expect(typeof chronometer.startClick).toEqual('function');
     });
 
@@ -35,7 +35,7 @@ describe('', () => {
       expect(chronometer.intervalId).toBeDefined();
     });
 
-    it('Set to intervalId a new setInterval', () => {
+    it('should set to intervalId a new setInterval', () => {
       expect(typeof chronometer.intervalId).toEqual('number');
     });
 
@@ -50,7 +50,7 @@ describe('', () => {
     });
   });
 
-  describe('getMinutes function', () => {
+  describe('getMinutes method', () => {
     it('should be declared', () => {
       expect(typeof chronometer.getMinutes).toEqual('function');
     });
@@ -70,19 +70,19 @@ describe('', () => {
       expect(chronometer.getMinutes()).toEqual(1);
     });
 
-    it("Should return 0 when the currentTime haven't start", () => {
+    it("should return 0 when the currentTime hasn't started", () => {
       chronometer.currentTime = 0;
       expect(chronometer.getMinutes()).toEqual(0);
     });
 
-    it('should return the currentTime in minutes even for laaaarge numbers', () => {
+    it('should return the currentTime in minutes even for very large numbers', () => {
       chronometer.currentTime = 50210;
       expect(chronometer.getMinutes()).toEqual(836);
     });
   });
 
-  describe('getSeconds function', () => {
-    it('should be declare', () => {
+  describe('getSeconds method', () => {
+    it('should be declared', () => {
       expect(typeof chronometer.getSeconds).toEqual('function');
     });
 
@@ -91,7 +91,7 @@ describe('', () => {
       expect(typeof chronometer.getSeconds(0)).toEqual('number');
     });
 
-    it("should return 0 when the currentTime haven't start", () => {
+    it("should return 0 when the stopwatch hasn't started", () => {
       chronometer.currentTime = 0;
       expect(chronometer.getSeconds(0)).toEqual(0);
     });
@@ -107,8 +107,8 @@ describe('', () => {
     });
   });
 
-  describe('twoDigitsNumber function', () => {
-    it('should be declare', () => {
+  describe('twoDigitsNumber method', () => {
+    it('should be declared', () => {
       expect(typeof chronometer.twoDigitsNumber).toEqual('function');
     });
 
@@ -116,11 +116,11 @@ describe('', () => {
       expect(typeof chronometer.twoDigitsNumber(7)).toEqual('string');
     });
 
-    it("Should return '00' when the value is 0", () => {
+    it("should return '00' when the value is 0", () => {
       expect(chronometer.twoDigitsNumber(0)).toEqual('00');
     });
 
-    it("Should return '15' when the value is 15", () => {
+    it("should return '15' when the value is 15", () => {
       expect(chronometer.twoDigitsNumber(15)).toEqual('15');
     });
 
@@ -128,13 +128,13 @@ describe('', () => {
       expect(chronometer.twoDigitsNumber(7).length).toEqual(2);
     });
 
-    it("Should return '03' when the value is 3", () => {
+    it("should return '03' when the value is 3", () => {
       expect(chronometer.twoDigitsNumber(3)).toEqual('03');
     });
   });
 
-  describe('stopClick function', () => {
-    it('should be declare', () => {
+  describe('stopClick method', () => {
+    it('should be declared', () => {
       expect(typeof chronometer.stopClick).toEqual('function');
     });
 
@@ -145,8 +145,8 @@ describe('', () => {
     });
   });
 
-  describe('resetClick function', () => {
-    it('should be declare', () => {
+  describe('resetClick method', () => {
+    it('should be declared', () => {
       expect(typeof chronometer.resetClick).toEqual('function');
     });
 

@@ -71,13 +71,13 @@ You know how it goes: open the `SpecRunner.html` file on Chrome to see all of th
 
 #### Chronometer Class
 
-We need to create a `Chronometer` class. Its constructor does not expect any arguments, but binds two properties to `this`: `currentTime` and `interval`.
+We need to create a `Chronometer` class. Its constructor does not expect any arguments, but binds two properties to `this`: `currentTime` and `intervalId`.
 
 #### startClick()
 
 We need to declare a method named `startClick` in our `Chronometer` class. The `startClick` method is pretty simple, it should start a `setInterval` that will add 1 to the `currentTime` property with every second that passes.
 
-The `setInterval` will be assigned to our `interval` property, this way we will be able to clear it later on.
+The `setInterval` will be assigned to our `intervalId` property, this way we will be able to clear it later on.
 
 #### getMinutes()
 
