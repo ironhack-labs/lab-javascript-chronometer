@@ -51,10 +51,26 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    if(btnLeft.textContent === 'START'){
+         btnLeft.classList.replace('start', 'stop')
+         btnLeft.textContent = 'STOP'
+         btnRight.classList.replace('reset', 'split')
+         btnRight.textContent = 'SPLIT'
+    } else {
+         btnLeft.classList.replace('stop', 'start')
+         btnLeft.textContent = 'START'
+         btnRight.classList.replace('split', 'reset')
+         btnRight.textContent = 'RESET'
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    /*if(btnRight.textContent === 'RESET'){
+        btnRight.classList.replace('reset', 'split')
+        btnRight.textContent = 'SPLIT'
+    } else {
+        btnRight.classList.replace('split', 'reset')
+        btnRight.textContent = 'RESET'
+    }  */
 });
