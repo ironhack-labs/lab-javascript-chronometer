@@ -33,11 +33,20 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-    
+    let parent = document.getElementsByTagName('ol')[0]
+    const li = document.createElement("li")
+    let min = chronometer.getMinutes()
+    let digMin = chronometer.twoDigitsNumber(min)
+    let sec = chronometer.getSeconds()
+    let digSec = chronometer.twoDigitsNumber(sec)
+    li.innerText = `${digMin}:${digSec}`
+    parent.appendChild(li)
 }
 
 function clearSplits() {
-
+    chronometer.resetClick()
+    let parent = document.getElementsByTagName("ol")[0]
+    parent.innerHTML = ""
 }
 
 function setStopBtn() {
@@ -76,9 +85,9 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    printSplit()
-
-    // btnRight.innerText = "SPLIT";
-    // btnRight.className = "btn split"
-
+    if(btnRight.className === "btn split"){
+        printSplit()
+    }else{
+        clearSplits()
+    }
 });
