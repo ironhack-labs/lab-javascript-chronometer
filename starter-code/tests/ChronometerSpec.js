@@ -162,7 +162,12 @@ describe('', function () {
     });
 
     it('Should clear the currentTime property', function () {
-      chronometer.resetClick();
+      chronometer.startClick()
+      setTimeout(() => {
+        chronometer.stopClick()
+        chronometer.resetClick();
+      }, 3000);
+
 
       expect(chronometer.currentTime).toEqual(0);
     });
