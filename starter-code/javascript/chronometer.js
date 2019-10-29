@@ -12,10 +12,22 @@ class Chronometer {
   getMinutes() {
     return Math.floor(this.currentTime/60);
   }
-  // getSeconds() {}
-  // twoDigitsNumber() {}
-  // stopClick() {}
-  // resetClick() {}
+  getSeconds() {
+    return Math.floor(this.currentTime%60);
+  }
+  twoDigitsNumber(num) {
+    if(num < 10){
+      return `0${num}`;
+    }
+    return `${num}`;
+  }
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
+
+  resetClick() {
+    this.currentTime = 0;
+  }
   // splitClick() {}
 }
 
