@@ -78,6 +78,13 @@ btnRight.addEventListener('click', function () {
         let liDOMEl = document.createElement("li");
         liDOMEl.innerText = time;
         splitList.appendChild(liDOMEl);
+    }else{
+        chronometer.resetClick();
+        splitList.innerHTML = "";
+        minDec.innerText = 0;
+        minUni.innerText = 0;
+        secDec.innerText = 0;
+        secUni.innerText = 0;
     }
 });
 
