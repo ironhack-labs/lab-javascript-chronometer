@@ -34,7 +34,10 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+    
+    
+    //innerHTML = "stop"
+  
 }
 
 function setSplitBtn() {
@@ -42,7 +45,6 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-
 }
 
 function setResetBtn() {
@@ -51,7 +53,14 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+    if (btnLeft.innerHTML == "START") {
+    btnLeft.innerHTML == "STOP"}
 
+    else {btnLeft.innerHTML == "START"}
+
+
+    
+    
 });
 
 // Reset/Split Button
