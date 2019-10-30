@@ -19,6 +19,7 @@ function printMinutes() {
     //console.log(minutes);
     minUni.innerText = minutes[1];
     minDec.innerText = minutes[0];
+    return(minutes);
 }
 
 function printSeconds() {
@@ -26,7 +27,7 @@ function printSeconds() {
     
     secUni.innerText = seconds[1];
     secDec.innerText = seconds[0];
-
+    return(seconds);
 
 }
 
@@ -37,12 +38,14 @@ function printMilliseconds() {
 */
 
 function printSplit() {
-    //const splitDOMEl = document.getElementById('splits').createElement("li");
-    //splitDOMEl.inner
+    const splitDOMEl = document.createElement("li");
+    splitDOMEl.innerHTML = `${printMinutes()} : ${printSeconds()}`;
+    document.getElementById('splits').appendChild(splitDOMEl);
+    console.log(splitDOMEl);
 }
 
 function clearSplits() {
-
+    document.getElementById('splits').innerHTML= [];
 }
 
 
@@ -85,5 +88,12 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    chronometer.resetClick();
+    if (chronometer.intervalId === 0 ) {
+        clearSplits();
+        chronometer.resetClick();
+    } else {
+        printSplit();
+        
+    }
+    
 });
