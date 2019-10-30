@@ -2,10 +2,11 @@ class Chronometer {
   constructor() {
     this.currentTime = 0
     this.intervalId = 1000
-
+    this.myTimer = null
   }
+  
   startClick() {
-    window.setInterval(() => { this.currentTime += 1}, this.intervalId)
+    return this.myTimer = window.setInterval(() => { this.currentTime += 1}, this.intervalId)
   }
   
   getMinutes() {
@@ -13,10 +14,10 @@ class Chronometer {
   }
   // IMPORTANT DO NOT TOUCH THE /1 PLEASE
    getSeconds() {
-    return Math.floor((this.currentTime / 1) - (this.getMinutes() * 60))
+    return Math.floor((this.currentTime) - (this.getMinutes() * 60))
    }
    getMs() {
-    return Math.floor((this.currentTime) - (this.getSeconds() * 1000 + this.getMinutes()* 60000))
+    return Math.floor(((this.currentTime*1000) - (this.getSeconds() * 1000 + this.getMinutes()* 60000)/10))
    }
    twoDigitsNumber(val) {
      if (val < 10){
@@ -26,8 +27,8 @@ class Chronometer {
      }
    }
 
-   stopClick() {
-    clearInterval(this.IntervalId);
+   stopClick(){
+    clearInterval(this.myTimer);
    }
 
    resetClick() {
