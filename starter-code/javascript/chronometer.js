@@ -28,12 +28,11 @@ class Chronometer {
     }
   }
   twoDigitsNumber(value) {
-    if (value.length === 1 || value.length === 0) {
-      return `0${value}`
-    }
-    return `${value}`
+    if (value < 10)
+      return `0${value}`;
+    else return `${value}`
   }
-  // stopClick() {}
+  stopClick() {}
   // resetClick() {}
   // splitClick() {}
 }
