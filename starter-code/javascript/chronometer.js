@@ -14,8 +14,14 @@ class Chronometer {
 	getSeconds() {
 		return this.currentTime % 60;
 	}
-	// twoDigitsNumber() {}
-	// stopClick() {}
-	// resetClick() {}
+	twoDigitsNumber(digit) {
+		return digit < 10 ? `0${digit}` : `${digit}`;
+	}
+	stopClick() {
+		clearInterval();
+	}
+	resetClick() {
+		this.currentTime = 0;
+	}
 	// splitClick() {}
 }
