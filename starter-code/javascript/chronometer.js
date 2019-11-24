@@ -4,9 +4,6 @@ class Chronometer {
     this.intervalId = undefined
   }
 
-
-
-
   startClick() {
     this.intervalId = setInterval(() => {
       this.currentTime++
@@ -17,8 +14,6 @@ class Chronometer {
     let number = this.currentTime / 60
     return Math.floor(number)
   }
-
-  // const minutes = getMinutes();
 
   getSeconds() {
     if (this.currentTime < 60) {
@@ -32,7 +27,14 @@ class Chronometer {
       return `0${value}`;
     else return `${value}`
   }
-  stopClick() {}
-  // resetClick() {}
+
+  stopClick() {
+    this.intervalId = clearInterval()
+  }
+  resetClick() {
+    this.currentTime = 0
+  }
+
+
   // splitClick() {}
 }
