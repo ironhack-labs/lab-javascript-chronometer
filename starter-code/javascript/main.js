@@ -10,9 +10,9 @@ var milUni      = document.getElementById('milUni');
 var splits      = document.querySelector('#splits');
 
 function printTime() {
-  printMinutes(chronometer.getMinutes());
-  printSeconds(chronometer.getSeconds());
-  printMilliseconds(chronometer.getMilliseconds());
+  printMinutes(chronometer.twoDigitsNumber(chronometer.getMinutes()));
+  printSeconds(chronometer.twoDigitsNumber(chronometer.getSeconds()));
+  printMilliseconds(chronometer.twoDigitsNumber(chronometer.getMilliseconds()));
 }
 
 function printMinutes(minutes) {
