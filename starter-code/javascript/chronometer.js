@@ -19,7 +19,10 @@ class Chronometer {
     let seconds = this.currentTime - (this.getMinutes() * 60);
     return seconds;
   }
-  // twoDigitsNumber() {}
+
+  twoDigitsNumber(number) {
+    return number.toString().padStart(2, '0')
+  }
   // stopClick() {}
   // resetClick() {}
   // splitClick() {}
