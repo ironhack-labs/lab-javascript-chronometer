@@ -9,10 +9,10 @@ class Chronometer {
     }, 1000);
   }
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return this.twoDigitsNumber( Math.floor(this.currentTime / 60) );
   }
   getSeconds() {
-    return this.currentTime - this.getMinutes() * 60;
+    return this.twoDigitsNumber( this.currentTime - this.getMinutes() * 60 );
   }
   twoDigitsNumber(number) {
     return ((number < 10) ? '0' : '') + number;
@@ -23,5 +23,7 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  splitClick() {}
+  splitClick() {
+    return `${this.getMinutes()}:${this.getSeconds()}`;
+  }
 }
