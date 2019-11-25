@@ -9,7 +9,11 @@ class Chronometer {
       this.currentTime ++;
     }.bind(this),1000)
   }
-  // getMinutes() {}
+
+  getMinutes() {
+    let minutes = this.currentTime/60;
+    return Math.floor(minutes)
+  }
   // getSeconds() {}
   // twoDigitsNumber() {}
   // stopClick() {}
