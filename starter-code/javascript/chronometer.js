@@ -3,7 +3,12 @@ class Chronometer {
     this.currentTime = 0,
     this.intervalId = 0
   }
-  // startClick() {}
+  
+  startClick() {
+    setInterval(function() {
+      this.currentTime ++;
+    }.bind(this),1000)
+  }
   // getMinutes() {}
   // getSeconds() {}
   // twoDigitsNumber() {}
