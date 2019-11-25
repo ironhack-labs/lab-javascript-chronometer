@@ -5,7 +5,7 @@ class Chronometer {
   }
   
   startClick() {
-    setInterval(function() {
+    this.intervalId = setInterval(function() {
       this.currentTime ++;
     }.bind(this),1000)
   }
@@ -23,7 +23,11 @@ class Chronometer {
   twoDigitsNumber(number) {
     return number.toString().padStart(2, '0')
   }
-  // stopClick() {}
+
+  stopClick() {
+    clearInterval(this.intervalId)
+    this.intervalId = 0
+  }
 
   resetClick() {
     this.currentTime = 0;
