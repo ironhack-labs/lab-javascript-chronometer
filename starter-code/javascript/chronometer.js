@@ -14,7 +14,11 @@ class Chronometer {
     let minutes = this.currentTime/60;
     return Math.floor(minutes)
   }
-  // getSeconds() {}
+
+  getSeconds() {
+    let seconds = this.currentTime - (this.getMinutes() * 60);
+    return seconds;
+  }
   // twoDigitsNumber() {}
   // stopClick() {}
   // resetClick() {}
