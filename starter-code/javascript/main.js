@@ -9,9 +9,9 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 var splits      = document.querySelector('#splits');
 
-function printTime(minutes, seconds) {
-  printMinutes(minutes);
-  printSeconds(seconds);
+function printTime() {
+  printMinutes(chronometer.getMinutes());
+  printSeconds(chronometer.getSeconds());
 }
 
 function printMinutes(minutes) {
@@ -33,7 +33,9 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  chronometer.currentTime = 0;
+  printTime();
+  splits.innerHTML = '';
 }
 
 function setStopBtn() {
@@ -63,7 +65,7 @@ btnLeft.addEventListener('click', function () {
     setSplitBtn();
     chronometer.startClick();
     intervalId = setInterval(() => {
-      printTime(chronometer.getMinutes(), chronometer.getSeconds());
+      printTime();
     }, 10);
   } else {
     setStartBtn();
