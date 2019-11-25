@@ -24,6 +24,10 @@ class Chronometer {
     return number.toString().padStart(2, '0')
   }
   // stopClick() {}
-  // resetClick() {}
+
+  resetClick() {
+    this.currentTime = 0;
+  }
+
   // splitClick() {}
 }
