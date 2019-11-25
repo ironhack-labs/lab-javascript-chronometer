@@ -12,6 +12,7 @@ var splits      = document.querySelector('#splits');
 function printTime() {
   printMinutes(chronometer.getMinutes());
   printSeconds(chronometer.getSeconds());
+  printMilliseconds(chronometer.getMilliseconds());
 }
 
 function printMinutes(minutes) {
@@ -24,8 +25,9 @@ function printSeconds(seconds) {
   secUni.innerHTML = seconds.charAt(1);
 }
 
-function printMilliseconds() {
-
+function printMilliseconds(milliseconds) {
+  milDec.innerHTML = milliseconds.charAt(0);
+  milUni.innerHTML = milliseconds.charAt(1);
 }
 
 function printSplit() {
