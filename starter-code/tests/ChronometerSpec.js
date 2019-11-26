@@ -41,13 +41,11 @@ describe('', function () {
 
     it('should increment 1 to currentTime property on every 1 second interval', function () {
       jasmine.clock().tick(1000);
-
       expect(chronometer.currentTime).toEqual(1);
     });
 
     it('after 3 seconds, currentTime should be 3', function () {
       jasmine.clock().tick(3000);
-
       expect(chronometer.currentTime).toEqual(3);
     });
   });

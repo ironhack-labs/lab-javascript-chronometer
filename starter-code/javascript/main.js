@@ -67,7 +67,7 @@ function respondToTick(chronometer){
 
 // create the chronometer instance
 window.onload=function(){
-    chronometer.interval=17; // tick every 17 ms, so we can see milliseconds!!
+    chronometer.interval=100; // tick every 250 ms, so we can see milliseconds!!
     chronometer.ontick=respondToTick;
 }
 
