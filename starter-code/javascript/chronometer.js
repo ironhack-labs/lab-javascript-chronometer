@@ -11,7 +11,9 @@ class Chronometer {
   getMinutes(){
     return Math.floor(this.currentTime / 60)
   }
-  // getSeconds() {}
+  getSeconds(){
+    return this.currentTime % 60
+  }
   // twoDigitsNumber() {}
   // stopClick() {}
   // resetClick() {}
