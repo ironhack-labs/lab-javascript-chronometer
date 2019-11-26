@@ -1,8 +1,9 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = "";
+    this.intervalId;
   }
+
   startClick() {
     this.intervalId = setInterval(() => {
       this.currentTime++;
@@ -10,23 +11,23 @@ class Chronometer {
   }
 
   getMinutes() {
-    return parseInt(this.currentTime / 60);
+    return this.twoDigitsNumber(parseInt(this.currentTime / 60));
   }
 
   getSeconds() {
-    return parseInt(this.currentTime % 60);
+    return this.twoDigitsNumber(parseInt(this.currentTime % 60));
   }
 
   twoDigitsNumber(number) {
     return number.toString().padStart(2, 0);
   }
-  
+
   stopClick() {
     this.currentTime = 0;
     clearInterval(this.intervalId);
   }
-  
+
   resetClick() {}
-  
+
   splitClick() {}
 }
