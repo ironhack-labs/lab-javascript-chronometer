@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("./fonts/ds-digi.ttf");
 }
 
 body {
-  font-family: Arial;
+  font-family: "Digi";
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
@@ -14,10 +14,10 @@ body {
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 250px;
+  height: 270px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 255px;
 }
 
 #sphere {
@@ -26,12 +26,12 @@ body {
   box-sizing: border-box;
   font-family: "Digi";
   font-size: 80px;
-  height: 210px;
+  height: 230px;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 230px;
 }
 
 #splits-container {
@@ -95,10 +95,10 @@ body {
   bottom: 10px;
   color: #fff;
   cursor: pointer;
-  height: 50px;
+  height: 55px;
   outline: 0;
   position: absolute;
-  width: 50px;
+  width: 55px;
 }
 
 .btn.start,
