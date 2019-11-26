@@ -11,15 +11,17 @@ var milUni = document.getElementById('milUni');
 
 function printTime() {
 
+
 }
 
 function printMinutes() {
-    minUni.innerText = this.getMinutes()
-
 }
-
+console.log("inside")
 function printSeconds() {
-
+    console.log("the time === ", chronometer.currentTime)
+    if (chronometer.currentTime < 10) {
+        minUni.innerText = chronometer.currentTime
+    }
 }
 
 function printMilliseconds() {
@@ -35,48 +37,47 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+    btnLeft.classList.toggle('stop')
+    btnLeft.classList.toggle('start')
+    btnLeft.innerText = 'START'
 
 }
 
 function setSplitBtn() {
+    btnRight.classList.toggle('split')
+    btnRight.classList.toggle('reset')
+    btnRight.innerText = 'RESET'
 
 }
 
 function setStartBtn() {
-
+    btnLeft.classList.toggle('start')
+    btnLeft.classList.toggle('stop')
+    btnLeft.innerText = 'STOP'
+    printSeconds()
 }
 
 function setResetBtn() {
-
+    btnRight.classList.toggle('reset')
+    btnRight.classList.toggle('split')
+    btnRight.innerText = 'SPLIT'
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
     if (btnLeft.classList.contains('start')) {
-        btnLeft.classList.toggle('start')
-        btnLeft.classList.toggle('stop')
-        btnLeft.innerText = 'STOP'
+        setStartBtn();
     } else {
-        btnLeft.classList.toggle('stop')
-        btnLeft.classList.toggle('start')
-        btnLeft.innerText = 'START'
+        setStopBtn();
     }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    
     if (btnRight.classList.contains('reset')) {
-        btnRight.classList.toggle('reset')
-        btnRight.classList.toggle('split')
-        btnRight.innerText = 'SPLIT'        
+        setResetBtn();
     } else {
-        btnRight.classList.toggle('split')
-        btnRight.classList.toggle('reset')
-        btnRight.innerText ='START'
+        setSplitBtn();
     }
 });
 
-function startGame() {
-    const myGame = new Chronometer
-}

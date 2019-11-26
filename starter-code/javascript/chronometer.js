@@ -7,7 +7,9 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(() => {
       this.currentTime++
+      printSeconds()
     }, 1000)
+    setStartBtn()
   }
 
   getMinutes() {
@@ -16,11 +18,11 @@ class Chronometer {
   }
 
   getSeconds() {
-    if (this.currentTime < 60) {
+    if (this.currentTime < 10) {
       return this.currentTime
     } else {
-      return this.currentTime % 60
-    }
+      return this.currentTime % 9
+    } 
   }
   twoDigitsNumber(value) {
     if (value < 10)
@@ -35,6 +37,7 @@ class Chronometer {
     this.currentTime = 0
   }
 
-
   // splitClick() {}
+
+
 }
