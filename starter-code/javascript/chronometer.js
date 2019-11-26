@@ -6,13 +6,18 @@ class Chronometer {
 
   startClick() {
     setInterval(() => {
-      this.currentTime++
+      this.currentTime++;
     }, 1000);
   }
-  
-  // getMinutes() {}
-  // getSeconds() {}
-  // twoDigitsNumber() {}
+
+  getMinutes() {
+    this.currentTime = Math.floor(this.currentTime / 60);
+    return this.currentTime;
+  }
+  getSeconds() {
+    return this.currentTime % 60;
+  }
+  twoDigitsNumber() {}
   // stopClick() {}
   // resetClick() {}
   // splitClick() {}
