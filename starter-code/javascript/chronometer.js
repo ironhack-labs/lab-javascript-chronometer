@@ -21,7 +21,11 @@ class Chronometer {
       return "" + value;
     }
   }
-  // stopClick() {}
-  // resetClick() {}
+  stopClick(){
+    clearInterval(this.intervalId)
+  }
+  resetClick(){
+    this.currentTime = 0;
+  }
   // splitClick() {}
 }
