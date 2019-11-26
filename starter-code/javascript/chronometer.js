@@ -1,19 +1,19 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = setInterval(function(){ 
-      return this.currentTime += 1;
-      }, 1000)
+    this.intervalId;
   }
   startClick(){
-    return this.intervalId
+    this.intervalId = setInterval(function(){
+      this.currentTime += 1;
+    }.bind(this), 1000)
   }
-  // getMinutes() {}
+  getMinutes(){
+    return Math.floor(this.currentTime / 60)
+  }
   // getSeconds() {}
   // twoDigitsNumber() {}
   // stopClick() {}
   // resetClick() {}
   // splitClick() {}
 }
-var chrono = new Chronometer
-chrono.startClick()
