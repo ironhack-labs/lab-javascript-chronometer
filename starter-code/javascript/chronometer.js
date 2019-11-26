@@ -5,24 +5,29 @@ class Chronometer {
   }
   startClick() {
     this.intervalId = setInterval(function(){
-      this.currentTime+=1;
-    }.bind(this), 1000)
+      this.currentTime+=1
+      console.log('tiume',this.currentTime)
+      //printTime() 
+    }.bind(this),1000)
   }
-  getMinutes() {
+  getMinutes(){
+    console.log('getminutes',Math.floor(this.currentTime/60))
     return Math.floor(this.currentTime/60);
   }
   getSeconds() {
-    return Math.floor(this.currentTime%60)
+    console.log('getSeconds',Math.floor(this.currentTime%60))
+    return Math.floor(this.currentTime%60);
   }
-  twoDigitsNumber(value){
-    value = new String(value);
-    if(value.length < 2) return '0' + value;
-    return value
+  twoDigitsNumber(time){
+    time = new String(time)
+    if(time.length < 2) return '0' + time;
+    return time;
   }
-  // stopClick() {}
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
   resetClick() {
-    this.currentTime = 0;
+    this.currentTime = 0
   }
-  // splitClick() {}
-
+  splitClick() {}
 }
