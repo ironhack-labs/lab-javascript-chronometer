@@ -7,7 +7,6 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
-var refreshVIewId;
 
 function printTime() {
     printMinutes();
@@ -77,13 +76,12 @@ btnLeft.addEventListener('click', function() {
         setStartBtn();
         setResetBtn();
         chronometer.startClick();
-        refreshViewId = setInterval(printTime, 10);
+        setInterval(printTime, 10);
 
     } else {
         setStopBtn();
         setSplitBtn();
         chronometer.stopClick();
-        //clearInterval(refreshViewId);
     }
 });
 
