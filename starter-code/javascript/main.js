@@ -31,32 +31,34 @@ function printMilliseconds(milliseconds) {
 }
 
 function printSplit() {
-  splits.innerHTML += `<li>${chronometer.splitClick()}</li>`;
+  let newSplit = document.createElement('li');
+  newSplit.innerHTML = `${chronometer.splitClick()}`;
+  splits.append(newSplit);
 }
 
 function clearSplits() {
-  chronometer.currentTime = 0;
+  chronometer.resetClick();
   printTime();
   splits.innerHTML = '';
 }
 
 function setStopBtn() {
-  btnLeft.className = btnLeft.className.replace(/start/, 'stop');
+  btnLeft.classList.replace('start', 'stop')
   btnLeft.innerHTML = 'STOP';
 }
 
 function setSplitBtn() {
-  btnRight.className = btnRight.className.replace(/reset/, 'split');
+  btnRight.classList.replace('reset', 'split');
   btnRight.innerHTML = 'SPLIT';
 }
 
 function setStartBtn() {
-  btnLeft.className = btnLeft.className.replace(/stop/, 'start');
+  btnLeft.classList.replace('stop', 'start');
   btnLeft.innerHTML = 'START';
 }
 
 function setResetBtn() {
-  btnRight.className = btnRight.className.replace(/split/, 'reset');
+  btnRight.classList.replace('split', 'reset');
   btnRight.innerHTML = 'RESET';
 }
 
