@@ -9,13 +9,13 @@ class Chronometer {
       this.currentTime++;
     }, 1000);
   }
-
+  
   getMinutes() {
-    return this.twoDigitsNumber(parseInt(this.currentTime / 60));
+    return parseInt(this.currentTime / 60);
   }
 
   getSeconds() {
-    return this.twoDigitsNumber(parseInt(this.currentTime % 60));
+    return parseInt(this.currentTime % 60);
   }
 
   twoDigitsNumber(number) {
@@ -23,11 +23,12 @@ class Chronometer {
   }
 
   stopClick() {
-    this.currentTime = 0;
     clearInterval(this.intervalId);
   }
 
-  resetClick() {}
+  resetClick() {
+    this.currentTime = 0;
+  }
 
   splitClick() {}
 }
