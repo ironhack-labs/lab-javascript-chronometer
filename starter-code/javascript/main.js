@@ -32,7 +32,7 @@ function printMilliseconds(milliseconds) {
 
 function printSplit() {
   let newSplit = document.createElement('li');
-  newSplit.innerHTML = `${chronometer.splitClick()}`;
+  newSplit.innerHTML = chronometer.splitClick();
   splits.append(newSplit);
 }
 
