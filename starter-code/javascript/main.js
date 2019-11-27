@@ -39,7 +39,7 @@ function printSplit() {
     chronometer.twoDigitsNumber(chronometer.getMinutes()) +
     ":" +
     chronometer.twoDigitsNumber(chronometer.getSeconds());
-  split_list.appendChild(item_split_list);
+  split_list.append(item_split_list);
 }
 
 function clearSplits() {
