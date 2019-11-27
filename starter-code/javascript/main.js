@@ -48,7 +48,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  
+  listOl.innerHTML = ""
 }
 
 function setStopBtn() {
@@ -66,6 +66,9 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
+  chronometer.resetClick();
+  printTime()
+  clearSplits()
 }
 
 // Start/Stop Button
@@ -92,6 +95,7 @@ btnLeft.addEventListener('click', function () {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
   if(this.classList.contains('reset')){
+    setResetBtn();
   }else{
     setSplitBtn();
   }
