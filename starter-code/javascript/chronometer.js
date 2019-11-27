@@ -6,16 +6,16 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(function(){
       this.currentTime+=1
-      console.log('tiume',this.currentTime)
+      //console.log('tiume',this.currentTime)
       //printTime() 
     }.bind(this),1000)
   }
   getMinutes(){
-    console.log('getminutes',Math.floor(this.currentTime/60))
+    //console.log('getminutes',Math.floor(this.currentTime/60))
     return Math.floor(this.currentTime/60);
   }
   getSeconds() {
-    console.log('getSeconds',Math.floor(this.currentTime%60))
+    //console.log('getSeconds',Math.floor(this.currentTime%60))
     return Math.floor(this.currentTime%60);
   }
   twoDigitsNumber(time){
