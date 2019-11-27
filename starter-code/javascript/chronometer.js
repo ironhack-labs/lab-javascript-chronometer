@@ -6,7 +6,7 @@ class Chronometer {
   }
   startClick() {
     this.intervalId = setInterval(() => {
-      if (this.milliseconds++ % 100 == 0) this.currentTime++; // every 100 milliseconds add 1 second to currentTime
+      if (++this.milliseconds % 100 == 0) this.currentTime++; // every 100 milliseconds add 1 second to currentTime
     }, 10);
   }
   getMinutes() {
