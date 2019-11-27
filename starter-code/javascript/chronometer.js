@@ -7,7 +7,6 @@ class Chronometer {
     this.intervalId = setInterval(function(){
       this.currentTime+=1
       //console.log('tiume',this.currentTime)
-      //printTime() 
     }.bind(this),1000)
   }
   getMinutes(){
