@@ -1,10 +1,10 @@
 class Chronometer {
 	constructor() {
 		this.currentTime = 0;
-		this.intervalId = this.startClick();
+		this.intervalId = 0;
 	}
 	startClick() {
-		return setInterval(() => {
+		this.intervalId = setInterval(() => {
 			this.currentTime++;
 		}, 1000);
 	}
@@ -18,7 +18,7 @@ class Chronometer {
 		return digit < 10 ? `0${digit}` : `${digit}`;
 	}
 	stopClick() {
-		clearInterval();
+		clearInterval(this.intervalId);
 	}
 	resetClick() {
 		this.currentTime = 0;
