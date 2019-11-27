@@ -3,8 +3,9 @@ class Chronometer {
     this.currentTime = 0,
       this.intervalId = 0
   }
-  startClick() {
+  startClick(printTime) {
     this.intervalId = setInterval(() => {
+      printTime()
       this.currentTime++
     }, 1000)
   }
@@ -25,10 +26,12 @@ class Chronometer {
   }
   resetClick() {
     this.currentTime = 0
+    return this.currentTime
+  }
+  splitClick() {
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
   }
 }
-//let fran = new Chronometer()
-//console.log(fran.startClick())
 
 
 
@@ -36,4 +39,3 @@ class Chronometer {
 
 
 
-// splitClick() {}
