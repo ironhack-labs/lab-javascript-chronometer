@@ -42,7 +42,11 @@ function printSplit() {
   split_list.appendChild(item_split_list);
 }
 
-function clearSplits() {}
+function clearSplits() {
+  [...split_list.children].forEach(e => {
+    split_list.removeChild(e);
+  })
+}
 
 function setStopBtn() {
   btnLeft.className = "btn stop";
@@ -88,5 +92,6 @@ btnRight.addEventListener("click", () => {
   } else {
     chronometer.resetClick();
     printTime();
+    clearSplits();
   }
 });
