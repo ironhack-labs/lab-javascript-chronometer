@@ -10,12 +10,11 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  
 }
 
 function printMinutes() {
 
-}
 
 function printSeconds() {
 
@@ -56,11 +55,13 @@ btnLeft.addEventListener('click', function () {
     btnLeft.innerText = "STOP"
     btnRight.className = "btn split"
     btnRight.innerText = "SPLIT"
+    chronometer.startClick()
   } else {
     btnLeft.className = "btn start"
     btnLeft.innerText = "START"
     btnRight.className = "btn reset"
     btnRight.innerText = "RESET"
+    chronometer.stopClick()
   }
 });
 
