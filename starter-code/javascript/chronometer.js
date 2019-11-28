@@ -12,7 +12,7 @@ class Chronometer {
           console.log(this.currentTime);
       }.bind(this), 1000);
 
-      // In order to pass all Jasmine tests I must set another interval for milis
+      // Interval for milis
       this.instervalMilisId = setInterval(() => {
           this.currentMilis++;
       }, 10);
