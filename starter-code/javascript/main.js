@@ -8,6 +8,21 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
+btnLeft.onclick = function() {
+  if ( btnLeft.className == 'btn start') {
+    btnLeft.className = 'btn stop';
+    btnLeft.innerText = 'STOP';
+    btnRight.className = 'btn split';
+    btnRight.innerHTML = 'SPLIT';
+    chronometer.startClick()
+  } else if (btnLeft.className == 'btn stop') {
+    btnLeft.className = 'btn start';
+    btnLeft.innerText = 'START';
+    btnRight.className = 'btn reset';
+    btnRight.innerHTML = 'RESET';
+    chronometer.stopClick();
+  }
+}
 
 function printTime() {
 
