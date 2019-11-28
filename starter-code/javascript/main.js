@@ -7,6 +7,8 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
+console.log(secDec.textContent)
+console.log(secUni.textContent)
 
 
 function printTime() {
@@ -15,13 +17,16 @@ function printTime() {
 }
 
 function printMinutes() {
-    minDec.value.innerHTML = '1'
-    minUni.value.innerHTML = '1'
+    //minDec.value.innerHTML 
+    //minUni.value.innerHTML 
 }
 
 function printSeconds() {
-    secDec.value.innerHTML = getSeconds()
-    secUni.value.innerHTML = getSeconds()
+    secDec.textContent.innerHTML = getSeconds()
+    //console.log(secDec.value)
+    secUni.textContent.innerHTML = getSeconds(printTime)
+    //console.log(secUni.value)
+
 }
 
 function printMilliseconds() {
@@ -38,6 +43,7 @@ function clearSplits() {
 
 function setStopBtn() {
 
+
 }
 
 function setSplitBtn() {
@@ -45,9 +51,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-    if (btnLeft.className === 'btn start') {
-        startClick()
-    }
+
 }
 
 function setResetBtn() {
@@ -61,12 +65,14 @@ btnLeft.onclick = function () {
         btnLeft.innerHTML = 'STOP'
         btnRight.className = 'btn split'
         btnRight.innerHTML = 'SPLIT'
+        chronometer.startClick()
 
     } else if (btnLeft.className === 'btn stop') {
         btnLeft.className = 'btn start'
         btnLeft.innerHTML = 'START'
         btnRight.className = 'btn reset'
         btnRight.innerHTML = 'RESET'
+        chronometer.stopClick(  )
     }
 };
 
@@ -77,6 +83,7 @@ btnRight.onclick = function () {
         btnRight.innerHTML = 'SPLIT'
         btnLeft.className = 'btn stop'
         btnLeft.innerHtml = 'STOP'
+
     } else if (btnRight.className === 'btn split') {
         btnRight.className = 'btn reset'
         btnRight.innerHTML = 'RESET'
