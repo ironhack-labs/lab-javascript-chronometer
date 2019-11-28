@@ -41,14 +41,13 @@ function printMilliseconds(){
 }
 
 function printSplit() {
-  var newLi  = document.createElement('li');
-  listOl.appendChild(newLi);
-  let li = document.querySelector('#splits li:last-child');
-  //console.log(li)
   let min = minDec.textContent+minUni.textContent;
   let seg = secDec.textContent+secUni.textContent;
   let milseg = milDec.textContent+milUni.textContent;
-  li.innerHTML = min+':'+seg+':'+milseg;
+  var newLi  = document.createElement('li');
+  newLi.innerText = min+':'+seg+':'+milseg;
+  listOl.append(newLi);
+  //console.log(li)
 }
 
 function clearSplits() {
