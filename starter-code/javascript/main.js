@@ -94,7 +94,7 @@ btnRight.addEventListener("click", () => {
     printSplit();
   } else {
     chronometer.resetClick();
-    
+
     printMinutes();
     printSeconds();
     printMilliseconds();
