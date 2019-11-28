@@ -33,7 +33,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  let split = document.createElement("li");
+  split.innerHTML = chronometer.splitClick();
+  let container = document.getElementById("splits");
+  container.append(split);
 }
 
 function clearSplits() {
@@ -77,5 +80,7 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+  if ( btnRight.className == 'btn split') {
+    printSplit();
+  }
 });
