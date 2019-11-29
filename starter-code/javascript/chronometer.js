@@ -20,6 +20,11 @@ class Chronometer {
     return Math.floor(seconds);
   }
 
+  getMilliseconds () {
+    let milliseconds = this.currentTime - this.getSeconds()*100 - (this.getMinutes() * 6000);
+    return milliseconds;
+  }
+
   twoDigitsNumber(number) {
     return number.toString().padStart(2, '0')
   }
@@ -34,6 +39,6 @@ class Chronometer {
   }
 
   splitClick() {
-    return this.twoDigitsNumber(this.getMinutes()) + ":" + this.twoDigitsNumber(this.getSeconds());
+    return this.twoDigitsNumber(this.getMinutes()) + ":" + this.twoDigitsNumber(this.getSeconds()) + ":" + this.twoDigitsNumber(this.getMilliseconds());
   }
 }
