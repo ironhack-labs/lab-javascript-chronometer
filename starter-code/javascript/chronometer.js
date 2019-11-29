@@ -9,10 +9,12 @@ class Chronometer {
     }.bind(this), 1000)
   }
   getMinutes(){
-    return Math.floor(this.currentTime / 60)
+    var minutes = Math.floor(this.currentTime / 60)
+    return minutes
   }
   getSeconds(){
-    return this.currentTime % 60
+    var seconds = this.currentTime % 60
+    return seconds
   }
   twoDigitsNumber(value){
     if (value < 10){

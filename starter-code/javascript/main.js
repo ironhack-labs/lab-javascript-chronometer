@@ -13,12 +13,22 @@ function printTime() {
 }
 
 function printMinutes() {
-  minUni.innerText = chronometer.getMinutes()
+  setInterval(function(){
+    var minutes = chronometer.getMinutes()
+    if(minutes < 10){
+      minDec.innerText = "0"
+      minUni.innerText = minutes
+    } else {
+      minDec.innerText = Math.floor(minutes / 10)
+      minUni.innerText = minutes % 10
+    }
+  }, 1000)
 }
 function printSeconds() {
   setInterval(function(){
     var seconds = chronometer.getSeconds()
     if(seconds < 10){
+      secDec.innerText = "0"
       secUni.innerText = seconds
     } else {
       secDec.innerText = Math.floor(seconds / 10)
@@ -64,6 +74,7 @@ btnLeft.addEventListener('click', function () {
     btnRight.className = "btn split"
     btnRight.innerText = "SPLIT"
     printSeconds()
+    printMinutes()
   } else {
     btnLeft.className = "btn start"
     btnLeft.innerText = "START"
