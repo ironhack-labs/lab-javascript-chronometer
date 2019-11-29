@@ -55,41 +55,41 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  
 }
 
 function setStopBtn() {
-
+  btnLeft.className = "btn stop"
+  btnLeft.innerText = "STOP"
 }
 
 function setSplitBtn() {
-
+  btnRight.className = "btn split"
+  btnRight.innerText = "SPLIT"
 }
 
 function setStartBtn() {
-
+  btnLeft.className = "btn start"
+  btnLeft.innerText = "START"
 }
 
 function setResetBtn() {
-
+  btnRight.className = "btn reset"
+  btnRight.innerText = "RESET"
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
   if(btnLeft.className == "btn start"){
     chronometer.startClick()
-    btnLeft.className = "btn stop"
-    btnLeft.innerText = "STOP"
-    btnRight.className = "btn split"
-    btnRight.innerText = "SPLIT"
+    setStopBtn()
+    setSplitBtn()
     printSeconds()
     printMinutes()
   } else {
-    btnLeft.className = "btn start"
-    btnLeft.innerText = "START"
-    btnRight.className = "btn reset"
-    btnRight.innerText = "RESET"
     chronometer.stopClick()
+    setStartBtn()
+    setResetBtn()
   }
 });
 
