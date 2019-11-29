@@ -11,16 +11,18 @@ var splits      = document.getElementById('splits');
 var splitNumber = 1;
 var minutes     = 0;
 var seconds     = 0;
+var miliseconds = 0;
 
 
 function printTime() {
-  return  chronometer.twoDigitsNumber(minutes) + ":" + chronometer.twoDigitsNumber(seconds)
+  return  chronometer.twoDigitsNumber(minutes) + ":" + chronometer.twoDigitsNumber(seconds) + ":" + chronometer.twoDigitsNumber(miliseconds)
 }
 
 function clearTime() {
   chronometer.resetClick()
   printMinutes()
   printSeconds()
+  printMilliseconds()
 }
 
 function printMinutes() {
@@ -33,7 +35,7 @@ function printMinutes() {
       minDec.innerText = Math.floor(minutes / 10)
       minUni.innerText = minutes % 10
     }
-  }, 1000)
+  }, 100)
 }
 function printSeconds() {
   setInterval(function(){
@@ -45,11 +47,20 @@ function printSeconds() {
       secDec.innerText = Math.floor(seconds / 10)
       secUni.innerText = seconds % 10
     }
-  }, 1000)
+  }, 100)
 }
 
 function printMilliseconds() {
-
+  setInterval(function(){
+    miliseconds = chronometer.getMiliseconds()
+    if(miliseconds < 10){
+      milDec.innerText = "0"
+      milUni.innerText = miliseconds
+    } else {
+      milDec.innerText = Math.floor(miliseconds / 10)
+      milUni.innerText = miliseconds % 10
+    }
+  })
 }
 
 function printSplit() {
@@ -96,6 +107,7 @@ btnLeft.addEventListener('click', function () {
     setSplitBtn()
     printSeconds()
     printMinutes()
+    printMilliseconds()
   } else {
     chronometer.stopClick()
     setStartBtn()
