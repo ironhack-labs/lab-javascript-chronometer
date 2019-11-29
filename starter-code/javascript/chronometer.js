@@ -18,7 +18,6 @@ class Chronometer {
   getSeconds() {
     this.minutesRemoved = 0;
     if (this.currentTime % 60 != 0)
-      //{
       this.minutesRemoved = this.currentTime % 60;
     return this.minutesRemoved;
   }
@@ -31,7 +30,7 @@ class Chronometer {
     }
     return this.twoDigits;
   }
-  // stopClick() {}
+  stopClick() {}
   resetClick() {
     this.currentTime = 0;
   }
