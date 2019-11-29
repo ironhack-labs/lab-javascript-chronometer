@@ -5,9 +5,12 @@ class Chronometer {
   }
 
   startClick() {
-    this.intervalId = setInterval(function() {
-      this.currentTime++;
-    }, 1000);
+    this.intervalId = setInterval(
+      function() {
+        this.currentTime++;
+      }.bind(this),
+      1000
+    );
   }
 
   getMinutes() {
@@ -15,17 +18,20 @@ class Chronometer {
     return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    //Gives us remainder of seconds
+    //Gives us remainder of seconds when number is smaller or greater than 60
     return Math.floor(this.currentTime % 60);
   }
   twoDigitsNumber(value) {
-    return ("0" + value).slice(-2);
+    if (value < 10) {
+      return "0" + value;
+    }
+    return value.toString();
   }
   stopClick() {
-    return (this.intervalId = 0);
+    clearInterval(this.intervalId);
   }
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  // splitClick() {} ???
 }
