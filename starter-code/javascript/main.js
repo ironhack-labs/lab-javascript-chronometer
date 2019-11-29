@@ -7,11 +7,13 @@ var secDec = document.getElementById("secDec");
 var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
+
+var split = document.getElementById("splits");
  var primiTimeId;
 
 
 
- function printTime() {
+function printTime() {
     primiTimeId =  setInterval(function(){
         printSeconds();
         printMinutes()
@@ -30,7 +32,12 @@ function printSeconds() {
 
 function printMilliseconds() {}
 
-function printSplit() {}
+function printSplit() {
+let li = document.createElement("li");
+li.innerHTML = chronometer.setTime();
+split.appendChild(li);
+
+}
 
 function clearSplits() {}
 
@@ -42,40 +49,48 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  btnLeft.innerHTML = "SPLIT";
-  btnLeft.classList.remove("reset");
-  btnLeft.classList.add = "split";
+  btnRight.innerHTML = "SPLIT";
+  btnRight.classList.remove("reset");
+  btnRight.classList.add = "split";
 }
 
 function setStartBtn() {
   btnLeft.innerHTML = "START";
-  btnLeft.classList.remove("stop");
+  btnLeft.classList.remove(" stop");
   btnLeft.classList.add = "start";
   setResetBtn();
 }
 
 function setResetBtn() {
-  btnLeft.innerHTML = "RESET";
-  btnLeft.classList.remove("split");
-  btnLeft.classList.add = "reset";
+  btnRight.innerHTML = "RESET";
+  btnRight.classList.remove("split");
+  btnRight.classList.add = "reset";
 }
 
 // Start/Stop Button
 btnLeft.addEventListener("click", function() {
-  if (this.classList.contains("start")) {
-    setStartBtn();
-    chronometer.startClick();
-  } else {
+  if (this.classList.contains('start')) {
     setStopBtn();
+    setSplitBtn()
+    chronometer.startClick();
+    printTime();
+    
+  } else {
+    setStartBtn();
+    setResetBtn();
     chronometer.stopClick();
   }
 });
 
+
+
+
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
-  if (this.classList.contains("reset")) {
+  if (this.classList.contains('reset')) {
     setSplitBtn();
   } else {
     setResetBtn();
+    printSplit();
   }
 });
