@@ -6,7 +6,7 @@ class Chronometer {
     this.miliIntervalId;
   }
 
-  
+
   // startClick() {}
   startClick() {
     this.intervalId = setInterval(() => {
@@ -29,7 +29,7 @@ class Chronometer {
   // getSeconds() {}
   getSeconds() {
     let seconds = this.currentTime % 60;
-    return seconds; 
+    return seconds;
   }
 
 
@@ -46,7 +46,7 @@ class Chronometer {
   }
 
 
-  setUpdateFunction(func){
+  setUpdateFunction(func) {
     this.printTimeFunction = func;
   }
 
