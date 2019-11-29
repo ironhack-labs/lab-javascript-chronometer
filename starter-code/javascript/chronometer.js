@@ -1,6 +1,6 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0;
+    this.currentTime = 2476;
     this.intervalId;
   }
   startClick(){

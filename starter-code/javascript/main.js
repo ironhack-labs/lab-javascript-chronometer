@@ -7,16 +7,19 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-var splits       = document.getElementById('splits');
+var splits      = document.getElementById('splits');
 var splitNumber = 1;
+var minutes     = 0;
+var seconds     = 0;
+
 
 function printTime() {
-  
+  return  chronometer.twoDigitsNumber(minutes) + ":" + chronometer.twoDigitsNumber(seconds)
 }
 
 function printMinutes() {
   setInterval(function(){
-    var minutes = chronometer.getMinutes()
+    minutes = chronometer.getMinutes()
     if(minutes < 10){
       minDec.innerText = "0"
       minUni.innerText = minutes
@@ -28,7 +31,7 @@ function printMinutes() {
 }
 function printSeconds() {
   setInterval(function(){
-    var seconds = chronometer.getSeconds()
+    seconds = chronometer.getSeconds()
     if(seconds < 10){
       secDec.innerText = "0"
       secUni.innerText = seconds
@@ -47,6 +50,7 @@ function printSplit() {
   let newLi = document.createElement('li')
   newLi.setAttribute("id", "split" + splitNumber)
   splits.append(newLi)
+  newLi.innerText = printTime()
   splitNumber ++;
 }
 
