@@ -22,9 +22,11 @@ function printMinutes() {
 }
 
 function printSeconds() {
-    secDec.textContent.innerHTML = getSeconds()
+    secUni.innerHTML = chronometer.twoDigitsNumber().chronometer.getSeconds()
+    console.log(secUni)
+    secDec.innerHTML = chronometer.twoDigitsNumber()
+    console.log(secUni)
     //console.log(secDec.value)
-    secUni.textContent.innerHTML = getSeconds(printTime)
     //console.log(secUni.value)
 
 }
@@ -88,6 +90,6 @@ btnRight.onclick = function () {
         btnRight.className = 'btn reset'
         btnRight.innerHTML = 'RESET'
         btnLeft.ClassName = 'btn start'
-        btnLeft.innerHTML = 'START'
+        btnLeft.innerHTML = 'STOP'
     }
 };
