@@ -39,7 +39,14 @@ split.appendChild(li);
 
 }
 
-function clearSplits() {}
+function clearSplits() {
+  document.getElementById("splits").innerHTML = "";
+  chronometer.resetClick();
+  minDec.innerHTML = "0";
+  minUni.innerHTML = "0";
+  secDec.innerHTML = "0";
+  secUni.innerHTML = "0";
+}
 
 function setStopBtn() {
   btnLeft.innerHTML = "STOP";
@@ -82,13 +89,11 @@ btnLeft.addEventListener("click", function() {
   }
 });
 
-
-
-
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
   if (this.classList.contains('reset')) {
     setSplitBtn();
+    clearSplits();
   } else {
     setResetBtn();
     printSplit();
