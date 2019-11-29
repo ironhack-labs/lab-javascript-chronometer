@@ -17,6 +17,12 @@ function printTime() {
   return  chronometer.twoDigitsNumber(minutes) + ":" + chronometer.twoDigitsNumber(seconds)
 }
 
+function clearTime() {
+  chronometer.resetClick()
+  printMinutes()
+  printSeconds()
+}
+
 function printMinutes() {
   setInterval(function(){
     minutes = chronometer.getMinutes()
@@ -101,6 +107,7 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
   if(btnRight.className == "btn reset"){
     clearSplits()
+    clearTime()
   } else {
     printSplit()
   }
