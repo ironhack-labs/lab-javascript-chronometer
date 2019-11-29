@@ -7,17 +7,17 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(function() {
       this.currentTime ++;
-    }.bind(this),1000)
+    }.bind(this),10)
   }
 
   getMinutes() {
-    let minutes = this.currentTime/60;
+    let minutes = this.currentTime/6000;
     return Math.floor(minutes)
   }
 
   getSeconds() {
-    let seconds = this.currentTime - (this.getMinutes() * 60);
-    return seconds;
+    let seconds = (this.currentTime - (this.getMinutes() * 6000))/100;
+    return Math.floor(seconds);
   }
 
   twoDigitsNumber(number) {
