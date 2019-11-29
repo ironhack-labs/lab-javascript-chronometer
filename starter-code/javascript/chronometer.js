@@ -4,9 +4,9 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick() {
-    this.intervalId = setInterval(() => {
+    this.intervalId = setInterval(function(){
       return this.currentTime ++;
-    }, 1000);
+    }.bind(this), 1000);
   } 
    getMinutes() {
     return this.currentTime = Math.floor(this.currentTime / 60)
