@@ -7,7 +7,7 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
-
+let fatherLi = document.getElementById('splits');
 
 
 function printTime() {
@@ -75,20 +75,17 @@ btnLeft.onclick = function () {
 // Reset/Split Button
 btnRight.onclick = function () {
     if (btnRight.className === 'btn reset') {
-        btnRight.className = 'btn split'
-        btnRight.innerHTML = 'SPLIT'
-        btnLeft.className = 'btn stop'
+        btnLeft.className = 'btn start'
         btnLeft.innerHtml = 'STOP'
-
-    } else if (btnRight.className === 'btn split') {
-        btnLeft.ClassName = 'btn start'
+        chronometer.resetClick()
+        printTime()
+        fatherLi.innerHTML=""
+    } 
+    else if (btnRight.className === 'btn split') {
+        btnLeft.ClassName = 'btn stop'
         btnLeft.innerHTML = 'STOP'
-        let fatherLi = document.getElementById('splits')
         let createLi = document.createElement('li')
         createLi.innerText = chronometer.splitClick()
         fatherLi.appendChild(createLi)
-        console.log(createLi)
-        console.log(fatherLi)
-
     }
 };
