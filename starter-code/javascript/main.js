@@ -36,7 +36,13 @@ function printSplit() {
 	item.textContent = chronometer.splitClick();
 }
 
-function clearSplits() {}
+function clearSplits() {
+	splitList.innerHTML = '';
+	minDec.textContent = '0';
+	minUni.textContent = '0';
+	secDec.textContent = '0';
+	secUni.textContent = '0';
+}
 
 function setStopBtn() {
 	btnLeft.classList.toggle('stop');
@@ -80,4 +86,11 @@ btnLeft.addEventListener('click', function() {
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', printSplit);
+btnRight.addEventListener('click', function() {
+	if (btnRight.classList.contains('split')) {
+		printSplit();
+	} else {
+		chronometer.resetClick();
+		clearSplits();
+	}
+});
