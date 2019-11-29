@@ -69,7 +69,7 @@ btnLeft.addEventListener('click', function () {
     btnLeft.className = "btn start";
     btnLeft.innerHTML = "START";
     chronometer.stopClick();
-  //  clearInterval(intervalId);
+    clearInterval(intervalId);
   }
 });
 
