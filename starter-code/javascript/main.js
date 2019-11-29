@@ -14,6 +14,7 @@ let splitList = document.querySelector('#splits');
 function printTime() {
 	printSeconds();
 	printMinutes();
+	printMilliseconds();
 }
 
 function printMinutes() {
@@ -28,7 +29,11 @@ function printSeconds() {
 	secUni.textContent = seconds[1];
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+	let milliseconds = chronometer.twoDigitsNumber(chronometer.getMiliseconds());
+	milDec.textContent = milliseconds[0];
+	milUni.textContent = milliseconds[1];
+}
 
 function printSplit() {
 	let item = document.createElement('li');
@@ -42,6 +47,8 @@ function clearSplits() {
 	minUni.textContent = '0';
 	secDec.textContent = '0';
 	secUni.textContent = '0';
+	milDec.textContent = '0';
+	milUni.textContent = '0';
 }
 
 function setStopBtn() {
@@ -81,7 +88,7 @@ btnLeft.addEventListener('click', function() {
 		chronometer.startClick();
 		intervalId = setInterval(() => {
 			printTime();
-		}, 1000);
+		}, 1);
 	}
 });
 
