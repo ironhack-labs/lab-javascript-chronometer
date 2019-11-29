@@ -8,8 +8,12 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
+let printIntervalID;
+
 function printTime() {
-  setInterval(function() {
+  clearInterval(printIntervalID)
+   printIntervalID = setInterval(function() {
+     console.log("interval", printIntervalID)
     printMinutes();
     printSeconds();
     printMilliseconds();
@@ -40,7 +44,8 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  let container = document.getElementById("splits");
+  container.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -57,6 +62,7 @@ function setStartBtn() {
   btnLeft.className = 'btn start';
   btnLeft.innerHTML = 'START';
   chronometer.stopClick()
+  clearInterval(printIntervalID);
 }
 
 function setResetBtn() {
@@ -82,5 +88,9 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
   if ( btnRight.className == 'btn split') {
     printSplit();
+  } else if (btnRight.className == 'btn reset') {
+    clearSplits() 
+    chronometer.resetClick();
+    printTime();
   }
 });
