@@ -7,6 +7,8 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splits       = document.getElementById('splits');
+var splitNumber = 1;
 
 function printTime() {
   
@@ -42,7 +44,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  let newLi = document.createElement('li')
+  newLi.setAttribute("id", "split" + splitNumber)
+  splits.append(newLi)
+  splitNumber ++;
 }
 
 function clearSplits() {
@@ -85,6 +90,10 @@ btnLeft.addEventListener('click', function () {
 });
 
 // Reset/Split Button
-btnLeft.addEventListener('click', function () {
+btnRight.addEventListener('click', function () {
+  if(btnRight.className == "btn reset"){
 
+  } else {
+    printSplit()
+  }
 });
