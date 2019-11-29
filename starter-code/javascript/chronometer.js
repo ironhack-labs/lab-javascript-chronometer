@@ -1,5 +1,10 @@
 class Chronometer {
-  constructor() {}
+  constructor() {
+    this.currentTime;
+    this.intervalId;
+  }
+
+  
   // startClick() {}
   // getMinutes() {}
   // getSeconds() {}
