@@ -40,7 +40,8 @@ function printSplit() {
 }
 
 function clearSplits() {
-
+  let container = document.getElementById("splits");
+  container.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -82,5 +83,8 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
   if ( btnRight.className == 'btn split') {
     printSplit();
+  } else if (btnRight.className == 'btn reset') {
+    clearSplits() 
+
   }
 });
