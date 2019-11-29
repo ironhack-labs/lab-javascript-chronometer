@@ -19,7 +19,11 @@ class Chronometer {
     return this.currentTime - (this.getMinutes()*60);
   }
 
-  twoDigitsNumber() {}
+  twoDigitsNumber(numReceived) {
+    var numberCropped = ('0' + numReceived).slice(-2);
+    return numberCropped;
+
+  }
 
 
   stopClick() {
