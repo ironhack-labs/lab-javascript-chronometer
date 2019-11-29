@@ -30,7 +30,8 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+btnRight.innerHTML = chronometer.splitClick() 
+console.log(chronometer.splitClick())
 }
 
 function clearSplits() {
@@ -81,9 +82,14 @@ btnRight.onclick = function () {
         btnLeft.innerHtml = 'STOP'
 
     } else if (btnRight.className === 'btn split') {
-        btnRight.className = 'btn reset'
-        btnRight.innerHTML = 'RESET'
         btnLeft.ClassName = 'btn start'
         btnLeft.innerHTML = 'STOP'
+        let createLi=document.createElement('li')
+        let fatherLi = document.getElementById('splits')
+        fatherLi.appendChild(createLi)
+        //btnRight=document.createTextNode(chronometer.splitClick())
+        console.log(createLi)
+        console.log(fatherLi)
+        
     }
 };
