@@ -24,9 +24,10 @@ class Chronometer {
       return value;
     }
   }
-  stopClick() {
-    clearInterval(this.intervalId)
+  //stopClick() {}
+
+  resetClick() {
+    this.currentTime = 0;
   }
-  // resetClick() {}
   // splitClick() {}
 }
