@@ -55,7 +55,11 @@ function printSplit() {
 }
 
 function clearSplits() {
-  
+  for (let i = 1; i < splitNumber; i++){
+    let allLi = document.getElementById("split" + i)
+    splits.removeChild(allLi)
+  }
+  splitNumber = 1;
 }
 
 function setStopBtn() {
@@ -96,7 +100,7 @@ btnLeft.addEventListener('click', function () {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
   if(btnRight.className == "btn reset"){
-
+    clearSplits()
   } else {
     printSplit()
   }
