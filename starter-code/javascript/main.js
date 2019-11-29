@@ -54,19 +54,16 @@ function clearSplits() {
 	milUni.textContent = '0';
 }
 
-function handleLeftBtn() {
+function handleButtons() {
 	btnLeft.classList.toggle('stop');
 	btnLeft.innerHTML = btnLeft.classList.contains('stop') ? 'STOP' : 'START';
-}
 
-function handleRightBtn() {
 	btnRight.classList.toggle('split');
 	btnRight.innerHTML = btnRight.classList.contains('split') ? 'SPLIT' : 'RESET';
 }
 
 function startChronometer() {
-	handleLeftBtn();
-	handleRightBtn();
+	handleButtons();
 	chronometer.startClick();
 	intervalID = setInterval(() => {
 		printTime();
@@ -74,8 +71,7 @@ function startChronometer() {
 }
 
 function stopChronometer() {
-	handleLeftBtn();
-	handleRightBtn();
+	handleButtons();
 	chronometer.stopClick();
 	clearInterval(intervalID);
 }
