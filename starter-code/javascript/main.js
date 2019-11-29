@@ -26,7 +26,8 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[1]
+    milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[0]
 }
 
 function printSplit() {
