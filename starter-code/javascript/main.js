@@ -13,7 +13,6 @@ let printIntervalID;
 function printTime() {
   clearInterval(printIntervalID)
    printIntervalID = setInterval(function() {
-     console.log("interval", printIntervalID)
     printMinutes();
     printSeconds();
     printMilliseconds();
@@ -33,7 +32,9 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+  let milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+  milDec.innerHTML = milliseconds[0];
+  milUni.innerHTML = milliseconds[1];
 }
 
 function printSplit() {
