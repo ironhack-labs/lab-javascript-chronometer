@@ -15,11 +15,12 @@ function printTime() {
 }
 
 function printMinutes() {
-
+// this.getMinutes();
+minDec.innerHTML = this.minutes;
 }
 
 function printSeconds() {
-
+secDec.innerHTML = this.minutesRemoved;
 }
 
 function printMilliseconds() {
