@@ -16,13 +16,13 @@ function printTime() {
 }
 
 function printMinutes() {
-    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(1)
-    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(0)
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
 }
 
 function printSeconds() {
-    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(1)
-    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(0)
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
 }
 
 function printMilliseconds() {
@@ -30,8 +30,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-btnRight.innerHTML = chronometer.splitClick() 
-console.log(chronometer.splitClick())
+
 }
 
 function clearSplits() {
@@ -84,12 +83,12 @@ btnRight.onclick = function () {
     } else if (btnRight.className === 'btn split') {
         btnLeft.ClassName = 'btn start'
         btnLeft.innerHTML = 'STOP'
-        let createLi=document.createElement('li')
         let fatherLi = document.getElementById('splits')
+        let createLi = document.createElement('li')
+        createLi.innerText = chronometer.splitClick()
         fatherLi.appendChild(createLi)
-        //btnRight=document.createTextNode(chronometer.splitClick())
         console.log(createLi)
         console.log(fatherLi)
-        
+
     }
 };
