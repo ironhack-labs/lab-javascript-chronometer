@@ -13,6 +13,7 @@ let fatherLi = document.getElementById('splits');
 function printTime() {
     printSeconds()
     printMinutes()
+    printMilliseconds()
 }
 
 function printMinutes() {
@@ -80,9 +81,8 @@ btnRight.onclick = function () {
         btnLeft.innerHtml = 'STOP'
         chronometer.resetClick()
         printTime()
-        fatherLi.innerHTML=""
-    } 
-    else if (btnRight.className === 'btn split') {
+        fatherLi.innerHTML = ""
+    } else if (btnRight.className === 'btn split') {
         btnLeft.ClassName = 'btn stop'
         btnLeft.innerHTML = 'STOP'
         let createLi = document.createElement('li')
