@@ -7,8 +7,7 @@ var secDec = document.getElementById('secDec');
 var secUni = document.getElementById('secUni');
 var milDec = document.getElementById('milDec');
 var milUni = document.getElementById('milUni');
-console.log(secDec.textContent)
-console.log(secUni.textContent)
+
 
 
 function printTime() {
@@ -17,18 +16,13 @@ function printTime() {
 }
 
 function printMinutes() {
-    //minDec.value.innerHTML 
-    //minUni.value.innerHTML 
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(1)
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(0)
 }
 
 function printSeconds() {
-    secUni.innerHTML = chronometer.twoDigitsNumber().chronometer.getSeconds()
-    console.log(secUni)
-    secDec.innerHTML = chronometer.twoDigitsNumber()
-    console.log(secUni)
-    //console.log(secDec.value)
-    //console.log(secUni.value)
-
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(1)
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(0)
 }
 
 function printMilliseconds() {
@@ -74,7 +68,7 @@ btnLeft.onclick = function () {
         btnLeft.innerHTML = 'START'
         btnRight.className = 'btn reset'
         btnRight.innerHTML = 'RESET'
-        chronometer.stopClick(  )
+        chronometer.stopClick()
     }
 };
 
