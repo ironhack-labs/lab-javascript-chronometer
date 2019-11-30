@@ -7,15 +7,10 @@ class Chronometer {
   }
 
   startClick() {
-      this.intervalId = setInterval(function() {
-          this.currentTime++;
-          console.log(this.currentTime);
-      }.bind(this), 1000);
-
-      // Interval for milis
-      this.instervalMilisId = setInterval(() => {
+      this.intervalId = setInterval(function() {   
           this.currentMilis++;
-      }, 10);
+          if(this.currentMilis % 100 == 0) this.currentTime++;
+      }.bind(this), 10);
   }
 
   getMinutes() {
