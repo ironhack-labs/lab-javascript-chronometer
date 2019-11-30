@@ -1,6 +1,6 @@
 class Chronometer {
   constructor() {}
-  // startClick() {}
+  startClick() {}
   // getMinutes() {}
   // getSeconds() {}
   // twoDigitsNumber() {}
