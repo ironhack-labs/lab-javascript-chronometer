@@ -9,7 +9,8 @@ class Chronometer {
         this.currentTime++;
       }.bind(this),
       1000
-    ); console.log(this.currentTime)
+    );
+    console.log(this.currentTime);
   }
   getMinutes() {
     this.minutes = Math.floor(this.currentTime / 60);
@@ -17,8 +18,7 @@ class Chronometer {
   }
   getSeconds() {
     this.minutesRemoved = 0;
-    if (this.currentTime % 60 != 0)
-      this.minutesRemoved = this.currentTime % 60;
+    if (this.currentTime % 60 != 0) this.minutesRemoved = this.currentTime % 60;
     return this.minutesRemoved;
   }
   twoDigitsNumber(number) {
@@ -34,5 +34,11 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  splitClick() {
+    return (
+      this.twoDigitsNumber(this.getMinutes()) +
+      ":" +
+      this.twoDigitsNumber(this.getSeconds())
+    );
+  }
 }
