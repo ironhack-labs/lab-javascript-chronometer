@@ -10,15 +10,19 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+  return  chronometer.twoDigitsNumber(minutes) + ":" + chronometer.twoDigitsNumber(seconds)
 }
 
 function printMinutes() {
-
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.textContent = minutes[0];
+  minUni.textContent = minutes[1];
 }
 
 function printSeconds() {
-
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.textContent = seconds[0];
+  secUni.textContent = seconds[1];
 }
 
 function printMilliseconds() {
