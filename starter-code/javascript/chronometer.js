@@ -4,10 +4,12 @@ class Chronometer {
     this.intervalId;
   }
   startClick() {
-    this.intervalId = setInterval(increaseOneSecond, 1000);
-    function increaseOneSecond() {
-      return this.currentTime++;
-    }
+    this.intervalId = setInterval(
+      function() {
+        return this.currentTime++;
+      }.bind(this),
+      1000
+    );
   }
   getMinutes() {
     return parseInt(this.currentTime / 60, 10);
