@@ -9,7 +9,7 @@ class Chronometer {
         this.currentTime++;
       }.bind(this),
       1000
-    );
+    ); console.log(this.currentTime)
   }
   getMinutes() {
     this.minutes = Math.floor(this.currentTime / 60);

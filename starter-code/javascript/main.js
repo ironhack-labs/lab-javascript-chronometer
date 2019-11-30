@@ -8,19 +8,21 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
-var newChronometer = new Chronometer();
-
 function printTime() {
-
+    setInterval(function(){
+    printSeconds();
+    printMinutes();
+},1)
 }
 
 function printMinutes() {
-// this.getMinutes();
-minDec.innerHTML = this.minutes;
+minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
 }
 
 function printSeconds() {
-secDec.innerHTML = this.minutesRemoved;
+secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
 }
 
 function printMilliseconds() {
@@ -44,6 +46,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+    chronometer.startClick();
+    printTime();
 
 }
 
@@ -55,10 +59,9 @@ function setResetBtn() {
 btnLeft.addEventListener('click', function () {
 if ((minDec.innerHTML === "0") && (minUni.innerHTML === "0") && (secDec.innerHTML === "0") && (secUni.innerHTML === "0")) {
     btnLeft.innerHTML = "STOP";
+    setStartBtn();
     let btnStart = document.getElementsByClassName('btn start');
     btnLeft.setAttribute('class', 'btn stop');
-    new Chronometer().stopClick();
-    // this.stopClick();
     btnRight.innerHtml = "SPLIT";
     let btnReset = document.getElementsByClassName('btn reset');
     btnRight.setAttribute('class', 'btn split');
@@ -67,9 +70,6 @@ else if ((minDec.innerHTML ==! "0") || (minUni.innerHTML ==! "0") || (secDec.inn
     btnLeft.innerHTML = "START";
     let btnStop = document.getElementsByClassName('btn stop');
     btnLeft.setAttribute('class', 'btn start');
-    new Chronometer().startClick();
-    // Chronometer.call(this, startClick());
-    // this.startClick();
     btnRight.innerHtml = "RESET";
     let btnSplit = document.getElementsByClassName('btn split');
     btnRight.setAttribute('class', 'btn reset');
