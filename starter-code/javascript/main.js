@@ -33,7 +33,7 @@ function printMilliseconds() {}
 
 function printSplit() {
   eList.innerText = `${chronometer.splitClick()}`;
-  splitList.append(elementList);
+  splitList.append(eList);
 }
 
 function clearSplits() {
