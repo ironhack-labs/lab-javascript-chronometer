@@ -14,27 +14,29 @@ function printTime() {
     let timeoutId = setInterval(function() {
         printMinutes();
         printSeconds();
-    }, 1000);
+        printMilliseconds();
+    }, 10);
 }
 
 function printMinutes() {
-    
-        let m = chronometer.twoDigitsNumber(chronometer.getMinutes());
-        m.split("");
-        minDec.innerText = m[0];
-        minUni.innerText = m[1];
+    let m = chronometer.twoDigitsNumber(chronometer.getMinutes());
+    m.split("");
+    minDec.innerText = m[0];
+    minUni.innerText = m[1];
 }
 
 function printSeconds() {
-  
-        let s = chronometer.twoDigitsNumber(chronometer.getSeconds());
-        s.split("");
-        secDec.innerText = s[0];
-        secUni.innerText = s[1];
+    let s = chronometer.twoDigitsNumber(chronometer.getSeconds());
+    s.split("");
+    secDec.innerText = s[0];
+    secUni.innerText = s[1];
 }
 
 function printMilliseconds() {
-
+    let mil = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+    mil.split("");
+    milDec.innerText = mil[0];
+    milUni.innerText = mil[1];
 }
 
 function printSplit() {
@@ -66,6 +68,7 @@ function setResetBtn() {
     chronometer.resetClick();
     printMinutes();
     printSeconds();
+    printMilliseconds();
 }
 
 // Start/Stop Button
