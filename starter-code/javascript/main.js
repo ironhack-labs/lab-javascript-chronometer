@@ -37,7 +37,9 @@ function printSplit() {
   splitList.append(listSplit);
 }
 
-function clearSplits() {}
+function clearSplits() {
+  
+}
 
 function setStopBtn() {
   btnLeft.className = "btn stop";
