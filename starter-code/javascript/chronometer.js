@@ -17,6 +17,9 @@ class Chronometer {
   getSeconds() {
     return this.currentTime - this.getMinutes() * 60
   }
+  getMilliseconds(){
+    return this.currentTime - this.getSeconds() * 60
+  }
   twoDigitsNumber(value) {
     if (value < 10) {
       return ('0' + value).slice(-2)
@@ -30,6 +33,6 @@ class Chronometer {
     return this.currentTime
   }
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}:${this.twoDigitsNumber(this.getMilliseconds())}`
   }
 }
