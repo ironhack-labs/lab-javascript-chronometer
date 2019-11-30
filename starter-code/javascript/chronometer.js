@@ -5,14 +5,19 @@ class Chronometer {
   }
   startClick() {
     this.intervalId = setInterval(function(){
+      // console.log('currentTime ==>> ', this.currentTime);
       return this.currentTime ++;
+
     }.bind(this), 1000);
   } 
    getMinutes() {
-    return this.currentTime = Math.floor(this.currentTime / 60)
+     console.log('get minutes ==> ', Math.floor(this.currentTime / 60))
+    return Math.floor(this.currentTime / 60)
    }
    getSeconds() {
-    return this.currentTime = this.currentTime % 60;
+    console.log('currentTime getSeconds ==>> ', this.currentTime);
+
+    return this.currentTime % 60;
    }
    twoDigitsNumber(value) {
     if (value.toString().length === 1){
