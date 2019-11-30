@@ -8,6 +8,7 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 var splitList   = document.getElementById('splits');
+var interval;
 
 function printTime() {
     printMinutes();
@@ -42,49 +43,71 @@ function printSplit(time) {
     splitList.append(newSplitItem);
 }
 
-function clearSplits() {
+function resetTime() {
+    minUni.innerHTML = '0';
+    minDec.innerHTML = '0';
+    secUni.innerHTML = '0';
+    secDec.innerHTML = '0';
+}
 
+function clearSplits() {
+    chronometer.resetClick();
+    splitList.innerHTML = '';
 }
 
 function setStopBtn() {
-
+    btnLeft.innerHTML = 'STOP';
+    btnLeft.className = 'btn stop';
 }
 
 function setSplitBtn() {
-
+    btnRight.innerHTML = 'SPLIT';
+    btnRight.className = 'btn split';
 }
 
 function setStartBtn() {
-
+    btnLeft.innerHTML = 'START';
+    btnLeft.className = 'btn start';
 }
 
 function setResetBtn() {
-
+    btnRight.innerHTML = 'RESET';
+    btnRight.className = 'btn reset';
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+
     if ([...btnLeft.classList].includes('start')) {
         chronometer.startClick();
-        btnLeft.innerHTML = 'STOP';
-        btnLeft.className = 'btn stop';
-        btnRight.innerHTML = 'SPLIT';
-        btnRight.className = 'btn split';
 
-        setInterval(() => {
+        setStopBtn();
+        setSplitBtn();
+
+        interval = setInterval(() => {
             printTime();
         }, 1000);
 
     } else {
         chronometer.stopClick();
-        btnLeft.innerHTML = 'START';
-        btnLeft.className = 'btn start';
-        btnRight.innerHTML = 'RESET';
-        btnRight.className = 'btn reset';
+
+        setStartBtn();
+        setResetBtn();
+
+        clearInterval(interval);
     }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-    printSplit(chronometer.splitClick());
+
+    if ([...btnRight.classList].includes('split')) {
+        printSplit(chronometer.splitClick());
+
+    } else {
+        clearSplits();
+        resetTime();
+
+        clearInterval(interval);
+    }
 });
