@@ -33,18 +33,29 @@ function printSplit() {
   splits.append(newLi);
 }
 
-function clearSplits() {}
+function clearSplits() {
+  let clearSp = document.getElementById("splits");
+  clearSp.innerHTML = "";
+}
 
-function setStopBtn() {}
+function setStopBtn() {
+  chronometer.stopClick();
+}
 
-function setSplitBtn() {}
+function setSplitBtn() {
+  printSplit();
+}
 
 function setStartBtn() {
   chronometer.startClick();
   printTime();
 }
 
-function setResetBtn() {}
+function setResetBtn() {
+  chronometer.resetClick();
+  printTime();
+  clearSplits();
+}
 
 // Start/Stop Button
 btnLeft.addEventListener("click", function() {
@@ -57,6 +68,7 @@ btnLeft.addEventListener("click", function() {
     let btnReset = document.getElementsByClassName("btn reset");
     btnRight.setAttribute("class", "btn split");
   } else if (btnLeft.innerHTML === "STOP") {
+    setStopBtn();
     btnLeft.innerHTML = "START";
     let btnStop = document.getElementsByClassName("btn stop");
     btnLeft.setAttribute("class", "btn start");
@@ -68,5 +80,9 @@ btnLeft.addEventListener("click", function() {
 
 // Reset/Split Button
 btnRight.addEventListener("click", function() {
-  printSplit();
+  if (btnRight.innerHTML === "SPLIT") {
+    setSplitBtn();
+  } else {
+    setResetBtn();
+  }
 });

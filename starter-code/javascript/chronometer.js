@@ -10,7 +10,6 @@ class Chronometer {
       }.bind(this),
       1000
     );
-    console.log(this.currentTime);
   }
   getMinutes() {
     this.minutes = Math.floor(this.currentTime / 60);
@@ -30,7 +29,9 @@ class Chronometer {
     }
     return this.twoDigits;
   }
-  stopClick() {}
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
   resetClick() {
     this.currentTime = 0;
   }
