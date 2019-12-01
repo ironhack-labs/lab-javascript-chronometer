@@ -7,6 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splits      = document.getElementById('splits');
 let internalPrintId;
 
 function printTime() {
@@ -43,15 +44,31 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
+  clearInterval(internalPrintId);
+  btnLeft.className = "btn start";
+  btnLeft.innerHTML = "START";
+  btnRight.className = "btn reset";
+  btnRight.innerHTML = "RESET";
+  chronometer.stopClick();
 }
 
 function setSplitBtn() {
+  let capture = chronometer.splitClick(chronometer.twoDigitsNumber(chronometer.getMinutes()),chronometer.twoDigitsNumber(chronometer.getSeconds()));
 
+  let liTag = document.createElement('li');
+  splits.appendChild(liTag);
+  liTag.innerHTML = capture;
 }
 
 function setStartBtn() {
-
+  btnLeft.className = "btn stop";
+  btnLeft.innerHTML = "STOP";
+  btnRight.className = "btn split"
+  btnRight.innerHTML = "SPLIT";
+   chronometer.startClick();
+   intervalPrintId = setInterval(function(){
+     printTime();  
+   }, 1000);
 }
 
 function setResetBtn() {
@@ -61,28 +78,15 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
   if (btnLeft.className === "btn start"){
-    btnLeft.className = "btn stop";
-    btnLeft.innerHTML = "STOP";
-     chronometer.startClick();
-     intervalPrintId = setInterval(function(){
-       printTime();  
-     }, 1000);
-    
+    setStartBtn();
   }else {
-    clearInterval(this.intervalPrintId);
-    btnLeft.className = "btn start";
-    btnLeft.innerHTML = "START";
-    chronometer.stopClick();
+    setStopBtn();
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  if (btnRight.className === "btn reset"){
-    btnRight.className = "btn split"
-    btnRight.innerHTML = "SPLIT";
-  }else {
-    btnRight.className = "btn reset";
-    btnRight.innerHTML = "RESET";
+  if (btnRight.className === "btn split"){
+    setSplitBtn();
   }
 });
