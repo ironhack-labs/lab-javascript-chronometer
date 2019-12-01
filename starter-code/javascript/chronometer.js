@@ -1,19 +1,23 @@
+/*jshint esversion: 6 */
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId;
+    this.intervalId = 0;
   }
   startClick() {
-    this.intervalId = setInterval(increaseOneSecond, 1000);
-    function increaseOneSecond() {
-      return this.currentTime++;
-    }
+    this.intervalId = setInterval(
+      function() {
+        return this.currentTime++;
+      }.bind(this),
+      1000
+    );
   }
   getMinutes() {
-    return parseInt(this.currentTime / 60, 10);
+    return parseInt(this.currentTime / 60);
+    //return 99;
   }
   getSeconds() {
-    return parseInt(this.currentTime % 60, 10);
+    return parseInt(this.currentTime % 60);
   }
   twoDigitsNumber(num) {
     num = Math.floor(num);
@@ -26,5 +30,9 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  splitClick() {
+    var min = this.twoDigitsNumber(this.getMinutes());
+    var seg = this.twoDigitsNumber(this.getSeconds());
+    return min + ":" + seg;
+  }
 }
