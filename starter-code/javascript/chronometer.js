@@ -13,10 +13,11 @@ class Chronometer {
     );
   }
   getMinutes() {
-    return parseInt(this.currentTime / 60, 10);
+    return parseInt(this.currentTime / 60);
+    //return 99;
   }
   getSeconds() {
-    return parseInt(this.currentTime % 60, 10);
+    return parseInt(this.currentTime % 60);
   }
   twoDigitsNumber(num) {
     num = Math.floor(num);
