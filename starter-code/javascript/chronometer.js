@@ -14,7 +14,6 @@ class Chronometer {
   }
   getMinutes() {
     return parseInt(this.currentTime / 60);
-    //return 99;
   }
   getSeconds() {
     return parseInt(this.currentTime % 60);
