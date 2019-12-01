@@ -32,7 +32,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    console.log("tpm")
+    var node = document.createElement("li")
+    node.innerHTML=chronometer.splitClick()
+    splits.appendChild(node)
 }
 
 function clearSplits() {
@@ -45,7 +48,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-
+    
 }
 
 function setStartBtn() {
@@ -53,7 +56,10 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-
+    minDec.innerHTML= chronometer.twoDigitsNumber(chronometer.resetClick()).charAt(0)
+    minUni.innerHTML= chronometer.twoDigitsNumber(chronometer.resetClick()).charAt(1)
+    secDec.innerHTML= chronometer.twoDigitsNumber(chronometer.resetClick()).charAt(0)
+    secUni.innerHTML= chronometer.twoDigitsNumber(chronometer.resetClick()).charAt(1)
 }
 
 // Start/Stop Button
@@ -90,3 +96,4 @@ btnRight.onclick = function () {
         fatherLi.appendChild(createLi)
     }
 };
+
