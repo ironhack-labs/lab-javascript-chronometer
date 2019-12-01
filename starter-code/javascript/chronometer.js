@@ -30,5 +30,9 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  splitClick() {
+    var min = this.twoDigitsNumber(this.getMinutes());
+    var seg = this.twoDigitsNumber(this.getSeconds());
+    return min + ":" + seg;
+  }
 }

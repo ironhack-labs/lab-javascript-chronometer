@@ -9,18 +9,36 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 var splitsWrapper = document.getElementById('splits');
-var arrSplits = [];
 
 function startChronometer() {
    chronometer.startClick();
 }
+
 function stopChronometer() {
     chronometer.stopClick();
- }
+}
+
 function printTime() {
     printMinutes();
     printSeconds();
     //printMilliseconds();
+}
+
+function resetChronometer() {
+    chronometer.stopClick();
+    chronometer.resetClick();
+    clearSplits();
+    clearTime();
+    console.log("reset");  
+    console.log(chronometer.currentTime);  
+}
+
+function clearTime(){
+    minDec.innerHTML = "0";
+    minUni.innerHTML = "0";
+    secDec.innerHTML = "0";
+    secUni.innerHTML = "0";
+    console.log("clear");  
 }
 
 function printMinutes() {
@@ -29,7 +47,6 @@ function printMinutes() {
     minUni.textContent = minutes[1];  
     console.log("get min A " + minutes[0]);
     console.log("get min B " + minutes[1]);
-    arrSplits.push([minutes[0],minutes[1]]);
 }
 
 function printSeconds() {
@@ -38,28 +55,20 @@ function printSeconds() {
     secUni.textContent = seconds[1];  
     console.log("get sec A " + seconds[0]);
     console.log("get sec B " + seconds[1]);
-    arrSplits.push([seconds[0],seconds[1]]);
-    console.log(arrSplits);
 }
 
 function printMilliseconds() {
 }
 
 function printSplit() {
-    let mDec = arrSplits[arrSplits.length-2][0];
-    let mUni = arrSplits[arrSplits.length-2][1];
-    let sDec = arrSplits[arrSplits.length-1][0];
-    let sUni = arrSplits[arrSplits.length-1][1];
-    splitsWrapper.innerHTML = mDec + mUni + ":" + sDec + sUni;
     stopChronometer();
     let splitsWrapperLi = document.createElement("li");
-    //splitsWrapperLi.innerHTML = chronometer.splitClick();
     splitsWrapperLi.innerHTML = chronometer.splitClick();
     splitsWrapper.append(splitsWrapperLi);
 }
 
 function clearSplits() {
-
+    splitsWrapper.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -119,6 +128,6 @@ btnRight.addEventListener('click', function () {
     }
     else{
         setSplitBtn();
-        //resetChronometer();
+        resetChronometer();
     }
 });
