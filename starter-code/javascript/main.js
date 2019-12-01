@@ -17,8 +17,8 @@ function printTime() {
 }
 
 function printMinutes() {
-    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
-    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[2]
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
 }
 
 function printSeconds() {
