@@ -1,7 +1,8 @@
+/*jshint esversion: 6 */
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId;
+    this.intervalId = 0;
   }
   startClick() {
     this.intervalId = setInterval(
