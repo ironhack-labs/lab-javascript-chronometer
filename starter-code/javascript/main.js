@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 var chronometer = new Chronometer();
 var btnLeft = document.getElementById("btnLeft");
 var btnRight = document.getElementById("btnRight");
@@ -9,6 +8,24 @@ var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
 var splitsWrapper = document.getElementById("splits");
+
+// Start/Stop Button
+btnLeft.addEventListener("click", function() {
+  if (btnLeft.classList.contains("start")) {
+    startChronometer();
+  } else {
+    stopChronometer();
+  }
+});
+
+// Reset/Split Button
+btnRight.addEventListener("click", function() {
+  if (btnRight.classList.contains("split")) {
+    splitChronometer();
+  } else {
+    resetChronometer();
+  }
+});
 
 function startChronometer() {
   chronometer.startClick();
@@ -50,7 +67,7 @@ function resetChronometer() {
 function printTime() {
   printMinutes();
   printSeconds();
-  //printMilliseconds();
+  printMilliseconds();
 }
 
 function clearTime() {
@@ -76,7 +93,13 @@ function printSeconds() {
   console.log("get sec B " + seconds[1]);
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+  // let milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+  // milDec.textContent = milliseconds[0];
+  // milUni.textContent = milliseconds[1];
+  // console.log("get mil A " + milliseconds[0]);
+  // console.log("get mil B " + milliseconds[1]);
+}
 
 function printSplit() {
   stopChronometer();
@@ -112,21 +135,3 @@ function setResetBtn() {
   btnRight.classList.remove("split");
   btnRight.classList.add("reset");
 }
-
-// Start/Stop Button
-btnLeft.addEventListener("click", function() {
-  if (btnLeft.classList.contains("start")) {
-    startChronometer();
-  } else {
-    stopChronometer();
-  }
-});
-
-// Reset/Split Button
-btnRight.addEventListener("click", function() {
-  if (btnRight.classList.contains("split")) {
-    splitChronometer();
-  } else {
-    resetChronometer();
-  }
-});
