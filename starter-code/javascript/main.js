@@ -10,6 +10,9 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
+    printMinutes()
+    printSeconds()
+    printMilliseconds()
 
 }
 
