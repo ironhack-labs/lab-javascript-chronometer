@@ -8,7 +8,7 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(function(){
         this.currentTime++;
-      }.bind(this), 1000) // por qué el contexto? ver esto. --> si no no supera los tests
+      }.bind(this), 1000) // por qué el contexto? ver esto. --> si no, no supera los tests
   }
 
   getMinutes() {
