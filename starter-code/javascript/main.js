@@ -13,6 +13,7 @@ let internalPrintId;
 function printTime() {
   printSeconds();
   printMinutes();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -30,7 +31,12 @@ function printSeconds() {
   secUni.innerText = formatSec[1];
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+  let mil = chronometer.getMills();
+  let formatMil = chronometer.twoDigitsNumber(mil);
+  milDec.innerText = formatMil[0];
+  milUni.innerText = formatMil[1];
+}
 
 function printSplit() {}
 
@@ -53,7 +59,8 @@ function setStopBtn() {
 function setSplitBtn() {
   let capture = chronometer.splitClick(
     chronometer.twoDigitsNumber(chronometer.getMinutes()),
-    chronometer.twoDigitsNumber(chronometer.getSeconds())
+    chronometer.twoDigitsNumber(chronometer.getSeconds()),
+    chronometer.twoDigitsNumber(chronometer.getMills())
   );
   let liTag = document.createElement("li");
   splits.appendChild(liTag);
@@ -68,7 +75,7 @@ function setStartBtn() {
   chronometer.startClick();
   intervalPrintId = setInterval(function() {
     printTime();
-  }, 1000);
+  }, 10);
 }
 
 function setResetBtn() {
