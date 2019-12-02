@@ -37,7 +37,7 @@ function printSplit() {
   let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
   let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   let splitedTime = chronometer.splitClick(minutes, seconds);
-  splits.innerHTML // Aquí me quedo...
+  splits.innerHTML // Aquí me quedo... tengo que crear un elemento li dentro de id = splits con appendChild y meterle dentro splitedTime 
 }
 
 function clearSplits() {
