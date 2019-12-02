@@ -41,7 +41,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-    let
+    splits.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -91,6 +91,6 @@ btnRight.addEventListener('click', function () {
         printSplit()
     }else{
         chronometer.resetClick();
-
+        clearSplits();
     }  
 });
