@@ -72,9 +72,6 @@ btnLeft.addEventListener("click", () => {
     intervalID = setInterval(() => {
       printMinutes();
       printSeconds();
-    }, 1000);
-
-    intervalIDMiliseconds = setInterval(() => {
       printMilliseconds();
     }, 1);
   } else {
@@ -84,7 +81,6 @@ btnLeft.addEventListener("click", () => {
     chronometer.stopClick();
 
     clearInterval(intervalID);
-    clearInterval(intervalIDMiliseconds);
   }
 });
 
