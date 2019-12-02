@@ -7,6 +7,7 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
+var splits      = document.getElementById('splits');
 
 
 function printTime() {
@@ -33,7 +34,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  let splitedTime = chronometer.splitClick(minutes, seconds);
+  splits.innerHTML // Aquí me quedo...
 }
 
 function clearSplits() {

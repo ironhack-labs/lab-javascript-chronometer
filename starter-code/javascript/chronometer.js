@@ -36,5 +36,8 @@ class Chronometer {
   }
 
 
-  splitClick() {}
+  splitClick(min, sec) {
+    let timer = min + ":" + sec;
+    return timer;
+  }
 }
