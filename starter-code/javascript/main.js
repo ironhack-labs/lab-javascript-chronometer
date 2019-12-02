@@ -8,7 +8,7 @@ var secUni = document.getElementById("secUni");
 var milDec = document.getElementById("milDec");
 var milUni = document.getElementById("milUni");
 let splitList = document.getElementById("splits");
-let eList = document.createElement("li");
+
 
 function printTime() {
   setInterval(() => {
@@ -32,6 +32,7 @@ function printSeconds() {
 function printMilliseconds() {}
 
 function printSplit() {
+  let eList = document.createElement("li");
   eList.innerText = `${chronometer.splitClick()}`;
   splitList.append(eList);
 }
