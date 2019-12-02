@@ -1,29 +1,23 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0;
-    this.miliseconds = 0;
+    this.currentTime = 132907;
     this.intervalId;
-    this.milInterval;
   }
   startClick(){
     this.intervalId = setInterval(function(){
       this.currentTime += 1;
-    }.bind(this), 1000)
-    this.milInterval = setInterval(function(){
-      this.miliseconds += 1;
-    }.bind(this), 1)
-    
+    }.bind(this), 10)
   }
   getMinutes(){
-    var minutes = Math.floor(this.currentTime / 60)
+    var minutes = Math.floor((this.currentTime / 100) / 60)
     return minutes
   }
   getSeconds(){
-    var seconds = this.currentTime % 60
+    var seconds = (Math.floor(this.currentTime / 100)) % 60
     return seconds
   }
   getMiliseconds(){
-    var miliseconds = Math.floor(this.miliseconds % 100)
+    var miliseconds = this.currentTime % 100
     return miliseconds
   }
   twoDigitsNumber(value){
