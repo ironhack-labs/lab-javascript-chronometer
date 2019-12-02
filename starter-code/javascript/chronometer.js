@@ -11,9 +11,7 @@ class Chronometer {
   startClick() {
     let that = this;
     this.intervalId = setInterval(function () {
-      that.currentTime++;
-    }, 1000);
-    this.newInterval = setInterval(function () {
+      that.currentTime += 0.01;
       that.milliseconds++;
     }, 10);
   }
@@ -23,7 +21,7 @@ class Chronometer {
   }
   
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime % 60);
   }
 
   getMilliseconds() {
