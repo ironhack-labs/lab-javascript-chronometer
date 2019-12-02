@@ -7,7 +7,8 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-
+//Store the empty 'ol' already created in the index.html into a variable
+var splits      = document.getElementById('splits');
 
 function printTime() {
     printMinutes();
@@ -33,11 +34,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    let split = document.createElement('li');
+    splits.appendChild(split);
+    split.textContent = chronometer.splitClick(); 
+    //split.innerText = chronometer.splitClick(); //also works!
 }
 
 function clearSplits() {
-
+    let
 }
 
 function setStopBtn() {
@@ -83,5 +87,10 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+    if(btnRight.className === "btn split"){
+        printSplit()
+    }else{
+        chronometer.resetClick();
 
+    }  
 });
