@@ -73,7 +73,7 @@ btnLeft.addEventListener("click", () => {
       printMinutes();
       printSeconds();
       printMilliseconds();
-    }, 1);
+    }, 10);
   } else {
     setStartBtn();
     setResetBtn();

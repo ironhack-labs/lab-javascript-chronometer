@@ -8,16 +8,13 @@ class Chronometer {
 
   startClick() {
     this.intervalId = setInterval(() => {
-      this.currentTime++;
-    }, 1000);
-
-    this.intervalIdMilisecods = setInterval(() => {
-      if (this.milisecondsTime >= 99) {
+      if (this.milisecondsTime === 99) {
+        this.currentTime++;
         this.milisecondsTime = 0;
       } else {
         this.milisecondsTime++;
       }
-    }, 1);
+    }, 10);
   }
 
   getMinutes() {
@@ -38,7 +35,6 @@ class Chronometer {
 
   stopClick() {
     clearInterval(this.intervalId);
-    clearInterval(this.intervalIdMilisecods);
   }
 
   resetClick() {
