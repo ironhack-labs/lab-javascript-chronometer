@@ -34,14 +34,23 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
-  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
-  let splitedTime = chronometer.splitClick(minutes, seconds);
-  splits.innerHTML // Aquí me quedo... tengo que crear un elemento li dentro de id = splits con appendChild y meterle dentro splitedTime 
+  //let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  //let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  //let splitedTime = chronometer.splitClick(minutes, seconds);
+  //splits.innerHTML.createElement('li').appendChild(chronometer.splitClick(minutes, seconds)); // Aquí me quedo... tengo que crear un elemento li dentro de id = splits con appendChild y meterle dentro splitedTime 
+
+
+  let elementList = document.createElement("LI");
+  elementList.className = "timeSplit"
+  elementList.innerText = (`${chronometer.splitClick()}`)
+  let list = document.getElementById("splits");
+  list.append(elementList)
 }
 
 function clearSplits() {
-
+  chronometer.resetClick()
+  let splitsContent = document.getElementById("splits")
+  splitsContent.innerHTML = ""
 }
 
 function setStopBtn() {
@@ -81,7 +90,14 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-  if (btnRight.classList == "btn reset"){
-    setSplitBtn()
-  } 
+  if (btnRight.innerText === "SPLIT") {
+    printSplit()
+} else if (btnRight.innerText === "RESET") {
+    clearSplits()
+    minDec.innerText = 0
+    minUni.innerText = 0
+    secDec.innerText = 0
+    secUni.innerText = 0
+}
+
 });

@@ -3,7 +3,7 @@
     "env": {
         "jasmine": true
     },
-    "extends" : ["airbnb-base/legacy", "plugin:jasmine/recommended"],
+    "extends" : [ "plugin:jasmine/recommended"],
     "rules": {
         "func-names": "off",
         "no-alert": "off",

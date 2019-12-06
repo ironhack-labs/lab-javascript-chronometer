@@ -28,16 +28,18 @@ class Chronometer {
 
   stopClick() {
     clearInterval(this.intervalId);
+    this.intervalId = 0;
   }
 
 
   resetClick() {
+    clearInterval(this.intervalId);
     this.currentTime = 0;
   }
 
 
-  splitClick(min, sec) {
-    let timer = min + ":" + sec;
-    return timer;
+  splitClick() {
+    //console.log(this.getMinutes() + ":" + this.getSeconds())
+    return (this.twoDigitsNumber(this.getMinutes())+":"+ this.twoDigitsNumber(this.getSeconds()))
   }
 }
