@@ -4,42 +4,44 @@ class Chronometer {
     this.intervalId;
   }
 
-  startClick(){
-    this.intervalId = setInterval(function(){
-      this.currentTime++;
-    }.bind(this), 1000)  // <-- Este bind es "el truco" porque si no no actualiza this.currentTime
+  startClick() {
+    this.intervalId = setInterval(
+      function() {
+        this.currentTime++;
+      }.bind(this),
+      1000
+    ); // <-- Este bind es "el truco" porque si no no actualiza this.currentTime
   }
 
   getMinutes() {
-    return Math.floor( this.currentTime / 60 );
+    return Math.floor(this.currentTime / 60);
   }
 
-
   getSeconds() {
-    return this.currentTime - (this.getMinutes()*60);
+    return this.currentTime - this.getMinutes() * 60;
   }
 
   twoDigitsNumber(numReceived) {
-    var numberCropped = ('0' + numReceived).slice(-2);
+    var numberCropped = ("0" + numReceived).slice(-2);
     return numberCropped;
-
   }
-
 
   stopClick() {
     clearInterval(this.intervalId);
     this.intervalId = 0;
   }
 
-
   resetClick() {
     clearInterval(this.intervalId);
     this.currentTime = 0;
   }
 
-
   splitClick() {
     //console.log(this.getMinutes() + ":" + this.getSeconds())
-    return (this.twoDigitsNumber(this.getMinutes())+":"+ this.twoDigitsNumber(this.getSeconds()))
+    return (
+      this.twoDigitsNumber(this.getMinutes()) +
+      ":" +
+      this.twoDigitsNumber(this.getSeconds())
+    );
   }
 }
