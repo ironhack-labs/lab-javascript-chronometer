@@ -13,7 +13,8 @@ function printTime() {
   setInterval(function() {
     printMinutes();
     printSeconds();
-  }, 1000);
+    printMilliseconds();
+  },);
 }
 
 function printMinutes() {
@@ -28,7 +29,11 @@ function printSeconds() {
   secDec.innerHTML = seconds[0];
 }
 
-function printMilliseconds() {}
+function printMilliseconds() {
+    let mili = chronometer.twoDigitsNumber(chronometer.getMiliSeconds());
+    milUni.innerHTML = mili[1];
+    milDec.innerHTML = mili[0];
+}
 
 function printSplit() {
   let elementList = document.createElement("LI");
