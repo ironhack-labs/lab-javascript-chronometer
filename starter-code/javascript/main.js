@@ -38,7 +38,7 @@ function printMilliseconds() {
 function printSplit() {
   let elementList = document.createElement("LI");
   elementList.className = "timeSplit";
-  elementList.innerText = `${chronometer.splitClick()}`;
+  elementList.innerText = chronometer.splitClick();
   let list = document.getElementById("splits");
   list.append(elementList);
 }

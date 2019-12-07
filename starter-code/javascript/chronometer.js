@@ -2,16 +2,19 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId;
-    this.currentMilis = 0;
-    this.instervalMilisId;
+    this.currentMil = 0;
+    this.intervalMiliId;
   }
 
   startClick() {
     this.intervalId = setInterval(
       function() {
-        this.currentMilis++;
-      if (this.currentMilis % 100 == 0) this.currentTime++;
-      }.bind(this), 10
+        this.currentMil++;
+        if (this.currentMil % 100 == 0) {
+          this.currentTime++;
+        }
+      }.bind(this),
+      10
     ); // <-- Este bind es "el truco" porque si no no actualiza this.currentTime
   }
 
@@ -24,7 +27,7 @@ class Chronometer {
   }
 
   getMiliSeconds() {
-    return Math.floor(this.currentMilis % 100);
+    return Math.floor(this.currentMil % 100);
   }
 
   twoDigitsNumber(numReceived) {
@@ -34,15 +37,15 @@ class Chronometer {
 
   stopClick() {
     clearInterval(this.intervalId);
-    clearInterval(this.instervalMilisId);
+    clearInterval(this.intervalMiliId);
     this.intervalId = 0;
-    this.instervalMilisId = 0;
+    this.intervalMiliId = 0;
   }
 
   resetClick() {
     clearInterval(this.intervalId);
     this.currentTime = 0;
-    this.currentMilis = 0;
+    this.currentMil = 0;
   }
 
   splitClick() {
@@ -50,7 +53,9 @@ class Chronometer {
     return (
       this.twoDigitsNumber(this.getMinutes()) +
       ":" +
-      this.twoDigitsNumber(this.getSeconds()) + ":" + this.twoDigitsNumber(this.getMiliSeconds())
+      this.twoDigitsNumber(this.getSeconds()) +
+      ":" +
+      this.twoDigitsNumber(this.getMiliSeconds())
     );
   }
 }
