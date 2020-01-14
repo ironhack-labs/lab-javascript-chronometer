@@ -13,7 +13,7 @@ let idInterval;
 function printTime(reloj) {
     printMinutes(reloj.twoDigitsNumber(chronometer.getMinutes()))
     printSeconds(reloj.twoDigitsNumber(chronometer.getSeconds()))
-    // printMilliseconds(reloj.twoDigitsNumber(chronometer.getMilis()))
+    printMilliseconds(reloj.twoDigitsNumber(chronometer.getMilis()))
 }
 
 function printMinutes(numbers) {
@@ -72,7 +72,7 @@ btnLeft.addEventListener('click', function () {
         chronometer.startClick()
         idInterval = setInterval(() => {
             printTime(chronometer)
-        }, 1)
+        }, 10)
         setStopBtn()
         setSplitBtn()
     } else {

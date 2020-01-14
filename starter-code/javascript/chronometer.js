@@ -6,17 +6,16 @@ class Chronometer {
   startClick() {
     this.intervalId=setInterval(()=>{
       this.currentTime++
-    },1000)
+    },10)
   }
   getMinutes() {
-    return Math.floor(this.currentTime / 60)
+    return Math.floor(this.currentTime / 6000)
   }
   getSeconds() {
-    // return Math.floor(this.currentTime / 1000)
-    return this.currentTime % 60
+    return Math.floor((this.currentTime/100)) % 60
   }
   getMilis() {
-    //return this.currentTime 
+    return this.currentTime % 100 
   }
   twoDigitsNumber(x) {
     return x.toString().padStart(2,'0')
@@ -28,6 +27,6 @@ class Chronometer {
     this.currentTime = 0
   }
   splitClick() {
-    return this.twoDigitsNumber(this.getMinutes()) + ':' + this.twoDigitsNumber(this.getSeconds())
+    return this.twoDigitsNumber(this.getMinutes()) + ':' + this.twoDigitsNumber(this.getSeconds()) + '.' + this.twoDigitsNumber(this.getMilis()) 
   }
 }
