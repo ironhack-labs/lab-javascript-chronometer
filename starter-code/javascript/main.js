@@ -9,7 +9,11 @@ var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
 
+
 function printTime() {
+		console.log("Hoooooooli");
+
+
 
 }
 
@@ -27,6 +31,19 @@ function printMilliseconds() {
 
 function printSplit() {
 
+let digtisM = chronometer.twoDigitsNumber(chronometer.getMinutes())
+let digtisS = chronometer.twoDigitsNumber(chronometer.getSeconds())
+
+let splitList  = document.getElementById('splits')
+		let li = document.createElement('li');
+		li.innerHTML = `${digtisM}: ${digtisS}`
+
+		splitList.appendChild(li)
+
+
+
+
+
 }
 
 function clearSplits() {
@@ -34,6 +51,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+
 
 }
 
@@ -43,6 +61,8 @@ function setSplitBtn() {
 
 function setStartBtn() {
 
+
+
 }
 
 function setResetBtn() {
@@ -51,6 +71,13 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
+	printTime();
+	btnLeft.style.background ='red'
+	btnLeft.innerText ='STOP'
+
+	btnRight.style.background ='blue'
+	btnRight.innerText = 'SPLIT'
+	printSplit()
 
 });
 
@@ -58,3 +85,6 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
 
 });
+
+
+console.log();
