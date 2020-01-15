@@ -3,9 +3,10 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = "id";
   }
-  startClick() {
+  startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
+      callback();
     }, 1000);
     console.log("Chronometer is started");
   }

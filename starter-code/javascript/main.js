@@ -10,11 +10,9 @@ var milUni = document.getElementById("milUni");
 var splits = document.getElementById("splits");
 
 function printTime() {
-  const idStop = setInterval(() => {
-    printMinutes();
-    printSeconds();
-    console.log(chronometer.getMinutes(), chronometer.getSeconds());
-  }, 100);
+  printMinutes();
+  printSeconds();
+  console.log(chronometer.getMinutes(), chronometer.getSeconds());
 }
 
 function printMinutes() {
@@ -50,7 +48,6 @@ function clearSplits() {
 
 function setStopBtn() {
   chronometer.stopClick();
-  //   window.clearInterval(idStop);
   btnLeft.textContent = "START";
   btnLeft.className = "btn start";
   btnRight.textContent = "RESET";
@@ -65,14 +62,14 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  chronometer.startClick();
-  printTime();
+  chronometer.startClick(printTime);
   btnLeft.textContent = "STOP";
   btnLeft.className = "btn stop";
 }
 
 function setResetBtn() {
   chronometer.resetClick();
+  printTime();
   clearSplits();
   btnRight.textContent = "SPLIT";
   btnRight.className = "btn split";
