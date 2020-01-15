@@ -12,17 +12,23 @@ var splits = document.getElementById("splits");
 function printTime() {
   printMinutes();
   printSeconds();
-  console.log(chronometer.getMinutes(), chronometer.getSeconds());
+  printMilliseconds();
+  //   console.log(chronometer.getMinutes(), chronometer.getSeconds());
 }
 
 function printMinutes() {
-  minUni.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
-  minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+  minUni.textContent = printUnit(chronometer.getMinutes());
+  minDec.textContent = printDec(chronometer.getMinutes());
 }
 
 function printSeconds() {
-  secUni.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
-  secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+  secUni.textContent = printUnit(chronometer.getSeconds());
+  secDec.textContent = printDec(chronometer.getSeconds());
+}
+
+function printMilliseconds() {
+  milUni.textContent = printUnit(chronometer.getMilliSeconds());
+  milDec.textContent = printDec(chronometer.getMilliSeconds());
 }
 
 function printDec(number) {
@@ -33,13 +39,13 @@ function printUnit(number) {
   return chronometer.twoDigitsNumber(number)[1];
 }
 
-function printMilliseconds() {}
-
 function printSplit() {
-  splits.innerHTML += `<li>${chronometer.twoDigitsNumber(chronometer.getMinutes())[0]}${chronometer.twoDigitsNumber(chronometer.getMinutes())[1]}:${
-    chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
-  }${chronometer.twoDigitsNumber(chronometer.getSeconds())[1]}
-  </li>`;
+  splits.innerHTML += `
+    <li>
+    ${printDec(chronometer.getMinutes())}${printUnit(chronometer.getMinutes())}:
+    ${printDec(chronometer.getSeconds())}${printUnit(chronometer.getSeconds())}:
+    ${printDec(chronometer.getMilliSeconds())}${printUnit(chronometer.getMilliSeconds())}
+    </li>`;
 }
 
 function clearSplits() {
@@ -57,8 +63,6 @@ function setStopBtn() {
 function setSplitBtn() {
   chronometer.splitClick();
   printSplit();
-  //   btnRight.textContent = "RESET";
-  //   btnRight.className = "btn reset";
 }
 
 function setStartBtn() {
