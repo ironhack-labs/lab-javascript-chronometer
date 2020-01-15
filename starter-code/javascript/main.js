@@ -43,58 +43,55 @@ function printMilliseconds() {
 
 function printSplit() {
 
-chronometer
 
-let digtisM = chronometer.twoDigitsNumber(chronometer.getMinutes())
-let digtisS = chronometer.twoDigitsNumber(chronometer.getSeconds())
-console.log(digtisM);
-let splitList  = document.getElementById('splits')
-		let li = document.createElement('li');
-		li.innerHTML = `${digtisM}: ${digtisS}`
 
 		splitList.appendChild(li)
-
-
-
-
-
-}
+	}
 
 function clearSplits() {
 
 }
 
 function setStopBtn() {
-		btnLeft.style.background ='red'
-	btnLeft.innerText ='STOP'
+	setResetBtn()
+btnLeft.innerText= 'STOP';
+btnLeft.classList.remove('start');
+btnLeft.classList.add('stop');
+btnLeft.removeEventListener('click',onmousedown, true);
+btnLeft.addEventListener('click',(e)=>{
+	clearInterval(initian)
+
+})
+
+
 
 }
 
 function setSplitBtn() {
+let digtisM = chronometer.twoDigitsNumber(chronometer.getMinutes())
+let digtisS = chronometer.twoDigitsNumber(chronometer.getSeconds())
+console.log(digtisM);
+let splitList  = document.getElementById('splits')
+		let li = document.createElement('li');
+		li.innerHTML = `${digtisM} : ${digtisS}`
+
+		printSplit()
+
 
 }
 
 function setStartBtn() {
 
 	chronometer.startClick()
-	setInterval(printTime,1000);
-
-
-
-
-/*		btnLeft.style.background ='green'
-	btnLeft.innerText ='START'*/
-
-
-
-
-
+	setStopBtn()
+	let initian = setInterval(printTime,1000);
 }
 
 function setResetBtn() {
 
-	btnRight.style.background ='blue'
-	btnRight.innerText = 'SPLIT'
+btnRight.innerText= 'SPLIT';
+btnRight.classList.remove('start');
+btnRight.classList.add('split');
 
 
 }
