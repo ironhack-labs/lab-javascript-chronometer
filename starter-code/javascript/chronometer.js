@@ -9,6 +9,7 @@ class Chronometer {
       this.currentTime += 1;
       callback();
     }, 10);
+
     console.log("Chronometer is started");
   }
   getMinutes() {

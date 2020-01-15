@@ -12,8 +12,12 @@ var splits = document.getElementById("splits");
 function printTime() {
   printMinutes();
   printSeconds();
+<<<<<<< HEAD
   printMilliseconds();
   //   console.log(chronometer.getMinutes(), chronometer.getSeconds());
+=======
+  console.log(chronometer.getMinutes(), chronometer.getSeconds());
+>>>>>>> 129eac167d5f4cf487c077e102f028baa6884ef5
 }
 
 function printMinutes() {
