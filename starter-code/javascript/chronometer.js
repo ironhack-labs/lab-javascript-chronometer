@@ -2,6 +2,7 @@ class Chronometer {
 
   constructor() {
     this.currentTime = 0;
+    this.milliseconds = 0;
     this.intervalId = null;
   }
 
@@ -11,12 +12,23 @@ class Chronometer {
 
   startClick(callback) {
       this.intervalId = setInterval(() => {
-        this.currentTime++;
+
+        // Increment ms 10 by 10
+        this.milliseconds += 10;
+
+        // Each second, add 1 to current time
+        this.currentTime += Math.floor(this.milliseconds / 1000);
+
+        // Each second, set the ms back to 0 so it doesnt run of
+        if (this.milliseconds >= 1000) { this.milliseconds = 0 }
+
         callback({
           "min" : this.twoDigitsNumber(this.getMinutes()),
-          "sec" : this.twoDigitsNumber(this.getSeconds())
+          "sec" : this.twoDigitsNumber(this.getSeconds()),
+          "milli" : this.twoDigitsNumber(this.getMilliSeconds())
         });
-      }, 1000);
+
+      }, 10);
   }
 
   getMinutes() {
@@ -27,6 +39,10 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
+  getMilliSeconds() {
+    return parseInt(this.milliseconds.toString().substring(0,2), 10);
+  }
+
   twoDigitsNumber(num) {
     return String(num).length > 1 ? num.toString() : ("0" + num);
   }
@@ -34,12 +50,15 @@ class Chronometer {
   fullTime() {
     return this.twoDigitsNumber(this.getMinutes()) +
            ':' +
-           this.twoDigitsNumber(this.getSeconds());
+           this.twoDigitsNumber(this.getSeconds()) +
+           ':' +
+           this.twoDigitsNumber(this.getMilliSeconds());
   }
 
   resetClick() {
     this.stopClick();
     this.currentTime = 0;
+    this.milliseconds = 0;
   }
 
   stopClick() {
@@ -48,5 +67,5 @@ class Chronometer {
       this.intervalId = null;
     }
   }
-  
+
 }
