@@ -12,7 +12,8 @@ function printTime() {
   setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
+    printMilliseconds();
+  }, 10);
 }
 
 function printMinutes() {
