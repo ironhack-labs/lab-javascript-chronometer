@@ -41,8 +41,8 @@ let string = number.toString();
 
 
 
-  stopClick(a) {
-  	clearInterval(this.intervalId)
+  stopClick() {
+  	return clearInterval(this.intervalId)
   }
   resetClick() {
   	return this.currentTime =0;
