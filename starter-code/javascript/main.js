@@ -42,8 +42,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
-
+let digtisM = chronometer.twoDigitsNumber(chronometer.getMinutes())
+let digtisS = chronometer.twoDigitsNumber(chronometer.getSeconds())
+	let splitList  = document.getElementById('splits')
+	let li = document.createElement('li');
+li.innerHTML = `${digtisM} : ${digtisS}`
 
 		splitList.appendChild(li)
 	}
@@ -63,14 +66,9 @@ clearInterval(interval)
 }
 
 function setSplitBtn() {
-let digtisM = chronometer.twoDigitsNumber(chronometer.getMinutes())
-let digtisS = chronometer.twoDigitsNumber(chronometer.getSeconds())
-console.log(digtisM);
-let splitList  = document.getElementById('splits')
-		let li = document.createElement('li');
-		li.innerHTML = `${digtisM} : ${digtisS}`
-
 		printSplit()
+
+
 
 }
 
@@ -90,7 +88,7 @@ chronometer.startClick()
 function setResetBtn() {
 
 btnRight.innerText= 'SPLIT';
-btnRight.classList.remove('start');
+btnRight.classList.remove('reset');
 btnRight.classList.add('split');
 
 
@@ -103,6 +101,7 @@ btnLeft.addEventListener('click', function () {
 
 	   if(btnLeft.innerText === 'START'){
         setStartBtn()
+        setResetBtn()
 
     } else {
         setStopBtn()
@@ -113,6 +112,13 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+
+
+	if(btnRight.innerText==='SPLIT'){
+		setSplitBtn()
+	}else{
+
+	}	
 
 });
 
