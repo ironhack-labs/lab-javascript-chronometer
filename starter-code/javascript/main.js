@@ -10,8 +10,14 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
-function printTime() {
-    random = setInterval(()=>{
+function printTime(stopper = null) {
+    if (stopper == "stop" ){
+        printMinutes();
+        printSeconds();
+        clearInterval(timer1);
+        return;
+    }
+    let timer1 = setInterval(()=>{
         printMinutes();
         printSeconds();
     }, 100);
@@ -34,12 +40,19 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+    let odlist  =  document.getElementById("splits");
+    const newChild = document.createElement("li"); // creates a new div
+      newChild.style.color = "green";
+      newChild.innerHTML= chronometer.twoDigitsNumber(chronometer.getMinutes())+" mn "+ chronometer.twoDigitsNumber(chronometer.getSeconds())+" sec";
+      odlist.appendChild(newChild);
 }
+
 
 function clearSplits() {
-
-}
+    let odlist  =  document.getElementById("splits");
+    console.log(odlist);
+    odlist.innerHTML = "";
+ }
 
 function setStopBtn() {
     btnLeft.classList.remove("start");
@@ -70,20 +83,28 @@ btnLeft.addEventListener('click', function () {
     if(btnLeft.classList == "btn start"){
         setStopBtn();
         chronometer.startClick();
+        setSplitBtn();
         printTime();
     } else if(btnLeft.classList == "btn stop"){
         setStartBtn();
+        setResetBtn();
         chronometer.stopClick();
+        printTime("stop");
+        chronometer.currentTime = 0;
     }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
+    if(btnRight.classList == "btn split"){
+        printSplit();
+    }
     if(btnRight.classList == "btn reset"){
-        setSplitBtn();
-    } else if(btnRight.classList == "btn split"){
-        setResetBtn();
-        chronometer.resetClick();
+        clearSplits();
+        chronometer.stopClick();
+        chronometer.currentTime = 0;
+         printMinutes();
+         printSeconds();
     }
 });
 
