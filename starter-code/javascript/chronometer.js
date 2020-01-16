@@ -8,11 +8,11 @@ class Chronometer {
   startClick(callback) {
     this.isRunning = true;
     this.intervalId = setInterval(() => {
-      this.currentTime += 1 ;
+      this.currentTime += 1;
       console.log(this.currentTime);
       callback();
-      }, 1000);
-    }
+    }, 1000);
+  }
 
   getMinutes() {
     let minutes = Math.trunc(this.currentTime / 60);
@@ -20,7 +20,7 @@ class Chronometer {
   }
 
   getSeconds() {
-    let seconds = this.currentTime % 60 ;
+    let seconds = this.currentTime % 60;
     return this.twoDigitsNumber(seconds);
   }
 
