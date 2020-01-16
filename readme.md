@@ -81,7 +81,8 @@ The `setInterval` will be assigned to our `intervalId` property, this way we wil
 
 #### getMinutes()
 
-Our current time is our clock, but it only runs seconds, so we need to create a method that will return us the number of minutes that corresponds to the value we have on `currentTime`!
+Our current time is our clock, but it only runs seconds, so we need to create a method that will return us the number of minutes that corresponds to the value we h
+ave on `currentTime`!
 
 #### getSeconds()
 
