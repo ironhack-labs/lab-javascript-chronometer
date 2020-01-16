@@ -10,12 +10,17 @@ var milUni      = document.getElementById('milUni');
 var orgList     = document.getElementById("splits");
 
 
-function printTime() {
+/*function printTime() {
     setInterval(() =>{
         printMinutes(); 
         printSeconds(); 
     }, 1000);
     
+}*/
+
+function printTime() {
+        printMinutes(); 
+        printSeconds(); 
 }
 
 function printMinutes() {
@@ -62,7 +67,6 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-    printTime();
     if(btnLeft.classList.contains('start')) {
         chronometer.startClick();
         btnLeft.classList.remove('start');
@@ -86,12 +90,12 @@ btnLeft.addEventListener('click', function () {
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
     if(btnRight.classList.contains('split')) {
-        let newListEl = document.createElement("li");
-        orgList.appendChild(newListEl);
-        newListEl.textContent = chronometer.splitClick();
+        printSplit();
     } else {
         chronometer.resetClick();
         clearSplits();
+        // enlever le printTime si méthode deuxième intervalle
+        printTime();
     }
    
 });
