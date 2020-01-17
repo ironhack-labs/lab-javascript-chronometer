@@ -1,10 +1,10 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalID = 0;
+    this.intervalId = 0;
   }
   startClick(clbk) {
-    this.intervalID = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++;
       clbk();
     }, 1000);
@@ -22,7 +22,7 @@ class Chronometer {
     return number.toString();
   }
   stopClick() {
-    clearInterval(this.intervalID);
+    clearInterval(this.intervalId);
   }
   resetClick(clbk, target) {
     this.currentTime = 0;
@@ -30,7 +30,6 @@ class Chronometer {
     clbk();
   }
   splitClick(clbk) {
-    //console.log('help')
     clbk();
   }
 }

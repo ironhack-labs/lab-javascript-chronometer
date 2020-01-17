@@ -54,12 +54,9 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-
     btnLeft.classList.add('start');
     btnLeft.classList.remove('stop');
     btnLeft.textContent = "START";
-
-
 }
 
 function setResetBtn() {
