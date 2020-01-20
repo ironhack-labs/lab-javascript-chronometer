@@ -27,5 +27,7 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  // splitClick() {}
+  splitClick() {
+    printSplit();
+  }
 }
