@@ -10,15 +10,22 @@ var milUni      = document.getElementById('milUni');
 
 
 function printTime() {
-
+    printSeconds();
+    printMinutes();
 }
 
 function printMinutes() {
-
+    let minutes = chronometer.getMinutes();
+    let minutesStr = chronometer.twoDigitsNumber(minutes);
+    minUni.innerHTML = minutesStr[1];
+    minDec.innerHTML = minutesStr[0];
 }
 
 function printSeconds() {
-
+    let seconds = chronometer.getSeconds();
+    let secondsStr = chronometer.twoDigitsNumber(seconds);
+    secUni.innerHTML = secondsStr[1];
+    secDec.innerHTML = secondsStr[0];
 }
 
 function printMilliseconds() {
@@ -26,15 +33,20 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+   
 }
 
 function clearSplits() {
-
+    
 }
 
 function setStopBtn() {
+    btnLeft.className = 'btn stop';
+    btnLeft.innerHTML = 'STOP';
+    btnRight.className = 'btn split';
+    btnRight.innerHTML = 'SPLIT';
 
+    chronometer.startClick();
 }
 
 function setSplitBtn() {
@@ -42,16 +54,21 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+    btnLeft.className = 'btn start';
+    btnLeft.innerHTML = 'START';
+    btnRight.className = 'btn reset';
+    btnRight.innerHTML = 'RESET';
 
+    chronometer.stopClick();
 }
 
 function setResetBtn() {
-
+    
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    btnLeft.className === 'btn start' ? setStopBtn() : setStartBtn();    
 });
 
 // Reset/Split Button
