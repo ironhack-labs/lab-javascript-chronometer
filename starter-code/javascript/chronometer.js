@@ -34,7 +34,13 @@ class Chronometer {
     clearInterval(this.intervalId)
   }
 
-  splitClick() {}
+  splitClick() {
+    const li = document.createElement("li")
+    li.innerText = `${minDec.innerText}${minUni.innerText} : ${secDec.innerText}${secUni.innerText}`
+    console.log(li)
+    parent.appendChild(li)
+
+  }
 }
 
 // //-------- Comenzamos MAnipulacion del DOM --------

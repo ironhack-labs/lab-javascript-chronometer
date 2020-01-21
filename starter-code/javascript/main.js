@@ -1,3 +1,4 @@
+let parent = document.querySelector("ol")
 var chronometer = new Chronometer();
 var btnLeft = document.getElementById('btnLeft');
 var btnRight = document.getElementById('btnRight');
@@ -21,6 +22,7 @@ function printMinutes() {
     minUni.innerText = minutes[1]
 }
 
+
 function printSeconds() {
 
     let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
@@ -39,6 +41,10 @@ function printSplit() {
 }
 
 function clearSplits() {
+
+    let ol = document.querySelector("ol")
+    ol.innerHTML = ""
+
 
 }
 
@@ -90,6 +96,7 @@ btnRight.addEventListener('click', function () {
     switch (chronometer.status) {
         case "Stopped":
             chronometer.resetClick()
+            clearSplits()
             break
         case "Running":
             chronometer.splitClick()
