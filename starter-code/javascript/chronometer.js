@@ -31,6 +31,11 @@ class Chronometer {
 
     resetClick() {
         this.currentTime = 0;
+        printTime();
+        let list = document.querySelector('#splits');
+        while(list.firstChild) {
+            list.removeChild(list.firstChild);
+        }
     }
 
     // splitClick() {s}
