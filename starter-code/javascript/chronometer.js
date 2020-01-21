@@ -24,10 +24,10 @@ class Chronometer {
   }
   twoDigitsNumber(currentTime) {
     if (currentTime < 10) {
-      console.log("0" + currentTime);
+      // console.log("0" + currentTime);
       return "0" + currentTime;
     } else {
-      console.log(currentTime);
+      // console.log(currentTime);
       return `${currentTime}`;
     }
   }
@@ -37,6 +37,7 @@ class Chronometer {
   }
   resetClick() {
     this.currentTime = 0;
+    clearSplits()
   }
   // splitClick() {}
 }
