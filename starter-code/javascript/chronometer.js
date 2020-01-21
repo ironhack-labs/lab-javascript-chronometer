@@ -2,6 +2,7 @@ class Chronometer {
   constructor() {
     this.currentTime = 0
     this.intervalId = 0
+    this.status = "Stopped"
   }
 
   startClick() {
@@ -29,6 +30,13 @@ class Chronometer {
   stopClick() {
     clearInterval(this.intervalId)
   }
-  
-  // splitClick() {}
+
+  splitClick(){}
 }
+
+// //-------- Comenzamos MAnipulacion del DOM --------
+
+// let btnLeft = document.getElementById('btnLeft')
+// let btnRigth = document.getElementById('btnRigth')
+
+// btnLeft
