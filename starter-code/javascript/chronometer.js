@@ -8,7 +8,9 @@ class Chronometer {
   startClick() {
     this.intervalId = setInterval(() => {
       this.currentTime++
+      printTime()
     }, 1000)
+
   }
 
   getMinutes() {
@@ -25,13 +27,14 @@ class Chronometer {
 
   resetClick() {
     this.currentTime = 0
+    printTime()
   }
 
   stopClick() {
     clearInterval(this.intervalId)
   }
 
-  splitClick(){}
+  splitClick() {}
 }
 
 // //-------- Comenzamos MAnipulacion del DOM --------
