@@ -13,11 +13,52 @@ class Chronometer {
       },1000);
 
      }
-  // getMinutes() {}
-  // getSeconds() {}
-  // twoDigitsNumber() {}
-  // stopClick() {}
-  // resetClick() {}
-  // splitClick() {}
+  getMinutes() {
+
+    
+
+    return  Math.floor(this.currentTime/60);
+
+
+  }
+  getSeconds() {
+
+    return Math.floor(this.currentTime % 60);
+
+  }
+
+  
+  twoDigitsNumber(value) {
+
+    let size = value;
+    // let size = "0" + value;
+
+    if(size < 10){
+
+     return  "0" + size;
+
     }
+
+    return value.toString();
+  }
+
+  // }
+
+
+  stopClick() {
+
+
+    clearInterval(this.intervalId);
+
+
+
+  }
+  resetClick() {
+
+    clearInterval(this.intervalId);
+  }
+
+  
+  // splitClick() {}
+} 
   
