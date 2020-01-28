@@ -14,11 +14,11 @@ function printTime() {
 }
 
 function printMinutes() {
-
+    chronometer.twoDigitsNumber(chronometer.getMinutes());
 }
 
 function printSeconds() {
-
+    chronometer.getSeconds();
 }
 
 function printMilliseconds() {
@@ -51,10 +51,22 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+    if(btnLeft.innerText === 'START'){
+        chronometer.startClick();
+        btnLeft.innerText = 'STOP';
+    } else {
+        chronometer.stopClick();
+        btnLeft.innerText = 'START'; 
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    if(btnRight.innerText === 'RESET'){
+        chronometer.resetClick();
+        btnRight.innerText = 'SPLIT';
+    } else {
+        chronometer.splitClick();
+        btnRight.innerText = 'RESET'; 
+    } 
 });
