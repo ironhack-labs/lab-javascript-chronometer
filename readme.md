@@ -1,6 +1,6 @@
-![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)
+![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# JS | IronChronometer
+# LAB | JS IronChronometer
 
 ## Introduction
 
@@ -33,22 +33,30 @@ $ git push origin master
 
 - Create Pull Request so your TAs can check up your work.
 
-## Starter code
+## Tests, tests, tests!
 
-In the starter-code folder you can find the following folders and files:
+As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file you can find the tests you need to pass to successfully finish this exercise.
+You know the process, go ahead and open the `SpecRunner.html` file to see all the tests, and start writing your code on the `javascript/chronometer.js` file.
+
+## Instructions
+
+To kick off, we are provided with the following files and folders:
 
 ```
-starter-code/
+├── README.md
+├── SpecRunner.html
+├── index.html
 ├── jasmine
 ├── javascript
-│   └── main.js
-    └── chronometer.js
-├── stylesheets
-│   └── fonts.js
-        └── ds.digib.ttf
-    └── styles.css
-├── index.html
-├── SpecRunner.html
+│   ├── chronometer.js
+│   └── index.js
+├── styles
+│   ├── fonts
+│   │   ├── ds-digi.ttf
+│   │   └── ds-digib.TTF
+│   └── style.css
+└── tests
+    └── chronometer.spec.js
 ```
 
 The style sheet has already the `ds-digib` font inserted. This font helps us to have a classic LCD screen, to achieve the styles of the classic chronometers.
@@ -57,19 +65,10 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png)
 
-Let's get started!
-
-### Tests, tests, tests!
-
-As you know by now, most of our labs are supported by tests. In the `tests/ChronometerSpec.js` file you can find the tests you need to pass to successfully finish this exercise.
-You know the process, go ahead and open the `SpecRunner.html` file to see all the tests, and start writing your code on the `javascript/chronometer.js` file.
-
-## Instructions
-
 **This lab is essentially split in two main parts**:
 
 - part 1: logic (the code you will add in the `javascript/chronometer.js`) and
-- part 2: DOM manipulation so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/main.js`).
+- part 2: DOM manipulation so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
 
 It is **mandatory** for you to use the following:
 
@@ -135,9 +134,9 @@ Both buttons will have different behavior depending on the chronometer. These bu
 | Running            | `btnLeft`  | STOP  | `btn stop`  |
 | Running            | `btnRight` | SPLIT | `btn split` |
 
-**Note that you don't have to create any CSS class. All of them are already defined in the `starter-code` style sheet.**
+**Note that you don't have to create any CSS class. All of them are already defined in the provided style sheet.**
 
-In the `main.js` file you will find two click events that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
+In the `javascript/index.js` file you will find two click events that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
 
 It means that when we click in the `btnLeft`, if it has the `start` class you will have to change the `btnLeft` and `btnRight` buttons setting them up with the Running status described in the table above.
 
@@ -145,7 +144,7 @@ On the other hand, if the `btnLeft` doesn't have the `start` class when we click
 
 #### Changing buttons texts
 
-We will be working on the `main.js` file. We need to do the following:
+We will be working on the `javascript/index.js` file. We need to do the following:
 
 - When the left button is clicked while the chronometer is stopped we need to:
 
@@ -157,9 +156,9 @@ We will be working on the `main.js` file. We need to do the following:
   - Set the `btnLeft` button with the text START, and the class `btn start`.
   - Set the `btnRight` button with the text RESET, and the class `btn reset`.
 
-- In the `main.js` file, create a new instance of the `Chronometer` object.
+- In the `index.js` file, create a new instance of the `Chronometer` object.
 
-- Create the necessary code in the `main.js` to call the Chronometer `startClick` method if the button has the `start` class, or the `stopClick` method if the button has the `stop` class applied.
+- Create the necessary code in the `index.js` to call the Chronometer `startClick` method if the button has the `start` class, or the `stopClick` method if the button has the `stop` class applied.
 
 #### Print our chronometer
 
