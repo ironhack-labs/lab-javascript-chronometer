@@ -8,16 +8,17 @@ var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
 
-
+let chrono = new Chronometer (); 
 function printTime() {
 
 }
 
 function printMinutes() {
-
+    document.querySelector('#minDec').innerText = getMinutes()
 }
 
 function printSeconds() {
+    document.querySelector('#minUni').innerText = getSeconds()
 
 }
 
@@ -51,10 +52,23 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-
+if (btnLeft.className === 'btn start') {
+btnLeft.innerHTML = "STOP"
+btnLeft.onclick = chrono.startClick;
+btnLeft.setAttribute('class', '. btn stop')
+btnRight.innerHTML = "SPLIT";
+btnRight.setAttribute('class', 'btn split')
+} else {
+btnLeft.innerHTML = "START"
+btnLeft.setAttribute('class', '. btn start')
+btnLeft.onclick = chrono.stopClick;
+btnRight.innerHTML = "RESET";
+btnRight.setAttribute('class', 'btn reset')
+}
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+    
 });
