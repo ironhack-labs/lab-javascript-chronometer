@@ -38,7 +38,7 @@ describe('', function () {
     it('Set to intervalId a new setInterval', function () {
       expect(typeof chronometer.intervalId).toEqual('number');
     });
-
+    
     it('should increment 1 to currentTime property on every 1 second interval', function () {
       jasmine.clock().tick(1000);
 
