@@ -27,3 +27,7 @@ resetClick() {this.currentTime = 0}
 
 splitClick() {}
 }
+
+
+var chronometer = new Chronometer()
+chronometer.startClick()
