@@ -13,6 +13,7 @@ var splits      = document.getElementById('splits');
 function printTime() {
         printMinutes()
         printSeconds()
+        printMilliseconds()
 }
 
 function printMinutes() {
@@ -22,18 +23,21 @@ function printMinutes() {
 }
 
 function printSeconds() {
-let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
+    let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
     secDec.innerHTML=seconds.slice(0, 1)
     secUni.innerHTML=seconds.slice(-1)
 
 }
 
 function printMilliseconds() {
+    let milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
+    milDec.innerHTML = milliseconds.slice(0,1)
+    milUni.innerHTML = milliseconds.slice(-1)
 }
 
 function printSplit() {
     let insertedLi = document.createElement("li");
-    insertedLi.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`
+    insertedLi.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}:${milDec.innerHTML}${milUni.innerHTML}`
     splits.appendChild(insertedLi)
 }
 
@@ -45,7 +49,7 @@ function setStopBtn() {
     btnLeft.setAttribute("class", "btn stop")
     btnLeft.innerHTML="STOP";
     chronometer.startClick()
-    intervalID = setInterval(()=> {printTime()},1000);
+    intervalID = setInterval(()=> {printTime()},10);
 }
 
 function setSplitBtn() {
@@ -63,7 +67,6 @@ function setStartBtn() {
 function setResetBtn() {
     btnRight.setAttribute("class", "btn reset")    
     btnRight.innerHTML="RESET"
-
 }
 
 // Start/Stop Button
@@ -86,7 +89,8 @@ if (checker ===true){
     printSplit()
     }
     else {
-    chronometer.currentTime=0
+    chronometer.currentTime=0;
+    chronometer.milliseconds=0;
     clearSplits()
     }
 });
