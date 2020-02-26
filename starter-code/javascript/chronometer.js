@@ -1,6 +1,6 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0
+    this.currentTime =0
     this.intervalId =""
   }
   startClick() {
@@ -14,18 +14,18 @@ class Chronometer {
   }
   getSeconds() {
     return this.currentTime-Math.floor(this.currentTime/60)*60
-
   }
   twoDigitsNumber(param) {
 
-      let result = "0"+String(param)
-    if(result.length===3){
-      return String(param)
-    }
-    return result
-    //Return ("0"+input).slice(-2)
+    //   let result = "0"+String(param)
+    // if(result.length===3){
+    //   return String(param)
+    // }
+    // return result
+    return ("0"+param).slice(-2)
   }
    stopClick() {
+
     clearInterval(this.intervalId)
    }
   resetClick() {
