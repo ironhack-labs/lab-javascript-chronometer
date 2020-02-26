@@ -15,7 +15,8 @@ function printTime() {
 var corriendo = setInterval(() => {
     printSeconds()
     printMinutes()
-}, 1000);
+    printMilliseconds()
+}, 1);
 }
 
 function printMinutes() {
@@ -31,20 +32,27 @@ function printSeconds() {
 }
 
 function printMilliseconds() {
-
+    let minutos=chronometer.twoDigitsNumber(chronometer.getMiliseconds())
+    milDec.innerHTML=minutos.slice(0,1)
+    milUni.innerText=minutos.slice(1,2)
 }
 
 function printSplit() {
     let child = document.createElement("li")
     let minutos =chronometer.twoDigitsNumber(chronometer.getMinutes())
     let segons = chronometer.twoDigitsNumber(chronometer.getSeconds())
-    child.innerText=`${minutos}:${segons}:00`
+    let ms= chronometer.twoDigitsNumber(chronometer.getMiliseconds())
+    child.innerText=`${minutos}:${segons}:${ms}`
     document.getElementById('splits').appendChild(child)
-    console.log(child)
 }
 
 function clearSplits() {
-
+    let array = document.querySelectorAll("#splits li")
+    for (let i = 0; i < array.length; i++) {
+    array[i].remove();
+        
+    }
+    
 }
 
 function setStopBtn() {
