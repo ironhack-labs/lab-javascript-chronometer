@@ -37,4 +37,11 @@ class Chronometer {
     return (this.currentTime = 0);
   }
   // splitClick() {}
+  splitClick() {
+    let lapTimeMin = this.twoDigitsNumber(this.getMinutes());
+    let lapTimeSec = this.twoDigitsNumber(this.getSeconds());
+
+    let splitTime = `${lapTimeMin}:${lapTimeSec}`;
+    return splitTime;
+  }
 }
