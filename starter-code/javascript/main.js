@@ -19,25 +19,25 @@ function printTime() {
 
 function printMinutes() {
     let min = chrono.getMinutes()
-    let mins = chrono.twoDigitsNumber(min)
-    minDec.innerHTML = mins[0];
-    minUni.innerHTML = mins[1];
+    let twoDigitMin = chrono.twoDigitsNumber(min)
+    minDec.innerHTML = twoDigitMin[0];
+    minUni.innerHTML = twoDigitMin[1];
 }
 
 function printSeconds() {
     let sec = chrono.getSeconds()
-    let secs = chrono.twoDigitsNumber(sec)
-    secDec.innerHTML = secs[0];
-    secUni.innerHTML = secs[1];
+    let twoDigitSec = chrono.twoDigitsNumber(sec)
+    secDec.innerHTML = twoDigitSec[0];
+    secUni.innerHTML = twoDigitSec[1];
 }
 
 // function printMilliseconds() {
 // }
 
 function printSplit() {
-    let $li = document.createElement('li');
-    $li.innerText = chrono.splitClick();
-    splitsList.appendChild($li);
+    let list = document.createElement('li');
+    list.innerText = chrono.splitClick();
+    splitsList.appendChild(list);
 }
 
 function clearSplits() {
