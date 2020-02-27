@@ -1,7 +1,7 @@
-describe('', function () {
-  beforeEach(function () {
-    chronometer = new Chronometer();
-  });
+  describe('', function () {
+    beforeEach(function () {
+      chronometer = new Chronometer();
+    });
 
   describe('constructor function', function () {
     it('Should not receive any parameter', function () {
@@ -28,7 +28,7 @@ describe('', function () {
     });
 
     it('Declare a startClick method', function () {
-      expect(typeof chronometer.startClick).toEqual('function');
+      expect(typeof chronometer.startClick).toEqual("function");
     });
 
     it('Should declare an intervalId property as part of Chronometer', function () {
