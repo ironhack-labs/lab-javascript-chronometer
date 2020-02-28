@@ -72,7 +72,7 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 
 It is **mandatory** for you to use the following:
 
-- `[setInterval()](https://www.w3schools.com/jsref/met_win_setinterval.asp)` method to update the chronometer on each second,
+- [`setInterval()`](https://www.w3schools.com/jsref/met_win_setinterval.asp) method to update the chronometer on each second,
 - a class to create a JavaScript object that encapsulates all the `Chronometer` functionalities.
 
 ### Iteration 1: The logic
