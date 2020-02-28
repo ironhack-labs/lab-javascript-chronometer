@@ -65,7 +65,7 @@ The style sheet already has the `ds-digib` font inserted. This font helps us to 
 
 We have also created the clock to let you focus on the JavaScript portion of this exercise. If you open the `index.html` file, you will see something like this:
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png =400x)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png)
 
 **This lab is essentially split into two main parts**:
 
@@ -182,7 +182,7 @@ Each second we need to update our screen. So go ahead and create a function that
 
 Using our `Chronometer` methods to get the values, this should be easy!
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png =400x)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png)
 
 ### Iteration 3: Split time
 
@@ -196,7 +196,7 @@ First of all, we have to create in our `index.html` file an ordered list where w
 
 Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `<li>` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer constructor that returns this :wink:).
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png =400x)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
 
 ### Iteration 4: Reset
 
@@ -210,7 +210,7 @@ Now, we can use our chronometer to calculate how much time we spend on each Iron
 
 If we want to add milliseconds to the chronometer, we will have to manipulate the HTML, the CSS, and the JavaScript. In the HTML, we will have to a container to show the milliseconds, changing the style of this container. Finally, in JavaScript, we will have to add all the logic to show the milliseconds in the clock. You will also have to add these milliseconds to the split counter.
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_82e9d1fd5976a3f98bb1382f2385f6a1.png =600x)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_82e9d1fd5976a3f98bb1382f2385f6a1.png)
 
 #### Tasks
 
