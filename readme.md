@@ -1,25 +1,29 @@
-![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)
+![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# JS | Chronometer
+# LAB | JS IronChronometer
 
 ## Introduction
 
-In this lesson, we are going to create a Chronometer. Chronometers are very common in a lot of sports, like car racing, athletism, etc. In this case, we are going to create a Chronometer to count how many minutes and seconds we use to do the Ironhack Exercises!
+In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very common in many sports - car racing, athletics, etc. Why we wouldn't practice a bit our JS and DOM manipulation knowledge and create our own IronChronometer which we can use to see how many minutes and seconds will take us to complete any of our labs. Sounds cool, right?
 
-Our Chronometer will have an LCD Screen, where we will see the minutes and seconds moving forward. It will also have two different buttons, that will change their behavior depending on the status of the Chronometer. For example, the start button will become stop button when the Chronometer is running.
+These are our milestones:
 
-Last, but not least, we are going to add a Split functionality, that will be very helpful to remember how many time we spent in each iteration of the exercise. Every time we finish an iteration, we will be able to press the split button, so we will know how hard or easy it was.
+1. Our chronometer will have an LCD screen, where we will see the minutes and seconds moving forward.
+2. It will also have two different buttons that will change their behavior depending on the status of the chronometer. For example, the start button will become a stop button when the chronometer is running.
+3. As a bonus, we are going to add a split functionality. If you are questioning the usefulness of this functionality, well, it could be helpful to remember how much time we spent in each iteration of the exercise. :wink: As we finish an iteration, we will be able to press the split button, so we will know how hard or easy it was, depending on how much time it took us to finish it.
+
+Let's do it!
 
 ![](https://media.giphy.com/media/xT8qAZcty5f0BEm2lO/giphy.gif)
 
-### Requirements
+## Requirements
 
-- Use `setInterval` to update the chronometer each second.
-- Use Prototypal Inheritance to create a JavaScript object that encapsulates all the `Chronometer` functionalities.
+- Fork this repo
+- Clone this repo
 
-### Submission
+## Submission
 
-Upon completion, run the following commands:
+- Upon completion, run the following commands:
 
 ```
 $ git add .
@@ -27,75 +31,93 @@ $ git commit -m "done"
 $ git push origin master
 ```
 
-Navigate to your repo and create a Pull Request -from your master branch to the original repository master branch.
+- Create Pull Request so your TAs can check up your work.
 
-In the Pull request name, add your campus, name and last names separated by a dash "-".
+## Tests, tests, tests!
 
-### Starter code
+As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file you can find the tests you need to pass to successfully finish this exercise.
+You know the process, go ahead and open the `SpecRunner.html` file to see all the tests, and start writing your code on the `javascript/chronometer.js` file.
 
-We have already created you the main structure you will need to create your chronometer. The project structure is the following:
+## Instructions
+
+To kick off, we are provided with the following files and folders:
 
 ```
-starter-code/
+├── README.md
+├── SpecRunner.html
+├── index.html
 ├── jasmine
 ├── javascript
-│   └── main.js
-    └── chronometer.js
-├── stylesheets
-│   └── fonts.js
-        └── ds.digib.ttf
-    └── styles.css
-├── index.html
-├── SpecRunner.html
+│   ├── chronometer.js
+│   └── index.js
+├── styles
+│   ├── fonts
+│   │   ├── ds-digi.ttf
+│   │   └── ds-digib.TTF
+│   └── style.css
+└── tests
+    └── chronometer.spec.js
 ```
 
 The style sheet has already the `ds-digib` font inserted. This font helps us to have a classic LCD screen, to achieve the styles of the classic chronometers.
 
-We have also created the clock to let you focus on the JavaScript. If you open the `index.html` file, you will see something like this:
+We have also created the clock to let you focus on the JavaScript portion of this exercise. If you open the `index.html` file, you will see something like this:
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png)
 
-### Deliverables
+**This lab is essentially split in two main parts**:
 
-All the files that compose the project, including the HTML, CSS, and JavaScript.
+- part 1: logic (the code you will add in the `javascript/chronometer.js`) and
+- part 2: DOM manipulation so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
 
-## Instructions
+It is **mandatory** for you to use the following:
 
-Let's start working on our solution. As we have seen, we already have all the necessary HTML and CSS files of our clock.
+- [`setInterval()`](https://www.w3schools.com/jsref/met_win_setinterval.asp) method to update the chronometer on each second,
+- a class to create a JavaScript object that encapsulates all the `Chronometer` functionalities.
 
-As you can see we have tested for doing for doing our exercise. They will be testing the logic of our code, so we will start doing this, and then manipulating the DOM.
+### Iteration 1: The logic
 
-You know the process, go ahead and open the `SpecRunner.html` file on chrome to see all the tests, and start writing your code on the `javascript/chronometer.js` file.
+#### The `Chronometer` class
 
-### Iteration 1: The Logic
+Let's create a Chronometer class and apply the following:
 
-#### Chronometer Constructor
+- the constructor method won't receive any arguments,
+- the class will have two properties: `currentTime`, `intervalId`.
 
-We need to create a Chronometer constructor that won't receive any value as arguments, but will declare two properties: `currentTime`, `intervalId`.
+To see more details about failing tests, open the `tests/ChronometerSpec.js`.
 
 #### startClick()
 
-We need to create a `startClick()` method for the Chronometer object. The `startClick()` method is pretty simple, it should start a `setInterval` that will add 1 to the `currentTime` porperty every 1 second.
+We need to create a `startClick()` method for the Chronometer object. The `startClick()` method should use the `setInterval()` JS method to increment by 1 the `currentTime` property every 1 second.
 
-The `setInterval` will be assigned to our `intervalId` property, this way we will be able to clear it later on.
+The `setInterval()` will be assigned to our `intervalId` property, so this way we will be able to clear it later on when we need to restart the time.
 
 #### getMinutes()
 
-Our current time is our clock, but it only runs seconds, so we need to create a method that will return us the number of minutes that corresponds to the value we have on `currentTime`!
+Our current time is our clock, but it only runs seconds. We need to create a method that will return the number of minutes that corresponds to the value of seconds we have on the `currentTime`.
 
 #### getSeconds()
 
-As we did with the minutes, we need a method that returns the seconds that we have on the `currentTime` property after removing the minutes.
+As we did with the minutes, we need a method that returns the seconds that we have on the `currentTime` property after calculating the round number that represents the minutes.
 
 #### twoDigitsNumber()
 
-Our chronometer has a super cool screen that needs two digits number to display minutes and seconds, but sometimes `getMinutes` and `getSeconds` returns a single digit number, so let's create a super easy function that will receive as a parameter a value and will return us the same value but 2 digits length.
+Our chronometer has a super cool screen that needs two digits number to display minutes and seconds, but sometimes `getMinutes()` and `getSeconds()` returns a single digit number. Let's create a super simple algorithm that will turn into two-digits number any received value. Example: if the value of the _currentTime_ property is 36 seconds, it should return `00` for minutes and `36` for seconds; if the currentTime is 5 min and 43 sec, it should give us back `05` for minutes and `43` for seconds. At the same time, if the currentTime is 17 min and 13 sec, it should give us back `17` for minutes and `13` for seconds.
 
-**This is an awesome example of a functionality that we will need several times, so we isolate it on a function and just call every time we want**
+<!-- **This is an awesome example of a functionality that we will need several times, so we isolate it on a function and just call every time we want** -->
+
+#### stopClick()
+
+When invoked, the `stopClick()` method should clear the `intervalId`. Simple as that.
 
 #### resetClick()
 
-The `resetClick` will reset our chronometer. Since our code is super clean, we just need to put our `currentTime` property to 0, and it will be done!
+The `resetClick()` will reset our chronometer. Since our code is super clean, we just need to set our `currentTime` property back to 0, and that's it!
+
+#### splitClick()
+
+The `splitClick()` method needs to capture the moment when split button gets hit later on. Imagine this being time frame in which a runner runs certain distances.
+The `splitClick()` will receive any two numbers and needs to output them in the valid format. For more information, check the corresponding test.
 
 ### Iteration 2: DOM Manipulation
 
@@ -105,16 +127,16 @@ As you can see, we have two different buttons: start and clear. These are the bu
 
 Both buttons will have different behavior depending on the chronometer. These buttons are `btnLeft` and `btnRight` in our HTML. We can see the different values they will have in the following table:
 
-| Chronometer Status | Button ID | Text | CSS Class |
-|---------|-----------|------|----------|
-| Stopped | `btnLeft` | START | `btn start` |
-| Stopped | `btnRight` | RESET | `btn reset` |
-| Running | `btnLeft` | STOP | `btn stop` |
-| Running | `btnRight` | SPLIT | `btn split` |
+| Chronometer Status | Button ID  | Text  | CSS Class   |
+| ------------------ | ---------- | ----- | ----------- |
+| Stopped            | `btnLeft`  | START | `btn start` |
+| Stopped            | `btnRight` | RESET | `btn reset` |
+| Running            | `btnLeft`  | STOP  | `btn stop`  |
+| Running            | `btnRight` | SPLIT | `btn split` |
 
-**Note that you don't have to create any CSS class. All of them are already defined in the `starter-code` style sheet.**
+**Note that you don't have to create any CSS class. All of them are already defined in the provided style sheet.**
 
-In the `main.js` file you will find two click events that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
+In the `javascript/index.js` file you will find two click events that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
 
 It means that when we click in the `btnLeft`, if it has the `start` class you will have to change the `btnLeft` and `btnRight` buttons setting them up with the Running status described in the table above.
 
@@ -122,18 +144,21 @@ On the other hand, if the `btnLeft` doesn't have the `start` class when we click
 
 #### Changing buttons texts
 
-We will be working on the `main.js` file. We need to do the following: 
+We will be working on the `javascript/index.js` file. We need to do the following:
+
 - When the left button is clicked while the chronometer is stopped we need to:
-    - Set the `btnLeft` button with the text STOP, and the class `btn stop`.
-    - Set the `btnRight` button with the text SPLIT, and the class `btn split`.
+
+  - Set the `btnLeft` button with the text STOP, and the class `btn stop`.
+  - Set the `btnRight` button with the text SPLIT, and the class `btn split`.
 
 - When the left button is clicked while the chronometer is running we need to:
-    - Set the `btnLeft` button with the text START, and the class `btn start`.
-    - Set the `btnRight` button with the text RESET, and the class `btn reset`.
 
-- In the `main.js` file, create a new instance of the `Chronometer` object.
+  - Set the `btnLeft` button with the text START, and the class `btn start`.
+  - Set the `btnRight` button with the text RESET, and the class `btn reset`.
 
-- Create the necessary code in the `main.js` to call the Chronometer `startClick` method if the button has the `start` class, or the `stopClick` method if the button has the `stop` class applied.
+- In the `index.js` file, create a new instance of the `Chronometer` object.
+
+- Create the necessary code in the `index.js` to call the Chronometer `startClick` method if the button has the `start` class, or the `stopClick` method if the button has the `stop` class applied.
 
 #### Print our chronometer
 
@@ -161,7 +186,7 @@ Once we have created the ordered list in our HTML, we have to create the button 
 
 To finish up with this lesson, we are going to create the clear feature. Remember we will execute this when the chronometer is stopped and the user clicks on the right button. The behavior here is very simple: we have to clear all the data on the clock.
 
-To do that, we will have to set the minutes and seconds to zero in our clock and remove all the `<li>` elements that we could have in the list we created in the previous iteration. 
+To do that, we will have to set the minutes and seconds to zero in our clock and remove all the `<li>` elements that we could have in the list we created in the previous iteration.
 
 ### BONUS Iteration: Milliseconds
 
@@ -181,4 +206,4 @@ If we want to add milliseconds to the chronometer, we will have to manipulate th
   - Show the milliseconds when you capture a split time.
   - Clear the milliseconds when the Reset button is clicked.
 
-/Happy coding!
+Happy coding! :heart:
