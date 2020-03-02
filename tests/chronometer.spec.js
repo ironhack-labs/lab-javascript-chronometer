@@ -95,19 +95,19 @@ describe('Chronometer', () => {
 
     it("should return 0 when the currentTime counting haven't started", () => {
       chronometer.currentTime = 0;
-      expect(chronometer.getSeconds(0)).toEqual(0);
+      expect(chronometer.getSeconds()).toEqual(0);
     });
 
     it('should return the seconds of the currentTime', () => {
       chronometer.currentTime = 15;
 
-      expect(chronometer.getSeconds(0)).toEqual(15);
+      expect(chronometer.getSeconds()).toEqual(15);
     });
 
     it('should return the seconds portion of the currentTime that remains after removing the minutes', () => {
       chronometer.currentTime = 115;
 
-      expect(chronometer.getSeconds(1)).toEqual(55);
+      expect(chronometer.getSeconds()).toEqual(55);
     });
   });
 
