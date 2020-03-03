@@ -168,18 +168,13 @@ describe('Chronometer', () => {
       expect(typeof chronometer.splitClick).toEqual('function');
     });
 
-    it('should receive 2 arguments: minutes and seconds', () => {
-      expect(chronometer.splitClick.length).toEqual(2);
-
-      // else if (chronometer.splitClick.length === 3) {
-      //   expect(chronometer.splitClick('02', '03', '12')).toEqual('02:03:12');
-      // }
-    });
-
     it('should return valid format with minutes and seconds', () => {
-      if (chronometer.splitClick.length === 2) {
-        expect(chronometer.splitClick(2, 12)).toEqual('02:12');
-        expect(chronometer.splitClick(244, 55)).toEqual('244:55');
+      let min = chronometer.getMinutes();
+      let sec = chronometer.getSeconds();
+      if (min < 10) {
+        expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
+      } else {
+        expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
       }
     });
   });
@@ -190,14 +185,14 @@ describe('Chronometer', () => {
   //     expect(typeof chronometer.splitClick).toEqual('function');
   //   });
 
-  //   it('should receive 3 arguments: minutes, seconds and milliseconds', () => {
-  //     expect(chronometer.splitClick.length).toEqual(3);
-  //   });
-
   //   it('should return valid format with minutes, seconds and milliseconds', () => {
-  //     if (chronometer.splitClick.length === 3) {
-  //       expect(chronometer.splitClick(2, 12, 44)).toEqual('02:12:44');
-  //       expect(chronometer.splitClick(14, 55, 3)).toEqual('14:55:03');
+  //     let min = chronometer.getMinutes();
+  //     let sec = chronometer.getSeconds();
+  //     let milli = chronometer.getMilliseconds();
+  //     if (min < 10) {
+  //       expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}:${0}${milli}`);
+  //     } else {
+  //       expect(chronometer.splitClick()).toEqual(`${min}:${sec}:${milli}`);
   //     }
   //   });
   // });

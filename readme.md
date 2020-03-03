@@ -10,13 +10,15 @@ Let's go!
 
 These are our milestones:
 
-1. Our chronometer will have an LCD screen, where we will see the minutes and seconds moving forward.
+1. Our chronometer will have an _LCD screen_, where we will see the minutes and seconds moving forward.
 2. It will also have two different buttons that will change their behavior depending on the status of the chronometer. For example, the start button will become a stop button when the chronometer is running.
 3. As a bonus, we are going to add a split functionality. If you are questioning the usefulness of this functionality, well, it could be helpful to remember how much time we spent in each iteration of the exercise. :wink: As we finish an iteration, we will be able to press the split button, so we will know how hard or easy it was, depending on how much time it took us to finish it.
 
 Let's do it!
 
-![](https://media.giphy.com/media/xT8qAZcty5f0BEm2lO/giphy.gif)
+<!-- ![](https://media.giphy.com/media/xT8qAZcty5f0BEm2lO/giphy.gif) -->
+
+To check how your final version should look like check this **[demo](https://sandrabosk.github.io/demo-chrono/index.html)**.
 
 ## Requirements
 
@@ -37,7 +39,7 @@ $ git push origin master
 
 ## Tests, tests, tests!
 
-As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file you can find the tests you need to pass to finish this exercise successfully.
+As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file, you can find the tests you need to pass to finish this exercise successfully.
 You know the process, go ahead and open the `SpecRunner.html` file to see all the tests, and start writing your code on the `javascript/chronometer.js` file.
 
 ## Instructions
@@ -50,13 +52,13 @@ To kick-off, we are provided with the following files and folders:
 ├── index.html
 ├── jasmine
 ├── javascript
-│   ├── chronometer.js
-│   └── index.js
+│   ├── chronometer.js
+│   └── index.js
 ├── styles
-│   ├── fonts
-│   │   ├── ds-digi.ttf
-│   │   └── ds-digib.TTF
-│   └── style.css
+│   ├── fonts
+│   │   ├── ds-digi.ttf
+│   │   └── ds-digib.TTF
+│   └── style.css
 └── tests
     └── chronometer.spec.js
 ```
@@ -67,7 +69,7 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png)
 
-**This lab is essentially split into two main parts**:
+**This lab is primarily split into two main parts**:
 
 - part 1: logic (the code you will add in the `javascript/chronometer.js`) and
 - part 2: DOM manipulation so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
@@ -94,9 +96,13 @@ Let's proceed to create the Chronometer methods.
 
 #### startClick()
 
-We need to create a `startClick()` method for the Chronometer object. The `startClick()` method should use the `setInterval()` JS method to increment by 1 the `currentTime` property every 1 second.
+We need to create a `startClick(callback)` method for the Chronometer object. At a later point, this method will receive a callback function to print the time. That is why we added a _callback_ in the starter code between the parentheses.
 
-:bulb: _Hint_: Keep in mind - inside `setInterval()` the keyword `this` will not refer to the object _chronometer_ but to the global context. To enable access to `this` that points to chronometer, use arrow function syntax inside the `setInterval()`.
+The `startClick()` method should use the `setInterval()` JS method to increment by 1 the `currentTime` property every 1 second. The callback will also be triggered inside the scope of this method.
+
+:bulb: _Hint 1_: Keep in mind - inside `setInterval()` the keyword `this` will not refer to the object _chronometer_ but the global context. To enable access to `this` that points to chronometer, use arrow function syntax inside the `setInterval()`.
+
+:bulb: _Hint 2_: In case you get an error while invoking the callback, try to wrap it in the `if` statement.
 
 The `setInterval()` will be assigned to our `intervalId` property, so this way, we will be able to clear it later on when we need to restart the timer.
 
@@ -111,8 +117,6 @@ As we did with the minutes, we need a method that returns the seconds that we ha
 #### twoDigitsNumber()
 
 Our chronometer has a super cool screen that needs two digits number to display minutes and seconds, but sometimes `getMinutes()` and `getSeconds()` returns a single-digit number. Let's create a super simple algorithm that will turn into two-digits number any received value. Example: if the value of the _currentTime_ property is 36 seconds, it should return `00` for minutes and `36` for seconds; if the currentTime is 5 min and 43 sec, it should give us back `05` for minutes and `43` for seconds. At the same time, if the currentTime is 17 min and 13 sec, it should give us back `17` for minutes and `13` for seconds.
-
-<!-- **This is an awesome example of functionality that we will need several times, so we isolate it on a function and just call every time we want** -->
 
 #### stopClick()
 
@@ -133,7 +137,7 @@ The `splitClick()` will receive any two numbers and needs to output them in a va
 
 At this point, you should start writing your code in the `javascript/index.js` file.
 
-Our chronometer logic is done, and it works perfectly! Now we need to set the visual components of our web.
+Our chronometer logic is done, and it works perfectly! Now we need to set the visual components.
 
 In this iteration, your goal is to create a new chronometer and use its methods (which we previously defined in `chronometer.js`) while interacting with the DOM. Example: when clicked, the `start` button invokes `startClick()` method.
 
@@ -212,14 +216,13 @@ If we want to add milliseconds to the chronometer, we will have to manipulate th
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_82e9d1fd5976a3f98bb1382f2385f6a1.png)
 
-#### Tasks
+Your goal is to create the JavaScript logic to:
 
-- Add the necessary HTML to show the milliseconds in the clock.
-- Add the required styles in the CSS to display the milliseconds as you like.
-- Create the JavaScript logic to:
-  - Be able to count the milliseconds.
-  - Show the milliseconds going forward.
-  - Show the milliseconds when you capture a split time.
-  - Clear the milliseconds when the Reset button is clicked.
+- be able to count the milliseconds,
+- show the milliseconds going forward,
+- show the milliseconds when you capture a split time and
+- clear the milliseconds when the Reset button is clicked.
 
-Happy coding! :heart:
+This lab is a little bit complex, but it will guide you through the logical process of solving the problem and, at the same time, by following the guidelines, you will learn how to separate concerns between the logic and the DOM manipulation (which are the visuals).
+
+**Happy coding!** :heart:
