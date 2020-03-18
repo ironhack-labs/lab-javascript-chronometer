@@ -35,5 +35,6 @@ class Chronometer {
   }
   splitClick() {
     // ... your code goes here
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getMinutes())}`
   }
 }
