@@ -4,24 +4,25 @@ class Chronometer {
     this.currentTime = 0;
     this.miliseconds = 0;
     this.intervalId = 0;
+    this.intervalMilisecond = 0;
   }
   startClick(callback) {
     // ... your code goes here
-    this.intervalId = setInterval(() => this.currentTime ++, 10);
+    this.intervalSecond = setInterval(() => this.currentTime ++, 1000)
+    this.intervalMilisecond = setInterval(() => this.miliseconds++, 10);
   }
   
   getMinutes() {
-    // ... your code goes here
-    return Math.floor((this.currentTime/100) / 60);
+    // ... your code goes herethis
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
     // ... your code goes here
-    return Math.floor((this.currentTime/100) % 60);
+    return Math.floor(this.currentTime % 60);
   }
 
   getMiliseconds(){
-    this.miliseconds++;
     if(this.miliseconds == 100) this.miliseconds = 0;
     return this.miliseconds;
   }
@@ -35,6 +36,7 @@ class Chronometer {
   stopClick() {
     // ... your code goes here
     clearInterval(this.intervalId);
+    clearInterval(this.intervalMilisecond);
   }
   resetClick() {
     // ... your code goes here
