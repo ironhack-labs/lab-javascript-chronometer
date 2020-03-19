@@ -21,8 +21,8 @@ class Chronometer {
   }
 
   getMiliseconds(){
-    if(this.miliseconds == 99) this.miliseconds = 0;
     this.miliseconds++;
+    if(this.miliseconds == 100) this.miliseconds = 0;
     return this.miliseconds;
   }
 
