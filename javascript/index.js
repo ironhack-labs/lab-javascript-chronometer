@@ -20,7 +20,7 @@ function printTime() {
     printMinutes();
     printSeconds();
     printMilliseconds();
-  }, 1000 / 100);
+  }, 10);
 
 }
 
