@@ -42,7 +42,7 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-  let miliseconds = chronometer.twoDigitsNumber(chronometer.getMiliseconds());
+  let miliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
   milDec.innerHTML = miliseconds[0];
   milUni.innerHTML = miliseconds[1];
 }
