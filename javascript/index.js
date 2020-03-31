@@ -1,4 +1,6 @@
 const chronometer = new Chronometer()
+let minutes
+let seconds
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft')
@@ -14,15 +16,24 @@ let milUni = document.getElementById('milUni')
 let splits = document.getElementById('splits')
 
 function printTime() {
-  console.log(chronometer.currentTime)
+  minutes = chronometer.getMinutes()
+  seconds = chronometer.getSeconds()
+  
+  //convert to 2-figure strings
+  minutes = chronometer.twoDigitsNumber(minutes)
+  seconds = chronometer.twoDigitsNumber(seconds)
+  printMinutes()
+  printSeconds()
+
 }
 
 function printMinutes() {
-  // ... your code goes here
-}
+  minDec.innerText = minutes[0]
+  minUni.innerText = minutes[1]
 
 function printSeconds() {
-  // ... your code goes here
+  secDec.innerText = seconds[0]
+  secUni.innerText = seconds[1]
 }
 
 // ==> BONUS
