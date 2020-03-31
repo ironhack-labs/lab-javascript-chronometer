@@ -1,6 +1,6 @@
 const chronometer = new Chronometer()
 const splitRowTemplate = document.querySelector(".template")
-const splitParent = document.querySelector("#splits-container")
+const splitParent = document.querySelector("#splits")
 
 let minutes
 let seconds
@@ -70,6 +70,12 @@ function setStartBtn() {
 
 function setResetBtn() {
   // ... your code goes here
+  chronometer.currentTime = 0
+  minDec.innerText = "0"
+  minUni.innerText = "0"
+  secDec.innerText = "0"
+  secUni.innerText = "0"
+  splitParent.innerHTML = ""
 }
 
 // Start/Stop Button
@@ -100,5 +106,6 @@ btnRight.addEventListener('click', () => {
   if (isRunning == true) {
     printSplit()
   } else {
+    setResetBtn()
   }
 })
