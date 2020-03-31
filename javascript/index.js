@@ -14,11 +14,11 @@ let milUni = document.getElementById('milUni')
 let splits = document.getElementById('splits')
 
 function printTime() {
-  // ... your code goes here
+      return chronometer.startClick()
 }
 
 function printMinutes() {
-  // ... your code goes here
+ setInterval()
 }
 
 function printSeconds() {
@@ -60,7 +60,8 @@ btnLeft.addEventListener('click', () => {
     btnLeft.className = 'btn stop'
     btnLeft.innerText = 'STOP'
     btnRight.className = 'btn split'
-    btnRight.innerText = 'SPLIT'
+    btnRight.innerText = 'SPLIT'  
+    printTime()
   } else {
     btnLeft.className = 'btn start'
     btnLeft.innerText = 'START'
