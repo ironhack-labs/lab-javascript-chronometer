@@ -67,5 +67,11 @@ btnLeft.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.className == "btn stop") {
+    btnRight.className = "btn split"
+    btnRight.innerText = "SPLIT"
+  } else {
+    btnRight.className = "btn stop"
+    btnRight.innerText = "SPLIT"
+  }
 })
