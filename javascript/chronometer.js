@@ -4,25 +4,29 @@ class Chronometer {
     this.intervalId = 0
   }
   startClick(callback) {
-    setInterval(obj => this.currentTime ++, 1000)
+    setInterval(obj => this.currentTime++, 1000)
   }
   getMinutes() {
     const minutes = parseInt(this.currentTime / 60)
     return minutes
   }
   getSeconds() {
-    const minutesInSeconds = (this.getMinutes()) * 60
+    const minutesInSeconds = this.getMinutes() * 60
     const remainingSeconds = this.currentTime - minutesInSeconds
-    return remainingSeconds;
+    return remainingSeconds
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(number) {
+    if (number.toString().length === 1) {
+      return `0${number.toString()}`
+    }
+
+    return number.toString()
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(1)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0
   }
   splitClick() {
     // ... your code goes here
