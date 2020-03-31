@@ -59,13 +59,16 @@ function setResetBtn() {
 let isRunning = false
 
 btnLeft.addEventListener('click', () => {
-  if (isRunning == false) {
+  if (isRunning === false) {
     btnLeft.className = 'btn stop'
     btnLeft.innerText = 'STOP'
     btnRight.className = 'btn split'
     btnRight.innerText = 'SPLIT'
     isRunning = true
+    console.log("it's running")
+    chronometer.startClick()
   } else {
+    chronometer.stopClick()
     btnLeft.className = 'btn start'
     btnLeft.innerText = 'START'
     btnRight.className = 'btn reset'
@@ -77,8 +80,6 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (isRunning == true) {
-
   } else {
-
   }
 })
