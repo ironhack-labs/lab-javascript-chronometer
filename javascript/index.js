@@ -30,6 +30,7 @@ function printTime() {
 function printMinutes() {
   minDec.innerText = minutes[0]
   minUni.innerText = minutes[1]
+}
 
 function printSeconds() {
   secDec.innerText = seconds[0]
