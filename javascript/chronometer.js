@@ -7,10 +7,13 @@ class Chronometer {
     setInterval(obj => this.currentTime ++, 1000)
   }
   getMinutes() {
-    // ... your code goes here
+    const minutes = parseInt(this.currentTime / 60)
+    return minutes
   }
   getSeconds() {
-    // ... your code goes here
+    const minutesInSeconds = (this.getMinutes()) * 60
+    const remainingSeconds = this.currentTime - minutesInSeconds
+    return remainingSeconds;
   }
   twoDigitsNumber() {
     // ... your code goes here
