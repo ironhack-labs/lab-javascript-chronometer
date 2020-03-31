@@ -3,6 +3,19 @@ const chronometer = new Chronometer();
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+btnLeft.addEventListener("click", startClick => {
+  btnLeft.classList.toggle('stop')
+  btnRight.classList.toggle("split")
+  if (btnLeft.innerHTML === "START") {
+    btnLeft.innerHTML = "STOP"
+    btnRight.innerText = "SPLIT"
+  } else {
+    btnLeft.innerHTML = "START"
+    btnRight.innerText = "RESET"
+  }
+})
+
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
@@ -18,11 +31,12 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.getSeconds()
+  console.log(seconds)
 }
 
 // ==> BONUS
