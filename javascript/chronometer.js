@@ -19,7 +19,6 @@ class Chronometer {
     if (number.toString().length === 1) {
       return `0${number.toString()}`
     }
-
     return number.toString()
   }
   stopClick() {
@@ -29,6 +28,8 @@ class Chronometer {
     this.currentTime = 0
   }
   splitClick() {
-    // ... your code goes here
+    const min = this.getMinutes()
+    const sec = this.getSeconds()
+    return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`
   }
 }
