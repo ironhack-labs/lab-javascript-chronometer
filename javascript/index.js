@@ -1,4 +1,7 @@
 const chronometer = new Chronometer()
+const splitRowTemplate = document.querySelector(".template")
+const splitParent = document.querySelector("#splits-container")
+
 let minutes
 let seconds
 
@@ -43,7 +46,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const newSplit = splitRowTemplate.cloneNode()
+  newSplit.className = ""
+  newSplit.innerText = chronometer.splitClick()
+  splitParent.appendChild(newSplit)
 }
 
 function clearSplits() {
@@ -92,6 +98,7 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (isRunning == true) {
+    printSplit()
   } else {
   }
 })
