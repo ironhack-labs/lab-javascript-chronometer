@@ -1,8 +1,36 @@
 const chronometer = new Chronometer();
 
-// get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+
+btnLeft.addEventListener('click', () => {
+
+
+  if (btnLeft.innerHTML === "START") {
+    chronometer.startClick()
+    setStartBtn()
+
+  } else {
+    chronometer.stopClick()
+    setStopBtn()
+  }
+
+  printTime()
+  console.log(chronometer.currentTime)
+
+})
+
+btnRight.addEventListener('click', () => {
+
+  if (btnRight.innerHTML === "RESET") {
+    chronometer.resetClick()
+    setResetBtn()
+  } else {
+    chronometer.splitClick()
+    setSplitBtn()
+  }
+
+})
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
@@ -13,16 +41,21 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function printTime(minutes, seconds) {
+  printMinutes(minutes)
+  printSeconds(seconds)
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(minutes) {
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
+  minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
+
+
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(seconds) {
+  secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).substr(1)
+  secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).substr(0, 1)
 }
 
 // ==> BONUS
@@ -39,19 +72,28 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+
+  btnLeft.innerHTML = "START"
+  btnLeft.setAttribute("class", "btn start")
+
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+
+  btnRight.innerHTML = "RESET"
+  btnRight.setAttribute("class", "btn reset")
 }
 
 function setStartBtn() {
-  // ... your code goes here
+
+  btnLeft.innerHTML = "STOP"
+  btnLeft.setAttribute("class", "btn stop")
+
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = "SPLIT"
+  btnRight.setAttribute("class", "btn split")
 }
 
 // Start/Stop Button
