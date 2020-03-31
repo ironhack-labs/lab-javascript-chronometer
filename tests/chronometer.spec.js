@@ -1,4 +1,4 @@
-describe('Chronometer', () => {
+  describe('Chronometer', () => {
   let chronometer;
 
   beforeEach(() => {
