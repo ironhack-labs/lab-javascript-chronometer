@@ -62,5 +62,6 @@ btnLeft.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeft.className === 'btn start' ? btnLeft.className = 'btn stop' : btnLeft.className = 'btn start';
+  btnLeft.className === 'btn start' ? btnLeft.innerText = 'START' : btnLeft.innerText = 'STOP';
 });
