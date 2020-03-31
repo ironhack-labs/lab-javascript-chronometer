@@ -4,7 +4,10 @@ class Chronometer {
     this.intervalId = 0
   }
   startClick(callback) {
-    setInterval(obj => this.currentTime++, 1000)
+    setInterval(obj => {
+      this.currentTime++
+      callback()
+    }, 1000)
   }
   getMinutes() {
     const minutes = parseInt(this.currentTime / 60)
