@@ -4,7 +4,7 @@ class Chronometer {
     this.intervalId = 0
   }
   startClick(callback) {
-    setInterval(function() {}, 1000)
+    setInterval(obj => this.currentTime ++, 1000)
   }
   getMinutes() {
     // ... your code goes here
