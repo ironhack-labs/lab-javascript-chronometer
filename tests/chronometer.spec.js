@@ -163,37 +163,37 @@ describe('Chronometer', () => {
     });
   });
 
-  describe('splitClick method', () => {
-    it('should be declared', () => {
-      expect(typeof chronometer.splitClick).toEqual('function');
-    });
-
-    it('should return valid format with minutes and seconds', () => {
-      let min = chronometer.getMinutes();
-      let sec = chronometer.getSeconds();
-      if (min < 10) {
-        expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
-      } else {
-        expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
-      }
-    });
-  });
-
-  // comment the previous test and uncomment the following when working on the bonus iteration
   // describe('splitClick method', () => {
   //   it('should be declared', () => {
   //     expect(typeof chronometer.splitClick).toEqual('function');
   //   });
 
-  //   it('should return valid format with minutes, seconds and milliseconds', () => {
+  //   it('should return valid format with minutes and seconds', () => {
   //     let min = chronometer.getMinutes();
   //     let sec = chronometer.getSeconds();
-  //     let milli = chronometer.getMilliseconds();
   //     if (min < 10) {
-  //       expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}:${0}${milli}`);
+  //       expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
   //     } else {
-  //       expect(chronometer.splitClick()).toEqual(`${min}:${sec}:${milli}`);
+  //       expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
   //     }
   //   });
   // });
+
+  // comment the previous test and uncomment the following when working on the bonus iteration
+  describe('splitClick method', () => {
+    it('should be declared', () => {
+      expect(typeof chronometer.splitClick).toEqual('function');
+    });
+
+    it('should return valid format with minutes, seconds and milliseconds', () => {
+      let min = chronometer.getMinutes();
+      let sec = chronometer.getSeconds();
+      let milli = chronometer.getMilliseconds();
+      if (min < 10) {
+        expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}:${0}${milli}`);
+      } else {
+        expect(chronometer.splitClick()).toEqual(`${min}:${sec}:${milli}`);
+      }
+    });
+  });
 });
