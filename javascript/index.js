@@ -14,24 +14,36 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let mins = String(chronometer.twoDigitsNumber(chronometer.getMinutes()));
+  minDec.innerHTML = mins[0];
+  minUni.innerHTML = mins[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let secs = String(chronometer.twoDigitsNumber(chronometer.getSeconds()));
+  secDec.innerHTML = secs[0];
+  secUni.innerHTML = secs[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let mils = String(chronometer.twoDigitsNumber(chronometer.getMilliseconds()));
+  console.log(mils);
+  milDec.innerHTML = mils[0];
+  milUni.innerHTML = mils[1];
 }
 
 function printSplit() {
-  // ... your code goes here
+  let splitTime = document.createElement("li");
+  splitTime.innerText = minDec.innerText + minUni.innerText + ":" + secDec.innerText + secUni.innerText + "." + milDec.innerText + milUni.innerText ;
+  console.log(splitTime);
+  splits.appendChild(splitTime);
 }
 
 function clearSplits() {
@@ -56,10 +68,26 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeft.classList.contains("start") ? chronometer.startClick(printTime) : chronometer.stopClick() ;
+  btnLeft.classList.toggle("start");
+  btnLeft.classList.toggle("stop");
+  btnRight.classList.toggle("reset");
+  btnRight.classList.toggle("split");
+  btnLeft.innerText = btnLeft.classList.contains("start") ? "START" : "STOP" ;
+  btnRight.innerText = btnLeft.classList.contains("start") ? "RESET" : "SPLIT" ;
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRight.classList.contains("split")) {
+    printSplit();
+  } else {
+    minDec.innerHTML = "0"
+    minUni.innerHTML = "0"
+    secDec.innerHTML = "0"
+    secUni.innerHTML = "0"
+    milDec.innerHTML = "0"
+    milUni.innerHTML = "0"
+    splits.innerHTML = ""
+  }
 });
