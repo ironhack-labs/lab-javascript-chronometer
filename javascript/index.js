@@ -13,53 +13,60 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+// id="btnLeft" class="btn start"
+
 function printTime() {
-  // ... your code goes here
+	console.log('start');
+	printMinutes();
+	printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function printSeconds() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function printSplit() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function clearSplits() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+	console.log('stop');
+	// ... your code goes here
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function setStartBtn() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function setResetBtn() {
-  // ... your code goes here
+	console.log('reset');
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+	document.querySelector('.btn start');
+	return printTime();
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+	document.querySelector('.btn reset');
+	return setResetBtn();
 });
