@@ -6,6 +6,9 @@ class Chronometer {
 	startClick(callback) {
 		this.intervalId = setInterval(() => {
 			this.currentTime += 1;
+			if (callback()) {
+				callback();
+			}
 		}, 1000);
 	}
 
@@ -26,11 +29,11 @@ class Chronometer {
 
 		for (let i = 0; i < numberToString.length; i++) {
 			if (numberToString.length === 1) {
-				return 0 + numberToString;
+				return '0' + numberToString;
 			} else if (numberToString.length === 2) {
 				return numberToString;
 			} else {
-				return 0;
+				return '00';
 			}
 		}
 	}
