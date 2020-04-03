@@ -36,11 +36,14 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
- 
+  splits.innerHTML += `<li>${chronometer.splitClick()}</li>`;
+
 }
 
 function clearSplits() {
   // ... your code goes here
+  chronometer.currentTime = 0;
+  splits.innerHTML = "";
 }
 
 function setStopBtn() {
