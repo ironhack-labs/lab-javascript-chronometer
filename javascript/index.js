@@ -62,7 +62,7 @@ function setStartBtn() {
 function setResetBtn() {
   btnRight.classList.toggle("split");
   btnRight.classList.toggle("reset");
-  document.querySelector("btn.reset").textContent = "RESET";
+  document.querySelector(".btn.reset").textContent = "RESET";
 }
 
 // Start/Stop Button
