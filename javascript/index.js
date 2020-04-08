@@ -39,11 +39,16 @@ function printSeconds() {
 }*/
 
 function printSplit() {
-  // ... your code goes here
+  newSplit = document.createElement("li");
+  splits.appendChild(newSplit);
+  newSplit.innerHTML = chronometer.splitClick();
 }
 
 function clearSplits() {
   console.log("in clear splits");
+  for (let i = 0; i < splits.length; i++) {
+    splits.removeChild(splits[i]);
+  }
 }
 
 function setStopBtn() {
@@ -96,9 +101,7 @@ btnRight.addEventListener('click', () => {
     clearSplits();
   }
   if (btnRight.classList.contains("split")) {
-    newSplit = document.createElement("li");
-    splits.appendChild(newSplit);
-    newSplit.innerHTML = chronometer.splitClick();
+    printSplit();
     setSplitBtn();
   }
 });
