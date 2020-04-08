@@ -14,6 +14,9 @@ class Chronometer {
   getSeconds() {
     return Math.floor(this.currentTime % 60);
   }
+  /*getMilliseconds() {
+    return Math.floor(this.currentTime % )
+  }*/
   twoDigitsNumber(num) {
     return ("00" + num).slice(-2);
   }

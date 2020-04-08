@@ -21,24 +21,22 @@ function printTime() {
 
 function printMinutes() {
   const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
-  const minDec = document.getElementById('minDec');
-  const minUni = document.getElementById('minUni');
-  minDec.innerHTML = minutes.slice(1);
+  minDec.innerHTML = minutes.slice(0, 1);
   minUni.innerHTML = minutes.slice(-1);
 }
 
 function printSeconds() {
   const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
-  const secDec = document.getElementById('secDec');
-  const secUni = document.getElementById('secUni');
-  secDec.innerHTML = seconds.slice(1);
+  secDec.innerHTML = seconds.slice(0, 1);
   secUni.innerHTML = seconds.slice(-1);
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
+/*function printMilliseconds() {
+  const milliSeconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+  milDec.innerHTML = milliSeconds.slice(0, 1);
+  milUni.innerHTML = milliSeconds.slice(-1);
+}*/
 
 function printSplit() {
   // ... your code goes here
@@ -74,10 +72,9 @@ let intervalId = 0;
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (btnLeft.classList.contains("start")) {
-    chronometer.startClick;
+    chronometer.startClick();
     intervalId = setInterval(() => {
       printTime();
-      console.log(chronometer.currentTime); // searching why it stays at 0
     }, 1000);
     setStopBtn();
   }
@@ -93,6 +90,15 @@ btnLeft.addEventListener('click', () => {
 });
 
 btnRight.addEventListener('click', () => {
-  //if (btnRight.classList.contains("reset")) clearSplits();
-  //if (btnRight.classList.contains("split")) setSplitBtn();
+  if (btnRight.classList.contains("reset")) {
+    chronometer.resetClick();
+    printTime();
+    clearSplits();
+  }
+  if (btnRight.classList.contains("split")) {
+    newSplit = document.createElement("li");
+    splits.appendChild(newSplit);
+    newSplit.innerHTML = chronometer.splitClick();
+    setSplitBtn();
+  }
 });
