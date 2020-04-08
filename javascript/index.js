@@ -40,15 +40,17 @@ function printSeconds() {
 
 function printSplit() {
   newSplit = document.createElement("li");
+  newSplit.setAttribute("class", "split");
   splits.appendChild(newSplit);
   newSplit.innerHTML = chronometer.splitClick();
 }
 
 function clearSplits() {
   console.log("in clear splits");
-  for (let i = 0; i < splits.length; i++) {
-    splits.removeChild(splits[i]);
-  }
+  const toRemove = document.querySelectorAll(".split")
+  toRemove.forEach((el) => {
+    el.remove();
+  })
 }
 
 function setStopBtn() {
