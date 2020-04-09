@@ -76,18 +76,13 @@ function setResetBtn() {
   btnRight.innerHTML = "RESET";
 }
 
-let intervalId = 0;
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (btnLeft.classList.contains("start")) {
-    chronometer.startClick();
-    intervalId = setInterval(() => {
-      printTime();
-    }, 50);
+    chronometer.startClick(printTime);
     setStopBtn();
   }
   else if (btnLeft.classList.contains("stop")) {
-    clearInterval(intervalId);
     chronometer.stopClick();
     setStartBtn();
   }
