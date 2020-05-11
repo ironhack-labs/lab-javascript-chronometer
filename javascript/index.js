@@ -24,7 +24,6 @@ function printMinutes() {
 function printSeconds() {
   setInterval(() => {
     const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
-    console.log(seconds);
     secDec.innerHTML = seconds[0];
     secUni.innerHTML = seconds[1];
   }, 1000);
