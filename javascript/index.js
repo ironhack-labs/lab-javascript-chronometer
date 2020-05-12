@@ -96,6 +96,7 @@ btnRight.addEventListener('click', () => {
     secUni.innerHTML = "0";
     milDec.innerHTML = "0";
     milUni.innerHTML = "0";
+    chronometer.currentTime = 0;
     clearSplits();
   } else {
     printSplit();
