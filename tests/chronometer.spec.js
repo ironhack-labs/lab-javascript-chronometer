@@ -79,7 +79,7 @@ describe('Chronometer', () => {
     it('should return the currentTime in minutes even for laaaarge numbers', () => {
       chronometer.currentTime = 50210;
 
-      expect(chronometer.getMinutes()).toEqual(836);
+      expect(chronometer.getMinutes()).toEqual(836); 
     });
   });
 
