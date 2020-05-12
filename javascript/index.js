@@ -86,6 +86,7 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   if(btnRight.classList.contains('reset')){
     chronometer.resetClick();
+    clearSplits();
     printTime();
   }
   else if(btnRight.classList.contains('split')){
