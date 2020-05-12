@@ -38,8 +38,7 @@ function printMilliseconds() {
 function printSplit() {
   let liSplit = document.createElement('li');
   liSplit.innerHTML = chronometer.splitClick();
-  let placeSplitHere = document.querySelector('#splits');
-  placeSplitHere.appendChild(liSplit);
+  splits.appendChild(liSplit);
 }
 
 function clearSplits() {
@@ -95,6 +94,8 @@ btnRight.addEventListener('click', () => {
     minUni.innerHTML = "0";
     secDec.innerHTML = "0";
     secUni.innerHTML = "0";
+    milDec.innerHTML = "0";
+    milUni.innerHTML = "0";
     clearSplits();
   } else {
     printSplit();
