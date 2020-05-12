@@ -1,6 +1,6 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 21560;
+    this.currentTime = 0;
     this.intervalId = 0;
   }
 
@@ -29,6 +29,8 @@ class Chronometer {
   twoDigitsNumber(parameter) {
     if (parameter < 10) {
       return String(parameter = `0${parameter}`);
+    } else if (parameter === 0){
+      return String(parameter = `00`);
     } else{
       return String(parameter);
     }
@@ -45,14 +47,26 @@ class Chronometer {
   splitClick() {
     let min = this.getMinutes();
     let sec = this.getSeconds();
-    if (min < 10 && sec < 10) {
-      return`${0}${min}:${0}${sec}`;
-    } else if (min < 10 && sec >= 10) {
-      return `${0}${min}:${sec}`;
-    } else if (min >= 10 && sec >= 10) {
-      return `${min}:${sec}`;
-    } else{
-      return `${min}:${sec}`;
+    let milli = this.getMilliseconds();
+
+    if (min < 10 && sec < 10 && milli < 10) {
+      return `${0}${min}:${0}${sec}:${0}${milli}`;
+    } 
+    else if (min < 10 && sec < 10 && milli >= 10) {
+      return `${0}${min}:${0}${sec}:${milli}`;
+    } 
+    else if (min < 10 && sec >= 10 && milli >= 10) {
+      return `${0}${min}:${sec}:${milli}`;
+    } 
+    else if (min >= 10 && sec < 10 && milli < 10) {
+      return `${min}:${0}${sec}:${0}${milli}`;
+    }
+    else if (min >= 10 && sec >= 10 && milli < 10) {
+      return `${min}:${sec}:${0}${milli}`;
+    }
+    else{
+      return `${min}:${sec}:${milli}`;
     }
   }
 }
+
