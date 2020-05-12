@@ -21,7 +21,7 @@ class Chronometer {
     if(Number(number) < 10){
       return '0' + number;
     }
-    return number;
+    return String(number);
   }
   stopClick() {
     clearInterval(this.intervalId);
