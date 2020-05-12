@@ -13,7 +13,11 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-function printTime() {}
+function printTime() {
+  setInterval(printMilliseconds, 1);
+  setInterval(printMinutes, 1000);
+  setInterval(printSeconds, 1000);
+}
 
 function printMinutes() {
   const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
@@ -22,20 +26,24 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  setInterval(() => {
-    const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
-    secDec.innerHTML = seconds[0];
-    secUni.innerHTML = seconds[1];
-  }, 1000);
+  const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const miliSeconds = chronometer.twoDigitsNumber(chronometer.getMiliseconds());
+  milDec.innerHTML = miliSeconds[0];
+  milUni.innerHTML = miliSeconds[1];
 }
 
 function printSplit() {
-  // ... your code goes here
+  const splitList = document.querySelector("#splits");
+  const lastSplit = document.createElement("li");
+  lastSplit.innerHTML = chronometer.splitClick();
+
+  splitList.appendChild(lastSplit);
 }
 
 function clearSplits() {
@@ -55,7 +63,7 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
@@ -69,7 +77,7 @@ btnLeft.addEventListener("click", () => {
       btnRight.classList.add("split");
       btnRight.innerHTML = "SPLIT";
       setStartBtn();
-      printSeconds();
+      printTime();
       break;
     case "btn stop":
       btnLeft.classList.remove("stop");
@@ -84,4 +92,13 @@ btnLeft.addEventListener("click", () => {
 });
 
 // Reset/Split Button
-btnRight.addEventListener("click", () => {});
+btnRight.addEventListener("click", () => {
+  switch (btnRight.className) {
+    case "btn split":
+      printSplit();
+      break;
+    case "btn reset":
+      setResetBtn();
+      break;
+  }
+});
