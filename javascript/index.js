@@ -15,6 +15,7 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  window.requestAnimationFrame(printTime);
 }
 
 function printMinutes() {
