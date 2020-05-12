@@ -9,13 +9,16 @@ class Chronometer {
       if(typeof callback === 'function'){
         callback();
       }
-    }, 1000)
+    }, 10)
   }
   getMinutes() {
-    return Math.floor(this.currentTime/60);
+    return Math.floor((this.currentTime/100)/60);
   }
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor((this.currentTime/100) % 60);
+  }
+  getCentiseconds() {
+    return this.currentTime % 100;
   }
   twoDigitsNumber(number) {
     if(Number(number) < 10){
@@ -30,6 +33,6 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    return this.twoDigitsNumber(this.getMinutes()) + ':' + this.twoDigitsNumber(this.getSeconds())
+    return this.twoDigitsNumber(this.getMinutes()) + ':' + this.twoDigitsNumber(this.getSeconds()) + ':' + this.twoDigitsNumber(this.getCentiseconds())
   }
 }
