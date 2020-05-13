@@ -14,25 +14,24 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  loop = setInterval(()=>{
-    let time = chronometer.splitClick();
-    console.log(time)
-    printMinutes(time.slice(0,2));
-    printSeconds(time.slice(3,5));
-  },1000);
+  
+  printMinutes();
+  printSeconds();
   // ... your code goes here
 }
 
-function printMinutes(minutes) {
-  minDec.innerHTML = minutes.slice(0,1);
-  minUni.innerHTML=minutes.slice(1,2);
+function printMinutes() {
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML=minutes[1];
   // ... your code goes here
 }
 
-function printSeconds(seconds) {
-  secDec.innerHTML = seconds.slice(0,1)
+function printSeconds() {
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerHTML = seconds[0]
   console.log('print seconds')
-  secUni.innerHTML = seconds.slice(1,2);
+  secUni.innerHTML = seconds[1];
   // ... your code goes here
 }
 
@@ -100,8 +99,7 @@ btnLeft.addEventListener('click', () => {
   console.log('hello');
   if (btnLeft.classList.contains('start')) {
     setStopBtn();
-    chronometer.startClick();
-    printTime();
+    chronometer.startClick(printTime);
   } else if (btnLeft.classList.contains('stop')) {
     setStartBtn();
     chronometer.stopClick();
