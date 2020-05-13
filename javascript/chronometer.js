@@ -11,7 +11,7 @@ class Chronometer {
     // ... your code goes here
   }
   getMinutes() {
-    return Math.trunc(this.currentTime/60);
+    return Math.floor(this.currentTime/60);
     // ... your code goes here
   }
   getSeconds() {
