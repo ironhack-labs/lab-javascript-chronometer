@@ -6,7 +6,7 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval( () => {
       this.currentTime ++;
-    }, 1000)
+    }, 100)
     console.log(this.currentTime);
   }
   
@@ -33,9 +33,18 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    let min = this.getMinutes();
-    let sec = this.getSeconds();
+    let min = (this.getMinutes());
+    let sec = (this.getSeconds());
 
-    return `${min}${min}:${sec}${sec}`;
+    if (min < 10 && sec < 10 ) {
+      return `${0}${min}:${0}${sec}`;
+    } else if (min < 10 ){
+      return `${0}${min}:${sec}`;
+    } else if (sec < 10 ){
+      return `${min}:${0}${sec}`;
+    } else {
+      return `${min}:${sec}`;
+    }
+    
   }
 }
