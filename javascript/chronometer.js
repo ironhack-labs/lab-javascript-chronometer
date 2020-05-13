@@ -9,26 +9,19 @@ class Chronometer {
       callback();
     }, 1000)
   }
+
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
+
   getSeconds() {
-    return this.currentTime%60;
+    return Math.floor(this.currentTime % 60);
   }
-  twoDigitsNumber() {
-    if(this.currentTime.length == 2){
-      return `00${this.currentTime}`;
-    }  
-    else if (this.currentTime.length == 1){
-      return `000${this.currentTime}`;
-    }
-    else if (this.currentTime.length == 4){
-      return `${this.currentTime}`;
-    }
-    else {
-      return `0${this.currentTime}`;
-    }
+
+  twoDigitsNumber(val) {
+    return ("0" + val).slice(-2);
   }
+
   stopClick() {
     clearInterval(this.intervalId);
   }
@@ -36,13 +29,6 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    let min = this.getMinutes();
-    let sec = this.getSeconds();
-    if (min < 10) {
-      return `${0}${min}:${0}${sec}`;
-    } else {
-      return `${min}:${sec}`;
-    }
-      
-  }
+      return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`;
+}
 }
