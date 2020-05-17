@@ -37,9 +37,9 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-  const milSec = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
-  milDec.innerText = milSec[0]
-  milSec.innerText = milSec[1]
+  const milS = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
+  milDec.innerText = milS[0]
+  milUni.innerText = milS[1]
 }
 
 function printSplit() {
