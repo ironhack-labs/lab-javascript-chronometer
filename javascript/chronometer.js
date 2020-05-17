@@ -4,9 +4,13 @@ class Chronometer {
     this.currentTime = 0
     this.intervalId = 0
   }
-  startClick() {
+  startClick(callback) {
     // ... your code goes here
-    this.intervalId = setInterval(() => this.currentTime++, 1000)
+    // ...faltaba llamar al callback() que luego será printNumbers, pero da error en Jasmine
+    this.intervalId = setInterval(() => {
+      this.currentTime++, 
+      typeof callback === 'function' && (callback())
+    }, 1000);
   }
   getMinutes() {
     // ... your code goes here
@@ -15,7 +19,7 @@ class Chronometer {
   }
   getSeconds() {
     // ... your code goes here
-    const seconds = this.currentTime - this.getMinutes() * 60
+    const seconds = Math.floor(this.currentTime - this.getMinutes() * 60)
     return seconds
   }
   twoDigitsNumber(num) {
