@@ -13,15 +13,23 @@ class Chronometer {
         return Number(this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
     }
     twoDigitsNumber() {
-        return (this.getMinutes().slice(-1, 1))
+        let newString = toString(this.currentTime)
+        return newString.slice(-2)
     }
     stopClick() {
-        // ... your code goes here
+      clearInterval(this.intervalId);
     }
     resetClick() {
-        // ... your code goes here
+        this.currentTime = 0
     }
     splitClick() {
-        // ... your code goes here
+     let min = this.getMinutes()
+     let sec = this.getSeconds()
+
+     if (min < 10) {
+      return (`${0}${min}:${0}${sec}`);
+    } else {
+      return (`${min}:${sec}`);
     }
+  }
 }
