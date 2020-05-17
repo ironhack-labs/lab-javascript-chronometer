@@ -1,8 +1,7 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0
-    this.intervalId = 0
-    
+    this.intervalId = 0 
   }
 
   startClick (callback) {
@@ -11,8 +10,7 @@ class Chronometer {
       if (callback) {
         callback()
       }
-    }, 1000)
-    
+    }, 1000)    
   }
 
   getMinutes () {
@@ -24,8 +22,12 @@ class Chronometer {
   }
 
   twoDigitsNumber (num) {
-    const numWithZero = ("0" + num)
-    return numWithZero.slice(numWithZero.length-2)
+    const numString = num.toString()
+    if(numString.length === 2){
+      return numString
+    } else if (numString.length === 1) {
+      return "0" + numString
+    }
   }
 
   stopClick() {
