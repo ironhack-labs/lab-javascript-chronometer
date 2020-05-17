@@ -14,8 +14,11 @@ let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
 function printTime() {
+  printMilliseconds();
   printSeconds();
   printMinutes();
+
+  //calling printTime() as a callback to requestAnimationFrame() as it will repeatedly show(print) time on clock.
   window.requestAnimationFrame(printTime);
 }
 
@@ -29,6 +32,12 @@ function printSeconds() {
   var seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   secDec.innerText = seconds[0];
   secUni.innerText = seconds[1];
+}
+
+function printMilliseconds() {
+  var ms = chronometer.twoDigitsNumber(chronometer.getMilliSeconds());
+  milDec.innerText = ms[0];
+  milUni.innerText = ms[1];
 }
 
 function printSplit(splitTime) {
@@ -68,6 +77,7 @@ function setResetBtn() {
 btnLeft.addEventListener("click", () => {
   if (btnLeft.innerText === "START") {
     chronometer.startClick();
+    chronometer.startClickMilliSeconds();
     setStopBtn();
     setSplitBtn();
   } else {
@@ -88,4 +98,5 @@ btnRight.addEventListener("click", () => {
     setResetBtn();
   }
 });
+
 printTime();
