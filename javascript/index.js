@@ -17,66 +17,82 @@ function printTime() {
   // ... your code goes here
   printMinutes()
   printSeconds()
+  printMilliseconds()
 }
 
 function printMinutes() {
   // ... your code goes here
-  minDec.innerText = chronometer.splitClick()[0]
-  minUni.innerText = chronometer.splitClick()[1]
+  const min = chronometer.twoDigitsNumber(chronometer.getMinutes())
+  minDec.innerText = min[0]
+  minUni.innerText = min[1]
 }
 
 function printSeconds() {
   // ... your code goes here
-  secDec.innerText = chronometer.getSeconds()
-  secUni.innerText = chronometer.getSeconds()
+  const sec = chronometer.twoDigitsNumber(chronometer.getSeconds())
+  secDec.innerText = sec[0]
+  secUni.innerText = sec[1]
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  const milSec = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
+  milDec.innerText = milSec[0]
+  milSec.innerText = milSec[1]
 }
 
 function printSplit() {
   // ... your code goes here
+  const liGen = document.createElement("li")
+  const textInLi = document.createTextNode(chronometer.splitClick())
+  liGen.appendChild(textInLi)
+  document.getElementById("splits").appendChild(liGen)
 }
 
 function clearSplits() {
   // ... your code goes here
+  const splitList = document.getElementById("splits")
+  splitList.innerHTML = ""
 }
 
 function setStopBtn() {
   // ... your code goes here
   btnLeft.innerText = "STOP"
-  btnLeft.setAttribute("class", "btn stop")
+  btnLeft.className = "btn stop"
 }
 
 function setSplitBtn() {
   // ... your code goes here
   btnRight.innerText = "SPLIT"
-  btnRight.setAttribute("class", "btn split")
+  btnRight.className = "btn split"
 }
 
 function setStartBtn() {
   // ... your code goes here
   btnLeft.innerText = "START"
-  btnLeft.setAttribute("class", "btn start")
+  btnLeft.className = "btn start"
 }
 
 function setResetBtn() {
   // ... your code goes here
   btnRight.innerText = "RESET"
-  btnRight.setAttribute("class", "btn reset")
+  btnRight.className = "btn reset"
 }
 
 // Start/Stop Button
 btnLeft.addEventListener("click", () => {
   // ... your code goes here
   if (btnLeft.innerText === "START") {
+    chronometer.startClick(printTime)
     setStopBtn()
-    chronometer.startClick()
-    printTime()
+    setSplitBtn()
+
+    // printTime()
   } else {
     setStartBtn()
+    setResetBtn()
+    chronometer.stopClick()
   }
 })
 
@@ -84,8 +100,10 @@ btnLeft.addEventListener("click", () => {
 btnRight.addEventListener("click", () => {
   // ... your code goes here
   if (btnRight.innerText === "RESET") {
-    setSplitBtn()
+    chronometer.resetClick()
+    printTime()
+    clearSplits()
   } else {
-    setResetBtn()
+    printSplit()
   }
 })
