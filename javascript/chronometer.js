@@ -1,3 +1,4 @@
+// AJDC: Dejo mis comentarios antes del pull-request los borramos.
 class Chronometer {
     constructor() {
         this.currentTime = 0
@@ -13,23 +14,32 @@ class Chronometer {
         return Number(this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
     }
     twoDigitsNumber() {
-        let newString = toString(this.currentTime)
-        return newString.slice(-2)
+        /* AJDC: ahora entiendo la solución de Pablo, he leido la este artículo de https://www.w3schools.com/jsref/jsref_slice_string.asp y al final del todo te lo explica, jamás me hubiera acordado de esto o se me hubiera ocurrido. */
+        // AJDC: let newString = toString(this.currentTime) <- Esto creo lo podemos eliminar
+        return toString(this.currentTime).slice(-2)
     }
     stopClick() {
-      clearInterval(this.intervalId);
+        // AJDC: OK
+        clearInterval(this.intervalId);
     }
     resetClick() {
+        // AJDC: OK
         this.currentTime = 0
     }
     splitClick() {
-     let min = this.getMinutes()
-     let sec = this.getSeconds()
+        // AJDC: cambio a const
+        const min = this.getMinutes()
+        const sec = this.getSeconds()
 
-     if (min < 10) {
-      return (`${0}${min}:${0}${sec}`);
-    } else {
-      return (`${min}:${sec}`);
+        // AJDC: Añado dos condiciones más que creo que se podrían dar, lo hablamos por slack si no lo ves así
+        if (min < 10 && sec < 10) {
+            return (`0${min}:0${sec}`);
+        } else if (min > 10 && sec < 10) {
+            return (`${min}:0${sec}`);
+        } else if (min < 10 && sec > 10) {
+            return (`0${min}:${sec}`);
+        } else {
+            return (`${min}:${sec}`);
+        }
     }
-  }
 }
