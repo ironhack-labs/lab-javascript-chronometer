@@ -45,29 +45,29 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  btnLeft.innerHTML = 'STOP'
+  btnLeft.innerText = 'STOP'
   btnLeft.className = 'btn stop'
 }
 
 function setSplitBtn() {
-  btnRight.innerHTML = 'SPLIT'
+  btnRight.innerText = 'SPLIT'
   btnRight.className = 'btn split'
 }
 
 function setStartBtn() {
-  btnLeft.innerHTML = 'START'
+  btnLeft.innerText = 'START'
   btnLeft.className = 'btn start'
 }
 
 function setResetBtn() {
-  btnRight.innerHTML = 'RESET'
+  btnRight.innerText = 'RESET'
   btnRight.className = 'btn reset'
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
   
-  if (btnLeft.innerHTML === 'START') {
+  if (btnLeft.innerText === 'START') {
     setStopBtn()
     setSplitBtn()
     chronometer.startClick(printTime)
@@ -80,7 +80,7 @@ btnLeft.addEventListener('click', function () {
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  if (btnRight.innerHTML === 'RESET') {
+  if (btnRight.innerText === 'RESET') {
     chronometer.resetClick()
     printTime()
     clearSplits()
