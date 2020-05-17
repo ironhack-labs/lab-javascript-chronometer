@@ -30,15 +30,18 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  //
 }
 
-function printSplit() {
-  //splits.innerHTML += `<li>${chronometer.splitClick()}</li>`
+function printSplit () {
+  const li = document.createElement("li")
+  const timePrint = document.createTextNode(chronometer.splitClick())
+  li.appendChild(timePrint)
+  splits.appendChild(li)
 }
 
 function clearSplits() {
-  splits.innerHTML=""
+  splits.innerHTML = ""
 }
 
 function setStopBtn() {
