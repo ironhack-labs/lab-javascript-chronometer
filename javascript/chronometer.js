@@ -27,12 +27,13 @@ class Chronometer {
     clearInterval(this.intervalMilli);
   }
   resetClick() {
-    return (this.currentTime = 0);
+    const reset = (this.currentTimeMilli = 0, this.currentTime = 0)
+    return reset
   }
   splitClick() {
     let min = this.twoDigitsNumber(this.getMinutes());
     let sec = this.twoDigitsNumber(this.getSeconds());
     let milli = this.getMilliseconds();
-    return `${min}:${sec}:${milli}`;
+    return `${min}:${sec}:${0}${milli}`;
   }
 }
