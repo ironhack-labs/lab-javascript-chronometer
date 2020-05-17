@@ -16,6 +16,7 @@ let splits = document.getElementById('splits');
 function printTime() {
   printMinutes()
   printSeconds()
+  printMilliseconds()
 }
 
 function printMinutes() {
@@ -30,7 +31,8 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  //
+  milDec.innerText = chronometer.splitClick()[6]
+  milUni.innerText = chronometer.splitClick()[7]
 }
 
 function printSplit () {
