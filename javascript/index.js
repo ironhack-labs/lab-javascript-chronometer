@@ -45,6 +45,7 @@ function printMilliseconds() {
 function printSplit() {
   // ... your code goes here
   const liGen = document.createElement("li")
+  liGen.setAttribute("class", "fade-left")
   const textInLi = document.createTextNode(chronometer.splitClick())
   liGen.appendChild(textInLi)
   document.getElementById("splits").appendChild(liGen)
@@ -104,6 +105,8 @@ btnRight.addEventListener("click", () => {
     printTime()
     clearSplits()
   } else {
+    // const deleteClass = document.getElementsByClassName("fade-left")
+    // deleteClass.map((el) => (el.className = " "))
     printSplit()
   }
 })

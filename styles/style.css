@@ -46,6 +46,10 @@ body {
   text-align: right;
 }
 
+.fade-left {
+  animation: fade-left 300ms forwards;
+}
+
 #milliseconds {
   font-size: 36px;
   margin-top: -15px;
@@ -111,7 +115,27 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+.btn.stop {
+  background: #f14949;
+}
+.btn.reset {
+  background: #908e8e;
+}
+.btn.split {
+  background: #0851ab;
+}
+
+@keyframes fade-left {
+  0% {
+    margin-left: 30px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
