@@ -31,7 +31,7 @@ class Chronometer {
   }
 
   getMilliseconds () {
-    return this.milliseconds % 1000
+    return this.milliseconds
   }
 
   twoDigitsNumber (num) {
