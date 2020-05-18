@@ -8,6 +8,7 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  counter-reset: splits-counter;
 }
 
 #clock {
@@ -44,6 +45,11 @@ body {
 #splits-container li {
   padding-bottom: 5px;
   text-align: right;
+}
+
+#splits-container .fade-left:before {
+  counter-increment: splits-counter;
+  content: counter(splits-counter) ". ";
 }
 
 .fade-left {
