@@ -11,14 +11,19 @@ class Chronometer {
       this.currentTime++
       printTime()
     }, 1000)
-    this.intervalIdMil = setInterval(() => printMilliseconds(), 10)
+    this.intervalIdMil = setInterval(() => {
+      if (this.currentMilliseconds < 100) {
+        this.currentMilliseconds++
+      } else if (this.currentTime === 0) {
+        this.currentTime++
+      } else {
+        this.currentMilliseconds = 0
+      }
+      printMilliseconds()
+    }, 10)
   }
   getMilliseconds() {
-    if (this.currentMilliseconds < 100) {
-      return this.currentMilliseconds
-    } else {
-      this.currentMilliseconds = 0
-    }
+    return parseInt(this.currentMilliseconds)
   }
   getMinutes() {
     return parseInt(this.currentTime / 60)
@@ -36,11 +41,13 @@ class Chronometer {
   stopClick() {
     console.log('STOP');
     clearInterval(this.intervalId)
+    clearInterval(this.intervalIdMil)
   }
   resetClick() {
     this.currentTime = 0
+    this.currentMilliseconds = 0
   }
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}:${this.twoDigitsNumber(this.getMilliseconds())}`
   }
 }

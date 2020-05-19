@@ -16,6 +16,7 @@ let splits = document.getElementById('splits');
 function printTime() {
   printSeconds()
   printMinutes()
+  printMilliseconds()
 }
 
 function printMinutes() {
@@ -68,6 +69,8 @@ function setResetBtn() {
   secDec.innerText = '0'
   minUni.innerText = '0'
   minDec.innerText = '0'
+  milUni.innerText = '0'
+  milDec.innerText = '0'
 }
 
 // Start/Stop Button
