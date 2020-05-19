@@ -4,6 +4,7 @@ class Chronometer {
         this.currentTime = 0
         this.intervalId = 0
     }
+
     startClick(callback) {
         setInterval(() => this.currentTime++, 1000);
     }
@@ -13,25 +14,25 @@ class Chronometer {
     getSeconds() {
         return Number(this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
     }
-    twoDigitsNumber() {
-        /* AJDC: ahora entiendo la solución de Pablo, he leido la este artículo de https://www.w3schools.com/jsref/jsref_slice_string.asp y al final del todo te lo explica, jamás me hubiera acordado de esto o se me hubiera ocurrido. */
-        // AJDC: let newString = toString(this.currentTime) <- Esto creo lo podemos eliminar
-        return toString(this.currentTime).slice(-2)
+    twoDigitsNumber(number) {
+        /* AJDC: Aunque pasaba el test el código hacia una cosa muy rara cómo lo habíamos puesto -> toString(this.currentTime), y estaba totalmente equivocado, esta funcioón nos tiene que devolver un string con length de dos siempre al pasarle el número y con this.currentTime le pasabamos un legth de 3 y petaba el chronometo:
+        if(number.toString().length === 1) {
+            return (`0${number}`)
+        } else {
+            return number.toString()
+        } 
+        Esto ya me devuelve el formato correcto */
+        return number.length === 1 ? `0${number}` : `0${number}`
     }
     stopClick() {
-        // AJDC: OK
         clearInterval(this.intervalId);
     }
     resetClick() {
-        // AJDC: OK
         this.currentTime = 0
     }
     splitClick() {
-        // AJDC: cambio a const
         const min = this.getMinutes()
         const sec = this.getSeconds()
-
-        // AJDC: Añado dos condiciones más que creo que se podrían dar, lo hablamos por slack si no lo ves así
         if (min < 10 && sec < 10) {
             return (`0${min}:0${sec}`);
         } else if (min > 10 && sec < 10) {
