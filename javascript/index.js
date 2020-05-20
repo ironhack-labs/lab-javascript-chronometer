@@ -16,26 +16,34 @@ let intervalPrintTime = 0
 
 function printTime() {
     intervalPrintTime = setInterval(() => {
+        printMilliseconds()
         printSeconds()
         printMinutes()
-    }, 1000)
+    }, 10)
 }
 
 function printMinutes() {
     const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
+
     minDec.innerText = minutes[0]
     minUni.innerText = minutes[1]
 }
 
 function printSeconds() {
     const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
+
     secDec.innerText = seconds[0]
     secUni.innerText = seconds[1]
 }
 
 // ==> BONUS
-// function printMilliseconds() {
-// }
+function printMilliseconds() {
+    const milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
+    console.log(milliseconds);
+
+    milDec.innerText = milliseconds[0]
+    secUni.innerText = milliseconds[1]
+}
 
 function printSplit() {
     // ... your code goes here
