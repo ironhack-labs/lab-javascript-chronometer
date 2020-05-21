@@ -20,7 +20,7 @@ function printTime() {
         printMilliseconds()
         printSeconds()
         printMinutes()
-    }, 1)
+    }, 10)
 }
 
 function printMinutes() {
@@ -94,7 +94,7 @@ btnRight.addEventListener('click', () => {
         clearSplits()
         setStartBtn()
         printTime()
-        intervalPrintTime = 0
+        clearInterval(intervalPrintTime)
     } else {
         printSplit()
     }
