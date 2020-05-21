@@ -11,13 +11,13 @@ class Chronometer {
         this.intervalMilliseconds = setInterval(() => this.currentTimeMilliseconds++, 10)
     }
     getMinutes() {
-        return (Math.floor(this.currentTime / 60))
+        return Math.floor(this.currentTime / 60)
     }
     getSeconds() {
-        return (this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
+        return this.currentTime - ((Math.floor(this.currentTime / 60)) * 60)
     }
     getMilliseconds() {
-        return (this.currentTimeMilliseconds - Math.floor(this.currentTimeMilliseconds / 100) * 100)
+        return this.currentTimeMilliseconds - Math.floor(this.currentTimeMilliseconds / 100) * 100
     }
     twoDigitsNumber(number) {
         return number < 10 ? `0${number}` : `${number}`
@@ -33,11 +33,11 @@ class Chronometer {
     splitClick() {
         let min = this.getMinutes()
         let sec = this.getSeconds()
-        let mil = this.getMilliseconds()
+        let milli = this.getMilliseconds()
         min = min < 10 ? `0${min}` : `${min}`
         sec = sec < 10 ? `0${sec}` : `${sec}`
-        mil = mil < 10 ? `0${mil}` : `${mil}`
+        milli = milli < 10 ? `0${milli}` : `${milli}`
 
-        return `${min}:${sec}:${mil}`
+        return `${min}:${sec}:${milli}`
     }
 }
