@@ -5,18 +5,19 @@ class Chronometer {
   }
 
   startClick(callback) {
-    setInterval( () => this.currentTime++, 1000);
+    setInterval(() => this.currentTime++, 1000);
   }
-  
+
   getMinutes() {
-    return Math.floor(this.currentTime/60);
+    return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
     return Math.floor(this.currentTime - this.getMinutes(this.currentTime) * 60);
   }
-  
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  twoDigitsNumber(time) {
+    const parsedTime = time.toString();
+    return parsedTime.length === 1 ? `0${parsedTime}` : parsedTime;
   }
   stopClick() {
     // ... your code goes here
