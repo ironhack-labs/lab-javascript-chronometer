@@ -12,9 +12,8 @@ class Chronometer {
     return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    return Math.floor(this.currentTime - this.getMinutes(this.currentTime) * 60);
+    return Math.floor(this.currentTime - this.getMinutes() * 60);
   }
-
   twoDigitsNumber(time) {
     const parsedTime = time.toString();
     return parsedTime.length === 1 ? `0${parsedTime}` : parsedTime;
@@ -28,6 +27,8 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    const minutes = this.twoDigitsNumber(this.getMinutes());
+    const seconds = this.twoDigitsNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
   }
 }
