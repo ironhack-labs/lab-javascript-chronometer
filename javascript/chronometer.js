@@ -11,13 +11,13 @@ class Chronometer {
         this.intervalMilliseconds = setInterval(() => this.currentTimeMilliseconds++, 10)
     }
     getMinutes() {
-        return Number(Math.floor(this.currentTime / 60))
+        return (Math.floor(this.currentTime / 60))
     }
     getSeconds() {
-        return Number(this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
+        return (this.currentTime - ((Math.floor(this.currentTime / 60)) * 60))
     }
     getMilliseconds() {
-        return Number(this.currentTimeMilliseconds - Math.floor(this.currentTimeMilliseconds / 100) * 100)
+        return (this.currentTimeMilliseconds - Math.floor(this.currentTimeMilliseconds / 100) * 100)
     }
     twoDigitsNumber(number) {
         return number < 10 ? `0${number}` : `${number}`
