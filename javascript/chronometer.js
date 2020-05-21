@@ -28,6 +28,7 @@ class Chronometer {
     }
     resetClick() {
         this.currentTime = 0
+        this.currentTimeMilliseconds = 0
     }
     splitClick() {
         let min = this.getMinutes()

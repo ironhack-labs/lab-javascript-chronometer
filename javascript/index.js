@@ -93,6 +93,8 @@ btnRight.addEventListener('click', () => {
         chronometer.resetClick()
         clearSplits()
         setStartBtn()
+        printTime()
+        intervalPrintTime = 0
     } else {
         printSplit()
     }
