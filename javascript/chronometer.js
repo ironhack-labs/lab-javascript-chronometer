@@ -19,9 +19,11 @@ class Chronometer {
     const parsedTime = time.toString();
     return parsedTime.length === 1 ? `0${parsedTime}` : parsedTime;
   }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
+  
   resetClick() {
     // ... your code goes here
   }
