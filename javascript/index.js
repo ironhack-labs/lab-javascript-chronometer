@@ -91,5 +91,4 @@ btnRight.addEventListener('click', () => {
     } else {
         printSplit()
     }
-
 });

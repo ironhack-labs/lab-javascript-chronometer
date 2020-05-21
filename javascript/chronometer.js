@@ -29,9 +29,9 @@ class Chronometer {
         const sec = this.getSeconds()
         if (min < 10 && sec < 10) {
             return (`0${min}:0${sec}`);
-        } else if (min > 10 && sec < 10) {
+        } else if (min >= 10 && sec < 10) {
             return (`${min}:0${sec}`);
-        } else if (min < 10 && sec > 10) {
+        } else if (min < 10 && sec >= 10) {
             return (`0${min}:${sec}`);
         } else {
             return (`${min}:${sec}`);
