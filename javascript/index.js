@@ -1,17 +1,17 @@
-const chronometer = new Chronometer();
+const chronometer = new Chronometer()
 
 // get the buttons:
-const btnLeft = document.getElementById('btnLeft');
-const btnRight = document.getElementById('btnRight');
+const btnLeft = document.getElementById('btnLeft')
+const btnRight = document.getElementById('btnRight')
 
 // get the DOM elements that will serve us to display the time:
-const minDec = document.getElementById('minDec');
-const minUni = document.getElementById('minUni');
-const secDec = document.getElementById('secDec');
-const secUni = document.getElementById('secUni');
-const milDec = document.getElementById('milDec');
-const milUni = document.getElementById('milUni');
-const splits = document.getElementById('splits');
+const minDec = document.getElementById('minDec')
+const minUni = document.getElementById('minUni')
+const secDec = document.getElementById('secDec')
+const secUni = document.getElementById('secUni')
+const milDec = document.getElementById('milDec')
+const milUni = document.getElementById('milUni')
+const splits = document.getElementById('splits')
 
 let intervalPrintTime = 0
 
@@ -20,19 +20,17 @@ function printTime() {
         printMilliseconds()
         printSeconds()
         printMinutes()
-    }, 10)
+    }, 1)
 }
 
 function printMinutes() {
     const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
-
     minDec.innerText = minutes[0]
     minUni.innerText = minutes[1]
 }
 
 function printSeconds() {
     const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
-
     secDec.innerText = seconds[0]
     secUni.innerText = seconds[1]
 }
@@ -40,15 +38,13 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
     const milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
-    console.log(milliseconds);
-
     milDec.innerText = milliseconds[0]
-    secUni.innerText = milliseconds[1]
+    milUni.innerText = milliseconds[1]
 }
 
 function printSplit() {
-    const liAppend = document.createElement('li'); // is a node
-    liAppend.innerHTML = chronometer.splitClick();
+    const liAppend = document.createElement('li')
+    liAppend.innerHTML = chronometer.splitClick()
     splits.appendChild(liAppend)
 }
 
@@ -83,12 +79,13 @@ btnLeft.addEventListener('click', () => {
         setStartBtn()
         setResetBtn()
         chronometer.stopClick()
+        clearInterval(intervalPrintTime)
     }
     btnLeft.classList.toggle('start')
     btnLeft.classList.toggle('stop')
     btnRight.classList.toggle('reset')
     btnRight.classList.toggle('split')
-});
+})
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
@@ -99,4 +96,4 @@ btnRight.addEventListener('click', () => {
     } else {
         printSplit()
     }
-});
+})
