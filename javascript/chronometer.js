@@ -23,9 +23,9 @@ class Chronometer {
   stopClick() {
     clearInterval(this.intervalId);
   }
-  
+
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
     // ... your code goes here
