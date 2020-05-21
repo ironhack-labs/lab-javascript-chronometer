@@ -94,7 +94,7 @@ btnRight.addEventListener('click', () => {
         clearSplits()
         setStartBtn()
         printTime()
-        clearInterval(intervalPrintTime)
+        intervalPrintTime = 0
     } else {
         printSplit()
     }
