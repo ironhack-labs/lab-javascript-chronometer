@@ -30,9 +30,12 @@ class Chronometer {
         this.currentTime = 0
     }
     splitClick() {
-        const min = this.getMinutes() < 10 ? `0${min}` : `${min}`
-        const sec = this.getSeconds() < 10 ? `0${sec}` : `${sec}`
-        const mil = this.getMilliseconds() < 10 ? `0${mil}` : `${mil}`
+        let min = this.getMinutes()
+        let sec = this.getSeconds()
+        let mil = this.getMilliseconds()
+        min = min < 10 ? `0${min}` : `${min}`
+        sec = sec < 10 ? `0${sec}` : `${sec}`
+        mil = mil < 10 ? `0${mil}` : `${mil}`
 
         return `${min}:${sec}:${mil}`
     }
