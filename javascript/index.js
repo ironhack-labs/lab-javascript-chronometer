@@ -40,7 +40,8 @@ function printSplit() {
 
 function clearSplits() {
   chronometer.resetClick();
-
+  while (splits.firstChild)
+    splits.removeChild(splits.firstChild);
 }
 
 function setStopBtn() {
@@ -79,7 +80,8 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (btnRight.innerText === 'RESET') {
-
+    chronometer.resetClick();
+    clearSplits();
   } else {
     printSplit();
   }
