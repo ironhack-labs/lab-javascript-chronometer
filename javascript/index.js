@@ -30,15 +30,16 @@ function printSeconds() {
 }
 
 // ==> BONUS
-function printMilliseconds() {
-}
+function printMilliseconds() {}
 
 function printSplit() {
+  const li = document.createElement('li');
+  splits.appendChild(li).innerText = chronometer.splitClick();
 
 }
 
 function clearSplits() {
-   chronometer.resetClick();
+  chronometer.resetClick();
 
 }
 
@@ -78,8 +79,8 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (btnRight.innerText === 'RESET') {
-    
+
   } else {
-    
+    printSplit();
   }
 });
