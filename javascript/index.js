@@ -18,31 +18,19 @@ printMinutes();
 printSeconds();
   // ... your code goes here
 }
-
-
-
-
 function printMinutes() {
 let min = chronometer.twoDigitsNumber(chronometer.getMinutes);
 //let min ="11"; to check
 minDec.innerHTML = min[0];
 minUni.innerHTML = min[1];
-
-
-
-
-  // ... your code goes here
 }
 
-//printMinutes();
 
 function printSeconds() {
-
 let second = chronometer.twoDigitsNumber(chronometer.getSeconds);
 //let second ="11";
 secDec.innerHTML = second [0];
 secUni.innerHTML = second[1];
-  // ... your code goes here
 }
 
 
@@ -53,38 +41,27 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
-
-  // ... your code goes here
 }
 
 function clearSplits() {
-  // ... your code goes here
 }
 
 function setStopBtn() {
-
   btnLeft.innerHTML= "START";
   btnLeft.className = "btn start";
   chronometer.stopClick();
-
-  // ... your code goes here
 }
 
 function setSplitBtn() {
-
   btnRight.innerHTML = "SPLIT";
   btnRight.className = "btn split";
-  // ... your code goes here
 }
 
 function setStartBtn() {
-  
   btnLeft.innerHTML="STOP";
   btnLeft.className="btn stop";
   chronometer.startClick();
   printTime();
-  // ... your code goes here
 }
 
 function setResetBtn() {
