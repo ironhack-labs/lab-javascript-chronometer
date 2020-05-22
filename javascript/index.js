@@ -1,6 +1,5 @@
 const chronometer = new Chronometer();
 
-// get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
@@ -14,52 +13,73 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerText = minutes[0]
+  minUni.innerText = minutes[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerText = seconds[0]
+  secUni.innerText = seconds[1]
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
 }
 
 function printSplit() {
-  // ... your code goes here
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+   chronometer.resetClick();
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerText = 'STOP';
+  btnLeft.setAttribute('class', 'btn stop');
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText = 'SPLIT';
+  btnRight.setAttribute('class', 'btn split');
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = 'START';
+  btnLeft.setAttribute('class', 'btn start');
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerText = 'RESET';
+  btnRight.setAttribute('class', 'btn reset');
 }
 
-// Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerText === 'START') {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.startClick();
+    printTime();
+  } else {
+    setStartBtn();
+    setResetBtn();
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerText === 'RESET') {
+    
+  } else {
+    
+  }
 });
