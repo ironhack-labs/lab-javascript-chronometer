@@ -1,5 +1,5 @@
 describe('Chronometer', () => {
-  let chronometer;
+  let chronometer ;
 
   beforeEach(() => {
     chronometer = new Chronometer();
