@@ -4,6 +4,8 @@ const chronometer = new Chronometer();
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
+
+
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -14,14 +16,29 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
+
+ setInterval(() => {
+   printMinutes()
+   printSeconds()
+ }, 1000)
+
+ // setInterval llama funciones cada cierto tiempo, entonces esta llamando estas dos funciones
+ //impresas en el html cada 1 segundo.
+
   // ... your code goes here
 }
 
 function printMinutes() {
+
+  minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
   // ... your code goes here
 }
 
 function printSeconds() {
+
+  secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
+  secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
   // ... your code goes here
 }
 
@@ -31,35 +48,78 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+
+  const newLi = document.createElement('li')
+  
+  li.innerHTML = chronometer.splitClick()
+  splits.appendChild(li)
   // ... your code goes here
 }
 
 function clearSplits() {
+
+  const clearLi = document.querySelectorAll('li')
+    document.querySelectorAll('ol').removeChild(clearLi)
+
+    chronometer.resetClick()
   // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+ //btnLeft.classList.toggle('stop')
+  btnLeft.innerHTML = 'STOP'
+  btnLeft.classList.remove('start')
+  btnLeft.classList.add('stop')
+  
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  //btnRight.classList.toggle("split")
+  btnRight.innerHTML = 'SPLIT'
+  btnRight.classList.remove('reset')
+  btnRight.classList.add('split')
+  
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  //btnLeft.classList.toggle('stop')
+  btnLeft.innerHTML = 'START'
+  btnLeft.classList.remove('stop')
+  btnLeft.classList.add('start')
+
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  //btnRight.classList.toggle("split")
+  btnRight.innerHTML = 'RESET'
+  btnRight.classList.remove('split')
+  btnRight.classList.add('reset')
+  
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains("start")) { 
+    chronometer.startClick(printTime()); 
+    setStopBtn(); 
+    setSplitBtn();
+   }
+   else { 
+     chronometer.stopClick(); 
+     setStartBtn(); 
+     setResetBtn();
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.classList.contains("reset")) { 
+    chronometer.resetClick()
+    clearSplits()
+  }else { 
+    chronometer.splitClick()
+    printSplit()
+  }
 });
+
+ 
