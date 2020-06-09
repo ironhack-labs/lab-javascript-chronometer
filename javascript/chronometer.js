@@ -4,21 +4,28 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    setInterval (() => {
+    setInterval(() => {
       this.currentTime += 1;
   }, 1000) 
   }
   getMinutes() {
-    return this.currentTime
+
+    return Math.floor(this.currentTime / 60)
   }
   getSeconds() {
-    // ... your code goes here
+
+    return Math.floor(this.currentTime - this.getMinutes(this.currentTime) * 60)
+    // VOLTAR PARA ESTUDAR!!!!!
   }
-  twoDigitsNumber() {
-    // ... your code goes here valor do getminutes 
-    //e do getseconds e transformar em string
+  twoDigitsNumber(number) {
+    let decimais = Math.floor(number / 10)
+    let unidade = Math.floor(number % 10)
+    return `${decimais}${unidade}`
+    // VOLTAR 
   }
   stopClick() {
+    
+    
     // ... your code goes here
   }
   resetClick() {
