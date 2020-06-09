@@ -15,6 +15,20 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+
+  const printDate = () => {
+    const now = new Date()
+    const options = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }
+
+    document.querySelector('p span').textContent = localDateString
+  }
+
+  setInterval(printDate, 1000)
+
 }
 
 function printMinutes() {
@@ -57,6 +71,13 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  const buttons = document.querySelectorAll('#btnLeft')
+
+  if (buttons.classList.contains('start') {
+      buttons.classList.remove('start')
+      buttons.classList.add('stop')
+    })
+
 });
 
 // Reset/Split Button
