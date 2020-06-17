@@ -1,4 +1,4 @@
-export class Chronometer {
+class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
@@ -13,7 +13,6 @@ export class Chronometer {
       }
     }, this.intervalId);
   }
-
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
@@ -29,7 +28,6 @@ export class Chronometer {
       return number.toString();
     }
   }
-
   stopClick() {
     clearInterval(this.startClick());
   }
