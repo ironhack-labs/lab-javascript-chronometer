@@ -4,20 +4,23 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    
-   this.intervalId =  setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++;
       callback;
-      console.log(this.twoDigitsNumber(this.getMinutes()) +"-"+ this.twoDigitsNumber(this.getSeconds()));
+      console.log(
+        this.twoDigitsNumber(this.getMinutes()) +
+          "-" +
+          this.twoDigitsNumber(this.getSeconds())
+      );
     }, 1000);
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / (60));
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    return this.currentTime - (this.getMinutes() * (60));
+    return this.currentTime - this.getMinutes() * 60;
   }
 
   twoDigitsNumber(number) {

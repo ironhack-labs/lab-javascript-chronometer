@@ -13,7 +13,7 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-//  is only launched when start button is clicked , and when stopped and started again, accelerates
+
 function printTime(Chronometer) {
     printMinutes(Chronometer);
     printSeconds(Chronometer);
