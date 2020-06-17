@@ -13,21 +13,22 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-function printTime() {
-  printMinutes();
-  printSeconds();
+//  is only launched when start button is clicked , and when stopped and started again, accelerates
+function printTime(Chronometer) {
+    printMinutes(Chronometer);
+    printSeconds(Chronometer);
 }
 
-function printMinutes() {
-  var minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
-  minDec.textContent = `${minutes[0]}`;
-  minUni.textContent = `${minutes[1]}`;
+function printMinutes(Chronometer) {
+  var minutes = Chronometer.twoDigitsNumber(Chronometer.getMinutes());
+  minDec.innerText = minutes.charAt(0);
+  minUni.innerText = minutes.charAt(1);
 }
 
-function printSeconds() {
-  var minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
-  minDec.textContent = `${minutes[0]}`;
-  minUni.textContent = `${minutes[1]}`;
+function printSeconds(Chronometer) {
+  var seconds = Chronometer.twoDigitsNumber(Chronometer.getSeconds());
+  secDec.innerText = seconds.charAt(0);
+  secUni.innerText = seconds.charAt(1);
 }
 
 // ==> BONUS
@@ -70,15 +71,20 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener("click", () => {
+  //var minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  //var seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   if (btnLeft.classList.contains("start")) {
-    chronometer.startClick(printTime());
+    chronometer.startClick(printTime(chronometer));
     setStopBtn();
     setSplitBtn();
+
+    //console.log( minutes.charAt(0), minutes.charAt(1) +":"+ seconds.charAt(0), seconds.charAt(1));
     
   } else {
     chronometer.stopClick();
     setStartBtn();
     setResetBtn();
+    //console.log(minutes.charAt(0), minutes.charAt(1) +":"+ seconds.charAt(0), seconds.charAt(1));
   }
 });
 
@@ -91,3 +97,6 @@ btnRight.addEventListener("click", () => {
     clearSplits();
   }
 });
+
+
+
