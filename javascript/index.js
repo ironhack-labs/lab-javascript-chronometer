@@ -1,3 +1,5 @@
+import { Chronometer } from "./chronometer.js";
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -39,24 +41,42 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML === "STOP";
+  btnLeft.classList.add("stop");
+  btnLeft.classList.remove("start");
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerHTML === "SPLIT";
+  btnRight.classList.add("split");
+  btnRight.classList.remove("reset");
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML === "START";
+  btnLeft.classList.add("start");
+  btnLeft.classList.remove("start");
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerHTML === "RESET";
+  btnRight.classList.add("reset");
+  btnRight.classList.remove("split");
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerHTML === "START") {
+    //if text = start, launch the chronometer and change the text of both buttons and change the class of both buttons
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    //if text = stop, stop the chronometer and change the text of both buttons and change the class of both buttons
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button

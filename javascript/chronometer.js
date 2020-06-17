@@ -1,4 +1,4 @@
-class Chronometer {
+export class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
