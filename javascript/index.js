@@ -40,7 +40,7 @@ function printMilliseconds() {
 
 function printSplit() {
   const oneSplit = chronometer.splitClick(printTime())
-  splits.innerHTML = `<li>${oneSplit}</li>`
+  splits.innerHTML += `<li>${oneSplit}</li>`
   // ... your code goes here
 }
 
@@ -51,7 +51,8 @@ function clearSplits() {
 function setStopBtn() {
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop")
-  btnRight.classList.toggle("split");
+  btnRight.classList.toggle("reset");
+  btnRight.classList.remove("split")
   btnLeft.innerHTML = "START";
   btnRight.innerHTML = "RESET"
 }
@@ -59,19 +60,22 @@ function setStopBtn() {
 
 function setSplitBtn() {
   btnRight.classList.add("split");
+  
 }
 
 function setStartBtn() {
     btnLeft.classList.toggle("stop");
     btnLeft.classList.toggle("start");
-    btnRight.classList.toggle("split");
+    btnRight.classList.add("split");
+    btnRight.classList.remove("reset")
     btnLeft.innerHTML = "STOP";
     btnRight.innerHTML = "SPLIT"
 }
 
 
 function setResetBtn() {
-  btnRight.classList.toggle("split");
+  btnRight.classList.add("split");
+  btnRight.classList.remove("reset")
   btnRight.innerHTML = "SPLIT";
 }
 
@@ -92,9 +96,9 @@ btnLeft.onclick = goChronometer
 
 function goSplit() {
   if(btnRight.classList.contains("split")) {
-    chronometer.splitClick(printTime)
-    printSplit()
     setSplitBtn()
+    chronometer.splitClick()
+    printSplit()
   }
  else {
   chronometer.resetClick()
