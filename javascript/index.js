@@ -14,10 +14,8 @@ let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
 function printTime() {
-  setInterval(() => {
-    printMinutes();
-    printSeconds();
-  }, 100);
+  printMinutes();
+  printSeconds();
 
   // ... your code goes here
 }

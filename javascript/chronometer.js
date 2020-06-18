@@ -8,8 +8,9 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      callback();
     }, 1000);
-    callback();
+
     // ... your code goes here
   }
   getMinutes() {
