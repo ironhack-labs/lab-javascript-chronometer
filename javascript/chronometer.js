@@ -4,14 +4,13 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    this.intervalId = 1000;
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++;
 
       if (typeof callback === "function") {
         callback(this.currentTime);
       }
-    }, this.intervalId);
+    }, 1000);
   }
   getMinutes() {
     return Math.floor(this.currentTime / 60);
@@ -29,7 +28,7 @@ class Chronometer {
     }
   }
   stopClick() {
-    clearInterval(this.startClick());
+    clearInterval(this.intervalId);
   }
   resetClick() {
     this.currentTime = 0;
