@@ -15,8 +15,11 @@ let splits = document.getElementById("splits");
 
 
 function printTime(Chronometer) {
+  var chronoTime = setInterval ( () => {
     printMinutes(Chronometer);
-    printSeconds(Chronometer);
+    printSeconds(Chronometer);}, 1000)  
+  
+  
 }
 
 function printMinutes(Chronometer) {
@@ -74,7 +77,7 @@ btnLeft.addEventListener("click", () => {
   //var minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
   //var seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   if (btnLeft.classList.contains("start")) {
-    chronometer.startClick(printTime(chronometer));
+    chronometer.startClick();
     setStopBtn();
     setSplitBtn();
 
@@ -100,3 +103,4 @@ btnRight.addEventListener("click", () => {
 
 
 
+printTime(chronometer);

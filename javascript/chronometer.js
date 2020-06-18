@@ -13,6 +13,7 @@ class Chronometer {
           this.twoDigitsNumber(this.getSeconds())
       );
     }, 1000);
+    
   }
 
   getMinutes() {
