@@ -45,13 +45,16 @@ function printSplit() {
 }
 
 function clearSplits() {
+  splits.innerHTML = ""
+  chronometer.resetClick()
+  printTime()
   // ... your code goes here
 }
 
 function setStopBtn() {
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop")
-  btnRight.classList.toggle("reset");
+  btnRight.classList.add("reset");
   btnRight.classList.remove("split")
   btnLeft.innerHTML = "START";
   btnRight.innerHTML = "RESET"
@@ -74,9 +77,8 @@ function setStartBtn() {
 
 
 function setResetBtn() {
-  btnRight.classList.add("split");
-  btnRight.classList.remove("reset")
-  btnRight.innerHTML = "SPLIT";
+  btnRight.classList.add("reset")
+  btnRight.innerHTML = "RESET";
 }
 
 // Start/Stop Button
@@ -87,8 +89,8 @@ function goChronometer() {
   chronometer.startClick(printTime)
   setStartBtn();
 } else {
-  chronometer.stopClick()
-  setStopBtn()
+  chronometer.stopClick();
+  setStopBtn();
 }
 }
 
@@ -103,6 +105,7 @@ function goSplit() {
  else {
   chronometer.resetClick()
   setResetBtn()
+  clearSplits()
 }
 } 
 
