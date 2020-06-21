@@ -83,5 +83,10 @@ btnLeft.addEventListener("click", () => {
 btnRight.addEventListener("click", () => {
 	if (btnRight.classList.contains("reset")) {
 		chronometer.resetClick();
+		splits.innerHTML = "";
+	} else {
+		let li = document.createElement("li");
+		li.appendChild(document.createTextNode(chronometer.splitClick()));
+		splits.appendChild(li);
 	}
 });
