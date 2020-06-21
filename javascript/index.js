@@ -14,19 +14,21 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 let timer;
 
+//clock only displays 1/100 of a second so only needed to updated page every 10 milliseconds.
 function printTime() {
   timer = setInterval(() => {
     timerDisplay()
-  }, 1000);
+  }, 10);
 }
 
+//created timerDisplay function to simplify code
 function timerDisplay() {
   minDec.innerText = printMinutes()[0];
   minUni.innerText = printMinutes()[1];
   secDec.innerText = printSeconds()[0];
   secUni.innerText = printSeconds()[1];
-  milDec.innerText = '0';
-  milUni.innerText = '0';
+  milDec.innerText = printMilliseconds()[0];
+  milUni.innerText = printMilliseconds()[1];
 }
 
 function printMinutes() {
@@ -38,9 +40,9 @@ function printSeconds() {
 }
 
 // ==> BONUS
-// function printMilliseconds() {
-//   return chronometer.twoDigitsNumber(chronometer.getSeconds());
-// }
+function printMilliseconds() {
+  return chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+}
 
 function printSplit() {
   let split = chronometer.splitClick(chronometer.getMinutes(), chronometer.getSeconds());
