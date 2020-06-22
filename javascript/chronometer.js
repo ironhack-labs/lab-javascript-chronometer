@@ -12,18 +12,28 @@ class Chronometer {
     return Math.floor((this.currentTime / 60));
   }
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime;
   }
   twoDigitsNumber() {
-    // ... your code goes here
+    if (this.getMinutes() < 10) {
+      return `0${this.currentTime}`;
+    }
+    if (this.getSeconds() < 10) {
+      return `0${this.currentTime}`
+    }
   }
   stopClick() {
-    // ... your code goes here
+    return clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    return this.currentTime = 0;
   }
-  splitClick() {
-    // ... your code goes here
+  splitClick(min, sec) {
+    min = this.getMinutes();
+    sec = this.getSeconds();
+
+    if (min < 10) {
+      return `${0}${min}:${0}${sec}`;
+    } else return `${min}:${sec}`;
   }
 }
