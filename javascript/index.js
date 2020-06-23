@@ -32,16 +32,16 @@ function timerDisplay() {
 }
 
 function printMinutes() {
-  return chronometer.twoDigitsNumber(chronometer.getMinutes());
+  return chronometer.getMinutes();
 }
 
 function printSeconds() {
-  return chronometer.twoDigitsNumber(chronometer.getSeconds());
+  return chronometer.getSeconds();
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  return chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+  return chronometer.getMilliseconds();
 }
 
 function printSplit() {
