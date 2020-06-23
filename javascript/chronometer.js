@@ -6,25 +6,32 @@ class Chronometer {
   startClick(callback) {
     setInterval(() => {
       this.currentTime += 1;
+      printTime();
     }, 1000);
   }
 
   getMinutes() {
-    return Math.floor (this.currentTime / 60);
+    return Math.floor(this.currentTime / 60);
   }
-  
+
   getSeconds() {
     if (this.currentTime === 0) return 0;
     if (this.getMinutes() > 0) return this.currentTime % 60;
     return this.currentTime;
   }
   twoDigitsNumber(anyNumber) {
-    if (anyNumber > 0) {
-    if (anyNumber.toString.length == 1) return "0"+anyNumber;
-    }else return "00";
+    // console.log("Anynumber=",anyNumber);
+    if (anyNumber >= 0) {
+      if (anyNumber.toString().length === 1) {
+        return "0" + anyNumber;
+      } else {
+        return anyNumber.toString();
+      }
+    }
   }
   stopClick() {
     clearInterval(this.intervalId);
+    this.currentTime = 0;
   }
   resetClick() {
     this.currentTime = 0;
