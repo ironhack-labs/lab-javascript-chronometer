@@ -1,26 +1,85 @@
 class Chronometer {
   constructor() {
     // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
+
   startClick(callback) {
-    // ... your code goes here
+    this.setTimerFunc = setInterval(() => {
+      this.currentTime++;
+      callback();
+      return true;
+    }, 100);
   }
+
+
   getMinutes() {
-    // ... your code goes here
+    if (this.currentTime === 0) {
+      return 0;
+    } else {
+      // return Math.floor(this.currentTime / 60);
+    }
   }
+
   getSeconds() {
-    // ... your code goes here
+    if (this.currentTime === 0) {
+      return 0;
+    } else {
+      let minutes = this.getMinutes();
+      return this.currentTime - minutes * 60;
+    }
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  getMilliseconds() {
+    if (this.currentTime === 0) {
+      return 0;
+    } else {
+      // return Math.floor(this.currentTime * 100);
+    }
   }
+
+  twoDigitsNumber(num) {
+    if (typeof num === "undefined" || num === 0) {
+      return "00";
+    }
+    if (num.toString().length === 1) {
+      return "0" + num.toString();
+    } else {
+      return num.toString();
+    }
+  }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.setTimerFunc);
+    this.intervalId = 0;
   }
+
   resetClick() {
-    // ... your code goes here
+    clearInterval(this.setTimerFunc);
+    this.currentTime = 0;
   }
+
+  // splitClick(num1, num2) {
   splitClick() {
+    // Without BONUS
+    // if (num1 === 0 || num2 === 0) {
+    //   return '00:00';
+    // } else {
+    //   let min = this.twoDigitsNumber(num1);
+    //   let sec = this.twoDigitsNumber(num2);
+    //   return `${min}:${sec}`;
+    // }
+
+    // ------- FOR BONUS ---------
+    if (this.currentTime === 0) {
+      return '00:00:00';
+    } else {
+      let min = this.twoDigitsNumber(this.getMinutes());
+      let sec = this.twoDigitsNumber(this.getSeconds());
+      let milliSec = this.twoDigitsNumber(this.getMilliseconds());
+      return `${min}:${sec}:${milliSec}`;
+    }
     // ... your code goes here
   }
 }
