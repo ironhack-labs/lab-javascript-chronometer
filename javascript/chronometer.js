@@ -9,33 +9,36 @@ class Chronometer {
     this.setTimerFunc = setInterval(() => {
       this.currentTime++;
       callback();
+      console.log("inside startClick: " + this.currentTime);
       return true;
-    }, 100);
+    }, 10);
   }
-
 
   getMinutes() {
     if (this.currentTime === 0) {
       return 0;
     } else {
-      // return Math.floor(this.currentTime / 60);
+      return Math.floor(this.currentTime / 6000);
     }
+    // return 0;
   }
 
   getSeconds() {
     if (this.currentTime === 0) {
       return 0;
     } else {
-      let minutes = this.getMinutes();
-      return this.currentTime - minutes * 60;
+      // let msec = this.currentTime;
+      return Math.floor(this.currentTime / 100) % 60;
     }
+    // return 0;
   }
 
   getMilliseconds() {
     if (this.currentTime === 0) {
       return 0;
     } else {
-      // return Math.floor(this.currentTime * 100);
+      // return this.currentTime;
+      return Math.floor(this.currentTime % 100);
     }
   }
 
@@ -73,7 +76,7 @@ class Chronometer {
 
     // ------- FOR BONUS ---------
     if (this.currentTime === 0) {
-      return '00:00:00';
+      return "00:00:00";
     } else {
       let min = this.twoDigitsNumber(this.getMinutes());
       let sec = this.twoDigitsNumber(this.getSeconds());
