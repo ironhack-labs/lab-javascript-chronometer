@@ -70,19 +70,30 @@ btnLeft.addEventListener('click', () => {
     chronometer.startClick(printTime)
     
     btnRight.innerHTML = 'SPLIT'
-    chronometer.splitClick()
+    //chronometer.splitClick()
 
   } else {
     btnLeft.innerHTML = 'START'
     chronometer.stopClick()
 
     btnRight.innerHTML = 'RESET'
-    chronometer.resetClick()
+    //chronometer.resetClick()
   }
 
 });
 
+
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  
+  const parentList = document.getElementById("splits");
+  const listItem = document.createElement("li");
+  if (btnLeft.innerHTML === 'STOP') {
+    listItem.innerHTML = chronometer.splitClick()
+    parentList.appendChild(listItem)
+  } else {
+    chronometer.resetClick();
+    printTime();
+    parentList.innerHTML =""
+  }
+
 });
