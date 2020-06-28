@@ -14,8 +14,9 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  printMinutes()
+  printMinutes();
   printSeconds();
+  printMilliseconds();
 	}
 
 
@@ -31,19 +32,21 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[0];
+  milUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[1];
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(child) {
+  return splits.appendChild(child).innerHTML = `${chronometer.splitClick(chronometer.getMinutes, chronometer.getSeconds)}`;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  document.querySelectorAll('li').forEach(splitPrints => splitPrints.remove());
+  document.querySelectorAll('.number').forEach(digits => digits.innerHTML = 0);
 }
 
 function setStopBtn() {
-  btnLeft.classList.value = 'btn stop';
+   btnLeft.classList.value = 'btn stop';
    btnLeft.innerHTML = 'STOP';
    btnRight.classList.value = 'btn split';
    btnRight.innerHTML = 'SPLIT'
@@ -52,7 +55,7 @@ function setStopBtn() {
 
 function setSplitBtn() {
   let splitPrint = document.createElement('li');
-  splits.appendChild(splitPrint).innerHTML = `${chronometer.splitClick(chronometer.getMinutes, chronometer.getSeconds)}`;
+  return printSplit(splitPrint)
 }
 
 function setStartBtn() {
@@ -64,8 +67,9 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  document.querySelectorAll('li').forEach(splitPrints => splitPrints.remove())
-  document.querySelectorAll('.number').forEach(digits => digits.innerHTML = 0)
+  clearSplits();
+  document.querySelector('#milUni').innerHTML = 0;
+  document.querySelector('#milDec').innerHTML = 0;
 }
 
 
