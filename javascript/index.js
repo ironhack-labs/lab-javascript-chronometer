@@ -12,6 +12,8 @@ let secUni = document.getElementById('secUni');
 let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
+let parentList = document.getElementById("splits");
+
 
 function printTime() {
   setInterval(() => {
@@ -34,32 +36,36 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
- return chronometer.twoDigitsNumber(chronometer.getMilli());
+  return chronometer.twoDigitsNumber(chronometer.getMilli());
 }
 
 function printSplit() {
-  // ... your code goes here
   chronometer.startClick(printTime())
 }
 
 function clearSplits() {
-  // ... your code goes here
+  parentList.innerHTML = "";
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = "START"
+  btnRight.innerHTML = "RESET"
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  let listItem = document.createElement("li");
+
+  listItem.innerHTML = chronometer.splitClick();
+  parentList.appendChild(listItem);
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = "STOP"
+  btnRight.innerHTML = "SPLIT"
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
@@ -69,28 +75,19 @@ btnLeft.addEventListener('click', () => {
 
     if(btnLeft.innerHTML === "START"){
       printSplit();
-      btnLeft.innerHTML = "STOP"
-      btnRight.innerHTML = "SPLIT"
+      setStartBtn();
     } else {
       chronometer.stopClick()
-      btnLeft.innerHTML = "START"
-      btnRight.innerHTML = "RESET"
+      setStopBtn()
     }
-    
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
-  
-  const parentList = document.getElementById("splits");
-  const listItem = document.createElement("li");
-  
-  
-if(btnRight.innerHTML === "SPLIT"){
-  listItem.innerHTML = chronometer.splitClick();
-  parentList.appendChild(listItem);
-} else {
-  chronometer.resetClick();
-  parentList.innerHTML = "";
-}
+btnRight.addEventListener('click', () => { 
+  if(btnRight.innerHTML === "SPLIT"){
+    setSplitBtn()
+  } else {
+    setResetBtn();
+    clearSplits();
+  }
 });
