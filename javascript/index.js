@@ -13,53 +13,95 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function printTime() {                                                          // print minutes and seconds to display
+  let minutes = printMinutes();
+  let seconds = printSeconds();
+
+  minDec.innerText = minutes[0];
+  minUni.innerText = minutes[1];
+  secDec.innerText = seconds[0];
+  secUni.innerText = seconds[1];
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes() {                                                       // return the minutes as a string
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  return minutes.toString();
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds() {                                                       // return the seconds as a string
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  return seconds.toString();
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds() {                                                  // print milliseconds to display (separate from printTime because they run on different intervals)
+  let milliseconds = chronometer.getMilliseconds();
+  milDec.innerText = milliseconds[0];
+  milUni.innerText = milliseconds[1];
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit() {                                                         // create and append new list item (split time) to ordered list
+  let split = document.createElement('li');
+  split.innerText = chronometer.splitClick();
+  splits.appendChild(split);
 }
 
-function clearSplits() {
-  // ... your code goes here
+function clearSplits() {                                                        // reset split list
+  splits.innerHTML = '';
 }
 
-function setStopBtn() {
-  // ... your code goes here
+function setStopBtn() {                                                        
+  btnLeft.classList.add('stop');
+  btnLeft.classList.remove('start');
+  btnLeft.innerHTML = 'STOP';
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+function setSplitBtn() {                                                    
+  btnRight.classList.add('split');
+  btnRight.classList.remove('reset');
+  btnRight.innerHTML = 'SPLIT';
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.add('start');
+  btnLeft.classList.remove('stop');
+  btnLeft.innerHTML = 'START';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.classList.add('reset');
+  btnRight.classList.remove('split');
+  btnRight.innerHTML = 'RESET';
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains('start')){                               // check if class start is present, in which case the buttons should display STOP and SPLIT
+    setStopBtn();
+    setSplitBtn(); 
+    chronometer.startClick();                                             // start timer
+    timeInterval = setInterval(() => printTime(), 1000)                   // set time interval for minute/second display
+    timeInterval = setInterval(() => printMilliseconds(), 10)             // set time interval for milliseconds display
+  } else if (btnLeft.classList.contains('stop')){                         // if stop class present, display START and RESET buttons
+    setStartBtn();
+    setResetBtn();
+    chronometer.stopClick();                                              // stop timer
+    clearInterval(timeInterval);                                          // clear timeintervals (as I am writing this I realise it's clearing two intervals with the same name that do different things, but it works I guess?)
+  } 
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.classList.contains('split')){                              // check if right button is displaying split
+    printSplit();                                                         // in which case, print split
+  } else {
+    clearSplits();                                                        // if not, reset everything and clear split list
+    minDec.innerText = '0';
+    minUni.innerText = '0';
+    secDec.innerText = '0';
+    secUni.innerText = '0';
+    milDec.innerText = '0';
+    milUni.innerText = '0';
+    chronometer.resetClick();
+  }
 });
