@@ -1,26 +1,33 @@
 class Chronometer {
-  constructor() {
-    // ... your code goes here
+  constructor() {  //should not receive any arguments
+    this.currentTime = 0; //stablish the currentTime property
+    this.intervalId = 0; //Stablish the intervalID property
   }
-  startClick(callback) {
-    // ... your code goes here
-  }
+  startClick(callback) { //if every second currentTime increment by one, every 3 seconds it will increment by 3
+    let intervalId = setInterval(() => {
+			this.currentTime++;
+		}, 1000);
+	}
+   
   getMinutes() {
-    // ... your code goes here
-  }
+    return Math.floor(this.currentTime / 60);  //i used math.floor for return a number without decimals.
+    }
+
   getSeconds() {
-    // ... your code goes here
-  }
+    return Math.floor(this.currentTime % 60);  //i used math.floor for return a number without decimals.
+    }
+
   twoDigitsNumber() {
-    // ... your code goes here
+    return ("0" + this.currentTime).slice(-2);
   }
+
   stopClick() {
-    // ... your code goes here
+    return clearInterval (this.currentTime);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
-  }
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+	}
 }
