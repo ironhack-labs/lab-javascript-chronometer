@@ -35,14 +35,14 @@ function printMilliseconds() {
   milUni.innerHTML = (chronometer.getMiliSecons())%10;
   milDec.innerHTML = Math.floor((chronometer.getMiliSecons())/10)
 }
+//Are these necesary?
+// function printSplit() {
+//   // ... your code goes here
+// }
 
-function printSplit() {
-  // ... your code goes here
-}
-
-function clearSplits() {
-  // ... your code goes here
-}
+// function clearSplits() {
+//   // ... your code goes here
+// }
 
 //Start/Stop buttons
 function setStartStopBtn() {
@@ -71,11 +71,25 @@ function setStartStopBtn() {
 
 //Reset/Split buttons
 function setResetSplitBtn() {
+  console.log('rbc')
   if(status.startBtn){
-    //let MyNewSplitLi = document.
-    //splits.innerHTML = `${}`
+    chronometer.resetClick();
+    secUni.innerHTML = 0;
+    secDec.innerHTML = 0;
+    minUni.innerHTML = 0;
+    minDec.innerHTML = 0;
+    milUni.innerHTML = 0;
+    milDec.innerHTML = 0;
+    splitChildrens = splits.querySelectorAll('li');
+    splitChildrens.forEach(child => {
+      splits.removeChild(child); 
+    });
   }
   else{
+    
+    let MyNewSplitLi = document.createElement('li');
+    MyNewSplitLi.innerHTML = chronometer.splitClick();
+    splits.appendChild(MyNewSplitLi);
   }
 }
 

@@ -26,7 +26,6 @@ class Chronometer {
     return this.miliseconds;
   }
   twoDigitsNumber(num) {
-    console.log(num);
     return num.toString().padStart(2,0);
   }
   stopClick() {
@@ -39,6 +38,6 @@ class Chronometer {
   splitClick() {
     let minutes = this.twoDigitsNumber(this.getMinutes());
     let seconds = this.twoDigitsNumber(this.getSeconds());
-    return `${minutes}:${seconds}`
+    return `${minutes}:${seconds}:${this.miliseconds}`
   }
 }
