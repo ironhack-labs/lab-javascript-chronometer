@@ -14,52 +14,63 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  setInterval(()=>{
+  printMinutes(chronometer.twoDigitsNumber(chronometer.getMinutes()))
+  printSeconds(chronometer.twoDigitsNumber(chronometer.getSeconds()))
+  printMilliseconds(chronometer.twoDigitsNumber(chronometer.getMilliseconds()))
+  },1)
+}
+function printMinutes(time) {
+  minDec.innerHTML = time[0]
+  minUni.innerHTML = time[1]
 }
 
-function printMinutes() {
-  // ... your code goes here
-}
-
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(time) {
+  secDec.innerHTML = time[0]
+  secUni.innerHTML = time[1]
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(time) {
+  milDec.innerHTML = time[0]
+  milUni.innerHTML = time[1]
 }
 
 function printSplit() {
-  // ... your code goes here
-}
-
-function clearSplits() {
-  // ... your code goes here
-}
-
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
-
-function setResetBtn() {
-  // ... your code goes here
+  let newSplit = document.createElement('li')
+  newSplit.innerHTML = chronometer.splitClick();
+  document.querySelector('ol').appendChild(newSplit)
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
+  btnLeft.classList.toggle('stop');
+  btnLeft.classList.toggle('start');
+  if (btnLeft.innerHTML === "START") {
+    btnLeft.innerHTML = "STOP";
+    btnRight.innerHTML = "SPLIT";
+    btnRight.classList.toggle('reset');
+    btnRight.classList.toggle('split');
+    chronometer.startClick();
+  } else {
+    btnLeft.innerHTML = "START";
+    btnRight.innerHTML = "RESET";
+    btnRight.classList.toggle('reset');
+    btnRight.classList.toggle('split');
+    chronometer.stopClick();
+  }
+})
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerHTML === "RESET") {
+    chronometer.resetClick();
+    document.querySelector('ol').innerHTML=('')
+  } else {
+    printSplit();
+  }
 });
+
+window.addEventListener('load', () => {
+  printTime();
+})
