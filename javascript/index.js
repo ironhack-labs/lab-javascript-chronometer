@@ -14,8 +14,8 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  printMinutes() 
   printSeconds()
+  printMinutes() 
 }
 
 function printMinutes() {
@@ -25,7 +25,7 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  let seconds = twoDigitsNumber(getSeconds());
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
   document.getElementById('secDec').innerHTML = seconds.charAt(0);
   document.getElementById('secUni').innerHTML = seconds.charAt(1);
 }
@@ -76,7 +76,7 @@ function setStartBtn() {
 function setResetBtn() {
   chronometer.currentTime = 0;
 
-  const list = document.querySelector('#splits')
+  const list = document.querySelector('#splits').parentNode
   list.removeChild(list);
 }
 
@@ -86,8 +86,8 @@ btnLeft.addEventListener('click', () => {
   setStopBtn()
  } else {
   setStartBtn()
+  chronometer.startClick(printTime())
  }
- chronometer.startClick(printTime())
 });
 
 // Reset/Split Button
