@@ -3,6 +3,37 @@ const chronometer = new Chronometer();
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+function leftButtonClick () {
+  let leftButtonClass = btnLeft.getAttribute('class');
+  console.log(leftButtonClass);
+  if (btnLeft.classList.contains('start')) {
+    //left button
+    btnLeft.classList.add('stop');
+    btnLeft.classList.remove('start');
+    btnLeft.innerHTML = 'STOP';
+    //right button
+    btnRight.classList.add('split');
+    btnRight.classList.remove('reset')
+    btnRight.innerHTML = 'SPLIT'
+  } else {
+     //left button
+    btnLeft.classList.add('start');
+    btnLeft.classList.remove('stop')
+    btnLeft.innerHTML = 'START';
+    //right button
+    btnRight.classList.add('reset');
+    btnRight.classList.remove('split')
+    btnRight.innerHTML = 'RESET'
+  }
+
+
+/*   btnLeft.classList.toggle('stop');
+  btnLeft.innerHTML = 'stop'  */
+
+}
+
+btnLeft.addEventListener('click', leftButtonClick);
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');

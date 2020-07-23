@@ -16,6 +16,7 @@ class Chronometer {
     let secondsTime = this.currentTime % 60;
     return secondsTime;
   }
+  
   twoDigitsNumber(time) {
     if (time < 10) {
       return `0${time}`;
@@ -31,6 +32,7 @@ class Chronometer {
   }
   splitClick() {
     let minutes = this.twoDigitsNumber(this.getMinutes());
+    
     let seconds =  this.twoDigitsNumber(this.getSeconds());
     return `${minutes}:${seconds}`;
   }
