@@ -42,6 +42,15 @@ function printSeconds() {
 }
 
 
+//right button
+function rightButtonClick() {
+  let ol = document.querySelector('#splits');
+  let li = document.createElement('li');
+  li.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`
+  ol.appendChild(li);
+}
+//click the right button
+btnRight.addEventListener('click', rightButtonClick);
 
 
 
