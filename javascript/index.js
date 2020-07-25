@@ -41,13 +41,27 @@ function printSeconds() {
   secUni.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getSeconds()).charAt(1);
 }
 
+//add the split list
+let ol = document.querySelector('#splits');
+let li = document.getElementsByTagName('li');
 
 //right button
 function rightButtonClick() {
-  let ol = document.querySelector('#splits');
-  let li = document.createElement('li');
-  li.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`
-  ol.appendChild(li);
+  if (btnLeft.innerHTML === 'STOP') {
+    let liCreate = document.createElement('li');
+    liCreate.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`
+    ol.appendChild(liCreate);
+    console.log(li);
+  } else {
+    minDec.innerHTML = '0';
+    minUni.innerHTML = '0';
+    secDec.innerHTML = '0';
+    secUni.innerHTML = '0';
+    const liArr = [...li];
+    const liArrRemove = liArr.forEach((li) => {
+      li.remove();
+    });
+  }
 }
 //click the right button
 btnRight.addEventListener('click', rightButtonClick);
