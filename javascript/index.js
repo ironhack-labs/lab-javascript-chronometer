@@ -1,62 +1,56 @@
-const chronometer = new Chronometer();
+const chronometerObject = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
-function leftButtonClick () {
-  let leftButtonClass = btnLeft.getAttribute('class');
-  console.log(leftButtonClass);
-  if (btnLeft.classList.contains('start')) {
-    //left button
-    btnLeft.classList.add('stop');
-    btnLeft.classList.remove('start');
+
+//left button
+function leftButtonClick() {
+  btnLeft.classList.toggle('stop');
+  btnRight.classList.toggle('split');
+  if (btnLeft.innerHTML === 'START') {
     btnLeft.innerHTML = 'STOP';
-    //right button
-    btnRight.classList.add('split');
-    btnRight.classList.remove('reset')
-    btnRight.innerHTML = 'SPLIT'
+    chronometerObject.startClick(printTime);
+    btnRight.innerHTML = 'SPLIT';
   } else {
-     //left button
-    btnLeft.classList.add('start');
-    btnLeft.classList.remove('stop')
     btnLeft.innerHTML = 'START';
-    //right button
-    btnRight.classList.add('reset');
-    btnRight.classList.remove('split')
-    btnRight.innerHTML = 'RESET'
+    chronometerObject.stopClick();
+    btnRight.innerHTML = 'RESET';
   }
-
-
-/*   btnLeft.classList.toggle('stop');
-  btnLeft.innerHTML = 'stop'  */
-
 }
-
+//click the left button
 btnLeft.addEventListener('click', leftButtonClick);
-
-
-// get the DOM elements that will serve us to display the time:
+// DOM for updating HTML timer
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
 let secDec = document.getElementById('secDec');
 let secUni = document.getElementById('secUni');
+
+function printTime() {
+  printMinutes();
+  printSeconds();
+}
+
+function printMinutes() {
+  minDec.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getMinutes()).charAt(0);
+  minUni.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getMinutes()).charAt(1);
+}
+
+function printSeconds() {
+  secDec.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getSeconds()).charAt(0);
+  secUni.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getSeconds()).charAt(1);
+}
+
+
+
+
+
+// ==> BONUS
+// get the DOM elements that will serve us to display the time:
 let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
-
-function printMinutes() {
-  // ... your code goes here
-}
-
-function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
 }
@@ -85,7 +79,7 @@ function setResetBtn() {
   // ... your code goes here
 }
 
-// Start/Stop Button
+/* // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
 });
@@ -93,4 +87,4 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
-});
+}); */
