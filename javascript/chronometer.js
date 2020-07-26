@@ -17,6 +17,11 @@ class Chronometer {
     let secondsTime = this.currentTime % 60;
     return secondsTime;
   }
+
+  getMilliseconds() {
+    let millisecondTime = this.currentTime / 1000;
+    return millisecondTime;
+  }
   
   twoDigitsNumber(time) {
     if (time < 10) {

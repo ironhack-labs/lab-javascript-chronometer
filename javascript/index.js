@@ -29,6 +29,8 @@ let secUni = document.getElementById('secUni');
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds(); 
+  
 }
 
 function printMinutes() {
@@ -49,14 +51,15 @@ let li = document.getElementsByTagName('li');
 function rightButtonClick() {
   if (btnLeft.innerHTML === 'STOP') {
     let liCreate = document.createElement('li');
-    liCreate.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`
+    liCreate.innerHTML = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}:${milDec.innerHTML}${milUni.innerHTML}`
     ol.appendChild(liCreate);
-    console.log(li);
   } else {
     minDec.innerHTML = '0';
     minUni.innerHTML = '0';
     secDec.innerHTML = '0';
     secUni.innerHTML = '0';
+    milDec.innerHTML = '0';
+    milUni.innerHTML = '0';
     const liArr = [...li];
     const liArrRemove = liArr.forEach((li) => {
       li.remove();
@@ -75,8 +78,12 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printMilliseconds() {
-  // ... your code goes here
+  milDec.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getMilliseconds()).charAt(0);
+  milUni.innerHTML = chronometerObject.twoDigitsNumber(chronometerObject.getMilliseconds()).charAt(1);
 }
+
+
+
 
 function printSplit() {
   // ... your code goes here
@@ -102,12 +109,4 @@ function setResetBtn() {
   // ... your code goes here
 }
 
-/* // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
 
-// Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
-}); */
