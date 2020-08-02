@@ -14,52 +14,76 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+    setInterval(printSeconds, 1000)
+    setInterval(printMinutes, 6000)
 }
 
 function printMinutes() {
-  // ... your code goes here
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function printSplit() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function clearSplits() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    btnLeft.innerHTL = "STOP"
+    btnRight.classList.toggle("split", true)
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+    btnRight.innerHTML = "SPLIT"
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    btnRight.innerHTML = "START"
 }
 
 function setResetBtn() {
-  // ... your code goes here
+    btnRight.innerHTML = "RESET"
+    btnRight.classList.toggle("split", false)
 }
+// Start/Stop Button 
+let flags1 = true;
+btnLeft.addEventListener('click', (e) => {
+    e.target.classList.toggle("stop", flags1);
 
-// Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+    if (flags1) {
+        setStopBtn()
+        setSplitBtn()
+        chronometer.startClick(printTime);
+    } else {
+        setStartBtn()
+        setResetBtn()
+
+        chronometer.stopClick();
+    }
+    flags1 = !flags1;
 });
 
-// Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
+//Reset/Split Button 
+let flags2 = true;
+btnRight.addEventListener('click', (e) => {
+
+    if ([...e.target.classList].includes("split")) {
+        printSplit();
+    } else {
+        chronometer.resetClick();
+        clearSplits();
+    }
 });
