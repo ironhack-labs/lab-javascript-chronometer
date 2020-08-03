@@ -19,18 +19,16 @@ class Chronometer {
   }
   getSeconds() {
     // ... your code goes here
-    let minutes = this.currentTime / 60;
-    minutes =  Math.floor(minutes); 
-
-    let seconds =  this.currentTime - (minutes * 60);
+    let seconds =  this.currentTime % 60;
     return seconds;
   }
 
   twoDigitsNumber(value) {
     let strRet = '';
-
-    if (value.length > 1 ){
+    
+    if (value> 9 ){
       strRet += String(value);
+      
     }else {
       strRet += '0'+String(value);
     }
@@ -45,19 +43,19 @@ class Chronometer {
     // ... your code goes here
     this.currentTime = 0;
   }
-  splitClick(minutos, segundos) {
+  splitClick(tempo) {
     // ... your code goes here
-    if (! minutos ){
-      minutos = 0;
-    }
+    // if (! minutos ){
+    //   minutos = 0;
+    // }
 
-    if (! segundos ){
-      segundos = 0;
-    }
+    // if (! segundos ){
+    //   segundos = 0;
+    // }
 
     let strRetorno = '';
 
-    strRetorno = this.twoDigitsNumber(minutos) + ':' + this.twoDigitsNumber(segundos)
+    strRetorno =this.twoDigitsNumber(this.getMinutes(tempo)) + ':' + this.twoDigitsNumber(this.getSeconds(tempo));
 
     return strRetorno;
 
