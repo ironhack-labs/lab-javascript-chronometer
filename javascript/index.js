@@ -39,6 +39,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+  chronometer.stopClick()
   // ... your code goes here
 }
 
@@ -47,6 +48,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  chronometer.startClick();
   // ... your code goes here
 }
 
