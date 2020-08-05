@@ -6,9 +6,10 @@ class Chronometer {
   }
 
   startClick(callback) {
-    this.intervalId = setInterval(callback => {
+    this.intervalId = setInterval(() => {
       this.currentTime += 1;
-    },1000);
+      callback();
+    },1);
   }
 
   getMinutes() {
@@ -18,6 +19,11 @@ class Chronometer {
   getSeconds() {
     let seconds = this.currentTime - this.getMinutes() * 60
     return seconds
+  }
+
+  getMilliseconds() {
+    let milliseconds = this.currentTime * 1000;
+    return milliseconds
   }
 
   twoDigitsNumber(number) {
@@ -32,6 +38,7 @@ class Chronometer {
 
   resetClick() {
     this.currentTime = 0;
+    printTime();
   }
 
   splitClick() {
