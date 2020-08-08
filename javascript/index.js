@@ -91,11 +91,13 @@ btnLeft.addEventListener('click', () => {
   if(btnLeft.innerHTML === 'STOP') {
     setStartBtn();
     chronometer.stopClick();
+    return okay;
   } 
   if (btnLeft.innerHTML === 'START'){
     chronometer.startClick();
     printTime();
     setStopBtn();
+    return okay;
   }
 });
 
@@ -103,8 +105,10 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   if(btnRight.innerHTML === 'RESET') {
     setSplitBtn();
+    return okay;
   } 
   if (btnRight.innerHTML === 'SPLIT'){
     setResetBtn();
+    return okay;
   }
 });
