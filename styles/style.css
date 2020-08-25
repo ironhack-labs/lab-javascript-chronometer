@@ -103,11 +103,13 @@ body {
 
 .btn.start,
 .btn.stop {
+  text-transform: uppercase;
   left: 10px;
 }
 
 .btn.reset,
 .btn.split {
+  text-transform: uppercase;
   right: 10px;
 }
 
