@@ -14,6 +14,7 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
+  minDec = chronometer.twoDigitsNumber(getMinutes())
   // ... your code goes here
 }
 
@@ -56,6 +57,46 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
+
+    if (btnLeft.className ==='btn start') {
+
+      chronometer.startClick() //call the Chronometer startClick method if the button has the start class
+
+      btnLeft.classList.add('stop') //cambiar la clase de btnLeft quitar start y poner stop 
+      btnLeft.classList.remove('start')
+
+      btnLeft.innerText = 'STOP'  //cambiar el texto de btnLeft a STOP
+      
+      btnRight.classList.add('split')
+      btnRight.classList.remove('reset')
+
+      btnRight.innerText = 'SPLIT'
+
+
+    }
+
+    else{
+      chronometer.stopClick()
+
+      btnLeft.classList.add('start') //cambiar la clase de btnLeft quitar start y poner stop 
+      btnLeft.classList.remove('stop')
+
+      btnLeft.innerText = 'START'  //cambiar el texto de btnLeft a STOP
+      
+      btnRight.classList.add('reset')
+      btnRight.classList.remove('split')
+
+      btnRight.innerText = 'RESET'
+      //cambiar la clase de btnLeft quitar stop y poner start
+      //cambiar el texto de btnLeft a START
+      //cambiar la clase de btnRight a reset
+      //cambiar el texto de btnRight a SPLIT
+    }
+
+
+
+
+  
   // ... your code goes here
 });
 

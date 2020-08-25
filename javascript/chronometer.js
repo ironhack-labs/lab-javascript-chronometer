@@ -1,26 +1,51 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0,
+    this.intervalId = 0
   }
+
   startClick(callback) {
-    // ... your code goes here
+
+    this.intervalId = setInterval ( elm => {
+       this.currentTime ++
+     }, 1000)
+     
+     // callback
   }
+
   getMinutes() {
-    // ... your code goes here
+    const minutes = Math.floor(this.currentTime/60)
+    return minutes
   }
   getSeconds() {
-    // ... your code goes here
+    const seconds = this.currentTime % 60
+    return seconds
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(number) {
+    let stringNumber
+    if (number < 10) {
+      stringNumber = '0' + number
+    }
+    else {
+      stringNumber = number.toString()
+    }
+    return stringNumber
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0
   }
   splitClick() {
-    // ... your code goes here
+    const minutes = this.getMinutes()
+    const seconds = this.getSeconds()
+    const minutes2d = this.twoDigitsNumber(minutes)
+    const seconds2d = this.twoDigitsNumber(seconds)
+
+    const split = minutes2d + ':' + seconds2d
+
+    return split
+  
   }
 }
