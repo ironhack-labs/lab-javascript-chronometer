@@ -17,7 +17,7 @@ class Chronometer {
     // ... your code goes here
     return this.currentTime % 60;
   }
-  twoDigitsNumber() {
+  twoDigitsNumber(number) {
     // ... your code goes here
     if (number < 10) {
       return `0${number}`;
@@ -34,9 +34,10 @@ class Chronometer {
   }
   splitClick() {
     // ... your code goes here
-    const timeStr = This.twoDigitsNumber(
-      this.getMinutes() + ':' + this.twoDigitsNumber(this.getSeconds())
-    );
+    const timeStr =
+      this.twoDigitsNumber(this.getMinutes()) +
+      ':' +
+      this.twoDigitsNumber(this.getSeconds());
     return timeStr;
   }
 }
