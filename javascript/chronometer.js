@@ -1,26 +1,68 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = 0
   }
-  startClick(callback) {
-    // ... your code goes here
+
+  startClick(callback){
+    
+    const myInterval = setInterval(()=> {
+      this.currentTime++
+      //console.log(this.currentTime)
+    }, 1000)
   }
+
+
+
   getMinutes() {
-    // ... your code goes here
+    if(this.currentTime === 0){
+      return 0
+    }
+    else {
+        const minits =  Math.floor(this.currentTime / 60)
+      return minits
+    }
+    
   }
+  
   getSeconds() {
-    // ... your code goes here
+    const minits =  Math.floor(this.currentTime / 60) 
+    const secs = this.currentTime - minits * 60
+    return secs
   }
+
+
   twoDigitsNumber() {
-    // ... your code goes here
+  let tempMinits = 0
+  let tempSecs = 0
+  const minits =  Math.floor(this.currentTime / 60) 
+  const secs = this.currentTime - minits * 60
+   
+  tempMinits = ((minits < 10) ? "0" : "") + minits;
+  tempSecs = ((secs < 10) ? "0" : "") + secs;
+  
+  return tempMinits, tempSecs;
   }
+
   stopClick() {
-    // ... your code goes here
+    //document.getElementById("btnLeft").onclick = () => {
+      clearInterval(this.intervalId)
+      
+    //} 
   }
   resetClick() {
-    // ... your code goes here
+   //document.querySelector('#btnRight').onclick = () => {
+     this.currentTime = 0
+   //}
   }
   splitClick() {
-    // ... your code goes here
+    let chronometer = new Chronometer 
+    let min = this.currentTime.getMinutes()
+    let sec = this.currentTime.getSeconds()
+    if (min < 10) {
+        console.log(`${0}${min}:${0}${sec}`)
+    } else {
+        console.log(`${min}:${sec}`)
+      }
   }
 }
