@@ -32,7 +32,7 @@ To check how your final version should look like check this **[demo](https://san
 ```
 $ git add .
 $ git commit -m "done"
-$ git push origin master
+$ 
 ```
 
 - Create Pull Request so your TAs can check up your work.
@@ -83,7 +83,7 @@ It is **mandatory** for you to use the following:
 
 As previously stated, the logic will be added to the `javascript/chronometer.js`.
 
-#### The `Chronometer` class
+#### The `Ccommi  class
 
 Let's create a Chronometer class and apply the following:
 
