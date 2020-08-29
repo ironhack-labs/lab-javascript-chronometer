@@ -4,7 +4,7 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++;
     }, 1000);
   }
@@ -16,10 +16,17 @@ class Chronometer {
   }
 
   twoDigitsNumber(string) {
+    console.log(typeof string);
+
     if (string < 10) {
       return "0" + string;
     }
-    return string;
+
+    return string.toString();
+  }
+
+  getMilliseconds() {
+    return this.currentTime % 100;
   }
 
   stopClick() {
