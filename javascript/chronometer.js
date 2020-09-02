@@ -4,7 +4,7 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    this.intervalId = setInterval(() => {
+      this.intervalId = setInterval(() => {
       this.currentTime++;
       // console.log(this.currentTime)
     }, 1000);
@@ -22,12 +22,15 @@ class Chronometer {
       return String(number)
     } else {return new Error("You inserted a too big number")}
   }
+
   stopClick() {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId);
   }
+
   resetClick() {
     this.currentTime = 0;
   }
+
   splitClick() {
     let min = this.getMinutes();
     let sec = this.getSeconds();
