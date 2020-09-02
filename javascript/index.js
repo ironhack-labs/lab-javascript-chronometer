@@ -27,7 +27,9 @@ function printMilliseconds() {
   // ... your code goes here
 }
 function printSplit() {
-  // ... your code goes here
+  const newLi = document.createElement("li");
+  newLi.innerHTML = chronometer.splitClick();
+  splits.appendChild(newLi);
 }
 function clearSplits() {
   // ... your code goes here
@@ -66,5 +68,12 @@ btnLeft.addEventListener('click', () => {
 });
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRight.innerHTML === "SPLIT") {
+    printSplit();
+  }
 });
+
+
+
+
+
