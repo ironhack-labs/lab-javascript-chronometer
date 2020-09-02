@@ -15,16 +15,12 @@ let splits = document.getElementById("splits");
 
 function printTime() {
   // ... your code goes here
-
 }
 
 function printMinutes() {
   // ... your code goes here
-  let min = chronometer.getMinutes();
-
 
 }
-printMinutes()
 
 function printSeconds() {
   // ... your code goes here
@@ -73,16 +69,15 @@ btnLeft.addEventListener("click", () => {
     btnRight.classList.toggle("split");
     btnRight.classList.toggle("reset");
   }
-
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop");
   console.log(btnLeft.classList);
-  console.log(btnRight.classList)
+  console.log(btnRight.classList);
 });
 
 // Reset/Split Button
 btnRight.addEventListener("click", () => {
   // ... your code goes here
-
-
+  
 });
+
