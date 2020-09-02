@@ -32,7 +32,7 @@ function printSplit() {
   splits.appendChild(newLi);
 }
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = ''
 }
 function setStopBtn() {
   btnLeft.classList.remove("start");
@@ -70,6 +70,10 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   if(btnRight.innerHTML === "SPLIT") {
     printSplit();
+  }else{
+    clearSplits()
+    chronometer.resetClick()
+    printTime()
   }
 });
 
