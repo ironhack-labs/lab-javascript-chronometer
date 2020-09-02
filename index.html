@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Jasmine Spec Runner v2.8.0</title>
-
-    <link rel="shortcut icon" type="image/png" href="jasmine/jasmine-2.8.0/jasmine_favicon.png" />
-    <link rel="stylesheet" href="jasmine/jasmine-2.8.0/jasmine.css" />
-
-    <script src="jasmine/jasmine-2.8.0/jasmine.js"></script>
-    <script src="jasmine/jasmine-2.8.0/jasmine-html.js"></script>
-    <script src="jasmine/jasmine-2.8.0/boot.js"></script>
-
-    <!-- include source files here... -->
-    <script src="javascript/chronometer.js"></script>
-
-    <!-- include spec files here... -->
-    <script src="tests/chronometer.spec.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>IronChronometer</title>
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
+  <body>
+    <section id="splits-container">
+      <h3>Splits</h3>
+      <ol id="splits"></ol>
+    </section>
 
-  <body></body>
+    <div class="leash leash-top"></div>
+
+    <section id="clock">
+      <div id="sphere">
+        <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span>:</span
+        ><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
+
+        <div id="milliseconds"><span id="milDec">0</span><span id="milUni">0</span></div>
+
+        <button id="btnLeft" class="btn start">START</button> <button id="btnRight" class="btn reset">RESET</button>
+      </div>
+    </section>
+
+    <div class="leash leash-bottom">
+      <div class="hole"></div>
+      <div class="hole"></div>
+      <div class="hole"></div>
+    </div>
+
+    <script src="javascript/chronometer.js"></script>
+    <script src="javascript/index.js"></script>
+  </body>
 </html>
