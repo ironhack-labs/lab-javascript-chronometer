@@ -38,28 +38,59 @@ function clearSplits() {
   // ... your code goes here
 }
 
-function setStopBtn() {
+function setStopBtn(element) {
   // ... your code goes here
+  console.log(element.textContent);
+  element.textContent = 'STOP';
 }
 
 function setSplitBtn() {
   // ... your code goes here
 }
 
-function setStartBtn() {
+function setStartBtn(element) {
   // ... your code goes here
+  
+  element.textContent = 'START';
 }
 
-function setResetBtn() {
+function setResetBtn(element) {
   // ... your code goes here
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
+btnLeft.addEventListener('click', (evt) => {
   // ... your code goes here
+  let temp = evt.target;
+  console.log(temp.classList);
+
+  
+  if(temp.classList.contains('start')) {
+    chronometer.startClick();
+    setStartBtn(temp);
+    temp.classList.toggle('start');
+    
+  }else {
+    chronometer.stopClick();
+    temp.classList.toggle('stop');
+    setStopBtn(temp);
+  }
+
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
+btnRight.addEventListener('click', (evt) => {
   // ... your code goes here
+  let temp = evt.target;
+  console.log(temp.classList);
+
+  
+  if(temp.classList.contains('reset')) {
+    temp.classList.toggle('reset');
+    setResetBtn(temp);  
+  }else {
+    temp.classList.toggle('split');
+    setSplitBtn(temp);
+  }
+  
 });
