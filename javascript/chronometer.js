@@ -15,11 +15,15 @@ class Chronometer {
 
   getSeconds = () => this.currentTime%60;
 
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(number) {
+    if (number <= 9) {
+      return `0${number}`;
+    } else if (number <= 99) {
+      return String(number)
+    } else {return new Error("You inserted a too big number")}
   }
   stopClick() {
-    // ... your code goes here
+    
   }
   resetClick() {
     // ... your code goes here
