@@ -15,15 +15,24 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
-  minDec.innerHTML = printMinutes()[0];
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
   // ... your code goes here
+  const minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerText = minutes[0];
+  minUni.innerText = minutes[1];
 }
 
 function printSeconds() {
   // ... your code goes here
+  const seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerText = seconds[0];
+  console.log(seconds[0]);
+  secUni.innerText = seconds[1];
+  console.log(seconds[1]);
 }
 
 // ==> BONUS
@@ -33,34 +42,68 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  const split = chronometer.splitClick();
+  const li = document.createElement("li");
+  li.innerText = split;
+
+  splits.appendChild(li);
 }
 
 function clearSplits() {
   // ... your code goes here
+  splits.innerText.HTML = "bou";
 }
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeft.innerText = "START";
+  btnRight.innerText = "RESET";
+
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  chronometer.stopClick();
 }
 
 function setStartBtn() {
   // ... your code goes here
+  chronometer.startClick(printTime);
+  btnLeft.innerText = "STOP";
+  btnRight.innerText = "SPLIT";
+ 
 }
 
 function setResetBtn() {
   // ... your code goes here
+  chronometer.resetClick();
+  printTime();
+  clearSplits();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  btnLeft.classList.toggle("stop");
+  
+
+  // btnRight.classList.toggle("split");
+  // btnRight.classList.toggle("reset");
+
+  if (btnLeft.innerText === "START"){
+    setStartBtn();
+  } else {
+    setStopBtn();
+  }
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
+  if (btnRight.innerText == "RESET"){
+    setResetBtn();
+  } else {
+    printSplit();
+  }
 });
