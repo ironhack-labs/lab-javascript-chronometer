@@ -41,7 +41,7 @@ class Chronometer {
     result += this.twoDigitsNumber(this.getMinutes());
     result += ":";
     result += this.twoDigitsNumber(this.getSeconds());
-  
+
     return result;
   }
 }
