@@ -6,7 +6,7 @@ class Chronometer {
   startClick(callback) {
     setInterval(() => {
       this.currentTime++;
-      //check if callback throw error
+      callback();
     }, 1000);
   }
   getMinutes() {
