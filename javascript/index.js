@@ -42,7 +42,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-    // ... your code goes here
+    splits.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -68,11 +68,9 @@ function setResetBtn() {
 
 
 function addLiSplit() {
-    const li = document.createElement("li"); // asking for a li object
-    li.innerHTML = `<li class="time-freeze">
-    <span>${chronometer.splitClick()}</span>
-  </li>`; // defining a html template
-    splits.appendChild(li); // inserting the newly created li in the ul
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${chronometer.splitClick()}</span>`;
+    splits.appendChild(li);
 }
 
 // Start/Stop Button
@@ -102,12 +100,9 @@ btnRight.addEventListener('click', () => {
         //reset implementation
         chronometer.resetClick();
         printTime();
+        clearSplits()
     } else {
         //split implementation
         addLiSplit();
     }
-    console.log("toto");
-
-
-
 });
