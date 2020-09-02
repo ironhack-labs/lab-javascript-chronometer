@@ -34,12 +34,9 @@ export class Chronometer {
   splitClick() {
    let min = this.getMinutes();
    let sec = this.getSeconds();
-   if (min < 10) {
-   return(`${0}${min}:${0}${sec}`);
-   } else {
-    return(`${min}:${sec}`);
+    return(`${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`);
    // ... your code goes here
   }
  }
- }
+ 
  
