@@ -4,8 +4,8 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-      this.intervalId = setInterval(() => {
-      this.currentTime++;
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
       // console.log(this.currentTime)
     }, 1000);
   }
@@ -20,7 +20,9 @@ class Chronometer {
       return `0${number}`;
     } else if (number <= 99) {
       return String(number)
-    } else {return new Error("You inserted a too big number")}
+    } else {
+      return new Error("You inserted a too big number")
+    }
   }
 
   stopClick() {
