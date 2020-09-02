@@ -14,16 +14,19 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
+console.log("toto");
 printMinutes();
 printSeconds();
 }
 
 function printMinutes() {
+  console.log(chronometer.getMinutes());
   minDec.innerHTML = chronometer.getMinutes()[0];
   minUni.innerHTML = chronometer.getMinutes()[1];
 }
 
 function printSeconds() {
+  console.log(chron)
   secDec.innerHTML = chronometer.getSeconds()[0];
   secUni.innerHTML = chronometer.getSeconds()[1];
 }
@@ -63,8 +66,10 @@ btnLeft.addEventListener('click', () => {
   btnLeft.classList.toggle("stop");
 
  if (btnLeft.innerHTML === "STOP") {
+   chronometer.stopClick();
    btnLeft.innerHTML = "START";
- } else{
+ } else {
+   chronometer.startClick(printTime);
    btnLeft.innerHTML = "STOP";
  }
 
@@ -74,7 +79,7 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   btnRight.classList.toggle("reset");
   btnRight.classList.toggle("split");
-
+  printTime();
   if (btnRight.innerHTML === "RESET") {
   btnRight.innerHTML = "SPLIT";
   } else{
