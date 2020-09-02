@@ -124,17 +124,17 @@ describe('Chronometer', () => {
       expect(chronometer.twoDigitsNumber(7).length).toEqual(2);
     });
 
-    // it("should return '00' when the value is 0", () => {
-    //   expect(chronometer.twoDigitsNumber(0)).toEqual('00');
-    // });
+    it("should return '00' when the value is 0", () => {
+      expect(chronometer.twoDigitsNumber(0)).toEqual('00');
+    });
 
-    // it("should return '15' when the value is 15", ()=> {
-    //   expect(chronometer.twoDigitsNumber(15)).toEqual('15');
-    // });
+    it("should return '15' when the value is 15", ()=> {
+      expect(chronometer.twoDigitsNumber(15)).toEqual('15');
+    });
 
-    // it("Should return '03' when the value is 3", function() {
-    //   expect(chronometer.twoDigitsNumber(3)).toEqual('03');
-    // });
+    it("Should return '03' when the value is 3", function() {
+      expect(chronometer.twoDigitsNumber(3)).toEqual('03');
+    });
   });
 
   describe('stopClick method', () => {
