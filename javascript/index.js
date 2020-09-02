@@ -15,6 +15,10 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+var refresh = setInterval(() => {
+  printTime();
+}, 1000);
+
 function printTime() {  
   const rawMin = printMinutes();
   minDec.innerText = rawMin.charAt(0);
@@ -79,8 +83,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  btnLeft.classList.contains("start") ? setStartBtn() : setStopBtn();
-  chronometer.startClick(printTime);
+  if (btnLeft.classList.contains("start")) { 
+    setStartBtn(); 
+    chronometer.startClick(refresh) ;
+   } else {
+     setStopBtn();
+     chronometer.stopClick();}  
   console.log(chronometer)
   // ... your code goes here
 });
