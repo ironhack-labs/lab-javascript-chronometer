@@ -91,8 +91,10 @@ btnLeft.addEventListener('click', () => {
   
   if (btnLeft.innerText === "STOP"){
     setStopBtn();
+    chronometer.stopClick();
   } else {
     setStartBtn();
+    chronometer.startClick();
   }
 });
 
@@ -101,6 +103,7 @@ btnRight.addEventListener('click', () => {
   // ... your code goes here
   if (btnRight.innerText === "RESET"){
     setResetBtn();
+    chronometer.resetClick();
   } else {
     printSplit();
   }

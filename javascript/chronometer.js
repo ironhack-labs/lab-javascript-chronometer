@@ -5,15 +5,12 @@ class Chronometer {
     this.intervalId = 0;
   }
 
-  startClick(limit, success, end) {
+  startClick(callback) {
+
     this.intervalId = setInterval(() => {
-      // async task
-      this.currentTime++;
-      if (this.currentTime === limit) {
-        success(end);
-      }
+      this.currentTime += 1;
+      callback();
     }, 1000);
-    return this.intervalId;
   }
 
   getMinutes() {
@@ -50,7 +47,6 @@ class Chronometer {
   }
   splitClick() {
     // ... your code goes here
-    console.log(this.getMinutes());
     return `${("0" + this.getMinutes()).slice(-2)}:${("0" + this.getSeconds()).slice(-2)}`;
 
   }
