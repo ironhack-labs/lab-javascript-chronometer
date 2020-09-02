@@ -1,9 +1,20 @@
 class Chronometer {
   constructor() {
     // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
-  startClick(callback) {
-    // ... your code goes here
+  startClick(limit, success, end) {
+    this.intervalId = setInterval(() => {
+      // async task
+      this.currentTime++;
+      console.log(this.currentTime);
+      if (this.currentTime === limit) {
+        success(end);
+      }
+    }, 1000);
+  
+    return this.intervalId;
   }
   getMinutes() {
     // ... your code goes here
