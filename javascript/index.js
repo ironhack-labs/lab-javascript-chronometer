@@ -15,6 +15,7 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  minDec.innerHTML = printMinutes()[0];
 }
 
 function printMinutes() {
