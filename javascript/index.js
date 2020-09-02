@@ -66,6 +66,15 @@ function setResetBtn() {
     btnRight.classList.remove("split");
 }
 
+
+function addLiSplit() {
+    const li = document.createElement("li"); // asking for a li object
+    li.innerHTML = `<li class="time-freeze">
+    <span>${chronometer.splitClick()}</span>
+  </li>`; // defining a html template
+    splits.appendChild(li); // inserting the newly created li in the ul
+}
+
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
     btnLeft.classList.toggle("start");
@@ -95,7 +104,7 @@ btnRight.addEventListener('click', () => {
         printTime();
     } else {
         //split implementation
-
+        addLiSplit();
     }
     console.log("toto");
 
