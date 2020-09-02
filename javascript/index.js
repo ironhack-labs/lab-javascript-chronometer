@@ -15,19 +15,22 @@ let splits = document.getElementById("splits");
 
 function printTime() {
   // ... your code goes here
+  minDec.innerHTML = printMinutes()[0];
+  minUni.innerHTML = printMinutes()[1];
+  secDec.innerHTML = printSeconds()[0];
+  secUni.innerHTML = printSeconds()[1];
 
 }
 
 function printMinutes() {
   // ... your code goes here
-  let min = chronometer.getMinutes();
-
-
+  return chronometer.twoDigitsNumber(chronometer.getMinutes()).split('');
 }
-printMinutes()
+
 
 function printSeconds() {
   // ... your code goes here
+  return chronometer.twoDigitsNumber(chronometer.getSeconds()).split('');
 }
 
 // ==> BONUS
@@ -72,7 +75,9 @@ btnLeft.addEventListener("click", () => {
     btnRight.textContent = "RESET";
     btnRight.classList.toggle("split");
     btnRight.classList.toggle("reset");
+    
   }
+  chronometer.startClick(printTime);
 
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop");
@@ -86,3 +91,5 @@ btnRight.addEventListener("click", () => {
 
 
 });
+
+
