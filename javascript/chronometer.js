@@ -8,17 +8,22 @@ export class Chronometer {
    this.intervalId = setInterval(() => {
     this.currentTime++;
     callback();
-   }, 1000);
+   }, 10);
    // ... your code goes here
   }
   getMinutes() {
-   return this.currentTime !== 0 ? Math.floor(this.currentTime/60) : 0;
+   return this.currentTime !== 0 ? Math.floor((this.currentTime/100)/60) : 0;
    // ... your code goes here
   }
   getSeconds() {
-   return this.currentTime !== 0 ? Math.floor(this.currentTime%60) : 0;
+   return this.currentTime !== 0 ? Math.floor((this.currentTime/100)%60) : 0;
    // ... your code goes here
   }
+
+  getMilliSeconds () {
+    return this.currentTime !== 0 ? Math.floor(this.currentTime%100) : 0;
+  }
+
   twoDigitsNumber(twoDigits) {
    return twoDigits >= 10 ? twoDigits.toString() : "0" + twoDigits.toString();
    // ... your code goes here
@@ -34,7 +39,8 @@ export class Chronometer {
   splitClick() {
    let min = this.getMinutes();
    let sec = this.getSeconds();
-    return(`${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`);
+   let mil = this.getMilliSeconds();
+    return(`${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}:${this.twoDigitsNumber(mil)}`);
    // ... your code goes here
   }
  }

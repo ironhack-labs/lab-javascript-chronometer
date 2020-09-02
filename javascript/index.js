@@ -18,6 +18,7 @@ let splits = document.getElementById('splits');
 function printTime() {  
  printMinutes();
  printSeconds();
+ printMilliSeconds();
  // ... your code goes here
 }
 
@@ -38,6 +39,15 @@ function printSeconds() {
  //return seconds;
  // ... your code goes here
 }
+
+function printMilliSeconds() {
+  const milleseconds = chronometer.twoDigitsNumber(chronometer.getMilliSeconds());
+  //console.log("Sec ==>", seconds);
+  milDec.innerText = milleseconds.charAt(0);
+  milUni.innerText = milleseconds.charAt(1);
+  //return seconds;
+  // ... your code goes here
+ }
 
 // ==> BONUS
 function printMilliseconds() {
