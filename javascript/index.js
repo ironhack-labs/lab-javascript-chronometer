@@ -17,6 +17,7 @@ function printTime() {
   // ... your code goes here
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -38,7 +39,12 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-  
+  const mili = chronometer.twoDigitsNumber(chronometer.getMilliseconds()).split('');
+  milDec.innerText = mili[0];
+  milUni.innerText = mili[1];
+  console.log(milDec.innerText);
+  console.log(milUni.innerText);
+  return mili;  
 }
 
 function printSplit() {
@@ -78,7 +84,7 @@ function setStartBtn() {
 function setResetBtn() {
   // ... your code goes here
   chronometer.resetClick();
-  //printTime();
+  printTime();
   clearSplits();
 }
 
@@ -101,7 +107,6 @@ btnRight.addEventListener('click', () => {
   // ... your code goes here
   if (btnRight.innerText === "RESET"){
     setResetBtn();
-    chronometer.resetClick();
   } else {
     printSplit();
   }

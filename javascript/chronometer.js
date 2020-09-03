@@ -9,7 +9,6 @@ class Chronometer {
     console.log(callback);
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
-      console.log(typeof callback);
       callback();
     }, 1000);
   }
@@ -22,9 +21,14 @@ class Chronometer {
 
   getSeconds() {
     // ... your code goes here
-    let minutes = this.getMinutes()
     var seconds = this.currentTime%60; 
     return seconds;
+  }
+
+  getMilliseconds(){
+    var seconds = (this.currentTime % 60);
+    var milliseconds = Math.floor(seconds * 1000);
+    return milliseconds; 
   }
    
   twoDigitsNumber(number) {
