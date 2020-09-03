@@ -52,16 +52,19 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  // ... your code goes here
-  
+  btnRight.classList.remove("reset");
+  btnRight.classList.add("split");
+  btnRight.innerHTML = "SPLIT";
 }
-
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+  btnLeft.innerHTML = "START";
 }
-
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.classList.remove("split");
+  btnRight.classList.add("reset");
+  btnRight.innerHTML = "RESET";
 }
 
 // Start/Stop Button
