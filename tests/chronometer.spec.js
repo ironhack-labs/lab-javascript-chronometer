@@ -27,7 +27,7 @@ describe('Chronometer', () => {
   describe('startClick method', () => {
     beforeEach(() => {
       jasmine.clock().install();
-      chronometer.startClick();
+      chronometer.startClick(() => {});
     });
 
     afterEach(() => {

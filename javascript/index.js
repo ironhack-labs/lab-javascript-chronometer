@@ -78,7 +78,7 @@ function setStartBtn() {
 function setResetBtn() {
   // ... your code goes here
   chronometer.resetClick();
-  printTime();
+  //printTime();
   clearSplits();
 }
 
