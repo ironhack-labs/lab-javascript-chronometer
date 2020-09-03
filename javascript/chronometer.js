@@ -30,9 +30,8 @@ class Chronometer {
     }
 
     getMillisec() {
-        return this.milliSec[1] + this.milliSec[0];
+        return this.milliSec % 100;
     }
-
 
     twoDigitsNumber(value) {
         if (!isNaN(value)) {
@@ -61,7 +60,7 @@ class Chronometer {
         result += this.twoDigitsNumber(this.getMinutes());
         result += ":";
         result += this.twoDigitsNumber(this.getSeconds());
-        result += ":" + this.getMillisec();
+        result += ":" + this.twoDigitsNumber(this.getMillisec());
 
         return result;
     }

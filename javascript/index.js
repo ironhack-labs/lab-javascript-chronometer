@@ -34,9 +34,8 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-    console.log(milDec)
-    milDec.innerHTML = chronometer.getMillisec()[0];
-    milUni.innerHTML = chronometer.getMillisec()[1];
+    milDec.innerHTML = Math.trunc(chronometer.getMillisec()/10);
+    milUni.innerHTML = chronometer.getMillisec()%10;
 }
 
 function printSplit() {
@@ -102,8 +101,9 @@ btnRight.addEventListener('click', () => {
     if (isRunning) {
         //reset implementation
         chronometer.resetClick();
+        printMilliseconds();
         printTime();
-        clearSplits()
+        clearSplits();
     } else {
         //split implementation
         addLiSplit();
