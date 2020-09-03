@@ -14,6 +14,7 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 let frontInterval;
+let milliFontInterval;
 
 function printTime() {
   // console.log('-----print time-----');
@@ -25,6 +26,10 @@ function printTime() {
       printMinutes();
 
   }, 1000);
+
+  milliFontInterval = setInterval(()=> {
+    printMilliseconds();
+  }, 1);
 }
 
 function printMinutes() {
@@ -60,7 +65,21 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  console.log('printMili');
+  let valuetMilliseconds = String(chronometer.getMilliSecondes());
+  console.log(valuetMilliseconds);
+  
+
+  if(valuetMilliseconds.length < 2) {
+    valuetMilliseconds = "0"+valuetMilliseconds;
+  }
+  let arrayMilli = valuetMilliseconds.split('');
+  let milUniValue = arrayMilli[1];
+  let milDecValue = arrayMilli[0];
+
+  //let milUni = 
+  document.querySelector('#milUni').innerHTML = milUniValue;
+  document.querySelector('#milDec').innerHTML= milDecValue;
 }
 
 function printSplit() {
@@ -125,8 +144,9 @@ btnLeft.addEventListener('click', (evt) => {
     chronometer.stopClick();
     temp.classList.toggle("stop");
     btnRight.classList.toggle('split');
-    setResetBtn()
+    setResetBtn();
     setStartBtn(temp);
+    
   }
 
 
@@ -140,7 +160,6 @@ btnRight.addEventListener('click', (evt) => {
   if(temp.classList.contains('reset')) {
     chronometer.resetClick();
     clearSplits();
-    
     
     
   }else {
