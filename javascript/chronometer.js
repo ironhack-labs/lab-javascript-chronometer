@@ -37,6 +37,14 @@ class Chronometer {
     let min = this.getMinutes();
     let sec = this.getSeconds();
 
-    return `${0}${min}:${0}${sec}`;
+    if (min < 10 && sec < 10) {
+      return `${0}${min}:${0}${sec}`;
+    } else if (min < 10 && sec > 9) {
+      return `${0}${min}:${sec}`;
+    } else if (min > 9 && sec < 10) {
+      return `${min}:${0}${sec}`;
+    } else {
+      return `${min}:${sec}`;
+    }
   }
 }
