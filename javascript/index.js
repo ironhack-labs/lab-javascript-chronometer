@@ -40,11 +40,17 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const li = document.createElement("li");
+  li.innerHTML += `<span>${chronometer.splitClick()}</span>`;
+  splits.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = ""
+  secDec.innerText = "0"
+  secUni.innerText = "0"
+  minDec.innerText = "0"
+  minUni.innerText = "0"
 }
 
 function setStopBtn() {
@@ -101,5 +107,13 @@ btnRight.addEventListener("click", (evt) => {
   console.log("clicked on right btn");
   console.log("btn right class list on click >>", temp.classList);
 
-  // listen to split and reset here
+  if (temp.classList.contains("split")) {
+    chronometer.splitClick();
+    printSplit();
+  }
+
+  if (temp.classList.contains("reset")) {
+    chronometer.resetClick();
+    clearSplits();
+  }
 });
