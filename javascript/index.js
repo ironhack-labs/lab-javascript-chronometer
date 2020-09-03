@@ -49,6 +49,7 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+
 }
 
 function setSplitBtn() {
@@ -82,7 +83,7 @@ btnLeft.addEventListener("click", () => {
     btnRight.classList.toggle("split");
     btnRight.classList.toggle("reset");
   }
-
+  
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop");
   console.log(btnLeft.classList);
