@@ -54,17 +54,16 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  // ... your code goes here
-  
+  btnRight.classList.remove("reset");
+  btnRight.classList.add("split");
+  btnRight.innerHTML = "SPLIT";
 }
-
 function setStartBtn() {
     btnLeft.textContent = "START";
     btnRight.textContent = "RESET";
     btnRight.classList.toggle("split");
     btnRight.classList.toggle("reset");
 }
-
 function setResetBtn() {
   chronometer.resetClick();
   printTime();
