@@ -5,15 +5,18 @@ class Chronometer {
   }
   startClick(callback) {
     this.intervalId = setInterval(() => {
-      this.currentTime++ 
-      callback()
-    }, 1000);
+      this.currentTime++;
+      callback();
+    } , 10);
   }
   getMinutes() {
-    return Math.floor(this.currentTime/60);
+    return Math.floor(this.currentTime/6000);
   }
   getSeconds() {
-    return this.currentTime%60;
+    return (Math.floor(this.currentTime/100))%60;
+  }
+  getMilliseconds() {
+    return this.currentTime%100;
   }
   twoDigitsNumber(digit) {
     return `${("0" + digit).slice(-2)}`;
@@ -25,6 +28,6 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    return `${("0" + this.getMinutes()).slice(-2)}:${("0" + this.getSeconds()).slice(-2)}`;
+    return `${("0" + this.getMinutes()).slice(-2)}:${("0" + this.getSeconds()).slice(-2)}:${("0" + this.getMilliseconds()).slice(-2)}`;
   }
 }
