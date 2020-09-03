@@ -21,10 +21,12 @@ function printTime() {
 }
 
 function printMinutes() {
+  // ... your code goes here
   return chronometer.twoDigitsNumber(chronometer.getMinutes());
 }
 
 function printSeconds() {
+  // ... your code goes here
   return chronometer.twoDigitsNumber(chronometer.getSeconds());
 }
 
@@ -35,6 +37,9 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  let li = document.createElement("li");
+  li.innerHTML = `00 : ${printMinutes()} : ${printSeconds()}`;
+  splits.appendChild(li);
 }
 
 function clearSplits() {
@@ -50,6 +55,7 @@ function setStopBtn() {
 
 function setSplitBtn() {
   // ... your code goes here
+  
 }
 
 function setStartBtn() {
@@ -83,5 +89,3 @@ btnRight.addEventListener("click", () => {
     setResetBtn():
     setSplitBtn();
 });
-
-
