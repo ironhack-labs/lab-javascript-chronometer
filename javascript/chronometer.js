@@ -6,9 +6,10 @@ class Chronometer {
   }
 
   startClick(callback) {
-
+    console.log(callback);
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
+      console.log(typeof callback);
       callback();
     }, 1000);
   }
@@ -22,7 +23,7 @@ class Chronometer {
   getSeconds() {
     // ... your code goes here
     let minutes = this.getMinutes()
-    var seconds = Math.floor(this.currentTime - minutes * 60); 
+    var seconds = this.currentTime%60; 
     return seconds;
   }
    
@@ -38,8 +39,8 @@ class Chronometer {
   stopClick() {
     // ... your code goes here
     clearInterval(this.intervalId);
-
   }
+  
   resetClick() {
     // ... your code goes here
     this.intervalId = 0;

@@ -17,7 +17,6 @@ function printTime() {
   // ... your code goes here
   printMinutes();
   printSeconds();
-  printMilliseconds();
 }
 
 function printMinutes() {
@@ -47,7 +46,6 @@ function printSplit() {
   const split = chronometer.splitClick();
   const li = document.createElement("li");
   li.innerText = split;
-
   splits.appendChild(li);
 }
 
@@ -60,6 +58,7 @@ function setStopBtn() {
   // ... your code goes here
   btnLeft.innerText = "START";
   btnRight.innerText = "RESET";
+  chronometer.stopClick();
 
 }
 
@@ -89,12 +88,11 @@ btnLeft.addEventListener('click', () => {
   btnLeft.classList.toggle("stop");
   btnRight.classList.toggle("split");
   
-  if (btnLeft.innerText === "STOP"){
+  if (btnLeft.innerText === "START"){
+    setStartBtn();
+  } else {
     setStopBtn();
     chronometer.stopClick();
-  } else {
-    setStartBtn();
-    chronometer.startClick();
   }
 });
 
