@@ -8,6 +8,11 @@ class Chronometer {
       this.currentTime++;
     }, 1000);
   }
+
+  getHours() {
+    return Math.floor(this.currentTime / 3600)
+  }
+
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
@@ -32,8 +37,9 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
+    let hours = this.twoDigitsNumber(this.getHours())
     let minutes = this.twoDigitsNumber(this.getMinutes())
     let seconds = this.twoDigitsNumber(this.getSeconds())
-    return minutes + ":" + seconds
+    return hours + ":" + minutes + ":" + seconds
   }
 }
