@@ -14,15 +14,24 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  getMinutes()
+  getSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let min = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  let minSplit = min.split('');
+  
+  minDec.innerText = minSplit[0];
+  minUni.innerText = minSplit[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let sec = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  let secSplit = sec.split('')
+
+  secDec.innerText = secSplit[0];
+  secUni.innerText = secSplit[1];
 }
 
 // ==> BONUS
@@ -39,27 +48,51 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "STOP"
+  btnLeft.className = "btn stop"
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText = "SPLIT"
+  btnRight.className = "btn split"
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "START"
+  btnLeft.className = "btn start"
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerText = "RESET"
+  btnRight.className = "btn reset"
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerText == "START") {
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn();
+    
+  } else {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  }
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerText == "RESET") {
+    setSplitBtn();
+    
+
+  } else {
+    setResetBtn();
+
+  }
 });
+
+//when click start bottom, change it to stop 
+//and the color from green to ReadableStreamand then
