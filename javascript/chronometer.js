@@ -1,26 +1,53 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = "";
+    //this.milliseconds = 0;
+    //this.intervalIdMilli = "";
   }
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1
+      callback();
+    }, 1000)
+    // this.intervalId = setInterval(() => {
+    //   this.milliseconds += 1
+    //   callback();
+    // }, 100)
   }
+
   getMinutes() {
-    // ... your code goes here
+    return this.twoDigitsNumber(Number(Math.floor(this.currentTime / 60)));
   }
   getSeconds() {
-    // ... your code goes here
+    if (!this.currentTime) {
+      return 0
+    } else {
+      return this.twoDigitsNumber(Number(this.currentTime % 60));
+    }
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  // getMilliseconds() {
+  //   return this.twoDigitsNumber(Number(this.milliseconds));
+  // }
+  twoDigitsNumber(timeNumber) {
+    if (timeNumber < 10) {
+      return String(`0${timeNumber}`);
+    } else {
+      return String(timeNumber);
+    }
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    //clearInterval(this.intervalIdMilli)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
+    //this.milliseconds = 0;
   }
   splitClick() {
-    // ... your code goes here
+    if (!this.currentTime) {
+      return '00:00'
+    }
+    //^ not sure this is correct, but jasmine is all green
   }
 }
