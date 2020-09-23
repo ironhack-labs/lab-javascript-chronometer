@@ -14,10 +14,20 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
+  secUni.innerHTML = chronometer.getSeconds()
+
   // ... your code goes here
 }
 
 function printMinutes() {
+  //My idea is that I need to use double digit function and somehow get the first and second numbers. 
+  // I dont know how but for example, for minDec using [0] position of the 2 numbers
+  //and for the minUni the [1] position.  I dont know how!!
+
+  
+  
+    
+  
   // ... your code goes here
 }
 
@@ -35,31 +45,71 @@ function printSplit() {
 }
 
 function clearSplits() {
+ 
   // ... your code goes here
 }
 
 function setStopBtn() {
+
+  btnLeft.innerHTML ='STOP'
+  btnLeft.setAttribute = ('class', 'btn stop')// wont change color, but split does. why?
+  console.log ()
+  
   // ... your code goes here
 }
 
 function setSplitBtn() {
+  btnRight.innerHTML = ('SPLIT')
+  btnRight.setAttribute ('class', 'btn split')
+ 
   // ... your code goes here
 }
 
 function setStartBtn() {
+  btnLeft.innerHTML = 'START'
+  btnLeft.setAttribute = ('class', 'btn start')
+ 
+  
   // ... your code goes here
 }
 
 function setResetBtn() {
+  btnRight.innerHTML = ('RESET')
+  btnRight.setAttribute ('class', 'btn reset')
+  
+  
   // ... your code goes here
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerHTML === 'START') {
+    
+    chronometer.startClick(printTime);
+    setStopBtn();
+    setSplitBtn();
+    console.log ('start works')
+
+  } else {
+    chronometer.stopClick();//doesnt stop timer!
+    setStartBtn();
+    setResetBtn();
+    console.log('stop works')
+ 
+  }
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerHTML === 'RESET') {
+    chronometer.resetClick();
+    clearSplits();
+    console.log('reset works')
+  } else {
+    chronometer.splitClick();
+    console.log('split works')
+  }
+
 });
+
