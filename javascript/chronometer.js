@@ -1,26 +1,67 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
+    this.currentMilTime = 0;
+    this.intervalMilId = 0;
   }
+
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      callback();
+    }, 1000);
+    this.intervalMilId = setInterval(() => {
+      this.currentMilTime++;
+
+      callback();
+    }, 10);
   }
+
   getMinutes() {
-    // ... your code goes here
+    let min = Math.floor(this.currentTime / 60);
+    return min;
   }
+
   getSeconds() {
-    // ... your code goes here
+    let sec = this.currentTime % 60;
+
+    return sec;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  twoDigitsNumber(time) {
+    return time.toString().length == 1 ? `0${time}` : time.toString();
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    clearInterval(this.intervalMilId);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
-  splitClick() {
-    // ... your code goes here
+  splitClick(time) {
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+    let mil = this.getMil();
+
+    if (min > 10 || sec > 10) {
+      return `0${min}:${sec}:${mil}`;
+    } else {
+      return `0${min}:0${sec}:${mil}`;
+    }
+  }
+
+  getMil() {
+    let milSec = this.currentMilTime;
+
+    if (milSec > 9999) {
+      milSec = 0;
+    } else if (milSec > 999) {
+      return milSec.toString().substr(2, 2);
+    } else if (milSec > 99) {
+      return milSec.toString().substr(1, 2);
+    } else {
+      return milSec;
+    }
   }
 }

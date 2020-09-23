@@ -1,65 +1,138 @@
 const chronometer = new Chronometer();
 
 // get the buttons:
-const btnLeft = document.getElementById('btnLeft');
-const btnRight = document.getElementById('btnRight');
+const btnLeft = document.getElementById("btnLeft");
+const btnRight = document.getElementById("btnRight");
 
 // get the DOM elements that will serve us to display the time:
-let minDec = document.getElementById('minDec');
-let minUni = document.getElementById('minUni');
-let secDec = document.getElementById('secDec');
-let secUni = document.getElementById('secUni');
-let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
-let splits = document.getElementById('splits');
+let minDec = document.getElementById("minDec");
+let minUni = document.getElementById("minUni");
+let secDec = document.getElementById("secDec");
+let secUni = document.getElementById("secUni");
+let milDec = document.getElementById("milDec");
+let milUni = document.getElementById("milUni");
+let splits = document.getElementById("splits");
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let min = chronometer.getMinutes();
+  if (min > 9) {
+    let minString = String(min).split("");
+    console.log(minString);
+    minUni.innerText = minString[1];
+    minDec.innerText = minString[0];
+  } else {
+    minUni.innerText = min;
+    minDec.innerText = 0;
+  }
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let sec = chronometer.getSeconds();
+
+  if (sec > 9) {
+    let secString = String(sec).split("");
+    console.log(secString);
+    secUni.innerText = secString[1];
+    secDec.innerText = secString[0];
+  } else if (sec == 0) {
+    secUni.innerText = sec;
+    secDec.innerText = 0;
+  } else {
+    secUni.innerText = sec;
+  }
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milSec = chronometer.getMil();
+
+  if (milSec > 9) {
+    console.log(milSec);
+    let milSecString = String(milSec).split("");
+    milUni.innerText = milSecString[1];
+    milDec.innerText = milSecString[0];
+  } else {``
+    milSec;
+  }
 }
 
 function printSplit() {
-  // ... your code goes here
+  let ol = document.querySelector("#splits");
+  let li = document.createElement("li");
+  let splitClock = chronometer.splitClick();
+
+  console.log(splitClock);
+  li.classList.add("split-item");
+  li.innerHTML = `${splitClock}`;
+  ol.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let list = document.querySelectorAll(".split-item");
+
+  list.forEach((item) => {
+    item.parentNode.removeChild(item);
+  });
+
+  chronometer.currentTime = 0;
+  chronometer.currentMilTime = 0;
+
+  minUni.innerText = 0;
+  minDec.innerText = 0;
+  secUni.innerText = 0;
+  secDec.innerText = 0;
+  milUni.innerText = 0;
+  milDec.innerText = 0;
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.classList.add("stop");
+  btnLeft.innerText = "STOP";
+
+  chronometer.startClick(printTime);
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.classList.add("split");
+  btnRight.innerText = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("stop");
+  btnLeft.innerText = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.classList.remove("split");
+  btnRight.innerText = "RESET";
+
+  chronometer.stopClick();
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener("click", () => {
+  if (!btnLeft.className.includes("stop")) {
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
+btnRight.addEventListener("click", () => {
+  if (btnRight.className.includes("split")) {
+    printSplit();
+  }
+
+  if (!btnLeft.className.includes("stop")) {
+    clearSplits();
+  }
 });
