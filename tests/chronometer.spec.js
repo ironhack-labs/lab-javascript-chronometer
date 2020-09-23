@@ -121,7 +121,7 @@ describe('Chronometer', () => {
     });
 
     it('should always return a string of length 2', () => {
-      expect(chronometer.twoDigitsNumber(7).length).toEqual(2);
+      expect(chronometer.twoDigitsNumber(11).length).toEqual(2);
     });
 
     // it("should return '00' when the value is 0", () => {
