@@ -1,26 +1,68 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
+    this.msIntervalId = 0;
+    this.msTime = 0;
   }
+
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) { callback(); }
+    }, 1000);
   }
+
+  msInterval(callback) {
+    this.msIntervalId = setInterval(() => {
+      if (this.msTime === 99) { this.msTime = 0; }
+      else { this.msTime++; }
+
+      if (callback) { callback(); }
+    }, 10);
+  }
+
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
+
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime - (this.getMinutes() * 60);
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  getMilliseconds() {
+    return this.msTime;
   }
+
+  twoDigitsNumber(time) {
+    if (time === 0) {
+      return "00";
+    }
+
+    if (time.toString().length === 1) {
+      return "0" + time.toString();
+    }
+    else {
+      return time.toString();
+    }
+  }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    clearInterval(this.msIntervalId);
   }
+
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.msTime = 0;
   }
+
   splitClick() {
-    // ... your code goes here
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+    let ms = this.getMilliseconds();
+
+    return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}:${this.twoDigitsNumber(ms)}`;
+    // return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`;
   }
 }
