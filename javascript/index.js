@@ -9,22 +9,23 @@ let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
 let secDec = document.getElementById('secDec');
 let secUni = document.getElementById('secUni');
-let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
+// let milDec = document.getElementById('milDec');
+// let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+   printMinutes()
+  // function printSeconds()
 }
 
 function printMinutes() {
-  minDec = minutes[0]
-  minUni = minuter[1]
+  minDec.innerHTML = Number(minutes[0])
+  minUni.innerHTML = Number(minutes[1])
 }
 
 function printSeconds() {
-secUni = seconds[0]
-secDec = seconds[1]
+secUni.innerHTML = Number(seconds[0])
+secDec.innerHTML = Number(seconds[1])
 }
 
 // ==> BONUS
@@ -33,7 +34,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  btnRight.addEventListener('click', () => {
+    if (btnRight.classList.contains('split')){
+    splits.innerHTML = splitValue
+    }
+  })
 }
 
 function clearSplits() {
@@ -41,7 +46,6 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-
   btnLeft.classList.replace("start", "stop")
   btnLeft.innerHTML = "STOP"
 }
@@ -52,7 +56,6 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  
   btnLeft.classList.replace("stop", "start")
   btnLeft.innerHTML = "START"
 }
@@ -65,23 +68,32 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (btnLeft.classList.contains('start')){
+  setStopBtn()
+  setSplitBtn()
   chronometer.startClick()
- } else{
-  chronometer.stopClick()
+ } else {
+   setStartBtn()
+   setResetBtn()
+   chronometer.stopClick()
 
-}
-
-
+ }
 });
 
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (btnRight.classList.contains('reset')){
-   printSplit()
+   minDec.innerText = '0';
+   minUni.innerText = '0';
+   secDec.innerText = '0';
+   secUni.innerText = '0';
+   chronometer.resetClick()
  } else{
-  chronometer.startClick()
+   chronometer.splitClick()
 }
 
- }
-});
+ })
+
+
+
+
