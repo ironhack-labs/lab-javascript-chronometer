@@ -91,6 +91,7 @@ body {
 
 .btn {
   border: 0;
+  font-size: 8px;
   border-radius: 100%;
   bottom: 10px;
   color: #fff;
