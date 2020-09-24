@@ -15,6 +15,12 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  secUni.innerHTML = Number(secUni.innerHTML) + 1;
+  if((secUni.innerHTML)>9){
+    secUni.innerHTML = 0;
+    secDec.innerHTML = Number(secDec.innerHTML)+ 1 ;
+  }
+  if(Number(secDec)){}
 }
 
 function printMinutes() {
@@ -56,6 +62,8 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
+  chronometer.startClick(printTime);
+  console.log(hwy);
   // ... your code goes here
 });
 
