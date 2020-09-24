@@ -5,7 +5,11 @@ class Chronometer {
   }
   startClick(callback) {
     this.intervalId = setInterval(() => {
-      callback()
+      if (callback) {
+      callback()}
+      if (this.currentTime > 100) {
+        this.currentTime = 0
+      }
       this.currentTime +=0.01
     }, 10)
   }
@@ -20,12 +24,18 @@ class Chronometer {
   getSeconds() {
     let time = this.currentTime
     let seconds = time%60
-    return seconds.toFixed([0])
+    return Math.floor(seconds)
   }
   getMiliseconds() {
     let time = this.currentTime
     let mil = time.toString()
-      return Math.floor(mil.substring(3,5))
+    console.log(mil)
+    console.log(time)
+    if (time < 10) {
+      return mil.substring(2,4) }
+      else if ( time > 10) {
+        return mil.substring(3,5)
+      }
   }
   twoDigitsNumber(number) {
     if (number < 10) {
