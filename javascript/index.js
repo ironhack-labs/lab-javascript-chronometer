@@ -14,7 +14,7 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  console.log(chronometer.currentTime);
 }
 
 function printMinutes() {
@@ -56,10 +56,33 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains('start')) {
+
+    chronometer.startClick();
+
+    //chronometer.observe('currentTime', printTime());
+
+    btnLeft.className = 'btn stop';
+    btnLeft.innerHTML = 'STOP';
+
+    btnRight.className = 'btn split';
+    btnRight.innerHTML = 'SPLIT';
+
+  } else {
+
+    chronometer.stopClick();
+
+    btnLeft.className = 'btn start';
+    btnLeft.innerHTML = 'START';
+
+    btnRight.className = 'btn reset';
+    btnRight.innerHTML = 'RESET';
+
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
