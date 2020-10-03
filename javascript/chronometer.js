@@ -13,7 +13,7 @@ class Chronometer {
 
     this.intervaMillisecondslId = setInterval(() => {
       this.currentMilliseconds++;
-      callback();
+      callback ? callback() : null;
     }, 10);
   }
   getMinutes() {
