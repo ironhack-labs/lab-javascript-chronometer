@@ -163,21 +163,21 @@ describe('Chronometer', () => {
     });
   });
 
-  describe('splitClick method', () => {
-    it('should be declared', () => {
-      expect(typeof chronometer.splitClick).toEqual('function');
-    });
+  // describe('splitClick method', () => {
+  //   it('should be declared', () => {
+  //     expect(typeof chronometer.splitClick).toEqual('function');
+  //   });
 
-    it('should return valid format with minutes and seconds', () => {
-      let min = chronometer.getMinutes();
-      let sec = chronometer.getSeconds();
-      if (min < 10) {
-        expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
-      } else {
-        expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
-      }
-    });
-  });
+  //   it('should return valid format with minutes and seconds', () => {
+  //     let min = chronometer.getMinutes();
+  //     let sec = chronometer.getSeconds();
+  //     if (min < 10) {
+  //       expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
+  //     } else {
+  //       expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
+  //     }
+  //   });
+  // });
 
   // comment the previous test and uncomment the following when working on the bonus iteration
   // describe('splitClick method', () => {
