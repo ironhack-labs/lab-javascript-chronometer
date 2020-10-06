@@ -20,11 +20,8 @@ class Chronometer {
     return Math.floor(seconds);
   }
 
-  twoDigitsNumber() {
-    let minutes = this.getMinutes();
-    let seconds = this.getSeconds();
-    return `${minutes}${seconds}`;
-    
+  twoDigitsNumber(currentTime) {
+    return currentTime < 10 ? '0' + currentTime : currentTime;
   }
 
   stopClick() {
@@ -35,10 +32,10 @@ class Chronometer {
     return this.currentTime = 0;
   }
   splitClick() {
-    let minutes = this.getMinutes();
-    let seconds = this.getSeconds();
-    // let milisec = this.currentTime;
-    return `${minutes}${minutes}:${seconds}${seconds}`;
+    // let minutes = this.getMinutes();
+    // let seconds = this.getSeconds();
+    // // let milisec = this.currentTime;
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`;
   }
 }
 
