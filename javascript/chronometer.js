@@ -1,26 +1,50 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(()=>{
+      this.currentTime ++
+    },1000)
   }
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime/60)
   }
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60
   }
+
   twoDigitsNumber() {
-    // ... your code goes here
+    let paddedNumber = ''+arguments[0]
+
+    if(paddedNumber.length <2){
+      paddedNumber = '0'+paddedNumber
+    }
+
+    return paddedNumber
   }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    let mins = this.twoDigitsNumber(this.getMinutes(this.currentTime))
+    let secs = this.twoDigitsNumber(this.getSeconds(this.currentTime))
+
+    return mins + ':' + secs
   }
 }
+
+let chronometer = new Chronometer();
+chronometer.startClick();
+setTimeout(function(){
+  console.log('clearing watch')
+  console.log(chronometer.splitClick());
+  chronometer.stopClick();
+},120000)
+
+
