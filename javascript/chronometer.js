@@ -14,16 +14,19 @@ class Chronometer {
     let seconds = this.currentTime - (this.getMinutes() * 60);
     return seconds
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  
+  twoDigitsNumber(number) {
+    let stringCreator = number.toString();
+    stringCreator = stringCreator.length < 2 ? `0${stringCreator}` : stringCreator;
+    return stringCreator
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
   }
 }
