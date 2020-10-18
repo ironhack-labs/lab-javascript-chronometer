@@ -1,26 +1,73 @@
 class Chronometer {
+
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = 0
   }
+
   startClick(callback) {
-    // ... your code goes here
+
+    setInterval( () => { this.currentTime++ }, 1000);  // incrementamos en 1 el valor de currentTime, cada segundo.
+
+
   }
-  getMinutes() {
-    // ... your code goes here
+
+
+  getMinutes() {  // devolvemos a cuantos minutos equivale el valor de currentTime.
+
+    if (this.currentTime >= 60) {
+
+      return Math.trunc( this.currentTime / 60 ) 
+
+    } else {
+
+      return 0
+
+    }
+
+
   }
-  getSeconds() {
-    // ... your code goes here
+  getSeconds() { // devolvemos cuantos segundos tenemos en currenTime.
+
+    if (this.currentTime < 60) {
+
+      return this.currentTime 
+
+    } else {
+
+      return this.currentTime - 60
+
+    }
+
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber() { // convertimos el valor de currenTime a string, siempre con dos valores.
+
+    return this.currentTime.toString().padStart(2, "0");
+
+
   }
-  stopClick() {
-    // ... your code goes here
+  stopClick() { // limpiamos el valor de la propiedad intervalId
+
+    clearInterval(this.intervalId) 
+
   }
   resetClick() {
-    // ... your code goes here
+
+    this.currentTime = 0
+
   }
-  splitClick() {
-    // ... your code goes here
+  splitClick() {  // funcion stop
+
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+
+    if (min < 10) {
+      return (`${0}${min}:${0}${sec}`);
+    } else {
+      return (`${min}:${sec}`);
+    }
+
+
   }
+
 }
