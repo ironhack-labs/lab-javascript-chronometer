@@ -1,26 +1,37 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+   this.currentTime = 0;
+   this.intervalId = 0;
   }
   startClick(callback) {
-    // ... your code goes here
-  }
+    setInterval(() => {
+    this.currentTime++;
+  },1000);
+}
+
   getMinutes() {
-    // ... your code goes here
-  }
+   return Math.floor(this.currentTime / 60)
+    }
+    
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+
+  twoDigitsNumber(num){
+    let string = num.toString();
+    string = string.length < 2 ? `0${string}` : string;
+    return string
   }
+//no entiendo el pad start https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/padStart 
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0 
   }
   splitClick() {
-    // ... your code goes here
-  }
+  return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+}
 }
