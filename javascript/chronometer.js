@@ -17,7 +17,7 @@ class Chronometer {
   }
   twoDigitsNumber() {
   let myNumber = this.currentTime;
-  let formattedNumber = ("0" + myNumber).slice(-2);
+  let formattedNumber = ("0" + myNumber)
   return formattedNumber
 
   }
