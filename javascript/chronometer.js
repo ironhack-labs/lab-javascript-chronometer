@@ -15,20 +15,17 @@ class Chronometer {
     return this.currentTime % 60;
 
   }
-  twoDigitsNumber() {
-    // ... your code goes here
-  }
+  twoDigitsNumber(numberToString) {
+      return (numberToString > 10 ? String(numberToString) : `0` + numberToString);
+    }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
-  }
-}
-
-chronometer = new Chronometer();
-chronometer.currentTime = 115;
-console.log(chronometer.getSeconds())
+   let minutes = this.twoDigitsNumber(this.getMinutes());
+   let seconds = this.twoDigitsNumber(this.getSeconds());
+   return `${minutes}:${seconds}`;
+    }}

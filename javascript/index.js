@@ -13,16 +13,19 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+  function printTime(minutes, seconds) {
+    printMinutes(minutes);
+    printSeconds(seconds);
+  }
+
+function printMinutes(minutes) {
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
 }
 
-function printMinutes() {
-  // ... your code goes here
-}
-
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(seconds) {
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
 // ==> BONUS
@@ -31,35 +34,57 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  
+ console.log(this.splitClick);
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = 'STOP';
+  btnLeft.setAttribute('class', 'btn stop');
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'SPLIT';
+  btnRight.setAttribute('class', 'btn split');
+  console.log(this.currentTime)
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = 'START';
+  btnLeft.setAttribute('class', 'btn start');
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'RESET';
+  btnRight.setAttribute('class', 'btn reset');
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener('click', function () {
+ if (btnLeft.innerHTML === `START`) {
+   chronometer.startClick();
+   setStopBtn();
+   setSplitBtn();
+   
+ } else {
+   chronometer.stopClick();
+   setStartBtn();
+   setResetBtn();
+ }
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
+btnRight.addEventListener('click', function () {
+  if (btnRight.innerHTML === 'RESET') {
+    chronometer.resetClick();
+    clearSplits();
+  } else {
+    chronometer.splitClick();
+  }
+
 });
