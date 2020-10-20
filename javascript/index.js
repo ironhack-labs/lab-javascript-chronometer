@@ -13,21 +13,26 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function printTime(sec, min) {
+  printSeconds(sec);
+  printMinutes(min);
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(min) {
+  minDec.innerText = `${Math.floor(min / 10)}`;
+  minUni.innerText = `${Math.floor(min % 10)}`;
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(sec) {
+  secDec.innerText = `${Math.floor(sec / 10)}`;
+  secUni.innerText = `${Math.floor(sec % 10)}`;
+
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(mil) {
+  milUni.innerText = `${Math.floor(mil % 10)}`;
+  milDec.innerText = `${Math.floor(mil / 10)}`;
 }
 
 function printSplit() {
@@ -55,11 +60,43 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+let intervalId = 0;
+
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains('start')) {
+    btnRight.classList.remove('reset');
+    btnRight.classList.add('split');
+    btnRight.innerText = 'SPLIT';
+
+    btnLeft.classList.remove('start');
+    btnLeft.classList.add('stop');
+    btnLeft.innerText = 'STOP';
+
+    chronometer.startClick();
+
+    intervalId = setInterval(() => printTime(chronometer.getSeconds(), chronometer.getMinutes()), 1);
+
+  } else {
+    btnRight.classList.remove('split');
+    btnRight.classList.add('reset');
+    btnRight.innerText = 'RESET';
+
+    btnLeft.classList.remove('stop');
+    btnLeft.classList.add('start');
+    btnLeft.innerText = 'START';
+    chronometer.stopClick();
+
+    clearInterval(intervalId);
+  }
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.classList.contains('reset')) {
+    chronometer.resetClick();
+    printTime(0, 0);
+  } else {
+    // recibir un valor de chronomerter.splitClick();
+  }
 });
