@@ -16,11 +16,13 @@ let splits = document.getElementById('splits');
 function printTime() {
   printMinutes()
   printSeconds()
+  return
 }
 
 function printMinutes() {
-  let uni = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(1)
-  let dec = chronometer.twoDigitsNumber(chronometer.getMinutes()).charAt(0)
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
+  let uni = minutes.charAt(1)
+  let dec = minutes.charAt(0)
   console.log(uni)
   console.log(dec)
   minUni.innerHTML = uni
@@ -28,14 +30,13 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  let sphere = document.querySelector('.sphere')
-  let uni = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(1)
-  let dec = chronometer.twoDigitsNumber(chronometer.getSeconds()).charAt(0)
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
+  let uni = seconds.charAt(1)
+  let dec = seconds.charAt(0)
   console.log(uni)
   console.log(dec)
   secUni.innerHTML = uni
   secDec.innerHTML = dec
-  return sphere
 }
 
 // ==> BONUS
@@ -87,11 +88,13 @@ function setResetBtn() {
 btnLeft.addEventListener('click', () => {
   if (btnLeft.innerHTML === 'START') {
     chronometer.startClick()
+    let Interval = setInterval(() =>
+      printTime(), 1000)
     setStopBtn()
     setSplitBtn()
-    setInterval(printTime(), 1000)
   } else {
     chronometer.stopClick()
+    clearInterval(Interval)
     setStartBtn()
     setResetBtn()
   }
@@ -100,7 +103,7 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (btnLeft.innerHTML === 'STOP') {
-    chronometer.splitClick()
+    printSplit()
   } else {
     chronometer.resetClick()
     clearSplits()
