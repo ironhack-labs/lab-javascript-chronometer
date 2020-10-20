@@ -5,7 +5,8 @@ class Chronometer {
   }
   startClick(callback) {
     this.intervalId = setInterval(() =>
-      this.currentTime++, 10)
+      this.currentTime++,
+      10)
   }
   getMinutes() {
     return Math.floor(this.currentTime / 6000)
@@ -18,13 +19,9 @@ class Chronometer {
   }
   twoDigitsNumber(number) {
     number = number.toString()
-    if (number.length < 2) {
-      return `0${number}`
-    } else if (number.length > 2) {
-      return number.slice(-2)
-    } else {
-      return number
-    }
+    return number.length < 2 ? `0${number}` :
+      number.length > 2 ? number.slice(-2) :
+      number;
   }
   stopClick() {
     clearInterval(this.intervalId)

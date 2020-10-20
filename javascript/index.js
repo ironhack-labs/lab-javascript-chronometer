@@ -88,7 +88,7 @@ btnLeft.addEventListener('click', () => {
   if (btnLeft.innerHTML === 'START') {
     chronometer.startClick()
     interval = setInterval(() =>
-      printTime(), 1)
+      printTime(), 10)
     setStopBtn()
     setSplitBtn()
   } else if (btnLeft.innerHTML === 'STOP') {
