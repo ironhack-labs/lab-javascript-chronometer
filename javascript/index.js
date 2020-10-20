@@ -14,9 +14,10 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  
-  debugger
+
+
   chronometer.startClick()
+  console.log(chronometer.currentTime);
 }
 
 
