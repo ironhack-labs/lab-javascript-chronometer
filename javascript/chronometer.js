@@ -1,12 +1,15 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
   startClick(callback) {
-    // ... your code goes here
+    setInterval(() => { console.log(++this.currentTime) }, 1000)
   }
+
   getMinutes() {
     // ... your code goes here
+    
   }
   getSeconds() {
     // ... your code goes here
@@ -15,12 +18,15 @@ class Chronometer {
     // ... your code goes here
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.currentTime)
   }
   resetClick() {
     // ... your code goes here
+    clearInterval(this.currentTime)
+    this.currentTime = 0
   }
   splitClick() {
     // ... your code goes here
+    
   }
 }
