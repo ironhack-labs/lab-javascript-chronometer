@@ -3,7 +3,8 @@ const chronometer = new Chronometer();
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
-
+let leftBtnClasses = btnLeft.classList;
+let rightBtnClasses = btnRight.classList;
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -14,88 +15,132 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes();
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.getSeconds();
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
-// ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milliseconds = chronometer.getMilliseconds();
+  milDec.innerHTML = milliseconds[0];
+  milUni.innerHTML = milliseconds[1];
 }
 
 function printSplit() {
-  // ... your code goes here
+  let ol = document.getElementById("splits");
+  let li = document.createElement("li");
+  li.innerHTML = chronometer.splitClick();
+  ol.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let ol = document.getElementById("splits");
+  ol.innerHTML = "";
+  chronometer.resetClick();
+  printTime();
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  leftBtnClasses.remove("start");
+  leftBtnClasses.add("stop");
+  btnLeft.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  rightBtnClasses.remove("reset");
+  rightBtnClasses.add("split");
+  btnRight.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  leftBtnClasses.remove("stop");
+  leftBtnClasses.add("start");
+  btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  rightBtnClasses.remove("split");
+  rightBtnClasses.add("reset");
+  btnRight.innerHTML = "RESET";
 }
 
+btnLeft.addEventListener('click', (e) => {
+  if (leftBtnClasses.contains("start")) {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.startClick(() => printTime());
+  } else if (leftBtnClasses.contains("stop")) {
+    setStartBtn();
+    setResetBtn();
+    chronometer.stopClick();
+  }
+})
+
+btnRight.addEventListener('click', (e) => {
+  if (rightBtnClasses.contains("split")) {
+    printSplit();
+  } else if (rightBtnClasses.contains("reset")) {
+    clearSplits();
+  }
+})
+
+
+// Previous version, didn't see the already present functions structure
+
+/*
 // Start/Stop Button
 btnLeft.addEventListener('click', (e) => {
-  let leftBtnClasses = btnLeft.className;
   toggleState(leftBtnClasses);
-  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  let rightBtnClasses = btnRight.className;
   triggerClick(rightBtnClasses);
 });
 
 
 function toggleState(leftBtnClasses) {
-  if (leftBtnClasses === "btn start") {
-
-    btnLeft.className = "btn stop";
+  if (leftBtnClasses.contains("start")) {
+    leftBtnClasses.remove("start");
+    leftBtnClasses.add("stop");
     btnLeft.innerHTML = "STOP";
 
-    btnRight.className = "btn split";
+    rightBtnClasses.remove("reset");
+    rightBtnClasses.add("split");
     btnRight.innerHTML = "SPLIT";
 
     chronometer.startClick(() => updateScreen());
 
-  } else if (leftBtnClasses === "btn stop"){
-
-    btnLeft.className = "btn start";
+  } else if (leftBtnClasses.contains("stop")){
+    leftBtnClasses.remove("stop");
+    leftBtnClasses.add("start");
     btnLeft.innerHTML = "START";
 
-    btnRight.className = "btn reset";
+    rightBtnClasses.remove("split");
+    rightBtnClasses.add("reset");
     btnRight.innerHTML = "RESET";
 
     chronometer.stopClick();
-    console.log(chronometer.splitClick());
+
   } 
 }
 
 function triggerClick(rightBtnClasses) {
-  if (rightBtnClasses === "btn split") {
+  if (rightBtnClasses.contains("split")) {
     splitTime();
-  } else if (rightBtnClasses === "btn reset") {
+  } else if (rightBtnClasses.contains("reset")) {
     resetTime();
   }
 }
@@ -129,3 +174,4 @@ function resetTime() {
   updateScreen();
   clearSplits();
 }
+*/
