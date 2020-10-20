@@ -55,11 +55,12 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener('click', (e) => {
+  let classes = e.target.className;
+  if (classes === "btn start") e.target.className = "btn stop";
+  if (classes === "btn stop") e.target.className = "btn start";
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
 });
