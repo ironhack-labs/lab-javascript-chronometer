@@ -14,8 +14,21 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  //debugger
+  //chronometer.startClick()
+  //btnLeft.onclick=function(){
+    //chronometer.startClick()
+  //}
+  btnLeft.addEventListener('click', () => {
+    debugger
+  chronometer.startClick()
+  })
 }
+
+//document.querySelector(‘.btn.btn-mushrooms’).addEventListener(‘click’, () => {
+  //state.mushrooms = !state.mushrooms;
+  //renderEverything();
+//})
 
 function printMinutes() {
   // ... your code goes here
