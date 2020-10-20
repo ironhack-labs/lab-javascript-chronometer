@@ -56,11 +56,76 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', (e) => {
-  let classes = e.target.className;
-  if (classes === "btn start") e.target.className = "btn stop";
-  if (classes === "btn stop") e.target.className = "btn start";
+  let leftBtnClasses = btnLeft.className;
+  toggleState(leftBtnClasses);
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
+  let rightBtnClasses = btnRight.className;
+  triggerClick(rightBtnClasses);
 });
+
+
+function toggleState(leftBtnClasses) {
+  if (leftBtnClasses === "btn start") {
+
+    btnLeft.className = "btn stop";
+    btnLeft.innerHTML = "STOP";
+
+    btnRight.className = "btn split";
+    btnRight.innerHTML = "SPLIT";
+
+    chronometer.startClick(() => updateScreen());
+
+  } else if (leftBtnClasses === "btn stop"){
+
+    btnLeft.className = "btn start";
+    btnLeft.innerHTML = "START";
+
+    btnRight.className = "btn reset";
+    btnRight.innerHTML = "RESET";
+
+    chronometer.stopClick();
+    console.log(chronometer.splitClick());
+  } 
+}
+
+function triggerClick(rightBtnClasses) {
+  if (rightBtnClasses === "btn split") {
+    splitTime();
+  } else if (rightBtnClasses === "btn reset") {
+    resetTime();
+  }
+}
+
+function updateScreen() {
+  let minutes = chronometer.getMinutes();
+  let seconds = chronometer.getSeconds();
+  let milliseconds = chronometer.getMilliseconds();
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
+  milDec.innerHTML = milliseconds[0];
+  milUni.innerHTML = milliseconds[1];
+}
+
+function splitTime() {
+  let ol = document.getElementById("splits");
+  let li = document.createElement("li");
+  li.innerHTML = chronometer.splitClick();
+  ol.appendChild(li);
+}
+
+function clearSplits() {
+  let ol = document.getElementById("splits");
+  ol.innerHTML = "";
+}
+
+function resetTime() {
+  chronometer.resetClick();
+  updateScreen();
+  clearSplits();
+}
