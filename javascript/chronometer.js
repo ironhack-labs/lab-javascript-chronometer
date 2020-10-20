@@ -23,22 +23,22 @@ class Chronometer {
     if (number.length < 2) {
       return `0${number}`
     } else if (number.length > 2) {
-      number.slice(-2)
-      else {
-        return number
-      }
+      return number.slice(-2)
+    } else {
+      return number
+    }
 
-    }
-    stopClick() {
-      clearInterval(this.intervalId)
-    }
-    resetClick() {
-      this.currentTime = 0
-    }
-    splitClick() {
-      let min = this.twoDigitsNumber(this.getMinutes())
-      let sec = this.twoDigitsNumber(this.getSeconds())
-      let mil = this.twoDigitsNumber(this.getMilliseconds())
-      return `${min}:${sec}:${mil}`
-    }
   }
+  stopClick() {
+    clearInterval(this.intervalId)
+  }
+  resetClick() {
+    this.currentTime = 0
+  }
+  splitClick() {
+    let min = this.twoDigitsNumber(this.getMinutes())
+    let sec = this.twoDigitsNumber(this.getSeconds())
+    let mil = this.twoDigitsNumber(this.getMilliseconds())
+    return `${min}:${sec}:${mil}`
+  }
+}
