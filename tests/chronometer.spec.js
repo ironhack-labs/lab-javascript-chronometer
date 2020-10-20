@@ -171,8 +171,13 @@ describe('Chronometer', () => {
     it('should return valid format with minutes and seconds', () => {
       let min = chronometer.getMinutes();
       let sec = chronometer.getSeconds();
-      if (min < 10) {
+
+      if (min < 10 && sec < 10) {
         expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
+      } else if (min < 10 && sec > 10) {
+        expect(chronometer.splitClick()).toEqual(`0${min}:${sec}`);
+      } else if (min > 10 && sec < 10) {
+        expect(chronometer.splitClick()).toEqual(`${min}:0${sec}`);
       } else {
         expect(chronometer.splitClick()).toEqual(`${min}:${sec}`);
       }
