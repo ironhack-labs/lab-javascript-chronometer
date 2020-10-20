@@ -4,6 +4,26 @@ const chronometer = new Chronometer();
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
+function toggleClassesAndText(event) {
+  btnLeft.classList.toggle('stop')
+  btnRight.classList.toggle('split')
+  if (btnLeft.innerText === 'START') {
+    btnLeft.innerText = 'STOP'
+    btnRight.innerText = 'SPLIT'
+  } else {
+    btnLeft.innerText = 'START'
+    btnRight.innerText = 'RESET'
+  }
+}
+
+function toggleChronometerOn() {
+  if (btnLeft.className === 'btn start') {
+    chronometer.startClick();
+  } else {
+    chronometer.stopClick();
+  }
+}
+
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -14,16 +34,21 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  chronometer.twoDigitsNumber();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDec.innerText = chronometer.getMinutes();
 }
 
 function printSeconds() {
-  // ... your code goes here
+  minUni.innerText = chronometer.getSeconds();
 }
+
+btnLeft.addEventListener("click", toggleClassesAndText)
+btnLeft.addEventListener("click", toggleChronometerOn)
+btnLeft.addEventListener("click", printMinutes)
+btnLeft.addEventListener("click", printSeconds)
 
 // ==> BONUS
 function printMilliseconds() {
