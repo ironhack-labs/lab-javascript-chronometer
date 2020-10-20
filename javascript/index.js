@@ -10,11 +10,12 @@ let minUni = document.getElementById('minUni');
 let secDec = document.getElementById('secDec');
 let secUni = document.getElementById('secUni');
 let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
+let milUni = document.getElementById('milUni'); 
 let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+
 }
 
 function printMinutes() {

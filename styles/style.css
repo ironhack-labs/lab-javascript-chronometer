@@ -95,10 +95,10 @@ body {
   bottom: 10px;
   color: #fff;
   cursor: pointer;
-  height: 50px;
+  height: 55px;
   outline: 0;
   position: absolute;
-  width: 50px;
+  width: 55px;
 }
 
 .btn.start,
@@ -112,6 +112,6 @@ body {
 }
 
 .btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
+.btn.stop  { background: tomato; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
