@@ -14,44 +14,72 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+   secDec.innerText = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+   secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+  milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(time) {
+  let newSplit = document.getElementById('splits');
+  let newListSplit = document.createElement('li');
+  let timeSet = document.createTextNode(time);
+    newListSplit.appendChild(time);
+    newSplit.appendChild(newListSplit);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let delete = document.getElementById('#splits-container').reset();
+} 
+  /*document.getElementById('btnRight').onclick();
+  document.getElementById('#splits-container').reset();*/
+
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
-}
+  
+} 
 
 function setSplitBtn() {
-  // ... your code goes here
+  /*let split = document.getElementById('btnRight').onclick();*/
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    
+  /* if (chronometer.intervalId == 0){
+    chronometer.currentTime = 1;
+    increment();
+    document.getElementById('btnLeft').innerHTML = 'Stop'; 
+  } else {
+    chronometer.currentTime = 0;
+    document.getElementById('btnLeft').innerHTML = 'Start';
+  }
+  } */ 
+  
+
+/* let start = document.getElementById('btnLeft').onclick();*/
 }
 
 function setResetBtn() {
-  // ... your code goes here
+    
+  /*document.getElementById("reset").onclick*/
 }
 
 // Start/Stop Button

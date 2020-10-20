@@ -20,14 +20,32 @@ class Chronometer {
   }
     
   twoDigitsNumber() {
-    // ... your code goes here
+    if (currentTime < 10)
+    { return "0" + currentTime;
+  } else {
+      return `${currentTime}`;
+     }
   }
+
   stopClick() {
     clearInterval(this.intervalId)
   }
+
   resetClick() {
     this.currentTime = 0;
   }
+
   splitClick() {
-   // ... your code goes here
+   let minutes = this.twoDigitsNumber(this.getMinutes);
+   let seconds = this.twoDigitsNumber(this.getSeconds);
+   let milliseconds = this.currentTime(this.getMilliseconds())
+   return `${minutes}:${seconds}:${milliseconds}`;
+  }
+
+
+  //Bonus
+
+  getMilliseconds() {
+    let milliseconds = math.floor(this.currentTime % 10)
+      return milliseconds;
   }
