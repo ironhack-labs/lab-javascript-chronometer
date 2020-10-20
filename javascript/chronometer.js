@@ -13,11 +13,9 @@ class Chronometer {
   getSeconds() {
     return Math.floor((this.currentTime / 100) - (this.getMinutes() * 60))
   }
-
   getMilliseconds() {
     return Math.floor(this.currentTime)
   }
-
   twoDigitsNumber(number) {
     number = number.toString()
     if (number.length < 2) {
@@ -27,7 +25,6 @@ class Chronometer {
     } else {
       return number
     }
-
   }
   stopClick() {
     clearInterval(this.intervalId)

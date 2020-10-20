@@ -81,8 +81,8 @@ function setResetBtn() {
   btnRight.innerHTML = "RESET"
   return btnRight
 }
-let interval
 
+let interval
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (btnLeft.innerHTML === 'START') {
