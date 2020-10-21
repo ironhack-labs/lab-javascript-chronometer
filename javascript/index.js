@@ -14,15 +14,15 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  return `${printMinutes()}:${printSeconds()}`
 }
 
 function printMinutes() {
-  // ... your code goes here
+  return `${minDec}${minUni}`
 }
 
 function printSeconds() {
-  // ... your code goes here
+  return `${secDec}${secUni}`
 }
 
 // ==> BONUS
@@ -31,7 +31,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+ 
 }
 
 function clearSplits() {
@@ -39,27 +39,41 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+document.getElementById("btnLeft").innerText = "Stop"
+document.getElementByClass("#btn.left btn start").className ="btn stop"
+  
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  document.getElementById("btnRight").innerText = "Split"
+document.getElementByClass("#btnRight .btn reset").className ="btn split"
 }
 
 function setStartBtn() {
-  // ... your code goes here
-}
+document.getElementById("btnLeft").innerText = "Start"
+document.getElementByClass("#btn.left btn start").className ="btn start"
+
 
 function setResetBtn() {
-  // ... your code goes here
+  document.getElementById("btnRight").innerText = "Reset"
+  document.getElementByClass("#btnRight .btn reset").className ="btn reset"
 }
 
 // Start/Stop Button
+function startStop() {  
+if (btnLeft = document.getElementsByClass('btn Stop')){   
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
+  setStartBtn()})
+  
+  } else {
+    btnLeft.addEventListener('click', () => {
+      setStopBtn()})
+  }
+}
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  
 });
+}
