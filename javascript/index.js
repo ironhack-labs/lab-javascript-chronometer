@@ -19,8 +19,9 @@ function toggleClassesAndText() {
 }
 
 function toggleChronometerOn() {
-  if (btnLeft.classList.contains("stop")) {
+  if (btnLeft.classList.contains("start")) {
     chronometer.startClick();
+    chronometer.getMiliSeconds();
   } else {
     chronometer.stopClick();
   }
@@ -38,22 +39,22 @@ let splits = document.getElementById("splits");
 function printTime() {
   if (btnRight.classList.contains("split")) {
     const newList = document.createElement("li");
-    const mins = chronometer.twoDigitsNumber(chronometer.getMinutes());
-    const secs = chronometer.twoDigitsNumber(chronometer.getSeconds());
     splits.appendChild(newList)
-    newList.innerText = `${mins}:${secs}`;
+    newList.innerText = chronometer.splitClick();
   }
 }
 
 function printMinutes() {
   setInterval(() => {
-    minUni.textContent = chronometer.getMinutes();
+    minUni.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
+    minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
   }, 60*1000);
 }
 
 function printSeconds() {
   setInterval(() => {
-    secUni.textContent = chronometer.getSeconds();
+    secUni.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
+    secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
   }, 1000);
 }
 
@@ -66,21 +67,25 @@ function clear() {
   }
 }
 
-btnLeft.addEventListener("click", toggleClassesAndText);
 btnLeft.addEventListener("click", toggleChronometerOn);
+btnLeft.addEventListener("click", toggleClassesAndText);
 btnLeft.addEventListener("click", printMinutes);
 btnLeft.addEventListener("click", printSeconds);
 btnRight.addEventListener("click", printTime);
 btnRight.addEventListener("click", clear);
+btnLeft.addEventListener("click", printMilliseconds);
 
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  setInterval(() => {
+    milUni.textContent = chronometer.twoDigitsNumber(chronometer.getMiliSeconds())[1];
+    milDec.textContent = chronometer.twoDigitsNumber(chronometer.getMiliSeconds())[0];
+  }, 10);
 }
 
 function printSplit() {
-  // ... your code goes here
+  
 }
 
 function clearSplits() {
