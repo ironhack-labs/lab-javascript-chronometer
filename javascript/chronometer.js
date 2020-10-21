@@ -11,10 +11,10 @@ class Chronometer {
     // },1000)
     this.intervalMilId = setInterval(() => {
       this.currentMil++;
-      if (this.currentMil === 1000){
+      if (this.currentMil === 100){
         this.currentTime++;
       }
-    },1);
+    },10);
   }
   getMinutes() {
     return Math.floor(this.currentTime/60);
@@ -23,10 +23,10 @@ class Chronometer {
     return this.currentTime % 60
   }
   getMiliseconds(){
-    if (this.currentMil === 1000){
+    if (this.currentMil === 100){
       this.currentMil = 0;
     }
-    return Math.round(this.currentMil/10);
+    return this.currentMil;
   }
   twoDigitsNumber(number) {
     if(number.toString().length === 1){
