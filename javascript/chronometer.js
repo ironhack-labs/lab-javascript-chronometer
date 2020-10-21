@@ -14,8 +14,9 @@ class Chronometer {
   getSeconds() {
     return Math.floor(this.currentTime % 60);
   }
-  twoDigitsNumber(timeValue) {
-    return timeValue < 10 ? "0" + timeValue : timeValue;
+  twoDigitsNumber(number) {
+    number = number.toString();
+    return number.length !== 2 ? "0" + number : number;
   }
   stopClick() {
     clearInterval(this.intervalId);
