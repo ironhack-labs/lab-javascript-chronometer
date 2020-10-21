@@ -17,7 +17,10 @@ function printTime() {
 
 
   chronometer.startClick()
-  console.log(chronometer.currentTime);
+
+  minDec.innerHTML = chronometer.currentTime
+  // secDec =
+
 }
 
 
@@ -61,7 +64,10 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  setInterval(() => {
     printTime()
+  }, 1000)
+
 });
 
 // Reset/Split Button
