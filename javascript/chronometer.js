@@ -28,9 +28,8 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    let minutes = this.twoDigitsNumber(this.getMinutes());
-    let seconds = this.twoDigitsNumber(this.getSeconds());
+    const minutes = this.twoDigitsNumber(this.getMinutes());
+    const seconds = this.twoDigitsNumber(this.getSeconds());
     return `${minutes}:${seconds}`
-    // return `${this.twoDigitsNumber(this.getMinutes)}:${this.twoDigitsNumber(this.getSeconds)}`
   }
 }
