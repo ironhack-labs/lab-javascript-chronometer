@@ -52,14 +52,26 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  var childElement = document.createElement("LI");
+  childElement.innerHTML = chronometer.splitClick()
+  splits.appendChild(childElement);
+
 }
 
 function clearSplits() {
   // ... your code goes here
+ 
+  while (splits.hasChildNodes()) {  
+    splits.removeChild(splits.firstChild);
+  }
+  
+  
 }
 
 function setStopBtn() {
   // ... your code goes here
+  chronometer.stopClick;
+
 }
 
 function setSplitBtn() {
@@ -68,6 +80,7 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+  
 }
 
 function setResetBtn() {
@@ -84,15 +97,16 @@ function setResetBtn() {
   btnLeft.className="btn stop"
   btnRight.className="btn split"
   btnRight.innerHTML="SPLIT"
-  //;
-   }
+  chronometer.stopClick()
+  }
 
  if(btnLeftClassName==="btn stop"){
+  chronometer.stopClick()
   btnLeft.innerHTML="STOP";
   btnLeft.className="btn stop"
   btnRight.className="btn reset"
-  chronometer.stopClick()
   btnRight.innerHTML="RESET"
+  chronometer.resetClick();
  }
   });
 
@@ -109,28 +123,20 @@ btnRight.addEventListener('click', () => {
   btnLeft.className="btn stop";
   btnRight.className="btn split";
   btnLeft.innerHTML="STOP"
-  
- // var selectULElement=document.querySelector("#splits")
-  
-//document.getElementById("myList").appendChild(node);
- // var textnode = selectULElement.createTextNode(chronometer.splitClick());
- 
-  //console.log(chronometer.resetClick());
-  chronometer.resetClick();
- 
-  }
-  if(btnRighttClassName==="btn split"){
-    btnRight.innerHTML="RESET";
-    btnLeft.className="btn start"
-    btnRight.className="btn reset"
-    var childElement = document.createElement("LI");
-
-    childElement.innerHTML = chronometer.splitClick()
-    
-
-    splits.appendChild(childElement);
-
+   chronometer.resetClick();
+    clearSplits();
   
    }
+
+  if(btnRighttClassName==="btn split"){
+    printSplit();
+    btnRight.innerHTML="RESET";
+    btnRight.className="btn reset"
+    btnLeft.className="btn stop"
+    btnLeft.innerHTML="STOP"
+    
+   }
+
+  
 
 });
