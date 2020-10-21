@@ -24,21 +24,25 @@ function printTime() {
 
 }
 
+var fakeTime = 0;
+setInterval(()=>{
+  fakeTime +=1
+}, 2000)
 
 function printMinutes() {
-  setInterval(() => {
-    if (chronometer.currentTime < 60){
-      minUni.innerHTML = chronometer.currentTime
-    }else{
-      minDec.innerHTML = chronometer.currentTime
-      minUni.innerHTML = ''
-    }
-    //if(chronometer.currentTime == 600){
-     //minDec.innerHTML = 0;
-      //minUni.innerHTML =0;
-      //printMinutes()
-    //}
-  }, 1000)
+  // setInterval(() => {
+  //   if (fakeTime < 600000){
+  //     minUni.innerHTML = fakeTime
+  //   }else{
+  //     // minDec.innerHTML = chronometer.currentTime
+  //     // minUni.innerHTML = ''
+  //   }
+  //   //if(chronometer.currentTime == 600){
+  //    //minDec.innerHTML = 0;
+  //     //minUni.innerHTML =0;
+  //     //printMinutes()
+  //   //}
+  // }, 1000)
 }
 
 function printSeconds() {
@@ -73,6 +77,8 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeft.innerHTML ="STOP"
+  btnLeft.setAttribute("class","btn stop")
 }
 
 function setSplitBtn() {
@@ -90,9 +96,17 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
-  chronometer.startClick()
+  if (btnLeft.innerHTML==="START") {
+    chronometer.startClick()
+    printTime();
+    setStopBtn()
+    setSplitBtn()
+  } else {
+    chronometer.stopClick()
+    setStartBtn();
+    setResetBtn()
+  }
 
-  printTime();
 
 });
 
