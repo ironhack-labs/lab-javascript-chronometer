@@ -33,6 +33,8 @@ function printSeconds() {
     if (chronometer.currentTime < 10){
       secUni.innerHTML = chronometer.currentTime
     }else{
+      secDec.innerHTML = chronometer.currentTime
+      secUni.innerHTML = ''
 
     }
 
