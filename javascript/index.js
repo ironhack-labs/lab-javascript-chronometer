@@ -16,6 +16,7 @@ let splits = document.getElementById('splits');
 function printTime() {
 
   printSeconds()
+  printMinutes();
   // debugger
 
 
@@ -25,7 +26,19 @@ function printTime() {
 
 
 function printMinutes() {
-  // ... your code goes here
+  setInterval(() => {
+    if (chronometer.currentTime < 60){
+      minUni.innerHTML = chronometer.currentTime
+    }else{
+      minDec.innerHTML = chronometer.currentTime
+      minUni.innerHTML = ''
+    }
+    //if(chronometer.currentTime == 600){
+     //minDec.innerHTML = 0;
+      //minUni.innerHTML =0;
+      //printMinutes()
+    //}
+  }, 1000)
 }
 
 function printSeconds() {
