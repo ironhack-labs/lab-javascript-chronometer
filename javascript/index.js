@@ -89,10 +89,14 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+  btnLeft.innerHTML  = "START"
+  btnLeft.setAttribute("class", "btn start")
 }
 
 function setResetBtn() {
   // ... your code goes here
+  btnRight.innerHTML  = "RESET"
+  btnRight.setAttribute("class", "btn reset")
 }
 
 // Start/Stop Button
