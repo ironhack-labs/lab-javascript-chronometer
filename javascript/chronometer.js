@@ -4,10 +4,12 @@ class Chronometer {
     this.intervalId= 0;
   }
   
-  startClick(){
+  startClick(callback){
     this.intervalId = setInterval(() => { 
       this.currentTime ++;
+      if (callback) callback();
     },1000);
+    // return this.intervalId
   }
 
   getMinutes() {
@@ -18,27 +20,43 @@ class Chronometer {
     return (this.currentTime % 60) // 61 = 1 second , 122 = 2 seconds
   }
 
+
+  getMilliseconds() {
+    return (this.currentTime % 6000)
+  }
+
   twoDigitsNumber(number) {
     return this.currentTime.toString().padStart(2, '0');
-    // ... your code goes here
+
   }
+
   stopClick() {
-    // ... your code goes here
-    clearInterval(this.currentTime);
+    clearInterval(this.intervalId);
   }
+
+  //Issue 1 - This is not clearing out the time
   resetClick() {
     this.currentTime = 0;
   }
+  
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes)}\:${this.twoDigitsNumber(this.getSeconds)}`;
+  let minutes = this.getMinutes();
+  let seconds = this.getSeconds();
+  return this.twoDigitsNumber(minutes) + ":" + this.twoDigitsNumber(seconds);
   };
 };
 
-// Elia's solution to make the 
-/* 
+/* splitClick - Brainstorming
+
+Yann's solution
+splitClick() {
+    return `${this.twoDigitsNumber(this.getMinutes)}\:${this.twoDigitsNumber(this.getSeconds)}`;
+  };
+
+Elia's solution to make the 
+
 return this.twoDigitsNumber(this.getMinutes()) + ":" + this.twoDigitsNumber(this.getSeconds());
 let minutes = this.getMinutes();
 let seconds = this.getSeconds();
 return this.twoDigitsNumber(minutes) + ":" + this.twoDigitsNumber(seconds);
-
  */
