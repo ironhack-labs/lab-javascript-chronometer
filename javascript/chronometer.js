@@ -14,6 +14,9 @@ class Chronometer {
         }, 1000)
         this.milIntervalId = setInterval(() => {
             this.currentMil += 1
+            if (callback) {
+                callback()
+            }
         }, 10)
     }
     getMinutes() {
