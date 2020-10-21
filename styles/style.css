@@ -28,7 +28,7 @@ body {
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 35px 0px;
   position: relative;
   text-align: center;
   width: 220px;
@@ -87,6 +87,7 @@ body {
 .number {
   display: inline-block;
   width: 40px;
+  text-align: center;
 }
 
 .btn {
