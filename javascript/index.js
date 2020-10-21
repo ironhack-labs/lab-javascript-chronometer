@@ -14,15 +14,36 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let counter = 1;
+  if (counter < 10) {
+    minUni.innerHTML = counter
+    counter++
+  } else {
+    minDec.innerHTML = counter
+    minUni.innerHTML = ' '
+  }
 }
 
 function printSeconds() {
-  // ... your code goes here
+  setInterval(() => {
+    if (chronometer.currentTime < 10) {
+      secUni.innerHTML = chronometer.currentTime
+    } else {
+      secUni.innerHTML = ' '
+      secDec.innerHTML = chronometer.currentTime
+    }
+    if(chronometer.currentTime === 60 ) {
+      printMinutes()
+      chronometer.currentTime = 0
+      secUni.innerHTML = 0
+      secDec.innerHTML = 0
+    }
+  })
 }
 
 // ==> BONUS
@@ -56,10 +77,41 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  // chronometer.startClick()
+  if (btnLeft.className === 'btn start') {
+    btnLeft.className = 'btn stop'
+    btnLeft.innerText = 'STOP'
+    btnRight.innerText = 'SPLIT'
+    btnRight.className = 'btn split'
+    chronometer.startClick()
+    printSeconds()
+  } else {
+    btnLeft.className = 'btn start'
+    btnLeft.innerText = 'START'
+    btnRight.className = 'btn reset'
+    btnRight.innerText = 'RESET'
+    chronometer.stopClick()
+
+    console.log(chronometer.currentTime)
+    // console.log(chronometer.intervalId)
+  }
+  // printMinutes()
+});
+function addItem() {
+  const $li = document.createElement('li')
+  $li.innerText = `${minDec.innerText}${minUni.innerText}:${secDec.innerText}${secUni.innerText}`
+  const $list = document.querySelector('#splits')
+  $list.appendChild($li)
+}
+btnRight.addEventListener('click', () => {
+  if (btnLeft.className === 'btn stop' && btnRight.className === 'btn split') {
+    addItem()
+  } else {
+    chronometer.resetClick()
+    // chronometer.stopClick()
+    console.log(chronometer.currentTime)
+    // console.log(chronometer.intervalId)
+  }
 });
 
-// Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
-});
+// console.log(chronometer.intervalId)
