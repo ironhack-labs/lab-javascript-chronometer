@@ -37,14 +37,13 @@ function printMilliseconds() {
 
 function printSplit() {
   const newTime = document.createElement('li');
-  newTime.setAttribute('class', 'splitedTime');
   newTime.innerHTML = chronometer.splitClick();
   splits.appendChild(newTime);
 }
 
 function clearSplits() {
-  const deleteTime = document.getElementByClassName('splitedTime');
-  //////!!!!!!!!!!!!!!!!!!
+  const deleteTime = document.getElementById('splits');
+  deleteTime.innerHTML = '';
 
 }
 
