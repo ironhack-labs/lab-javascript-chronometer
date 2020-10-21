@@ -15,9 +15,7 @@ let splits = document.getElementById('splits');
 
 function printTime() {
 
-  setInterval(() => {
-    secUni.innerHTML = chronometer.currentTime
-  }, 1000)
+  printSeconds()
   // debugger
 
 
@@ -31,6 +29,9 @@ function printMinutes() {
 }
 
 function printSeconds() {
+  setInterval(() => {
+    secUni.innerHTML = chronometer.currentTime
+  }, 1000)
   // ... your code goes here
 }
 
