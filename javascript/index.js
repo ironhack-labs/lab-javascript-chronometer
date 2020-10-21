@@ -35,12 +35,14 @@ function printSeconds() {
     }else{
       secDec.innerHTML = chronometer.currentTime
       secUni.innerHTML = ''
-
     }
-
-
+    if(chronometer.currentTime == 60){
+      chronometer.currentTime = 0
+     secDec.innerHTML = 0;
+      secUni.innerHTML =0;
+      //printMinutes()
+    }
   }, 1000)
-  // ... your code goes here
 }
 
 // ==> BONUS
