@@ -30,7 +30,13 @@ function printMinutes() {
 
 function printSeconds() {
   setInterval(() => {
-    secUni.innerHTML = chronometer.currentTime
+    if (chronometer.currentTime < 10){
+      secUni.innerHTML = chronometer.currentTime
+    }else{
+
+    }
+
+
   }, 1000)
   // ... your code goes here
 }
