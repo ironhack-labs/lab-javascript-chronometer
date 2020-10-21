@@ -83,6 +83,8 @@ function setStopBtn() {
 
 function setSplitBtn() {
   // ... your code goes here
+  btnRight.innerHTML  = "SPLIT"
+  btnRight.setAttribute("class", "btn split")
 }
 
 function setStartBtn() {
