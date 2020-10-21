@@ -7,6 +7,7 @@ class Chronometer {
   startClick(callback) {
     // ... your code goes here
     this.intervalId = setInterval(()=>this.currentTime++,1000);
+  //console.log("start");
   }
   getMinutes() {
     // ... your code goes here
@@ -24,6 +25,7 @@ class Chronometer {
   stopClick() {
     // ... your code goes here
     clearInterval(this.intervalId);
+    //console.log("stop");
   }
   resetClick() {
     // ... your code goes here
@@ -33,6 +35,7 @@ class Chronometer {
     // ... your code goes here
     let min = this.getMinutes();
     let sec = this.getSeconds();
-    return min<10? `${0}${min}:${0}${sec}` : `${min}:${sec}`;
+    //return min<10? `${0}${min}:${0}${sec}` : `${min}:${sec}`;
+    return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`;
   }
 }
