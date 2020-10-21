@@ -15,10 +15,12 @@ let splits = document.getElementById('splits');
 
 function printTime() {
 
+  setInterval(() => {
+    secUni.innerHTML = chronometer.currentTime
+  }, 1000)
+  // debugger
 
-  chronometer.startClick()
 
-  minDec.innerHTML = chronometer.currentTime
   // secDec =
 
 }
@@ -64,9 +66,9 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
-  setInterval(() => {
-    printTime()
-  }, 1000)
+  chronometer.startClick()
+
+  printTime();
 
 });
 
