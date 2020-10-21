@@ -16,7 +16,7 @@ let splits = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
-  printMilliseconds();
+  /*printMilliseconds();*/
 }
 
 function printMinutes() {
@@ -31,21 +31,22 @@ function printSeconds() {
 }
 
 // ==> BONUS
-function printMilliseconds() {
+/*function printMilliseconds() {
   milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
   milDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
-}
+}*/
 
 function printSplit(time) {
   let newSplit = document.getElementById('splits');
   let newListSplit = document.createElement('li');
   let timeSet = document.createTextNode(time);
-    newListSplit.appendChild(time);
+    newListSplit.appendChild(timeSet);
     newSplit.appendChild(newListSplit);
 }
 
 function clearSplits() {
-  let delete = document.getElementById('#splits-container').reset();
+  let clearSpl = document.getElementById('splits').reset();
+  /*clearSpl.innerHTML='';*/
 } 
   /*document.getElementById('btnRight').onclick();
   document.getElementById('#splits-container').reset();*/
@@ -54,40 +55,45 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  
+  btnLeft.innerHTML = 'STOP';
+  btnLeft.setAttribute('class', 'btn stop'); //inserir opcao stop no botao html
+
 } 
 
 function setSplitBtn() {
-  /*let split = document.getElementById('btnRight').onclick();*/
+  btnRight.innerHTML = 'SPLIT';
+  btnRight.setAttribute('class', 'btn split'); // inserir opcao split no botao html
 }
 
 function setStartBtn() {
-    
-  /* if (chronometer.intervalId == 0){
-    chronometer.currentTime = 1;
-    increment();
-    document.getElementById('btnLeft').innerHTML = 'Stop'; 
-  } else {
-    chronometer.currentTime = 0;
-    document.getElementById('btnLeft').innerHTML = 'Start';
-  }
-  } */ 
-  
-
-/* let start = document.getElementById('btnLeft').onclick();*/
+  btnLeft.innerHTML = 'START';
+  btnLeft.setAttribute('class', 'btn start');
 }
 
 function setResetBtn() {
-    
-  /*document.getElementById("reset").onclick*/
+  btnRight.innerHTML = 'RESET';
+  btnRight.setAttribute('class', 'btn reset');
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerHTML === 'START') {
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn(); 
+ }else{
+   chronometer.stopClick();
+   setStartBtn();
+   setResetBtn();
+ }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerHTML === 'RESET') {
+    chronometer.resetClick();
+    clearSplits();
+  } else {
+    chronometer.splitClick();
+  }
 });
