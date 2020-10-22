@@ -14,15 +14,27 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  // 1. Set interval para que el cronómetro vaya incrementando cada 1000
+
+  // 2. Definir que si los segundos llegan a 60 > empiecen los minutos y los segundos se queden a 00
+
+  // 3. Mostrar esto en el DOM
+  document.getElementById("sphere").innerHTML = minutes + ":" + seconds;
 }
 
 function printMinutes() {
-  // ... your code goes here
+  // Verificar que el formato de "minutes" sea el correcto, no estoy segura de que se guarde como string.
+  let decimalMinute = minDec.innerHTML = chronometer.twoDigitsNumber(getMinutes()).charAt(0);
+  let unitMinute = minUni.innerHTML = chronometer.twoDigitsNumber(getMinutes()).charAt(1);
+  return minutes = decimalMinute + unitMinute;
 }
 
 function printSeconds() {
-  // ... your code goes here
+  // Verificar que el formato de "minutes" sea el correcto, no estoy segura de que se guarde como string.
+
+  let decimalSecond = secDec.innerHTML = chronometer.twoDigitsNumber(getSeconds()).charAt(0);
+  let unitSecond = unitDec.innerHTML = chronometer.twoDigitsNumber(getSeconds()).charAt(1);
+  return seconds = decimalSecond + unitSecond;
 }
 
 // ==> BONUS
@@ -39,7 +51,14 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  //Añadir una nueva clase de "stop" que muestre STOP
+
+
+  // Toggle entre clases para que al clicar "start", el botón ha se cambie a stop.
+  element.onclick = function(event) {
+    console.log(event);
+  }
+
 }
 
 function setSplitBtn() {
@@ -56,10 +75,17 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
+
+    // Añadir callback a la función de PrintTime para que se imprima el tiempo cuando se clique "Start"
+    
+
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
+
+  // Añadir callback a la función de resetClick del chronometer.js para que se "clear" el interval al clicar en el botón de Reset
+  // Añadir callback a la función de splitClick del chronometer.js para que se imprima el tiempo al momento de clicar el botón de Split
   // ... your code goes here
 });

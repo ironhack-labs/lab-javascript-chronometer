@@ -4,7 +4,7 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    const incrementSec = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime++; 
     }, 1000);
   }
@@ -20,11 +20,7 @@ class Chronometer {
     return number < 10 ? `0${number}` : `${number}`;
   }
   stopClick() {
-    const incrementSec = setInterval(() => {
-      this.currentTime++; 
-    }, 1000);
-
-    return clearInterval(incrementSec);
+    return clearInterval(this.intervalId);
   }
   resetClick() {
     return this.currentTime = 0;
