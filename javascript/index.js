@@ -15,14 +15,26 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  console.log(chronometer.currentTime)
+  printSeconds();
+  printMinutes();
 }
 
 function printMinutes() {
   // ... your code goes here
+  let minutes = minUni || minDec
+  //if (chronometer.getSeconds >= 60){ minutes.innerHTML = chronometer.twoDigitsNumber(chronometer.currentTime)}
+  setInterval(() => {
+    minutes.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes(currentTime))
+  })
+  
 }
 
 function printSeconds() {
   // ... your code goes here
+  let seconds = secUni || secDec
+  seconds.innerText = chronometer.twoDigitsNumber(chronometer.currentTime)
+  
 }
 
 // ==> BONUS
@@ -40,6 +52,8 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeft.toggle("START")
+
 }
 
 function setSplitBtn() {
@@ -48,18 +62,38 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+ 
+  if (btnLeft.innerText === "START")
+  {btnLeft.innerText = "STOP"; btnLeft.style.backgroundColor="red"; chronometer.startClick(printTime)}
+  else {btnLeft.innerText = "START";chronometer.stopClick(printTime),btnRight.style.backgroundColor="#5fca5f"}
+  
+  chronometer.resetClick()
 }
 
 function setResetBtn() {
   // ... your code goes here
+  if (btnRight.innerText === "RESET")
+  {btnRight.innerText = "SPLIT"; chronometer.startClick(printSplit)}
+  else {btnRight.innerText = "RESET";chronometer.stopClick()}
+  
+  chronometer.resetClick()
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  if (chronometer.intervalId){
+    console.log("click");
+  }
+  else{
+    setStartBtn();
+
+  }
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
+  setResetBtn()
 });
