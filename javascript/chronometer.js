@@ -6,10 +6,10 @@ class Chronometer {
   }
   startClick(callback) {
     // ... your code goes here
-  setInterval(()=>{
-this.currentTime++;
-    }, 1000)
-    console.log(this.currentTime)
+   this.intervalId = setInterval( () => {
+      this.currentTime++;
+      if (callback) callback();
+    }, 1000);
   }
   getMinutes() {
     // ... your code goes here
@@ -23,10 +23,8 @@ this.currentTime++;
   }
   twoDigitsNumber(digits) {
     // ... your code goes here
-    if (digits <10) {
-      return "0"+digits
-    } 
-    else return digits
+    if (digits < 10) return `0${digits}`;
+    return `${digits}`;
   }
   stopClick() {
     // ... your code goes here
