@@ -3,29 +3,11 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = 0;
   }
-  startClick(callback) {
-    this.intervalId = setInterval(() => {
-      this.currentTime += 1;
-    }, 1000);
-  }
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    let currentMins = Math.floor(this.currentTime / 60);
+    return currentMins >= 10 ? currentMins : `0${currentMins}`;
   }
   getSeconds() {
-    return this.currentTime % 60;
+    let currentSecs = this.currentTime % 60;
+    return currentSecs >= 10 ? currentSecs : `0${currentSecs}`;
   }
-  twoDigitsNumber(num) {
-    return num <= 9 ? (num = `0${num}`) : num.toString();
-  }
-  stopClick() {
-    clearInterval(this.intervalId);
-  }
-  resetClick() {
-    this.currentTime = 0;
-  }
-  splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
-      this.getSeconds()
-    )}`;
-  }
-}
