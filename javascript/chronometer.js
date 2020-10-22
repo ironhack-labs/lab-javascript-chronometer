@@ -2,6 +2,8 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
+    this.currentMil = 0;
+    this.intervalMilId = 0;
   }
 
   startClick(callback) {
@@ -21,6 +23,13 @@ class Chronometer {
     return seconds;
   }
 
+  getMiliSeconds(){
+    if (this.currentMil === 100) {
+      this.currentMil = 0;
+    }
+    return this.currentMil;
+  }
+  
   twoDigitsNumber() {
    return number < 10 ? '0' + number : number;
   }
