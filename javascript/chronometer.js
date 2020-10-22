@@ -11,3 +11,4 @@ class Chronometer {
     let currentSecs = this.currentTime % 60;
     return currentSecs >= 10 ? currentSecs : `0${currentSecs}`;
   }
+}

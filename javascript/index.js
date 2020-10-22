@@ -40,7 +40,6 @@ function setStartBtn() {
 function setStopBtn() {
   btnLeft.innerText = "STOP";
   btnRight.innerText = "SPLIT";
-  // chronometer.startClick();
   this.printTime();
 }
 
