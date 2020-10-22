@@ -7,8 +7,10 @@ class Chronometer {
 
   startClick(callback) {
 
-    setInterval( () => { this.currentTime++ }, 1000);  // incrementamos en 1 el valor de currentTime, cada segundo.
-
+    this.intervalId = setInterval( () => { 
+      this.currentTime++;
+       printTime();
+    }, 1000);  // incrementamos en 1 el valor de currentTime, cada segundo.
 
   }
 
@@ -17,13 +19,11 @@ class Chronometer {
 
     if (this.currentTime >= 60) {
 
-      return Math.trunc( this.currentTime / 60 ) 
-
-    } else {
-
-      return 0
+      return Math.trunc( this.currentTime / 60 )
 
     }
+
+      return 0
 
 
   }
@@ -34,18 +34,20 @@ class Chronometer {
       return this.currentTime 
 
     } else {
-
-      return this.currentTime - 60
-
+      return this.currentTime - (this.getMinutes() * 60);
     }
 
   }
-  twoDigitsNumber() { // convertimos el valor de currenTime a string, siempre con dos valores.
+  twoDigitsNumber(value) { // convertimos el valor de currenTime a string, siempre con dos valores.
 
-    return this.currentTime.toString().padStart(2, "0");
+    if(value.toString().length === 1) return value.toString().padStart(2, "0"); // propuesta del feedback al lab
+
+    else return value.toString();
+
+}
 
 
-  }
+  
   stopClick() { // limpiamos el valor de la propiedad intervalId
 
     clearInterval(this.intervalId) 
@@ -54,18 +56,23 @@ class Chronometer {
   resetClick() {
 
     this.currentTime = 0
+    printTime();
+
 
   }
   splitClick() {  // funcion stop
 
     let min = this.getMinutes();
     let sec = this.getSeconds();
-
+/*
     if (min < 10) {
       return (`${0}${min}:${0}${sec}`);
     } else {
       return (`${min}:${sec}`);
     }
+*/
+
+return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`;  // propuesta del feedback al lab
 
 
   }
