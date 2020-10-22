@@ -2,6 +2,8 @@ class Chronometer {
   constructor() {
     this.currentTime= 0;
     this.intervalId= 0;
+    this.currentTimeMil= 0;
+    this.intervalIdMil= 0;
   }
   
   startClick(callback){
@@ -13,7 +15,8 @@ class Chronometer {
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60); // 61 = 1 minutes   , 122 = 2 minutes
+    let minutes = this.currentTime / 60;
+    return Math.floor(minutes); // 61 = 1 minutes   , 122 = 2 minutes
   }
 
   getSeconds() {
@@ -22,16 +25,21 @@ class Chronometer {
 
 
   getMilliseconds() {
-    return (this.currentTime % 6000)
+    return this.currentTimeMil.toString().slice(-2)
   }
+
+  // twoDigitsNumber(number) {
+  //   return this.currentTime.toString().padStart(2, '0');
+
+  // }
 
   twoDigitsNumber(number) {
-    return this.currentTime.toString().padStart(2, '0');
-
-  }
+    return number > 10 ? `${number}` : `0${number}`;
+    }
 
   stopClick() {
     clearInterval(this.intervalId);
+    
   }
 
   //Issue 1 - This is not clearing out the time

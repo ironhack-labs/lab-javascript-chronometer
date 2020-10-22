@@ -20,6 +20,7 @@ function printTime() {
   let displayedTime = `${printMinutes()} ${printSeconds()} ${printMilliseconds()}`
 }
 
+
 function printMinutes() {
   let fetchMinutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
 // give left span container the seconds
@@ -44,11 +45,20 @@ function printMilliseconds() {
 
 
 function printSplit() {
-  // ... your code goes here
+  let fetchSplit = chronometer.splitClick();
+  const newLiElement = document.createElement("li");
+  splits.appendChild(newLiElement).innerHTML = fetchSplit;
+  // console.log(fetchSplit)
+
+
+  // step 1: access the <lo>
+  // step 2: fetchSplit = document.appednchild
+  // create an <li> per
+
 }
 
 function clearSplits() {
-  
+  // let removeSplits = chronometer.resetClick
 }
 
 
@@ -76,31 +86,31 @@ function setResetBtn() {
 }
 
 /* Start/Stop Button */
-// Step 1.1: if user clicks on 'Start', then printTime needs to start
-// Step 1.2: if user clicks on 'Start', then Start -> Stop & Reset -> Split
-// Step 2: if user clicks on 'Stop', then Stop -> Start & Split -> Reset
-
+// Step 1.1: user clicks on 'Start', then printTime needs to start
+// Step 1.2: user clicks on 'Start', then Start -> Stop & Reset -> Split
+// Step 2.1: user clicks on 'Stop', then time count needs to stop, invoking the stopClick
+// Step 2.2: user clicks on 'Stop', then Stop -> Start & Split -> Reset
 btnLeft.addEventListener('click', () => {
   if (btnLeft.innerHTML === `START`) { // Here struggled a lot with the backticks / or double quotes
-    chronometer.startClick(printTime);
-      setStopBtn();
-      setSplitBtn();
+    chronometer.startClick(printTime); // Works as expected
+    setStopBtn(); // Works as expected
+    setSplitBtn(); // Works as expected
   } else {
-    chronometer.stopClick();
-      setStartBtn();
-      setResetBtn();
+    setStartBtn(); // Works as expected
+    setResetBtn(); // Works as expected
+    chronometer.stopClick(); // Works as expected
   }
 });
 
 // Reset/Split Button
-// 
-btnRight.addEventListener('click', () => {
+// Step 1: if user clicks on 'Reset', then time needs to return to 0.
+// Step 2: if user clicks on '
+btnRight.addEventListener('click', () => { 
   if (btnRight.innerHTML===`RESET`) {
     chronometer.resetClick();
     console.log(printTime())
-    // setResetBtn();
-    // clearSplits();
   } else {
+    printSplit();
     chronometer.splitClick();
   }
 });
