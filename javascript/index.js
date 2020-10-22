@@ -52,6 +52,7 @@ function clearSplits() {
 function setStopBtn() {
   // ... your code goes here
    chronometer.stopClick(printTime);
+   
 
 }
 
