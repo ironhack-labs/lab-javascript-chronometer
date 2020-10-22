@@ -13,19 +13,25 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-  function printTime(minutes, seconds) {
-    printMinutes(minutes);
-    printSeconds(seconds);
+function printTime() {
+  printMinutes();
+  printSeconds();
   }
 
-function printMinutes(minutes) {
-  minDec.innerHTML = minutes[0];
-  minUni.innerHTML = minutes[1];
+function printMinutes() {
+  let fetchMinutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
+ // console.log(chronometer.getMinutes())
+   minDec.innerHTML = fetchMinutes[0]
+   minUni.innerHTML = fetchMinutes[1]
+
 }
 
-function printSeconds(seconds) {
-  secDec.innerHTML = seconds[0];
-  secUni.innerHTML = seconds[1];
+function printSeconds() {
+let fetchSeconds = chronometer.twoDigitsNumber(chronometer.getSeconds()) 
+ // give 
+ secDec.innerHTML = fetchSeconds[0]
+ secUni.innerHTML = fetchSeconds[1]
+
 }
 
 // ==> BONUS
@@ -34,12 +40,19 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  
- console.log(this.splitClick);
 
+  let fetchSplit = chronometer.splitClick();
+  let newSplitsLi = document.createElement("li")
+   splits.appendChild(newSplitsLi).innerHTML = fetchSplit;
+ // minDec.innerHTML = fetchMinutes[0]
+ // minUni.innerHTML = fetchMinutes[1]
+  //SecDec.innerHTML = fetchSeconds[0]
+  //secUni.innerHTML = fetchSeconds[1]
 }
 
 function clearSplits() {
+  //while (splits.hasChildNodes()) {  
+    //splits.removeChild(splits.firstChild);
 
 }
 
@@ -47,44 +60,40 @@ function setStopBtn() {
   btnLeft.innerHTML = 'STOP';
   btnLeft.setAttribute('class', 'btn stop');
 }
-
 function setSplitBtn() {
   btnRight.innerHTML = 'SPLIT';
   btnRight.setAttribute('class', 'btn split');
   console.log(this.currentTime)
 }
-
 function setStartBtn() {
   btnLeft.innerHTML = 'START';
   btnLeft.setAttribute('class', 'btn start');
 }
-
 function setResetBtn() {
   btnRight.innerHTML = 'RESET';
   btnRight.setAttribute('class', 'btn reset');
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
- if (btnLeft.innerHTML === `START`) {
-   chronometer.startClick();
-   setStopBtn();
-   setSplitBtn();
-   
- } else {
-   chronometer.stopClick();
-   setStartBtn();
-   setResetBtn();
- }
-});
+btnLeft.addEventListener('click', () => {
+  if (btnLeft.innerHTML === `START`) {
+    chronometer.startClick(printTime);
+    setStopBtn();
+    setSplitBtn();
+
+  } else {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  }
+ });
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
+btnRight.addEventListener('click', () => {
   if (btnRight.innerHTML === 'RESET') {
     chronometer.resetClick();
     clearSplits();
   } else {
     chronometer.splitClick();
   }
-
 });
