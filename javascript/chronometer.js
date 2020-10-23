@@ -16,8 +16,13 @@ class Chronometer {
   getSeconds() {
     return this.currentTime % 60;
   }
-  twoDigitsNumber() {
-    return this.currentTime.toString( ).padStart(2, '0');
+  // twoDigitsNumber() {
+  //   return this.currentTime.toString().padStart(2, '0');
+  // }
+
+  twoDigitsNumber(value) {
+    if (value < 10) return `0${value}`;
+    return `${value}`;
   }
   stopClick() {
     clearInterval(this.intervalId)
@@ -27,6 +32,8 @@ class Chronometer {
   }
   splitClick() {
     return this.twoDigitsNumber(this.getMinutes()) + ":" + this.twoDigitsNumber(this.getSeconds());
+    //other method
+    //return `${this.twoDigitsNumber(this.getMinutes())} :${this.twoDigitsNumber(this.getSeconds())}`;
   }
 }
 
