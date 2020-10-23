@@ -21,20 +21,27 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
-  let minutes= chronometer.twoDigitsNumber(chronometer.getMinutes());
-  return minutes;
+  // // ... your code goes here
+  // let minutes= chronometer.twoDigitsNumber(chronometer.getMinutes());
+  // return minutes;
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
 }
 
 function printSeconds() {
   // ... your code goes here
-  let seconds= chronometer.twoDigitsNumber(chronometer.getSeconds());
-  return seconds;
+  // let seconds= chronometer.twoDigitsNumber(chronometer.getSeconds());
+  // return seconds;
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  
 }
 
 function printSplit() {
