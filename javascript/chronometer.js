@@ -7,8 +7,7 @@ class Chronometer {
   startClick(callback) {
     // The setInterval() will be assigned to our intervalId property, so this way, 
     //we will be able to clear it later on when we need to restart the timer.
-
-this.intervalId = setInterval(() => {
+  this.intervalId = setInterval(() => {
   this.currentTime++;            
     if (callback) {                
       callback();            
