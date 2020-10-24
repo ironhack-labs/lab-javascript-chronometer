@@ -12,11 +12,11 @@ btnLeft.onclick = function () {
 const btnRight = document.getElementById('btnRight');
 btnRight.onclick = function () {
   if (btnRight.className === 'btn reset') {
-    chronometer.resetClick()
+    chronometer.resetClick();
   } else if (btnRight.className === 'btn split') {
-    chronometer.splitClick()
+    chronometer.splitClick();
   }
-}
+};
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -49,11 +49,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
- let splitValue = chronometer.splitClick();
- let newSplits = splits.cloneNode(false);
- let parent = document.getElementById('splits-container');
- parent.appendChild(newSplits);
- newSplits.textContent = `${count}. ${splitValue}`;
+let splitValue = chronometer.splitClick();
+let newSplits = splits.cloneNode(false);
+let parent = document.getElementById('splits-container');
+parent.appendChild(newSplits);
+newSplits.textContent = `${count}. ${splitValue}`;
 }
 
 function clearSplits() {
@@ -98,15 +98,15 @@ btnLeft.addEventListener('click', () => {
     btnRight.textContent = "RESET";
     chronometer.stopClick();
 }
+}
 
 // Reset/Split Button
-let count = 0;
 btnRight.addEventListener('click', () => {
   if (btnRight.classList.contains("reset")){
     chronometer.resetClick();
     clearSplits();
   } else if (btnRight.classList.contains("split")){
-    count +=1;
+    count += 1;
     chronometer.splitClick();
     printSplit();
   }
