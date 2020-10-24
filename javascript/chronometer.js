@@ -2,36 +2,36 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
-    this.currentMil = 0;
-    this.intervalMilId = 0;
+    this.currentMilliseconds = 0;
+    this.millisecondsIntervalId = 0;
   }
 
-  startClick(callback) {
+  startClick(printTime, printMilliseconds) {
     this.intervalId = setInterval( () => {
       this.currentTime++;
-      if (callback) callback();
+      if (printTime) printTime();
    }, 1000);
+   this.millisecondsIntervalId = setInterval( () => {
+    if (this.currentMilliseconds === 99) {
+      this.currentMilliseconds = 0;
+    }
+    this.currentMilliseconds++;
+    if (printMilliseconds) printMilliseconds();
+  }, 10);
   }
 
   getMinutes() {
-    let minutes = Math.floor(this.currentTime / 60);
-    return minutes; 
+    let currentTimeMin = Math.floor(this.currentTime / 60);
+    return currentTimeMin; 
   }
 
   getSeconds() {
-    let seconds = Math.floor(this.currentTime % 60);
-    return seconds;
-  }
-
-  getMiliSeconds(){
-    if (this.currentMil === 100) {
-      this.currentMil = 0;
-    }
-    return this.currentMil;
+    let currentTimeSec = this.currentTime % 60;
+    return currentTimeSec;
   }
   
-  twoDigitsNumber() {
-   return number < 10 ? '0' + number : number;
+  twoDigitsNumber(num) {
+    return ("0" + num).slice(-2);
   }
 
   // twoDigitsNumber(value) {
@@ -42,17 +42,23 @@ class Chronometer {
 
   stopClick() {
     clearInterval(this.intervalId);
+    clearInterval(this.millisecondsIntervalId);
   }
 
   resetClick() {
     this.currentTime = 0;
+    this.currentMilliseconds = 0;
   }
+  
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`;
+  let minutes = this.twoDigitsNumber(this.getMinutes());
+  let seconds = this.twoDigitsNumber(this.getSeconds());
+  let milliseconds = this.twoDigitsNumber(this.currentMilliseconds);
+  return `${minutes}:${seconds}:${milliseconds}`;
   }
 }
-//let minutes = this.twoDigitsNumber(this.getMinutes());
-//let seconds = this.twoDigitsNumber(this.getSeconds());
 //return `${minutes}:${seconds}`;
+//OR     return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}:${this.twoDigitsNumber(this.currentMilliseconds)}`;
+
 
 
