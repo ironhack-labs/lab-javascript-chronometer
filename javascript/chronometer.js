@@ -26,11 +26,11 @@ class Chronometer {
     return this.currentTime = 0;
   }
   splitClick() {
-    let roundMinutes = Math.floor(this.currentTime / 60);
-    let roundSeconds = this.currentTime % 60;
+    let roundMinutes = getMinutes();
+    let roundSeconds = getSeconds();
 
-    let splitMinutes = roundMinutes < 10 ? `0${roundMinutes}` : `${roundMinutes}`;
-    let splitSeconds = roundSeconds < 10 ? `0${roundSeconds}` : `${roundSeconds}`;
+    let splitMinutes = twoDigitsNumber(roundMinutes);
+    let splitSeconds = twoDigitsNumber(roundSeconds);
 
     return `${splitMinutes}:${splitSeconds}`;
   }
