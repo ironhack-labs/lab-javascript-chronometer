@@ -13,16 +13,26 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+
 function printTime() {
   // ... your code goes here
+
+ printMinutes()
+ printSeconds()
+  
 }
 
 function printMinutes() {
   // ... your code goes here
+  let minutes = chronometer.getMinutes();
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
+  console.log(minutes)
 }
 
 function printSeconds() {
   // ... your code goes here
+  
 }
 
 // ==> BONUS
@@ -57,6 +67,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  printTime()
 });
 
 // Reset/Split Button
