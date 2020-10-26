@@ -14,8 +14,7 @@ class Chronometer {
   }
   getMinutes() {
     // ... your code goes here
-    let minutes = Math.floor((this.currentTime % 3600) / 60);
-    return minutes;
+    return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
     // ... your code goes here
@@ -29,11 +28,17 @@ class Chronometer {
   }
   stopClick() {
     // ... your code goes here
+    clearInterval(this.intervalId);
   }
+
   resetClick() {
     // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
     // ... your code goes here
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
+      this.getSeconds()
+    )}`;
   }
 }
