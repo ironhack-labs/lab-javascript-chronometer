@@ -16,6 +16,7 @@ let splits = document.getElementById("splits");
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -30,7 +31,12 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milUni.innerText = chronometer.twoDigitsNumber(
+    chronometer.getMilliseconds()
+  )[1];
+  milDec.innerText = chronometer.twoDigitsNumber(
+    chronometer.getMilliseconds()
+  )[0];
 }
 
 function printSplit(timefunc) {
@@ -60,6 +66,8 @@ function setResetBtn() {
   secDec.innerText = 0;
   minUni.innerText = 0;
   minDec.innerText = 0;
+  milUni.innerText = 0;
+  milDec.innerText = 0;
   splits.innerHTML = "";
 }
 
