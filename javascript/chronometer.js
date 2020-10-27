@@ -13,27 +13,31 @@ class Chronometer {
       return 0;
     }
 
-    return parseInt(this.currentTime/60);
+    
+    return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
     if(!this.currentTime){
       return 0;
     }
 
-    return this.currentTime;
-
-  }
-  twoDigitsNumber() {
     
+    return  this.currentTime - (Math.floor(this.currentTime/60)*60);
+  }
+  twoDigitsNumber(number) {
+    return number < 10 ? '0' + number : `${number}`;
 
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    const minutes = this.getMinutes();
+    const seconds = this.getSeconds();
+
+    return this.twoDigitsNumber(minutes) + `:` + this.twoDigitsNumber(seconds);
   }
 }
