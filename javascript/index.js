@@ -56,10 +56,19 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
+  // Ejemplo encontrado en internet
+  // let result = start.toggle("c");
+  // if (result) {
+  //   btnLeft.textContent = `'c' added; classList is now "${classes}".`;
+  // } else {
+  //   btnLeft.textContent = `'c' removed; classList is now "${classes}".`;
+  // }
   // ... your code goes here
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
