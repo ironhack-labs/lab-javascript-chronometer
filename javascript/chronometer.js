@@ -4,17 +4,19 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    setInterval(() => {
-      this.currentTime += 1;
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) {
+        callback();
+      }
     }, 1000);
-    callback;
   }
   getMinutes() {
-    return this.currentTime === 0 ? 0 : Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    return this.currentTime === 0 ? 0 : this.currentTime % 60;
+    return this.currentTime % 60;
   }
   twoDigitsNumber(time) {
     return time >= 0 && time < 10 ? "0" + time : time.toString();
