@@ -40,7 +40,20 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+
+  const stopBtn = document.querySelector('#btnLeft')
+  stopBtn.onclick = function () {
+
+      const changeStopBtn = document.querySelector('#btnLeft')
+      changeStopBtn.style.backgroundColor = '#5fca5f'
+      changeStopBtn.innerHTML = 'START'
+      const changeSplitBtn = document.querySelector('#btnRight')
+      changeSplitBtn.style.backgroundColor = '#908e8e'
+      changeSplitBtn.innerHTML = 'RESET'
+  }
 }
+
+// FALTA APLICAR TOGGLE 
 
 function setSplitBtn() {
   // ... your code goes here
@@ -48,7 +61,21 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+
+  const startBtn = document.querySelector('#btnLeft')
+  startBtn.onclick = function () {
+
+      const changeStartBtn = document.querySelector('#btnLeft')
+      changeStartBtn.style.backgroundColor = 'red'
+      changeStartBtn.innerHTML = 'STOP'
+      // changeStartBtn.classList.add = 'new-btn'
+      const changeResetBtn = document.querySelector('#btnRight')
+      changeResetBtn.style.backgroundColor = 'blue'
+      changeResetBtn.innerHTML = 'SPLIT'
+      // changeResetBtn.classList.add = 'new-btn'
+  }
 }
+
 
 function setResetBtn() {
   // ... your code goes here
@@ -63,3 +90,11 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
+
+  const leftBtn = document.querySelector('#btnLeft')
+  if (leftBtn.style.backgroundColor = '#5fca5f') {
+    setStartBtn()
+  } else {
+    setStopBtn()
+  }
