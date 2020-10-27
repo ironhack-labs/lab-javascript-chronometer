@@ -1,26 +1,72 @@
+// const timeoutID = setInterval(() => console.log('está funcionando'), 1000)
+// console.log(timeoutID)
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = 0
   }
   startClick(callback) {
-    // ... your code goes here
+
+    setInterval((callback) => {
+
+      this.currentTime += 1
+
+    }, 1000)
   }
+
   getMinutes() {
-    // ... your code goes here
+
+    if (!this.currentTime) {
+
+      return 0
+
+    }
+
+    return parseInt(this.currentTime / 60)
+
   }
   getSeconds() {
-    // ... your code goes here
+
+    if (!this.currentTime) {
+
+      return 0
+
+    }
+
+    return this.currentTime
+
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  twoDigitsNumber(number) {
+
+    if (number < 10) {
+
+      return '0' + number
+
+    } else {
+
+      return `${number}`
+
+    }
   }
+
   stopClick() {
-    // ... your code goes here
+
+    clearInterval(this.intervalId)
+
   }
   resetClick() {
-    // ... your code goes here
+
+    this.currentTime = 0
+
   }
   splitClick() {
-    // ... your code goes here
+    let mins = this.getMinutes
+    let seconds = this.getSeconds
+
+    return `${this.twoDigitsNumber(mins)}:${this.twoDigitsNumber(seconds)}`
+
   }
 }
+
