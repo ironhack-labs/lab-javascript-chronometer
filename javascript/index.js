@@ -33,8 +33,10 @@ function printMilliseconds() {
   // ... your code goes here
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(timefunc) {
+  const li = document.createElement("li");
+  li.innerHTML = timefunc;
+  splits.appendChild(li);
 }
 
 function clearSplits() {
@@ -58,6 +60,7 @@ function setResetBtn() {
   secDec.innerText = 0;
   minUni.innerText = 0;
   minDec.innerText = 0;
+  splits.innerHTML = "";
 }
 
 // Start/Stop Button
@@ -89,6 +92,6 @@ btnRight.addEventListener("click", () => {
     chronometer.resetClick();
     setResetBtn();
   } else {
-    chronometer.splitClick();
+    printSplit(chronometer.splitClick());
   }
 });
