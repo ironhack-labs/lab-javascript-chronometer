@@ -58,7 +58,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  printSplit();
 }
 
 function setStartBtn() {
@@ -93,6 +93,6 @@ btnRight.addEventListener("click", () => {
   if (btnLeft.innerText === "START") {
     setResetBtn();
   } else {
-    printSplit();
+    setSplitBtn();
   }
 });
