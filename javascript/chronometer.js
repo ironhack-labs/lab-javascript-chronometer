@@ -11,11 +11,11 @@ class Chronometer {
     }, 1000);
     this.intervalMiliSec = setInterval(() => {
       this.miliSeconds++;
-    }, 1);
+    }, 10);
   }
   getMinutes() {
     this.minutes = Math.floor(this.currentTime / 60);
-    return Math.floor(this.currentTime / 60);
+    return this.minutes;
   }
   getSeconds() {
     if (this.currentTime === 0) {
@@ -24,30 +24,12 @@ class Chronometer {
     return Number(this.currentTime - this.getMinutes() * 60);
   }
   getMilliseconds() {
-    return String(this.miliSeconds - this.currentTime * 1000).substr(0, 2);
+    return this.miliSeconds - this.currentTime * 100;
   }
   twoDigitsNumber(currentTimeDigit) {
-    if (currentTimeDigit < 10) {
-      return `0${currentTimeDigit}`;
-    }
-    if (currentTimeDigit < 60) {
-      return `${currentTimeDigit}`;
-      //deveria ser getSeconds(), mas está com erro ao invocar já que no
-      //parametro de teste envio um numero como argumento da twoDigitsNumber
-    }
-    //somente o if a baixo está correto ao meu ver, pois está fazendo referencia
-    // aos metodos e atributos da classe, os de cima deveriam estar assim, mas
-    //se mudar não passam no teste
-    if (this.currentTime >= 60) {
-      if (this.getMinutes() < 10 && this.getSeconds() < 10) {
-        return `0${this.getMinutes()}min 0${this.getSeconds()}sec`;
-      }
-      if (this.getMinutes() < 10 && this.getSeconds() >= 10) {
-        return `0${this.getMinutes()}min ${this.getSeconds()}sec`;
-      } else {
-        return `${this.getMinutes()}min ${this.getSeconds()}sec`;
-      }
-    }
+    return currentTimeDigit < 10
+      ? `0${currentTimeDigit}`
+      : `${currentTimeDigit}`;
   }
   stopClick() {
     clearInterval(this.intervalId);
@@ -58,27 +40,9 @@ class Chronometer {
     this.miliSeconds = 0;
   }
   splitClick() {
-    if (this.miliSeconds < 100) {
-      return `00:00:0${this.getMilliseconds()}`;
-    }
-    if (this.miliSeconds < 1000) {
-      return `00:00:${this.getMilliseconds()}`;
-    }
-    if (this.currentTime < 10) {
-      return `00:0${this.getSeconds()}:${this.getMilliseconds()}`;
-    }
-    if (this.currentTime < 60) {
-      return `00:${this.getSeconds()}:${this.getMilliseconds()}`;
-    }
-    if (this.currentTime >= 60) {
-      if (this.getMinutes() < 10 && this.getSeconds() < 10) {
-        return `0${this.getMinutes()}:0${this.getSeconds()}:${this.getMilliseconds()}`;
-      }
-      if (this.getMinutes() < 10 && this.getSeconds() >= 10) {
-        return `0${this.getMinutes()}:${this.getSeconds()}:${this.getMilliseconds()}`;
-      } else {
-        return `${this.getMinutes()}:${this.getSeconds()}:${this.getMilliseconds()}`;
-      }
-    }
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
+      this.getSeconds()
+    )}:${this.twoDigitsNumber(this.getMilliseconds())}`;
   }
 }
+console.log(Chronometer);
