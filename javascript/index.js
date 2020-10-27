@@ -76,6 +76,8 @@ function setResetBtn() {
   minDec.innerText = 0;
   secUni.innerText = 0;
   secDec.innerText = 0;
+  milUni.innerText = 0;
+  milDec.innerText = 0;
   clearSplits();
 }
 
