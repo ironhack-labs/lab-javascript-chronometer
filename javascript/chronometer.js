@@ -8,9 +8,15 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      if (callback) {
+        callback();
+      }
     }, 1000);
     this.intervalMiliSec = setInterval(() => {
       this.miliSeconds++;
+      if (callback) {
+        callback();
+      }
     }, 10);
   }
   getMinutes() {
