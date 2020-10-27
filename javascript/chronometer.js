@@ -1,26 +1,68 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+  this.currentTime = 0;
+  this.intervalId = 0;
+  this.milliIntervalId = 0;
+  this.milliCurrentTime = 0;
+  this.milliseconds = 0;
   }
-  startClick(callback) {
-    // ... your code goes here
-  }
+
+  //method startClick
+
+  startClick() {
+    let that = this;
+    this.intervalId = setInterval(function() {
+      console.log(this, that);
+      that.currentTime++;
+      that.setTime();
+      printTime(that.minutes, that.seconds, that.milliseconds); 
+    },1000);
+
+    this.milliIntervalId = setInterval(function() {
+      that.milliCurrentTime++;
+      that.milliseconds = that.twoDigitsNumber(that.setMilliseconds());
+      printMilliseconds(that.milliseconds);
+      if (that.milliseconds === 99) that.milliseconds = 0; 
+    }, 10);
+  };
+  
+//method getMinutes
+
   getMinutes() {
-    // ... your code goes here
-  }
+    return Math.floor(this.currentTime / 60);
+};
+
+//method getSeconds
+
   getSeconds() {
-    // ... your code goes here
-  }
+    return Math.floor(this.currentTime - this.getMinutes(this.currentTime) * 60);
+};
+
+//method twoDigitsNumber
+
   twoDigitsNumber() {
-    // ... your code goes here
-  }
+    return this.getMinutes.toString().slice(-2);
+    return this.getSeconds.toString().slice(-2);
+  };
+
+//method stopClick
+
   stopClick() {
-    // ... your code goes here
-  }
+  clearInterval(this.intervalId);
+  clearInterval(this.milliIntervalId);
+  };
+
+//method resetClick
+
   resetClick() {
-    // ... your code goes here
-  }
+  this.currentTime = 0;
+  return this.currentTime.toString().slice(-2);
+};
+
+  //method splitClick
+
   splitClick() {
-    // ... your code goes here
-  }
+    let time = `${this.twoDigitsNumber}:${this.milliseconds.toString().slice(-2)}`;
+    return time;
+  };
 }
