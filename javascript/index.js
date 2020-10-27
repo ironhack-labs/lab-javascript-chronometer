@@ -14,7 +14,7 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  
 }
 
 function printMinutes() {
@@ -56,7 +56,7 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeft.setAttribute("btnLeft",".btn.Stop")
 });
 
 // Reset/Split Button
