@@ -34,8 +34,6 @@ function printMilliseconds() {
 }
 
 function printSplit(timefunc) {
-  // ... your code goes here
-  //guilherme leonardo
   const li = document.createElement("li");
   li.innerText = timefunc;
   splits.appendChild(li);
