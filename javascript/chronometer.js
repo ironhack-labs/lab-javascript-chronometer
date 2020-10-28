@@ -14,7 +14,7 @@ class Chronometer {
     return this.twoDigitsNumber(minutes);    
   };
   getSeconds() {
-    const seconds = Math.floor(this.currentTime / 100);
+    const seconds = Math.floor((this.currentTime / 100) % 60);
     return this.twoDigitsNumber(seconds);
   };
   getMilliSeconds() {
