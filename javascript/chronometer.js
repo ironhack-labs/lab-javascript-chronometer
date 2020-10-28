@@ -3,9 +3,15 @@ class Chronometer {
     this.currentTime = 0
     this.intervalId = 0
   }
-  startClick(callback) {
-    // ... your code goes here
+  startClick() {
+    let setTime = 0;
+    const interval = setInterval(() => {
+
+      console.log(setTime);
+      this.currentTime += interval
+    },1000)
   }
+
   getMinutes() {
     // ... your code goes here
   }
