@@ -1,101 +1,99 @@
 const chronometer = new Chronometer();
 
-// get the buttons:
-const btnLeft = document.getElementById("btnLeft");
-const btnRight = document.getElementById("btnRight");
+const screen =  {
+  btnLeft : document.getElementById("btnLeft"),
+  btnRight : document.getElementById("btnRight"),
+  minDec : document.getElementById("minDec"),
+  minUni : document.getElementById("minUni"),
+  secDec : document.getElementById("secDec"),
+  secUni : document.getElementById("secUni"),
+  milDec : document.getElementById("milDec"),
+  milUni : document.getElementById("milUni"),
+  splits : document.getElementById("splits"),
+};
 
-// get the DOM elements that will serve us to display the time:
-let minDec = document.getElementById("minDec");
-let minUni = document.getElementById("minUni");
-let secDec = document.getElementById("secDec");
-let secUni = document.getElementById("secUni");
-let milDec = document.getElementById("milDec");
-let milUni = document.getElementById("milUni");
-let splits = document.getElementById("splits");
+
 
 function printTime() {
-  printMinutes();
-  printSeconds();
-  printMilliseconds();
+  let objChrono = chronometer;
+  let objScreen = screen;
+  printMinutes(objChrono,objScreen);
+  printSeconds(objChrono,objScreen);
+  printMilliseconds(objChrono,objScreen);
 }
 
-function printMinutes() {
-  minUni.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
-  minDec.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+function printMinutes(objChrono,objScreen) {
+  objScreen.minUni.innerText = objChrono.twoDigitsNumber(objChrono.getMinutes())[1];
+  objScreen.minDec.innerText = objChrono.twoDigitsNumber(objChrono.getMinutes())[0];
 }
 
-function printSeconds() {
-  secUni.innerText = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
-  secDec.innerText = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+function printSeconds(objChrono,objScreen) {
+  objScreen.secUni.innerText = objChrono.twoDigitsNumber(objChrono.getSeconds())[1];
+  objScreen.secDec.innerText = objChrono.twoDigitsNumber(objChrono.getSeconds())[0];
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  milUni.innerText = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[1];
-  milDec.innerText = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[0]; 
+function printMilliseconds(objChrono,objScreen) {
+  objScreen.milUni.innerText = objChrono.twoDigitsNumber(objChrono.getMilliseconds())[1];
+  objScreen.milDec.innerText = objChrono.twoDigitsNumber(objChrono.getMilliseconds())[0]; 
 }
 
-function printSplit(timefunc) {
-  splits.innerHTML += `<li>${timefunc}</li>`;
+function printSplit(objScreen,timefunc) {
+  objScreen.splits.innerHTML += `<li>${timefunc}</li>`;
 }
 
-function clearSplits() {
-  splits.innerHTML = '';
+function clearSplits(objScreen) {
+  objScreen.splits.innerHTML = '';
 }
 
-function setStopBtn() {
-  // ... your code goes here
-    chronometer.stopClick();
-    btnLeft.classList.toggle("stop");
-    btnLeft.classList.toggle("start");
-    btnLeft.innerText = "START";
-    btnRight.classList.toggle("reset");
-    btnRight.classList.toggle("split");
-    btnRight.innerText = "RESET";
+function setStopBtn(objChrono,objScreen) {
+    objChrono.stopClick();
+    objScreen.btnLeft.classList.toggle("stop");
+    objScreen.btnLeft.classList.toggle("start");
+    objScreen.btnLeft.innerText = "START";
+    objScreen.btnRight.classList.toggle("reset");
+    objScreen.btnRight.classList.toggle("split");
+    objScreen.btnRight.innerText = "RESET";
 }
 
-function setSplitBtn() {
-  // ... your code goes here
-  printSplit(chronometer.splitClick())
+function setSplitBtn(objChrono,objScreen) {
+  printSplit(objScreen,objChrono.splitClick())
 }
 
-function setStartBtn() {
-  // ... your code goes here
-    chronometer.startClick(printTime);
-    btnLeft.classList.toggle("stop");
-    btnLeft.classList.toggle("start");
-    btnLeft.innerText = "STOP";
-    btnRight.classList.toggle("reset");
-    btnRight.classList.toggle("split");
-    btnRight.innerText = "SPLIT";
+function setStartBtn(objChrono,objScreen) {
+    objChrono.startClick(printTime); //PRECISO CHAMAR A CALLBACK PASSANDO PARAMETRO, BUT HOW ?
+    objScreen.btnLeft.classList.toggle("stop");
+    objScreen.btnLeft.classList.toggle("start");
+    objScreen.btnLeft.innerText = "STOP";
+    objScreen.btnRight.classList.toggle("reset");
+    objScreen.btnRight.classList.toggle("split");
+    objScreen.btnRight.innerText = "SPLIT";
 }
 
-function setResetBtn() {
-    chronometer.resetClick();
-    secUni.innerText = 0;
-    secDec.innerText = 0;
-    minUni.innerText = 0;
-    minDec.innerText = 0;
-    milDec.innerText = 0;
-    milUni.innerText = 0;
-    splits.innerHTML = "";
+function setResetBtn(objChrono,objScreen) {
+    objChrono.resetClick();
+    objScreen.secUni.innerText = 0;
+    objScreen.secDec.innerText = 0;
+    objScreen.minUni.innerText = 0;
+    objScreen.minDec.innerText = 0;
+    objScreen.milDec.innerText = 0;
+    objScreen.milUni.innerText = 0;
+    objScreen.splits.innerHTML = "";
 }
 
 // Start/Stop Button
-btnLeft.addEventListener("click", () => {
+screen.btnLeft.addEventListener("click", () => {
   if (btnLeft.innerText === "START") {
-    setStartBtn();
+    setStartBtn(chronometer,screen);
   } else {
-    setStopBtn();
+    setStopBtn(chronometer,screen);
   }
 });
 
 // Reset/Split Button
-btnRight.addEventListener("click", () => {
-  // ... your code goes here
+screen.btnRight.addEventListener("click", () => {
   if (btnLeft.innerText === "START") {    
-    setResetBtn();
+    setResetBtn(chronometer,screen);
   } else {
-    setSplitBtn();
+    setSplitBtn(chronometer,screen);
   }
 });
