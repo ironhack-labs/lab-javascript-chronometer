@@ -14,15 +14,18 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1]
+  minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1]
+  secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0]
 }
 
 // ==> BONUS
@@ -31,7 +34,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let 
 }
 
 function clearSplits() {
@@ -39,27 +42,56 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.setAttribute('class', 'btn stop')
+  btnLeft.innerHTML='STOP'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.setAttribute('class', 'btn split')
+  btnRight.innerHTML='SPLIT'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.setAttribute('class', 'btn start')
+  btnLeft.innerHTML='START'
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.setAttribute('class', 'btn reset')
+  btnRight.innerHTML='RESET'
 }
 
-// Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
 
-// Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
-});
+
+// window.addEventListener('load', ()=> {
+
+  // Start/Stop Button
+
+  btnLeft.addEventListener('click', () => {
+  
+    if (btnLeft.className === 'btn start') {
+      setStopBtn()
+      setSplitBtn()
+
+      chronometer.startClick(printTime)
+
+    } else {
+      setStartBtn()
+      setResetBtn()
+
+      chronometer.stopClick()
+    }
+  });
+  
+  // Reset/Split Button
+
+  btnRight.addEventListener('click', () => {
+
+    if(btnRight.className === 'btn reset'){
+      chronometer.resetClick()
+      printTime()
+    }
+  });
+// })
+
+
