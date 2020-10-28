@@ -1,26 +1,26 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    // ... your code goes her
   }
   startClick(callback) {
-    // ... your code goes here
+    // ... your code goes her
   }
   getMinutes() {
-    // ... your code goes here
+    // ... your code goes her
   }
   getSeconds() {
-    // ... your code goes here
+    // ... your code goes her
   }
   twoDigitsNumber() {
-    // ... your code goes here
+    // ... your code goes her
   }
   stopClick() {
-    // ... your code goes here
+    // ... your code goes her
   }
   resetClick() {
-    // ... your code goes here
+    // ... your code goes her
   }
   splitClick() {
-    // ... your code goes here
+    // ... your code goes her
   }
 }
