@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  font-family: "Roboto", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 }
 
 body {
