@@ -1,9 +1,14 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
   startClick(callback) {
-    // ... your code goes here
+    const intervalId = setInterval (this.updateCounter = function (){
+      chronometerObj.currentTime += 1;
+      console.log(chronometerObj.currentTime);
+    }, 1000);
+    
   }
   getMinutes() {
     // ... your code goes here
@@ -24,3 +29,9 @@ class Chronometer {
     // ... your code goes here
   }
 }
+const chronometerObj = new Chronometer (1,1);
+
+window.addEventListener("load", () => {
+  const startBtn = document.querySelector(".start");
+  startBtn.addEventListener("click", chronometerObj.startClick);
+});
