@@ -3,35 +3,42 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = 0;
   }
+  
   startClick(callback) {
-    const intervalId = setInterval (this.updateCounter = function (){
-      chronometerObj.currentTime += 1;
-      console.log(chronometerObj.currentTime);
+    this.intervalId = setInterval (()=>{
+      this.currentTime += 1;
     }, 1000);
-    
+    if(this.currentTime){callback();} 
   }
   getMinutes() {
-    // ... your code goes here
+    return parseInt(this.currentTime / 60);
   }
   getSeconds() {
-    // ... your code goes here
+    return (this.currentTime % 60);
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(num) {
+    num = String(num);
+    if (num.length === 1){
+      num = "0"+num;
+    }
+    return num;
   }
+  
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    const min = this.twoDigitsNumber(this.getMinutes());
+    const sec = this.twoDigitsNumber(this.getSeconds());
+    return `${min}:${sec}`;
   }
 }
-const chronometerObj = new Chronometer (1,1);
+//const chronometer = new Chronometer (1,1);
 
-window.addEventListener("load", () => {
+/*window.addEventListener("load", () => {
   const startBtn = document.querySelector(".start");
-  startBtn.addEventListener("click", chronometerObj.startClick);
-});
+  startBtn.addEventListener("click", chronometer.startClick);
+});*/
