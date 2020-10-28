@@ -1,9 +1,7 @@
 const chronometer = new Chronometer();
-
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
-
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -12,54 +10,72 @@ let secUni = document.getElementById('secUni');
 let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
-
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
-
 function printMinutes() {
-  // ... your code goes here
+  mins = chronometer.twoDigitsNumber(chronometer.getMinutes())
+  minDec.innerHTML = mins[0]
+  minUni.innerHTML = mins[1]
 }
-
 function printSeconds() {
-  // ... your code goes here
+  secs = chronometer.twoDigitsNumber(chronometer.getSeconds())
+  secDec.innerHTML = secs[0]
+  secUni.innerHTML = secs[1]
 }
-
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
 }
-
 function printSplit() {
-  // ... your code goes here
+  let child = document.createElement('li')
+  child.innerHTML = `${minDec.innerText}${minUni.innerText}:${secDec.innerText}${secUni.innerText}`
+  splits.appendChild(child) 
 }
-
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = ''
 }
-
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stopClick()
+  btnLeft.innerHTML = 'START'
 }
-
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'SPLIT'
 }
-
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.toggle("stop")
 }
-
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'RESET'
 }
-
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  setStartBtn()
+  if(btnLeft.innerHTML === 'START'){
+    chronometer.startClick(printTime) // SIGUE POR AQUÍ!!OJO AL MANEJO DEL CALLBACK
+    btnLeft.innerHTML = 'STOP'
+    // const printInt = setInterval(printTime, 1000)
+  } else {
+    setStopBtn()
+  }
+  btnRight.classList.toggle("split")
+  if(btnRight.innerHTML === 'RESET'){
+    setSplitBtn()
+  } else {
+    setResetBtn()
+  }
 });
-
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRight.innerHTML === 'SPLIT'){
+    printSplit()
+  } else {
+    minDec.innerHTML = 0
+    minUni.innerHTML = 0
+    secDec.innerHTML = 0
+    secUni.innerHTML = 0
+    clearSplits() 
+    // console.log(secUni.innerHTML);
+  }
 });
