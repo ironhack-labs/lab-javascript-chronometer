@@ -1,26 +1,56 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(()=>{
+      this.currentTime += 1;
+    },1000)
   }
   getMinutes() {
-    // ... your code goes here
+   
+    //*Nota: Es un cronómetro, aquí no valdría Math.round porque redondearía antes de llegar al minuto.
+    return Math.floor(this.currentTime/60);
+
   }
   getSeconds() {
-    // ... your code goes here
+    
+    //*Nota: Necesitamos el RESTO entre la división de segundos/60 -- % = remainder
+    return this.currentTime % 60;
+
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  twoDigitsNumber(number) {
+    
+    return number.toString().length == 2 ? `${number}` : `0${number}`;
+
+
+    //*Nota: Estas dos maneras son correctas, pero el test te pide un return luego hay que usar el Conditional Operator
+    // if (number.toString().length == 2) {
+    //   // number.toString()
+    //   `${number}`
+    // } else {
+    //   // "0" + number.toString()
+    //   `0${number}`
+    // }
+
   }
+ 
+
+
   stopClick() {
-    // ... your code goes here
+    
+    clearInterval(this.intervalId)
   }
   resetClick() {
-    // ... your code goes here
+    
+    this.currentTime = 0
   }
   splitClick() {
-    // ... your code goes here
+   
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+
   }
 }
