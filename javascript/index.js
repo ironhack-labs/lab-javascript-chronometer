@@ -17,6 +17,7 @@ function printTime() {
   // ... your code goes here
   printSeconds();
   printMinutes();
+  printMilliseconds();
 
 };
 
@@ -35,10 +36,15 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  milUni.innerText = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[1];
+  milDec.innerText = chronometer.twoDigitsNumber(chronometer.getMilliseconds())[0];
 }
 
-function printSplit() {
+function printSplit(time) {
   // ... your code goes here
+  let split = document.createElement('li');
+  split.innerText = time;
+  splits.appendChild(split);
 }
 
 function clearSplits() {
@@ -55,6 +61,7 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+
 }
 
 function setResetBtn() {
@@ -63,6 +70,8 @@ function setResetBtn() {
   minDec.innerText = 0;
   secUni.innerText = 0;
   secDec.innerText = 0;
+  milUni.innerText = 0;
+  milDec.innerText = 0;
   splits.innerHTML = "";
 }
 
