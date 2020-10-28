@@ -8,6 +8,7 @@ class Chronometer {
     this.intervalId = setInterval (()=>{
       this.currentTime += 1;
       printSeconds();
+      printMinutes();
     }, 1000);
     if(this.currentTime){callback();} 
   }

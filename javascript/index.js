@@ -18,13 +18,17 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes();
+  minutes = String (chronometer.twoDigitsNumber(minutes));
+  let dec = minutes.substring(0,1);
+  let uni = minutes.substring(1,2);
+  minDec.innerText = dec;
+  minUni.innerText = uni;
 }
 
 function printSeconds() {
   let seconds = chronometer.getSeconds();
   seconds = String (chronometer.twoDigitsNumber(seconds));
-  console.log(seconds)
   let dec = seconds.substring(0,1);
   let uni = seconds.substring(1,2);
   secDec.innerText = dec;
@@ -91,10 +95,7 @@ btnRight.addEventListener('click', () => {
 });
 
 const chronometer = new Chronometer();
-/*const timeOutId = setTimeout(()=>{
-  secUni.innerText = chronometer.getSeconds();
-  console.log("hh")
-}, 1000);*/
+
   
 
 
