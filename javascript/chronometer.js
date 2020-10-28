@@ -7,6 +7,7 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval (()=>{
       this.currentTime += 1;
+      printSeconds();
     }, 1000);
     if(this.currentTime){callback();} 
   }
@@ -36,9 +37,3 @@ class Chronometer {
     return `${min}:${sec}`;
   }
 }
-//const chronometer = new Chronometer (1,1);
-
-/*window.addEventListener("load", () => {
-  const startBtn = document.querySelector(".start");
-  startBtn.addEventListener("click", chronometer.startClick);
-});*/
