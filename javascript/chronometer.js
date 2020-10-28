@@ -1,26 +1,59 @@
+// create class with methods and properties to use for instances
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0; // set to zero for now
+    this.intervalId = 0; // set to zero for now
   }
-  startClick(callback) {
-    // ... your code goes here
+  startClick(printNumber) {
+    //setInterval, a function to be executed every delay miliseconds
+    // arrow function
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (printNumber) printNumber();
+    }, 1000);
   }
   getMinutes() {
-    // ... your code goes here
+    // e.g, currentTime = 100sec --> 1min + 40sec
+    // current time divided by 60 
+    const minutes = Math.floor(this.currentTime / 60);
+    // return the minutes
+    return minutes; 
   }
   getSeconds() {
-    // ... your code goes here
+    // time minus the minutes (in seconds)
+    // could not use minutes as its not in the scope of the other function
+    const seconds = this.currentTime - (this.getMinutes()*60);
+    // return seconds
+    return seconds;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  twoDigitsNumber(number) {
+    // if currentTime = 36 seconds, --> 00 minutes & 36 seconds
+    // if currentTime = 5 minutes and 43 seconds, --> 05 minutes and 43 seconds;
+    let twoDigitString = ("0" + number).slice(-2);
+    console.log(twoDigitString); 
+    return twoDigitString; 
   }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
+
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0; 
   }
   splitClick() {
-    // ... your code goes here
+    const min = this.twoDigitsNumber(this.getMinutes()); 
+    const sec = this.twoDigitsNumber(this.getSeconds());
+    return `${min}:${sec}`
   }
+
 }
+
+//const chronometer = new Chronometer(); 
+//console.log(chronometer); 
+
+//chronometer.getMinutes();
+//chronometer.getSeconds();
+//chronometer.twoDigitsNumber(3);
+//chronometer.splitClick();
