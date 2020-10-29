@@ -49,49 +49,49 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.className = 'btn start';
+  btnLeft.textContent = "START";
+  btnRight.className = 'btn reset';
+  btnRight.textContent = "RESET";
+  chronometer.stopClick();
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  const olTag = document.querySelector("ol");
+  const li = document.createElement("li");
+  li.innerText = chronometer.splitClick();
+  olTag.appendChild(li);
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.className = 'btn stop';
+  btnLeft.textContent = "STOP";
+  btnRight.className = 'btn split';
+  console.log(btnRight.classList.contains('split'));
+  btnRight.textContent = "SPLIT";
+  chronometer.startClick();
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if(btnLeft.classList.contains('start')) {
-    btnLeft.className = 'btn stop';
-    btnLeft.textContent = "STOP";
-    btnRight.className = 'btn split';
-    btnRight.textContent = "SPLIT";
-    chronometer.startClick();
+    setStartBtn();
   }
-  else if (btnLeft.textContent === 'STOP') {
-    btnLeft.className = 'btn start';
-    btnLeft.textContent = "START";
-    btnRight.className = 'btn reset';
-    btnRight.textContent = "RESET";
-    chronometer.stopClick();
+  else if (btnLeft.classList.contains('stop')) {
+    setStopBtn();
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if(btnRight.classList.contains('reset') ) {
-    //btnRight.className = 'btn split';
-    //btnRight.textContent = "SPLIT";
-    chronometer.resetClick();
+    setResetBtn();
   }
-  else if (btnRight.classList.contains === 'split') {
-    btnRight.className = 'btn reset';
-    btnRight.textContent = "RESET";
+  else if (btnRight.classList.contains('split')) {
     setSplitBtn();
   }
 });
