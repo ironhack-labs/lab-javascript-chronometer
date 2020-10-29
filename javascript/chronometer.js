@@ -9,6 +9,7 @@ class Chronometer {
       this.currentTime += 1;
       printSeconds();
       printMinutes();
+      console.log(this.currentTime)
     }, 1000);
     if(this.currentTime){callback();} 
   }
@@ -31,6 +32,8 @@ class Chronometer {
   }
   resetClick() {
     this.currentTime = 0;
+    printSeconds();
+    printMinutes();
   }
   splitClick() {
     const min = this.twoDigitsNumber(this.getMinutes());

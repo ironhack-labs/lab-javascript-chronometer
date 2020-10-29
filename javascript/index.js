@@ -84,13 +84,15 @@ btnLeft.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  if(btnRight.classList.contains('start')) {
-    btnRight.className = 'btn stop';
-    btnRight.textContent = "STOP";
+  if(btnRight.classList.contains('reset') ) {
+    //btnRight.className = 'btn split';
+    //btnRight.textContent = "SPLIT";
+    chronometer.resetClick();
   }
-  else if (btnRight.textContent === 'STOP') {
-    btnRight.className = 'btn start';
-    btnRight.textContent = "START";
+  else if (btnRight.classList.contains === 'split') {
+    btnRight.className = 'btn reset';
+    btnRight.textContent = "RESET";
+    setSplitBtn();
   }
 });
 
