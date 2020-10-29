@@ -14,10 +14,8 @@ let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
 function printTime() {
-  setInterval(() => {
-    printSeconds(chronometer.getSeconds());
-    printMinutes(chronometer.getMinutes());
-  }, 1000);
+  printSeconds(chronometer.getSeconds());
+  printMinutes(chronometer.getMinutes());
 }
 
 function printMinutes(minutes) {
@@ -72,7 +70,7 @@ btnLeft.addEventListener("click", () => {
   if (btnLeft.classList.contains("start")) {
     setStopBtn();
     setSplitBtn();
-    chronometer.startClick(printTime());
+    chronometer.startClick(printTime);
   } else {
     chronometer.stopClick();
     setStartBtn();
