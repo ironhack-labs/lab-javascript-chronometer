@@ -38,9 +38,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  let creation = chronometer.splitClick();
+  let split = chronometer.splitClick();
   let li = document.createElement('li');
-  li.innerHTML = creation;
+  li.innerHTML = split;
   splits.appendChild(li);
 }
 
@@ -80,7 +80,6 @@ if (btnLeft.className === 'btn start') {
   chronometer.stopClick();
 } 
 });
-
 
 
 // Reset/Split Button
