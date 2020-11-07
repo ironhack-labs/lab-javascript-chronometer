@@ -7,43 +7,33 @@ class Chronometer {
     let setTime = 0;
     const interval = setInterval((callback) => {
 
-      console.log(setTime);
       this.currentTime += interval
     },1000)
   }
 
-  getMinutes(minutes) {
-    this.minutes = minutes
-    this.minutes = this.currentTime / 6000
-    
-           
-   this.currentTime = Math.round(this.minutes*1000/1000) 
-      
-    return this.currentTime
-  
-
+  getMinutes() {
+    return Math.floor(this.currentTime/60)
   }
-
-
-
   
   getSeconds(seconds) {
-    this.seconds = seconds
-    if (this.currentTime === 0) {
-      return 0
-    }
-  return this.currentTime
+    return this.currentTime % 60
   }
-  twoDigitsNumber() {
-    return [this.getMinutes, this.seconds]
-  }
+  twoDigitsNumber(value) {
+    if (value < 10) return `0${value}`;
+    return `${value}`;
+   }
+
   stopClick() {
-    this,this.intervalId = 0
+    return clearInterval(this.intervalId)
   }
+
   resetClick() {
-    // ... your code goes here
+    return this.currentTime = 0
   }
+
   splitClick() {
-    // ... your code goes here
+    let min = this.twoDigitsNumber(this.getMinutes());
+    let sec = this.twoDigitsNumber(this.getSeconds());
+    return `${min}:${sec}`
   }
 }
