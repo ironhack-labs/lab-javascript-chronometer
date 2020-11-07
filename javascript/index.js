@@ -1,4 +1,4 @@
-const chronometer = new Chronometer();
+const chronometer = new Chronometer()
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
@@ -14,15 +14,25 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
-}
+  
+printMinutes();
+printSeconds();
 
-function printMinutes() {
-  // ... your code goes here
 }
+function printMinutes() {
+  let currentMinutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+
+  console.log(currentMinutes);
+  minDec.innerHTML = currentMinutes[0];
+  minUni.innerHTML = currentMinutes[1];
+  }                             
 
 function printSeconds() {
-  // ... your code goes here
+  let currentSeconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+
+  secDec.innerHTML = currentSeconds[0];
+  secUni.innerHTML = currentSeconds[1];
+  
 }
 
 // ==> BONUS
@@ -39,27 +49,48 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stopClick();
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.splitClick();
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.startClick(printTime);
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+
+  if (btnLeft.classList.contains("start")) { 
+    btnLeft.innerHTML = "STOP";
+    btnLeft.classList.toggle("stop");
+    btnLeft.classList.toggle("start");
+    btnRight.classList.add("split");
+    btnRight.innerHTML = "SPLIT";
+    setStartBtn();
+  }
+  else { 
+      setStopBtn();
+      btnLeft.innerHTML = "START";
+      btnLeft.classList.toggle("stop");
+      btnLeft.classList.toggle("start");
+      btnRight.innerHTML = "RESET";
+      btnRight.classList.add("reset");
+
+
+  }
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  setResetBtn();
+ 
+  
 });
