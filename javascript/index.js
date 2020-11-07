@@ -54,6 +54,7 @@ function setStopBtn() {
 
 function setSplitBtn() {
   chronometer.splitClick();
+  
 }
 
 function setStartBtn() {
@@ -61,6 +62,7 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
+  // btnRight.className = 'btn reset';
   chronometer.resetClick();
 }
 
@@ -71,7 +73,6 @@ btnLeft.addEventListener('click', () => {
     btnLeft.innerHTML = "STOP";
     btnLeft.classList.toggle("stop");
     btnLeft.classList.toggle("start");
-    btnRight.classList.add("split");
     btnRight.innerHTML = "SPLIT";
     setStartBtn();
   }
@@ -81,16 +82,18 @@ btnLeft.addEventListener('click', () => {
       btnLeft.classList.toggle("stop");
       btnLeft.classList.toggle("start");
       btnRight.innerHTML = "RESET";
-      btnRight.classList.add("reset");
-
-
   }
   
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  setResetBtn();
- 
   
+  if (btnRight.className === 'btn split') {
+    printSplit();
+  } else {
+    setResetBtn();
+    printTime();
+    // clearSplits();
+  } 
 });
