@@ -22,13 +22,11 @@ class Chronometer {
     return this.currentTime - this.getMinutes() * 60;
   }
    
-  twoDigitsNumber(num) {
-
-    if(twoDigitsNumber.length > 2){
-        return `0 + ${num}`
-    }
-    // ... your code goes here
+  twoDigitsNumber() {
+    const minutes = "0" + this.currentTime
+    return minutes.slice(-2);
   }
+  
   stopClick() {
     
     clearInterval(this.intervalId);
