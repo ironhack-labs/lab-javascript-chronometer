@@ -4,6 +4,8 @@ const chronometer = new Chronometer();
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
+
+
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -15,14 +17,18 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
   // ... your code goes here
+  minDec.innerText.getMinutes()
 }
 
 function printSeconds() {
   // ... your code goes here
+  secUni.innerText = 5;
 }
 
 // ==> BONUS

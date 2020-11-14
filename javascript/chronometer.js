@@ -26,7 +26,7 @@ class Chronometer {
     const minutes = "0" + this.currentTime
     return minutes.slice(-2);
   }
-  
+
   stopClick() {
     
     clearInterval(this.intervalId);
@@ -36,6 +36,5 @@ class Chronometer {
     return this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
-  }
+    return this.twoDigitsNumber(this.getMinutes()) + ":" + this.twoDigitsNumber(this.getSeconds())} 
 }
