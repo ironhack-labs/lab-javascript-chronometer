@@ -3,27 +3,33 @@ class Chronometer {
         this.currentTime = 0;
         this.intervalId = 0;
     }
-    startClick(callback) {
+    startClick(callback = null) {
 
-        this.intervalId = setInterval(() => this.currentTime++, 1000);
+        this.intervalId = setInterval(() => {
+            this.currentTime++;
+            console.log(this.currentTime);
+        }, 1000);
 
     }
     getMinutes() {
         const minutes = Math.floor(this.currentTime / 60);
-
         return minutes;
     }
     getSeconds() {
         const seconds = this.currentTime % 60;
-
         return seconds;
     }
-    twoDigitsNumber() {
-        // este no se entiende y los test están comentados
-        let digitMinutes = this.getMinutes();
-        let digitSeconds = this.getSeconds();
+    twoDigitsNumber(number) {
 
-        return `07`;
+        if (number === 0) {
+            return '00';
+        }
+
+        if (number < 10 && number >= 1) {
+            return '0' + number;
+        }
+
+        return number.toString();
     }
     stopClick() {
         clearInterval(this.intervalId);
