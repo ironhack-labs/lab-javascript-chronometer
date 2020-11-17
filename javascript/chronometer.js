@@ -13,16 +13,16 @@ class Chronometer {
     return this.currentTime - this.getMinutes() * 60;
   }
   twoDigitsNumber() {
-    this.getMinutes.toFixed
+    return ('0' + this.currentTime).slice(-2)
   }
   stopClick() {
-    // ... your code goes here
+    return clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    return this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    return `0${Math.floor(this.currentTime/60)}:0${this.currentTime - this.getMinutes() * 60}`;
   }
 
   tick(callback) {

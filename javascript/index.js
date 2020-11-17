@@ -2,6 +2,7 @@ const chronometer = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
+
 const btnRight = document.getElementById('btnRight');
 
 // get the DOM elements that will serve us to display the time:
@@ -56,10 +57,40 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerText === "START") {
+     btnLeft.innerText = "STOP"
+  }else {
+     btnLeft.innerText = 'START'
+  }
+
+
+  if (btnLeft.className === "btn start") {
+    btnLeft.className = "btn stop"
+  }else {
+    btnLeft.className = "btn start"
+  }
+
+  if (btnLeft.classList.contains("start")) {
+    chronometer.startClick(callback);
+  }else {
+    chronometer.stopClick();
+  }
+  
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerText === "RESET") {
+    btnRight.innerText = "SPLIT"
+ }else {
+    btnRight.innerText = 'RESET'
+ }
+
+
+ if (btnRight.className === "btn reset") {
+   btnRight.className = "btn split"
+ }else {
+   btnRight.className = "btn reset"
+ }
 });
