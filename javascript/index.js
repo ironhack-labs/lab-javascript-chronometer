@@ -14,15 +14,18 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
-}
+  minDec.textContent = printMinutes()[0];
+  minUni.textContent = printMinutes()[1];
+  secDec.textContent = printSeconds()[0];
+  secUni.textContent = printSeconds()[1];
+  }
 
 function printMinutes() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(chronometer.getMinutes());
 }
 
 function printSeconds() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(chronometer.getSeconds())
 }
 
 // ==> BONUS
@@ -31,35 +34,61 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  return `${printMinutes()}:${printSeconds()}`
 }
 
 function clearSplits() {
-  // ... your code goes here
+  minDec.textContent = 0;
+  minUni.textContent = 0;
+  secDec.textContent = 0;
+  secUni.textContent = 0;
+  splits.removeChild()
+//remove all li (through remove child element)
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.className = "btn stop"
+  btnLeft.textContent = "STOP"
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.className = "btn split"
+  btnRight.textContent = "SPLIT"
+
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.className = "btn start"
+  btnLeft.textContent = "START"
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.className = "btn reset"
+  btnRight.textContent = "RESET"
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+
+  if (btnLeft.classList.contains('stop')) {
+    setStartBtn();
+    setResetBtn(); 
+    chronometer.stopClick();
+  } else {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.startClick(printTime);    
+  }
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnRight.classList.contains('split')) {
+    let timeAtSplit = printSplit();
+    const li = document.createElement('li');
+    li.textContent = timeAtSplit;
+    splits.appendChild(li);
+    }
+  } 
+);

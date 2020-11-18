@@ -1,26 +1,52 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0,
+    this.intervalId = 0
   }
-  startClick(callback) {
-    // ... your code goes here
+//The setInterval() will be assigned to our intervalId property, so this way, we will be able to clear it later on when we need to restart the timer.
+
+  startClick(toto) {
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
+      toto();
+     }, 1000);
   }
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(callback) {
+    let number = callback.toString();
+    if (number.length == 1) {
+      number = "0" + number
+    } ;
+    return number;
   }
+// HOW DO WE REWRITE THIS IN TERNARY ?
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
   splitClick() {
-    // ... your code goes here
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+    let splitTime;
+
+    if (min < 10 && sec < 10) {
+      splitTime = `${0}${min}:${0}${sec}`;
+    } else if (min < 10 && sec > 10) {
+      splitTime = `0${min}:${sec}`;
+    } else if (min > 10 && sec < 10) {
+      splitTime = `${min}:0${sec}`;
+    } else {
+      splitTime = `${min}:${sec}`;
+    }
+
+    return splitTime;
   }
 }
