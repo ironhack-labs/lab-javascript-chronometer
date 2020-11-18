@@ -49,16 +49,25 @@ function printMilliseconds() {
   // ... your code goes here
 }
 
-function printSplit() {}
+function printSplit() {
+  if ((btnLeft.class = "split")) {
+    const li = document.createElement("li");
+    li.textContent = `${chrono.splitClick()}`;
+    splits.appendChild(li);
+  }
+}
 
 function clearSplits() {
-  if (btnLeft.class === "stop") [];
-  // ... your code goes here
+  if ((btnLeft.class = "stop")) {
+    splits = "";
+    secDec.textContent = 0;
+    secUni.textContent = 0;
+    secDec.textContent = 0;
+    secUni.textContent = 0;
+  }
 }
 
-function setStopBtn() {
-  // ... your code goes here
-}
+function setStopBtn() {}
 
 function setSplitBtn() {}
 
@@ -87,9 +96,7 @@ btnLeft.addEventListener("click", () => {
 
 // Reset/Split Button
 btnRight.addEventListener("click", () => {
-  if (btnRight.textContent === "SPLIT") {
-    chrono.printSplit();
-  }
+  printSplit();
 });
 
 //

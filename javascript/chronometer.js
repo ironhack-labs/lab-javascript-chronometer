@@ -40,6 +40,8 @@ class Chronometer {
     let min = this.twoDigitsNumber(this.getMinutes());
     let sec = this.twoDigitsNumber(this.getSeconds());
 
+    console.log(min);
+
     return `${min}:${sec}`;
   }
 }
