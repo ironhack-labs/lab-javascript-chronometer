@@ -3,7 +3,6 @@ class Chronometer {
     this.currentTime = 0,
     this.intervalId = 0
   }
-//The setInterval() will be assigned to our intervalId property, so this way, we will be able to clear it later on when we need to restart the timer.
 
   startClick(toto) {
     this.intervalId = setInterval(() => {
@@ -16,6 +15,9 @@ class Chronometer {
   }
   getSeconds() {
     return this.currentTime % 60;
+  }
+  getMilliseconds(){
+
   }
   twoDigitsNumber(callback) {
     let number = callback.toString();

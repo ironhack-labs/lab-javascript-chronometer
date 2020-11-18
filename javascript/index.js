@@ -38,12 +38,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  minDec.textContent = 0;
-  minUni.textContent = 0;
-  secDec.textContent = 0;
-  secUni.textContent = 0;
-  splits.removeChild()
-//remove all li (through remove child element)
+  while(splits.firstChild) {splits.removeChild(splits.firstChild)};
 }
 
 function setStopBtn() {
@@ -89,6 +84,9 @@ btnRight.addEventListener('click', () => {
     const li = document.createElement('li');
     li.textContent = timeAtSplit;
     splits.appendChild(li);
+    } else {
+    chronometer.resetClick();
+    printTime();
+    clearSplits();
     }
-  } 
-);
+});
