@@ -6,21 +6,21 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      return this.currentTime;
-    }, 1000);
+      if (callback) callback()
+    }, 10);
   }
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
   }
   getSeconds() {
-    return this.currentTime - this.getMinutes() * 60;
+    return Math.floor(this.currentTime / 100 - this.getMinutes() * 60);
   }
   getMilliseconds() {
-    return 0;
+    return this.currentTime - this.getSeconds() * 100 - this.getMinutes() *6000;
   }
   twoDigitsNumber(number) {
     return (number < 10 ? `0${number}` : `${number}`); 
-    }
+  }
   stopClick() {
     clearInterval(this.intervalId);
     this.currentTime = 0;
@@ -31,4 +31,4 @@ class Chronometer {
   splitClick() {
     return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}:${this.twoDigitsNumber(this.getMilliseconds())}`;
   }
-}
+};
