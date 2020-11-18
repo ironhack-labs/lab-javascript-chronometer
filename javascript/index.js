@@ -23,13 +23,13 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  // ... your code goes here
+  
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-}
+}i
 
 function printSplit() {
   // ... your code goes here
@@ -71,10 +71,11 @@ btnLeft.addEventListener('click', () => {
   }
 
   if (btnLeft.classList.contains("start")) {
-    chronometer.startClick(callback);
+    chronometer.startClick()
   }else {
     chronometer.stopClick();
   }
+  
   
 
 });
