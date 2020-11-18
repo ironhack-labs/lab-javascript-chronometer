@@ -18,6 +18,9 @@ function printTime() {
   minUni.textContent = printMinutes()[1];
   secDec.textContent = printSeconds()[0];
   secUni.textContent = printSeconds()[1];
+  milDec.textContent = printMilliseconds()[0];
+  milUni.textContent = printMilliseconds()[1];
+    // for original exercise, remove milDec and milUni
   }
 
 function printMinutes() {
@@ -30,11 +33,11 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(chronometer.getMilliseconds())
 }
 
 function printSplit() {
-  return `${printMinutes()}:${printSeconds()}`
+  return `${printMinutes()}:${printSeconds()}:${printMilliseconds()}`
 }
 
 function clearSplits() {
@@ -64,7 +67,6 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-
   if (btnLeft.classList.contains('stop')) {
     setStartBtn();
     setResetBtn(); 
@@ -72,7 +74,7 @@ btnLeft.addEventListener('click', () => {
   } else {
     setStopBtn();
     setSplitBtn();
-    chronometer.startClick(printTime);    
+    chronometer.startClick(printTime);   
   }
 });
 
@@ -80,7 +82,7 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if (btnRight.classList.contains('split')) {
-    let timeAtSplit = printSplit();
+    let timeAtSplit =   printSplit();
     const li = document.createElement('li');
     li.textContent = timeAtSplit;
     splits.appendChild(li);

@@ -8,16 +8,19 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
       toto();
-     }, 1000);
+     }, 10); //for original exercise: increment each 1000
   }
+
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
+  //original exercise: return Math.floor(this.currentTime / 60)
   }
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime / 100 % 60);
+  //original exercise: return this.currentTime % 60
   }
   getMilliseconds(){
-
+    return this.currentTime % 100;
   }
   twoDigitsNumber(callback) {
     let number = callback.toString();
@@ -35,20 +38,14 @@ class Chronometer {
     this.currentTime = 0;
   }
   splitClick() {
-    let min = this.getMinutes();
-    let sec = this.getSeconds();
-    let splitTime;
-
-    if (min < 10 && sec < 10) {
-      splitTime = `${0}${min}:${0}${sec}`;
-    } else if (min < 10 && sec > 10) {
-      splitTime = `0${min}:${sec}`;
-    } else if (min > 10 && sec < 10) {
-      splitTime = `${min}:0${sec}`;
+    //to switch to the original exercise, get the correct test from the chronometer-spec.js and comment out the right thing
+    let min = chronometer.getMinutes();
+    let sec = chronometer.getSeconds();
+    let milli = chronometer.getMilliseconds();
+    if (min < 10) {
+      `${0}${min}:${0}${sec}:${0}${milli}`;
     } else {
-      splitTime = `${min}:${sec}`;
+      `${min}:${sec}:${milli}`;
     }
-
-    return splitTime;
   }
 }
