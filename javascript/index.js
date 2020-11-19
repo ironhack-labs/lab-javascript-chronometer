@@ -20,6 +20,8 @@ function printTime() {
   }, -1000);
 }
 
+const id = printTime();
+
 function printMinutes() {
   if (minUni.textContent < 10) {
     minDec.textContent = 0;
@@ -43,7 +45,6 @@ function printSeconds() {
     secUni.textContent = secondDigit.slice(1, 2);
   }
 }
-
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
@@ -58,12 +59,10 @@ function printSplit() {
 }
 
 function clearSplits() {
-  if ((btnLeft.class = "stop")) {
-    splits = "";
-    secDec.textContent = 0;
-    secUni.textContent = 0;
-    secDec.textContent = 0;
-    secUni.textContent = 0;
+  if (btnRight.textContent === "RESET") {
+    splits.innerHTML = "";
+    window.clearInterval(id);
+    chrono.resetClick();
   }
 }
 
@@ -96,7 +95,11 @@ btnLeft.addEventListener("click", () => {
 
 // Reset/Split Button
 btnRight.addEventListener("click", () => {
-  printSplit();
+  if (btnRight.textContent === "SPLIT") {
+    printSplit();
+  } else {
+    clearSplits();
+  }
 });
 
 //
