@@ -4,6 +4,7 @@ const chronometer = new Chronometer();
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
+
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
@@ -14,15 +15,25 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
   // ... your code goes here
+  setInterval(() => {
+    minUni.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes()).slice(1);
+    minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes()).slice(0,1);
+  }, 1000);
 }
+  
 
 function printSeconds() {
-  // ... your code goes here
+  setInterval(() => {
+    secUni.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds()).slice(1);
+    secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds()).slice(0,1);
+  }, 1000);
+  
 }
 
 // ==> BONUS
@@ -55,11 +66,35 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
 
-// Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener('click', () => {
+  printTime();
+  if(btnLeft.className == "btn start"){
+    chronometer.startClick();
+    btnLeft.classList.replace("start","stop");
+    btnLeft.textContent="STOP";
+    if(btnRight.className == "btn reset"){
+      btnRight.classList.replace("reset","split");
+      btnRight.textContent="SPLIT";
+    }
+  }else{
+    btnLeft.classList.replace("stop","start");
+    chronometer.stopClick();
+    btnLeft.textContent="START";
+      if(btnRight.className == "btn split"){
+        btnRight.classList.replace("split","reset");
+        btnRight.textContent="RESET";
+      }
+  }
+});
+btnRight.addEventListener("click", () => {
+  let createLis = document.createElement("li");
+  createLis.textContent = `${chronometer.splitClick()}`;
+  if(btnRight.className == "btn split") {
+    splits.appendChild(createLis);
+  }else {
+    chronometer.resetClick();
+    clearSplits();
+    splits.querySelectorAll('*').forEach(n => n.remove());
+  }
 });
