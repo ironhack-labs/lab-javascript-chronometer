@@ -2,12 +2,12 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
-    // ... your code goes here
   }
   startClick(callback) {
     this.intervalId= setInterval(() => {
-  console.log('interval is set to 1 sec')
+  //console.log('interval is set to 1 sec')
   this.currentTime++
+ // console.log(`${this.currentTime}`)
     }, 1000);
   }
 
