@@ -17,7 +17,7 @@ function printTime() {
   setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
+  }, -1000);
 }
 
 function printMinutes() {
@@ -50,9 +50,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  if ((btnLeft.class = "split")) {
+  if (btnRight.textContent === "SPLIT") {
     const li = document.createElement("li");
-    li.textContent = `${chrono.splitClick()}`;
+    li.textContent = `${minDec.textContent}${minUni.textContent}:${secDec.textContent}${secUni.textContent}`;
     splits.appendChild(li);
   }
 }
