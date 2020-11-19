@@ -20,40 +20,26 @@ function printTime() {
   }, -1000);
 }
 
-const id = printTime();
-
 function printMinutes() {
-  if (minUni.textContent < 10) {
-    minDec.textContent = 0;
-    minUni.textContent = chrono.getMinutes();
-  } else {
-    let firstDigit = String(chrono.getMinutes());
-    let secondDigit = String(chrono.getMinutes());
-    minDec.textContent = firstDigit.slice(0, 1);
-    minUni.textContent = secondDigit.slice(1, 2);
-  }
+  let firstDigit = chrono.twoDigitsNumber(chrono.getMinutes());
+  let secondDigit = chrono.twoDigitsNumber(chrono.getMinutes());
+  minDec.textContent = firstDigit.slice(0, 1);
+  minUni.textContent = secondDigit.slice(1, 2);
 }
 
 function printSeconds() {
-  if (chrono.getSeconds() < 10) {
-    secDec.textContent = 0;
-    secUni.textContent = chrono.getSeconds();
-  } else {
-    let firstDigit = String(chrono.getSeconds());
-    let secondDigit = String(chrono.getSeconds());
-    secDec.textContent = firstDigit.slice(0, 1);
-    secUni.textContent = secondDigit.slice(1, 2);
-  }
+  let firstDigit = chrono.twoDigitsNumber(chrono.getSeconds());
+  let secondDigit = chrono.twoDigitsNumber(chrono.getSeconds());
+  secDec.textContent = firstDigit.slice(0, 1);
+  secUni.textContent = secondDigit.slice(1, 2);
 }
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
+
+function printMilliseconds() {}
 
 function printSplit() {
   if (btnRight.textContent === "SPLIT") {
     const li = document.createElement("li");
-    li.textContent = `${minDec.textContent}${minUni.textContent}:${secDec.textContent}${secUni.textContent}`;
+    li.textContent = `${chrono.splitClick()}`;
     splits.appendChild(li);
   }
 }
@@ -61,8 +47,10 @@ function printSplit() {
 function clearSplits() {
   if (btnRight.textContent === "RESET") {
     splits.innerHTML = "";
-    window.clearInterval(id);
-    chrono.resetClick();
+    minDec.textContent = chrono.resetClick();
+    minUni.textContent = chrono.resetClick();
+    secDec.textContent = chrono.resetClick();
+    secUni.textContent = chrono.resetClick();
   }
 }
 
@@ -101,5 +89,3 @@ btnRight.addEventListener("click", () => {
     clearSplits();
   }
 });
-
-//
