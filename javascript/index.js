@@ -46,11 +46,18 @@ let li = document.createElement('li');
 li.innerHTML = `${minute}:${second}`
 splits.appendChild(li)
 
-
 }
 
 function clearSplits() {
-  // ... your code goes here
+  
+  minDec.innerHTML = "0"
+  minUni.innerHTML = "0"
+  secDec.innerHTML = "0"
+  secUni.innerHTML = "0"
+  chronometer.currentTime = 0
+
+  splits.innerHTML = ""
+
 }
 
 function setStopBtn() {
@@ -74,9 +81,11 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
+
+  if(btnLeft.innerHTML === "START") {
   btnRight.classList.add("reset");
   btnRight.classList.remove("split");
-  btnRight.innerHTML = "RESET"
+  btnRight.innerHTML = "RESET"}
 }
 
 // Start/Stop Button
@@ -101,13 +110,12 @@ btnRight.addEventListener('click', () => {
 
   if (btnRight.innerHTML === "RESET") {
     
-    setSplitBtn();
-    printSplit();
+  
+    clearSplits();
+
     }
 
-else {
-  printSplit();
-  setResetBtn();
-  }
-
+    if (btnRight.innerHTML === "SPLIT") {
+      printSplit()
+    }
 });

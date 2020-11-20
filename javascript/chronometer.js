@@ -43,6 +43,7 @@ else {return number.toString();}
 
   resetClick() {
   this.currentTime = 0;
+  
   }
 
   splitClick() {
