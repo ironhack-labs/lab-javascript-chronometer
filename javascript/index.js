@@ -14,52 +14,84 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+ minDec.innerHTML = printMinutes().split('')[0]
+ minUni.innerHTML = printMinutes().split('')[1]
+ secDec.innerHTML = printSeconds().split('')[0]
+ secUni.innerHTML = printSeconds().split('')[1]
+ milDec.innerHTML = printMilliSeconds().split('')[0]
+ milUni.innerHTML = printMilliSeconds().split('')[1]
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minutes = chronometer.getMinutes()
+  return chronometer.twoDigitsNumber(minutes)
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const seconds = chronometer.getSeconds()
+  return chronometer.twoDigitsNumber(seconds)
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliSeconds() {
+  const milliSeconds = chronometer.getMilliSeconds()
+  return chronometer.twoDigitsNumber(milliSeconds)
 }
 
+//The formatting is a bit long in this case but it was to avoid breaking Jasmine tests
 function printSplit() {
-  // ... your code goes here
+  splits.innerHTML += `<li>${chronometer.splitClick()}:${chronometer.twoDigitsNumber(chronometer.getMilliSeconds())}</li>`
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = "";
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("start");
+  btnLeft.classList.add("stop");
+  btnLeft.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.classList.remove("reset");
+  btnRight.classList.add('split');
+  btnRight.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+  btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.classList.remove("split");
+  btnRight.classList.add("reset");
+  btnRight.innerHTML = "RESET";
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerHTML == "START") {
+    setSplitBtn();
+    setStopBtn();
+    chronometer.startClick(printTime);
+  } else if (btnLeft.innerHTML == "STOP") {
+    setResetBtn();
+    setStartBtn();
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerHTML == "RESET") {
+    chronometer.resetClick();
+    printTime()
+    clearSplits()
+  } else if (btnRight.innerHTML == "SPLIT") {
+    printSplit();
+  }
 });
+
