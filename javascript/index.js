@@ -13,16 +13,27 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
-function printTime() {
+function printTime(minutes, seconds) {
   // ... your code goes here
+printMinutes();
+printSeconds()
 }
 
-function printMinutes() {
+function printMinutes(minutes) {
   // ... your code goes here
-}
+  try {
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
 
-function printSeconds() {
-  // ... your code goes here
+  }catch (error) {
+    console.error(error)
+  }
+}
+console.log('test')
+function printSeconds(seconds) {
+    secDec.innerHTML = seconds[0];
+    secUni.innerHTML = seconds[1];
+
 }
 
 // ==> BONUS
@@ -48,6 +59,8 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+  btnLeft.innerHTML = 'START';
+  btnLeft.setAttribute('class', 'btn start');
 }
 
 function setResetBtn() {
@@ -57,6 +70,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  
 });
 
 // Reset/Split Button
