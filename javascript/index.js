@@ -1,6 +1,8 @@
+//DOM MANIP//
+
 const chronometer = new Chronometer();
 
-// get the buttons:
+//get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
 
@@ -14,15 +16,18 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  minDec.innerHTML = printMinutes().split('')[0];
+  minUni.innerHTML = printMinutes().split('')[1];
+  secDec.innerHTML = printSeconds().split('')[0];
+  secUni.innerHTML = printSeconds().split('')[1];
 }
 
 function printMinutes() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(getMinutes());
 }
 
 function printSeconds() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(getSeconds());
 }
 
 // ==> BONUS
@@ -31,35 +36,53 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const list = document.createElement("li");
+  list.innerHTML = chronometer.splitClick();
+  splits.appendChild(list);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = "";
+  minDec.innerHTML = chronometer.resetClick();
+  minUni.innerHTML = chronometer.resetClick();
+  secDec.innerHTML = chronometer.resetClick();
+  secUni.innerHTML = chronometer.resetClick();
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.style.backgroundColor = '#5fca5f'; //green
+  btnLeft.innerHTML = 'START';
+  btnRight.style.backgroundColor = '#908e8e'; //grey
+  btnRight.innerHTML = 'RESET';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.style.backgroundColor = '#0851ab';
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.style.backgroundColor = '#f14949'; //red
+  btnLeft.innerHTML = 'STOP';
+  btnRight.style.backgroundColor = '#0851ab'; //blue 
+  btnRight.innerHTML = 'SPLIT';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.style.backgroundColor = '#908e8e';
 }
 
-// Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnLeft.innerHTML == 'START') {
+    setStartBtn();
+  } else if(btnLeft.innerHTML == 'STOP') {
+    setStopBtn();
+  }
 });
 
-// Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRight.innerHTML == 'RESET') {
+    setResetBtn();
+  } else if(btnRight.innerHTML == 'SPLIT') {
+    setSplitBtn();
+  }
 });
