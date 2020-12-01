@@ -1,8 +1,13 @@
 class Chronometer {
   constructor() {
     // ... your code goes here
+   this.currentTime = 0;
+    this.intervalId= 0;
   }
-  startClick(callback) {
+  startClick(calback) {
+   this.intervalId = setInterval(()=>{
+      this.currentTime++
+    },1000);
     // ... your code goes here
   }
   getMinutes() {
