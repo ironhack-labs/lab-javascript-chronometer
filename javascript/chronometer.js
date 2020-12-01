@@ -18,8 +18,7 @@ class Chronometer {
   }
   getSeconds() {
     // ... your code goes here
-    const minutes = Math.floor(this.currentTime / 60)
-    const seconds = this.currentTime - minutes * 60
+    const seconds = this.currentTime % 60
     return seconds
   }
   twoDigitsNumber(number) {

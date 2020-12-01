@@ -2,6 +2,7 @@ const chronometer = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
+//console.log (btnLeft)
 const btnRight = document.getElementById('btnRight');
 
 // get the DOM elements that will serve us to display the time:
@@ -15,14 +16,24 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printSeconds()
+  printMinutes()
 }
 
 function printMinutes() {
   // ... your code goes here
+    setInterval (() =>{
+      minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).slice (0,1)
+      minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes()).slice(1)
+    }, 1000)
 }
 
 function printSeconds() {
   // ... your code goes here
+  setInterval(() => {
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).slice(0, 1)
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds()).slice(1)
+  }, 1000)
 }
 
 // ==> BONUS
@@ -59,7 +70,35 @@ btnLeft.addEventListener('click', () => {
   // ... your code goes here
 });
 
+btnLeft.onclick = (event) => {
+  //console.log (event.target.className)
+  if (event.target.className == "btn start") {
+    event.target.className = "btn stop"
+    event.target.innerHTML = "STOP"
+    chronometer.startClick(printTime())
+  }
+  //console.log (event.target.className)
+  else if (event.target.className !== "btn start"){
+    event.target.className = "btn start"
+    event.target.innerHTML = "START"
+    chronometer.stopClick()
+  }
+}
+
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
+btnRight.onclick = (event) => {
+  // console.log (event.target.className)
+  if (event.target.className == "btn reset") {
+    event.target.className = "btn split"
+    event.target.innerHTML = "SPLIT"
+  }
+  //console.log (event.target.className)
+  else if (event.target.className !== "btn reset"){
+    event.target.className = "btn reset"
+    event.target.innerHTML = "RESET"
+  }
+}
