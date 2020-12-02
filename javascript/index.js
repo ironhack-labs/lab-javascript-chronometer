@@ -45,13 +45,23 @@ function printSplit() {
   // ... your code goes here
   const splitTime = document.getElementById("splits")
   //console.log(splitTime)
-  const time = document.createElement("p")
+  const time = document.createElement("li")
+  time.classList.add("eachSplit")
   time.innerHTML = chronometer.splitClick(printTime())
   splitTime.appendChild(time)
 }
 
 function clearSplits() {
   // ... your code goes here
+  const splitTime = document.getElementById("splits")
+  //console.log(splitTime)
+  const eachSplit = document.getElementsByClassName("eachSplit")
+  //console.log(eachSplit)
+  const eachSplitArray = [...eachSplit]
+  eachSplitArray.forEach(split => {
+    splitTime.removeChild(split)
+  });
+  
 }
 
 function setStopBtn() {
@@ -68,6 +78,7 @@ function setStartBtn() {
 
 function setResetBtn() {
   // ... your code goes here
+  chronometer.resetClick()
 }
 
 // Start/Stop Button
@@ -107,5 +118,7 @@ btnRight.onclick = (event) => {
   else if (btnLeft.className == "btn start"){
     event.target.className = "btn reset"
     event.target.innerHTML = "RESET"
+    setResetBtn()
+    clearSplits()
   }
 }
