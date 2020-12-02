@@ -33,7 +33,6 @@ function printSeconds() {
   // ... your code goes here
   let seconds = chronometer.getSeconds()
   let doubleSeconds = chronometer.twoDigitsNumber(seconds)
-  console.log(doubleSeconds)
   secDec.innerHTML = doubleSeconds[0]
   secUni.innerHTML = doubleSeconds[1]
 }
@@ -45,10 +44,21 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  let listFather = document.getElementById('splits')
+  let listChild = document.createElement("li")
+  listFather.appendChild(listChild)
+  let lastChild = document.getElementById("splits").lastChild
+  let minutes = chronometer.getMinutes()
+  let doubleMinutes = chronometer.twoDigitsNumber(minutes)
+  let seconds = chronometer.getSeconds()
+  let doubleSeconds = chronometer.twoDigitsNumber(seconds)
+  lastChild.innerHTML = `${doubleMinutes}:${doubleSeconds}`
 }
 
 function clearSplits() {
   // ... your code goes here
+  let listFather = document.getElementById('splits')
+  listFather.innerHTML = ''
 }
 
 function setStopBtn() {
@@ -59,6 +69,8 @@ function setSplitBtn() {
   // ... your code goes here
 }
 
+let status
+
 function setStartBtn() {
   // ... your code goes here
   let btnClass = document.getElementById('btnLeft').classList
@@ -68,12 +80,16 @@ function setStartBtn() {
     btnClass.toggle('start');
     btnName.innerHTML = 'STOP';
     chronometer.startClick();
+    status = 'running';
+    setResetBtn();
     printTime();
     } else {
       btnClass.toggle('stop');
       btnClass.toggle('start');
       btnName.innerHTML = 'START';
-      chronometer.stopClick()
+      status = 'stopped';
+      setResetBtn();
+      chronometer.stopClick();
     }
 }
 
@@ -81,14 +97,19 @@ function setResetBtn() {
   // ... your code goes here
   let btnClass = document.getElementById('btnRight').classList
   let btnName = document.getElementById('btnRight')
-  if (btnClass.contains('reset')) {
-    btnClass.toggle('split');
-    btnClass.toggle('reset');
-    btnName.innerHTML = 'SPLIT';
-    } else {
+  if (btnClass.contains('split') && status === 'running') {
+    printSplit();
+    } else if (btnClass.contains('reset') && status === 'stopped') {
+      clearSplits();
+      chronometer.resetClick();     
+    } else if ((btnClass.contains('split') && status === 'stopped')) {
       btnClass.toggle('split');
       btnClass.toggle('reset');
       btnName.innerHTML = 'RESET';
+    } else if (btnClass.contains('reset') && status === 'running') {
+      btnClass.toggle('split');
+      btnClass.toggle('reset');
+      btnName.innerHTML = 'SPLIT';
     }
 }
 
