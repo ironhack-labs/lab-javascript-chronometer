@@ -56,10 +56,32 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+
+  if(document.getElementById('btnLeft').textContent === 'START'){
+    chronometer.startClick() 
+    document.getElementById('btnLeft').className = 'btn stop'
+    document.getElementById('btnLeft').textContent = 'STOP'
+  }
+  else{
+    chronometer.stopClick()
+    document.getElementById('btnLeft').className = 'btn start'
+    document.getElementById('btnLeft').textContent = 'START'
+  }  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+
+  if(document.getElementById('btnRight').textContent === 'RESET'){
+    chronometer.resetClick()
+    document.getElementById('btnRight').className = 'btn split'
+    document.getElementById('btnRight').textContent = 'SPLIT'
+  }
+  else{
+    chronometer.splitClick()
+    document.getElementById('btnRight').className = 'btn reset'
+    document.getElementById('btnRight').textContent = 'RESET'
+  }
 });
+
+
