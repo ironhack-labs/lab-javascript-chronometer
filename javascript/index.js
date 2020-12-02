@@ -43,6 +43,11 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  const splitTime = document.getElementById("splits")
+  //console.log(splitTime)
+  const time = document.createElement("p")
+  time.innerHTML = chronometer.splitClick(printTime())
+  splitTime.appendChild(time)
 }
 
 function clearSplits() {
@@ -90,14 +95,16 @@ btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
 
+
 btnRight.onclick = (event) => {
   // console.log (event.target.className)
-  if (event.target.className == "btn reset") {
+  if (btnLeft.className !== "btn start") {
     event.target.className = "btn split"
     event.target.innerHTML = "SPLIT"
+    printSplit()
   }
   //console.log (event.target.className)
-  else if (event.target.className !== "btn reset"){
+  else if (btnLeft.className == "btn start"){
     event.target.className = "btn reset"
     event.target.innerHTML = "RESET"
   }
