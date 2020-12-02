@@ -19,7 +19,7 @@ class Chronometer {
     }
   }
   twoDigitsNumber(num) {
-    if (num.length === 2) {
+    if (num.toString().length === 2) {
       return num.toString()
     } else {
       return '0' + num.toString()
