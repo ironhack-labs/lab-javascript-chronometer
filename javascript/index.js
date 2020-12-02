@@ -89,12 +89,16 @@ btnLeft.addEventListener('click', () => {
 btnLeft.onclick = (event) => {
   //console.log (event.target.className)
   if (event.target.className == "btn start") {
+    btnRight.className = "btn split"
+    btnRight.innerHTML = "SPLIT"
     event.target.className = "btn stop"
     event.target.innerHTML = "STOP"
     chronometer.startClick(printTime())
   }
   //console.log (event.target.className)
-  else if (event.target.className !== "btn start"){
+  else if (event.target.className !== "btn start") {
+    btnRight.className = "btn reset"
+    btnRight.innerHTML = "RESET"
     event.target.className = "btn start"
     event.target.innerHTML = "START"
     chronometer.stopClick()
