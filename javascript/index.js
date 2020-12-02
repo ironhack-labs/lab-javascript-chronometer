@@ -22,7 +22,7 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  // ... your code goes here
+
 }
 
 // ==> BONUS
@@ -39,19 +39,23 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  document.getElementById('btnLeft').className = 'btn stop'
+  document.getElementById('btnLeft').textContent = 'STOP'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  document.getElementById('btnRight').className = 'btn split'
+  document.getElementById('btnRight').textContent = 'SPLIT'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  document.getElementById('btnLeft').className = 'btn start'
+  document.getElementById('btnLeft').textContent = 'START'
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  document.getElementById('btnRight').className = 'btn reset'
+  document.getElementById('btnRight').textContent = 'RESET'
 }
 
 // Start/Stop Button
@@ -59,29 +63,21 @@ btnLeft.addEventListener('click', () => {
 
   if(document.getElementById('btnLeft').textContent === 'START'){
     chronometer.startClick() 
-    document.getElementById('btnLeft').className = 'btn stop'
-    document.getElementById('btnLeft').textContent = 'STOP'
+    setStopBtn() 
+    setSplitBtn()
   }
   else{
     chronometer.stopClick()
-    document.getElementById('btnLeft').className = 'btn start'
-    document.getElementById('btnLeft').textContent = 'START'
+    setStartBtn()
+    setResetBtn()
   }  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
 
-  if(document.getElementById('btnRight').textContent === 'RESET'){
-    chronometer.resetClick()
-    document.getElementById('btnRight').className = 'btn split'
-    document.getElementById('btnRight').textContent = 'SPLIT'
-  }
-  else{
-    chronometer.splitClick()
-    document.getElementById('btnRight').className = 'btn reset'
-    document.getElementById('btnRight').textContent = 'RESET'
-  }
+  document.getElementById('btnRight').textContent === 'RESET' ? chronometer.resetClick() : chronometer.splitClick()
+  
 });
 
 
