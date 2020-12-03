@@ -5,31 +5,46 @@ class Chronometer {
   }
   startClick(callback) {
     console.log('start')
-    this.intervalId = setInterval(() => this.currentTime++, 1000);  
+    this.intervalId = setInterval(() => {
+      this.currentTime++
+      printTime()
+    }, 10);  
   }
+
+
   getMinutes() {
-    let minutes = 0
-    minutes = Math.floor(this.currentTime / 60)
-    return minutes
+    return chronometer.twoDigitsNumber(Math.floor(this.currentTime / 6000))
   }
+
   getSeconds() {
-    let seconds = 0
-    seconds = this.currentTime - Math.floor(this.getMinutes() * 60)
-    return seconds
+    let seconds = Math.floor(this.currentTime * 0.01) - (60 * this.getMinutes())
+    return chronometer.twoDigitsNumber(seconds)
   }
+
+  getMilliseconds(){
+    let milis = this.currentTime - (100 * this.getSeconds())
+    return chronometer.twoDigitsNumber(milis)
+  }
+  
   twoDigitsNumber(value) {
     return (value >= 10) ? (value.toString()) : ('0' + value.toString())
   }
+
   stopClick() {
     console.log('stop')
     clearInterval(this.intervalId)
   }
+
   resetClick() {
     console.log('reset')
     this.currentTime = 0
   }
+
   splitClick(){
     console.log('split')
     return (`${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`)
   }
 }
+
+
+
