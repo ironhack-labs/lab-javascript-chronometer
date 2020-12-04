@@ -39,12 +39,15 @@ function printMilliseconds(milis) {
 }
 
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(splitData) {
+  let orderSplit = document.getElementById('splits')
+  let split = document.createElement('li')
+  split.innerHTML = splitData
+  orderSplit.appendChild(split)
 }
 
 function clearSplits() {
-  // ... your code goes here
+  document.getElementById('splits').innerHTML = ''
 }
 
 function setStopBtn() {
