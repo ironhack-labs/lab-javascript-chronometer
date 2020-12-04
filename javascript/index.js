@@ -31,7 +31,7 @@ function printSeconds() {
 
 // ==> BONUS
 function printMillisecond() {
-  
+  //
 } 
 
 
