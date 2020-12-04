@@ -18,12 +18,13 @@ function printTime() {
   setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
+    printMilliseconds();
+  }, 10);
 }
 
 function printMinutes() {
   // ... your code goes here
-  let minutes = chronometer.getMinutes()
+  let minutes = Math.trunc(chronometer.getMinutes())
   let doubleMinutes = chronometer.twoDigitsNumber(minutes)
   minDec.innerHTML = doubleMinutes[0]
   minUni.innerHTML = doubleMinutes[1]
@@ -31,7 +32,7 @@ function printMinutes() {
 
 function printSeconds() {
   // ... your code goes here
-  let seconds = chronometer.getSeconds()
+  let seconds = Math.trunc(chronometer.getSeconds())
   let doubleSeconds = chronometer.twoDigitsNumber(seconds)
   secDec.innerHTML = doubleSeconds[0]
   secUni.innerHTML = doubleSeconds[1]
@@ -40,6 +41,10 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  let centiSeconds = chronometer.getCentiSeconds()
+  let doubleCentiSeconds = chronometer.twoDigitsNumber(centiSeconds)
+  milDec.innerHTML = doubleCentiSeconds[0]
+  milUni.innerHTML = doubleCentiSeconds[1]
 }
 
 function printSplit() {
@@ -48,11 +53,13 @@ function printSplit() {
   let listChild = document.createElement("li")
   listFather.appendChild(listChild)
   let lastChild = document.getElementById("splits").lastChild
-  let minutes = chronometer.getMinutes()
+  let minutes = Math.trunc(chronometer.getMinutes())
   let doubleMinutes = chronometer.twoDigitsNumber(minutes)
-  let seconds = chronometer.getSeconds()
+  let seconds = Math.trunc(chronometer.getSeconds())
   let doubleSeconds = chronometer.twoDigitsNumber(seconds)
-  lastChild.innerHTML = `${doubleMinutes}:${doubleSeconds}`
+  let centiSeconds = chronometer.getCentiSeconds()
+  let doubleCentiSeconds = chronometer.twoDigitsNumber(centiSeconds)
+  lastChild.innerHTML = `${doubleMinutes}:${doubleSeconds}:${doubleCentiSeconds}`
 }
 
 function clearSplits() {
