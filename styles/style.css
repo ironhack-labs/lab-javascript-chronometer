@@ -34,18 +34,6 @@ body {
   width: 220px;
 }
 
-#splits-container {
-  font-size: 20px;
-  font-weight: 100;
-  position: absolute;
-  left: 50px;
-}
-
-#splits-container li {
-  padding-bottom: 5px;
-  text-align: right;
-}
-
 #milliseconds {
   font-size: 36px;
   margin-top: -15px;
@@ -109,6 +97,26 @@ body {
 .btn.reset,
 .btn.split {
   right: 10px;
+}
+
+#splits-container {
+  font-size: 25px;
+  font-weight: 100;
+  position: absolute;
+  left: 50px;
+}
+
+
+.splits {
+  font-size: 1.5rem;
+  line-height: normal;
+}
+
+.p-splits {
+  font-size: 2rem;
+  font-family: "Digi";
+  margin: 10px 0;
+  line-height: normal;
 }
 
 .btn.start { background: #5fca5f; }
