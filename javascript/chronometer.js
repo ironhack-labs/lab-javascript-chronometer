@@ -13,7 +13,8 @@ class Chronometer {
 
 
   getMinutes() {
-    return chronometer.twoDigitsNumber(Math.floor(this.currentTime / 6000))
+    let minutes = Math.floor(this.currentTime / 6000)
+    return chronometer.twoDigitsNumber(minutes)
   }
 
   getSeconds() {
@@ -22,24 +23,22 @@ class Chronometer {
   }
 
   getMilliseconds(){
-    let milis = this.currentTime - (100 * this.getSeconds())
+    let milis = Math.floor(this.currentTime - (100 * this.getSeconds() + 6000 * this.getMinutes()))
+
     return chronometer.twoDigitsNumber(milis)
   }
   
   twoDigitsNumber(value) {
     return (value >= 10) ? (value.toString()) : ('0' + value.toString())
   }
-
   stopClick() {
     console.log('stop')
     clearInterval(this.intervalId)
   }
-
   resetClick() {
     console.log('reset')
     this.currentTime = 0
   }
-
   splitClick(){
     console.log('split')
     return (`${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`)

@@ -19,23 +19,23 @@ function printTime() {
   printMinutes(chronometer.getMinutes())
 }
 
-function printMinutes(minutes) {
+function printMinutes(min) {
 
-  minUni.innerHTML = minutes.slice(1)
-  minDec.innerHTML = minutes.slice(0,1)
+  minUni.innerHTML = min.slice(1)
+  minDec.innerHTML = min.slice(0,1)
 }
 
-function printSeconds(seconds) {
+function printSeconds(sec) {
  
-  secUni.innerHTML = seconds.slice(1)
-  secDec.innerHTML = seconds.slice(0,1)
+  secUni.innerHTML = sec.slice(1)
+  secDec.innerHTML = sec.slice(0,1)
 }
 
 // ==> BONUS
-function printMilliseconds(miliseconds) {
+function printMilliseconds(milis) {
   
-  milUni.innerHTML = miliseconds.slice(1)
-  milDec.innerHTML = miliseconds.slice(0,1)
+  milUni.innerHTML = milis.slice(1)
+  milDec.innerHTML = milis.slice(0,1)
 }
 
 
