@@ -77,14 +77,20 @@ btnLeft.addEventListener('click', () => {
 
 });
 
-// btnLeft.addEventListener('click', () => {
-//   if (btnLeft.className.includes('stop')) {
-//     chronometer.startClick(printMinutes);
-//     console.log('printMinutes')
-//   }
-// })
-
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
+  if (btnRight.className.includes('split')) {
+    let li = document.createElement('li');
+    li.innerHTML = chronometer.splitClick();
+    splits.appendChild(li);
+  }
 
+  if (btnLeft.className.includes('start')) {
+    splits.innerHTML = '';
+    minUni.innerHTML = '0';
+    minDec.innerHTML = '0';
+    secUni.innerHTML = '0';
+    secDec.innerHTML = '0';
+    chronometer.resetClick();
+  }
 });

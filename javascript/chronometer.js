@@ -8,7 +8,7 @@ class Chronometer {
     this.intervalId = setInterval( () => {
       this.currentTime ++;
       callback();
-    }, 10);
+    }, 1000);
   }
 
   getMinutes() {
@@ -27,7 +27,6 @@ class Chronometer {
 
   stopClick() {
     clearInterval(this.intervalId);
-    console.log('stopClick called!')
   }
 
   resetClick() {
