@@ -55,11 +55,20 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if(document.getElementById('btnLeft').textContent === 'STOP'){
+    setStopBtn();
+  }else if(document.getElementById('btnLeft').textContent === 'START'){
+    setStartBtn();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(document.getElementById('btnRight').textContent === 'SPLIT'){
+    setSplitBtn();
+  }else if(document.getElementById('btnRight').textContent === 'RESET'){
+    setResetBtn();
+  }
 });
