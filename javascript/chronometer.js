@@ -6,12 +6,13 @@ class Chronometer {
     this.status="stopped";
 
   }
-  startClick(callback) {
+  startClick(callBack) {
     // ... your code goes here
     // increment by 1 the currentTime property every 1 second
     this.status="running";
     this.intervalId = setInterval(() =>{
         this.currentTime ++;
+          callBack(this.currentTime);
     },1000);
   }
   getMinutes() {
@@ -39,7 +40,7 @@ class Chronometer {
          
     // ... your code goes here
     clearInterval(this.intervalId);
-    chronometer.status = "stopped";
+    this.status = "stopped";
   }
   resetClick() {
     // ... your code goes here
