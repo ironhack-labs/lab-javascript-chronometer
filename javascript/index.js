@@ -15,27 +15,38 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printMinutes();
+  printSeconds();
+
 }
 
 function printMinutes() {
   // ... your code goes here
+  minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+  minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
 }
 
 function printSeconds() {
   // ... your code goes here
+  secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+  secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  
 }
 
 function printSplit() {
   // ... your code goes here
+  splits.innerHTML = chronometer.splitClick()
 }
 
 function clearSplits() {
   // ... your code goes here
+  splits.innerHTML = '';
+
 }
 
 function setStopBtn() {
