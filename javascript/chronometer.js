@@ -6,9 +6,12 @@ class Chronometer {
   startClick(callback) {
     this.intervalId= setInterval(()=> {
       this.currentTime++
-      callback();
+      if(callback){ //Fix jasmine error. Check callback before calling it.
+        callback()
+      };
     },1000);
   }
+
   getMinutes() {
     let minutes=0;
     minutes= this.currentTime/60;
