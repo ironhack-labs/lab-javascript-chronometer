@@ -8,6 +8,9 @@ class Chronometer {
     // ... your code goes here
   }
   startClick(callback) {
+    
+    console.log("runing startclick")
+    
     this.intervalId = setInterval(() => (this.currentTime += 1), 1000);
 
     this.intervalIdMilliseconds = setInterval(() => {
@@ -32,6 +35,7 @@ class Chronometer {
     // ... your code goes here
   }
   stopClick() {
+     console.log("stoping");
     clearInterval(this.intervalId);
     clearInterval(this.intervalIdMilliseconds);
     // ... your code goes here
