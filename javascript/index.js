@@ -41,17 +41,19 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  let splitLI =  document.createElement("LI")
-  splitLI.innerHTML = chronometer.splitClick()
-  splits.appendChild(splitLI)
+  let split =  document.createElement("LI")
+  split.innerHTML = chronometer.splitClick()
+  splits.appendChild(split)
   // ... your code goes here
 }
 
 function clearSplits() {
+  splits.innerHTML = "";
   // ... your code goes here
 }
 
 function setStopBtn() {
+  chronometer.stopClick()
   // ... your code goes here
 }
 
@@ -60,10 +62,15 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  chronometer.startClick();
+  setInterval(printTime, 1);
   // ... your code goes here
 }
 
 function setResetBtn() {
+  chronometer.resetClick()
+  clearSplits()
+  
   // ... your code goes here
 }
 
@@ -75,15 +82,15 @@ btnLeft.addEventListener('click', () => {
   btnRight.classList.toggle("split")
   btnLeft.innerHTML === "START" ?  btnLeft.innerHTML = "STOP" : btnLeft.innerHTML = "START"
   btnRight.innerHTML === "RESET" ? btnRight.innerHTML = "SPLIT" : btnRight.innerHTML = "RESET"
-  btnLeft.classList.contains("stop") ? chronometer.startClick() : chronometer.stopClick() 
-  setInterval (printTime , 1)
+  btnLeft.classList.contains("stop") ? setStartBtn() : setStopBtn() ;
+  
 
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  console.log("click")
-  printSplit()
+  btnRight.classList.contains("split") ? printSplit() : setResetBtn();
+  
   // ... your code goes here
 });
