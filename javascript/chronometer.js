@@ -33,7 +33,7 @@ class Chronometer {
     this.currentTime = 0;
   }
 
-  splitClick(minutes, seconds) {
+  splitClick() {
     let min = this.getMinutes();
     let sec = this.getSeconds();
     
@@ -41,5 +41,25 @@ class Chronometer {
     else if (min < 10 && sec > 10) { return `0${min}:${sec}` } 
     else if (min > 10 && sec < 10) { return `${min}:0${sec}` } 
     else { return `${min}:${sec}` };
+  }
+}
+
+// Miliseconds
+class Miliseconds extends Chronometer {
+  startClick(callback) {
+    this.intervalId = setInterval( () => {
+      this.currentTime ++;
+      callback();
+    }, 10);
+  }
+
+  getMiliseconds() {
+    let numberOfMiliseconds = this.currentTime % 60;
+    return numberOfMiliseconds;
+  }
+
+  splitClick() {
+    let mili = this.getMiliseconds();
+    return mili < 10 ? `:0${mili}` : `:${mili}`;
   }
 }
