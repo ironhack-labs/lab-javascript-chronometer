@@ -6,7 +6,9 @@ class Chronometer {
 
   }
   startClick(callback) {
-    this.intervalId = setInterval(() => this.currentTime++, 1000)         // Usamos la arrow function setInterval en la propiedad intervalId 
+    this.intervalId = setInterval(() => {
+    this.currentTime++;
+    }, 1000) ;                                                            // Usamos la arrow function setInterval en la propiedad intervalId 
   }                                                                       // Incrementamos en uno, after 3 seconds, currentTime should be 3                                                                        // El startClick()método debe usar el setInterval()método JS para incrementar en 1 la currentTimepropiedad cada 1 segundo.
     // ... your code goes here                                            // Usamos this.currentTime++ para agregar 1 cada 1000 ms a la propiedad currentTime
 
@@ -45,4 +47,4 @@ class Chronometer {
   return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`       // devolvemnos el formato correcto : entre los digitos
     // ... your code goes here
   }
-}
+} 

@@ -15,10 +15,17 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printMinutes(chronometer.twoDigitsNumber(chronometer.getMinutes));
+  printSeconds(chronometer.twoDigitsNumber(chronometer.getSeconds));
 }
 
 function printMinutes() {
+  
+
+
   // ... your code goes here
+  
+
 }
 
 function printSeconds() {
