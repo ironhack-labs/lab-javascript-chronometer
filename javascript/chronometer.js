@@ -27,7 +27,7 @@ class Chronometer {
   }
   splitClick() {
     return `${this.twoDigitsNumber(
-      this.getSeconds(this.currentTime)
+      this.getMinutes(this.currentTime)
     )}:${this.twoDigitsNumber(this.getSeconds(this.currentTime))}`;
   }
 }
