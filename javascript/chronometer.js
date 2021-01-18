@@ -1,26 +1,61 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+   this.currentTime= 0 ;
+   this.intervalId= 0 ;
   }
-  startClick(callback) {
-    // ... your code goes here
+  
+    startClick(callback) {    
+      
+      const increaseTime = () => {
+      this.currentTime++;
+    };   
+    
+    this.intervalId = setInterval(increaseTime, 1000);
+
   }
+
+
   getMinutes() {
-    // ... your code goes here
+
+  const minutes= Math.floor(this.currentTime / 60);
+  return minutes;
+
   }
   getSeconds() {
-    // ... your code goes here
+   
+  const seconds= this.currentTime % 60;
+  return seconds;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
-  }
+
+  twoDigitsNumber(num) {
+   
+      return ("0" + num).slice(-2)
+    
+     }
+
+
   stopClick() {
-    // ... your code goes here
+    
+    clearInterval(this.intervalId)
+
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime=0
+
   }
   splitClick() {
-    // ... your code goes here
+
+    let min=  this.getMinutes();
+    
+    let sec= this.getSeconds();
+
+     return `${0}${min}:${0}${sec}`
+ 
   }
+
 }
+ /*
+The splitClick() method needs to capture the moment when the split button gets hit 
+later on. Imagine this being a time frame in which a runner runs certain distances. 
+The splitClick() will receive any two numbers and needs to output them in a valid 
+format. For more information, check the corresponding test*/
