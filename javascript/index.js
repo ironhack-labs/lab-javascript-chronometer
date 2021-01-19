@@ -1,5 +1,6 @@
 const chronometer = new Chronometer();
 let intervalPrint;
+let intervalMil;
 
 // get the buttons:
 const btnLeft = document.getElementById("btnLeft");
@@ -19,6 +20,8 @@ function printTime() {
   secDec.innerHTML = printSeconds()[0];
   minUni.innerHTML = printMinutes()[1];
   minDec.innerHTML = printMinutes()[0];
+  milUni.innerHTML = printMilliseconds()[1];
+  milDec.innerHTML = printMilliseconds()[0];
 }
 
 function printMinutes() {
@@ -31,11 +34,11 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  return chronometer.twoDigitsNumber(chronometer.getMilliseconds());
 }
 
 function printSplit() {
-  const timeMark = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`;
+  const timeMark = chronometer.splitClick();
   const newLi = document.createElement("li");
   newLi.textContent = timeMark;
   splits.appendChild(newLi);
@@ -56,7 +59,7 @@ function setSplitBtn() {
 
 function setStartBtn() {
   chronometer.startClick();
-  intervalPrint = setInterval(printTime, 1000);
+  intervalPrint = setInterval(printTime, 1);
 }
 
 function setResetBtn() {

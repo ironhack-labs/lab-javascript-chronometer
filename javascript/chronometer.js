@@ -9,12 +9,19 @@ class Chronometer {
       this.currentTime++;
     }, 10);
   }
-  getMinutes() {
-    return Math.floor(this.currentTime / 6000);
+
+  formatWithoutMilliseconds(time) {
+    return Math.floor(time / 100);
   }
 
+  getMinutes() {
+    return Math.floor(this.formatWithoutMilliseconds(this.currentTime) / 60);
+  }
   getSeconds() {
-    return this.currentTime % 6000;
+    return this.formatWithoutMilliseconds(this.currentTime) % 60;
+  }
+  getMilliseconds() {
+    return this.currentTime;
   }
 
   twoDigitsNumber(number) {
@@ -30,6 +37,6 @@ class Chronometer {
   splitClick() {
     return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(
       this.getSeconds()
-    )}`;
+    )}:${this.twoDigitsNumber(this.currentTime)}`;
   }
 }
