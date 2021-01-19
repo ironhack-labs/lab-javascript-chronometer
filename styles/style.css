@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap");
+
 @font-face {
   font-family: "Digi";
-  src: url("fonts/ds-digib.ttf");
+  src: url("./fonts/ds-digib.ttf");
 }
 
 body {
@@ -24,8 +26,9 @@ body {
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  font-family: "Digi";
-  font-size: 80px;
+  /*  font-family: "Digi";*/
+  font-family: "Coda Caption", sans-serif;
+  font-size: 50px; /*80px;*/
   height: 210px;
   margin: 0 auto;
   padding: 35px 0;
@@ -111,7 +114,15 @@ body {
   right: 10px;
 }
 
-.btn.start { background: #5fca5f; }
-.btn.stop  { background: #f14949; }
-.btn.reset { background: #908e8e; }
-.btn.split { background: #0851ab; }
+.btn.start {
+  background: #5fca5f;
+}
+.btn.stop {
+  background: #f14949;
+}
+.btn.reset {
+  background: #908e8e;
+}
+.btn.split {
+  background: #0851ab;
+}
