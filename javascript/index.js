@@ -1,7 +1,8 @@
 const chronometer = new Chronometer();
-
+console.log(chronometer);
 // get the buttons:
 const btnLeft = document.getElementById("btnLeft");
+
 const btnRight = document.getElementById("btnRight");
 
 // get the DOM elements that will serve us to display the time:
