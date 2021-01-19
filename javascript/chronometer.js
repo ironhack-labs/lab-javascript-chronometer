@@ -16,6 +16,7 @@ class Chronometer {
     const min = Math.floor(this.currentTime / 60)
     return min
   }
+  
   getSeconds() {
     // ... your code goes here
     const sec = this.currentTime % 60
