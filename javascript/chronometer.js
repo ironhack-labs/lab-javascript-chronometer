@@ -7,14 +7,22 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-    }, 1000);
+    }, 10);
   }
+  formatWithoutMilliseconds(time) {
+    return Math.floor(time / 100);
+  }
+
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.formatWithoutMilliseconds(this.currentTime) / 60);
   }
   getSeconds() {
-    return this.currentTime % 60;
+    return this.formatWithoutMilliseconds(this.currentTime) % 60;
   }
+  getMilliseconds() {
+    return this.currentTime;
+  }
+
   twoDigitsNumber(number) {
     return ("0" + number).slice(-2);
   }

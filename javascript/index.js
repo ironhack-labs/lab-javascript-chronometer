@@ -15,6 +15,8 @@ let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
 function printTime() {
+  milUni.innerHTML = printMilliseconds()[1];
+  milDec.innerHTML = printMilliseconds()[0];
   secUni.innerHTML = printSeconds()[1];
   secDec.innerHTML = printSeconds()[0];
   minUni.innerHTML = printMinutes()[1];
@@ -30,7 +32,9 @@ function printSeconds() {
 }
 
 // ==> BONUS
-function printMilliseconds() {}
+function printMilliseconds() {
+  return chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+}
 
 function printSplit() {
   // ... your code goes here
@@ -48,7 +52,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  const timeMark = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}`;
+  const timeMark = `${minDec.innerHTML}${minUni.innerHTML}:${secDec.innerHTML}${secUni.innerHTML}:${milDec.innerHTML}${milUni.innerHTML}`;
   const newLi = document.createElement("li");
   newLi.textContent = timeMark;
   splits.appendChild(newLi);
