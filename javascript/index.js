@@ -15,6 +15,12 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  const chronoSec = chronometer.twoDigitsNumber(chronometer.getSeconds())
+  const chronoSecDec = chronoSec.charAt(0)
+  const chronoSecUni = chronoSec.charAt(1)
+  
+  secDec.innerText = chronoSecDec
+  secUni.innerText = chronoSecUni
 }
 
 function printMinutes() {
@@ -57,9 +63,33 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  if (btnLeft.className.includes('start')){
+    btnLeft.setAttribute('class', 'btn stop')
+    btnLeft.innerText = 'STOP'
+
+    btnRight.setAttribute('class', 'btn split')
+    btnRight.innerText = 'SPLIT'
+
+    chronometer.startClick()
+    printTime()
+    
+
+  } else {
+    btnLeft.setAttribute('class', 'btn start')
+    btnLeft.innerText = 'START'
+
+    btnRight.setAttribute('class', 'btn reset')
+    btnRight.innerText = 'RESET'
+
+    chronometer.stopClick()
+    
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
+printTime()
+
