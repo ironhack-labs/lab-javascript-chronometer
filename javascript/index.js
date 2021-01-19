@@ -32,21 +32,27 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  // in the real world, these are `centiseconds` (SI measure)
+  // I left the nomenclature at milliseconds for clarity in the lab
+  const currentTimeCentiSeconds = chronometer.currentTimeMilliSeconds % 100;
+  milDec.textContent = Math.floor(currentTimeCentiSeconds / 10);
+  milUni.textContent = currentTimeCentiSeconds % 10;
+  // console.log(milDec.textContent, milUni.textContent);
 }
 
 function printSplit() {
   const splitList = document.querySelector("#splits");
   const splitItem = document.createElement("li");
-  splitItem.innerHTML = chronometer.splitClick();
+  str =
+    chronometer.splitClick() +
+    ":" +
+    chronometer.twoDigitsNumber(chronometer.currentTimeMilliSeconds % 100);
+  splitItem.innerHTML = str;
   splitList.appendChild(splitItem);
 }
 
 function clearSplits() {
   const splitList = document.querySelector("#splits");
-  console.log("we arrived at clearSplits!!");
-  chronometer.currentTime = 0;
-  printTime();
   splitList.innerHTML = "";
 }
 
@@ -75,7 +81,8 @@ btnLeft.addEventListener("click", () => {
   if (btnLeft.classList == "btn start") {
     setStopBtn();
     setSplitBtn();
-    chronometer.startClick(() => null);
+    chronometer.startClick(printTime);
+    chronometer.startClickMilliSeconds(printMilliseconds);
   } else {
     setStartBtn();
     setResetBtn();
@@ -89,5 +96,11 @@ btnRight.addEventListener("click", () => {
     printSplit();
   } else {
     clearSplits();
+
+    chronometer.currentTime = 0;
+    printTime();
+
+    chronometer.currentTimeMilliSeconds = 0;
+    printMilliseconds();
   }
 });
