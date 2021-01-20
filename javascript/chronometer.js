@@ -9,10 +9,13 @@ class Chronometer {
     }, 1000);
   }
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
   }
   getSeconds() {
     return this.currentTime % 60;
+  }
+  getMilliseconds() {
+    return this.currentTime % 100;
   }
   twoDigitsNumber() {
     return ("0" + this.currentTime.toString()).slice(-2);
@@ -27,5 +30,6 @@ class Chronometer {
     this.minutes = this.twoDigitsNumber(this.getMinutes());
     this.seconds = this.twoDigitsNumber(this.getSeconds());
     return `${this.minutes}:${this.seconds}`;
+    // return `${this.twoDigitsNumber(this.minutes)}:${this.twoDigitsNumber(this.seconds)}`;
   }
 }

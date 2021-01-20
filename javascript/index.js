@@ -1,65 +1,96 @@
 const chronometer = new Chronometer();
 
+//enumerators:
+//com nome maiusculo, por convenção deve ser mantida
+const BTN_TEXT_STOP = "STOP";
+
 // get the buttons:
-const btnLeft = document.getElementById('btnLeft');
-const btnRight = document.getElementById('btnRight');
+const btnLeft = document.getElementById("btnLeft");
+const btnRight = document.getElementById("btnRight");
 
 // get the DOM elements that will serve us to display the time:
-let minDec = document.getElementById('minDec');
-let minUni = document.getElementById('minUni');
-let secDec = document.getElementById('secDec');
-let secUni = document.getElementById('secUni');
-let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
-let splits = document.getElementById('splits');
+let minDec = document.getElementById("minDec");
+let minUni = document.getElementById("minUni");
+let secDec = document.getElementById("secDec");
+let secUni = document.getElementById("secUni");
+let milDec = document.getElementById("milDec");
+let milUni = document.getElementById("milUni");
+let splits = document.getElementById("splits");
 
 function printTime() {
-  // ... your code goes here
+  printSeconds();
+  printMinutes();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  minDec.innerText = minutes[0];
+  minUni.innerText = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerText = seconds[0];
+  secUni.innerText = seconds[1];
 }
 
 function printSplit() {
-  // ... your code goes here
+  const li = document.createElement("li");
+  li.innerText = chronometer.splitClick();
+  splits.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  chronometer.resetClick();
+  printTime();
+  splits.innerHTML = "";
 }
 
-function setStopBtn() {
-  // ... your code goes here
+// BUTTONS TEXT AND COLOR
+//Use toggle helps lowering the possibility of bugs - the computer controls if it's add or remove
+//Stop button - ok
+function setStopBtn(btnText) {
+  btnLeft.innerText = btnText;
+  btnLeft.classList.toggle("stop"); //btnLeft.classList.add("")
+  btnLeft.classList.toggle("start"); //btnLeft.classList.remove("")
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+//Split button - ok
+function setSplitBtn(btnText) {
+  btnLeft.innerText = btnText;
+  btnRight.classList.toggle("reset");
+  btnRight.classList.toggle("split");
 }
 
-function setStartBtn() {
-  // ... your code goes here
-}
+//Start button - ok
+function setStartBtn() {}
 
+//Reset button - ok
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
+  printTime();
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener("click", () => {
+  const isChronometerRunning = btnLeft.innerText === BTN_TEXT_STOP;
+  if (isChronometerRunning) {
+    setStopBtn("START");
+    setSplitBtn("RESET");
+    chronometer.stopClick();
+  } else {
+    setStopBtn("STOP");
+    setSplitBtn("SPLIT");
+    chronometer.stopClick(printTime);
+  }
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
+btnRight.addEventListener("click", () => {
+  const isChronometerRunning = btnLeft.innerText === BTN_TEXT_STOP;
+  if (isChronometerRunning) {
+    printSplit();
+  } else {
+    setResetBtn();
+  }
 });
