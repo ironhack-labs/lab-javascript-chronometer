@@ -39,15 +39,23 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "STOP";
+  btnLeft.classList.remove("start");
+  btnLeft.classList.add("stop");
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText = "SPLIT";
+  btnRight.classList.remove ("start");
+  btnRight.classList.add("stop")
+
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "START";
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+
 }
 
 function setResetBtn() {

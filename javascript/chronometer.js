@@ -12,7 +12,7 @@ class Chronometer {
     return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    return this.currentTime - this.getMinutes() * 60;
+    return this.currentTime % 60;
   }
   twoDigitsNumber(value) {
     return value.toString().padStart(2, "0");
