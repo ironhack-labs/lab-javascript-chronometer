@@ -5,7 +5,9 @@ class Chronometer {
   }
   startClick(callback) {
     this.intervalId = setInterval(() => {
-      callback();
+      if (callback) {
+        callback();
+      }
       this.currentTime++;
     }, 1);
   }
