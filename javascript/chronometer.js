@@ -40,7 +40,7 @@ class Chronometer {
       clearInterval(milIntervalId);
     }
 
-    }, 1);
+    }, 10);
 
   }
   
