@@ -31,9 +31,10 @@ class Chronometer {
       
     milliseconds++;
     callback2(milliseconds)
+    console.log(milliseconds)
     if (milliseconds >= 99) {
+      clearInterval(milIntervalId);
       milliseconds = 0;
-      console.log("deu 99")
     }
   
     if (!chronometer.running) {
