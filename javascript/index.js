@@ -30,8 +30,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds(milliseconds) {
-  milDec.innerText = String(chronometer.twoDigitsNumber(milliseconds))[0]; 
-  milUni.innerText = String(chronometer.twoDigitsNumber(milliseconds))[1]; 
+  
+  milDec.innerText = chronometer.twoDigitsNumber(milliseconds)[0]; 
+  milUni.innerText = chronometer.twoDigitsNumber(milliseconds)[1]; 
 
 }
 

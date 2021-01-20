@@ -29,12 +29,12 @@ class Chronometer {
     milIntervalId = setInterval(() => {
   
     milliseconds++;
+        
     callback2(milliseconds);
     
     if (milliseconds >= 99) {
       clearInterval(milIntervalId); 
-      milliseconds = 0;
-           
+      milliseconds = 0;           
     }
   
     if (!chronometer.running) {
