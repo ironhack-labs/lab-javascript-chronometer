@@ -8,6 +8,9 @@ class Chronometer {
       
       const increaseTime = () => {
       this.currentTime++;
+      if(callback){
+        callback();
+      }
     };   
     
     this.intervalId = setInterval(increaseTime, 1000);
@@ -18,13 +21,13 @@ class Chronometer {
   getMinutes() {
 
   const minutes= Math.floor(this.currentTime / 60);
-  return minutes;
+  return this.twoDigitsNumber(minutes);
 
   }
   getSeconds() {
    
   const seconds= this.currentTime % 60;
-  return seconds;
+  return this.twoDigitsNumber(seconds);
   }
 
   twoDigitsNumber(num) {
@@ -54,8 +57,3 @@ class Chronometer {
   }
 
 }
- /*
-The splitClick() method needs to capture the moment when the split button gets hit 
-later on. Imagine this being a time frame in which a runner runs certain distances. 
-The splitClick() will receive any two numbers and needs to output them in a valid 
-format. For more information, check the corresponding test*/
