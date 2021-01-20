@@ -19,7 +19,7 @@ class Chronometer {
   }
 
   getMilliseconds() {
-    return this.currentTime % 100;
+    return this.currentTime;
   }
 
   twoDigitsNumber(value) {

@@ -35,9 +35,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  let milliSeconds = String(chronometer.getMilliseconds()).padStart(2, "0");
-  milDec.textContent = milliSeconds[milliSeconds.length - 1];
-  milUni.textContent = milliSeconds[milliSeconds.length - 2];
+  let milliSeconds = String(chronometer.getMilliseconds()).padStart(3, "0");
+  milDec.textContent = milliSeconds[milliSeconds.length - 2];
+  milUni.textContent = milliSeconds[milliSeconds.length - 3];
 }
 
 function printSplit() {
