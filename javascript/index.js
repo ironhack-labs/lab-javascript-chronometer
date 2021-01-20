@@ -15,6 +15,14 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  return setInterval(() => {
+    totalTime =
+      chronometer.twoDigitsNumber(chronometer.getMinutes()) +
+      chronometer.twoDigitsNumber(chronometer.getSeconds());
+    console.log(totalTime);
+    printMinutes();
+    printSeconds();
+  }, 1000);
 }
 
 function printMinutes() {
@@ -52,6 +60,8 @@ function setStartBtn() {
 
 function setResetBtn() {
   // ... your code goes here
+  let splitTime = chronometer.splitClick();
+  splits.innerHTML += `<li>${splitTime}</li>`;
 }
 
 // Start/Stop Button
