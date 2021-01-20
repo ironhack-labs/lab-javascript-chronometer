@@ -27,21 +27,21 @@ class Chronometer {
     let milIntervalId = 0;
 
     milIntervalId = setInterval(() => {
-
-      
+  
     milliseconds++;
-    callback2(milliseconds)
-    console.log(milliseconds)
+    callback2(milliseconds);
+    
     if (milliseconds >= 99) {
-      clearInterval(milIntervalId);
+      clearInterval(milIntervalId); 
       milliseconds = 0;
+           
     }
   
     if (!chronometer.running) {
       clearInterval(milIntervalId);
-    }
+    }    
 
-    }, 10);
+    }, 1);
 
   }
   
