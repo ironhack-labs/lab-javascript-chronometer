@@ -22,13 +22,21 @@ function printTime() {
 }
 
 function printMinutes() {
-  minDec.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
-  minUni.innerText = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
+  minDec.innerText = String(
+    chronometer.twoDigitsNumber(chronometer.getMinutes())
+  )[0];
+  minUni.innerText = String(
+    chronometer.twoDigitsNumber(chronometer.getMinutes())
+  )[1];
 }
 
 function printSeconds() {
-  secDec.innerText = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
-  secUni.innerText = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
+  secDec.innerText = String(
+    chronometer.twoDigitsNumber(chronometer.getSeconds())
+  )[0];
+  secUni.innerText = String(
+    chronometer.twoDigitsNumber(chronometer.getSeconds())
+  )[1];
 }
 
 // ==> BONUS
@@ -37,15 +45,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  splits.innerHTML +=`
+  splits.innerHTML += `
   <li>
-  `${chronometer.twoDigitsNumber(chronometer.getMinutes())}:${chronometer.twoDigitsNumber(
-    chronometer.getSeconds()`
-  </li>`
+  ${chronometer.splitClick()}
+  </li>`;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  document.getElementById("splits").innerHTML = "";
 }
 
 function setStopBtn() {
@@ -97,4 +104,4 @@ btnRight.addEventListener("click", () => {
   } else {
     chronometer.splitClick();
   }
-})
+});
