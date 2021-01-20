@@ -1,5 +1,9 @@
 const chronometer = new Chronometer();
 
+//enumerators:
+const BTN_TEXT_START ="START";
+const BTN_TEXT_RESET ="RESET";
+
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
@@ -15,22 +19,25 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
-  return setInterval(() => {
-    totalTime =
-      chronometer.twoDigitsNumber(chronometer.getMinutes()) +
-      chronometer.twoDigitsNumber(chronometer.getSeconds());
-    console.log(totalTime);
-    printMinutes();
-    printSeconds();
-  }, 1000);
+  
 }
 
 function printMinutes() {
   // ... your code goes here
+  const currentMinutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  console.log(currentMinutes);
+
+  secDec.innerText = currentMinutes [0];
+  secUni.innerText = currentMinutes [1];
 }
 
 function printSeconds() {
   // ... your code goes here
+  const currentSeconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  console.log(currentSeconds);
+
+  secDec.innerText = currentSeconds [0];
+  secUni.innerText = currentSeconds [1];
 }
 
 // ==> BONUS
@@ -46,7 +53,10 @@ function clearSplits() {
   // ... your code goes here
 }
 
-function setStopBtn() {
+function setStopBtn(btnText) {
+  btnLeft.innerText = btnText;
+  btnLeft.classList.toggle("start");
+  btnLeft.classList.toggle("stop");
   // ... your code goes here
 }
 
@@ -67,6 +77,18 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  const isChronometerRunning = btnLeft.innerText === BTN_TEXT_START;
+
+  if (isChronometerRunnung){
+    //Troca o texto do botao
+    setStopBtn("STOP");
+    setSplitBtn("SPLIT");
+    chronometer.startClick(printTime);
+  } else {
+    setStopBtn("STRAT");
+    setSplitBtn("RESET");
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
