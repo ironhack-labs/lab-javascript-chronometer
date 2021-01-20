@@ -13,7 +13,7 @@ class Chronometer {
     return Math.floor(this.currentTime / 6000);
   }
   getSeconds() {
-    return Math.floor(this.currentTime / 100) % 60;
+    return Math.floor(this.currentTime / 100) % 60; // setInterval was too slow for a second if I put this.currentTime/1000
   }
 
   getMilliseconds() {
