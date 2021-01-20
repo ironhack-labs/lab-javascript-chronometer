@@ -1,26 +1,48 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
+    this.milliseconds = 1;
+    this.milIntervalId = 0;
   }
-  startClick(callback) {
-    // ... your code goes here
+  // startClick(callback) // Not specify callback here, because I want it to receive two function that can be involked inside
+  startClick() {
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      arguments[0]();
+    }, 1000);
+    this.milIntervalId = setInterval(() => {
+      this.milliseconds < 99 ? this.milliseconds++ : this.milliseconds = 1;
+      arguments[1]();
+    }, 10);
   }
+
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  getMiliseconds() {
+    return this.milliseconds;
+  }
+
+  twoDigitsNumber(number) {
+    return number < 10 ? '0' + number : number.toString();
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    clearInterval(this.milIntervalId);
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.milliseconds = 0
   }
   splitClick() {
-    // ... your code goes here
+    let sec = this.getSeconds();
+    let min = this.getMinutes();
+    let mil = this.getMiliseconds();
+    return this.twoDigitsNumber(min) + ':' + this.twoDigitsNumber(sec) + ':' + this.twoDigitsNumber(mil);
   }
 }
