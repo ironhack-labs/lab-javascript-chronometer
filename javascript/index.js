@@ -26,9 +26,9 @@ function printSeconds() {
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
+// function printMilliseconds() {
+//   // ... your code goes here
+//}
 
 function printSplit() {
   // ... your code goes here
@@ -39,7 +39,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  // write "STOP" + stop the chronometer
 }
 
 function setSplitBtn() {
@@ -47,7 +47,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.startClick;
 }
 
 function setResetBtn() {
@@ -56,6 +56,8 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
+  if (chronometer.currentTime===0)
+  {setStartBtn}
   // ... your code goes here
 });
 
