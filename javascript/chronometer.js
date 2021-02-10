@@ -19,8 +19,8 @@ class Chronometer {
   }
 
   twoDigitsNumber(num) {
-    if (this.currentTime > 9) {
-      return num;
+    if (num > 9) {
+      return ""+num;
     } else {
       return "0" + num;
     }
@@ -39,14 +39,14 @@ class Chronometer {
   }
 
   splitClick() {
-    if (min < 10 && sec < 10) {
-      return `${0}${min}:${0}${sec}`;
-    } else if (min < 10 && sec > 10) {
-      return `0${min}:${sec}`;
-    } else if (min > 10 && sec < 10) {
-      return `${min}:0${sec}`;
-    } else {
-      return `${min}:${sec}`;
-    }
+    //console.log(this.currentTime);
+    let min=this.getMinutes();
+    let sec=this.getSeconds();
+    //console.log(min, sec);
+    //console.log(this.twoDigitsNumber(min)+":"+this.twoDigitsNumber(sec));
+    return this.twoDigitsNumber(min)+":"+this.twoDigitsNumber(sec);
+   
+   
   }
+ 
 }
