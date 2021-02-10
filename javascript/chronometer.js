@@ -16,7 +16,7 @@ class Chronometer {
   }
   getMinutes() {
     
-    let minutesConverter = this.currentTime / 60 ;
+    let minutesConverter = Math.floor(this.currentTime / 60);
     
 
     // if(this.currentTime === 60){
@@ -25,25 +25,16 @@ class Chronometer {
     return Number(minutesConverter.toFixed(0)) ;
   }
   getSeconds() {
-    // ... your code goes here
-
-    if(this.currentTime === 0){
-      return 0;
-    }
-     let secondsConverter = this.currentTime ;
-
-     return Number(secondsConverter);
+    return this.currentTime % 60;
   }
-  twoDigitsNumber(number) {
-    // ... your code goes here
+
+  twoDigitsNumber() {
     if (this.currentTime < 60){
       return `0${this.currentTime}`
-    } else if (this.currentTime > 60) {
-      let remainder = this.currentTime % 60;
-      let minutes = this.currentTime / 60;
-      return `${minutes.toFixed(0)}${remainder}`;
+    } else {
+      
+      return `${getMinutes()}${getSeconds()}`;
     }
-    
   }
   stopClick() {
     // ... your code goes here
@@ -54,13 +45,8 @@ class Chronometer {
     this.currentTime = 0
   }
   splitClick() {
-    // ... your code goes here
-    // let timeFrame = [this.minutes, this.remainder];
-    
-    // for (let i = 0; i < timeFrame.length; i++) {
-    //   return `${timeFrame[0]} ${timeFrame[1]}`
-    // }
-    return this.twoDigitsNumber(this.minutes) + ":" + this.twoDigitsNumber(this.remainder)
-  
-}
+    const min = this.twoDigitsNumber(this.getMinutes());
+    const sec = this.twoDigitsNumber(this.getSeconds());
+    return `${min}:${sec}`
+  }
 }
