@@ -1,19 +1,20 @@
 const chronometer = new Chronometer();
-const chronometer2 = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+const splitList= document.getElementById('splits')
 
-function HandleClick(event, chronometer2){
+function HandleClick(event, chronometer){
   if (event.target.classList.contains ('start')){
     event.target.innerText= 'STOP';
     btnRight.innerText='SPLIT';
-    chronometer2.startClick(chronometer2.intervalId)
+    chronometer.startClick(printTime);
 
   }else {event.target.innerText= 'START';
   btnRight.innerText='RESET';
-  chronometer2.stopClick(chronometer2.intervalId)}
+  chronometer.stopClick();
+}
 
     event.target.classList.toggle('start');
     event.target.classList.toggle('stop');
@@ -23,7 +24,19 @@ function HandleClick(event, chronometer2){
 
 }
 
-btnLeft.addEventListener("click", HandleClick)
+function HandleClickRight(event){
+  if(event.target.classList.contains('split')){
+  let actualChrono= chronometer.splitClick();
+  splitList.innerHTML += `<li>${actualChrono}</li>`}
+  else{
+    chronometer.resetClick() 
+    printTime()
+  }
+}
+
+btnLeft.addEventListener("click", (event)=>HandleClick(event, chronometer))
+// btnLeft.addEventListener("click", function (event){HandleClick(event, chronometer)})
+btnRight.addEventListener('click', HandleClickRight)
 
 
 
@@ -37,16 +50,21 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
-}
+  let actualChrono= chronometer.splitClick();
+
+  minDec.innerText=actualChrono[0]
+  minUni.innerText=actualChrono[1]}
 
 function printSeconds() {
-  // ... your code goes here
-}
+  let actualChrono= chronometer.splitClick();
+
+  secDec.innerText=actualChrono[3]
+  secUni.innerText=actualChrono[4]}
 
 // ==> BONUS
 function printMilliseconds() {
