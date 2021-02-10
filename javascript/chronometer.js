@@ -33,15 +33,14 @@ class Chronometer {
       return Math.round(this.currentTime % 60);
     }
   }
+
   twoDigitsNumber(value) {
-    //pending
     let twoDigitsNumber = value;
 
     if (twoDigitsNumber < 10) {
       twoDigitsNumber = "0" + twoDigitsNumber;
     }
     return twoDigitsNumber.toString();
-    //pending
   }
 
   stopClick(clean) {
