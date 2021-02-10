@@ -14,38 +14,30 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-// do {
-  console.log('Fonction Print Time')
   printMinutes()
   printSeconds()
-
+  printMilliseconds()
 }   
-//     while (btnLeft.classList.contains('stop'))
-// }
+
 
 function printMinutes() {
-  console.log('Fonction Print Minute 1')
   let min = chronometer.getMinutes()
   minDec.textContent = chronometer.twoDigitsNumber(min)[0]
   minUni.textContent = chronometer.twoDigitsNumber(min)[1]
-  console.log('Fonction Print Minute 2')
-  if (btnLeft.classList.contains('start')) {
-    return
-  }
 }
 
 function printSeconds() {
   let sec = chronometer.getSeconds()
-  while (btnLeft.classList.contains('stop')) {
     secDec.textContent = chronometer.twoDigitsNumber(sec)[0]
     secUni.textContent = chronometer.twoDigitsNumber(sec)[1]
   }
-}
 
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let miliSec = chronometer.getMiliseconds()
+  milDec.textContent = chronometer.twoDigitsNumber(miliSec)[0]
+  milUni.textContent = chronometer.twoDigitsNumber(miliSec)[1]
 }
 
 function printSplit() {
@@ -79,21 +71,27 @@ btnLeft.addEventListener('click', () => {
   if (btnLeft.classList.contains('start')) {
     btnLeft.textContent = 'START'
     chronometer.stopClick()
+    btnRight.classList.remove('split')
+    btnRight.classList.add('reset')
+    btnRight.textContent = 'RESET'
   } else {
+    btnRight.classList.add('split')
+    btnRight.classList.remove('reset')
     btnLeft.textContent = 'STOP'
-    chronometer.startClick()
-      printTime()
+    btnRight.textContent = 'SPLIT'
+    chronometer.startClick(printTime)
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  btnRight.classList.toggle('split')
-  btnRight.classList.toggle('reset')
   if (btnRight.classList.contains('split')) {
-    btnRight.textContent = 'SPLIT'
-    
+    let li = document.createElement("li")
+    li.textContent = chronometer.splitClick()
+    splits.appendChild(li)
   } else {
-    btnRight.textContent = 'RESET'
+    chronometer.resetClick()
+    printTime()
+    splits.innerHTML= ''
   }
 });
