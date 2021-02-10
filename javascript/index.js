@@ -14,15 +14,15 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  chronometer.twoDigitsNumber
 }
 
 function printMinutes() {
-  // ... your code goes here
+  chronometer.getMinutes()
 }
 
 function printSeconds() {
-  // ... your code goes here
+  chronometer.getSeconds()
 }
 
 // ==> BONUS
@@ -40,28 +40,36 @@ function clearSplits() {
 
 function setStopBtn() {
   // write "STOP" + stop the chronometer
+  chronometer.stopClick()
+  btnLeft.value="STOP";
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  chronometer.splitClick()
 }
 
 function setStartBtn() {
-  chronometer.startClick;
+  chronometer.startClick();
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick()
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (chronometer.currentTime===0)
-  {setStartBtn}
+  {console.log("booboo")
+  setStartBtn()
+  printTime()}
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
+  if (chronometer.currentTime!==0) {
+    setStopBtn()
+  }
 });
