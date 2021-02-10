@@ -19,13 +19,13 @@ function printTime() {
 }
 
 function printMinutes() {
-  minDec.innerHTML=chronometer.twoDigitsNumber(chronometer.getMinutes)[0];
-  minUni.innerHTML=chronometer.twoDigitsNumber(chronometer.getMinutes)[1];
+  minDec.innerHTML=chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+  minUni.innerHTML=chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
 }
 
 function printSeconds() {
-  secDec.innerHTML=chronometer.twoDigitsNumber(chronometer.getSeconds)[0];
-  secUni.innerHTML=chronometer.twoDigitsNumber(chronometer.getSeconds)[1];
+  secDec.innerHTML=chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+  secUni.innerHTML=chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
 }
 
 // ==> BONUS
@@ -44,22 +44,21 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  btnLeft.innerText='STOP';
-  chronometer.stopClick;
+  btnLeft.innerText='START';
+  chronometer.stopClick();
 }
 
 function setSplitBtn() {
-  btnRight.innerText='SPLIT'
+  btnRight.innerText='RESET'
 }
 
 function setStartBtn() {
-  btnLeft.innerText='START';
-  chronometer.startClick();
-  printTime();
+  btnLeft.innerText='STOP';
+  chronometer.startClick(printTime);
 }
 
 function setResetBtn() {
-  btnRight.innerText='RESET'
+  btnRight.innerText='SPLIT'
 }
 
 // Start/Stop Button
@@ -67,9 +66,9 @@ btnLeft.addEventListener('click', () => {
   btnLeft.classList.toggle("start");
   btnLeft.classList.toggle("stop");
   if(btnLeft.classList.contains("start")) {
-    setStartBtn()
-  } else {
     setStopBtn()
+  } else {
+    setStartBtn()
   }
 });
 
@@ -78,8 +77,8 @@ btnRight.addEventListener('click', () => {
   btnRight.classList.toggle("reset");
   btnRight.classList.toggle("split");
   if(btnRight.classList.contains("reset")) {
-    setResetBtn()
-  } else {
     setSplitBtn()
+  } else {
+    setResetBtn()
   }
 });
