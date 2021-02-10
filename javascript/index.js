@@ -1,8 +1,31 @@
 const chronometer = new Chronometer();
+const chronometer2 = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+
+function HandleClick(event, chronometer2){
+  if (event.target.classList.contains ('start')){
+    event.target.innerText= 'STOP';
+    btnRight.innerText='SPLIT';
+    chronometer2.startClick(chronometer2.intervalId)
+
+  }else {event.target.innerText= 'START';
+  btnRight.innerText='RESET';
+  chronometer2.stopClick(chronometer2.intervalId)}
+
+    event.target.classList.toggle('start');
+    event.target.classList.toggle('stop');
+    btnRight.classList.toggle('split');
+    btnRight.classList.toggle('reset')
+  
+
+}
+
+btnLeft.addEventListener("click", HandleClick)
+
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
