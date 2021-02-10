@@ -32,6 +32,7 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+
 }
 
 function clearSplits() {
@@ -48,18 +49,41 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+  if(btnLeft.innerHTML === "START"){
+    btnLeft.innerHTML = "STOP"
+  }else if(btnLeft.innerHTML === "STOP"){
+    btnLeft.innerHTML = "START"
+  }
 }
 
 function setResetBtn() {
   // ... your code goes here
+  if(btnRight.innerHTML === "RESET"){
+    btnRight.innerHTML = "SPLIT"
+  }else if(btnRight.innerHTML === "SPLIT"){
+    btnRight.innerHTML = "RESET"
+  }
+  
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  btnLeft.classList.toggle('start')
+  if(btnLeft.classList.toggle('start') === true){
+    btnLeft.classList.toggle('stop')
+  }
+  setStartBtn();
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
+  btnRight.classList.toggle('reset')
+  if(btnRight.classList.toggle('reset') === true){
+    btnRight.classList.toggle('split')
+  }
+
+  setResetBtn();
 });
