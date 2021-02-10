@@ -33,27 +33,30 @@ class Chronometer {
       return Math.round(this.currentTime % 60);
     }
   }
-  twoDigitsNumber() {
+  twoDigitsNumber(value) {
     //pending
-    let twoDigitsNumber = "";
+    let twoDigitsNumber = value;
 
-    if (twoDigitsNumber.length < 2) {
-      twoDigitsNumber = "0" + twoDigitsNumber
+    if (twoDigitsNumber < 10) {
+      twoDigitsNumber = "0" + twoDigitsNumber;
     }
-    return twoDigitsNumber;
+    return twoDigitsNumber.toString();
     //pending
   }
+
   stopClick(clean) {
     return clearInterval(clean);
   }
+  
   resetClick() {
     this.currentTime = 0;
   }
-  splitClick( number1, number2) {
+
+  splitClick() {
     let min = this.getMinutes();
     let sec = this.getSeconds();
-    let array = [];
-console.log("hello" + array)
-    return array.push(`${min},${sec}`);
+    let firstNum = this.twoDigitsNumber(min);
+    let scndNum = this.twoDigitsNumber(sec);
+    return `${firstNum}:${scndNum}`;
   }
 }
