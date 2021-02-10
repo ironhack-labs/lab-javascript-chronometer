@@ -15,6 +15,9 @@ let splits = document.getElementById('splits');
 
 function printTime() {
   chronometer.twoDigitsNumber
+  printMinutes();
+  printSeconds();
+}
 }
 
 function printMinutes() {
@@ -59,10 +62,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  if (chronometer.currentTime===0)
-  {console.log("booboo")
-  setStartBtn()
-  printTime()}
+  btnLeft.classList.toggle("stop");
+  btnRight.classList.toggle("split");
+  if (chronometer.currentTime===0){
+  setStartBtn();
+  printTime();
+}
   // ... your code goes here
 });
 
