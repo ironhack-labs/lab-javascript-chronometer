@@ -1,4 +1,5 @@
 const chronometer = new Chronometer();
+const chronometer2 = new Chronometer();
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
@@ -19,10 +20,13 @@ function printTime() {
 
 function printMinutes() {
   // ... your code goes here
+  
+  chronometer.getMinutes();
 }
 
 function printSeconds() {
   // ... your code goes here
+  chronometer.getSeconds();
 }
 
 // ==> BONUS
@@ -50,10 +54,15 @@ function setSplitBtn() {
 function setStartBtn() {
   // ... your code goes here
   if(btnLeft.innerHTML === "START"){
-    btnLeft.innerHTML = "STOP"
+    btnLeft.innerHTML = "STOP";
+    
+    
+    printSeconds();
   }else if(btnLeft.innerHTML === "STOP"){
-    btnLeft.innerHTML = "START"
+    btnLeft.innerHTML = "START";
+    chronometer.stopClick();
   }
+  
 }
 
 function setResetBtn() {
