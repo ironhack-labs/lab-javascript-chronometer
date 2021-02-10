@@ -7,13 +7,16 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.currentTime++;
       callback();
-    }, 1000);
+    }, 10);
+  }
+  getMilliseconds() {
+    return this.currentTime - this.getMinutes()*6000 - this.getSeconds()*100 ;
   }
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 6000);
   }
   getSeconds() {
-    return this.currentTime - this.getMinutes() * 60; // => Math.floor(this.currentTime / 60)
+    return Math.floor((this.currentTime - this.getMinutes() * 6000)/100); // => Math.floor(this.currentTime / 60)
   }
   twoDigitsNumber(number) {
     let twoDigit = number < 10 ? "0" + number : String(number);
@@ -30,7 +33,9 @@ class Chronometer {
     let result =
       this.twoDigitsNumber(this.getMinutes()) +
       ":" +
-      this.twoDigitsNumber(this.getSeconds());
+      this.twoDigitsNumber(this.getSeconds()) +
+      ":" +
+      this.twoDigitsNumber(this.getMilliseconds());
     return result;
   }
 }
