@@ -13,14 +13,21 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-function printTime() {}
+function printTime() {
+  printMinutes();
+  printSeconds();
+}
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerHTML = minutes[0];
+  minUni.innerHTML = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
 // // ==> BONUS
@@ -46,10 +53,10 @@ function setSplitBtn() {
 
 function setStartBtn() {
   if (btnLeft.classList.contains("start")) {
-    btnLeft.innerHTML = 'START';
+    btnLeft.innerHTML = "START";
     chronometer.stopClick();
   } else if (btnLeft.classList.contains("stop")) {
-    btnLeft.innerHTML = 'STOP';
+    btnLeft.innerHTML = "STOP";
     chronometer.startClick();
   }
 }
@@ -62,7 +69,6 @@ function setResetBtn() {
   //   btnRight.innerHTML = 'SPLIT';
   //   chronometer.splitClick();
   // }
-
   // if (btnRight.classList.contains("reset")) {
   //   chronometer.splitClick();
   // } else {
@@ -71,12 +77,26 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+// btnLeft.addEventListener("click", () => {
+//   btnLeft.classList.toggle("start");
+//   btnLeft.classList.toggle("stop");
+//   btnRight.classList.toggle("reset");
+//   btnRight.classList.toggle("split");
+//   return setStartBtn();
+// });
+//OR
 btnLeft.addEventListener("click", () => {
-  btnLeft.classList.toggle('start');
-  btnLeft.classList.toggle('stop');
-  btnRight.classList.toggle("reset");
-  btnRight.classList.toggle("split");
-  return setStartBtn();
+  if (btnLeft.classList.contains("start")) {
+    btnLeft.innerHTML = "STOP";
+    btnLeft.classList.add("stop");
+    btnLeft.classList.remove("start");
+    chronometer.startClick(printTime);
+  } else {
+    btnLeft.innerHTML = "START";
+    btnLeft.classList.add("start");
+    btnLeft.classList.remove("stop");
+    chronometer.stopClick(printTime);
+  }
 });
 
 // Reset/Split Button
