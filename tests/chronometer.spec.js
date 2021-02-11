@@ -162,7 +162,7 @@ describe('Chronometer', () => {
       expect(chronometer.currentTime).toEqual(0);
     });
   });
-
+/*
   describe('splitClick method', () => {
     it('should be declared', () => {
       expect(typeof chronometer.splitClick).toEqual('function');
@@ -183,7 +183,7 @@ describe('Chronometer', () => {
       }
     });
   });
-
+*/
   // comment the previous test and uncomment the following when working on the bonus iteration
   // describe('splitClick method', () => {
   //   it('should be declared', () => {

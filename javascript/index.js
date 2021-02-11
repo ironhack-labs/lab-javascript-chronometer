@@ -14,7 +14,7 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  
 }
 
 function printMinutes() {
@@ -47,7 +47,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  
 }
 
 function setResetBtn() {
@@ -56,10 +56,16 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeft.classList.toggle("btn start");
+  btnLeft.classList.toggle("btn stop");
+  
+  
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  btnRight.classList.toggle("btn reset");
+  btnRight.classList.toggle("btn split");
+  
+  }
 });
