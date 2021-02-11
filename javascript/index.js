@@ -13,8 +13,22 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+
+
+class Start {
+  constructor(){}
+  startClick(){}
+}
+
+class Stop {
+  constructor(){}
+  stopClick(){}
+}
+
+
 function printTime() {
-  // ... your code goes here
+
+   // ... your code goes here
 }
 
 function printMinutes() {
@@ -40,15 +54,19 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeft.innerText = "STOP";
 }
+
 
 function setSplitBtn() {
   // ... your code goes here
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "START";
 }
+  // ... your code goes here
+
 
 function setResetBtn() {
   // ... your code goes here
@@ -56,10 +74,27 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+
+  if (btnLeft.classList.value === 'btn start') {
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn();
+  }
+  if (btnLeft.classList.value === 'btn stop') {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  }
+  btnLeft.classList.toggle('start');
+  btnLeft.classList.toggle('stop');
+  btnRight.classList.toggle('reset');
+  btnRight.classList.toggle('split');
 });
+  // ... your code goes here
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
+  
   // ... your code goes here
 });
