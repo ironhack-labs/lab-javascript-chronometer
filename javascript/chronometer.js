@@ -6,11 +6,12 @@ class Chronometer {
   }
   startClick(callback) {
     this.intervalId = setInterval(() => {
+      callback()
       this.currentTime += 1;
       console.log(this.currentTime);
     }, 1000);
 
-    console.log("the interval id is >", this.intervalId);
+        console.log("the interval id is >", this.intervalId);
   }
   getMinutes() {
     if (this.currentTime === 0) {
