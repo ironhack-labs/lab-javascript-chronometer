@@ -117,3 +117,4 @@ btnRight.addEventListener("click", () => {
     setSplitBtn();
   }
 });
+
