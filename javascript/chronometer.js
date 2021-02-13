@@ -1,58 +1,49 @@
+//CHRONOMETER.JS
 class Chronometer {
     constructor() {
         this.currentTime = 0
         this.intervalId = 0
+        this.miliseconds = 0
+        this.intervalIdMiliSeconds = 0
     }
-    startClick(callback) {
-        setInterval(() => {
-            this.currentTime += 1
+    startClick(callback, callbackMiliSeconds) {
+        this.intervalId = setInterval(() => {
+            this.currentTime += 1;
+            if (callback) {
+                callback()
+            };
         }, 1000)
+        this.intervalIdMiliSeconds = setInterval(() => {
+            if (this.miliseconds === 99) {
+                this.miliseconds = 0
+            }
+            this.miliseconds++;
+            if (callbackMiliSeconds) {
+                callbackMiliSeconds()
+            }
+        }, 10)
     }
     getMinutes() {
-        let minutes = this.currentTime / 60
-        return Math.floor(minutes)
+        return Math.floor(this.currentTime / 60);
     }
     getSeconds() {
-        let seconds = this.currentTime % 60
-        return Math.floor(seconds)
+        return this.currentTime % 60;
     }
-    twoDigitsNumber(number) {
-        let minutes = Math.floor(this.currentTime / 60);
-        let stringMinutes = minutes.toString();
-        if (stringMinutes.length < 2) {
-            return ("0" + stringMinutes)
-        }
-    }
-    twoDigitsNumber() {
-        let minutes = Math.floor(this.currentTime / 60);
-        let stringMinutes = minutes.toString();
-        if (stringMinutes.length < 2) {
-            return ("0" + stringMinutes)
-        }
+    twoDigitsNumber(num) {
+        return (num.toString().length === 1) ? `0${num}` : num.toString()
     }
     stopClick() {
-        return clearInterval(this.currentTime)
+        clearInterval(this.intervalId)
+        clearInterval(this.inter)
     }
     resetClick() {
         this.currentTime = 0
-    }
-    resetClick() {
-        this.currentTime = 0
+        this.miliseconds = 0
     }
     splitClick() {
-        let min = Math.floor(this.currentTime / 60);
-        let sec = Math.floor(this.currentTime % 60);
-        if (min < 10 && sec < 10) {
-            return (`${0}${min}:${0}${sec}`)
-        }
-        if (min < 10 && sec > 10) {
-            return (`${0}${min}:${sec}`)
-        }
-        if (min > 10 && sec < 10) {
-            return (`${min}:${0}${sec}`)
-        }
-        if (min > 10 && sec > 10) {
-            return (`${min}:${sec}`)
-        }
+        let min = this.twoDigitsNumber(this.getMinutes())
+        let sec = this.twoDigitsNumber(this.getSeconds())
+        let mil = this.twoDigitsNumber(this.miliseconds)
+        return `${min}:${sec}:${mil}`
     }
 }
