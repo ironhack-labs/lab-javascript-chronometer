@@ -1,3 +1,4 @@
+//INDEX.JS
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -32,7 +33,10 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let miliSegundos=chronometer.twoDigitsNumber(chronometer.miliseconds)
+  console.log(miliSegundos)
+  milDec.innerHTML=miliSegundos[0]
+  milUni.innerHTML=miliSegundos[1]
 }
 
 function printSplit() {
@@ -71,7 +75,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   if (btnLeft.innerHTML==="START"){
-    chronometer.startClick(printTime);
+    chronometer.startClick(printTime,printMilliseconds);
     setStopBtn()
     setSplitBtn()
   } else if (btnLeft.innerHTML==="STOP"){
