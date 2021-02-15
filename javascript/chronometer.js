@@ -4,24 +4,11 @@ class Chronometer {
     this.intervalId = 0
   }
 
-  startClick(callback, callbackMiliSeconds) {
-    this.intervalId= setInterval(() =>{
+  startClick(callback) {
+    setInterval(() =>{
       this.currentTime +=1;
       console.log(this.currentTime)
-      if (callback){
-        callback()
-      };
     },1000)
-    
-    this.intervalIdMiliSeconds=setInterval(() =>{
-      if(this.miliseconds===99){
-        this.miliseconds=0
-      }
-      this.miliseconds++;
-      if (callbackMiliSeconds){
-        callbackMiliSeconds()
-      }
-    },10)
   }
 
   getMinutes() {
