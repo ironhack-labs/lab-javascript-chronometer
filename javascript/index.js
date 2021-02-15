@@ -14,20 +14,27 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+    //  printMinutes()
+      printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let min = chronometer.twoDigitsNumber(chronometer.getMinutes());
+  minDec.innerHTML=min[0]
+  minUni.innerHTML=min[1]
+  minUni.innerHTML="9"
 }
 
 function printSeconds() {
-  // ... your code goes here
-}
+    let sec = chronometer.twoDigitsNumber(chronometer.getSeconds());
+    secUni.innerHTML=6
+  }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMiliseconds() {
+  // let miliSeg =chronometer.twoDigitsNumber(chronometer.miliseconds)
+  // milDec.innerHTML=miliSeg[0]
+  // milUni.innerHTML=miliSeg[1]
 }
 
 function printSplit() {
@@ -39,27 +46,44 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    btnLeft.innerHTML="STOP"
+    btnLeft.style.backgroundColor="red";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+    btnRight.innerHTML="SPLIT"
+    btnRight.style.backgroundColor="blue";
 }
 
 function setStartBtn() {
-  // ... your code goes here
-}
+  btnLeft.innerHTML="START"
+  btnLeft.style.backgroundColor="green";}
 
 function setResetBtn() {
-  // ... your code goes here
-}
+  btnRight.innerHTML="RESET"
+  btnRight.style.backgroundColor="gray";}
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-});
+   if (btnLeft.innerHTML==="START") {
+     chronometer.startClick()
+     printSeconds()
+     //setStopBtn()
+    // setSplitBtn()
+  //  } else if (btnLeft.innerHTML===“STOP”) {
+  //   chronometer.stopClick()
+  //   setStartBtn()
+  //   setResetBtn()
+  //  }
+   }
+})
+
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
+  // if (btnRight.innerHTML="RESET"){
+  //   btnLeft.innerHTML= "STOP"
+  //   btnRight.innerHTML="SPLIT"
   // ... your code goes here
-});
+})
