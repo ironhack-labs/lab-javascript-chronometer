@@ -11,21 +11,40 @@ class Chronometer {
   }
 
   getMinutes() {
-    // ... your code goes here
+    let minutes = this.currentTime;
+    return Math.floor(this.currentTime / 60);
+
   }
+
   getSeconds() {
-    // ... your code goes here
+    let seconds = this.currentTime;
+    return Math.floor(this.currentTime);
   }
+
+
   twoDigitsNumber() {
-    // ... your code goes here
+  
+    if (this.currentTime < 10) {
+      return "0" + this.currentTime;
+    }
+    else {
+      return this.currentTime;
+    }
+  
   }
+
   stopClick() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
+
+
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
+
   splitClick() {
-    // ... your code goes here
+
+    
+    
   }
 }
