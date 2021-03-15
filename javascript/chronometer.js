@@ -4,32 +4,44 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    //let time = this.currentTime;
     this.intervalId = setInterval(() => {
-      this.currentTime +=1
-    },1000);
+      this.currentTime += 1;
+      if (callback) callback();
+    }, 1000);
   }
 
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
+
   getSeconds() {
-    return this.currentTime % 60
+    return this.currentTime % 60;
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+
+  getMilliseconds() {
+  return this.currentTime % 60;
   }
+
+  twoDigitsNumber(num) {
+    num = `${num}`;
+    if (num <= 9) {
+      return `0${num}`;
+    }
+    return `${num}`;
+  }
+
   stopClick() {
-    // ... your code goes here
+    return clearInterval(this.intervalId);
   }
+
   resetClick() {
-    // ... your code goes here
+    return (this.currentTime = 0);
   }
+
   splitClick() {
-    // ... your code goes here
+    let minutes = this.twoDigitsNumber(this.getMinutes());
+    let seconds = this.twoDigitsNumber(this.getSeconds());
+    let milliseconds = this.twoDigitsNumber(this.getMilliseconds());
+    return `${minutes}:${seconds}:${milliseconds}`;
   }
 }
-
-
-var chrono = new Chronometer() // {currentTime: 87, intervalId: 0}
-chrono.startClick()
