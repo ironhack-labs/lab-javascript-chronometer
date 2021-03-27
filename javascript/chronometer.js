@@ -6,13 +6,12 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      
-      let secs= this.getSeconds();
-      let mins = this.getMinutes();
       let secDec = document.getElementById('secDec');
       let secUni = document.getElementById('secUni');
       let minDec = document.getElementById('minDec');
       let minUni = document.getElementById('minUni');
+      let secs= this.getSeconds();
+      let mins = this.getMinutes();
       if(secs <= 9){
         secDec.innerHTML = '0';
         secUni.innerHTML = secs;
@@ -27,7 +26,6 @@ class Chronometer {
         minDec.innerHTML = mins.toString()[0];
         minUni.innerHTML = mins.toString()[1];
       }
-
     }, 1000);
   }
   getMinutes() {
@@ -50,6 +48,10 @@ class Chronometer {
     return this.currentTime = 0;
   }
   splitClick() {
-    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+    let splits = document.getElementById('splits');
+    let text = document.createTextNode(`${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`);
+    let li = document.createElement('li');
+    li.appendChild(text);
+    splits.appendChild(li)
   }
 }
