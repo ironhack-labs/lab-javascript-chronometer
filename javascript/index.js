@@ -14,20 +14,28 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  printMinutes();
-  printSeconds();
+  
+ // printMinutes();
+  // printSeconds();
 };
 
 function printMinutes() {
-  let minutes = chronometer.splitClick();
-  minDec.innerHTML = minutes[0];
-  minUni.innerHTML = minutes[1];
+  console.log(chronometer.getMinutes())
+  
+  // let mins = chronometer.getMinutes())
+  // if(mins.length === 1){
+  //   minDec.innerHTML = '0';
+  //   minUni.innerHTML = mins[0];
+  // } else {
+  //   minDec.innerHTML = mins[0];
+  //   minUni.innerHTML = mins[1];
+  // }
+  // console.log(mins)
 };
 
 function printSeconds() {
-  let seconds = chronometer.splitClick();
-  secDec.innerHTML = seconds[3];
-  secUni.innerHTML = seconds[4];
+ 
+  
 };
 
 // ==> BONUS
@@ -52,7 +60,8 @@ function setStopBtn() {
 };
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.setAttribute('class', 'btn split')
+  chronometer.splitClick();
 };
 
 function setStartBtn() {
@@ -60,7 +69,7 @@ function setStartBtn() {
     btnRight.setAttribute('class', 'btn split');
     btnLeft.innerHTML = "STOP";
     btnRight.innerHTML = "SPLIT";
-    chronometer.startClick(printTime());
+    chronometer.startClick();
 };
 
 function setResetBtn() {

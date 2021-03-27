@@ -6,12 +6,29 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      console.log(this.currentTime);
-      if(callback) {
-        callback();
+      
+      let secs= this.getSeconds();
+      let mins = this.getMinutes();
+      let secDec = document.getElementById('secDec');
+      let secUni = document.getElementById('secUni');
+      let minDec = document.getElementById('minDec');
+      let minUni = document.getElementById('minUni');
+      if(secs <= 9){
+        secDec.innerHTML = '0';
+        secUni.innerHTML = secs;
+      } else {
+        secDec.innerHTML = secs.toString()[0];
+        secUni.innerHTML = secs.toString()[1];
+      };
+      if(mins <= 9){
+        minDec.innerHTML = '0';
+        minUni.innerHTML = mins;
+      } else {
+        minDec.innerHTML = mins.toString()[0];
+        minUni.innerHTML = mins.toString()[1];
       }
+
     }, 1000);
-    
   }
   getMinutes() {
     return Math.floor(this.currentTime/60)
