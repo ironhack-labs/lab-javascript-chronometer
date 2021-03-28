@@ -82,6 +82,7 @@ btnLeft.addEventListener('click', () => {
     chronometer.stopClick();
     setStartBtn()
     setResetBtn()
+    clearInterval(set)
   }
 });
 
