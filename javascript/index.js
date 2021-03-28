@@ -40,7 +40,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  splits.innerHTML = chronometer.splitClick()
 }
 
 function clearSplits() {
@@ -62,7 +62,7 @@ function setStartBtn() {
   btnLeft.innerHTML = 'START'
 }
 
-function setResetBtn() {
+function setResetBtn() { 
   btnRight.classList.remove('split')
   btnRight.innerHTML = 'RESET'
   minDec.innerHTML = 0;
@@ -82,13 +82,17 @@ btnLeft.addEventListener('click', () => {
     chronometer.stopClick();
     setStartBtn()
     setResetBtn()
-    clearInterval(set)
+    
   }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   if(btnRight.innerHTML === 'RESET') {
+    clearInterval(set)
+    chronometer.resetClick();
     setResetBtn()
-  }  
+  } else {
+    setSplitBtn();
+  }
 });
