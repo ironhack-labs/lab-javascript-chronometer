@@ -24,22 +24,22 @@ function printTime() {
 }
 
 function printMinutes() {
-  let minutes = chronometer.splitClick();
+  let minutes =chronometer.twoDigitsNumber(chronometer.getMinutes())
   minDec.innerHTML = minutes[0];
   minUni.innerHTML = minutes[1];
 }
 
 function printSeconds() {
-  let seconds = chronometer.splitClick();
-  secDec.innerHTML = seconds[3];
-  secUni.innerHTML = seconds[4];
+  let seconds =chronometer.twoDigitsNumber(chronometer.getSeconds())
+  secDec.innerHTML = seconds[0];
+  secUni.innerHTML = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  let milliseconds = chronometer.splitClick();
-  milDec.innerHTML = milliseconds[6];
-  milUni.innerHTML = milliseconds[7];
+  let milliseconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds())
+  milDec.innerHTML = milliseconds[milliseconds.length - 2];
+  milUni.innerHTML = milliseconds[milliseconds.length - 1];
 }
 
 function printSplit() {

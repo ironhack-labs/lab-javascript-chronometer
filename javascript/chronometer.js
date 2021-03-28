@@ -4,20 +4,19 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
+    this.startTime = 0;
   }
   startClick(callback) {
+    this.startTime = new Date().getTime()
     this.intervalId = setInterval(() => {
-      this.currentTime++;
+      this.currentTime = (new Date().getTime()) - this.startTime;
+      console.log(this.currentTime)
     }, 1);
   }
 
   getMilliseconds() {
-    let num = parseInt(this.currentTime);
 
-    if (this.currentTime > 99) {
-      num = parseInt(num.toString().slice(-2));
-    } 
-    return parseInt(num);
+    return parseInt((this.currentTime / 10));
   }
 
   getMinutes() {
