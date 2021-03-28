@@ -17,9 +17,10 @@ let set = 0;
 
 function printTime() {
   set = setInterval(function() {
+    printMilliseconds();
     printSeconds();
     printMinutes();
-  }, 1000);
+  }, 1);
 }
 
 function printMinutes() {
@@ -36,7 +37,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milliseconds = chronometer.splitClick();
+  milDec.innerHTML = milliseconds[6];
+  milUni.innerHTML = milliseconds[7];
 }
 
 function printSplit() {
@@ -94,6 +97,8 @@ btnRight.addEventListener('click', () => {
     minUni.innerHTML = 0;
     secDec.innerHTML = 0;
     secUni.innerHTML = 0;
+    milDec.innerHTML = 0;
+    milUni.innerHTML = 0;
     clearSplits(splits);
   } else {
     printSplit();
