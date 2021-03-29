@@ -38,5 +38,16 @@ class Chronometer {
   }
   splitClick() {
     // ... your code goes here
+    let min = this.getMinutes()
+    let sec = this.getSeconds()
+    if (min < 10 && sec < 10) {
+     return `${0}${min}:${0}${sec}`
+    } else if (min < 10 && sec > 10) {
+      return `0${min}:${sec}`;
+    } else if (min > 10 && sec < 10) {
+      return`${min}:0${sec}`;
+    } else {
+      return `${min}:${sec}`
+    } 
   }
 }
