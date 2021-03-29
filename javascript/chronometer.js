@@ -1,17 +1,12 @@
 class Chronometer {
   constructor() {
-    //the constructor method won't receive any arguments,
-    //the class will have two properties: currentTime, intervalId.
-    //should have a `currentTime` property and its value should be set to 0 at the beginning
-    //should have a `intervalId` property and its value should be set to 0 at the beginning  
     this.currentTime = 0;
     this.intervalId = 0;  
   }
   startClick(callback) {
-  //   - Should use the setInterval() JS method to increment by 1 the currentTime property every 1 second. The callback will also be triggered inside the scope of this method.
-  //   Hint 1: Keep in mind - inside setInterval() the keyword this will not refer to the object chronometer but the global context. To enable access to this that points to chronometer, use arrow function syntax inside the setInterval().
-  //   Hint 2: In case you get an error while invoking the callback, try to wrap it in the if statement.
-  //   The setInterval() will be assigned to our intervalId property, so this way, we will be able to clear it later on when we need to restart the timer. 
+    this.intervalId = setInterval(()=>{
+      this.currentTime += 1;
+    }, 1000);
   }
   getMinutes() {
     // Our current time is our clock, but it only runs seconds. We need to create a method that will return the number of minutes that corresponds to the value of the seconds we have on the currentTime.
