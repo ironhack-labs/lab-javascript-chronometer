@@ -24,7 +24,7 @@ class Chronometer {
     }
   }
   stopClick() {
-    // When invoked, the stopClick() method should clear the intervalId. Simple as that. 💡 Hint: Use clearInterval.
+    clearInterval(this.intervalId);
   }
   resetClick() {
     // The resetClick() will reset our chronometer. Since our code is super clean, we just need to set our currentTime property back to 0, and that's it!
