@@ -11,9 +11,9 @@ class Chronometer {
 		return Math.floor(this.currentTime / 60);
 	}
 	getSeconds() {
-		let minutes = Math.floor(this.currentTime / 60);
-		if (minutes === 0) return this.currentTime;
-		return Math.floor((this.currentTime / 60 - minutes) * 60);
+		return this.getMinutes() === 0
+			? this.currentTime
+			: Math.floor((this.currentTime / 60 - this.getMinutes()) * 60);
 	}
 	twoDigitsNumber(time) {
 		return time === 0 ? "00" : time > 0 && time < 10 ? "0" + time : "" + time;
