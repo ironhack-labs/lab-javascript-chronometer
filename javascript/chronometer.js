@@ -29,8 +29,9 @@ class Chronometer {
   resetClick() {
     this.currentTime = 0;
   }
-  splitClick() {
-    // The splitClick() method needs to capture the moment when the split button gets hit later on. Imagine this being a time frame in which a runner runs certain distances. The splitClick() will receive any two numbers and needs to output them in a valid format. For more information, check the corresponding test.
-
+  splitClick() {    
+    let min = this.twoDigitsNumber(this.getMinutes());
+    let sec = this.twoDigitsNumber(this.getSeconds());
+    return `${min}:${sec}`;
   }
 }
