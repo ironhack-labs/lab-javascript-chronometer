@@ -26,12 +26,15 @@ class Chronometer {
     }
   }
   stopClick() {
-
+        return clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+        return (this.currentTime = 0);
   }
-  splitClick() {
-    // ... your code goes here
+  splitClick(minutes, seconds) {
+        minutes = this.twoDigitsNumber(this.getMinutes());
+        seconds = this.twoDigitsNumber(this.getSeconds());
+
+        return `${minutes}:${seconds}`;
   }
 }
