@@ -1,12 +1,19 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = 0;
   }
+
   startClick(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
+    }, 1000);
   }
+
   getMinutes() {
-    // ... your code goes here
+    let minutes = 0;
+    minutes = this.currentTime / 60;
+    return Math.floor(minutes);
   }
   getSeconds() {
     // ... your code goes here
