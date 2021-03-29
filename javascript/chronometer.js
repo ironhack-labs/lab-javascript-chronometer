@@ -16,10 +16,16 @@ class Chronometer {
     return Math.floor(minutes);
   }
   getSeconds() {
-    // ... your code goes here
+    getSeconds() {
+      let seconds = 0;
+      seconds = this.currentTime % 60;
+      return seconds;
+    }
   }
-  twoDigitsNumber() {
-    // ... your code goes here
+  twoDigitsNumber(number) {
+    if (number < 10){
+      return `0${number}`;
+    } 
   }
   stopClick() {
     // ... your code goes here
