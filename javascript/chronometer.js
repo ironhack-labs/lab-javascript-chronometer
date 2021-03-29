@@ -27,9 +27,10 @@ class Chronometer {
     clearInterval(this.intervalId);
   }
   resetClick() {
-    // The resetClick() will reset our chronometer. Since our code is super clean, we just need to set our currentTime property back to 0, and that's it!
+    this.currentTime = 0;
   }
   splitClick() {
     // The splitClick() method needs to capture the moment when the split button gets hit later on. Imagine this being a time frame in which a runner runs certain distances. The splitClick() will receive any two numbers and needs to output them in a valid format. For more information, check the corresponding test.
+
   }
 }
