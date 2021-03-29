@@ -16,24 +16,24 @@ class Chronometer {
     return Math.floor(minutes);
   }
   getSeconds() {
-    getSeconds() {
-      let seconds = 0;
-      seconds = this.currentTime % 60;
-      return seconds;
-    }
+    let seconds = 0;
+    seconds = this.currentTime % 60;
+    return seconds;
   }
   twoDigitsNumber(number) {
-    if (number < 10){
+    if (number < 10) {
       return `0${number}`;
-    } 
+    }
   }
   stopClick() {
-    // ... your code goes here
+    return clearInterval(this.intervalId);
   }
   resetClick() {
-    // ... your code goes here
+    return (this.currentTime = 0);
   }
   splitClick() {
-    // ... your code goes here
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+    return `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`;
   }
 }
