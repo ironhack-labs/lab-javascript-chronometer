@@ -13,7 +13,8 @@ class Chronometer {
     return minutes;
   }
   getSeconds() {
-    // As we did with the minutes, we need a method that returns the seconds that we have on the currentTime property after calculating the round number that represents the minutes.
+    let seconds = Math.floor(this.currentTime - this.getMinutes()*60);
+    return seconds;
   }
   twoDigitsNumber() {
     // Our chronometer has a super cool screen that needs two digits number to display minutes and seconds, but sometimes getMinutes() and getSeconds() returns a single-digit number. Let's create a super simple algorithm that will turn into two-digits number any received value. Example: if the value of the currentTime property is 36 seconds, it should return 00 for minutes and 36 for seconds; if the currentTime is 5 min and 43 sec, it should give us back 05 for minutes and 43 for seconds. At the same time, if the currentTime is 17 min and 13 sec, it should give us back 17 for minutes and 13 for seconds.
