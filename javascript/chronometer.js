@@ -9,7 +9,8 @@ class Chronometer {
     }, 1000);
   }
   getMinutes() {
-    // Our current time is our clock, but it only runs seconds. We need to create a method that will return the number of minutes that corresponds to the value of the seconds we have on the currentTime.
+    let minutes = Math.floor(this.currentTime / 60);
+    return minutes;
   }
   getSeconds() {
     // As we did with the minutes, we need a method that returns the seconds that we have on the currentTime property after calculating the round number that represents the minutes.
