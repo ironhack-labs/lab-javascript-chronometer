@@ -14,15 +14,20 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+    let minutesArray = chronometer.twoDigitsNumber(chronometer.getMinutes()).split('');
+    minDec.innerText = minutesArray[0];
+    minUni.innerText = minutesArray[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+    let secondsArray = chronometer.twoDigitsNumber(chronometer.getSeconds()).split('');
+    secDec.innerText = secondsArray[0];
+    secUni.innerText = secondsArray[1];
 }
 
 // ==> BONUS
@@ -31,15 +36,18 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+    splits.innerHTML += '<li>' +chronometer.splitClick()+ '</li>';
 }
 
 function clearSplits() {
-  // ... your code goes here
+    splits.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    btnLeft.classList.replace('stop', 'start');
+    btnLeft.textContent = 'START';
+    btnRight.classList.replace('split', 'reset');
+    btnRight.textContent = 'RESET';
 }
 
 function setSplitBtn() {
@@ -47,19 +55,38 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    btnLeft.classList.replace('start', 'stop');
+    btnLeft.textContent = 'STOP';
+    btnRight.classList.replace('reset', 'split');
+    btnRight.textContent = 'SPLIT';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+    clearSplits();
+    minDec.innerText = '0';
+    minUni.innerText = '0';
+    secDec.innerText = '0';
+    secUni.innerText = '0';
+
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+    if(btnLeft.classList.contains('start')) {
+        setStartBtn();
+        chronometer.startClick(printTime);
+    }else{
+        setStopBtn();
+        chronometer.stopClick();
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+    if(btnRight.classList.contains('reset')) {
+        chronometer.resetClick();
+        setResetBtn();
+    }else{
+        printSplit();
+    }
 });
