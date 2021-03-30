@@ -13,16 +13,25 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
+let printTimeIntervalId;
+
 function printTime() {
-	// ... your code goes here
+	printTimeIntervalId = setInterval(() => {
+		printMinutes();
+		printSeconds();
+	}, 1000);
 }
 
 function printMinutes() {
-	// ... your code goes here
+	let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes());
+	minDec.innerHTML = minutes[0];
+	minUni.innerHTML = minutes[1];
 }
 
 function printSeconds() {
-	// ... your code goes here
+	let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds());
+	secDec.innerHTML = seconds[0];
+	secUni.innerHTML = seconds[1];
 }
 
 // ==> BONUS
@@ -69,17 +78,17 @@ btnLeft.addEventListener("click", (event) => {
 		setStartBtn(event);
 		//Button right changes
 		setSplitBtn();
-
 		//Calling functions
 		chronometer.startClick();
+		printTime();
 	} else {
 		//Button left changes
 		setStopBtn(event);
 		//Button right changes
 		setResetBtn();
-
 		//Calling functions
 		chronometer.stopClick();
+		clearInterval(printTimeIntervalId);
 	}
 });
 
@@ -88,6 +97,7 @@ btnRight.addEventListener("click", (event) => {
 	if ([...event.target.classList].includes("reset")) {
 		//Resets the clock
 		chronometer.resetClick();
+		printTime();
 	} else {
 		//split time
 	}
