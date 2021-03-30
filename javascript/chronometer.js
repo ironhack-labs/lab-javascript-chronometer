@@ -10,7 +10,7 @@ class Chronometer {
     },1000)
   }
 
-  getMinutes() {
+  getMinutes(callback) {
     return Math.floor(this.currentTime / 60)
   }
   getSeconds() {
@@ -20,13 +20,14 @@ class Chronometer {
     return '0' + this.currentTime.toString().slice(-2)
   }
   stopClick() {
-    debugger
     clearInterval(this.intervalId)
   }
   resetClick() {
     this.currentTime = 0
   }
   splitClick() {
-    return `0${this.getMinutes()}:0${this.getSeconds()}`
+    this.seconds = this.twoDigitsNumber(this.getSeconds());
+    this.minutes = this.twoDigitsNumber(this.getMinutes());
+    return this.minutes + ":" + this.seconds;
   }
 }
