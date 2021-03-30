@@ -8,19 +8,18 @@ class Chronometer {
     },1000)
   }
   getMinutes() {
-    if (this.currentTime!=0){
-      return (Math.floor(this.currentTime/60))
-    } else {return(0)}
+  return (Math.floor(this.currentTime/60))
   }
   getSeconds() {
-    if (this.currentTime!=0){
-      return (this.currentTime%60)
-    } else {return(0)}
+  return (this.currentTime % 60)
+
   }
   twoDigitsNumber(num) {
-  if (num.toString().length < 2){
-    return (0+num.toString())
-  }else {return num.toString()}
+  if (num < 10){
+    return (`0${num}`)
+  }else {
+    return (`${num}`)
+  }
   }
   stopClick() {
     clearInterval(this.intervalId)
@@ -33,8 +32,5 @@ class Chronometer {
     let sec= this.getSeconds()
 
       return (`${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`)
-
-
-
   }
 }
