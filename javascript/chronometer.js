@@ -5,8 +5,9 @@ class Chronometer {
    
   }
   startClick(callback) {
-      setInterval((callback) => {
+      setInterval(() => {
         this.currentTime++
+        callback()
       }, 1000);  
   }
 
@@ -21,11 +22,11 @@ class Chronometer {
   }
   twoDigitsNumber(num) {
     // ... your code goes here
-    return num<10 ? `0${num}`: `${num}`
-    /* if(num<10){
+    /* return num<10 ? `0${num}` : `${num}` */
+     if(num<10){
       return `0${num}`
     } else {
-      return `${num}`} */
+      return `${num}`} 
     }
 
   stopClick() {
