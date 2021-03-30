@@ -39,9 +39,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  let miliSeconds = chronometer.twoDigitsNumber(chronometer.getMiliSeconds());
-  milDec.innerHTML = sec.charAt(0);
-  milUni.innerHTML = sec.charAt(1);
+  let miliSeconds = chronometer.twoDigitsNumber(chronometer.getMilliseconds());
+  milDec.innerHTML = miliSeconds.charAt(0);
+  milUni.innerHTML = miliSeconds.charAt(1);
 }
 
 function printSplit() {
@@ -54,7 +54,6 @@ function printSplit() {
 
 function clearSplits() {
   splits.innerHTML = "";
-  // remove <li>
 }
 
 function setStopBtn() {
