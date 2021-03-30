@@ -42,7 +42,7 @@ function printMilliseconds() {
 
 function printSplit() {
 	let liElem = document.createElement("li");
-	liElem.innerHTML = chronometer.splitClick() + ':' + chronometer.twoDigitsNumber(ms);
+	liElem.innerHTML = chronometer.splitClick() + ":" + chronometer.twoDigitsNumber(ms);
 	splits.appendChild(liElem);
 }
 
@@ -76,8 +76,6 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener("click", (event) => {
-	debugger
-
 	if ([...event.target.classList].includes("start")) {
 		//Button left changes
 		setStopBtn(event);
@@ -85,14 +83,11 @@ btnLeft.addEventListener("click", (event) => {
 		setSplitBtn();
 		//Calling functions
 		chronometer.startClick();
-		printTimeIntervalId = setInterval(() => {
-			printTime();
-		}, 1000);
+		printTimeIntervalId = setInterval(() => printTime(), 1000);
 		printMillisecondsIntervalId = setInterval(() => {
 			printMilliseconds();
-			ms++;
-			if(ms === 100) ms = 0;
-		}, 1);
+			if (ms++ === 100) ms = 0;
+		}, 10);
 	} else {
 		//Button left changes
 		setStartBtn(event);
@@ -106,12 +101,13 @@ btnLeft.addEventListener("click", (event) => {
 
 // Reset/Split Button
 btnRight.addEventListener("click", (event) => {
+	debugger
 	if ([...event.target.classList].includes("reset")) {
 		//Resets the clock
 		chronometer.resetClick();
 		printTime();
 		clearSplits();
-		//Resets milliseconds
+		//Resets milliseconds and prints it.
 		ms = 0;
 		printMilliseconds();
 	} else {
