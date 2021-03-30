@@ -1,4 +1,6 @@
 const chronometer = new Chronometer();
+const errorMessage = document.querySelector("#error-message");
+const errorFirst = document.querySelector("#error-message");
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
@@ -14,16 +16,33 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  //return `${printMinutes}:${printSeconds)}`
-}
-
-function printMinutes(minutes) {
-  //link with 'minUni' & 'minDec'
+  printSeconds ();
+  printMinutes();
 
 }
 
-function printSeconds(secUni, secDec) {
-  secUni.innerHTML = getSeconds
+function printMinutes() {
+ // primero declaramos una variable 'getMinutesMet' que va a recibir lo que valga 
+ // el método .getMinutes() en el objeto chronometer
+ let getMinutesMet = chronometer.getMinutes()
+ // luego, aplicamos el método innerHTML a la variable -declarada en linea10- minDec
+ // para llegar el elemento HTML a través de su id -enlazado misma linea- y aplicarle
+ // el método twoDigitsNumber, creado en la clase Chronometer (madre del objeto chronometer);
+ // 
+  minDec.innerHTML = chronometer.twoDigitsNumber(getMinutesMet)[0];
+  minUni.innerHTML = chronometer.twoDigitsNumber(getMinutesMet)[1];
+}
+
+function printSeconds() {
+ // primero declaramos una variable 'seconds' que va a recibir lo que valga 
+ // el método .getSeconds() en el objeto chronometer
+ let seconds = chronometer.getSeconds()
+ // luego, aplicamos el método innerHTML a la variable -declarada en linea12- secDec
+ // para llegar el elemento HTML a través de su id -enlazado misma linea- y aplicarle
+ // el método twoDigitsNumber, creado en la clase Chronometer (madre del objeto chronometer);
+ // 
+  secDec.innerHTML = chronometer.twoDigitsNumber(seconds)[0];
+  secUni.innerHTML = chronometer.twoDigitsNumber(seconds)[1];
 }
 
 // ==> BONUS
@@ -32,7 +51,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  //link with 'splits'
+  // ... your code goes here
 }
 
 function clearSplits() {
@@ -40,7 +59,7 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+
 }
 
 function setSplitBtn() {
@@ -48,7 +67,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+
+
 }
 
 function setResetBtn() {
@@ -58,7 +78,11 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   errorMessage.style.display = 'none';
-  console.log('Click add username button')
+  chronometer.startClick()
+  setInterval(() => {
+    printTime();
+  }, 1000);
+  console.log('holaaa');
 });
 
 // Reset/Split Button
