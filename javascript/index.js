@@ -42,15 +42,15 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
-  // call this.splitClick()
-  // print return result
+
+  let listEl = document.createElement('li');
+  listEl.innerHTML = chronometer.splitClick();
+  splits.appendChild(listEl);
+
 }
 
 function clearSplits() {
-  //reset
-  // ... your code goes here
-  // this.resetClick()
+  splits.innerHTML = "";
   // remove <li>
 }
 
@@ -118,9 +118,11 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
-  // if class reset {
-  // call clearSplits()
-  //} if class split {
-  // call printSplit()
-  //}
+  if ([...btnRight.classList].includes('reset')) {
+      clearSplits();
+      chronometer.resetClick();
+  } else if ([...btnRight.classList].includes('split')) {
+    printSplit();
+  }
+
 });
