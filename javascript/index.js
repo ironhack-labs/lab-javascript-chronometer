@@ -74,27 +74,30 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+
 btnLeft.addEventListener('click', () => {
  if(btnLeft.classList.contains(`start`)){
    chronometer.startClick()
    setSplitBtn()
    setStopBtn()
-   let contador = setInterval(()=>{
+   contador = setInterval(()=>{
      printTime()
    }, 1000)
  }else if(btnLeft.classList.contains(`stop`)){
-  chronometer.stopClick()
   setStartBtn()
   setResetBtn()
+  chronometer.stopClick()
   clearInterval(contador)
  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  if(btnRight.classList.contains(`start`)){
-    
-  }else if(btnRight.classList.contains(`stop`)){
+  if(btnRight.classList.contains(`reset`)){
+    chronometer.resetClick()
+    printTime()
+
+  }else if(btnRight.classList.contains(`split`)){
     
   }
 });

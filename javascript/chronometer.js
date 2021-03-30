@@ -30,7 +30,6 @@ class Chronometer {
   splitClick() {
     let min= this.getMinutes()
     let sec= this.getSeconds()
-
       return (`${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`)
   }
 }
