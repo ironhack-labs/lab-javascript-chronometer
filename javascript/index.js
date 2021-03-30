@@ -13,6 +13,10 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+let ms = 0
+let printTimeIntervalId
+let printMillisecondsIntervalId
+
 function printTime() {
   printSeconds()
   printMinutes()
@@ -32,11 +36,12 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+	milDec.innerHTML = chronometer.twoDigitsNumber(ms)[0];
+	milUni.innerHTML = chronometer.twoDigitsNumber(ms)[1];
 }
 
 function printSplit() {
-  let splitTime = chronometer.splitClick()
+  let splitTime = chronometer.splitClick()+':'+chronometer.twoDigitsNumber(ms)
   let splitOnHTML = document.createElement('li')
   splitOnHTML.innerText = splitTime
   splits.appendChild(splitOnHTML)
@@ -59,6 +64,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  chronometer.stopClick()
   btnLeft.innerText = 'START'
   btnLeft.classList.add('start')
   btnLeft.classList.remove('stop')
@@ -71,20 +77,25 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-let count;
 btnLeft.addEventListener('click', () => {
   if (btnLeft.classList.contains('start')){
-    chronometer.startClick()
     setStopBtn()
     setSplitBtn()
-    startCount = setInterval(()=>{
-      printTime()
-    },1000)
+    chronometer.startClick()
+    printTimeIntervalId = setInterval(() => printTime(), 1000);
+		printMillisecondsIntervalId = setInterval(() => {
+			printMilliseconds()
+      ms++
+      if (ms === 100){
+        ms = 0
+      }
+		}, 10)
   }else if (btnLeft.classList.contains('stop')){
     setStartBtn()
-    setResetBtn()
-    chronometer.stopClick()    
-    clearInterval(startCount)
+    setResetBtn()   
+    chronometer.stopClick()
+    clearInterval(printTimeIntervalId)
+    clearInterval(printMillisecondsIntervalId) 
   }
 });
 
@@ -94,7 +105,8 @@ btnRight.addEventListener('click', () => {
     chronometer.resetClick()
     printTime()
     clearSplits()
-
+    ms = 0
+    printMilliseconds()
   }else if (btnRight.classList.contains('split')){
     printSplit()
   }
