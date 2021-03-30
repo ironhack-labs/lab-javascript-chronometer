@@ -14,52 +14,81 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const theTime = chronometer.splitClick();
+  minDec.innerHTML = theTime[0];
+  minUni.innerHTML = theTime[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const theTime = chronometer.splitClick();
+  secDec.innerHTML = theTime[3];
+  secUni.innerHTML = theTime[4];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  // const theTime = Chronometer.splitClick();
+  // milDec.innerHTML = theTime[5];
+  // milUni.innerHTML = theTime[6];
 }
 
 function printSplit() {
-  // ... your code goes here
-}
+  const splitList = document.createElement('li');
+  splitList.innerHTML = chronometer.splitClick();
+  splits.appendChild(splitList);
+  }
+  
 
 function clearSplits() {
-  // ... your code goes here
+  chronometer.resetClick();
+  printTime();
+
+  splits.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = 'STOP';
+  btnLeft.className = 'btn stop';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'SPLIT';
+  btnRight.className = 'btn split'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerHTML = 'START';
+  btnLeft.className = 'btn start';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerHTML = 'RESET';
+  btnRight.className = 'btn reset';
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.innerHTML === 'START') {
+    chronometer.startClick(printTime);
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRight.innerHTML === 'RESET') {
+    clearSplits()
+  } else {
+    printSplit()
+  }
 });
