@@ -14,15 +14,16 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  //return `${printMinutes}:${printSeconds)}`
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(minutes) {
+  //link with 'minUni' & 'minDec'
+
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(secUni, secDec) {
+  secUni.innerHTML = getSeconds
 }
 
 // ==> BONUS
@@ -31,7 +32,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  //link with 'splits'
 }
 
 function clearSplits() {
@@ -56,7 +57,8 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  errorMessage.style.display = 'none';
+  console.log('Click add username button')
 });
 
 // Reset/Split Button

@@ -29,7 +29,6 @@ class Chronometer {
     return `${twoDigits}`
   }
   }
-
   
   stopClick() {
     clearInterval(this.intervalId)
