@@ -13,13 +13,9 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-let printTimeIntervalId;
-
 function printTime() {
-	printTimeIntervalId = setInterval(() => {
-		printMinutes();
-		printSeconds();
-	}, 1000);
+	printMinutes();
+	printSeconds();
 }
 
 function printMinutes() {
@@ -40,17 +36,19 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-	// ... your code goes here
+	let liElem = document.createElement('li');
+	liElem.innerHTML = chronometer.splitClick();
+	splits.appendChild(liElem);
 }
 
 function clearSplits() {
-	// ... your code goes here
+	splits.innerHTML = '';
 }
 
 function setStopBtn(event) {
 	event.target.classList.toggle("start");
 	event.target.classList.toggle("stop");
-	event.target.innerHTML = "START";
+	event.target.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
@@ -62,7 +60,7 @@ function setSplitBtn() {
 function setStartBtn(event) {
 	event.target.classList.toggle("start");
 	event.target.classList.toggle("stop");
-	event.target.innerHTML = "STOP";
+	event.target.innerHTML = "START";
 }
 
 function setResetBtn() {
@@ -73,20 +71,22 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener("click", (event) => {
+	let printTimeIntervalId;
 	if ([...event.target.classList].includes("start")) {
 		//Button left changes
-		setStartBtn(event);
+		setStopBtn(event);
 		//Button right changes
 		setSplitBtn();
 		//Calling functions
 		chronometer.startClick();
-		printTime();
+		printTimeIntervalId = setInterval(() => {
+			printTime();
+		}, 1000);
 	} else {
 		//Button left changes
-		setStopBtn(event);
+		setStartBtn(event);
 		//Button right changes
 		setResetBtn();
-		//Calling functions
 		chronometer.stopClick();
 		clearInterval(printTimeIntervalId);
 	}
@@ -98,7 +98,8 @@ btnRight.addEventListener("click", (event) => {
 		//Resets the clock
 		chronometer.resetClick();
 		printTime();
+		clearSplits();
 	} else {
-		//split time
+		printSplit();
 	}
 });
