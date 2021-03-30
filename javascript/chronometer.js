@@ -3,10 +3,11 @@ class Chronometer {
 
   currentTime = 0;
   intervalId = 0;
-
-  startClick(callback) {
-    setInterval(() => {
+  
+  startClick(funct) {
+    this.intervalId = setInterval(() => {
       this.currentTime += 1;
+      funct();
     }, 1000);
   }
 
@@ -27,11 +28,11 @@ class Chronometer {
   }
 
   stopClick() {
-    return clearInterval(this.intervalId);
+    clearInterval(this.intervalId);
   }
 
   resetClick() {
-    return (this.currentTime = 0);
+    (this.currentTime = 0);
   }
 
   splitClick() {
@@ -49,7 +50,12 @@ class Chronometer {
     };
     }
     
-
-    
   }
+
+
+
+
+
+
+
 
