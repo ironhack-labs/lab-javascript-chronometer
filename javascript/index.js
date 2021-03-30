@@ -1,28 +1,26 @@
-//create a new instance of the Chronometer object.
 const chronometer = new Chronometer();
 
 // get the buttons:
-const btnLeft = document.getElementById('btnLeft');
-const btnRight = document.getElementById('btnRight');
+const btnLeft = document.getElementById("btnLeft");
+const btnRight = document.getElementById("btnRight");
 
 // get the DOM elements that will serve us to display the time:
-let minDec = document.getElementById('minDec');
-let minUni = document.getElementById('minUni');
-let secDec = document.getElementById('secDec');
-let secUni = document.getElementById('secUni');
-let milDec = document.getElementById('milDec');
-let milUni = document.getElementById('milUni');
-let splits = document.getElementById('splits');
+let minDec = document.getElementById("minDec");
+let minUni = document.getElementById("minUni");
+let secDec = document.getElementById("secDec");
+let secUni = document.getElementById("secUni");
+let milDec = document.getElementById("milDec");
+let milUni = document.getElementById("milUni");
+let splits = document.getElementById("splits");
 
 let printIntervalId = 0;
 
-function printTime(min, sec) {
+function printTime() {
   printIntervalId = setInterval(() => {
     printMinutes();
     printSeconds();
     printMilliseconds();
   }, 1);
-
 }
 
 function printMinutes() {
@@ -45,11 +43,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
-  let listEl = document.createElement('li');
+  let listEl = document.createElement("li");
   listEl.innerHTML = chronometer.splitClick();
   splits.appendChild(listEl);
-
 }
 
 function clearSplits() {
@@ -57,74 +53,50 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  btnLeft.classList.toggle('start');
-  btnLeft.classList.toggle('stop');
-
-  if ([...btnLeft.classList].includes('stop')) {
-    btnLeft.innerHTML = 'STOP';
-  } else {
-    btnLeft.innerHTML = 'START';
-  }
+  btnLeft.classList.toggle("start");
+  btnLeft.classList.toggle("stop");
+  btnLeft.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-  btnRight.classList.toggle('reset');
-  btnRight.classList.toggle('split');
-
-  if ([...btnRight.classList].includes('split')) {
-    btnRight.innerHTML = 'SPLIT';
-  } else {
-    btnRight.innerHTML = 'RESET';
-  }
+  btnRight.classList.toggle("reset");
+  btnRight.classList.toggle("split");
+  btnRight.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  btnLeft.classList.toggle('start');
-  btnLeft.classList.toggle('stop');
-
-  if ([...btnLeft.classList].includes('start')) {
-    btnLeft.innerHTML = 'START';
-  } else {
-    btnLeft.innerHTML = 'STOP';
-  }
+  btnLeft.classList.toggle("start");
+  btnLeft.classList.toggle("stop");
+  btnLeft.innerHTML = "START";
 }
 
 function setResetBtn() {
-  btnRight.classList.toggle('reset');
-  btnRight.classList.toggle('split');
-
-  if ([...btnRight.classList].includes('reset')) {
-    btnRight.innerHTML = 'RESET';
-  } else {
-    btnRight.innerHTML = 'SPLIT';
-  }
+  btnRight.classList.toggle("reset");
+  btnRight.classList.toggle("split");
+  btnRight.innerHTML = "RESET";
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-  if ([...btnLeft.classList].includes('start')) {
+btnLeft.addEventListener("click", () => {
+  if ([...btnLeft.classList].includes("start")) {
     setStopBtn();
     setSplitBtn();
     chronometer.startClick();
     printTime();
-  } else if ([...btnLeft.classList].includes('stop')) {
+  } else if ([...btnLeft.classList].includes("stop")) {
     setStartBtn();
     setResetBtn();
     chronometer.stopClick();
   }
-
-
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', () => {
-  // ... your code goes here
-  if ([...btnRight.classList].includes('reset')) {
-      clearSplits();
-      chronometer.resetClick();
-  } else if ([...btnRight.classList].includes('split')) {
+btnRight.addEventListener("click", () => {
+  if ([...btnRight.classList].includes("reset")) {
+    clearSplits();
+    chronometer.resetClick();
+    clearInterval(printIntervalId);
+  } else if ([...btnRight.classList].includes("split")) {
     printSplit();
   }
-
 });

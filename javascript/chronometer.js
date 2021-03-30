@@ -13,7 +13,7 @@ class Chronometer {
     return minutes;
   }
   getSeconds() {
-    let seconds = Math.floor((this.currentTime/100) - this.getMinutes() * 60);
+    let seconds = Math.floor(this.currentTime / 100 - this.getMinutes() * 60);
     return seconds;
   }
   getMilliseconds() {
