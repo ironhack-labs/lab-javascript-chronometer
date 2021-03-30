@@ -41,11 +41,15 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  liElement = document.createElement(`li`)
+  liElementContent = chronometer.splitClick()
+  liElement.innerText=liElementContent
+  splits.appendChild(liElement)
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML=``
 }
 
 function setStopBtn() {
@@ -95,9 +99,10 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   if(btnRight.classList.contains(`reset`)){
     chronometer.resetClick()
+    clearSplits()
     printTime()
 
   }else if(btnRight.classList.contains(`split`)){
-    
+    printSplit()
   }
 });

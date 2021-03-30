@@ -4,7 +4,7 @@ class Chronometer {
     this.intervalId = 0;
   }
   startClick(callback) {
-    const intervalId = setInterval(()=>{this.currentTime++
+    this.intervalId = setInterval(()=>{this.currentTime++
     },1000)
   }
   getMinutes() {
@@ -26,6 +26,7 @@ class Chronometer {
   }
   resetClick() {
     this.currentTime=0
+    clearInterval(this.intervalId)
   }
   splitClick() {
     let min= this.getMinutes()
