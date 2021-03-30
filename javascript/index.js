@@ -30,10 +30,6 @@ function printSeconds() {
     secUni.innerText = secondsArray[1];
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
 
 function printSplit() {
     splits.innerHTML += '<li>' +chronometer.splitClick()+ '</li>';
@@ -44,39 +40,34 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-    btnLeft.classList.replace('stop', 'start');
-    btnLeft.textContent = 'START';
-    btnRight.classList.replace('split', 'reset');
-    btnRight.textContent = 'RESET';
+    btnLeft.classList.replace('start', 'stop');
+    btnLeft.innerText = 'STOP';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-    btnLeft.classList.replace('start', 'stop');
-    btnLeft.textContent = 'STOP';
     btnRight.classList.replace('reset', 'split');
     btnRight.textContent = 'SPLIT';
 }
 
-function setResetBtn() {
-    clearSplits();
-    minDec.innerText = '0';
-    minUni.innerText = '0';
-    secDec.innerText = '0';
-    secUni.innerText = '0';
+function setStartBtn() {
+    btnLeft.classList.replace('stop', 'start');
+    btnLeft.innerText = 'START';
+}
 
+function setResetBtn() {
+    btnRight.classList.replace('split', 'reset');
+    btnRight.textContent = 'RESET';
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
     if(btnLeft.classList.contains('start')) {
-        setStartBtn();
+        setStopBtn();
+        setSplitBtn();
         chronometer.startClick(printTime);
     }else{
-        setStopBtn();
+        setStartBtn();
+        setResetBtn();
         chronometer.stopClick();
     }
 });
@@ -84,9 +75,12 @@ btnLeft.addEventListener('click', () => {
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
     if(btnRight.classList.contains('reset')) {
-        setResetBtn();
         chronometer.resetClick();
-
+        clearSplits();
+        minDec.innerText = '0';
+        minUni.innerText = '0';
+        secDec.innerText = '0';
+        secUni.innerText = '0';
     }else{
         printSplit();
     }
