@@ -6,24 +6,25 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
-    }, 1000);
+    }, 1);
   }
   getMinutes() {
-    let minutes = Math.floor(this.currentTime / 60);
+    let minutes = Math.floor(this.currentTime / 60000);
     return minutes;
   }
   getSeconds() {
-    let seconds = Math.floor(this.currentTime - this.getMinutes() * 60);
+    let seconds = Math.floor((this.currentTime - this.getMinutes() * 60000)/1000);
     return seconds;
   }
   getMiliSeconds() {
-    let miliSeconds = Math.floor(this.currentTime - this.getMinutes() * 60);
-    return seconds;
+    let miliSeconds = Math.floor(this.currentTime - this.getSeconds() * 1000);
+    return miliSeconds;
   }
+
   twoDigitsNumber(number) {
     if (number < 10) {
       return `0${number}`;
-    } else if (number <= 60) {
+    } else {
       return `${number}`;
     }
   }

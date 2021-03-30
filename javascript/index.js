@@ -20,7 +20,8 @@ function printTime(min, sec) {
   printIntervalId = setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
+    printMilliseconds();
+  }, 1);
 
 }
 
@@ -38,7 +39,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let miliSeconds = chronometer.twoDigitsNumber(chronometer.getMiliSeconds());
+  milDec.innerHTML = sec.charAt(0);
+  milUni.innerHTML = sec.charAt(1);
 }
 
 function printSplit() {
