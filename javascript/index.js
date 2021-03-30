@@ -55,11 +55,48 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener('click', (event) => {
+  event.preventDefault();
+
+ //Botones
+  btnLeft.classList.toggle('stop');
+
+  if(btnLeft.innerHTML === 'START'){
+    btnLeft.innerHTML = 'STOP';
+  } else {
+    btnLeft.innerHTML = 'START';
+  }
+  
+
+  btnRight.classList.toggle('split');
+
+  if(btnRight.innerHTML === 'RESET'){
+    btnRight.innerHTML = 'SPLIT';
+  } else {
+    btnRight.innerHTML = 'RESET';
+  }
+
+  
+//Start - Stop
+
+  if (btnLeft.classList.contains("stop")){
+    chronometer.startClick()
+  } else {
+    chronometer.stopClick();
+  }
+  
 });
+
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
 });
+
+
+
+// .btn.start { background: #5fca5f; }
+// .btn.stop  { background: #f14949; }
+// .btn.reset { background: #908e8e; }
+// .btn.split { background: #0851ab; }
