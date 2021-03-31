@@ -6,8 +6,8 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(()=> {
       this.currentTime++;
+      if (callback) callback();
     },1000);
-    if (callback) callback();
   }
 
   getMinutes() {
@@ -32,9 +32,7 @@ class Chronometer {
   }
   splitClick() {
     const min = this.twoDigitsNumber(this.getMinutes());
-
     const sec = this.twoDigitsNumber(this.getSeconds());
-
     return `${min}:${sec}`;
   }
 }
