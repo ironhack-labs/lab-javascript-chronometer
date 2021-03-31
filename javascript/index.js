@@ -14,15 +14,22 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const num = chronometer.getMinutes();
+  const str = chronometer.twoDigitsNumber(num);
+  minDec.innerText = str[0];
+  minUni.innerText = str[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const num = chronometer.getSeconds();
+  const str = chronometer.twoDigitsNumber(num);
+  secDec.innerText = str[0];
+  secUni.innerText = str[1];
 }
 
 // ==> BONUS
@@ -35,31 +42,56 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  document.querySelector('#splits').innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.classList.replace('stop', 'start');
+  btnRight.classList.replace('split', 'reset');
+  btnLeft.innerText = 'START';
+  btnRight.innerText = 'RESET';
+  chronometer.stopClick();
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  const li = document.createElement('li');
+  li.innerText = chronometer.splitClick();
+  document.querySelector('#splits').appendChild(li);
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.replace('start', 'stop');
+  btnRight.classList.replace('reset', 'split');
+  btnLeft.innerText = 'STOP';
+  btnRight.innerText = 'SPLIT';
+  chronometer.startClick(printTime);
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  minDec.innerText = 0;
+  minUni.innerText = 0;
+  secDec.innerText = 0;
+  secUni.innerText = 0;
+  chronometer.resetClick();
+  clearSplits();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains('start')) {
+    setStartBtn();
+  } else {
+    setStopBtn();
+  }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains('start')) {
+    setResetBtn();
+  } else {
+    setSplitBtn();
+  }
 });
+
+document.querySelector('#milliseconds').style.display = 'none';
