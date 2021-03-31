@@ -1,16 +1,11 @@
-
-
-
 class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = 0;
   }
   startClick(callback) {
-    let total = 1;
-    let intervalId = setInterval(() => {
-      console.log(total);
-      this.currentTime += 1;
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
     }, 1000)
   }
 
