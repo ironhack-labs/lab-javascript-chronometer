@@ -13,16 +13,20 @@ let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
+
+let printingTime;
+
 function printTime() {
-  // ... your code goes here
-}
+  console.log('00:00')
+  printingTime = setInterval(() => {
+    let time = chronometer.splitClick(chronometer.currentTime, chronometer.currentTime);
+    minDec.innerText = time[0];
+    minUni.innerText = time[1];
+    secDec.innerText = time[3];
+    secUni.innerText = time[4];
 
-function printMinutes() {
-  // ... your code goes here
-}
-
-function printSeconds() {
-  // ... your code goes here
+  console.log(time);
+  }, 1000);
 }
 
 // ==> BONUS
@@ -30,36 +34,67 @@ function printMilliseconds() {
   // ... your code goes here
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(currentTime) {
+  let newSplit = document.createElement("li");
+  newSplit.innerText = chronometer.splitClick(currentTime);
+
+  splits.appendChild(newSplit);
 }
 
 function clearSplits() {
-  // ... your code goes here
+document.querySelectorAll("#splits li").forEach( (split) => {
+  split.remove(); 
+}
+
+)
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "STOP";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText= "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerText = "RESET";
 }
-
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeft.classList.contains("start")) {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.startClick();
+    printTime();
+  } else {
+    setStartBtn();
+    setResetBtn();
+    chronometer.stopClick();
+        clearInterval(printingTime);
+  }
+  btnLeft.classList.toggle("start");
+  btnLeft.classList.toggle("stop");
+  btnRight.classList.toggle("split");
+  btnRight.classList.toggle("reset")
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnRight.classList.contains("reset")) {
+    chronometer.resetClick();
+    clearSplits()
+    chronometer.currentTime = 0;
+    minDec.innerText = 0;
+    minUni.innerText = 0;
+    secDec.innerText = 0;
+    secUni.innerText = 0;
+  } else {
+      printSplit(chronometer.currentTime);    
+
+
+}});
