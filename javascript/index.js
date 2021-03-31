@@ -9,8 +9,10 @@ let minDec = document.getElementById('minDec');
 let minUni = document.getElementById('minUni');
 let secDec = document.getElementById('secDec');
 let secUni = document.getElementById('secUni');
+let milSec = document.getElementById('milSec');
 let milDec = document.getElementById('milDec');
 let milUni = document.getElementById('milUni');
+
 let splits = document.getElementById('splits');
 
 
@@ -24,9 +26,10 @@ function printTime() {
     minUni.innerText = time[1];
     secDec.innerText = time[3];
     secUni.innerText = time[4];
-
-  console.log(time);
-  }, 1000);
+    milCen.innerText = time[6];
+    milDec.innerText = time[7];
+    milUni.innerText = time[8];
+  }, 1);
 }
 
 // ==> BONUS
@@ -93,6 +96,9 @@ btnRight.addEventListener('click', () => {
     minUni.innerText = 0;
     secDec.innerText = 0;
     secUni.innerText = 0;
+    milUni.innerText = 0;
+    milCen.innerText = 0;
+    milDec.innerText = 0;
   } else {
       printSplit(chronometer.currentTime);    
 
