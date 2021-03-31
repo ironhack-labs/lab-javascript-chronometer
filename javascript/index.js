@@ -1,8 +1,11 @@
 const chronometer = new Chronometer();
 
+
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
@@ -14,20 +17,28 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
-function printMinutes() {
-  // ... your code goes here
-}
+// function printMinutes() {
+//   let minutes =  chronometer.getMinutes();
+//   minUni.innerHTML = 
+//   minDec.innerHTML =
+// }
 
-function printSeconds() {
-  // ... your code goes here
-}
+// function printSeconds() {
+// let seconds = chronometer.getseconds()
+//   secUni.innerHTML = 
+//   secDec.innerHTML = 
+
+
+// }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+
+  
 }
 
 function printSplit() {
@@ -39,27 +50,60 @@ function clearSplits() {
 }
 
 function setStopBtn() {
+  btnLeft.className = "btn stop";
+  btnLeft.textContent = "STOP"
+
+
   // ... your code goes here
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.className = "btn reset";
+  btnRight.textContent = "SPLIT";
+  
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.className = "btn start";
+  btnLeft.textContent = "START"
 }
 
 function setResetBtn() {
+btnRight.className = "btn reset";
+btnRight.textContent = "RESET"
+
+
   // ... your code goes here
 }
 
+
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+
+  if (btnLeft.classList.contains("start")) {
+    setStopBtn() 
+    setSplitBtn()
+    chronometer.startClick(printTime)
+
+  } else { 
+    
+    setStartBtn()
+    setResetBtn();
+    chronometer.stopClick();
+  }
+
+
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+ 
+ if (btnRight.classList.contains("split")) {
+  
+  printSplit(); 
+
+ } else { clearSplits ()}
+ 
 });
+
