@@ -6,25 +6,26 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(function () {
       this.currentTime++;
-    }.bind(this), 1)
+    }.bind(this), 10);
   }
   
   getMinutes() {
-    if (this.currentTime < 60000) return 0;
-    console.log(Math.floor(this.currentTime/60000));
+    if (this.currentTime < 6000) return 0;
+    console.log(Math.floor(this.currentTime/6000));
 
-    return (Math.floor(this.currentTime/60000));
+    return (Math.floor(this.currentTime/6000));
     
   }
   getSeconds() {
-    if (this.currentTime < 1000) return 0;
-    console.log(Math.floor(this.currentTime/1000));
-    return (Math.floor(this.currentTime/1000));
+    if (this.currentTime < 100) return 0;
+    console.log(Math.floor(this.currentTime/100));
+
+    return (Math.floor(this.currentTime/100));
   }
 
   getMilliseconds() {
-    console.log(this.currentTime % 1000)
-    return this.currentTime % 1000;    
+    console.log(this.currentTime % 100)
+    return this.currentTime % 100;    
   }
 
   twoDigitsNumber(timeValue) {
@@ -32,12 +33,12 @@ class Chronometer {
     if (stringTimeValue.length == 2) return stringTimeValue;
     else return ('0' + stringTimeValue);
   }
-  threeDigitsNumber(timeValue) {
-    let stringTimeValue = timeValue.toString();
-    if (stringTimeValue.length == 3) return stringTimeValue;
-    else if (stringTimeValue.length === 2) return '00' + stringTimeValue;
-    else return '00' + stringTimeValue;
-  }
+  // threeDigitsNumber(timeValue) {
+  //   let stringTimeValue = timeValue.toString();
+  //   if (stringTimeValue.length == 3) return stringTimeValue;
+  //   else if (stringTimeValue.length === 2) return '00' + stringTimeValue;
+  //   else return '00' + stringTimeValue;
+  // }
   stopClick() {
     clearInterval(this.intervalId);
     this.intervalId = 0;    
@@ -51,8 +52,8 @@ class Chronometer {
     let milliseconds = this.getMilliseconds(currentTime);
     let twoDigitMins = this.twoDigitsNumber(minutes);
     let twoDigitSecs = this.twoDigitsNumber(seconds);
-    let threeDigitMillisecs = this.threeDigitsNumber(milliseconds)
+    let twoDigitMillisecs = this.twoDigitsNumber(milliseconds);
 
-    return `${twoDigitMins}:${twoDigitSecs}:${threeDigitMillisecs}`;
+    return `${twoDigitMins}:${twoDigitSecs}:${twoDigitMillisecs}`;
   }
 }
