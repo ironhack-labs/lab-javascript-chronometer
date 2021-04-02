@@ -21,8 +21,8 @@ class Chronometer {
     if (num <= 10) {
       return "0" + num;
     }  
-    else if (num > 10) {
-      return "" + num;
+    else {
+      return num;
     }
   }
   stopClick() {
