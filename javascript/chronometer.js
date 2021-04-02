@@ -10,16 +10,10 @@ class Chronometer {
     }, 1000)
   }
   getMinutes() {
-    if (this.currentTime === 0) {
-      return 0;
-    }
     return Math.floor(this.currentTime / 60);
   }
   
   getSeconds() {
-    if (this.currentTime === 0) {
-      return 0;
-    }
     return this.currentTime % 60;
   }
 
