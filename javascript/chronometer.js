@@ -1,45 +1,43 @@
 
 class Chronometer {
-  constructor() { // Why CONSTRUCTOR ANY PARAM?
-    this.currentTime = 0, //do I need this?
+  constructor() {
+    this.currentTime = 0,
     this.intervalId = 0;
   }
-  startClick(callback) {
-    
-    this.intervalId = setInterval(()=>{ //why here with the arrow function works and without doesnt?
-      this.currentTime = this.currentTime +1
-      if(this.currentTime === 90){callback()}
-      console.log(this.currentTime)
-    },1000, )
-  }
 
+  startClick(callback) {
+    this.intervalId = setInterval(()=>{
+      this.currentTime++
+      callback();
+      if(callback){ callback()} 
+    },1000)
+  }
+  
   getMinutes() {
      return Math.floor(this.currentTime / 60)
    
   }
+
   getSeconds() {
     return Math.floor(this.currentTime % 60)
-    /* if (this.currentTime === 0){return 0} 
-    const minutes = this.getMinutes()  // why this.getMinutes? why the this?
-    return Math.floor(this.currentTime - minutes) */
   }
-  twoDigitsNumber(objValue) { //NEED TO TEST
-    if(objValue.length === 0){ return '00'}
-    if(objValue.length === 1){return '0', objValue}
-    if(this.getMinutes.length === 0){ return '00'}
-    if(this.getSeconds.length === 1){return '0',this.getSeconds}
+
+
+  twoDigitsNumber(num) { 
+    if(num < 10){ return `0${num}`}
+    return `${num}`
   }
+
   stopClick() {
-    clearInterval(()=>{
-      this.intervalId = 0;
-    })
+    clearInterval(this.intervalId)
   }
+
   resetClick() {
     this.currentTime = 0;
   }
 
-  splitClick() { //NEED TO BE TESTED
-    return (`${this.twoDigitsNumber(this.getSeconds)}:${this.twoDigitsNumber(this.getSeconds)}`)
+  splitClick() { 
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
   }
 }
 
