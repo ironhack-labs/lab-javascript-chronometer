@@ -1,8 +1,11 @@
-const chronometer = new Chronometer();
+
 
 // get the buttons:
 const btnLeft = document.getElementById('btnLeft');
 const btnRight = document.getElementById('btnRight');
+const splitsList = document.getElementById("splits");
+
+
 
 // get the DOM elements that will serve us to display the time:
 let minDec = document.getElementById('minDec');
@@ -14,52 +17,92 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes();
+  let dec = Math.floor(minutes / 10);
+  let uni = Math.floor(minutes % 10); 
+  document.getElementById("minDec").innerText = dec;
+  document.getElementById("minUni").innerText = uni;
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.getSeconds();
+  let dec = Math.floor(seconds / 10);
+  let uni = Math.floor(seconds % 10); 
+  document.getElementById("secDec").innerText = dec;
+  document.getElementById("secUni").innerText = uni;
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let ms = chronometer.getMiliseconds();
+  let dec = Math.floor(ms / 10);
+  let uni = Math.floor(ms % 10); 
+  document.getElementById("milDec").innerText = dec;
+  document.getElementById("milUni").innerText = uni;
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(split) {
+  let newLi = document.createElement("LI");
+  let liContent = document.createTextNode(split);
+  newLi.appendChild(liContent);
+  splitsList.appendChild(newLi);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsList.innerHTML = "";
+    
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "STOP";
+  btnLeft.classList = "btn stop";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText = "SPLIT";
+  btnRight.classList = "btn split";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.innerText = "START";
+  btnLeft.classList = "btn start";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.innerText = "RESET";
+  btnRight.classList = "btn reset"; 
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  if(chronometer.isStopped()){
+    chronometer.startClick();
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stopClick();
+    setStartBtn();
+    setResetBtn();
+  } 
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  if(chronometer.isStopped()){
+    chronometer.resetClick();
+    clearSplits ();
+  } else {
+    printSplit(chronometer.splitClick());
+  } 
 });
+
+
+
+const chronometer = new Chronometer();
+window.setInterval(printTime, 10);
