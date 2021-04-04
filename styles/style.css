@@ -115,3 +115,29 @@ body {
 .btn.stop  { background: #f14949; }
 .btn.reset { background: #908e8e; }
 .btn.split { background: #0851ab; }
+
+#user_name {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin-left: 2rem;
+}
+
+#user_input {
+  margin: 1rem 1rem .75rem;
+  padding: .5rem .5rem;
+}
+
+#send_btn {
+  margin: 0 1rem;
+  padding: .5rem .5rem;
+}
+
+.colorChange {
+  color: rebeccapurple;
+}
+
+.hidden {
+  display: none;
+}
