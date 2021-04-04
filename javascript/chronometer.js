@@ -7,11 +7,11 @@ class Chronometer {
 
  
   
-  startClick(callback) {
-    const intervalId = setInterval(() => {
-      this.currentTime += 1
-    }, 1000);
-  }
+  startClick() {
+      this.intervalId = setInterval(() => {
+      this.currentTime += 1;
+      }, 1000);
+   }
 
   getMinutes() {
     let min = 0;
@@ -26,8 +26,6 @@ class Chronometer {
 
   twoDigitsNumber(number) {
 
-    console.log(number.toString())
-
     if(number.toString().length < 2){
       return '0' + number.toString()
     }
@@ -39,7 +37,7 @@ class Chronometer {
   
   stopClick() {
     
-    clearInterval(intervalId);
+    clearInterval(this.intervalId);
   }
   
   resetClick() {

@@ -14,15 +14,27 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+  
+  setInterval(() => {
+    minUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
+    minDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+    }, 100);
+  
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  
+  setInterval(() => {
+    secUni.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
+    secDec.innerHTML = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+    }, 100);
+  
+  
 }
 
 // ==> BONUS
@@ -39,27 +51,74 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.className = 'btn start'
+  btnLeft.innerHTML = 'START'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+
+  btnRight.className = 'btn split'
+  btnRight.innerHTML = 'SPLIT'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.setAttribute('class', 'btn stop')
+  btnLeft.innerHTML = 'STOP'
+  
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRight.setAttribute('class', 'btn reset');
+  btnRight.innerHTML = 'RESET';
+  chronometer.stopClick();
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+  
+  if(btnLeft.innerHTML === "START"){
+
+    chronometer.startClick();
+    setSplitBtn();
+    setStartBtn();
+    printSeconds();
+    printMinutes();
+    
+  }
+  else{
+
+    chronometer.stopClick();
+    setResetBtn()
+    setStopBtn()
+  
+  }
+  
 });
+
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+  
+  if(btnRight.innerHTML === "RESET"){
+    //reset by call the resetclick method
+    chronometer.resetClick(); 
+    //setting the ol in a variable to loop through deleting each child element
+    const orderList = document.getElementById("splits")
+    while (orderList.firstChild) {
+    orderList.removeChild(orderList.firstChild);
+    }
+  }
+  else{
+
+    const minu1 = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
+    const minu0 = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
+    const minu = `${minu0}${minu1}`
+    const sec01 = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
+    const seco0 = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
+    const seco  = `${seco0}${sec01}`
+    const ol = document.getElementById("splits");
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(`${minu}:${seco}`));
+    ol.appendChild(li);
+  }
 });
