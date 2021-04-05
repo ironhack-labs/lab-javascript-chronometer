@@ -89,8 +89,7 @@ btnLeft.addEventListener('click', () => {
 
     chronometer.stopClick();
     setResetBtn()
-    setStopBtn()
-  
+    setStopBtn()  
   }
   
 });
@@ -110,15 +109,13 @@ btnRight.addEventListener('click', () => {
   }
   else{
 
-    const minu1 = chronometer.twoDigitsNumber(chronometer.getMinutes())[1];
-    const minu0 = chronometer.twoDigitsNumber(chronometer.getMinutes())[0];
-    const minu = `${minu0}${minu1}`
-    const sec01 = chronometer.twoDigitsNumber(chronometer.getSeconds())[1];
-    const seco0 = chronometer.twoDigitsNumber(chronometer.getSeconds())[0];
-    const seco  = `${seco0}${sec01}`
+    const min1 = chronometer.twoDigitsNumber(chronometer.getMinutes());
+    const sec1 = chronometer.twoDigitsNumber(chronometer.getSeconds());    
+    const timeSplit  = `${min1}:${sec1}`
+
     const ol = document.getElementById("splits");
     const li = document.createElement("li");
-    li.appendChild(document.createTextNode(`${minu}:${seco}`));
+    li.appendChild(document.createTextNode(`${timeSplit}`));
     ol.appendChild(li);
   }
 });
