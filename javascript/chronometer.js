@@ -24,3 +24,7 @@ class Chronometer {
     // ... your code goes here
   }
 }
+
+if (typeof module !== "undefined") {
+  module.exports = Chronometer;
+}
