@@ -1,3 +1,5 @@
+
+
 class Chronometer {
   constructor() {
     //-> no argument (none)
@@ -7,12 +9,8 @@ class Chronometer {
     this.intervalId = 0;
   }
 
-  /*beforeEach(){
-    jasmine.clock().install();
-    chronometer.startClick();
-  };*/
 
-  startClick() {
+  startClick(callback) {
     // method for the chronometer object will receive a callback function to print the time
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
@@ -24,10 +22,12 @@ class Chronometer {
     // ... your code goes here
     return Math.floor(this.currentTime / 60); // ??? to round the e currentTime
   }
+
   getSeconds() {
     // ... your code goes here
     return this.currentTime % 60;
   }
+
   twoDigitsNumber(number) {
     // ... your code goes here
     if (number < 10) {
@@ -36,6 +36,7 @@ class Chronometer {
       return number.toString();
     }
   }
+
   stopClick() {
     // ... your code goes here
     clearInterval(this.intervalId);
@@ -46,10 +47,11 @@ class Chronometer {
     this.currentTime = 0; 
     
   }
+
   splitClick(validTime) {
     let min = this.getMinutes();
     let sec = this.getSeconds();
-    return  `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`
-      
+    return  `${this.twoDigitsNumber(min)}:${this.twoDigitsNumber(sec)}`      
 }
 }
+
