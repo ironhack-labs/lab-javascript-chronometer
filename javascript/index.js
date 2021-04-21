@@ -42,10 +42,23 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  if (e.target.classList.contains("stop")){
+    // chronometer.stopClick();
+    // e.target.classList.add("start");
+    // e.target.classList.remove("stop");
+    // e.target.innerHTML="START";
+  }
+
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  // if (e.target.classList.contains("split")){
+  //   chronometer.splitClick();
+  //   e.target.classList.add("reset");
+  //   e.target.classList.remove("split");
+  //   e.target.innerHTML="RESET";
+  // }
 }
 
 function setStartBtn(e) {
@@ -65,7 +78,7 @@ function setStartBtn(e) {
   }
 }
 
-function setResetBtn(e) {
+function setResetBtn() {
   // ... your code goes here
   if (e.target.classList.contains("reset")) {
     chronometer.resetClick();
