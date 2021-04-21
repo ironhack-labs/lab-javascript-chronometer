@@ -1,3 +1,7 @@
+
+
+//import { startClick, stopClick } from "./chronometerlogic";
+  
 const chronometer = new Chronometer();
 
 // get the buttons:
