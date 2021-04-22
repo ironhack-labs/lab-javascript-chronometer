@@ -8,10 +8,11 @@ class Chronometer {
   startClick(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      console.log(this.currentTime);
-      if (callback) {
-        callback(this.currentTime);
+     // console.log(this.currentTime);
+      if (callback !== undefined) {
+        callback();
       }
+      
     }, 1000); // every seconds
     // ... your code goes here
   }
