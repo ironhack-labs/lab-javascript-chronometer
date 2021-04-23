@@ -49,14 +49,20 @@ function printMilliseconds() {
   // ... your code goes here
 }
 
-function printSplit(e) {
+function printSplit(callback) {
   // ... your code goes here
-  splits.innerHTML='<li> ${'
+  splits.innerHTML+=`<li>${callback}</li>`;
 }
 
 function clearSplits() {
   // ... your code goes here
+  splits.innerHTML="";
+  minDec.innerHTML=0;
+  secDec.innerHTML=0;
+  minUni.innerHTML=0;
+  secUni.innerHTML=0;
 }
+
 
 function setStopBtn(e) {
   if (e.target.classList.contains("start")) {
@@ -73,21 +79,13 @@ function setStopBtn(e) {
 
 function setSplitBtn() {
   // ... your code goes here
-  // if (e.target.classList.contains("split")){
-  //   chronometer.splitClick();
-  //   e.target.classList.add("reset");
-  //   e.target.classList.remove("split");
-  //   e.target.innerHTML="RESET";
-  // }
 }
 
 function setStartBtn(e) {
   // ... your code goes here
 
   if (e.target.classList.contains("start")) {
-    chronometer.startClick(printTime);
-    printMinutes();
-    printSeconds();
+    chronometer.startClick(printTime);;
     e.target.classList.add("stop");
     e.target.classList.remove("start");
     e.target.innerHTML="STOP";
@@ -109,16 +107,13 @@ function setResetBtn(e) {
   // ... your code goes here
   if (e.target.classList.contains("reset")) {
     chronometer.resetClick();
-    // e.target.classList.add("split");
-    // e.target.classList.remove("reset");
-    // e.target.innerHTML="SPLIT";
+    clearSplits();
 
     
   } else {
-    chronometer.splitClick();
-    // e.target.classList.add("reset");
-    // e.target.classList.remove("split");
-    // e.target.innerHTML="RESET";
+    printSplit(chronometer.splitClick());
+
+
 }}
 
 // Start/Stop Button

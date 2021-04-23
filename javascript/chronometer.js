@@ -40,7 +40,7 @@ class Chronometer {
   }
   splitClick() {
     return (
-      this.twoDigitsNumber(this.getminutes()) +
+      this.twoDigitsNumber(this.getMinutes()) +
       ":" +
       this.twoDigitsNumber(this.getSeconds())
     );
