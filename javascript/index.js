@@ -19,6 +19,8 @@ function printTime(v) {
   // ... your code goes here
   const secs =  chronometer.getSeconds();
   console.log(chronometer.twoDigitsNumber(secs));
+  printMinutes();
+  printSeconds();
 
 }
 
@@ -81,10 +83,11 @@ function setSplitBtn() {
 
 function setStartBtn(e) {
   // ... your code goes here
-  
+
   if (e.target.classList.contains("start")) {
     chronometer.startClick(printTime);
-
+    printMinutes();
+    printSeconds();
     e.target.classList.add("stop");
     e.target.classList.remove("start");
     e.target.innerHTML="STOP";
