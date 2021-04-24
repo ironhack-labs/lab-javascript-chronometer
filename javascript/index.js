@@ -14,15 +14,23 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  const secs =  chronometer.getSeconds();
+  console.log(chronometer.twoDigitsNumber(secs));
+  printMinutes();
+  printSeconds();
 }
 
+
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes()
+  let twoDigitsMinutes = chronometer.twoDigitsNumber(minutes)
+
+  minDec.innerText = twoDigitsMinutes[0]
+  minUni.innerText = twoDigitsMinutes[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  chronometer.getSeconds() 
 }
 
 // ==> BONUS
@@ -31,11 +39,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let newListItem = document.createElement('li')
+  newListItem.innerText = chronometer.splitClick()
+  splits.appendChild(newListItem)
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+  chronometer.resetClick()
 }
 
 function setStopBtn() {
@@ -47,7 +58,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+ 
+
 }
 
 function setResetBtn() {
@@ -57,9 +69,45 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
   // ... your code goes here
+  const buttonLeft = document.querySelector('#btnLeft').innerText
+    switch(buttonLeft) {
+    case "START":
+    document.querySelector('#btnLeft').classList.toggle('start');
+    document.querySelector('#btnLeft').classList.toggle('stop');
+    document.querySelector('#btnLeft').innerText = 'STOP';
+    chronometer.startClick(printTime)
+    
+    break;
+    case "STOP":
+      document.querySelector('#btnLeft').classList.toggle('stop');
+      document.querySelector('#btnLeft').classList.toggle('start');
+      document.querySelector('#btnLeft').innerText = 'START';
+      chronometer.stopClick()
+  break;
+  }
+ 
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
+
+  const buttonRight = document.querySelector('#btnRight').innerText;
+  switch(buttonRight) {
+    case "RESET":
+    document.querySelector('#btnRight').classList.toggle('reset');
+    document.querySelector('#btnRight').classList.toggle('split');
+    document.querySelector('#btnRight').innerText = 'SPLIT';
+    clearSplits()
+    
+    break;
+    case "SPLIT":
+      document.querySelector('#btnRight').classList.toggle('split');
+      document.querySelector('#btnRight').classList.toggle('reset');
+      document.querySelector('#btnRight').innerText = 'RESET';
+      printSplit()
+  break;
+  }
+
+  
 });
