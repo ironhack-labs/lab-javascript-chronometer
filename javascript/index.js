@@ -14,23 +14,16 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  const secs =  chronometer.getSeconds();
-  console.log(chronometer.twoDigitsNumber(secs));
-  printMinutes();
-  printSeconds();
-}
+
+  }
 
 
 function printMinutes() {
-  let minutes = chronometer.getMinutes()
-  let twoDigitsMinutes = chronometer.twoDigitsNumber(minutes)
-
-  minDec.innerText = twoDigitsMinutes[0]
-  minUni.innerText = twoDigitsMinutes[1]
-}
+ 
+ }
 
 function printSeconds() {
-  chronometer.getSeconds() 
+
 }
 
 // ==> BONUS
@@ -46,10 +39,13 @@ function printSplit() {
 }
 
 function clearSplits() {
-  chronometer.resetClick()
+  while (splits.firstChild) {
+    splits.removeChild(splits.firstChild);
+}
+  
 }
 
-function setStopBtn() {
+/* function setStopBtn() {
   // ... your code goes here
 }
 
@@ -58,56 +54,56 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
- 
 
 }
 
 function setResetBtn() {
   // ... your code goes here
-}
+} */
 
 // Start/Stop Button
+
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
-  const buttonLeft = document.querySelector('#btnLeft').innerText
-    switch(buttonLeft) {
+  
+  const buttonLeft = btnLeft.innerText
+  switch (buttonLeft) {
     case "START":
-    document.querySelector('#btnLeft').classList.toggle('start');
-    document.querySelector('#btnLeft').classList.toggle('stop');
-    document.querySelector('#btnLeft').innerText = 'STOP';
-    chronometer.startClick(printTime)
-    
-    break;
+      document.querySelector('#btnLeft').classList.toggle('start');
+      document.querySelector('#btnLeft').classList.toggle('stop');
+      document.querySelector('#btnLeft').innerText = 'STOP';
+      document.querySelector('#btnRight').classList.toggle('reset');
+      document.querySelector('#btnRight').classList.toggle('split');
+      document.querySelector('#btnRight').innerText = 'SPLIT';
+      chronometer.startClick()
+      break;
+
     case "STOP":
       document.querySelector('#btnLeft').classList.toggle('stop');
       document.querySelector('#btnLeft').classList.toggle('start');
       document.querySelector('#btnLeft').innerText = 'START';
+      document.querySelector('#btnRight').classList.toggle('split');
+      document.querySelector('#btnRight').classList.toggle('reset');
+      document.querySelector('#btnRight').innerText = 'RESET';
       chronometer.stopClick()
-  break;
+      break;
   }
- 
+
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
   // ... your code goes here
-
-  const buttonRight = document.querySelector('#btnRight').innerText;
-  switch(buttonRight) {
+  const buttonRight = btnRight.innerText;
+  switch (buttonRight) {
     case "RESET":
-    document.querySelector('#btnRight').classList.toggle('reset');
-    document.querySelector('#btnRight').classList.toggle('split');
-    document.querySelector('#btnRight').innerText = 'SPLIT';
-    clearSplits()
-    
-    break;
+      clearSplits()
+
+      break;
     case "SPLIT":
-      document.querySelector('#btnRight').classList.toggle('split');
-      document.querySelector('#btnRight').classList.toggle('reset');
-      document.querySelector('#btnRight').innerText = 'RESET';
+
       printSplit()
-  break;
+      break;
   }
 
-  
+
 });

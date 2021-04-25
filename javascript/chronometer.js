@@ -12,6 +12,7 @@ class Chronometer {
     return this.intervalId
 
   }
+  
 
   getMinutes() {
     let minutes = Math.floor(this.currentTime / 60)
