@@ -15,12 +15,29 @@ let milDec = document.getElementById("milDec");
 let milUni = document.getElementById("milUni");
 let splits = document.getElementById("splits");
 
-function printTime(evt) {
-  //
-  return startClick(callback); //?? is this right
-}
+function printTime(clock) {
+  
+  
+  
+  /*chronometer.innerHTML = "";
+  clock.forEach(state => {
+  clock.classList.toggle("btnLeft");
+  });*/
+  
+//return startClick(callback); //?? is this right
+//const printTime = innerHTML();
+//console.log(printTime);
+//whiteSauce.classList.toggle("sauce-white");}
 
-function printMinutes() {
+/*
+function renderWhiteSauce() {
+  // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+const whiteSauce = document.querySelector(".sauce")
+console.log(whiteSauce);
+whiteSauce.classList.toggle("sauce-white");
+*/
+
+function printMinutes() { 
   return getMinutes();
 }
 
@@ -66,7 +83,7 @@ function setResetBtn() {
 // if chrono is running => "btn start" changes to "btn stop"
 // else "btn reset" change to "btn split"
 
-// following the logic of the table
+// following the logic of the table 
 // if chrono's stopped === btnLeft -> textContent "START" class = btn start
 // if chrono's stopped === btnRight -> textContent "RESET" class = btn reset
 // if chrono's running === btnLeft  -> textContent "STOP" class = btn stop
@@ -74,7 +91,7 @@ function setResetBtn() {
 // I only see btn start & btn stop on style sheet & inspect/elmts/styles :/
 // we have to toggle their classes??? how?
 
-btnLeft.addEventListener("click", () => {
+/*btnLeft.addEventListener("click", () => {
   if (btnLeft.className === 0) {
     // if btnLeft (=btn start) is false -> chrono is running
     chronometer.stopClick(); //(.stopClick(btnLeft.value) ??
@@ -97,4 +114,26 @@ btnRight.addEventListener("click", () => {
     chronometer.startClick(); //(btnLeft.value) ??
   }
   btnLeft.className.textContent = "SPLIT"("btn split");
+});*/
+
+btnLeft.addEventListener('click', () =>{
+  if (btnLeft.classList.contains("start")){
+    btnLeft.classList.remove("start");
+    btnLeft.classList.toggle("stop");
+    btnLeft.textContent = "STOP";
+    btnRight.classList.remove("reset");
+    btnRight.classList.toggle("split");
+    btnRight.textContent = "SPLIT";
+    chronometer.startClick();
+  } else if (btnLeft.classList.contains("stop")){
+    btnLeft.classList.remove("stop");
+    btnLeft.classList.toggle("start");
+    btnLeft.textContent = "START";
+    btnRight.classList.remove("split");
+    btnRight.classList.toggle("reset");
+    btnRight.textContent ="RESET";
+    chronometer.stopClick();
+
+    }
+  
 });
