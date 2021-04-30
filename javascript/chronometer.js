@@ -27,12 +27,10 @@ class Chronometer {
     return (this.currentTime = 0);
   }
   splitClick() {
-    if (this.currentTime === 0) {
-      return "00:00";
-    }
     return (
-      getMinutes(this.currentTime).toString().padStart(2, "0") +
-      getSeconds(this.currentTime).toString().padEnd(2, "0")
+      this.getMinutes(this.currentTime).toString().padStart(2, "0") +
+      ":" +
+      this.getSeconds(this.currentTime).toString().padEnd(2, "0")
     );
   }
 }
