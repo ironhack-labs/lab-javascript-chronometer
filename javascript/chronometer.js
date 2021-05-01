@@ -28,9 +28,9 @@ class Chronometer {
   }
   splitClick() {
     return (
-      this.getMinutes(this.currentTime).toString().padStart(2, "0") +
+      this.twoDigitsNumber(this.getMinutes(this.currentTime)) +
       ":" +
-      this.getSeconds(this.currentTime).toString().padEnd(2, "0")
+      this.twoDigitsNumber(this.getSeconds(this.currentTime))
     );
   }
 }
