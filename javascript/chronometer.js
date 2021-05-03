@@ -12,20 +12,33 @@ class Chronometer {
   }
  
   getMinutes() {
-    // ... your code goes here
-  }
+    if (this.currentTime === 0) {
+      return 0
+    }
+  const minutes = (this.currentTime / 60).toFixed(0);
+  return Number(minutes);
+}
+
   getSeconds() {
-    // ... your code goes here
-  }
+    if (this.currentTime === 0) {
+      return 0
+    }
+  const seconds = (this.currentTime).toFixed(0);
+  return Number(seconds);
+}
+
   twoDigitsNumber() {
-    // ... your code goes here
+    return this.currentTime.toString().padStart(2, "0");
   }
+
   stopClick() {
-    // ... your code goes here
+    return clearInterval(this.intervalId);
   }
+  
   resetClick() {
-    // ... your code goes here
+    return (this.currentTime = 0);
   }
+  
   splitClick() {
     // ... your code goes here
   }
