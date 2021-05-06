@@ -43,15 +43,17 @@ body {
 
 #splits-container li {
   padding-bottom: 5px;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
-
 #milliseconds {
   font-size: 36px;
   margin-top: -15px;
   position: absolute;
   right: 20px;
 }
+
 
 .leash {
   background: rgb(204, 84, 87);
