@@ -12,20 +12,12 @@ class Chronometer {
   }
  
   getMinutes() {
-    if (this.currentTime === 0) {
-      return 0
-    }
-  const minutes = (this.currentTime / 60).toFixed(0);
-  return Number(minutes);
-}
+    return Math.floor(this.currentTime / 60);
+  }
 
   getSeconds() {
-    if (this.currentTime === 0) {
-      return 0
-    }
-  const seconds = (this.currentTime).toFixed(0);
-  return Number(seconds);
-}
+    return this.currentTime % 60
+  }
 
   twoDigitsNumber() {
     return this.currentTime.toString().padStart(2, "0");
@@ -40,6 +32,10 @@ class Chronometer {
   }
   
   splitClick() {
-    // ... your code goes here
+    return (
+      this.twoDigitsNumber(this.getMinutes()) +
+       ":" +
+      this.twoDigitsNumber(this.getSeconds())
+    );
   }
 }
