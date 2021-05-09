@@ -1,21 +1,31 @@
 class Chronometer {
   constructor() {
+    this.currentTimeMiliSeconds = 0;
     this.currentTime = 0;
     this.intervalId = 0;
+    this.intervalMiliSeconds = 0;
   }
   startClick(callback) {
     this.intervalId = setInterval(() => {
-      //console.log(this.currentTime);
-      this.currentTime += 1;
+      this.currentTimeMiliSeconds += 1;
+      this.currentTime = Math.floor(this.currentTimeMiliSeconds / 100);
       callback();
-    }, 1000);
+    }, 10);
   }
-
+  // startMiliSeconds(callback) {
+  //   this.intervalMiliSeconds = setInterval(() => {
+  //     this.currentTimeMiliSeconds += 1;
+  //     callback();
+  //   }, 10);
+  // }
+  getMilisenconds() {
+    return Math.floor(this.currentTimeMiliSeconds % 100);
+  }
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime % 60);
   }
   twoDigitsNumber(number) {
     if (number < 10) {
@@ -28,13 +38,17 @@ class Chronometer {
     return clearInterval(this.intervalId);
   }
   resetClick() {
-    return (this.currentTime = 0);
+    this.currentTimeMiliSeconds = 0;
+    this.currentTime = 0;
+    return this.currentTimeMiliSeconds, this.currentTime;
   }
   splitClick() {
     return (
       this.twoDigitsNumber(this.getMinutes(this.currentTime)) +
       ":" +
-      this.twoDigitsNumber(this.getSeconds(this.currentTime))
+      this.twoDigitsNumber(this.getSeconds(this.currentTime)) +
+      ":" +
+      this.twoDigitsNumber(this.getMilisenconds(this.currentTimeMiliSeconds))
     );
   }
 }
