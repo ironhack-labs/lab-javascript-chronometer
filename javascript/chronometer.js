@@ -12,12 +12,7 @@ class Chronometer {
       callback();
     }, 10);
   }
-  // startMiliSeconds(callback) {
-  //   this.intervalMiliSeconds = setInterval(() => {
-  //     this.currentTimeMiliSeconds += 1;
-  //     callback();
-  //   }, 10);
-  // }
+  
   getMilisenconds() {
     return Math.floor(this.currentTimeMiliSeconds % 100);
   }
