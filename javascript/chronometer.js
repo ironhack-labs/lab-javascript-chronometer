@@ -10,7 +10,7 @@ class Chronometer {
  }
 
   startClick() {    
-    const intervalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime += 1;
       console.log(this.currentTime);
     }, 1000);
@@ -36,7 +36,7 @@ class Chronometer {
     return stringTime;
   }
   stopClick() {
-    clearInterval(this.IntervalId);
+    clearInterval(this.intervalId);
   }
   resetClick() {
     this.currentTime = 0;
@@ -50,10 +50,10 @@ class Chronometer {
 
 
 //TEST
-const chrono = new Chronometer()
-console.log(chrono.startClick())
-console.log(chrono.getMinutes())
-console.log(chrono.getSeconds())
-console.log(chrono.twoDigitsNumber(8))
-console.log(chrono.splitClick())
+// const chrono = new Chronometer()
+// console.log(chrono.startClick())
+// console.log(chrono.getMinutes())
+// console.log(chrono.getSeconds())
+// console.log(chrono.twoDigitsNumber(8))
+// console.log(chrono.splitClick())
 
