@@ -20,8 +20,7 @@ function printTime() {
   }else{
     chronometer.stopClick();
   }
-  // printMinutes();
-  // printSeconds();
+  
 }
 
 function printMinutes() {
@@ -33,7 +32,9 @@ function printMinutes() {
   secondNumber = document.getElementById('minUni')
   secondNumber.innerText = time[1]
   }, 1);
- 
+  //Esto no es eficiente pero no se nos ocurría otra cosa
+  // Cómo podríamos hacerlo más sencillo??
+  // Se puede hacer esta funcionalidad sin meter otro setInterval?
 }
 
 function printSeconds() {
@@ -45,6 +46,8 @@ function printSeconds() {
   secondNumber = document.getElementById('secUni')
   secondNumber.innerText = time[4]
   }, 1);
+  //Esto no es eficiente pero no se nos ocurría otra cosa
+  // Cómo podríamos hacerlo más sencillo??
   
 }
 
@@ -64,22 +67,16 @@ function printSplit() {
 
 function clearSplits() {
   // ... your code goes here
+let list = document.getElementById('splits')
+list.innerHTML = ''
+
 }
 
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
 
 function setResetBtn() {
   // ... your code goes here
+  chronometer.stopClick();
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
@@ -88,10 +85,15 @@ btnLeft.addEventListener('click', () => {
   if(btnLeft.className === 'btn start'){
      btnLeft.innerText = 'STOP';
      btnLeft.className = 'btn stop';
+     btnRight.innerText = 'SPLIT';
+     btnRight.className = 'btn split';
+     
 
   } else{
     btnLeft.innerText = 'START';
     btnLeft.className = 'btn start';
+    btnRight.innerText = 'RESET';
+    btnRight.className = 'btn reset';
   }
  printTime();
 });
@@ -100,14 +102,13 @@ btnLeft.addEventListener('click', () => {
 btnRight.addEventListener('click', () => {
   // ... your code goes here
   if(btnRight.className === 'btn split'){
-    btnRight.innerText = 'RESET';
-    btnRight.className = 'btn reset';
     printSplit();
  } else{
-   btnRight.innerText = 'SPLIT';
-   btnRight.className = 'btn split';
-   
+    clearSplits();
+    setResetBtn();
+    
  }
+  
 
 });
 
