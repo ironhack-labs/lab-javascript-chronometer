@@ -55,10 +55,10 @@ class Chronometer {
   splitClick() {
     // ... your code goes here
     return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
-    // return (this.twoDigitsNumber(this.getMinutes())+":"+ this.twoDigitsNumber(this.getSeconds()))
+   // return (this.twoDigitsNumber(this.getMinutes())+":"+ this.twoDigitsNumber(this.getSeconds()))
   }
 
-  //twoDigitsNumber(getMinutes(minutes))
+//twoDigitsNumber(getMinutes(minutes))
   //twoDigitsNumber(getSeconds(seconds))
 }
 const callback = () => {
