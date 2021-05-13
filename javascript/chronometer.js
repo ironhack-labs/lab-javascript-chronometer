@@ -29,7 +29,7 @@ class Chronometer {
 
     }
   }
-  getSeconds(value) {
+  getSeconds() {
     // ... your code goes here
     let seconds = this.currentTime
     if (seconds === 0) {
@@ -42,19 +42,24 @@ class Chronometer {
     // ... your code goes here
     if ((String(value)).length < 2) {
       return `0${value}`
-    } else {
+    } else { //¿Es necesario el else?
       return value
     }
   }
   stopClick() {
-    // ... your code goes here
+    clearInterval()
   }
   resetClick() {
-    // ... your code goes here
+    this.currentTime = 0
   }
   splitClick() {
     // ... your code goes here
+    return `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`
+    // return (this.twoDigitsNumber(this.getMinutes())+":"+ this.twoDigitsNumber(this.getSeconds()))
   }
+
+  //twoDigitsNumber(getMinutes(minutes))
+  //twoDigitsNumber(getSeconds(seconds))
 }
 const callback = () => {
   this.currentTime += 1;
