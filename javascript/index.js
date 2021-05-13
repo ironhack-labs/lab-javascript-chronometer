@@ -21,14 +21,14 @@ function printTime() {
 
 function printMinutes() {
   // ... your code goes here
-  let minutes = chronometer.getMinutes()
+  let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
   let minuteLeft = minDec.textContent = minutes[0]
   let minuteRigth = minUni.textContent = minutes[1]
 }
 
 function printSeconds() {
   // ... your code goes here
-  let seconds = chronometer.getSeconds()
+  let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
   let secondLeft = secDec.textContent = seconds[0]
   let secondRigth = secUni.textContent = seconds[1]
 }
