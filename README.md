@@ -29,7 +29,7 @@ To check how your final version should look like check this **[demo](https://san
 
 - Upon completion, run the following commands:
 
-```
+```shell
 $ git add .
 $ git commit -m "done"
 $ git push origin master
@@ -43,7 +43,7 @@ As you know by now, most of our labs are supported by tests. In the `tests/chron
 
 Please, open your terminal, change directories into the root of the lab, and run npm install to install the test runner. Now, you can run the npm run test:watch command to run automated tests in watch mode. Open the resulting lab-solution.html file with the "Live Server" VSCode extension to always see the most up to date test results.
 
-To start, you should be working on the `javascript/chronometer.js` file.
+To see more details about failing tests, open the `tests/chronometer.spec.js` file.
 
 ## Instructions
 
@@ -85,32 +85,26 @@ When called, `setInterval` returns a number that can be used to identify the _in
 
 ### Iteration 1: The logic
 
-As previously stated, the logic will be added to the `javascript/chronometer.js`.
+To start, you should be working on the `javascript/chronometer.js` file.
 
 #### The `Chronometer` class
 
-Let's create a Chronometer class and apply the following:
+Let's create our `Chronometer` class. The `constructor` method shouldn't expect any arguments. It should initialize two properties of the chronometer:
 
-The `constructor` method shouldn't expect any arguments. It should initialize two properties of the chronometer:
-
-- `currentTime`, which should start by equaling `0`.
+- `currentTime`, which should start of as the number `0`.
 - `intervalId`, which should start as `null`.
-
-To see more details about failing tests, open the `tests/chronometer.spec.js` file.
 
 Let's proceed with the creation of the `Chronometer` methods.
 
 #### Method `start`
 
-We need to add a `start(callback)` method for the `Chronometer` class. At a later point, this method will receive a callback function to print the time. That is why we added a _callback_ in the starter code between the parentheses.
+The `Chronometer` class needs to have a `start` method. When called, `start` will start keeping track of time, by running a function in a 1 second interval, which will increment the amount of seconds stored in the property `currentTime` by `1`.
 
-The `start()` method should use the `setInterval()` method to increment the `currentTime` property by 1, for every second that passes. The callback will also be triggered inside the scope of this method.
+You should rely on the `setInterval` method to achieve this. The interval id that is returned by calling `setInterval` should be assigned to our `intervalId` property, so this way, we will be able to clear it later on when we need to stop the timer.
 
-:bulb: _Hint 1_: Keep in mind, if you pass a function declaration to the `setInterval()` method (by writing `setInterval(function () {/* */})`), the keyword `this` will not refer to the object _chronometer_, but to global context. To enable access to `this` that points to chronometer, pass a function expression (a so-called arrow function) to the `setInterval()` method (by writing `setInterval(() => {/* */})` instead).
+Additionally, the `start` method should accept a function as an argument. Let's name it `callback`. The `callback` argument is optional. If `start` is called and a `callback` is passed, said `callback` should be executed inside of the function you have passed to `setInterval`. If no callback is passed, it should be disregarded (hint: you should check whether _if_ the `callback` was passed before attempting to run it).
 
-:bulb: _Hint 2_: In case you get an error while invoking the callback, try to check whether a callback was passed at all, that is, wrap it in an `if` statement.
-
-The value returned by calling `setInterval()` should be assigned to our `intervalId` property, so this way, we will be able to clear it later on when we need to restart the timer.
+:bulb: _Hint 1_: Keep in mind, if you pass a function declaration to the `setInterval()` method (by writing `setInterval(function () {/* */})`), the keyword `this` will not refer to the object _chronometer_, but to global scope. To enable referencing the chronometer by accessing `this`, pass a function expression (a so-called arrow function) to the `setInterval()` method (by writing `setInterval(() => {/* */})` instead).
 
 #### Method `getMinutes`
 
@@ -152,21 +146,21 @@ The `reset()` will reset our chronometer. Since our code is super clean, we just
 
 #### Method `split`
 
-The `split()` method needs to capture the moment when the split button gets hit later on. Imagine this being a time frame in which a runner runs certain distances.
+At certain points, we might want to extract a formatted timestamp for the time elapsed since the chronometer was started. We call this "obtaining the split time".
 
-The `split()` will receive any two numbers and needs to output them in a valid format. For more information, check the corresponding test.
+The `split` method should expect no arguments, and return a string where the time since the start is formatted as "_mm:ss_". Internally, the `split` method can make usage of previously declared methods such as `getMinutes`, `getSeconds`, and `computeTwoDigitNumber`.
 
 ### Iteration 2: DOM Manipulation
 
-At this point, you should start writing your code in the `javascript/index.js` file.
+Your Chronometer class is now complete! That means that we can go ahead and actually create a visual interface that allows us to use all of the logic we've just coded.
 
-Our chronometer logic is done, and it works perfectly! Now we need to set the visual components.
+At this point, you should start working in the `javascript/index.js` file. Note that, for now, you don't have to change anything in the HTML or CSS files.
 
-In this iteration, your goal is to create a new chronometer and use its methods (which we previously defined in `chronometer.js`) while interacting with the DOM. Example: when clicked, the `start` button invokes `start()` method.
+In this iteration, your goal is to create a new chronometer, and use its methods (which we previously defined in `chronometer.js`) while interacting with the DOM. Example: when clicked, the `start` button should invoke the chronometer's `start` method.
 
 As you can see, we have two different buttons: `start` and `clear`. These are the button values when the chronometer is not running. When the chronometer is running, the start button will change its behavior to stop the chronometer. In contrast, the reset button will change to split.
 
-Both buttons will have different behavior depending on the chronometer. These buttons are `btnLeft` and `btnRight` in our HTML. We can see the different values they will have in the following table:
+Both buttons will have different behavior depending on the status of the chronometer. These buttons are `btnLeft` and `btnRight` in our HTML. We can see the different values they will have in the following table:
 
 | Chronometer Status | Button ID  | Text  | CSS Class   |
 | ------------------ | ---------- | ----- | ----------- |
@@ -175,9 +169,9 @@ Both buttons will have different behavior depending on the chronometer. These bu
 | Running            | `btnLeft`  | STOP  | `btn stop`  |
 | Running            | `btnRight` | SPLIT | `btn split` |
 
-**Note that you don't have to create any CSS class. All of them are already defined in the provided style sheet.**
+<!-- **Note that you don't have to create any CSS class. All of them are already defined in the provided style sheet.** -->
 
-In the `javascript/index.js` file, you will find two click events that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
+You will find two click event listeners that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
 
 :bulb: _Hint_: To change the _status_ of the buttons, we have to _toggle_ their classes.
 
@@ -201,7 +195,7 @@ We will be working on the `javascript/index.js` file. We need to do the followin
 
 - In the `index.js` file, create a new instance of the `Chronometer` object.
 
-- Create the necessary code in the `index.js` to call the Chronometer `start` method if the button has the `start` class, or the `stopClickhod if the button has the `stop` class applied.
+- Create the necessary code in the `index.js` to call the Chronometer's `start` method if the button has the `start` class, or the `stop` method if the button has the `stop` class applied.
 
 #### Print our chronometer
 
@@ -221,7 +215,7 @@ First of all, we have to create in our `index.html` file an ordered list where w
 
 #### JavaScript
 
-Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `<li>` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer constructor that returns this :wink:).
+Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
 
@@ -229,9 +223,9 @@ Once we have created the ordered list in our HTML, we have to create the button 
 
 To finish up with this lesson, we are going to create the _clear_ feature. Remember, we will execute this when the chronometer is stopped, and the user clicks on the right button. The behavior here is straightforward: we have to clear all the data on the clock.
 
-To do that, we will have to set the minutes and seconds to zero in our clock and remove all the `<li>` elements that we could have in the list we created in the previous iteration.
+To do that, we will have to set the minutes and seconds to zero in our clock and remove all the `li` elements that we could have in the list we created in the previous iteration.
 
-### BONUS Iteration: Milliseconds
+### BONUS Iteration 5: Milliseconds
 
 Now, we can use our chronometer to calculate how much time we spend on each Ironhack exercise. What happens if we want to calculate our time in a race? We need to be more accurate with our chronometer. How can we be more accurate? By adding milliseconds!
 
@@ -241,9 +235,9 @@ If we want to add milliseconds to the chronometer, we will have to manipulate th
 
 Your goal is to create the JavaScript logic to:
 
-- Be able to count the milliseconds,
-- Show the milliseconds going forward,
-- Show the milliseconds when you capture a split time and
+- Be able to count the milliseconds.
+- Show the milliseconds going forward.
+- Show the milliseconds when you capture a split time.
 - Clear the milliseconds when the Reset button is clicked.
 
 This lab is a little bit complex, but it will guide you through the logical process of solving the problem and, at the same time, by following the guidelines, you will learn how to separate concerns between the logic and the DOM manipulation (which are the visuals).
