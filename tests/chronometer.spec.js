@@ -11,6 +11,7 @@ describe('Chronometer', () => {
     it('should create the chronometer object', () => {
       expect(typeof Chronometer).toBe('function');
     });
+
     it('should not receive any arguments', () => {
       expect(Chronometer.length).toEqual(0);
     });
@@ -28,12 +29,8 @@ describe('Chronometer', () => {
 
   describe('startClick method', () => {
     beforeEach(() => {
-      jasmine.clock().install();
+      jest.useFakeTimers();
       chronometer.startClick();
-    });
-
-    afterEach(() => {
-      jasmine.clock().uninstall();
     });
 
     it('should be declared', () => {
@@ -41,12 +38,12 @@ describe('Chronometer', () => {
     });
 
     it('should increment by 1 the currentTime property on every 1 second interval', () => {
-      jasmine.clock().tick(1000);
+      jest.advanceTimersByTime(1000);
       expect(chronometer.currentTime).toEqual(1);
     });
 
     it('after 3 seconds, currentTime should be 3', () => {
-      jasmine.clock().tick(3000);
+      jest.advanceTimersByTime(3000);
       expect(chronometer.currentTime).toEqual(3);
     });
   });
@@ -68,19 +65,16 @@ describe('Chronometer', () => {
 
     it('should return the currentTime in minutes', () => {
       chronometer.currentTime = 65;
-
       expect(chronometer.getMinutes()).toEqual(1);
     });
 
     it("should return 0 when the currentTime counting haven't started", () => {
       chronometer.currentTime = 0;
-
       expect(chronometer.getMinutes()).toEqual(0);
     });
 
     it('should return the currentTime in minutes even for laaaarge numbers', () => {
       chronometer.currentTime = 50210;
-
       expect(chronometer.getMinutes()).toEqual(836);
     });
   });
@@ -147,7 +141,6 @@ describe('Chronometer', () => {
     it('should clear the intervalId', () => {
       spyOn(window, 'clearInterval');
       chronometer.stopClick();
-
       expect(clearInterval).toHaveBeenCalled();
     });
   });
@@ -160,7 +153,6 @@ describe('Chronometer', () => {
     it('should reset the currentTime property', () => {
       chronometer.currentTime = 5;
       chronometer.resetClick();
-
       expect(chronometer.currentTime).toEqual(0);
     });
   });
@@ -171,8 +163,8 @@ describe('Chronometer', () => {
     });
 
     it('should return valid format with minutes and seconds', () => {
-      let min = chronometer.getMinutes();
-      let sec = chronometer.getSeconds();
+      const min = chronometer.getMinutes();
+      const sec = chronometer.getSeconds();
 
       if (min < 10 && sec < 10) {
         expect(chronometer.splitClick()).toEqual(`${0}${min}:${0}${sec}`);
