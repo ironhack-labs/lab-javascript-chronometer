@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very common in many sports - car racing, athletics, etc. Why wouldn't we practice a bit of our JS and DOM manipulation knowledge and create our own IronChronometer? And then, we can use to see how many minutes and seconds will take us to complete any of our labs. Sounds like a plan.
+In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very commonly used in many sports - car racing, athletics, etc. Why wouldn't we practice a bit of our JS and DOM manipulation knowledge and create our own IronChronometer? And then, we can use to see how many minutes and seconds will take us to complete any of our labs. Sounds like a plan.
 
 Let's go!
 
@@ -15,8 +15,6 @@ These are our milestones:
 3. As a bonus, we are going to add a split functionality. If you are questioning the usefulness of this functionality, well, it could be helpful to remember how much time we spent in each iteration of the exercise. :wink: As we finish an iteration, we will be able to press the split button, so we will know how hard or easy it was, depending on how much time it took us to finish it.
 
 Let's do it!
-
-<!-- ![](https://media.giphy.com/media/xT8qAZcty5f0BEm2lO/giphy.gif) -->
 
 To check how your final version should look like check this **[demo](https://sandrabosk.github.io/demo-chrono/index.html)**.
 
@@ -30,9 +28,9 @@ To check how your final version should look like check this **[demo](https://san
 - Upon completion, run the following commands:
 
 ```shell
-$ git add .
-$ git commit -m "done"
-$ git push origin master
+git add .
+git commit -m "done"
+git push origin master
 ```
 
 - Create Pull Request so your TAs can check up your work.
@@ -72,14 +70,11 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 **This lab is primarily split into two main parts**:
 
 - Part 1: the logic (which you will be adding to the `javascript/chronometer.js` file).
-- Part 2: the DOM manipulation. so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
+- Part 2: the DOM manipulation, so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
 
-It is **mandatory** for you to use the following:
+Your solution will require the usage of the `setInterval` and `clearInterval` globally available methods.
 
-- The [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method to update the chronometer on each second.
-- A class to create a JavaScript object that encapsulates all the `Chronometer` functionalities.
-
-`setInterval` is a method available on the global scope. It can be called with a function as first argument and a number of milliseconds as the second argument. It will run said function every number of milliseconds that you passed it.
+`setInterval` can be called with a function as first argument and a number of milliseconds as the second argument. It will run said function every number of milliseconds that you passed it.
 
 When called, `setInterval` returns a number that can be used to identify the _interval_ that was initialized. That same interval can later be stopped by running `clearInterval` and passing it the id of the interval we want to interrupt.
 
@@ -168,8 +163,6 @@ Both buttons will have different behavior depending on the status of the chronom
 | Stopped            | `btnRight` | RESET | `btn reset` |
 | Running            | `btnLeft`  | STOP  | `btn stop`  |
 | Running            | `btnRight` | SPLIT | `btn split` |
-
-<!-- **Note that you don't have to create any CSS class. All of them are already defined in the provided style sheet.** -->
 
 You will find two click event listeners that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
 
