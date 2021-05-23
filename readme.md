@@ -20,17 +20,18 @@ To check how your final version should look like check this **[demo](https://san
 
 ## Requirements
 
-- Fork this repo
-- Clone this repo
+- Fork this repo.
+- Clone this repo.
+- Visit the "actions" tab in your fork, and enable workflows.
 
 ## Submission
 
 - Upon completion, run the following commands:
 
 ```shell
-git add .
-git commit -m "done"
-git push origin master
+$ git add .
+$ git commit -m "Solved lab"
+$ git push origin master
 ```
 
 - Create Pull Request so your TAs can check up your work.
