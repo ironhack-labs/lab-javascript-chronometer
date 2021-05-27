@@ -2,25 +2,35 @@ class Chronometer {
   constructor() {
     // ... your code goes here
   }
-  startClick(callback) {
+
+  start(callback) {
     // ... your code goes here
   }
+
   getMinutes() {
     // ... your code goes here
   }
+
   getSeconds() {
     // ... your code goes here
   }
-  twoDigitsNumber() {
+
+  computeTwoDigitNumber(value) {
     // ... your code goes here
   }
-  stopClick() {
+
+  stop() {
     // ... your code goes here
   }
-  resetClick() {
+
+  reset() {
     // ... your code goes here
   }
-  splitClick() {
+
+  split() {
     // ... your code goes here
   }
 }
+
+// The following is required for our automated tests, ignore it for now.
+if (typeof module !== 'undefined') module.exports = Chronometer;
