@@ -22,7 +22,7 @@ To check how your final version should look like check this **[demo](https://san
 
 - Fork this repo.
 - Clone this repo.
-- Visit the "actions" tab in your fork, and enable workflows.
+- Visit the "Actions" tab in your fork, and enable workflows.
 
 ## Submission
 
@@ -40,7 +40,7 @@ $ git push origin master
 
 As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file, you can find the tests you need to pass to finish this exercise successfully.
 
-Please, open your terminal, change directories into the root of the lab, and run npm install to install the test runner. Now, you can run the npm run test:watch command to run automated tests in watch mode. Open the resulting lab-solution.html file with the "Live Server" VSCode extension to always see the most up to date test results.
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next run the `npm run test:watch` command to run automated tests. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
 
 To see more details about failing tests, open the `tests/chronometer.spec.js` file.
 
