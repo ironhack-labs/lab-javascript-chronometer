@@ -205,7 +205,15 @@ Each second we need to update our screen. So go ahead and create a function that
 
 Using our `Chronometer` methods to get the values, this should be easy!
 
+<details>
+  <summary> Click here </summary>
+
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png)
+    
+</details>
+
+
+
 
 ### Iteration 3: Split time
 
@@ -219,7 +227,15 @@ First of all, we have to create in our `index.html` file an ordered list where w
 
 Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
 
+
+<details>
+  <summary> Click here </summary>
+
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
+    
+</details>
+
+
 
 ### Iteration 4: Reset
 
