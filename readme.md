@@ -66,7 +66,7 @@ The stylesheet already has the `ds-digi` font inserted. This font helps us to ha
 
 We have also created the clock to let you focus on the JavaScript portion of this exercise. If you open the `index.html` file, you will see something like this:
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_db7f06db5a8f3c0b1a8432e1bdb34262.png)
+![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
 
 **This lab is primarily split into two main parts**:
 
