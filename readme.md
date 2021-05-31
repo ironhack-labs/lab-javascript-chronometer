@@ -64,9 +64,15 @@ To kick-off, we are provided with the following files and folders:
 
 The stylesheet already has the `ds-digi` font inserted. This font helps us to have a classic LCD screen to achieve the styles of the traditional chronometers.
 
-We have also created the clock to let you focus on the JavaScript portion of this exercise. If you open the `index.html` file, you will see something like this:
+We have also created the clock to let you focus on the JavaScript portion of this exercise. Click below to see the image you should get when you open the `index.html` file:
 
-![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
+<details>
+<summary> Click here <summary>
+    
+ ![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
+</details>
+
+
 
 **This lab is primarily split into two main parts**:
 
