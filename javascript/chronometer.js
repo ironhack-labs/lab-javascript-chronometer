@@ -8,6 +8,7 @@ class Chronometer {
      if(callback===undefined){
             const intervalId= setInterval(()=>{
             this.currentTime+=1;
+            
             },1000);
             this.intervalId=intervalId; 
             } 
@@ -49,6 +50,9 @@ class Chronometer {
     return `${min}:${sec}`
   }
 }
+
+let newChrono = new Chronometer;
+
 
 
 // The following is required to make unit tests work.
