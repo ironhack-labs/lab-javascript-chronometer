@@ -25,13 +25,13 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
   font-family: 'Digi';
-  font-size: 80px;
+  font-size: 60px;
   height: 210px;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 235px;
 }
 
 #splits-container {
@@ -48,7 +48,7 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  margin-top: -15px;
+  margin-top: 0;
   position: absolute;
   right: 20px;
 }
