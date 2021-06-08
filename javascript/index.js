@@ -13,6 +13,11 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+let state ={
+  btnLeftElement : true,
+  btnRightElement : true
+}
+
 function printTime() {
   // ... your code goes here
 }
@@ -56,7 +61,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  document.querySelector(".button.start")
+  if (state.btnLeftElement) {
+    btnLeft.classList.add.visibility("visible")
+  }else{
+    btnLeft.classList.add.visibility("hidden")
+  }  
 });
 
 // Reset/Split Button
