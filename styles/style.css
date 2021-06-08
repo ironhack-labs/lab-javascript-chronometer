@@ -25,17 +25,17 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
   font-family: 'Digi';
-  font-size: 80px;
+  font-size: 45px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 25px 0;
   position: relative;
   text-align: center;
   width: 220px;
 }
 
 #splits-container {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 100;
   position: absolute;
   left: 50px;
@@ -48,9 +48,9 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  margin-top: -15px;
   position: absolute;
   right: 20px;
+  margin-top: 0;
 }
 
 .leash {
@@ -104,11 +104,13 @@ body {
 .btn.start,
 .btn.stop {
   left: 10px;
+  bottom: 30px;
 }
 
 .btn.reset,
 .btn.split {
   right: 10px;
+  bottom: 30px
 }
 
 .btn.start {

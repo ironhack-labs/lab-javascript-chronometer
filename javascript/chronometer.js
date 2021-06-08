@@ -20,14 +20,6 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    //let minString = this.getMinutes.toString();
-    //let secString = this.getSeconds.toString();
-    //if (minString.length < 2 ) {
-    //  minString =  `0+${minString}`
-    //}
-    //if (secString.length < 2) {
-    //  secString =  `0+${secString}`
-    //}
     let valueToString = value.toString();
     let totalValue
     if (valueToString.length === 1) {
