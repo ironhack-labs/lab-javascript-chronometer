@@ -14,52 +14,64 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  function y(){let a=newChrono.getMinutes();
+    let b=newChrono.computeTwoDigitNumber(a);
+    minDecElement.innerHTML=b[0];
+    minUniElement.innerHTML=b[1]; }
+  let printMinuteId = setInterval(y,1000)
 }
 
 function printSeconds() {
-  // ... your code goes here
+  function x (){let a=newChrono.getSeconds();
+    let b=newChrono.computeTwoDigitNumber(a);
+secDecElement.innerHTML=b[0]
+secUniElement.innerHTML=b[1]};
+let printSecondId = setInterval(x,1000);
 }
+
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+ 
 }
 
 function printSplit() {
-  // ... your code goes here
+  
 }
 
 function clearSplits() {
-  // ... your code goes here
+ 
 }
 
 function setStopBtn() {
-  // ... your code goes here
+ 
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+ 
+ 
 }
 
 function setStartBtn() {
-  // ... your code goes here
+ 
 }
 
 function setResetBtn() {
-  // ... your code goes here
+ 
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
 });

@@ -8,6 +8,7 @@ body {
   font-size: 80px;
   font-weight: bold;
   padding: 40px 0;
+  
 }
 
 #clock {
@@ -17,7 +18,7 @@ body {
   height: 250px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 290px;
 }
 
 #sphere {
@@ -31,7 +32,7 @@ body {
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 290px;
 }
 
 #splits-container {
