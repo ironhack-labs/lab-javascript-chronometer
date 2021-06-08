@@ -14,15 +14,25 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  const secs = chronometer.getSeconds();
+  console.log(chronometer.computeTwoDigitsNumber(secs));
+  printMinutes();
+  printSeconds();
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+ const minutes = chronometer.getMinutes();
+ let minArray = chronometer.computeTwoDigitsNumber(mins).split("");
+ minDec.innerHTML=minArray[0];
+ minUni.innerHTML=minArray[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  cons secs = chronometer.getSeconds();
+  let secArray = chronometer.computeTwoDigitsNumber(secs).split("");
+  secDec.innerHTML=secArray[0];
+  secUni,innerHTML=secArray[1];
 }
 
 // ==> BONUS
