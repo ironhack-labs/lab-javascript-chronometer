@@ -43,7 +43,7 @@ function printSplit() {
 function clearSplits() {
   splitsElement.querySelectorAll('li').forEach((li) => {
     li.remove()
-  })
+  });
 };
 
 function setStopBtn() {
@@ -80,7 +80,7 @@ btnLeftElement.addEventListener('click', () => {
     chronometer.stop();
     setStopBtn();
     setSplitBtn();
-  }
+  };
 });
  
 // Reset/Split Button
@@ -91,5 +91,5 @@ btnRightElement.addEventListener('click', () => {
     chronometer.reset();
     clearSplits();
     printTime();
-  }
+  };
 });
