@@ -14,52 +14,90 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerText = minutes[0];
+  minUniElement.innerText = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.innerText = seconds[0];
+  secUniElement.innerText = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  /* Pretty messy. Many tests will fail, unless you create
+  additional variables and functions. Also it won't be 
+  syncronized as the two counters will start at slightly 
+  different times. I was not happy with the results so I 
+  didn't include them here.
+  
+  And it's centiseconds, not miliseconds :D
+  */
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML += `<li>${chronometer.computeTwoDigitNumber(chronometer.getMinutes())}:${chronometer.computeTwoDigitNumber(chronometer.getSeconds())}</li>`
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stop();
+  btnLeftElement.innerText = 'START';
+  btnRightElement.innerText = 'RESET';
+  btnRightElement.classList.toggle('reset');
+  btnRightElement.classList.toggle('split');
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.split();
+  printSplit();
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = 'STOP';
+  btnRightElement.innerText = 'SPLIT';
+  btnRightElement.classList.toggle('reset');
+  btnRightElement.classList.toggle('split');
+
+  chronometer.start();
+  let id = setInterval(() => {
+    printTime();
+  }, 1000);
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  clearSplits();
+  chronometer.reset();
+  clearInterval(id);
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeftElement.classList.toggle('start');
+  btnLeftElement.classList.toggle('stop');
+  
+  if (btnLeftElement.innerText === 'START')
+    setStartBtn();
+  else {
+    setStopBtn();
+    btnRightElement.innerText = 'RESET';
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.innerText === 'RESET')
+    setResetBtn();
+  else
+    setSplitBtn();
 });
