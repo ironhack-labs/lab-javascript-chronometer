@@ -17,7 +17,7 @@ body {
   height: 250px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 300px;
 }
 
 #sphere {
@@ -31,7 +31,7 @@ body {
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 270px;
 }
 
 #splits-container {
