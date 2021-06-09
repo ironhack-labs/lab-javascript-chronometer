@@ -6,11 +6,11 @@ class Chronometer {
 
   start(callback) {
     this.intervalID = setInterval(()=> {
+      console.log(this.currentTime)
       this.currentTime += 1
       if (typeof(callback) == 'function'){  //check here
         callback()
       }
-      
   }, 1000)
   }
 
