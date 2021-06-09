@@ -14,15 +14,17 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  return chronometer.split()// ... your code goes here
 }
 
 function printMinutes() {
   // ... your code goes here
+  
 }
-
 function printSeconds() {
   // ... your code goes here
+  
+ 
 }
 
 // ==> BONUS
@@ -56,10 +58,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+console.log('soy yo che hago start');
+printTime()
+console.log(printTime());
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  console.log('yo reset');// ... your code goes here
 });
