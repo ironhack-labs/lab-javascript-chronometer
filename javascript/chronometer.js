@@ -6,43 +6,43 @@ class Chronometer {
 
   start(callback) {
     this.intervalID = setInterval(()=> {
-      console.log(this.currentTime)
-      this.currentTime += 1
+      console.log(this.currentTime);
+      this.currentTime += 1;
       if (typeof(callback) == 'function'){  //check here
-        callback()
+        callback();
       }
   }, 1000)
   }
 
   getMinutes() {
-    let minutes = Math.floor(this.currentTime / 60)
-    return minutes
+    let minutes = Math.floor(this.currentTime / 60);
+    return minutes;
   }
 
   getSeconds() {
-    let secondsAfterMinute = this.currentTime % 60
-    return secondsAfterMinute
+    let secondsAfterMinute = this.currentTime % 60;
+    return secondsAfterMinute;
   }
 
   computeTwoDigitNumber(value) {
     if (value < 10){
-      return "0" + value 
+      return "0" + value;
     }else{
-      return value.toString()
+      return value.toString();
     }
   }
 
   stop() {
-    clearInterval(this.intervalID)
+    clearInterval(this.intervalID);
   }
 
   reset() {
-    this.currentTime = 0
+    this.currentTime = 0;
   }
 
   split() {
     let str = `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
-    return str
+    return str;
   }
 }
 
