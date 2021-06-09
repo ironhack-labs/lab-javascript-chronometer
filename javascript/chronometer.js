@@ -1,36 +1,56 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    currentTime()
+     this.currentTime = 0;
+    
+  
+    instervalID()
+    this.intervalId = null;
   }
 
+
   start(callback) {
-    // ... your code goes here
+   const i = 0;
+    const intervalId = setInterval(function () {
+  console.log(i);
+ 
+  i++;
+
+   if (i > 10) {
+    clearInterval(intervalId);
+  }
+}, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+   const minutes = Math.floor(this.currentTime / 60);
+    return minutes;
   }
 
   getSeconds() {
-    // ... your code goes here
+  const seconds = Math.floor(this.currentTime % 60);
+    return seconds;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value < 10) return '0' + value.toString();
+    if (value > 10) return value.toString();     
   }
 
   stop() {
-    // ... your code goes here
+   clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+     const splitTime = `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+    return splitTime;  
   }
 }
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
