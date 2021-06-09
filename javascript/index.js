@@ -1,5 +1,6 @@
 const chronometer = new Chronometer();
 
+console.log(chronometer)
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
