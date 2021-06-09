@@ -20,58 +20,82 @@ function printTime() {
 }
 
 function printMinutes() {
-  function y(){let a=newChrono.getMinutes();
-    let b=newChrono.computeTwoDigitNumber(a);
-    minDecElement.innerHTML=b[0];
-    minUniElement.innerHTML=b[1]; }
-  let printMinuteId = setInterval(y,1000)
+  minUni.textContent=v[1];
+  minDec.textContent=v[0];
 }
 
 function printSeconds() {
-  function x (){let a=newChrono.getSeconds();
-    let b=newChrono.computeTwoDigitNumber(a);
-secDecElement.innerHTML=b[0]
-secUniElement.innerHTML=b[1]};
-let printSecondId = setInterval(x,1000);
+  secUni.textContent=v[1];
+  ecDec.textContent=v[0];
 }
 
 
 // ==> BONUS
 function printMilliseconds() {
- 
+  milDec.innerHTML = chronometer.twoDigitsNumber(ms)[0];
+	milUni.innerHTML = chronometer.twoDigitsNumber(ms)[1];
 }
 
 function printSplit() {
-  
+  let splitValue=document.createElement("li");
+  splitValue.innerHTML=newChrono.split();
+  parent.appendChild(splitValue);
 }
 
 function clearSplits() {
- 
+  newChrono.reset();
+  parent.textContent = '';
 }
 
 function setStopBtn() {
- 
+  btnLeft.innerHTML = "STOP";
+	btnLeft.classList.remove("start");
+	btnLeft.classList.add("stop")
 }
 
 function setSplitBtn() {
- 
+  btnRight.innerHTML = "SPLIT";
+	btnRight.classList.remove("reset");
+	btnRight.classList.add("split");
  
 }
 
 function setStartBtn() {
- 
+  btnLeft.innerHTML = "START";
+	btnLeft.classList.remove("stop");
+	btnLeft.classList.add("start");
 }
 
+
 function setResetBtn() {
- 
+  btnRight.innerHTML = "RESET";
+	btnRight.classList.remove("split");
+	btnRight.classList.add("reset");
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  
+  if (btnLeft.classList.contains("start")) {
+		setStopBtn();
+		setSplitBtn();
+		chronometer.startClick(printTime);
+	} else {
+		setStartBtn();
+		setResetBtn();
+		chronometer.stopClick();
+	}
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  
+  if (btnRight.classList.contains("split")) {
+		printSplit()
+	} else {
+		chronometer.resetClick();
+		minDec.innerHTML = 0;
+		minUni.innerHTML = 0;
+		secDec.innerHTML = 0;
+		secUni.innerHTML = 0;
+		clearSplits();
+	}
 });
