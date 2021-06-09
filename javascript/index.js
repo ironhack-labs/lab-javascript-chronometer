@@ -1,3 +1,5 @@
+const Chronometer = require("./chronometer");
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -13,17 +15,19 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
 function printTime() {
-  // ... your code goes here
+  chronometer.innerHTML 
 }
 
 function printMinutes() {
-  // ... your code goes here
+    //chamar a funcao start() da pagina timer ao objecto timer
 }
 
 function printSeconds() {
-  // ... your code goes here
+ 
 }
+
 
 // ==> BONUS
 function printMilliseconds() {
