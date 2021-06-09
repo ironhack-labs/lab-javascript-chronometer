@@ -48,6 +48,8 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+
+
 }
 
 function setResetBtn() {
@@ -57,9 +59,34 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+  if (btnLeftElement.classList.value === "btn start") {
+
+    console.log("dentro!!")
+    btnLeftElement.classList.value = "btn stop"
+    btnLeftElement.textContent = "STOP"
+  } else {
+    btnLeftElement.textContent = "START"
+    btnLeftElement.classList.value = "btn start"
+  }
+  //btnRightElement
+
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+
+  if (btnRightElement.classList.value === "btn reset") {
+    console.log("dentro!!")
+    start()
+    btnRightElement.classList.value = "btn split"
+    btnRightElement.textContent = "SPLIT"
+
+  } else {
+
+    btnRightElement.classList.value = "btn reset"
+    btnRightElement.textContent = "RESET"
+  }
+
 });
