@@ -15,8 +15,7 @@ class Chronometer {
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60000)
-    // return Math.floor(this.currentTime % 600000);
+    return Math.floor(this.currentTime / 60000);
   }
 
   getSeconds() {

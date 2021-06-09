@@ -21,22 +21,22 @@ function printTime() {
 
 function printMinutes() {
   let minutes = chronometer.getMinutes(); 
-  let minutesTwoDigit = chronometer.computeTwoDigitNumber(minutes)
+  let minutesTwoDigit = chronometer.computeTwoDigitNumber(minutes);
   minUniElement.innerText = minutesTwoDigit.split('')[1];
   minDecElement.innerText = minutesTwoDigit.split('')[0];
 }
 
 function printSeconds() {
   let seconds = chronometer.getSeconds() 
-  let secondsTwoDigit = chronometer.computeTwoDigitNumber(seconds)
+  let secondsTwoDigit = chronometer.computeTwoDigitNumber(seconds);
   secUniElement.innerText = secondsTwoDigit.split('')[1];
   secDecElement.innerText = secondsTwoDigit.split('')[0];  
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  let tensOfMilliSeconds = chronometer.getTensOfMilliSeconds() 
-  let tensOfMilliSecondsTwoDigit = chronometer.computeTwoDigitNumber(tensOfMilliSeconds)
+  let tensOfMilliSeconds = chronometer.getTensOfMilliSeconds();
+  let tensOfMilliSecondsTwoDigit = chronometer.computeTwoDigitNumber(tensOfMilliSeconds);
   milUniElement.innerText = tensOfMilliSecondsTwoDigit.split('')[1];
   milDecElement.innerText = tensOfMilliSecondsTwoDigit.split('')[0];  
 }
@@ -55,7 +55,7 @@ function clearSplits() {
 
   // Clear the UL
   while (splitsElement.firstChild) {
-    splitsElement.removeChild(splitsElement.lastChild)
+    splitsElement.removeChild(splitsElement.lastChild);
   }
 }
 
@@ -106,6 +106,4 @@ btnRightElement.addEventListener('click', () => {
   else {
     clearSplits();
   }
-
-
 });
