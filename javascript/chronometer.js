@@ -44,7 +44,8 @@ class Chronometer {
     // return time formated as mm:ss
     let minutes =  this.computeTwoDigitNumber(this.getMinutes());
     let seconds = this.computeTwoDigitNumber(this.getSeconds());
-    return `${minutes}:${seconds}`;
+    let tensOfMilliSeconds = this.computeTwoDigitNumber(this.getTensOfMilliSeconds());
+    return `${minutes}:${seconds}:${tensOfMilliSeconds}`;
   }
 }
 
