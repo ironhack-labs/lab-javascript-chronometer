@@ -42,7 +42,7 @@ function printSplit() {
 
 function clearSplits() {
   splitsElement.querySelectorAll('li').forEach((li) => {
-    li.remove()
+    li.remove();
   });
 };
 
