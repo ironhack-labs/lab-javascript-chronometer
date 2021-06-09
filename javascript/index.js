@@ -1,3 +1,5 @@
+//const Chronometer = require("./chronometer");
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -14,14 +16,26 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
+
   // ... your code goes here
 }
 
 function printMinutes() {
+  let minutes = chronometer.getMinutes();
+
   // ... your code goes here
 }
 
 function printSeconds() {
+
+
+
+  setInterval(() => {
+    let seconds = chronometer.getSeconds();
+    secUniElement.textContent = seconds;
+  }, 1000);
+
+
   // ... your code goes here
 }
 
@@ -35,6 +49,7 @@ function printSplit() {
 }
 
 function clearSplits() {
+  reset()
   // ... your code goes here
 }
 
@@ -47,15 +62,41 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  btnLeftElement.classList.toggle("stop")
+  // btnLeftElement.classList.remove("start")
+  // btnLeftElement.classList.add("stop")
+  let textLeft = btnLeftElement.textContent
+  if (textLeft === "START") {
+    btnLeftElement.textContent = "STOP"
+  }
+  else if (btnLeftElement.textContent === "STOP") {
+    btnLeftElement.textContent = "START"
+  }
+
   // ... your code goes here
 }
 
 function setResetBtn() {
+  btnRightElement.classList.toggle("split")
+  //btnRightElement.classList.remove("reset")
+  //btnRightElement.classList.add("split")
+  let textRigth = btnRightElement.textContent
+  if (textRigth === "SPLIT") {
+    btnRightElement.textContent = "RESET"
+  } else if (btnRightElement.textContent === "RESET") {
+    btnRightElement.textContent = "SPLIT"
+  }
+
   // ... your code goes here
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  setStartBtn()
+  setResetBtn()
+  printMinutes()
+  printSeconds()
+  chronometer.start()
   // ... your code goes here
 });
 
