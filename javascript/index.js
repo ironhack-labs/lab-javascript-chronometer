@@ -1,4 +1,12 @@
+
+//DO THE INTERFACE DOM MANIPULATION HERE
+
+
+
+
 const chronometer = new Chronometer();
+
+let myNewchronometer = new Chronometer();
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -57,9 +65,48 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+//um verhalten der knöpfe zu ändern, müssen wir Klasse umschalten
+
+
+// to change status, toggle class. Toggle method:
+//
+//btnLeftElement.classList.toggle("");
+
+
+//does this work as well???
+if(btnLeftElement.className === 'btn start'){
+
+
+  btnLeftElement.className = 'btn stop';
+  btnRightElement.className = 'btn split';
+
+
+  //set the btnLeft/right text to STOP here:
+  btnLeftElement.innerText    = "STOP";
+btnRightElement.innerText   = "SPLIT";
+
+} else {
+  btnLeftElemnt.className = 'btn start';
+  btnRightElement.className = 'btn reset';
+
+  btnLeftElement.innerText = "START";
+  btnRightElement.innerText = "RESET"
+
+
+}
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+
+
+
+
 });
+
+
+//Create the necessary code in the index.js to call the 
+//Chronometer's start method if the button has the start class, 
+//or the stop method if the button has the stop class applied.
