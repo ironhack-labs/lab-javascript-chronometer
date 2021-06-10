@@ -2,9 +2,7 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = null;
-    this.min = 0;
-    this.sec = 0;
-    this.milli = 0;
+    // this.milli = 0;
   }
 
   start(callback) {
@@ -16,20 +14,14 @@ class Chronometer {
   
 
   getMinutes(){
-    this.min = Math.floor(this.currentTime / 60);
-    
-    return this.computeTwoDigitNumber(this.min)
+    return this.computeTwoDigitNumber(Math.floor(this.currentTime / 60))
   }
 
   getSeconds() {
-    this.sec = this.currentTime % 60;
-    
-    // 
-    return this.computeTwoDigitNumber(this.sec)
+    return this.computeTwoDigitNumber(this.currentTime % 60)
   }
   // getMilli(){
-  //   this.milli = Math.floor(this.currentTime % 1000 )
-  //   return this.computeTwoDigitNumber(this.milli)
+  //   return this.computeTwoDigitNumber(Math.floor(this.currentTime % 1000 ))
   // }
 
   computeTwoDigitNumber(value) {
@@ -54,10 +46,10 @@ class Chronometer {
   }
 
   split(callback) {
-    let myMin = this.computeTwoDigitNumber(this.getMinutes()).replace(/["]+/g, '')
-    let mySec = this.computeTwoDigitNumber(this.getSeconds()).replace(/["]+/g, '')
-    //let myMilli = this.computeTwoDigitNumber(this.getMilli()).repeat(/["]+/g, '')
-    let str = myMin + ":" + mySec //+ ":" + myMilli
+    let myMin = this.getMinutes()
+    console.log(myMin)
+
+    let str = myMin + ":" + mySec
     callback(str)
     return str
   }
