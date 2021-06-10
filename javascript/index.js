@@ -23,15 +23,37 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+
+  //UPDATE DOM HERE  with printMinutes & printSeconds
+let printedTime=
+
+//Update dom to printed time:
+
+
 }
 
 function printMinutes() {
   // ... your code goes here
+
+
+let printedMins = getMinutes();
+
+//UPDATE DOM HERE:
+
 }
 
 function printSeconds() {
   // ... your code goes here
-}
+
+  //grab values by chronometer method getSeconds, then update DOM
+
+  let printedSecs = getSeconds();    ///
+
+  //UPDATE DOM HERE:
+
+  
+  }
+
 
 // ==> BONUS
 function printMilliseconds() {
@@ -69,13 +91,16 @@ btnLeftElement.addEventListener('click', () => {
 
 
 // to change status, toggle class. Toggle method:
-//
+
+//----TOGGLE-----------------------------------
 //btnLeftElement.classList.toggle("");
 
 
 //does this work as well???
 if(btnLeftElement.className === 'btn start'){
 
+//create code to call start method here:
+  
 
   btnLeftElement.className = 'btn stop';
   btnRightElement.className = 'btn split';
@@ -90,7 +115,9 @@ btnRightElement.innerText   = "SPLIT";
   btnRightElement.className = 'btn reset';
 
   btnLeftElement.innerText = "START";
-  btnRightElement.innerText = "RESET"
+  btnRightElement.innerText = "RESET";
+
+  //create code to call stop method here:
 
 
 }
