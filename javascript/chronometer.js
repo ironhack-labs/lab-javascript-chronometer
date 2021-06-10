@@ -11,7 +11,9 @@ class Chronometer {
   start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
-      callback();
+      if (callback) {
+        callback()
+      }
     }, 1000);
   };
 
