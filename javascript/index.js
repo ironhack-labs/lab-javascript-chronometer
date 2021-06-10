@@ -1,4 +1,7 @@
+//const tyler = require('./chronometer.js');
+const Chronometer = require('./chronometer');
 const chronometer = new Chronometer();
+
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -54,12 +57,33 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+const state = {
+  btnleft : true,
+  btnright : true
+}
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (state.btnleft){
+    console.log(btnLeftElement.innerText);
+    //btnLeftElement.classList.remove('')
+    //btnLeftElement.classList.add('')
+  }else{
+    //btnLeftElement.classList.remove('')
+    //btnLeftElement.classList.add('')
+  }
 });
+
+  // ... your code goes here
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (state.btnleft){
+    console.log()
+    btnRightElement.classList.remove('')
+    btnRightElement.classList.add('')
+  }else{
+    btnRightElement.classList.remove('')
+    btnRightElement.classList.add('')
+  }
 });
