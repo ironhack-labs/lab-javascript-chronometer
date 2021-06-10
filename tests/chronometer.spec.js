@@ -31,16 +31,16 @@ describe('Chronometer', () => {
       expect(typeof chronometer.start).toEqual('function');
     });
 
-    it('should increment by 1 the currentTime property on every 1 second interval', () => {
+    it('should increment by 1 the currentTime property on every 0.01 second interval', () => {
       chronometer.start();
-      jest.advanceTimersByTime(1000);
+      jest.advanceTimersByTime(10);
       expect(chronometer.currentTime).toEqual(1);
     });
 
     it('should hold 3 in currentTime property after 3 seconds', () => {
       chronometer.start();
       jest.advanceTimersByTime(3000);
-      expect(chronometer.currentTime).toEqual(3);
+      expect(chronometer.currentTime).toEqual(300);
     });
   });
 
@@ -60,7 +60,7 @@ describe('Chronometer', () => {
     });
 
     it('should return the number of entire minutes passed', () => {
-      chronometer.currentTime = 65;
+      chronometer.currentTime = 65 * 100;
       expect(chronometer.getMinutes()).toEqual(1);
     });
 
@@ -69,7 +69,7 @@ describe('Chronometer', () => {
     });
 
     it('should return the number of minutes passed even after a very long time', () => {
-      chronometer.currentTime = 50210;
+      chronometer.currentTime = 50210 * 100;
       expect(chronometer.getMinutes()).toEqual(836);
     });
   });
@@ -90,12 +90,12 @@ describe('Chronometer', () => {
     });
 
     it('should return the seconds of the currentTime', () => {
-      chronometer.currentTime = 15;
+      chronometer.currentTime = 15 * 100;
       expect(chronometer.getSeconds()).toEqual(15);
     });
 
     it('should return the seconds portion of the currentTime that remains after removing the minutes', () => {
-      chronometer.currentTime = 115;
+      chronometer.currentTime = 115 * 100;
       expect(chronometer.getSeconds()).toEqual(55);
     });
   });
@@ -144,10 +144,10 @@ describe('Chronometer', () => {
     it('should stop a previously started chronometer', () => {
       chronometer.start();
       jest.advanceTimersByTime(1000);
-      expect(chronometer.currentTime).toEqual(1);
+      expect(chronometer.currentTime).toEqual(100);
       chronometer.stop();
       jest.advanceTimersByTime(2000);
-      expect(chronometer.currentTime).toEqual(1);
+      expect(chronometer.currentTime).toEqual(100);
     });
   });
 
@@ -169,17 +169,17 @@ describe('Chronometer', () => {
     });
 
     it('should return valid format with minutes and seconds', () => {
-      chronometer.currentTime = 5;
+      chronometer.currentTime = 5 * 100;
       expect(chronometer.split()).toEqual(`00:05`);
-      chronometer.currentTime = 17;
+      chronometer.currentTime = 17 * 100;
       expect(chronometer.split()).toEqual(`00:17`);
-      chronometer.currentTime = 60;
+      chronometer.currentTime = 60 * 100;
       expect(chronometer.split()).toEqual(`01:00`);
-      chronometer.currentTime = 135;
+      chronometer.currentTime = 135 * 100;
       expect(chronometer.split()).toEqual(`02:15`);
-      chronometer.currentTime = 135;
+      chronometer.currentTime = 135 * 100;
       expect(chronometer.split()).toEqual(`02:15`);
-      chronometer.currentTime = 800;
+      chronometer.currentTime = 800 * 100;
       expect(chronometer.split()).toEqual(`13:20`);
     });
 
