@@ -1,52 +1,64 @@
 class Chronometer {
   constructor() {
-    this.currentTime=0;
-    this.intervalId=null;
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-     if(callback===undefined){
-            const intervalId= setInterval(()=>{
-            this.currentTime+=1;
-            
-            },1000);
-            this.intervalId=intervalId; 
-            } 
-            else {
-            const intervalId= setInterval(()=>{
-            this.currentTime+=1;
-            callback; 
-            },1000); 
-            this.intervalId=intervalId;
-          }
- }
+    if (callback === undefined) {
+      const intervalId = setInterval(() => {
+        this.currentTime += 1;
 
-  getMinutes() {
-    let a=this.currentTime;
-    return a>=60?Math.floor(a/60):0
-     }
+      }, 1000);
+      this.intervalId = intervalId;
+    }
 
-  getSeconds() {
-    let a=this.currentTime;
-    return a<60?a:a%60;    
+
+    else {
+      const intervalId = setInterval(() => {
+        this.currentTime += 1;
+        callback();
+      }, 1000);
+      this.intervalId = intervalId;
+    }
   }
 
+  getMinutes() {
+    let a = this.currentTime;
+    return a >= 60 ? Math.floor(a / 60) : 0
+  }
+
+  getSeconds() {
+    let a = this.currentTime;
+    return a < 60 ? a : a % 60;
+  }
+
+  getMilliSeconds() {
+
+  }
+
+
+
   computeTwoDigitNumber(value) {
-    let twoDigits=value.toString();
-    return value>9?twoDigits:'0'+value;
-    }
+    let twoDigits = value.toString();
+    return value > 9 ? twoDigits : '0' + value;
+  }
 
   stop() {
     clearInterval(this.intervalId)
   }
 
   reset() {
-    this.currentTime=0;
+    this.currentTime = 0;
+    minDecElement.innerHTML = 0;
+    minUniElement.innerHTML = 0;
+    secDecElement.innerHTML = 0;
+    secUniElement.innerHTML = 0;
   }
 
   split() {
-    let sec=this.computeTwoDigitNumber(this.getSeconds());
-    let min=this.computeTwoDigitNumber(this.getMinutes());
+    let sec = this.computeTwoDigitNumber(this.getSeconds());
+    let min = this.computeTwoDigitNumber(this.getMinutes());
     return `${min}:${sec}`
   }
 }
