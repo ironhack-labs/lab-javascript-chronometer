@@ -47,7 +47,7 @@ class Chronometer {
 
   split(callback) {
     let myMin = this.getMinutes()
-    console.log(myMin)
+    let mySec = this.getSeconds()
 
     let str = myMin + ":" + mySec
     callback(str)
