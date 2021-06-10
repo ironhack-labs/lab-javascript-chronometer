@@ -17,7 +17,7 @@ body {
   height: 250px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 250px;
 }
 
 #sphere {
@@ -31,7 +31,7 @@ body {
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 240px;
 }
 
 #splits-container {
@@ -86,7 +86,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 30px;
 }
 
 .btn {
