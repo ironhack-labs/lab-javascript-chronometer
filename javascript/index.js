@@ -23,23 +23,38 @@ function printTime() {
 
 function printMinutes() {
   // ... your code goes here
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.textContent = minutes[0];
+  minUniElement.textContent = minutes[1];
 }
 
 function printSeconds() {
   // ... your code goes here
+  let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.textContent = seconds[0];
+  secUniElement.textContent = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  let milliseconds = chronometer.computeTwoDigitNumber(
+    chronometer.getMilliseconds()
+  );
+  milDecElement.textContent = milliseconds[0];
+  milUniElement.textContent = milliseconds[1];
 }
 
 function printSplit() {
   // ... your code goes here
+  const li = document.createElement('li');
+  li.textContent = chronometer.split();
+  splitsElement.appendChild(li);
 }
 
 function clearSplits() {
   // ... your code goes here
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
