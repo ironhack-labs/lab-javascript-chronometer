@@ -1,7 +1,9 @@
 class Chronometer {
     constructor() {
      this.currentTime = 0;
+     this.currentTimeMilli = 0;
      this.intervalId = null;
+     this.intervalMilliId = null;
     }
   
     start(callback) {
@@ -18,11 +20,18 @@ class Chronometer {
       
     }
 
-    getMilli() { // I have to create a new interval for milli
-      let milli = 0;
-      milli = (Number(this.currentTime % 60) * 1000) % 99
-      
-      return Number(milli)
+    startMilli(callbackMilli) { // I have to create a new interval for milli
+      this.intervalMilliId = setInterval(() => {
+        this.currentTimeMilli += 1
+
+        if(callbackMilli !== null){
+          callbackMilli();
+        }
+      }, 1)
+    }
+
+    getMilli(){
+      return Number(this.currentTimeMilli % 100)
     }
   
     getMinutes() {
@@ -46,6 +55,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId)
+    clearInterval(this.intervalMilliId)
   }
 
   reset() {
