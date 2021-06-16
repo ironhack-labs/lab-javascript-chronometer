@@ -1,3 +1,5 @@
+
+
 class Chronometer {
   constructor() {
     this.currentTime = 0;
@@ -6,7 +8,7 @@ class Chronometer {
   start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
-      if (callback != null) callback();
+      if (callback) callback();
     }, 1000);
   }
 
@@ -22,7 +24,7 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     if (value < 10) return '0' + value.toString();
-    if (value > 10) return value.toString(); 
+    if (value >= 10) return value.toString(); 
   }
 
   stop() {
