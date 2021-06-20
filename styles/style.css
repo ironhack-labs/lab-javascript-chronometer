@@ -21,6 +21,8 @@ body {
 }
 
 #sphere {
+  display: flex;
+  justify-content: space-around;
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
@@ -48,7 +50,7 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  margin-top: -15px;
+  margin-top: 75px;
   position: absolute;
   right: 20px;
 }
