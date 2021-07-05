@@ -11,9 +11,9 @@ class Chronometer {
       this.intervalId = setInterval(callback, 1);
     } else {
       this.intervalId = setInterval(() => {
-        this.currentTime += 1;
+        this.currentTime++;
         this.millisIntervalId = setInterval(() => {
-          this.currentMillis += 1
+          this.currentMillis++;
         }, 1);
       }, 1000);
     }
@@ -43,7 +43,7 @@ class Chronometer {
   }
 
   stop() {
-    for (var i = 1; i < 99999; i++)
+    for (let i = 1; i < 99999; i++)
       window.clearInterval(i);
   }
 
