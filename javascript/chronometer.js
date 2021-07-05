@@ -6,9 +6,9 @@ class Chronometer {
     this.millisIntervalId = null;
   }
 
-  start(callback) {
+  start(callback, interval) {
     if (typeof callback === "function") {
-      this.intervalId = setInterval(callback, 1);
+      setInterval(callback, interval);
     } else {
       this.intervalId = setInterval(() => {
         this.currentTime++;
@@ -18,6 +18,18 @@ class Chronometer {
         this.currentMillis++;
       }, 1);
     }
+  }
+
+  stop() {
+    clearInterval(this.intervalId);
+    clearInterval(this.millisIntervalId);
+  }
+
+  reset() {
+    this.currentTime = 0;
+    this.currentMillis = 0;
+    this.intervalId = null;
+    this.millisIntervalId = null;
   }
 
   getMilliSecond() {
@@ -41,18 +53,6 @@ class Chronometer {
   computeTwoDigitNumber(value) {
     const length = ("" + value).length
     return length === 1 ? '0' + value : '' + value;
-  }
-
-  stop() {
-    window.clearInterval(this.intervalId)
-    window.clearInterval(this.millisIntervalId)
-  }
-
-  reset() {
-    this.currentTime = 0;
-    this.currentMillis = 0;
-    this.intervalId = null;
-    this.millisIntervalId = null;
   }
 
   split() {

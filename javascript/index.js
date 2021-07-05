@@ -1,6 +1,8 @@
 const chronometer = new Chronometer();
 
 let millis = 0;
+secIntervalId = null;
+millIntervalId = null;
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -63,6 +65,8 @@ function setStopBtn() {
 
 function setStartBtn() {
   chronometer.stop();
+  clearInterval(secIntervalId);
+  clearInterval(millIntervalId);
 }
 
 function setSplitBtn() {
@@ -94,10 +98,8 @@ btnLeftElement.addEventListener('click', () => {
   toggleButtons();
   if (btnLeftElement.classList.contains('stop')) {
     setStopBtn();
-    setInterval(() => {
-      printTime();
-      setInterval(printMilliseconds, 250);
-    }, 1000);
+    secIntervalId = chronometer.start(printTime, 1000);
+    millIntervalId = chronometer.start(printMilliseconds, 1);
   } else {
     setStartBtn();
   }
