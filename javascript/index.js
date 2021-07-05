@@ -20,18 +20,18 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   minutes = printMinutes();
   seconds = printSeconds();
-  minDecElement.innerText = minutes[0];
-  minUniElement.innerText = minutes[1];
-  secDecElement.innerText = seconds[0];
-  secUniElement.innerText = seconds[1];
 }
 
 function printMinutes() {
-  return chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerText = minutes[0];
+  minUniElement.innerText = minutes[1];
 }
 
 function printSeconds() {
-  return chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.innerText = seconds[0];
+  secUniElement.innerText = seconds[1];
 }
 
 // ==> BONUS
