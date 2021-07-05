@@ -98,7 +98,7 @@ btnLeftElement.addEventListener('click', () => {
     setStopBtn();
     setInterval(() => {
       printTime();
-      setInterval(printMilliseconds, 500);
+      setInterval(printMilliseconds, 250);
     }, 1000);
   } else {
     setStartBtn();
