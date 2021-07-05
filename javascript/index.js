@@ -1,7 +1,5 @@
 const chronometer = new Chronometer();
 
-let minutes = 0;
-let seconds = 0;
 let millis = 0;
 
 // get the buttons:
@@ -18,8 +16,8 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  minutes = printMinutes();
-  seconds = printSeconds();
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
