@@ -14,15 +14,21 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
+  printMinutes();
+  printSeconds();
   // ... your code goes here
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes();
+  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[0];
+  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.getSeconds();
+  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[0];
+  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[1];
 }
 
 // ==> BONUS
@@ -31,35 +37,63 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML += `<li> ${chronometer.split(printTime)} </li>`;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeftElement.innerHTML = "Start";
+  btnLeftElement.classList.replace('stop', 'start');
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  btnRightElement.innerHTML = "Split";
+  btnRightElement.classList.replace('reset', 'split');
 }
 
 function setStartBtn() {
+  btnLeftElement.innerHTML = "Stop";
+  btnLeftElement.classList.replace('start', 'stop');
   // ... your code goes here
 }
 
 function setResetBtn() {
   // ... your code goes here
+  btnRightElement.innerHTML = "Reset";
+  btnRightElement.classList.replace('split', 'reset');
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  console.log(chronometer);
+  if (btnLeftElement.classList.contains('start')) {
+    chronometer.start(printTime);
+    setStartBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stop();
+    setStopBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
-});
+  if (btnRightElement.classList.contains('split')) {
+    printSplit();
+  }
+  else {
+    chronometer.reset();
+    printTime();
+    clearSplits();
+  }
+}
+
+);
+
