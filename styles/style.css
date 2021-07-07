@@ -27,11 +27,15 @@ body {
   font-family: 'Digi';
   font-size: 80px;
   height: 210px;
-  margin: 0 auto;
+  margin: auto auto;
   padding: 35px 0;
   position: relative;
   text-align: center;
   width: 220px;
+}
+
+#sphere > span{
+  transform: translateX(-10px);
 }
 
 #splits-container {
@@ -86,7 +90,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 20px;
 }
 
 .btn {
@@ -123,3 +127,5 @@ body {
 .btn.split {
   background: #0851ab;
 }
+
+
