@@ -18,7 +18,7 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+  console.log(new Date());
 }
 
 function printSeconds() {
