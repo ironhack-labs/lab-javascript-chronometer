@@ -27,7 +27,9 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
-    return value.toString().padStart(2, '0');
+    if (value < 10) {
+      return value.toString().padStart(2, '0');
+    } else return value.toString();
   }
 
   stop() {
@@ -37,7 +39,7 @@ class Chronometer {
 
   reset() {
     // ... your code goes here
-    return (this.currentTime = 0);
+    this.currentTime = 0;
   }
 
   split() {
