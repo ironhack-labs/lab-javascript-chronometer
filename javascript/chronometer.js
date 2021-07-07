@@ -10,7 +10,6 @@ class Chronometer {
 
       if(callback) callback()
       this.currentTime += 1;
-      // console.log(this.currentTime)
     }, 1000);
     // ... your code goes here
   }
@@ -49,9 +48,3 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
-
-const chronometer = new Chronometer(0)
-
-// chronometer.start()
-
-console.log(chronometer.computeTwoDigitNumber(3))
