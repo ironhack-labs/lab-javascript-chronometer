@@ -7,7 +7,6 @@ class Chronometer {
     this.intervalId = null;
     // intervalId starts as null
 
- 
   }
 
   // create Chronometer methods 
@@ -20,13 +19,13 @@ class Chronometer {
         // setting 1 second interval, which will increment the amound of seconds stored in the 
         // property of currentTime. Hence, currentTime ++.
         // intervalId that is returned by calling setInterval is assigned to intervalId property.
-        this.currentTime += 1;
-         // callback()
+        this.currentTime +=1
+        callback()
       }, 1000)
     
     } else {
     this.intervalId = setInterval(() => {
-      this.currentTime += 1;
+      this.currentTime +=1
     }, 1000)
   }
 }
@@ -35,14 +34,14 @@ class Chronometer {
 
   getMinutes() {
     let minute = 0;
-    let countOfSecs = this.currentTime;
-      if(countOfSecs == 0) {
+    let secCount = this.currentTime;
+      if(secCount == 0) {
 
 // returns number of minutes passed as integer. Math.floor to get get whole number and 
 // divide by 60 to get minutes.
         return 0;
       } else {
-        minute = Math.floor(countOfSecs/60)
+        minute = Math.floor(secCount/60)
       }
       return minute
   }
@@ -50,28 +49,27 @@ class Chronometer {
   getSeconds() {
     let seconds = 0;
     // using modulus operator to, 60 secs = 1 min.
-    if(this.currentTime % 60 !==0) {
+    if(this.currentTime % 60 !== 0) {
       seconds = this.currentTime % 60
     }
     return seconds;
   }
 
   computeTwoDigitNumber(value) {
-    let string = value.toString()
+    let str = value.toString()
     // this method takes a number and returns a string with
-    let newString = " ";
+    let newStr = " ";
 
-    if (string.length < 2) {
-      newString = 0 + string
+    if (str.length < 2) {
+      newStr = '0' + str
     } else {
-      return string;
+      return str;
     }
-      return newString;
+      return newStr;
   }
 
   stop() {
     clearInterval(this.intervalId)
- 
   }
 
   reset() {
@@ -85,7 +83,6 @@ class Chronometer {
     this.computeTwoDigitNumber(this.getMinutes())
     let seconds = 
     this.computeTwoDigitNumber(this.getSeconds())
-
     let display = `${minutes}:${seconds}` 
     return display;
   }
