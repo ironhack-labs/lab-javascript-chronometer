@@ -21,11 +21,13 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDecElement.textContent = chronometer.formattedMinutes.charAt(0);
+  minUniElement.textContent = chronometer.formattedMinutes.charAt(1);
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDecElement.textContent = chronometer.formattedSeconds.charAt(0);
+  secUniElement.textContent = chronometer.formattedSeconds.charAt(1);
 }
 
 // ==> BONUS
@@ -69,13 +71,12 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains("start")) {
     setStopBtn();
-    setSplitBtn();
-    chronometer.start(printTime); //printTime = callback
+    // chronometer.start(printTime); //printTime = callback
   }
   else if (btnLeftElement.classList.contains("stop")){
     setStartBtn();
-    setResetBtn();
-    chronometer.stop();
+
+    // chronometer.stop();
   }
 });
 
@@ -83,11 +84,9 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   if (btnRightElement.classList.contains("reset")) {
-    chronometer.reset();
-    clearSplits();
-    printTime();
-  } else {
-    printSplit();
+    setSplitBtn()
+  } else if (btnRightElement.classList.contains("split")){
+    setResetBtn()
   }
   // ... your code goes here
 });
