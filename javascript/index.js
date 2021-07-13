@@ -45,7 +45,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  console.log(splitsElement);
+  var entry = document.createElement('li');
+  var textNode = document.createTextNode(chronometer.split());
+  entry.appendChild(textNode);
+  splitsElement.appendChild(entry);
 }
 
 function clearSplits() {
@@ -93,5 +97,9 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  clearTime();
+  if(!isRunning) {
+    clearTime();
+  } else {
+    printSplit();
+  }
 });
