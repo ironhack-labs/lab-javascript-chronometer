@@ -34,7 +34,7 @@ function printSeconds() {
 function clearTime() {
   minDecElement.textContent = "0";
   minUniElement.textContent  = "0";
-  minDecElement.textContent = "0"; 
+  secDecElement.textContent = "0"; 
   secUniElement.textContent = "0"
   chronometer.reset();
 }
@@ -53,7 +53,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = "";
 }
 
 function setStopBtn() {
@@ -99,6 +99,7 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   if(!isRunning) {
     clearTime();
+    clearSplits();
   } else {
     printSplit();
   }
