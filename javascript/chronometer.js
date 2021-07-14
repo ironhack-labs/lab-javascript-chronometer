@@ -1,17 +1,23 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
+    this.currentmilliseconds = 0;
     this.intervalId = null;
+    this.millisIntervalId = null;
   }
 
-  start(callback) {
-    this.intervalId = setInterval(() => {
-      this.currentTime += 1;
-      if (callback) {
-        callback();
-      }
-    }, 1000);
-    return this.intervalId;
+  start(callback, interval) {
+    if (typeof callback === "function") {
+      setInterval(callback, interval);
+    } else {
+      this.intervalId = setInterval(() => {
+        this.currentTime++;
+      }, 1000);
+
+      this.millisIntervalId = setInterval(() => {
+        this.currentmilliseconds++;
+      }, 1);
+    }
   }
 
   getMinutes() {
@@ -23,7 +29,6 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
     if (value < 10) {
       return '0' + value
     }
@@ -32,16 +37,31 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId);
+    clearInterval(this.millisIntervalId);
   }
 
   reset() {
     this.currentTime = 0;
+    this.currentmilliseconds = 0;
+    this.intervalId = null;
+    this.millisIntervalId = null;
+  }
+
+  getMilliSeconds() {
+    const value = this.currentmilliseconds;
+    const length = ("" + value).length
+    if (length === 1) {
+      return '0' + value;
+    } else {
+      return ("" + value).slice(-2);
+    }
   }
 
   split() {
-    const minutes = this.computeTwoDigitNumber(this.getMinutes());
-    const seconds = this. computeTwoDigitNumber(this.getSeconds());
-    return `${minutes}:${seconds}`;
+    const minStr = this.computeTwoDigitNumber(this.getMinutes());
+    const secStr = this.computeTwoDigitNumber(this.getSeconds());
+    const milStr = this.computeTwoDigitNumber(this.getMilliSeconds());
+    return `${minStr}:${secStr}:${milStr}`;
   }
 }
 
