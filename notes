@@ -1,0 +1,14 @@
+
+const counter = 0;
+
+sendTx();
+
+function sendTx(){
+    // ...
+    saveData();
+}
+
+function saveData(counter){
+    counter++; 
+}
+
