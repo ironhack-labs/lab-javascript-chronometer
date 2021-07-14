@@ -23,9 +23,6 @@ function printMinutes() {
   let firstDigit = minutes.toString()[0];
   let secondDigit = minutes.toString()[1];
 
-  console.log(firstDigit);
-  console.log(secondDigit);
-
   minDecElement.innerHTML = firstDigit;
   minUniElement.innerHTML = secondDigit;
 }
@@ -34,9 +31,6 @@ function printSeconds() {
   let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
   let firstDigit = seconds.toString()[0];
   let secondDigit = seconds.toString()[1];
-
-  console.log(firstDigit);
-  console.log(secondDigit);
 
   secDecElement.innerHTML = firstDigit;
   secUniElement.innerHTML = secondDigit;
@@ -85,13 +79,12 @@ btnLeftElement.addEventListener('click', () => {
     setStopBtn();
     setSplitBtn();
 
-    chronometer.start(printTime());
+    chronometer.start(printTime);
   } else {
     setStartBtn();
+    chronometer.stop();
     btnRightElement.className = `btn reset`;
     btnRightElement.innerHTML = `RESET`;
-
-    chronometer.stop;
   }
 });
 
@@ -100,6 +93,7 @@ btnRightElement.addEventListener('click', () => {
   if (btnRightElement.className === 'btn reset') {
     setResetBtn();
     clearSplits();
+    chronometer.reset();
   } else {
     printSplit();
   }
