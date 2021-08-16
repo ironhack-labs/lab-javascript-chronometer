@@ -1,4 +1,28 @@
-const chronometer = new Chronometer();
+
+
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = null;
+  }
+
+start (callback) {
+  this.intervalId = setInterval (() => {
+    this.currentTime ++;
+  },
+  1000)
+}
+}
+
+
+
+
+
+
+
+
+
+
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -12,6 +36,16 @@ const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
+
+
+
+
+
+
+
+
+
+
 
 function printTime() {
   // ... your code goes here
