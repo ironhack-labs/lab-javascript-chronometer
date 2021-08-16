@@ -20,6 +20,11 @@ body {
   width: 245px;
 }
 
+#clock #top-half{
+  display:flex;
+  justify-content: center;
+}
+
 #sphere {
   border: 2px solid #000;
   border-radius: 20px;
@@ -86,7 +91,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 20px;
+  width: 40px;
 }
 
 .btn {
