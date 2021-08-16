@@ -1,30 +1,27 @@
 class Chronometer {
   constructor() {
-
     let currentTime = 0;
     let intervalId = null; 
+  }
+  
+  start(callback){
 
-              let i = 1;
-          const intervalId = setInterval(function () {
-            console.log(i);
-          
-            i++;
-          
-            if (i > 10) {
-              clearInterval(intervalId);
-            }
-          }, 1000);
+    let i = 0;
 
-          console.log();
-    // ... your code goes here
+    this.intervalId = setInterval((callback) => {
+
+      i++;
+
+      if(callback){
+        callback(intervalId);
+      }
+      
+    }, 1000);
+
+    return intervalId;
+
   }
 
-  start(callback) {
-
-
-
-    // ... your code goes here
-  }
 
   getMinutes() {
 
