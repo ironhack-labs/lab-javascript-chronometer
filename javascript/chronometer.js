@@ -1,9 +1,28 @@
 class Chronometer {
   constructor() {
+
+    let currentTime = 0;
+    let intervalId = null; 
+
+              let i = 1;
+          const intervalId = setInterval(function () {
+            console.log(i);
+          
+            i++;
+          
+            if (i > 10) {
+              clearInterval(intervalId);
+            }
+          }, 1000);
+
+          console.log(currentTime);
     // ... your code goes here
   }
 
   start(callback) {
+
+
+
     // ... your code goes here
   }
 
