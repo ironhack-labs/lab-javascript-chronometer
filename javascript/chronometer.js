@@ -3,23 +3,23 @@ class Chronometer {
     let currentTime = 0;
     let intervalId = null; 
   }
-  
+
   start(callback){
 
     let i = 0;
 
-    this.intervalId = setInterval((callback) => {
+    let intervalId = setInterval(() => {
 
       i++;
 
       if(callback){
-        callback(intervalId);
+        callback(i)
+
       }
-      
+
     }, 1000);
-
+    
     return intervalId;
-
   }
 
 
