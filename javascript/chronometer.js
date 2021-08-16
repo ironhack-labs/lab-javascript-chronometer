@@ -15,7 +15,7 @@ class Chronometer {
             }
           }, 1000);
 
-          console.log(currentTime);
+          console.log();
     // ... your code goes here
   }
 
@@ -27,6 +27,9 @@ class Chronometer {
   }
 
   getMinutes() {
+
+
+    
     // ... your code goes here
   }
 
