@@ -5,7 +5,7 @@
 
 body {
   font-family: Arial;
-  font-size: 80px;
+  font-size: 50px;
   font-weight: bold;
   padding: 40px 0;
 }
@@ -17,7 +17,7 @@ body {
   height: 250px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 345px;
 }
 
 #sphere {
@@ -25,13 +25,13 @@ body {
   border-radius: 20px;
   box-sizing: border-box;
   font-family: 'Digi';
-  font-size: 80px;
+  font-size: 50px;
   height: 210px;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 320px;
 }
 
 #splits-container {
