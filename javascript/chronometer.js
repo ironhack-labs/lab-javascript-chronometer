@@ -3,8 +3,9 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = null;
   }
-  start(callback) {
+  start(printTime) {
     this.intervalId = setInterval(() => {
+      printTime();
       this.currentTime++;
     }, 1000);
   }
