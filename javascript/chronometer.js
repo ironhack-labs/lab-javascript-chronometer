@@ -13,6 +13,7 @@ class Chronometer {
       this.intervalId = setInterval(() => {
         this.currentTime++;
       }, 1000);
+      console.log('started!');
     }
   }
 
@@ -39,6 +40,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId);
+    console.log('stopped!');
   }
 
   reset() {

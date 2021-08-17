@@ -1,5 +1,14 @@
 const chronometer = new Chronometer();
 
+function startAndStopChronometer() {
+  const classList = [...btnLeftElement.classList];
+  if (classList.includes('start')) {
+    chronometer.start();
+  } else {
+    chronometer.stop();
+  }
+}
+
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
@@ -14,16 +23,29 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const currMinutes = chronometer.computeTwoDigitNumber(
+    chronometer.getMinutes()
+  );
+  minDecElement.innerHTML = currMinutes[0];
+  minUniElement.innerHTML = currMinutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const currSeconds = chronometer.computeTwoDigitNumber(
+    chronometer.getSeconds()
+  );
+  secDecElement.innerHTML = currSeconds[0];
+  secUniElement.innerHTML = currSeconds[1];
 }
+
+setInterval(() => {
+  printTime();
+}, 1000);
 
 // ==> BONUS
 function printMilliseconds() {
@@ -56,7 +78,23 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  //Starts or Stops the Chronometer
+  startAndStopChronometer();
+
+  // Toggles Buttons
+  btnLeftElement.classList.toggle('start');
+  btnRightElement.classList.toggle('reset');
+  btnLeftElement.classList.toggle('stop');
+  btnRightElement.classList.toggle('split');
+
+  //Changes Button Inner Text
+  if (btnLeftElement.innerHTML === 'START') {
+    btnLeftElement.innerHTML = 'STOP';
+    btnRightElement.innerHTML = 'SPLIT';
+  } else {
+    btnLeftElement.innerHTML = 'START';
+    btnRightElement.innerHTML = 'RESET';
+  }
 });
 
 // Reset/Split Button
