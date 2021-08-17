@@ -12,17 +12,25 @@ class Chronometer {
     } else {
       this.intervalId = setInterval(() => {
         this.currentTime++;
-      }, 1000);
+      }, 10);
     }
   }
 
   getMinutes() {
-    return parseInt(this.currentTime / 60);
+    return parseInt(this.currentTime / 100 / 60);
   }
 
   getSeconds() {
     if (this.currentTime != 0) {
-      return parseInt(this.currentTime % 60);
+      return parseInt((this.currentTime / 100) % 60);
+    } else {
+      return 0;
+    }
+  }
+
+  getMiliseconds() {
+    if (this.currentTime != 0) {
+      return (this.currentTime % 100).toString();
     } else {
       return 0;
     }
@@ -49,7 +57,8 @@ class Chronometer {
   split() {
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
-    return `${minutes}:${seconds}`;
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds());
+    return `${minutes}:${seconds}:${miliseconds}`;
   }
 }
 
