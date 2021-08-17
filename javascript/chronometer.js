@@ -11,7 +11,7 @@ class Chronometer {
         callback();
      }
      
-    }, 1000);
+  }, 1000);
     return this.intervalId;
   }
 
