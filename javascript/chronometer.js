@@ -1,59 +1,78 @@
 class Chronometer {
-  constructor() {
-    this.currentTime = 0;
-    this.intervalId = null
-  }
+	constructor() {
+		this.currentTime = 0;
+		this.intervalId = null;
+		this.currentTimeMilliseconds = 0;
+		this.millisecondIntervalId = null;
+	}
 
-  start(callback) {
-    this.intervalId = setInterval(() => {
+	start(callback) {
+		this.intervalId = setInterval(() => {
 			if (callback) {
 				callback();
 			}
 			this.currentTime++;
 		}, 1000);
-  }
 
-  getMinutes() {
-    return Math.floor(this.currentTime/60)
-  }
+		//el de arriba si le pongo 10 en lugar de 1000 me pone milisegundos en los segundos del reloj, algo parecido ha de funcionar para los ms
+		// faltaba declarar otro intervalo y currenttime para los milisegundos, daba NAN porqué me devolvia undefined
+		this.millisecondIntervalId = setInterval(() => {
+			if (callback) {
+				callback();
+			}
+			this.currentTimeMilliseconds++;
+		}, 10);
+	}
 
-  getSeconds() {
-    return Math.floor(this.currentTime%60)
-  }
+	getMinutes() {
+		return Math.floor(this.currentTime / 60);
+	}
 
-  computeTwoDigitNumber(value) {
-    //if ternario
-    return value < 10 ? `0${value}` : `${value}`;
+	getSeconds() {
+		// ... your code goes here
+		return this.currentTime % 60;
+	}
 
-    // if(value < 10){
-    //   return `0${value}`;
-    // }else{
-    //   return `${value}`
-    // }
-  }
+	getMilliseconds() {
+		return this.currentTimeMilliseconds % 60;
+	}
 
-  stop() {
-    clearInterval(this.intervalId);
-  }
+	computeTwoDigitNumber(value) {
+		// ... your code goes here
+		return value < 10 ? `0${value}` : `${value}`;
 
-  reset() {
-    this.currentTime = 0;
-  }
+		// if(value < 10){
+		//   return `0${value}`;
+		// }else{
+		//   return `${value}`
+		// }
+	}
 
-  split() {
-  
-    // let random = this.computeTwoDigitNumber(this.getMinutes()); 
-    
-    // let random2 = this.computeTwoDigitNumber(this.getSeconds());
+	stop() {
+		// ... your code goes here
+		clearInterval(this.intervalId);
+		clearInterval(this.millisecondIntervalId);
+	}
 
-    // return random +':'+ random2;
+	reset() {
+		// ... your code goes here
+		return (this.currentTime = 0);
+	}
 
-    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
-  }
+	split() {
+		// ... your code goes here
+		// let random = this.computeTwoDigitNumber(this.getMinutes());
+
+		// let random2 = this.computeTwoDigitNumber(this.getSeconds());
+
+		// return random + ':' + random2;
+
+		return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+	}
 }
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
-  module.exports = Chronometer;
+	module.exports = Chronometer;
 }
