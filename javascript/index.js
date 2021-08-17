@@ -13,9 +13,7 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
+function printTime() {}
 
 function printMinutes() {
   // ... your code goes here
@@ -56,7 +54,7 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  chronometer.start();
 });
 
 // Reset/Split Button
