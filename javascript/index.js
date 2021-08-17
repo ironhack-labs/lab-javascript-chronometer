@@ -32,8 +32,8 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
 	// // ... your code goes here
-	// milUniElement.innerText = chronometer.getMilliseconds() % 10; //unidades
-	// milDecElement.innerText = Math.floor(chronometer.getMilliseconds() / 10); //decenas
+	milUniElement.innerText = chronometer.getMilliseconds() % 10; //unidades
+	milDecElement.innerText = Math.floor(chronometer.getMilliseconds() / 10); //decenas
 }
 
 function printSplit() {

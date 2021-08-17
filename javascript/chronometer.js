@@ -2,9 +2,11 @@ class Chronometer {
 	constructor() {
 		this.currentTime = 0;
 		this.intervalId = null;
+		this.currentTimeMilliseconds = 0;
+		this.millisecondInterval = null;
 	}
 
-	start(callback, callback2) {
+	start(callback) {
 		this.intervalId = setInterval(() => {
 			if (callback) {
 				callback();
@@ -12,12 +14,13 @@ class Chronometer {
 			this.currentTime++;
 		}, 1000);
 
-		// this.millisecondInterval = setInterval(() => {
-		// 	if (callback2) {
-		// 		callback2();
-		// 	}
-		// 	this.currentTimeMilliseconds++;
-		// }, 10);
+		//el de arriba si le pongo 10 en lugar de 1000 me pone milisegundos en los segundos del reloj, algo parecido ha de funcionar para los ms
+		this.millisecondInterval = setInterval(() => {
+			if (callback) {
+				callback();
+			}
+			this.currentTimeMilliseconds++;
+		}, 10);
 	}
 
 	getMinutes() {
@@ -29,9 +32,9 @@ class Chronometer {
 		return this.currentTime % 60;
 	}
 
-	// getMilliseconds() {
-	// 	return this.currentTimeMilliseconds % 60;
-	// }
+	getMilliseconds() {
+		return this.currentTimeMilliseconds % 60;
+	}
 
 	computeTwoDigitNumber(value) {
 		// ... your code goes here
