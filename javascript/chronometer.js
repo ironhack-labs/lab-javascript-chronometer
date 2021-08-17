@@ -4,13 +4,20 @@ class Chronometer {
 		this.intervalId = null;
 	}
 
-	start(callback) {
+	start(callback, callback2) {
 		this.intervalId = setInterval(() => {
 			if (callback) {
 				callback();
 			}
 			this.currentTime++;
 		}, 1000);
+
+		// this.millisecondInterval = setInterval(() => {
+		// 	if (callback2) {
+		// 		callback2();
+		// 	}
+		// 	this.currentTimeMilliseconds++;
+		// }, 10);
 	}
 
 	getMinutes() {
@@ -21,6 +28,10 @@ class Chronometer {
 		// ... your code goes here
 		return this.currentTime % 60;
 	}
+
+	// getMilliseconds() {
+	// 	return this.currentTimeMilliseconds % 60;
+	// }
 
 	computeTwoDigitNumber(value) {
 		// ... your code goes here
@@ -40,7 +51,7 @@ class Chronometer {
 
 	reset() {
 		// ... your code goes here
-		this.currentTime = 0;
+		return (this.currentTime = 0);
 	}
 
 	split() {

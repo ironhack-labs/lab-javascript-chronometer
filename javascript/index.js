@@ -16,11 +16,12 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
 	printMinutes();
 	printSeconds();
+	printMilliseconds();
 }
 
 function printMinutes() {
-	minUniElement.innerText = chronometer.getMinutes() % 10;
-	minDecElement.innerText = Math.floor(chronometer.getMinutes() / 10);
+	minUniElement.innerText = chronometer.getMinutes() % 10; //unidades
+	minDecElement.innerText = Math.floor(chronometer.getMinutes() / 10); //decenas
 }
 
 function printSeconds() {
@@ -30,16 +31,33 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-	// ... your code goes here
+	// // ... your code goes here
+	// milUniElement.innerText = chronometer.getMilliseconds() % 10; //unidades
+	// milDecElement.innerText = Math.floor(chronometer.getMilliseconds() / 10); //decenas
 }
 
 function printSplit() {
 	splitsElement.innerHTML += `<li>${Math.floor(chronometer.getMinutes() / 10)}${chronometer.getMinutes() %
 		10}:${Math.floor(chronometer.getSeconds() / 10)}${chronometer.getSeconds() % 10}</li>`;
+
+	//con appenchild y creando un elemento <li>
+	// let node = document.createElement('LI');
+	// let textnode = document.createTextNode(
+	// 	`${Math.floor(chronometer.getMinutes() / 10)}${chronometer.getMinutes() % 10}:${Math.floor(
+	// 		chronometer.getSeconds() / 10
+	// 	)}${chronometer.getSeconds() % 10}`
+	// );
+	// node.appendChild(textnode);
+	// splitsElement.appendChild(node);
 }
 
 function clearSplits() {
 	splitsElement.innerHTML = '';
+	//Better behaviour, not optimal...
+	minUniElement.innerText = '0';
+	minDecElement.innerText = '0';
+	secUniElement.innerText = '0';
+	secDecElement.innerText = '0';
 }
 
 function setStopBtn() {
@@ -65,7 +83,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
 	// ... your code goes here
-	// 	Set the btnLeft button with the text STOP, and the class btn stop.
+	// Set the btnLeft button with the text STOP, and the class btn stop.
 	// Set the btnRight button with the text SPLIT, and the class btn split.
 	if (btnLeftElement.className === 'btn start') {
 		setStopBtn();
@@ -83,7 +101,7 @@ btnRightElement.addEventListener('click', () => {
 	if (btnRightElement.className === 'btn reset') {
 		clearSplits();
 		chronometer.reset();
-	} else if (btnRightElement.className === 'btn split') {
+	} else {
 		chronometer.split();
 		printSplit();
 	}
