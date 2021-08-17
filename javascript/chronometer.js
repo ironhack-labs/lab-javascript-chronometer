@@ -6,15 +6,14 @@ class Chronometer {
 
 	start(callback) {
 		this.intervalId = setInterval(() => {
+			if (callback) {
+				callback();
+			}
 			this.currentTime++;
 		}, 1000);
-		if (callback) {
-			return callback;
-		}
 	}
 
 	getMinutes() {
-		console.log(this.currenTime);
 		return Math.floor(this.currentTime / 60);
 	}
 

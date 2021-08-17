@@ -32,6 +32,8 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
+  display: flex;
+  justify-content: center; 
 }
 
 #splits-container {
@@ -48,7 +50,7 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  margin-top: -15px;
+  margin-top: 65px;
   position: absolute;
   right: 20px;
 }
