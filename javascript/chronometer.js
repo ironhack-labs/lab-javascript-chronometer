@@ -17,7 +17,6 @@ class Chronometer {
       this.currentTime++
     }, 1000)
     
-    
   }
 
   getMinutes() {
@@ -39,8 +38,7 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
-    let str = ""
-    str = str + value
+    let str = String(value) 
     if (str.length === 1){
       return "0" + str
     }
