@@ -3,8 +3,9 @@ class Chronometer { //funció que ens donen
     this.currentTime = 0;
     this.intervalId = null;
   }
-  start(callback) {
+  start(printTime) {
     this.intervalId = setInterval(() => {   
+      printTime();
       this.currentTime++;
     }, 1000);  //Augmenta el current time en 1 cada segon
   }
@@ -37,14 +38,19 @@ class Chronometer { //funció que ens donen
   split() {
     return `${this.computeTwoDigitNumber(
       this.getMinutes()
-    )}:${this.computeTwoDigitNumber(this.getSeconds())}`; //quan apretem split ens imprimirà el valor actual dels minuts i segons.
+    )}${this.computeTwoDigitNumber(this.getSeconds())}`; //quan apretem split ens imprimirà el valor actual dels minuts i segons.
+
+
   }
+ 
 }
+   
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
+
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
-
 
