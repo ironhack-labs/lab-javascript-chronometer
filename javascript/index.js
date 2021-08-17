@@ -38,14 +38,16 @@ function printMilliseconds() {
 
 function printSplit() {
 	splitsElement.innerHTML += `<li>${Math.floor(chronometer.getMinutes() / 10)}${chronometer.getMinutes() %
-		10}:${Math.floor(chronometer.getSeconds() / 10)}${chronometer.getSeconds() % 10}</li>`;
+		10}:${Math.floor(chronometer.getSeconds() / 10)}${chronometer.getSeconds() %
+		10}:${chronometer.getMilliseconds() % 10}${Math.floor(chronometer.getMilliseconds() / 10)}</li>`;
 
 	//con appenchild y creando un elemento <li>
+
 	// let node = document.createElement('LI');
 	// let textnode = document.createTextNode(
 	// 	`${Math.floor(chronometer.getMinutes() / 10)}${chronometer.getMinutes() % 10}:${Math.floor(
 	// 		chronometer.getSeconds() / 10
-	// 	)}${chronometer.getSeconds() % 10}`
+	// 	)}${chronometer.getSeconds() % 10}:${chronometer.getMilliseconds() % 10}${Math.floor(chronometer.getMilliseconds() / 10)}`
 	// );
 	// node.appendChild(textnode);
 	// splitsElement.appendChild(node);
@@ -58,6 +60,9 @@ function clearSplits() {
 	minDecElement.innerText = '0';
 	secUniElement.innerText = '0';
 	secDecElement.innerText = '0';
+	/* NPI porqué aquí ha de ser entero en lugar de string */
+	milUniElement.textContent = 0;
+	milDecElement.textContent = 0;
 }
 
 function setStopBtn() {

@@ -3,7 +3,7 @@ class Chronometer {
 		this.currentTime = 0;
 		this.intervalId = null;
 		this.currentTimeMilliseconds = 0;
-		this.millisecondInterval = null;
+		this.millisecondIntervalId = null;
 	}
 
 	start(callback) {
@@ -15,7 +15,8 @@ class Chronometer {
 		}, 1000);
 
 		//el de arriba si le pongo 10 en lugar de 1000 me pone milisegundos en los segundos del reloj, algo parecido ha de funcionar para los ms
-		this.millisecondInterval = setInterval(() => {
+		// faltaba declarar otro intervalo y currenttime para los milisegundos, daba NAN porqué me devolvia undefined
+		this.millisecondIntervalId = setInterval(() => {
 			if (callback) {
 				callback();
 			}
@@ -50,6 +51,7 @@ class Chronometer {
 	stop() {
 		// ... your code goes here
 		clearInterval(this.intervalId);
+		clearInterval(this.millisecondIntervalId);
 	}
 
 	reset() {
