@@ -1,27 +1,42 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0; //Seconds
+    this.currentTime = 0; //millis
+    this.displayMillis = 0;
     this.intervalId = null;
   }
 
   start(callback) {
-    if (callback) {
+    this.intervalId = setInterval(() => {
+      this.displayMillis += 10;
+      this.currentTime += 10;
+      if (this.displayMillis > 989) {
+        this.displayMillis = 0;
+      }
       callback();
-    } else {
-      this.intervalId = setInterval(() => this.currentTime++, 1000);
-    }
+    }, 10);
   }
 
-  getMinutes() {
-    return Math.floor(this.currentTime / 60);
+  getMilliseconds() {
+    return this.computeTwoDigitNumber(this.displayMillis, true);
   }
 
   getSeconds() {
-    return this.currentTime % 60;
+    return this.computeTwoDigitNumber(
+      Math.floor((this.currentTime % 60000) / 1000)
+    );
   }
 
-  computeTwoDigitNumber(value) {
-    return value < 10 ? `0${value}` : '' + value;
+  getMinutes() {
+    return this.computeTwoDigitNumber(Math.floor(this.currentTime / 60000));
+  }
+
+  computeTwoDigitNumber(value, isMilli) {
+    if (isMilli) {
+      return value > 99
+        ? `${(value / 10).toFixed(0)}`
+        : `0${(value / 10).toFixed(0)}`;
+    }
+    return value < 10 ? `0${value}` : `${value}`;
   }
 
   stop() {
@@ -30,14 +45,11 @@ class Chronometer {
 
   reset() {
     this.currentTime = 0;
+    this.displayMillis = 0;
   }
 
   split() {
-
-    let strMinutes = this.computeTwoDigitNumber(this.getMinutes());
-    let strSeconds = this.computeTwoDigitNumber(this.getSeconds());
-    
-    return `${strMinutes}:${strSeconds}`
+    return `${this.getMinutes()}:${this.getSeconds()}:${this.getMilliseconds()}`;
   }
 }
 
