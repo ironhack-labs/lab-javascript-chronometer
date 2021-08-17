@@ -5,61 +5,86 @@ const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
 
 // get the DOM elements that will serve us to display the time:
-const minDecElement = document.getElementById('minDec');
-const minUniElement = document.getElementById('minUni');
-const secDecElement = document.getElementById('secDec');
-const secUniElement = document.getElementById('secUni');
+const minDecElement = document.getElementById('minDec'); //0
+const minUniElement = document.getElementById('minUni'); //0
+const secDecElement = document.getElementById('secDec'); //0
+const secUniElement = document.getElementById('secUni'); //0
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+	printMinutes();
+	printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+	minUniElement.innerText = chronometer.getMinutes() % 10;
+	minDecElement.innerText = Math.floor(chronometer.getMinutes() / 10);
 }
 
 function printSeconds() {
-  // ... your code goes here
+	secUniElement.innerText = chronometer.getSeconds() % 10; //unidades
+	secDecElement.innerText = Math.floor(chronometer.getSeconds() / 10); //decenas
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+	// ... your code goes here
 }
 
 function printSplit() {
-  // ... your code goes here
+	splitsElement.innerHTML += `<li>${Math.floor(chronometer.getMinutes() / 10)}${chronometer.getMinutes() %
+		10}:${Math.floor(chronometer.getSeconds() / 10)}${chronometer.getSeconds() % 10}</li>`;
 }
 
 function clearSplits() {
-  // ... your code goes here
+	splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+	btnLeftElement.innerHTML = 'STOP';
+	btnLeftElement.className = 'btn stop';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+	btnRightElement.innerHTML = 'SPLIT';
+	btnRightElement.className = 'btn split';
 }
 
 function setStartBtn() {
-  // ... your code goes here
+	btnLeftElement.innerHTML = 'START';
+	btnLeftElement.className = 'btn start';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+	btnRightElement.innerHTML = 'RESET';
+	btnRightElement.className = 'btn reset';
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+	// ... your code goes here
+	// 	Set the btnLeft button with the text STOP, and the class btn stop.
+	// Set the btnRight button with the text SPLIT, and the class btn split.
+	if (btnLeftElement.className === 'btn start') {
+		setStopBtn();
+		setSplitBtn();
+		chronometer.start(printTime);
+	} else if (btnLeftElement.className === 'btn stop') {
+		setStartBtn();
+		setResetBtn();
+		chronometer.stop();
+	}
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+	if (btnRightElement.className === 'btn reset') {
+		clearSplits();
+		chronometer.reset();
+	} else if (btnRightElement.className === 'btn split') {
+		chronometer.split();
+		printSplit();
+	}
 });
