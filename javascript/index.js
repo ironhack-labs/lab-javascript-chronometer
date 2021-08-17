@@ -24,8 +24,8 @@ function printMinutes() {
 }
 
 function printSeconds() {
-	secUniElement.innerText = chronometer.getSeconds() % 10; //unidades
-	secDecElement.innerText = Math.floor(chronometer.getSeconds() / 10); //decenas
+	secUniElement.innerText = chronometer.getSeconds() % 10; 
+	secDecElement.innerText = Math.floor(chronometer.getSeconds() / 10); 
 }
 
 // ==> BONUS
