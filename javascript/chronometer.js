@@ -12,11 +12,17 @@ class Chronometer {
       this.currentTime++;
     },1000);
     this.miliSecondId = setInterval(()=>{
-      this.currentMiliseconds ++;
-    }, 1);}
-    else {
-      this.intervalId = setInterval(callback(),1000);
-      this.miliSecondId = setInterval(callback(),1);
+    this.currentMiliseconds ++;
+    }, 1);
+    } else {
+      this.intervalId = setInterval(()=>{ 
+        callback ();
+        this.currentTime++;
+      },1000);
+      this.miliSecondId = setInterval(()=>{ 
+        callback ();
+        this.currentMiliseconds++;
+      },1);
     }
   }
 
@@ -33,23 +39,25 @@ class Chronometer {
 
   getMiliseconds() {
     let miliseconds = 0;
-    miliseconds = this.currentMiliseconds % 1000;
+    miliseconds = this.currentMiliseconds % 100;
     return (miliseconds);
   }
 
   computeTwoDigitNumber(value) {
     let numString = value.toString();
     if(numString.length < 2) {
-      numString = '0'+numString}
+      numString = '0' + numString}
     return (numString)
   }
 
   stop() {
     clearInterval(this.intervalId);
+    clearInterval(this.miliSecondId);
   }
 
   reset() {
     this.currentTime = 0;
+    this.currentMiliseconds = 0;
   }
 
   split() {
