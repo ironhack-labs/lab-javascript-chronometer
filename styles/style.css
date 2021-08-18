@@ -16,7 +16,7 @@ body {
   box-sizing: border-box;
   height: 250px;
   margin: 0 auto;
-  padding: 18px 0;
+  padding: 24px 0;
   width: 245px;
 }
 
@@ -86,7 +86,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 24px;
 }
 
 .btn {
