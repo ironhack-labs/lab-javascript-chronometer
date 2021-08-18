@@ -16,7 +16,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
-  /* printMilliseconds();  */
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -34,7 +34,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let millis = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
+  milDecElement.innerHTML = millis[0]
+  milUniElement.innerHTML = millis[1]
 }
 
 function printSplit() {
@@ -42,6 +44,7 @@ function printSplit() {
   const splitLi = document.createElement('li')
   let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
   let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  let milliseconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
   splitLi.innerHTML = chronometer.split()
   splitOl.appendChild(splitLi)
 }
@@ -55,6 +58,8 @@ function clearTime() {
   minUniElement.innerHTML = 0;
   secDecElement.innerHTML = 0;
   secUniElement.innerHTML = 0;
+  milDecElement.innerHTML = 0;
+  milUniElement.innerHTML = 0;
   chronometer.reset() 
 }
 
