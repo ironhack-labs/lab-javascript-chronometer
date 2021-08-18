@@ -31,7 +31,7 @@ body {
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 225px;
 }
 
 #splits-container {
@@ -86,7 +86,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 20px;
 }
 
 .btn {
