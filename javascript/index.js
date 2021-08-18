@@ -14,15 +14,28 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDecElement.innerHTML = (chronometer.getMinutes());
+  let one = chronometer.computeTwoDigitNumber(chronometer.getMinutes()).toString();
+  let oneOne = one[0];
+  let oneTwo = one[1];
+  minDecElement.innerHTML = oneOne;
+  minUniElement.innerHTML = oneTwo;
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDecElement.innerHTML = (chronometer.getSeconds());
+  let one = chronometer.computeTwoDigitNumber(chronometer.getSeconds()).toString();
+  let oneOne = one[0];
+  let oneTwo = one[1];
+  secDecElement.innerHTML = oneOne;
+  secUniElement.innerHTML = oneTwo;
+
 }
 
 // ==> BONUS
@@ -56,10 +69,31 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  let btn = document.getElementById("btnLeft");
+  if (btn.innerText == "START") {
+    btn.innerText = "STOP";
+    btn.style.backgroundColor = "red";
+  }
+  else {
+    btn.innerText = "START";
+    btn.style.backgroundColor = "green";
+  }
+  chronometer.start(printTime);
+  //chronometer.stop();
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  let btn = document.getElementById("btnRight");
+  if (btn.innerText == "RESET") {
+    btn.innerText = "SPLIT";
+    btn.style.backgroundColor = "blue";
+
+  }
+  else {
+    btn.innerText = "RESET";
+    btn.style.backgroundColor = "yellow";
+  }
+  chronometer.split();
+  chronometer.reset();
 });
