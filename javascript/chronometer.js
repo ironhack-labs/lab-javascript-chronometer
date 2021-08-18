@@ -16,27 +16,38 @@ class Chronometer {
 
   getMinutes() {
     // ... your code goes here
-    // return Math.floor(this.currentTime / 60)
+    return Math.floor(this.currentTime / 60)
   }
 
   getSeconds() {
     // ... your code goes here
+    return this.currentTime % 60
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value > 9) {
+      return (value) + ''
+    } else {
+      return '0' + value
+    }
+
   }
 
   stop() {
     // ... your code goes here
+    clearInterval(this.intervalId)
   }
 
   reset() {
     // ... your code goes here
+    this.currentTime = 0
   }
 
   split() {
     // ... your code goes here
+    let minutes = this.computeTwoDigitNumber(this.getMinutes())
+    let secs = this.computeTwoDigitNumber(this.getSeconds())
+    return `${minutes}:${secs}`
   }
 }
 
