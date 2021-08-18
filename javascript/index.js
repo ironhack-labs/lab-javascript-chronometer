@@ -14,15 +14,20 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const time = chronometer.split();
+  minDecElement.innerText = time[0];
+  minUniElement.innerText = time[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const time = chronometer.split();
+  secDecElement.innerText = time[3];
+  secUniElement.innerText = time[4];
 }
 
 // ==> BONUS
@@ -31,35 +36,59 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  // Similar to the cart lab, we need to append our chronomoter.split() to an <ul> somewhere
+  splitsElement.innerHTML = `
+    ${splitsElement.innerHTML}
+    <li>
+      ${chronometer.split()}
+    </li>
+  `;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  // Similar to the cart lab, we need to empty our <ul> somewhere
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = 'STOP';
+  btnLeftElement.classList = 'btn stop';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerText = 'SPLIT';
+  btnRightElement.classList = 'btn split';
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = 'START';
+  btnLeftElement.classList = 'btn start';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerText = 'RESET';
+  btnRightElement.classList = 'btn reset';
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (chronometer.intervalId === null) {
+    chronometer.start(printTime);
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stop();
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (chronometer.intervalId === null) {
+    chronometer.reset();
+    clearSplits();
+  } else {
+    printSplit();
+  }
 });
