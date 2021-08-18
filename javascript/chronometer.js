@@ -50,7 +50,7 @@ class Chronometer {
     let minutes = this.computeTwoDigitNumber(this.getMinutes())
     let seconds = this.computeTwoDigitNumber(this.getSeconds())
     
-    return minutes + ":" + seconds
+    return minutes +  ":"  + seconds
   }
 }
 

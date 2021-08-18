@@ -26,8 +26,8 @@ function printMinutes() {
 
 function printSeconds() {
   // ... your code goes here
-  secUniElement.innerHTML = chronometer.getSeconds([1])
-  secDecElement.innerHTML = chronometer.getSeconds([0])
+  secUniElement.textContent = chronometer.getSeconds([1])
+  secDecElement.textContent = chronometer.getSeconds([0])
 }
 
 // ==> BONUS
