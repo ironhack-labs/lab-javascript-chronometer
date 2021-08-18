@@ -1,25 +1,27 @@
 class Chronometer {
   constructor() {
      this.currentTime = 0;
+     this.milli = 0;
      this.intervalId = null; 
   }
 
   start(func){
 
-    // let i = 0;
 
     this.intervalId = setInterval(() => {
 
-      // i++;
-
-      this.currentTime++;
+      this.milli++;
+      console.log(this.milli);
+      if(this.milli === 100){
+         this.currentTime++;
+         this.milli = 0;
+       }
 
       if(func){
         func();
       }
-      console.log(this.currentTime);
 
-    }, 1000);
+    }, 10);
 
     return this.intervalId;
   }
@@ -33,6 +35,12 @@ class Chronometer {
   getSeconds() {
 
     return this.currentTime % 60;
+
+  }
+
+  getMilliseconds(){
+
+    return this.milli
 
   }
 
@@ -57,6 +65,7 @@ class Chronometer {
   reset() {
 
     this.currentTime = 0;
+    this.milli = 0;
 
   }
 
