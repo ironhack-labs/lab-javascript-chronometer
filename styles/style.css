@@ -86,7 +86,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 24px;
 }
 
 .btn {
@@ -114,12 +114,15 @@ body {
 .btn.start {
   background: #5fca5f;
 }
+
 .btn.stop {
   background: #f14949;
 }
+
 .btn.reset {
   background: #908e8e;
 }
+
 .btn.split {
   background: #0851ab;
 }
