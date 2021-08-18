@@ -1,23 +1,18 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0; //millis
-    this.displayMillis = 0;
     this.intervalId = null;
   }
 
   start(callback) {
     this.intervalId = setInterval(() => {
-      this.displayMillis += 10;
       this.currentTime += 10;
-      if (this.displayMillis > 990) {
-        this.displayMillis = 0;
-      }
       callback();
     }, 10);
   }
 
   getMilliseconds() {
-    return this.computeTwoDigitNumber(this.displayMillis, true);
+    return this.computeTwoDigitNumber(this.currentTime % 1000, true);
   }
 
   getSeconds() {
