@@ -2,6 +2,7 @@ const chronometer = new Chronometer();
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
+console.log({Chronometer})
 const btnRightElement = document.getElementById('btnRight');
 
 // get the DOM elements that will serve us to display the time:
@@ -13,16 +14,15 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
+function printTime() {}
 
 function printMinutes() {
   // ... your code goes here
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secUniElement = Chronometer.getSeconds()
+  console.log(secUniElement)
 }
 
 // ==> BONUS
@@ -56,10 +56,26 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnLeftElement.innerHTML == "START" ){
+    btnLeftElement.textContent= "STOP"
+    btnLeftElement.style.backgroundColor = "#FF0000"
+    btnRightElement.textContent= "SPLIT"
+    btnRightElement.style.backgroundColor = "#0851AB"
+  } else {
+    btnLeftElement.textContent= "START"
+    btnLeftElement.style.backgroundColor = "#5FCA5F"
+     btnRightElement.textContent= "RESET"
+    btnRightElement.style.backgroundColor = "#908E8E";
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRightElement.innerHTML == "RESET" ){
+    btnRightElement.textContent= "SPLIT"
+    btnRightElement.style.backgroundColor = "#0851AB";
+  }else{
+    btnRightElement.textContent= "RESET"
+    btnRightElement.style.backgroundColor = "#908E8E"
+  }
 });
