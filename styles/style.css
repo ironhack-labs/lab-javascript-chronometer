@@ -18,9 +18,11 @@ body {
   margin: 0 auto;
   padding: 18px 0;
   width: 245px;
+  background-color: rgb(150, 91, 150);
 }
 
 #sphere {
+  background-color: white;
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
@@ -54,8 +56,8 @@ body {
 }
 
 .leash {
-  background: rgb(204, 84, 87);
-  border: 2px solid rgb(134, 59, 61);
+  background: linear-gradient(90deg, rgb(93, 189, 141) 20%, rgb(212, 80, 184));
+  border: 2px solid rgb(6, 100, 64);
   height: 50px;
   margin: 0 auto;
   width: 120px;
@@ -77,7 +79,7 @@ body {
 
 .hole {
   background: #fff;
-  border: 2px solid rgb(134, 59, 61);
+  border: 2px solid rgb(6, 100, 64);
   border-radius: 100%;
   height: 20px;
   margin: 0 auto 50px;
@@ -86,7 +88,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 24px;
 }
 
 .btn {
