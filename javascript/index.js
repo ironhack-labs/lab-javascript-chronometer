@@ -14,8 +14,10 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
+  printMilliseconds();
   printSeconds();
   printMinutes();
+  
 
 }
 
@@ -44,7 +46,12 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const milliseconds = chronometer.getMilliseconds()
+  const mill2Digit = chronometer.computeTwoDigitNumber(milliseconds)
+  
+
+  milDecElement.textContent = mill2Digit[0]
+  milUniElement.textContent = mill2Digit[1]
 }
 
 function printSplit() {
