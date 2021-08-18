@@ -1,17 +1,18 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 55;
+    this.currentMilli = 0;
+    this.currentTime = 0;
     this.intervalId = null;
   }
 
   start(callback) {
-    if (callback) {
-      callback();
-    }
-
     this.intervalId = setInterval(() => {
       this.currentTime = this.currentTime + 1;
+      if (callback) {
+        callback();
+      }
       console.log(this.split());
+      this.split;
     }, 1000);
   }
 
@@ -48,9 +49,6 @@ class Chronometer {
     return `${currentMinutes}:${currentSeconds} `;
   }
 }
-const stopwatch = new Chronometer();
-
-stopwatch.start();
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
