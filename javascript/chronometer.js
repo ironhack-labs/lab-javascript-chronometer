@@ -9,7 +9,7 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.displayMillis += 10;
       this.currentTime += 10;
-      if (this.displayMillis > 989) {
+      if (this.displayMillis > 990) {
         this.displayMillis = 0;
       }
       callback();
