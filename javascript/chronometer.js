@@ -1,15 +1,21 @@
 class Chronometer {
   constructor() {
     // ... your code goes here
+  }
     this.currentTime = 0;
     this.intervalId = null;
 
-      
+
   }
   start(callback) {
 
     // ... your code goes here
-  this.intervalId = setInterval(() => {this.currentTime++},1000)
+  this.intervalId = setInterval(() => {
+    if(callback){
+    callback()
+    }
+    this.currentTime++
+    },1000)
   }
 
 
@@ -20,7 +26,7 @@ class Chronometer {
 
   getSeconds() {
     // ... your code goes here
-    return this.currentTime%60
+    return Math.floor(this.currentTime%60)
 
   }
 
@@ -31,7 +37,7 @@ class Chronometer {
     }
 
     let valueToString = value.toString()
-    
+
     if(value < 10){
       return `0${value}`
     }
