@@ -1,10 +1,19 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
+
+  
   }
 
   start(callback) {
-    // ... your code goes here
+    
+    
+    function updateCounter(){
+      this.currentTime++
+    }
+    
+    const intervalId1 = setInterval(updateCounter, 1000)
   }
 
   getMinutes() {
