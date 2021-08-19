@@ -18,14 +18,15 @@ function printTime() {
   setInterval(function () {
     const minText = printMinutes()
     const secText = printSeconds()
-    const milliText = printMilliseconds()
+    // const milliText = printMilliseconds()
     minDecElement.innerText = minText.slice(0, -1)
     minUniElement.innerText = minText.slice(-1)
     secDecElement.innerText = secText.slice(0, -1)
     secUniElement.innerText = secText.slice(-1)
-    milDecElement.innerText = milliText.slice(0, -1)
-    milUniElement.innerText = milliText.slice(-1)
-  }, 1)
+    // milDecElement.innerText = milliText.slice(0, -1)
+    // milUniElement.innerText = milliText.slice(-1)
+  // }, 1)
+  }, 1000)
 }
 
 function printMinutes() {
@@ -45,9 +46,9 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-  const milli = chronometer.getMilliseconds()
-  const milliText = chronometer.computeTwoDigitNumber(milli)
-  return milliText
+  // const milli = chronometer.getMilliseconds()
+  // const milliText = chronometer.computeTwoDigitNumber(milli)
+  // return milliText
 }
 
 function printSplit() {
@@ -56,8 +57,9 @@ function printSplit() {
   const appendLi = splitsElement.appendChild(li);
   const minText = printMinutes()
   const secText = printSeconds()
-  const milliText = printMilliseconds()
-  appendLi.innerText = `${minText}:${secText}:${milliText}`
+  appendLi.innerText = `${minText}:${secText}`
+  // const milliText = printMilliseconds()
+  // appendLi.innerText = `${minText}:${secText}:${milliText}`
 }
 
 function clearSplits() {
