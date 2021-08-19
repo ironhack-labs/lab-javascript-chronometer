@@ -32,6 +32,8 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
+  display: flex;
+  justify-content: center;
 }
 
 #splits-container {
@@ -50,6 +52,7 @@ body {
   font-size: 36px;
   margin-top: -15px;
   position: absolute;
+  top: 120px;
   right: 20px;
 }
 
