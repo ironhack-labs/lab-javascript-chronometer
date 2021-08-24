@@ -53,7 +53,8 @@ class Chronometer {
     // this.computeTwoDigitNumber(console.log(`${this.getMinutes()}:${this.getSeconds()}`));
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
-    return `${minutes}:${seconds}`;
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds())
+    return `${minutes}:${seconds}:${miliseconds}`;
   }
 }
 

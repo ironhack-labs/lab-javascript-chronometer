@@ -12,7 +12,7 @@ body {
 
 #clock {
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 65px;
   box-sizing: border-box;
   height: 250px;
   margin: 0 auto;
@@ -22,13 +22,13 @@ body {
 
 #sphere {
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 60px;
   box-sizing: border-box;
   font-family: 'Digi';
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 35px 10px 0px 0px;
   position: relative;
   text-align: center;
   width: 225px;
@@ -63,13 +63,13 @@ body {
 
 .leash-top {
   border-bottom: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .leash-bottom {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   border-top: 0;
   height: 270px;
   padding-top: 50px;
@@ -113,13 +113,22 @@ body {
 
 .btn.start {
   background: #5fca5f;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 .btn.stop {
   background: #f14949;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
+
 .btn.reset {
   background: #908e8e;
+  margin-bottom: 5px;
+  margin-right: 10px;
 }
 .btn.split {
   background: #0851ab;
+  margin-bottom: 5px;
+  margin-right: 10px;
 }
