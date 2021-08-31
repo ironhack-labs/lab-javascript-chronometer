@@ -123,3 +123,8 @@ body {
 .btn.split {
   background: #0851ab;
 }
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
