@@ -1,27 +1,35 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0;
+    this.currentTime = 0;//milliseconds
     this.intervalId = null;
+ 
   }
   start(callback){
     
     this.intervalId = setInterval(() => {
-      this.currentTime++;
-    }, 1000);
+      this.currentTime +=10
+      if (callback) callback()
+    }, 10);
   }
 
 
   getMinutes() {
 
     // Divide 60 and we get a whole number which is the minutes
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / 60000);
   }
 
   getSeconds() {
 
     // %60 returns the extra minutes
-    return this.currentTime % 60
+    return (this.currentTime % 60000)/1000
   }
+
+  getMilliseconds(){
+    return this.currentTime %1000
+  }
+
+
 
   computeTwoDigitNumber(value) {
 
@@ -47,7 +55,8 @@ class Chronometer {
     //We get the minutes and the seconds and add them as a string divided by the :
    const min = this.computeTwoDigitNumber (this.getMinutes());
    const sec = this.computeTwoDigitNumber (this.getSeconds());
-   const time = (`${min}:${sec}`)
+   const mill = this.computeTwoDigitNumber(this.getMilliseconds())
+   const time = (`${min}:${sec}:${mill}`)
    return time;
   }
 }

@@ -15,6 +15,7 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   //We call the functions below
+  printMilliseconds();
   printMinutes();
   printSeconds();
 }
@@ -36,7 +37,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milliseconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
+  milDecElement.innerHTML = `${milliseconds [1]}`
+  milUniElement.innerHTML = `${milliseconds [0]}`
 }
 
 function printSplit() {
@@ -77,6 +80,7 @@ btnLeftElement.addEventListener('click', () => {
       setSplitBtn();
       chronometer.start();
       setInterval(() => printTime(), 10);
+
       break;
     case 'btn stop':
       setStartBtn();

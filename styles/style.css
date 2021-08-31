@@ -54,7 +54,7 @@ body {
 }
 
 .leash {
-  background: rgb(204, 84, 87);
+  background: rgb(231, 52, 58);
   border: 2px solid rgb(134, 59, 61);
   height: 50px;
   margin: 0 auto;
@@ -86,7 +86,7 @@ body {
 
 .number {
   display: inline-block;
-  width: 40px;
+  width: 20px;
 }
 
 .btn {
