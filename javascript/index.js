@@ -109,7 +109,7 @@ btnRightElement.addEventListener('click', (event) => {
   if (event.target.outerText === 'RESET') {
     chronometer.reset();
     clearSplits();
-    // printTime();
+    printTime();
   } else {
     printSplit();
   }
