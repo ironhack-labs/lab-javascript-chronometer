@@ -10,6 +10,12 @@ body {
   padding: 40px 0;
 }
 
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #clock {
   border: 2px solid #000;
   border-radius: 20px;

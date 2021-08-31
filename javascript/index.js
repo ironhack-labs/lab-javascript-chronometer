@@ -14,8 +14,10 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  getSeconds()
+  getMinutes()
 }
+
 
 function printMinutes() {
   // ... your code goes here
