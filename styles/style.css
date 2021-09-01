@@ -21,6 +21,11 @@ body {
 }
 
 #sphere {
+  display: flex; /*AJUSTE*/
+  flex-flow: row wrap;/*AJUSTE*/
+  justify-content: flex-end;/*AJUSTE*/
+  align-items: baseline;/*AJUSTE*/
+  align-content: stretch;/*AJUSTE*/
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
@@ -49,7 +54,8 @@ body {
 #milliseconds {
   font-size: 36px;
   margin-top: -15px;
-  position: absolute;
+  padding: 0 10px 0;
+  /* position: absolute; AJUSTE */
   right: 20px;
 }
 

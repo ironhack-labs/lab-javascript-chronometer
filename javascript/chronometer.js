@@ -3,6 +3,9 @@ class Chronometer {
     // ... your code goes here
     this.currentTime = 0;
     this.intervalId = null;
+
+    this.currentTimeMili = 0;
+    this.intervalIdMili = null;
   }
 
   start(callback) {
@@ -12,6 +15,26 @@ class Chronometer {
     }
     this.intervalId = setInterval(incrementOne, 1000)
   }
+
+  // ===> BONUS
+  startMili () {
+    const incrementOneMili = callback => {
+      this.currentTimeMili++;
+    }
+    this.intervalIdMili = setInterval(incrementOneMili, 10)
+  }
+
+  getMili () {
+    let milis = this.currentTimeMili % 100;
+    return milis;
+  }
+
+  splitMili () {
+    let value1 = this.computeTwoDigitNumber(this.getMili());
+    return `${value1}`
+  }
+
+  // ===> BONUS
 
   getMinutes() {
     // ... your code goes here
@@ -27,23 +50,25 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
-    let strgOne = value.toString();
+    let strgFrase = value.toString();
     let strgTwo = '0';
-    if (strgOne.length < 2) {
-      return strgTwo += strgOne;
+    if (strgFrase.length < 2) {
+      return strgTwo += strgFrase;
     }else {
-      return strgOne;
+      return strgFrase;
     }
   }
 
   stop() {
     // ... your code goes here
-    clearInterval( this.intervalId);
+    clearInterval(this.intervalId);
+    clearInterval(this.intervalIdMili);
   }
 
   reset() {
     // ... your code goes here
     this.currentTime = 0;
+    this.currentTimeMili = 0;
   }
 
   split() {
@@ -52,6 +77,7 @@ class Chronometer {
     let value2 = this.computeTwoDigitNumber(this.getSeconds());
     return `${value1}:${value2}`
   }
+
 }
 
 // The following is required to make unit tests work.
