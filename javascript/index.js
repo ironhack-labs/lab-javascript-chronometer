@@ -14,17 +14,26 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  getSeconds()
-  getMinutes()
+  //Mandamos llamar la funciones de minutos y de segundos
+  printMinutes()
+  printSeconds()
 }
-
 
 function printMinutes() {
   // ... your code goes here
+  let minutes=chronometer.getMinutes() 
+  let twoDigitals=chronometer.computeTwoDigitNumber(minutes)
+  let twoDigitalArray=twoDigitals.split('')
+  minDecElement.innerHTML=twoDigitalArray[0]
+  minUniElement.innerHTML=twoDigitalArray[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds=chronometer.getSeconds()//traernos los segunos
+  let twoDigitals= chronometer.computeTwoDigitNumber(seconds)//traernos y cambiar nuestros segundos a dos digitos
+  let twoDigitArray=twoDigitals.split('')//separar los digitos
+  secDecElement.innerHTML=twoDigitArray[0]//
+  secUniElement.innerHTML=twoDigitArray[1]
 }
 
 // ==> BONUS
@@ -34,34 +43,69 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  let split=chronometer.split()
+  splitsElement.innerHTML  += `<li>${split}</li>` // añadir elementos a la lista ordenada
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = null // para poder borrar los splits y limpiar el espacio
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stop()
+    btnLeftElement.classList.value='btn start'
+    btnLeftElement.innerHTML='START'
+
+    btnRightElement.classList.value='btn reset'
+    btnRightElement.innerHTML='RESET'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.split()
+  printSplit()
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.start(printTime) //  como callback printtime para imprimir cada segundo en la funcion setInterval
+    btnLeftElement.classList.value='btn stop' //1
+    btnLeftElement.innerHTML='STOP'
+    
+    btnRightElement.classList.value='btn split'//Cambiar el boton derecho a split
+    btnRightElement.innerHTML='SPLIT'
 }
 
 function setResetBtn() {
   // ... your code goes here
+  chronometer.reset()
+    printTime()
+    clearSplits()
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  console.log(btnLeftElement.classList.value)
+
+  if(btnLeftElement.classList.value ==='btn start'){
+    setStartBtn()
+  } else if(btnLeftElement.classList.value==='btn stop'){
+    setStopBtn()
+  }
+  
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  if(btnRightElement.classList.value==='btn reset'){   // si el boton rigth esta en reset realiza las siguientes :
+    setResetBtn()
+
+  }else if(btnRightElement.classList.value==='btn split'){// si el boton right esta en split realiza las siguientes:
+    setSplitBtn()
+  }
+  
 });
+
+
+//classList nos devuelve la lista de clases del elemento html
