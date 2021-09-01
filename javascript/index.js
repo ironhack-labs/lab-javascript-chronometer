@@ -57,7 +57,19 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
- 
+  if(btnLeftElement.className === 'btn start'){
+    btnLeftElement.className = 'btn stop';
+    btnRightElement.className = 'btn split';
+    btnLeftElement.textContent = 'STOP';
+    btnRightElement.textContent = 'SPLIT';
+    
+  }else if(btnLeftElement.className === 'btn stop'){
+    setStopBtn();
+    btnLeftElement.className = 'btn start'
+    btnRightElement.className = 'btn reset'
+    btnLeftElement.textContent = 'STAR'
+    btnRightElement.textContent = 'RESET'
+  }
 });
 
 // Reset/Split Button
