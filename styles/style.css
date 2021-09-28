@@ -86,7 +86,9 @@ body {
   width: 20px;
 }
 
-.number {}
+.number {
+  width:40px;
+}
 
 .btn {
   border: 0;
