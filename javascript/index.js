@@ -1,3 +1,5 @@
+const Chronometer = require("./chronometer");
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -13,16 +15,51 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+//-when clicked, the start button should invoke the 
+//chronometer's start method.--> 
+//function setStartBtn() {
+//function setResetBtn() {
+
+//-Both buttons will have different behavior 
+//depending on the status of the chronometer.
+
+//-You have to create the necessary code to 
+//change the status of buttons.
+
+
+
 function printTime() {
-  // ... your code goes here
+
+  let seconds = printSeconds();
+  let minutes = printMinutes();
+ 
+  setInterval (function (){
+        
+    minDecElement.innerHTML = minutes[0];
+    minUniElement.innerHTML = minutes[1];
+    secDecElement.innerHTML = seconds[0];
+    secUniElement.innerHTML = seconds[1];
+  },1000);
+
+  return (`${printMinutes()}:${printSeconds()}`);
+  
 }
 
+
+
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  
+  return `${minutes}`
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  
+  return `${seconds}`;
+
 }
 
 // ==> BONUS
@@ -31,35 +68,47 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  
+
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = "START";
 }
 
+
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "RESET";
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement) {
+    setStartBtn() && chronometer.start() && printTime();
+  } else {
+    setStopBtn() && chronometer.stop() && printTime();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement) {
+    setResetBtn() && chronometer.reset() && printTime();
+  }else {
+    setSplitBtn() && chronometer.split() && printTime();  
+  }
+
 });
