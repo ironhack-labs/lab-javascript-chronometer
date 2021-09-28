@@ -14,10 +14,10 @@ body {
   border: 2px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 250px;
+  height: 300px;
   margin: 0 auto;
   padding: 18px 0;
-  width: 245px;
+  width: 300px;
 }
 
 #sphere {
@@ -26,12 +26,12 @@ body {
   box-sizing: border-box;
   font-family: 'Digi';
   font-size: 80px;
-  height: 210px;
+  height: 250px;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 260px;
 }
 
 #splits-container {
