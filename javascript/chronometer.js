@@ -20,20 +20,27 @@ class Chronometer {
     return secondes;
   }
 
-  computeTwoDigitNumber(value) {}
+  computeTwoDigitNumber(value) {
+    if (value < 10) {
+      return '0' + value;
+    } else {
+      return value;
+    }
+  }
 
   stop() {
-    this.intervalId = clearInterval(() => {
-      this.currentTime;
-    });
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   split() {
-    // ... your code goes here
+    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+    let seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return minutes + ':' + seconds;
   }
 }
 
