@@ -41,7 +41,10 @@ class Chronometer {
   }
 
   split() {
-    // ... your code goes here
+    let newArr = []
+  newArr.push(this.getMinutes(), this.getSeconds())
+    const result = newArr.join(':');
+    return this.computeTwoDigitNumber(result);
   }
 }
 
