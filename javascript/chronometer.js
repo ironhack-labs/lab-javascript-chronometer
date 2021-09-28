@@ -19,8 +19,17 @@ class Chronometer {
   return Math.floor(this.currentTime % 60);
   }
 
+
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    let newArr = [];
+    const stringValue = value.toString();
+    if (stringValue.length === 1 || 0) {
+      newArr.push('0', stringValue);
+      const result = newArr.join('');
+      return result;
+    } else {
+      return value.toString();
+    }
   }
 
   stop() {
