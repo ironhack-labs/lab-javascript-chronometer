@@ -1,4 +1,4 @@
-const Chronometer = require("./chronometer");
+ //const Chronometer = require("./chronometer");
 //import Chronometer from "./chronometer";
 
 const chronometer = new Chronometer();
@@ -63,6 +63,27 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  // if (chronometer.stop === true ) {
+  // btnLeftElement.classList.toggle('btn start')
+  // }
+       if (btnLeftElement.getAttribute("class") == "btn start") {
+         btnLeftElement.setAttribute("class", "btn stop");
+         btnLeftElement.innerHTML = 'STOP';
+
+        btnRightElement.setAttribute("class", "btn split");
+         btnRightElement.innerHTML = 'SPLIT';
+       }
+        else {
+         btnLeftElement.setAttribute("class", "btn start");
+         btnLeftElement.innerHTML = 'START';
+
+         btnRightElement.setAttribute("class", "btn reset");
+         btnRightElement.innerHTML = 'RESET';
+       }
+       
+      
+       
+    });
   // console.log('hello')
   // btnLeftElement.innerHTML = 'STOP';
   // btnLeftElement.className = 'btn stop';
@@ -75,10 +96,25 @@ btnLeftElement.addEventListener('click', () => {
   //   btnRightElement.className = 'btn reset';
   // }
 
-});
+//});
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+
+if (btnRightElement.getAttribute("class") == "btn reset") {
+         btnRightElement.setAttribute("class", "btn split");
+         btnRightElement.innerHTML = 'SPLIT';
+
+         btnLeftElement.setAttribute("class", "btn stop");
+         btnLeftElement.innerHTML = 'STOP';
+       } else {
+         btnRightElement.setAttribute("class", "btn reset");
+         btnRightElement.innerHTML = 'RESET';
+
+         btnLeftElement.setAttribute("class", "btn start");
+         btnLeftElement.innerHTML = 'START';
+       }
+
 //   btnRightElement.innerHTML = 'SPLIT';
 //   btnRightElement.className = 'btn split';
 // });
