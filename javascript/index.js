@@ -54,7 +54,7 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  btnLeftElement.onclick = alert('startcheck');
+  btnLeftElement.onclick = start();
   if (btnLeftElement.className === 'btn start') {
     btnLeftElement.innerHTML = 'Stop';
     btnLeftElement.className = 'btn stop';
