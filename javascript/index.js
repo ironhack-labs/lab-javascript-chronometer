@@ -14,15 +14,22 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printSeconds();
+  printMinutes();
+  // call printSeconds & printMinutes functions
 }
 
 function printMinutes() {
-  // ... your code goes here
+  //want to get the minutes when we push button/ in digi format/computeTwoDigitNumber(value)
+  //what is value? this.minutes --> chronometer.minutes
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  return minutes;
 }
 
 function printSeconds() {
-  // ... your code goes here
+
+  let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  return seconds;
 }
 
 // ==> BONUS
@@ -31,15 +38,21 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+    let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+    return minutes + `:` + seconds;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let seconds = '0';
+  let minutes = '0';
+
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  // change innner HTML to Stop/ let current time stop/ 
+  clearIntervalId(chrometer.intervalId);
+  chronometer.intervalId = 0;
 }
 
 function setSplitBtn() {
@@ -47,7 +60,9 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  if (chronometer.intervalId) {
+    chronometer.intervalId = 
+  }
 }
 
 function setResetBtn() {
@@ -56,7 +71,16 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+
+  if(btnLeftElement.className === 'btn start') {
+    
+
+  };
+  // ...if press Start Button:
+  //  Button changes to Stop --> add class stop/ in class btn start"
+  //invokes Chronometer to start method 
+  // changes Reset button to switch
+  // computerDigitalNumber 
 });
 
 // Reset/Split Button

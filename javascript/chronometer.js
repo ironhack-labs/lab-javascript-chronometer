@@ -7,22 +7,30 @@ class Chronometer {
   start(callback) {
     const intervalId = setInterval(() => {
       this.currentTime = this.currentTime + 1;
-    },1000);
+      if (callback) {
+        callback();
+      }
+    }, 1000);
+    
   }
 
   getMinutes() {
-   return this.currentTime = this.time++ / 60;
+   let minutes =  Math.floor(this.currentTime / 60);
+    return minutes;
   }
 
   getSeconds() {
-    // ... your code goes here
+    let seconds =  Math.floor(this.currentTime % 60);
+    return seconds;
   }
 
   computeTwoDigitNumber(value) {
-    if (this.currentTime() <10 {
-      return '0' + this.currentTime();
-    }
-    return this.currentTime();
+  
+    if (value < 10) {
+      return '0' + value;
+    } else {
+    return value;
+    };
     // return value.padStart(2, "0");
 
   }
@@ -37,6 +45,9 @@ class Chronometer {
   }
 
   split() {
+    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+    let seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return minutes + `:` + seconds;
     // ... your code goes here
   }
 }
