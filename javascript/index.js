@@ -14,15 +14,18 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.computTwoDigitNumber(chronometer.getMinutes());
+  console.log(minutes)
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let seconds = chronometer.computTwoDigitNumber(chronometer.getSeconds());
+  console.log(seconds)
 }
 
 // ==> BONUS
@@ -31,24 +34,26 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
-}
+  setSplitBtn();
 
 function clearSplits() {
   // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
-}
+  let stop = chronometer.stop();
+  console.log(stop)
 
 function setSplitBtn() {
-  // ... your code goes here
+  // ... change the class
+  //change the text printed here
+  let split = chronometer.split();
+  console.log(split)
 }
 
 function setStartBtn() {
-  // ... your code goes here
-}
+  let start =chronometer.start();
+  console.log(start());
 
 function setResetBtn() {
   // ... your code goes here
@@ -57,9 +62,43 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+  console.log ("hi there!");
+  if (btnLeftElement.className === 'btn start'){
+  //start the cronometer
+   chronometer.start(printTime);
+    //classname ? if it is start
+    //text stop ad class stop
+    btnLeftElement.innerHTML = "Stop";
+   setStopBtn();
+  } else {
+    chronometer.stop(printTime);
+    setStartBtn();
+    //the oppositve logic
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnRightElement.className === 'reset'){
+    //start the cronometer
+    chronometer.start(printTime);
+    //classname ? if it is start
+    //text stop ad class stop
+    setResetBtn();
+  } else {
+    chronometer.split(printSplit);
+    setSplitBtn();
+    //the oppositve logic
+  };
+})
+
+
+
+
+
+
+
+
+
+
+
