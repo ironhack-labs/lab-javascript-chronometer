@@ -1,7 +1,3 @@
- //const Chronometer = require("./chronometer");
-//import Chronometer from "./chronometer";
-
-
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -18,16 +14,15 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // getMinutes()
-  // chronometer.getMinutes
+  chronometer.computeTwoDigitNumber();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  chronometer.getMinutes();
 }
 
 function printSeconds() {
-  // ... your code goes here
+  chronometer.getSeconds();
 }
 
 // ==> BONUS
@@ -69,6 +64,7 @@ btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.getAttribute("class") == "btn start") {
     btnLeftElement.setAttribute("class", "btn stop");
     btnLeftElement.innerHTML = 'STOP';
+    //TODO: chronometer.start();
 
     btnRightElement.setAttribute("class", "btn split");
     btnRightElement.innerHTML = 'SPLIT';

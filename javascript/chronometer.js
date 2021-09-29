@@ -4,11 +4,14 @@ class Chronometer {
     this.intervalId = null
   }
 
-  //TODO if statement iteration 1
   start(callback) {
+    if (callback === true) {
+      callback();
+    } else {
       this.intervalId = setInterval(() => {
       this.currentTime++;
     }, 1000);
+  }
   }
 
   getMinutes() {
