@@ -13,9 +13,7 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
+function printTime() {}
 
 function printMinutes() {
   // ... your code goes here
@@ -56,10 +54,23 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  btnLeftElement.onclick = alert('startcheck');
+  if (btnLeftElement.className === 'btn start') {
+    btnLeftElement.innerHTML = 'Stop';
+    btnLeftElement.className = 'btn stop';
+  } else if (btnLeftElement.className === 'btn stop') {
+    btnLeftElement.innerHTML = 'start';
+    btnLeftElement.className = 'btn start';
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.className === 'btn reset') {
+    btnRightElement.innerHTML = 'split';
+    btnRightElement.className = 'btn split';
+  } else if (btnRightElement.className === 'btn split') {
+    btnRightElement.innerHTML = 'reset';
+    btnRightElement.className = 'btn reset';
+  }
 });
