@@ -1,3 +1,6 @@
+const Chronometer = require("./chronometer");
+//import Chronometer from "./chronometer";
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -47,19 +50,39 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  // if (btnLeftElement.className === 'btn start') {
+  //   chronometer.setStartBtn
+  //}
   // ... your code goes here
 }
 
 function setResetBtn() {
+  this.currentTime === 0;
   // ... your code goes here
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  // console.log('hello')
+  // btnLeftElement.innerHTML = 'STOP';
+  // btnLeftElement.className = 'btn stop';
+
+  // if (chronometer.setStartBtn === true) {
+  //   btnLeftElement.innerHTML = 'START';
+  //   btnLeftElement.className = 'btn start';
+
+  //   btnRightElement.innerHTML = 'RESET';
+  //   btnRightElement.className = 'btn reset';
+  // }
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+//   btnRightElement.innerHTML = 'SPLIT';
+//   btnRightElement.className = 'btn split';
+// });
+})
+
+
+// chronometer.setResetBtn();

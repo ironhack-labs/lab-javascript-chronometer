@@ -32,6 +32,22 @@ class Chronometer {
     }
   }
 
+  //   computeTwoDigitNumber(value) {
+  //   let newArr = [];
+  //   const stringValue = value.toString();
+  //   if (stringValue.length === 1) {
+  //     newArr.push('0', stringValue);
+  //     const result = newArr.join('');
+  //     return result;
+  //   } else if ( stringValue.length === 0) {
+  //     newArr.push('0', '0', stringValue);
+  //     const result = newArr.join('');
+  //     return result;
+  //   } else {
+  //     return value.toString();
+  //   }
+  // }
+
   stop() {
     clearInterval(this.intervalId);
   }
@@ -42,7 +58,7 @@ class Chronometer {
 
   split() {
     let newArr = []
-  newArr.push(this.getMinutes(), this.getSeconds())
+    newArr.push(this.getMinutes(), this.getSeconds())
     const result = newArr.join(':');
     return this.computeTwoDigitNumber(result);
   }
