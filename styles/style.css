@@ -32,6 +32,9 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 #splits-container {
@@ -48,9 +51,8 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  margin-top: -15px;
   position: absolute;
-  right: 20px;
+  top: 20px;
 }
 
 .leash {
@@ -85,8 +87,7 @@ body {
 }
 
 .number {
-  display: inline-block;
-  width: 40px;
+  width:40px;
 }
 
 .btn {
