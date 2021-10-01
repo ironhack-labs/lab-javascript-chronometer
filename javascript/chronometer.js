@@ -13,7 +13,9 @@ class Chronometer {
   }
 
   getMinutes() {
-    
+    let passedMinutes
+    passedMinutes = Math.floor(this.currentTime/60)
+    return passedMinutes
   }
 
   getSeconds() {
