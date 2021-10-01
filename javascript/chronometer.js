@@ -19,7 +19,8 @@ class Chronometer {
   }
 
   getSeconds() {
-    // ... your code goes here
+    // returns remainding seconds of currentTime downscaled to full minutes
+    return this.currentTime%60
   }
 
   computeTwoDigitNumber(value) {
