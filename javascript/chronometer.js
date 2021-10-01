@@ -1,6 +1,7 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalID = null
   }
 
   start(callback) {
