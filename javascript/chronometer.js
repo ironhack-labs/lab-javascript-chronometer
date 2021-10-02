@@ -1,7 +1,5 @@
 class Chronometer {
-  constructor() {
-    // ... your code goes here
-  }
+  constructor() {}
 
   start(callback) {
     // ... your code goes here
