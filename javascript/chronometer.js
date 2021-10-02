@@ -3,14 +3,18 @@ class Chronometer {
     this.currentTime = 0; // this will be in seconds 
     this.intervalId = null;
   }
-
+  
   start(callback) {
-    this.intervalId = setInterval(()=> {
-      this.currentTime ++;
-      if(typeof callback === 'function') {
+    if(!callback || typeof callback !== 'function') {
+      this.intervalId = setInterval(()=> {
+        this.currentTime ++;
+      }, 1000);
+    } else {
+      this.intervalId = setInterval(()=> {
+        this.currentTime ++;
         callback();
-      }
-    }, 1000)
+      }, 1000)
+    } 
   }
 
   getMinutes() {
@@ -48,3 +52,5 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
+
