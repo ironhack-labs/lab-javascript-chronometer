@@ -54,12 +54,37 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+let printEverySecond
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  const chronometerIsStopped = btnLeftElement.innerHTML === "START"
+  if(chronometerIsStopped){
+    chronometer.start()
+    btnLeftElement.innerHTML = "STOP"
+    btnLeftElement.classList = "btn stop"
+    btnRightElement.innerHTML = "SPLIT"
+    btnRightElement.classList = "btn split"
+
+    printEverySecond = setInterval(() => {
+      minDecElement.innerHTML = chronometer.split()[0]
+      minUniElement.innerHTML = chronometer.split()[1]
+      secDecElement.innerHTML = chronometer.split()[3]
+      secUniElement.innerHTML = chronometer.split()[4]
+    }, 1000)
+  }
+  else {
+    chronometer.stop()
+    btnLeftElement.innerHTML = "START"
+    btnLeftElement.classList = "btn start"
+    btnRightElement.innerHTML = "RESET"
+    btnRightElement.classList = "btn reset"
+    clearInterval(printEverySecond)
+  }
+  
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
 });
