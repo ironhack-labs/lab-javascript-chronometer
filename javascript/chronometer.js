@@ -5,16 +5,12 @@ class Chronometer {
   }
   
   start(callback) {
-    if(!callback || typeof callback !== 'function') {
-      this.intervalId = setInterval(()=> {
-        this.currentTime ++;
-      }, 1000);
-    } else {
-      this.intervalId = setInterval(()=> {
-        this.currentTime ++;
+    this.intervalId = setInterval(()=> {
+      this.currentTime ++;
+      if(typeof callback === 'function') {
         callback();
-      }, 1000)
-    } 
+      }
+    }, 1000)
   }
 
   getMinutes() {
@@ -29,7 +25,12 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    return value < 10 ? `0${value}` : value.toString();
+  // convert numbers in string
+  // check if the value has less than 2 digits
+  // padStart--> pads the current string with another string-->second arg, until reaching the given length-->first argument
+   return String(value).length < 2 
+      ? String(value).padStart(2, '0') 
+      : String(value);
   }
 
   stop() {
