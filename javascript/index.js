@@ -49,7 +49,6 @@ function clearSplits() {
 
 // Running status
 function setStopBtn() {
-  //alert('running status - stop Btn is clicked')
   // btnLeft 'stop' is clicked
   btnLeftElement.innerHTML = 'START'; //set innerHTML
   btnLeftElement.classList.replace('stop', 'start');
@@ -57,7 +56,6 @@ function setStopBtn() {
 
 // Running status
 function setSplitBtn() {
-  //alert('running status - split Btn is clicked')
   //btnRight 'split' is clicked
   btnRightElement.innerHTML = 'RESET';
   btnRightElement.classList.replace('split', 'reset'); 
@@ -65,7 +63,6 @@ function setSplitBtn() {
 
 // Stopped status
 function setStartBtn() {
-  //alert('stopped status - start Btn is clicked')
   // btnLeft 'start' is clicked
   btnLeftElement.innerHTML = 'STOP'; // set innerHTML
   btnLeftElement.classList.replace('start', 'stop'); // remove 'start', add 'stop' class
@@ -73,7 +70,6 @@ function setStartBtn() {
 
 // Stopped status
 function setResetBtn() {
-  //alert('stopped status - reset Btn is clicked')
   // btnRight 'reset' is clicked
   btnRightElement.innerHTML = 'SPLIT';
   btnRightElement.classList.replace('reset', 'split'); // remove 'reset', add 'split' class
@@ -86,11 +82,9 @@ btnLeftElement.addEventListener('click', () => {
   const stopClass = btnLeftElement.classList.contains('stop');
   
   if (startClass) { // Click start button --> status change from Stopped to Running
-    //alert('hello start button')
     setStartBtn(); // set innerHTML,  add 'stop' class
     chronometer.start(printTime);
   } else if (stopClass) { // chronometer status -> Running
-    //alert('hello stop')
     setStopBtn();
     chronometer.stop();
   }
