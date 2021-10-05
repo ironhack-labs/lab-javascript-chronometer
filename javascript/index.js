@@ -18,15 +18,27 @@ function printTime() {
   setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
+    if (secDecElement.innerText === '5' && secUniElement.innerText === '9') {
+      secDecElement.innerText = '0';
+    }
+  }, 100);
 }
 
 function printMinutes() {
-  return (minUniElement.innerText = `${chronometer.getMinutes()}`);
+  let string = `${chronometer.getMinutes()}`;
+  if (string.length === 1) {
+    return (minUniElement.innerText = string[0]);
+  } else if (string.length === 2) {
+    return (
+      (minUniElement.innerText = string[1]),
+      (minDecElement.innerText = string[0])
+    );
+  }
 }
 
 function printSeconds() {
-  string = `${chronometer.getSeconds()}`;
+  let string = `${chronometer.getSeconds()}`;
+
   if (string.length === 1) {
     return (secUniElement.innerText = string[0]);
   } else if (string.length === 2) {
