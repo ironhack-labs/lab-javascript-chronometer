@@ -21,7 +21,7 @@ function printTime() {
     if (secDecElement.innerText === '5' && secUniElement.innerText === '9') {
       secDecElement.innerText = '0';
     }
-  }, 100);
+  }, 1000);
 }
 
 function printMinutes() {
