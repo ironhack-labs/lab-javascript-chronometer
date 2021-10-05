@@ -73,7 +73,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  splitsElement.innerHTML += `<p>${chronometer.split()}</p>`;
+  splitsElement.innerHTML += `<li>${chronometer.split()}:${
+    milUniElement.innerText
+  }${milDecElement.innerText}</li>`;
 }
 
 function clearSplits() {
