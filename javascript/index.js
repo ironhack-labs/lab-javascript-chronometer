@@ -14,15 +14,18 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  setInterval(() => {
+    printMinutes();
+    printSeconds();
+  }, 1000);
 }
 
 function printMinutes() {
-  // ... your code goes here
+  return (minUniElement.innerText = `${chronometer.getMinutes()}`);
 }
 
 function printSeconds() {
-  // ... your code goes here
+  return (secUniElement.innerText = `${chronometer.getSeconds()}`);
 }
 
 // ==> BONUS
@@ -31,35 +34,58 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML += `<p>${chronometer.split()}</p>`;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = ``;
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stop();
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.split();
+  printSplit();
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.start();
+  printTime();
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.reset();
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.innerHTML === 'START') {
+    setStartBtn();
+    btnLeftElement.innerHTML = 'STOP';
+    btnRightElement.innerHTML = 'SPLIT';
+  } else if (btnLeftElement.innerHTML === 'STOP') {
+    setStopBtn();
+    btnLeftElement.innerHTML = 'START';
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.innerHTML === 'RESET') {
+    setResetBtn();
+    btnRightElement.innerHTML = 'SPLIT';
+  } else if (
+    btnRightElement.innerHTML === 'SPLIT' &&
+    btnLeftElement.innerHTML === 'STOP'
+  ) {
+    setSplitBtn();
+  } else if (
+    btnRightElement.innerHTML === 'SPLIT' &&
+    btnLeftElement.innerHTML === 'START'
+  ) {
+    clearSplits();
+    btnRightElement.innerHTML = 'RESET';
+  }
 });
