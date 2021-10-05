@@ -33,9 +33,7 @@ class Chronometer {
   split() {
     return `${this.getMinutes().toLocaleString('en-US', {
       minimumIntegerDigits: 2
-    })}:${this.getSeconds().toLocaleString('en-US', {
-      minimumIntegerDigits: 2
-    })}`;
+    })}:${this.computeTwoDigitNumber(this.getSeconds())}`;
   }
 }
 

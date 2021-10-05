@@ -14,6 +14,7 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
+  printMilliseconds();
   setInterval(() => {
     printMinutes();
     printSeconds();
@@ -25,12 +26,38 @@ function printMinutes() {
 }
 
 function printSeconds() {
-  return (secUniElement.innerText = `${chronometer.getSeconds()}`);
+  string = `${chronometer.getSeconds()}`;
+  if (string.length === 1) {
+    return (secUniElement.innerText = string[0]);
+  } else if (string.length === 2) {
+    return (
+      (secUniElement.innerText = string[1]),
+      (secDecElement.innerText = string[0])
+    );
+  }
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let countUni = 0;
+  let countDec = 0;
+  let intervalID = setInterval(() => {
+    countUni++;
+    if (btnLeftElement.innerHTML === 'START') {
+      clearInterval(intervalID);
+    }
+    if (countUni > 9) {
+      countUni = 0;
+      countDec++;
+    }
+    if (countDec > 9) {
+      countDec = 0;
+    }
+
+    return (
+      (milUniElement.innerText = countUni), (milDecElement.innerText = countDec)
+    );
+  }, 1);
 }
 
 function printSplit() {
@@ -57,6 +84,12 @@ function setStartBtn() {
 
 function setResetBtn() {
   chronometer.reset();
+  minDecElement.innerText = 0;
+  minUniElement.innerText = 0;
+  secDecElement.innerText = 0;
+  secUniElement.innerText = 0;
+  milDecElement.innerText = 0;
+  milUniElement.innerText = 0;
 }
 
 // Start/Stop Button
