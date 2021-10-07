@@ -82,8 +82,6 @@ function clear() {
   splitList.innerHTML = ""
 }
 
-let printEverySecond
-
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   const chronometerIsStopped = btnLeftElement.innerHTML === "START"
