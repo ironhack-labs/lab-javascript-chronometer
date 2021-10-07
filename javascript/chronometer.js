@@ -16,19 +16,26 @@ class Chronometer {
 
   getMinutes() {
     let passedMinutes
-    passedMinutes = Math.floor(this.currentTime/60)
+    passedMinutes = Math.floor(this.currentTime/6000)
     return passedMinutes
   }
 
   getSeconds() {
     // returns remainding seconds of currentTime downscaled to full minutes
-    return this.currentTime%60
+    return Math.floor(this.currentTime/100%60)
+  }
+
+  getMilliSeconds() {
+    const ms = String(this.currentTime).slice(-2)
+    return ms
   }
 
   computeTwoDigitNumber(value) {
     let valueAsString = String(value)
     if (valueAsString.length < 2)
       valueAsString = "0" + valueAsString
+    else
+      valueAsString = valueAsString.slice(-2)
     return valueAsString
   }
 
@@ -41,7 +48,13 @@ class Chronometer {
   }
 
   split() {
-    const split = this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds())
+    //console.log(this.currentTime);
+    const split = this.computeTwoDigitNumber(this.getMinutes()) + 
+    ":" + 
+    this.computeTwoDigitNumber(this.getSeconds()) +
+    ":" + 
+    this.getMilliSeconds()
+    console.log(split)
     return split
   }
 }

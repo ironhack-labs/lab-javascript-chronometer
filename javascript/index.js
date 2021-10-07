@@ -19,6 +19,9 @@ function printTime() {
   minUniElement.innerHTML = chronometer.split()[1]
   secDecElement.innerHTML = chronometer.split()[3]
   secUniElement.innerHTML = chronometer.split()[4]
+
+  milDecElement.innerHTML = chronometer.split()[6]
+  milUniElement.innerHTML = chronometer.split()[7]
 }
 
 function printMinutes() {
@@ -48,6 +51,8 @@ function clearSplits() {
   minUniElement.innerHTML = "0"
   secDecElement.innerHTML = "0"
   secUniElement.innerHTML = "0"
+  milDecElement.innerHTML = "0"
+  milUniElement.innerHTML = "0"
 }
 
 function setStopBtn() {
@@ -83,9 +88,9 @@ function clear() {
   splitList.innerHTML = ""
 }
 
-//binds the this. to chronometer, instead of global scope
+//binds the this.X to chronometer, instead of global scope
 const milliSecondsIntervall = function () {
-  this.intervalId = setInterval(() => this.currentTime++, 10)
+  this.intervalId = setInterval(() => this.currentTime++, 1)
 }.bind(chronometer)
 
 // Start/Stop Button
@@ -97,9 +102,14 @@ btnLeftElement.addEventListener('click', () => {
     setSplitBtn()
     
     // starts timer
+    // printEverySecond = setInterval(() => {
+    //   printTime()
+    // }, 1000)
+    // starts timer in milliseconds
     printEverySecond = setInterval(() => {
       printTime()
-    }, 1000)
+    }, 10)
+    
   }
   else {
     chronometer.stop()
