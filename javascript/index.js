@@ -15,6 +15,10 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  minDecElement.innerHTML = chronometer.split()[0]
+  minUniElement.innerHTML = chronometer.split()[1]
+  secDecElement.innerHTML = chronometer.split()[3]
+  secUniElement.innerHTML = chronometer.split()[4]
 }
 
 function printMinutes() {
@@ -32,6 +36,10 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  const newLiElement = document.createElement("li")
+  newLiElement.textContent = chronometer.split()
+  const splitList = document.querySelector("#splits")
+  splitList.appendChild(newLiElement)
 }
 
 function clearSplits() {
@@ -40,18 +48,38 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeftElement.innerHTML = "STOP"
+  btnLeftElement.classList = "btn stop"
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  btnRightElement.innerHTML = "SPLIT"
+  btnRightElement.classList = "btn split"
 }
 
 function setStartBtn() {
   // ... your code goes here
+  btnLeftElement.innerHTML = "START"
+  btnLeftElement.classList = "btn start"
 }
 
 function setResetBtn() {
   // ... your code goes here
+  btnRightElement.innerHTML = "RESET"
+  btnRightElement.classList = "btn reset"
+}
+
+function clear() {
+  chronometer.currentTime = 0
+
+  minDecElement.innerHTML = "0"
+  minUniElement.innerHTML = "0"
+  secDecElement.innerHTML = "0"
+  secUniElement.innerHTML = "0"
+
+  const splitList = document.querySelector("#splits")
+  splitList.innerHTML = ""
 }
 
 let printEverySecond
@@ -61,30 +89,29 @@ btnLeftElement.addEventListener('click', () => {
   const chronometerIsStopped = btnLeftElement.innerHTML === "START"
   if(chronometerIsStopped){
     chronometer.start()
-    btnLeftElement.innerHTML = "STOP"
-    btnLeftElement.classList = "btn stop"
-    btnRightElement.innerHTML = "SPLIT"
-    btnRightElement.classList = "btn split"
-
+    setStopBtn()
+    setSplitBtn()
+    
+    // starts timer
     printEverySecond = setInterval(() => {
-      minDecElement.innerHTML = chronometer.split()[0]
-      minUniElement.innerHTML = chronometer.split()[1]
-      secDecElement.innerHTML = chronometer.split()[3]
-      secUniElement.innerHTML = chronometer.split()[4]
+      printTime()
     }, 1000)
   }
   else {
     chronometer.stop()
-    btnLeftElement.innerHTML = "START"
-    btnLeftElement.classList = "btn start"
-    btnRightElement.innerHTML = "RESET"
-    btnRightElement.classList = "btn reset"
+    setStartBtn()
+    setResetBtn()
+    // stops timer
     clearInterval(printEverySecond)
   }
-  
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  
+  const chronometerIsStopped = btnLeftElement.innerHTML === "START"
+
+  if(chronometerIsStopped)
+    clear()
+  else
+    printSplit()
 });
