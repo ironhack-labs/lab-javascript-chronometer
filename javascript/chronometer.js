@@ -5,9 +5,11 @@ class Chronometer {
   }
 
   start(callback) {
-    if (callback){
-      this.intervalId = setInterval(callback, 1000)  
+    if (typeof callback === "function") {
+      console.log("In bonus callback");
+      callback()
     } else {
+      console.log("Not in bonus callback");
       this.intervalId = setInterval(() => this.currentTime++, 1000)
     }
   }

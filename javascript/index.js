@@ -83,11 +83,16 @@ function clear() {
   splitList.innerHTML = ""
 }
 
+//binds the this. to chronometer, instead of global scope
+const milliSecondsIntervall = function () {
+  this.intervalId = setInterval(() => this.currentTime++, 10)
+}.bind(chronometer)
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   const chronometerIsStopped = btnLeftElement.innerHTML === "START"
   if(chronometerIsStopped){
-    chronometer.start()
+    chronometer.start(milliSecondsIntervall)
     setStopBtn()
     setSplitBtn()
     
