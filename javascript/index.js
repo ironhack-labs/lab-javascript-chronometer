@@ -44,6 +44,10 @@ function printSplit() {
 
 function clearSplits() {
   // ... your code goes here
+  minDecElement.innerHTML = "0"
+  minUniElement.innerHTML = "0"
+  secDecElement.innerHTML = "0"
+  secUniElement.innerHTML = "0"
 }
 
 function setStopBtn() {
@@ -73,10 +77,7 @@ function setResetBtn() {
 function clear() {
   chronometer.currentTime = 0
 
-  minDecElement.innerHTML = "0"
-  minUniElement.innerHTML = "0"
-  secDecElement.innerHTML = "0"
-  secUniElement.innerHTML = "0"
+  clearSplits()
 
   const splitList = document.querySelector("#splits")
   splitList.innerHTML = ""
