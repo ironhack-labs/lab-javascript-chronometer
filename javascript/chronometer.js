@@ -5,18 +5,23 @@ class Chronometer {
   }
   start(callback) {
     
-  this.intervalId=setInterval(() => this.currentTime++ ,1000)
+  this.intervalId=setInterval(() => {
+    this.currentTime++
+    callback() 
+  },1000)
 
   }
 
   getMinutes() {
-
-    return Math.floor(this.currentTime/60)
+    let minutes = Math.floor(this.currentTime/60)
+    return minutes
     
   }
 
   getSeconds() {
-    return this.currentTime % 60
+
+    let seconds = this.currentTime % 60
+    return seconds
   }
 
   computeTwoDigitNumber(value) {
