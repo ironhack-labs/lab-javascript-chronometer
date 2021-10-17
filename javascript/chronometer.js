@@ -18,6 +18,7 @@ class Chronometer {
     return Math.floor(this.currentTime/60)
   }
 
+
   getSeconds() {
     return this.currentTime % 60;
   }
@@ -36,9 +37,16 @@ class Chronometer {
   }
 
   split() {
-    // ... your code goes here
+    const minutesTwoDigits = this.computeTwoDigitNumber(this.getMinutes())
+    const secondsTwoDigits = this.computeTwoDigitNumber(this.getSeconds())
+    return `${minutesTwoDigits}:${secondsTwoDigits}`;
   }
 }
+
+
+
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
