@@ -15,15 +15,43 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printMilliseconds();
+  setInterval(() => {
+    printMinutes();
+    printSeconds();
+    if (secDecElement.innerText === '5' && secUniElement.innerText === '9') {
+      secDecElement.innerText = '0';
+    }
+  }, 1000);
+  secDecElement.innerText= Math.round(secondsFirst)
+  secUniElement.innerText = Math.round(secondsSecond)
 }
 
 function printMinutes() {
-  // ... your code goes here
-}
+  let chr =`${chronometer.getMinutes()}`
+  if (chr.length === 1){
+    return (minUniElement.innerText = chr [0])
+  }else if (chr.length === 20){
+      return (
+        (minUniElement.innerText = chr [1])
+        (minDecElement.innerText = chr[0])
+      )
+    }
+  }
 
 function printSeconds() {
-  // ... your code goes here
+  let text = `${chronometer.getSeconds()}`;
+
+  if (text.length === 1) {
+    return (secUniElement.innerText = text[0]);
+  } else if (text.length === 2) {
+    return (
+      (secUniElement.innerText = text[1]),
+      (secDecElement.innerText = text[0])
+    );
+  }
 }
+
 
 // ==> BONUS
 function printMilliseconds() {
