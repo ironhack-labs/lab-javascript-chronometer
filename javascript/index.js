@@ -14,6 +14,11 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+function undateTime() {
+  intervalID = setInterval(() => {
+    printTime();
+  }, 1000);
+}
 
 function printTime() {
   const timeToPrint = setSplitBtn();
@@ -27,7 +32,7 @@ function printMinutes() {
   return chronometer.computeTwoDigitNumber(chronometer.getMinutes());
 }
 
-function printSeconds(aChrono) {
+function printSeconds() {
   return chronometer.computeTwoDigitNumber(chronometer.getSeconds());
 }
 
@@ -56,7 +61,8 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  chronometer.start(printTime());
+  chronometer.start();
+  undateTime();
   runningChronometer = true;
 }
 
@@ -67,12 +73,16 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   if(runningChronometer) {
     btnLeftElement.textContent = 'START';
+    btnLeftElement.setAttribute('class', 'btn start');
     btnRightElement.textContent = 'RESET';
+    btnRightElement.setAttribute('class', 'btn reset');
     setStopBtn();
     return;
   }
   btnLeftElement.textContent = 'STOP';
+  btnLeftElement.setAttribute('class', 'btn stop');
   btnRightElement.textContent = 'SPLIT';
+  btnRightElement.setAttribute('class', 'btn split');
   setStartBtn();
 });
 
