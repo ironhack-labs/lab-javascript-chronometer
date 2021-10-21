@@ -1,4 +1,5 @@
 const chronometer = new Chronometer();
+// This variable keeps track of the status of the chronometer 
 let runningChronometer = false;
 
 // get the buttons:
@@ -14,18 +15,14 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function undateTime() {
-  intervalID = setInterval(() => {
-    printTime();
-  }, 1000);
-}
-
 function printTime() {
-  const timeToPrint = setSplitBtn();
-  minDecElement.textContent = timeToPrint[0];
-  minUniElement.textContent = timeToPrint[1];
-  secDecElement.textContent = timeToPrint[3];
-  secUniElement.textContent = timeToPrint[4];
+  // Each function returns a 2-digit string
+  minDecElement.textContent = printMinutes()[0];
+  minUniElement.textContent = printMinutes()[1];
+  secDecElement.textContent = printSeconds()[0];
+  secUniElement.textContent = printSeconds()[1];
+  milDecElement.textContent = printMilliseconds()[0];
+  milUniElement.textContent = printMilliseconds()[1];
 }
 
 function printMinutes() {
@@ -38,17 +35,20 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  return chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
 }
 
 function printSplit() {
+  // New <li>
   let newSplit = document.createElement('li');
+  // Gets the text to be added from the function to the new element
   newSplit.innerText = setSplitBtn();
   splitsElement.appendChild(newSplit);
 }
 
 function clearSplits() {
-splitsElement.innerHTML = '';
+  // Clears the <ol> element
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
@@ -61,13 +61,14 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  chronometer.start();
-  undateTime();
+  chronometer.start(printTime);
   runningChronometer = true;
 }
 
 function setResetBtn() {
   chronometer.reset();
+  // To print all 0s, since the count has already been reset
+  printTime();
 }
 
 btnLeftElement.addEventListener('click', () => {
