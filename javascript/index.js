@@ -53,21 +53,25 @@ function clearSplits() {
 function setStopBtn() {
   btnLeftElement.innerText = "STOP"
   btnLeftElement.classList = "btn stop"
+  chronometer.stop()
 }
 
 function setSplitBtn() {
   btnRightElement.innerText = "SPLIT"
   btnRightElement.classList = "btn split"
+  chronometer.split()
 }
 
 function setStartBtn() {
   btnLeftElement.innerText = "START"
   btnLeftElement.classList = "btn start";
+  chronometer.start()
 }
 
 function setResetBtn() {
   btnRightElement.innerText = "RESET"
   btnRightElement.classList = "btn reset"
+  chronometer.reset()
 }
 
 // Start/Stop Button
