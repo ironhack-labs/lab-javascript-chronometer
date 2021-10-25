@@ -38,10 +38,8 @@ class Chronometer {
   }
 
   split() {
-    const minutes =  this.getMinutes()
-    const seconds = this.getSeconds()
-    minutes = this.computeTwoDigitNumber()
-    seconds = this.computeTwoDigitNumber()
+    const minutes =  this.computeTwoDigitNumber(this.getMinutes())
+    const seconds = this.computeTwoDigitNumber(this.getSeconds())
     return `${minutes}:${seconds}`
   }
 }
