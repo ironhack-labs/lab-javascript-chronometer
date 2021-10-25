@@ -21,15 +21,19 @@ class Chronometer {
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime%60;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if(value<10){
+      return `0${value.toString()}`;
+    }else{
+      return value.toString();
+    }
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId); 
   }
 
   reset() {
