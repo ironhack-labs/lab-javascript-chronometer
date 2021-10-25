@@ -29,7 +29,10 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    const display = value.toString()
+    if(display.length > 1){
+      return display
+    } else return '0' + display
   }
 
   stop() {
