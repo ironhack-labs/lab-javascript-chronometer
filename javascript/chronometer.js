@@ -1,18 +1,31 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = null
   }
 
   start(callback) {
-    // ... your code goes here
+    
+    this.intervalId = setInterval(() => {
+      if(callback != null){ //Execute the callback function if it's passed
+        callback()
+      }
+      this.currentTime++}, 1000)
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.trunc(this.currentTime / 60) //Trunc deletes the decimals
   }
 
   getSeconds() {
-    // ... your code goes here
+    let seconds = this.currentTime
+    if(seconds > 60){
+      while(seconds > 60){ //Subtract minutes until only seconds are left
+        seconds -= 60
+      }
+      return seconds
+    }
+    else return seconds
   }
 
   computeTwoDigitNumber(value) {
