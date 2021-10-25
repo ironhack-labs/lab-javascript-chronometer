@@ -19,8 +19,8 @@ class Chronometer {
 
   getSeconds() {
     let seconds = this.currentTime
-    if(seconds > 60){
-      while(seconds > 60){ //Subtract minutes until only seconds are left
+    if(seconds >= 60){
+      while(seconds >= 60){ //Subtract minutes until only seconds are left
         seconds -= 60
       }
       return seconds
@@ -29,22 +29,26 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    const display = value.toString()
-    if(display.length > 1){
+    const display = value.toString() //Convert number to string
+    if(display.length > 1){ 
       return display
-    } else return '0' + display
+    } 
+    else return '0' + display //If the number is a single digit concatenate a 0 before the number
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0 
   }
 
   split() {
-    // ... your code goes here
+      const minutes = this.computeTwoDigitNumber(this.getMinutes()) //Get the minutes and seconds in string from the earlier methods
+      const seconds = this.computeTwoDigitNumber(this.getSeconds())
+
+      return minutes + ':' + seconds //Concatenate
   }
 }
 
