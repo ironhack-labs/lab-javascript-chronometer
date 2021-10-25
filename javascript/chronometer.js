@@ -5,7 +5,7 @@ class Chronometer {
   }
 
   start(callback) {
-    setInterval(()=>{
+    this.intervalId = setInterval(()=>{
       return this.currentTime += 1
     }, 1000)
   }
@@ -28,9 +28,7 @@ class Chronometer {
    }
 }
   stop() {
-    clearInterval()
-      
-   
+    clearInterval(this.intervalId)
   }
 
   reset() {
