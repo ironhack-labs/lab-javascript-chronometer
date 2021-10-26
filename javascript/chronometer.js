@@ -21,6 +21,10 @@ class Chronometer {
 		return parseFloat((this.currentTime % 60).toFixed());
 	}
 
+	getMilliSeconds() {
+		return parseFloat((this.currentTime / 1000).toFixed(2));
+	}
+
 	computeTwoDigitNumber(value) {
 		return value.toFixed().padStart(2,'0')
 	}
