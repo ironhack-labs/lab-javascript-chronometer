@@ -19,11 +19,24 @@ class Chronometer {
   }
 
   getSeconds() {
-    // ... your code goes here
+    
+    if (this.currentTime === 0) {
+      return 0;
+    }
+    
+    let howManySeconds = 0;
+    if (this.currentTime > 60) {
+      howManySeconds = this.currentTime % 60;
+    }
+    return howManySeconds;
+
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    
+    let paddedValue = ('0'+value).slice(-2);
+    return paddedValue;
+
   }
 
   stop() {
