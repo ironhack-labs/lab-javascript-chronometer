@@ -15,14 +15,31 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  chronometer.split()
+
+  setInterval(() => {
+    printMinutes()
+    printSeconds()
+  }, 1000)
+
+  console.log(printTime)
+
 }
 
 function printMinutes() {
   // ... your code goes here
+
+ minDecElement.textContent = chronometer.split().charAt(0);
+ minUniElement.textContent = chronometer.split().charAt(1);
+
 }
 
 function printSeconds() {
   // ... your code goes here
+
+secDecElement.textContent = chronometer.split().charAt(3);
+secUniElement.textContent = chronometer.split().charAt(4);
+
 }
 
 // ==> BONUS
@@ -32,6 +49,7 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+
 }
 
 function clearSplits() {
@@ -40,6 +58,7 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+
 }
 
 function setSplitBtn() {
@@ -56,10 +75,22 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  console.log('izquierda');
   // ... your code goes here
+  chronometer.start()
+  printTime()
+ btnLeftElement.innerHTML = 'STOP'
+ btnLeftElement.className = 'btn stop'
+
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+  console.log('dcha');
   // ... your code goes here
+  
+  btnLeftElement.innerHTML = 'SPLIT'
+  btnLeftElement.className = 'btn split'
+
 });
