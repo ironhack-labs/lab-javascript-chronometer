@@ -1,10 +1,28 @@
 const chronometer = new Chronometer();
 
 // get the buttons:
+function changeStartStop() {
+  //esto va con un if dependiendo de qué está activado
+  btnLeftElement.classList.toggle('stop')
+  btnLeftElement.innerHTML = 'STOP'
+}
+
+function changeResetSplit() {
+  btnRightElement.classList.toggle('split')
+  btnRightElement.innerHTML = "SPLIT"
+}
+
+function showTime() {
+  minDecElement.classList.setAttribute()
+  minUniElement.classList.setAttribute()
+  secDecElement.classList.setAttribute()
+  secUniElement.classList.setAttribute()
+
+}
+// get the DOM elements that will serve us to display the time:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
 
-// get the DOM elements that will serve us to display the time:
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
 const secDecElement = document.getElementById('secDec');
@@ -14,7 +32,7 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  showTime()
 }
 
 function printMinutes() {
@@ -56,10 +74,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  changeStartStop()
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+  changeResetSplit()
   // ... your code goes here
 });
