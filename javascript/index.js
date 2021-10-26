@@ -45,13 +45,16 @@ function printMilliseconds() {
 function printSplit() {
 
   let splitOl = document.querySelector('#splits');
-  splitOl.innerHTML += `<li>${minDecElement.innerText}${minUniElement.innerText} : ${secDecElement.innerText}${secUniElement.innerText}</li>`
+  splitOl.innerHTML += `<li>  ${minDecElement.innerText}${minUniElement.innerText} : ${secDecElement.innerText}${secUniElement.innerText}</li>`
 
  
 }
 
 function clearSplits() {
-  // ... your code goes here
+  //chronometer.clearInterval();
+  chronometer.reset();
+  let liParent = document.querySelector('#splits');
+  liParent.innerHTML = `<ol id="splits"></ol>`;
 }
 
 function setStopBtn() {
@@ -109,6 +112,8 @@ btnRightElement.addEventListener('click', () => {
   
   if (btnRightElement.className === 'btn reset') {
     
+    clearSplits();
+
   } else {
     
     printSplit();
