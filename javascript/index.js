@@ -1,5 +1,7 @@
 const chronometer = new Chronometer();
 
+
+
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
@@ -15,10 +17,23 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
-}
+  setInterval(() => {
+    printMinutes();
+    printSeconds();
+    printMilliseconds();
+    },1000)
+  
+
+  }
+
+
+
 
 function printMinutes() {
   // ... your code goes here
+  minDecElement.textContent = chronometer.split()[0]
+  minUniElement.textContent = chronometer.split()[1]
+
 }
 
 function printSeconds() {
