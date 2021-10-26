@@ -10,7 +10,9 @@ class Chronometer {
     // ... your code goes here
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      if(callback) callback();
     }, 1000);
+    
   }
 
   getMinutes() {
@@ -52,6 +54,22 @@ class Chronometer {
     let minuts = this.computeTwoDigitNumber(this.getMinutes());
     let second = this.computeTwoDigitNumber(this.getSeconds());
     return `${minuts}:${second}`;
+  }
+  getMilliseconds() {
+    //converting to String spliting by '.' then take only first 2 char.
+    console.log(this.getSeconds().toString()).split('.')
+    let ms = (this.getSeconds().toString()).split('.')[1].slice(0, 2);
+    return ms;
+  }
+  splitWithMiliSecond() {
+    const min = computeTwoDigitNumber(
+      this.computeTwoDigitNumber(this.getMinutes())
+    );
+    const second = computeTwoDigitNumber(
+      this.computeTwoDigitNumber(this.getSeconds())
+    );
+    const mili = computeTwoDigitNumber(this.getMilliseconds());
+    return `${min}:${sec}:${mili}`;
   }
 }
 
