@@ -13,22 +13,27 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime(minutes, seconds) {
-  printMinutes(minutes);
-  printSeconds(seconds);
+function printTime() {
+  printMinutes();
+  printSeconds();
+  
 }
 
-function printMinutes(minutes) {
+function printMinutes() {
   
-  minDecElement.innerHTML = minutes [0];
-  minUniElement.innerHTML = minutes [1];
+  let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  //console.log(minutes);
+  minDecElement.innerHTML = minutes[0];
+  minUniElement.innerHTML = minutes[1];
 
 }
 
-function printSeconds(seconds) {
-  
+function printSeconds() {
+
+  let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  //console.log(seconds);
   secDecElement.innerHTML = seconds[0];
-  secDecElement.innerHTML = seconds[1];
+  secUniElement.innerHTML = seconds[1];
 
 }
 
@@ -38,7 +43,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+ 
 }
 
 function clearSplits() {
@@ -62,6 +67,8 @@ function setStartBtn() {
   let startBtn = document.querySelector('#btnLeft');
   startBtn.setAttribute('class', 'btn start');
   startBtn.textContent = "START";
+  
+  
 
 }
 
@@ -75,17 +82,17 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   
-/*   if (btnRightElement.className === 'btn stop'){
-    btnLeftElement.classList.toggle("btn start");
-  } else {
-    btnLeftElement.classList.toggle("btn stop");
-  } */
-
   if (btnLeftElement.className === 'btn stop') {
+    chronometer.stop();
     setStartBtn();
   } else {
+    chronometer.start(printTime);
     setStopBtn();
   }
+
+  
+
+
 
   
 
@@ -94,13 +101,6 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   
-  /* if (btnRightElement.className === 'btn reset') {
-    btnRightElement.classList.toggle("btn split");
-  } else {
-    btnRightElement.classList.toggle("btn reset");
-  } */
-
-
   if (btnRightElement.className === 'btn reset') {
     setSplitBtn();
   } else {
