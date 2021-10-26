@@ -1,3 +1,5 @@
+const Chronometer = require("./chronometer");
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -14,11 +16,13 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+/*   const start = btnLeftElement
+  play.onclick = (event) => {
+    Chronometer.start
+} */
 }
-
 function printMinutes() {
-  // ... your code goes here
+  
 }
 
 function printSeconds() {
