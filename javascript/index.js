@@ -90,6 +90,20 @@ function setResetBtn() {
 
 }
 
+function colorAnimation() {
+  let animatedElement = document.querySelector('#sphere');
+  animatedElement.setAttribute('class', 'sphere-animation');
+  let animatedElement2 = document.querySelector('#clock');
+  animatedElement2.setAttribute('class', 'clock-animation');
+}
+
+function resetColorAnimation() {
+  let animatedElement = document.querySelector('#sphere');
+  animatedElement.removeAttribute('class', 'sphere-animation');
+  let animatedElement2 = document.querySelector('#clock');
+  animatedElement2.removeAttribute('class', 'clock-animation');
+}
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   
@@ -97,11 +111,13 @@ btnLeftElement.addEventListener('click', () => {
     chronometer.stop();
     setStartBtn();
     setResetBtn();
+    resetColorAnimation();
     
   } else {
     chronometer.start(printTime);
     setStopBtn();
     setSplitBtn();
+    colorAnimation();
   }
 
   

@@ -20,7 +20,7 @@ class Chronometer {
         if (this.currentMilliseconds === 99) {
           this.currentMilliseconds = 0;
         }
-      }, 1);
+      }, 10);
   
       
   }
