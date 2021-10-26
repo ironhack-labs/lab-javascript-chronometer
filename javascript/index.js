@@ -16,7 +16,7 @@ const splitsElement = document.getElementById('splits');
 // flag for chronometer
 let stopped = true;
 // ID for printTime
-let printInterval;
+let printIntervalId;
 
 function printTime() {
   printIntervalId = setInterval (()=>{
@@ -43,11 +43,16 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const li = document.createElement('li');
+  li.innerText = chronometer.split();
+  splitsElement.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  //Remove lis from OL
+  while (splitsElement.hasChildNodes()) {  
+    splitsElement.removeChild(splitsElement.firstChild);
+  }
 }
 
 function setStopBtn() {
@@ -101,5 +106,14 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(stopped){
+    // Reset the chronometer
+    chronometer.reset();
+    printMinutes();
+    printSeconds();
+    clearSplits();
+  } else {
+    // Made a li in OL with current time
+    printSplit();
+  }
 });
