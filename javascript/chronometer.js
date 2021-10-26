@@ -12,12 +12,12 @@ class Chronometer {
 
   getMinutes() {
     const howManyMinutes = this.currentTime / 60
-    return parseFloat((howManyMinutes).toFixed(0))
+    return Math.floor(howManyMinutes)
   }
 
   getSeconds() {
     const howManySeconds = this.currentTime % 60
-    return parseFloat((howManySeconds).toFixed(0))
+    return Math.floor(howManySeconds)
   }
 
   computeTwoDigitNumber(value) {
@@ -29,9 +29,7 @@ class Chronometer {
   }
 
   stop() {
-    setTimeout(() => {
-      clearInterval(this.intervalId )
-    })
+     clearInterval(this.intervalId )
   }
 
   reset() {
@@ -39,7 +37,9 @@ class Chronometer {
   }
 
   split() {
-    // ... your code goes here
+    const currentMinutes = this.computeTwoDigitNumber(this.getMinutes())
+    const currentSeconds = this.computeTwoDigitNumber(this.getSeconds())
+    return `${currentMinutes}:${currentSeconds}`
   }
 }
 
