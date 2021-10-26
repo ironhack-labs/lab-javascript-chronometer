@@ -32,9 +32,9 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #splits-container {
@@ -48,7 +48,19 @@ body {
   padding-bottom: 5px;
   text-align: right;
 }
-
+.oculta {
+  width: 0%;
+}
+.enseñar {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.enseñar2 {
+  width: 50%;
+  padding-top: 20px;
+  display: block;
+  margin: auto;
+}
 #milliseconds {
   font-size: 36px;
   position: absolute;
@@ -87,7 +99,7 @@ body {
 }
 
 .number {
-  width:40px;
+  width: 40px;
 }
 
 .btn {

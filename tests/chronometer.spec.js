@@ -168,32 +168,30 @@ describe('Chronometer', () => {
       expect(typeof chronometer.split).toEqual('function');
     });
 
-    it('should return valid format with minutes and seconds', () => {
-      chronometer.currentTime = 5;
-      expect(chronometer.split()).toEqual(`00:05`);
-      chronometer.currentTime = 17;
-      expect(chronometer.split()).toEqual(`00:17`);
-      chronometer.currentTime = 60;
-      expect(chronometer.split()).toEqual(`01:00`);
-      chronometer.currentTime = 135;
-      expect(chronometer.split()).toEqual(`02:15`);
-      chronometer.currentTime = 135;
-      expect(chronometer.split()).toEqual(`02:15`);
-      chronometer.currentTime = 800;
-      expect(chronometer.split()).toEqual(`13:20`);
-    });
-
-    // If you decide to work on the bonus iteration,
-    // comment the previous test and uncomment the following
-    // it('should return valid format with minutes, seconds and milliseconds', () => {
-    //   let min = chronometer.getMinutes();
-    //   let sec = chronometer.getSeconds();
-    //   let milli = chronometer.getMilliseconds();
-    //   if (min < 10) {
-    //     expect(chronometer.split()).toEqual(`0${min}:0${sec}:0${milli}`);
-    //   } else {
-    //     expect(chronometer.split()).toEqual(`${min}:${sec}:${milli}`);
-    //   }
+    // it('should return valid format with minutes and seconds', () => {
+    //   chronometer.currentTime = 5;
+    //   expect(chronometer.split()).toEqual(`00:05`);
+    //   chronometer.currentTime = 17;
+    //   expect(chronometer.split()).toEqual(`00:17`);
+    //   chronometer.currentTime = 60;
+    //   expect(chronometer.split()).toEqual(`01:00`);
+    //   chronometer.currentTime = 135;
+    //   expect(chronometer.split()).toEqual(`02:15`);
+    //   chronometer.currentTime = 135;
+    //   expect(chronometer.split()).toEqual(`02:15`);
+    //   chronometer.currentTime = 800;
+    //   expect(chronometer.split()).toEqual(`13:20`);
     // });
+
+    it('should return valid format with minutes, seconds and milliseconds', () => {
+      let min = chronometer.getMinutes();
+      let sec = chronometer.getSeconds();
+      let milli = chronometer.getMilliseconds();
+      if (min < 10) {
+        expect(chronometer.split()).toEqual(`0${min}:0${sec}:0${milli}`);
+      } else {
+        expect(chronometer.split()).toEqual(`${min}:${sec}:${milli}`);
+      }
+    });
   });
 });
