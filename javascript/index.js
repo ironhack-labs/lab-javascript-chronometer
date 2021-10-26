@@ -47,9 +47,9 @@ function printSeconds() {
 function printMilliseconds() {
   let milisecs = chronometer.computeTwoDigitNumber(
     chronometer.milisecs
-  );
-  milDecElement.innerText = milisecs[0];
-  milUniElement.innerText = milisecs[1];
+  )
+  milDecElement.innerText = milisecs[0]
+  milUniElement.innerText = milisecs[1]
 }
 
 function printSplit() {
@@ -64,7 +64,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  splitsElement.innerHTML = "";
+  splitsElement.innerHTML = ""
 }
 
 function setStopBtn() {
