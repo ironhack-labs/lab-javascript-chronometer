@@ -4,31 +4,31 @@ class Chronometer {
     this.intervalId = null;
   }
 
-  getSimpleTime (){
+  getSimpleTime() {
     return this.currentTime;
   }
 
   start(callback) {
     this.intervalId = setInterval(() => {
-        if (callback){ callback()};
-        this.currentTime++;
-      }, 1000);
-      
+      this.currentTime++;
+      if (callback) { callback() };
+    }, 1000);
+
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime/60);
+    return Math.floor(this.currentTime / 60);
   }
- 
+
   getSeconds() {
     return (this.currentTime % 60);
   }
 
   computeTwoDigitNumber(value) {
-    if (value < 10 ){
-      return "0"+value;
+    if (value < 10) {
+      return "0" + value;
     } else {
-      return "" +value;
+      return "" + value;
     }
   }
 
