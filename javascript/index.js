@@ -16,17 +16,22 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-/*   const start = btnLeftElement
-  play.onclick = (event) => {
-    Chronometer.start
-} */
+  setInterval(() => {
+
+    printSeconds()
+    printMinutes()
+  }, 1000)
 }
 function printMinutes() {
-  
+  let minutes = chronometer.getMinutes();
+  minDecElement.innerText = minutes[0];
+  minUniElement.innerText = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+let seconds = chronometer.getSeconds();
+secDecElement.innerText = seconds[0]
+secUniElement.innerText = seconds[1]
 }
 
 // ==> BONUS
@@ -35,35 +40,41 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
 }
+
 
 function clearSplits() {
   // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    btnLeftElement.innerText = 'STOP'
+    btnLeftElement.className = 'btn stop'
+ 
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+
+    btnRightElement.innerText = 'SPLIT'
+    btnRightElement.className = 'btn split'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = 'START'
+  btnLeftElement.className = 'btn start'
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = 'RESET'
+  btnLeftElement.className = 'btn reset'
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  
+})
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
 });

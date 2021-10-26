@@ -40,14 +40,13 @@ class Chronometer {
   }
 
   split() {
-    const mins = minutes()
-    const secs = seconds()
+ 
 
-    const minsWell = number(mins)
-    const secsWell = number(secs)
+    const minsWell = this.computeTwoDigitNumber(this.getMinutes())
+    const secsWell = this.computeTwoDigitNumber(this.getSeconds())
 
 
-    return (minsWell + ':' + secsWell)
+    return `${minsWell}:${secsWell}`
     /* '90'
     const splitTime = this.currentTime.toString()
     const splitThis = splitTime.padStart(2, "0")
