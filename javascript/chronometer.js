@@ -1,7 +1,8 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 55
+    this.currentTime = 0
     this.intervalId = null
+    this.milisecs = 0
   }
 
   start(callback) {
@@ -9,8 +10,12 @@ class Chronometer {
       if (callback) {
         callback()
       } 
-        this.currentTime += 1
-      }, 1000)
+      this.currentTime += 1
+    }, 1000)
+
+    this.miliInterval = setInterval(() => {
+      this.milisecs++
+    }, 1)
   }
 
   getMinutes() {
@@ -38,10 +43,12 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId)
+    clearInterval(this.miliInterval)
   }
 
   reset() {
     this.currentTime = 0
+    this.milisecs = 0
   }
 
   split() {
