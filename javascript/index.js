@@ -19,10 +19,10 @@ function printTime(myChronometer) {
 	
 	const seconds = myChronometer.computeTwoDigitNumber(myChronometer.getSeconds());
 	const minutes = myChronometer.computeTwoDigitNumber(myChronometer.getMinutes());
-	const milliseconds = myChronometer.computeTwoDigitNumber(myChronometer.getMilliSeconds());
+	
 	printSeconds(seconds);
 	printMinutes(minutes);
-	printMilliseconds(milliseconds)
+	
 }
 
 function getDec(time){
@@ -34,19 +34,20 @@ function getUni(time) {
 }
 
 function printMinutes(minutes) {
+	
 	minUniElement.innerHTML = getUni(minutes);
 	minDecElement.innerHTML = getDec(minutes)
 }
 
 function printSeconds(seconds) {
+
 	secUniElement.innerHTML = getUni(seconds);
 	secDecElement.innerHTML = getDec(seconds);
 }
 
 // ==> BONUS
-function printMilliseconds(milliseconds) {
-	milUniElement.innerHTML = getUni(milliseconds);
-	milDecElement.innerHTML = getDec(milliseconds)
+function printMilliseconds() {
+
 }
 
 function printSplit(myChronometer) {
@@ -103,6 +104,7 @@ btnLeftElement.addEventListener('click', () => {
 		window.setInterval(() => {
 			printTime(chronometer);
 		}, 1000);
+
 	}
 	else{
 		

@@ -22,7 +22,7 @@ class Chronometer {
 	}
 
 	getMilliSeconds() {
-		return parseFloat((this.currentTime / 1000).toFixed(2));
+		return parseFloat((this.currentTime).toFixed());
 	}
 
 	computeTwoDigitNumber(value) {
