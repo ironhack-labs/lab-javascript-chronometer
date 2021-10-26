@@ -51,32 +51,36 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = "STOP";
+  btnLeftElement.classList.remove('start')
+  btnLeftElement.classList.add('stop')
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerText = "SPLIT";
+  btnRightElement.classList.remove('reset')
+  btnRightElement.classList.add('split')
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = "START";
+    btnLeftElement.classList.remove('stop')
+    btnLeftElement.classList.add('start')
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerText = "RESET";
+  btnRightElement.classList.remove('split')
+  btnRightElement.classList.add('reset')
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if(stopped) {
     // change left btn
-    btnLeftElement.innerText = "STOP";
-    btnLeftElement.classList.remove('start')
-    btnLeftElement.classList.add('stop')
+    setStopBtn();
     // change right btn
-    btnRightElement.innerText = "SPLIT";
-    btnRightElement.classList.remove('reset')
-    btnRightElement.classList.add('split')
+    setSplitBtn()
     // update flag
     stopped = false;
     // start chronometer
@@ -84,13 +88,9 @@ btnLeftElement.addEventListener('click', () => {
     printTime();
   } else {
     // change left btn
-    btnLeftElement.innerText = "START";
-    btnLeftElement.classList.remove('stop')
-    btnLeftElement.classList.add('start')
+    setStartBtn()
     // change right btn
-    btnRightElement.innerText = "RESET";
-    btnRightElement.classList.remove('split')
-    btnRightElement.classList.add('reset')
+    setResetBtn();
     // update flag
     stopped = true;
     // stop chronometer
