@@ -58,32 +58,62 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  
+
+  chronometer.start();
+   
   const ltBtnClick = document.getElementById("btnLeft");
 
-  if (ltBtnClick.className === 'btn stop') {
+  const rtBtnClick = document.getElementById("btnRight");
 
-    ltBtnClick.innerHTML = "START";
-    ltBtnClick.style.background = "#5fca5f";
-    ltBtnClick.classList.add ('btn stop');
+  // switch (ltBtnClick.className === 'btn start') {
+
+  // case ltBtnClick.className === 'btn start':
+  //   ltBtnClick.innerHTML = "STOP";
+  //   ltBtnClick.style.background = "red";
+  //   ltBtnClick.classList.toggle('btn-stop');
+  //   break;
+
+  // case ltBtnClick.className === 'btn start btn-stop':
+  //   ltBtnClick.innerHTML = "START";
+  //   ltBtnClick.style.background = "#5fca5f";
+  //   ltBtnClick.classList.toggle('btn-stop');
+  //   break;
+
+  // }
+
+   if (ltBtnClick.className === 'btn start') {
+
+     ltBtnClick.innerHTML = "STOP";
+     ltBtnClick.style.background = "red";
+     ltBtnClick.classList.toggle('btn.stop');
+
+     rtBtnClick.innerHTML = "SPLIT";
+     rtBtnClick.style.background = "blue";
+     rtBtnClick.classList.toggle('btn.split');
+
+   } else {
+
+   ltBtnClick.innerHTML = "START";
+   ltBtnClick.style.background = "#5fca5f";
+   ltBtnClick.classList.toggle('btn.stop');
+
+   rtBtnClick.innerHTML = "RESET";
+    rtBtnClick.style.background = "grey";
+    rtBtnClick.classList.toggle('btn.reset');
 
   }
 
-  // ltBtnClick.innerHTML = "STOP";
-  // ltBtnClick.style.background = "red";
-  // ltBtnClick.classList.add('btn stop');
-
-  const rtBtnClick = document.getElementById("btnRight");
-  rtBtnClick.innerHTML = "SPLIT";
-  rtBtnClick.style.background = "blue";
-  ltBtnClick.classList.add('btn split');
-
-
+    console.log(chronometer.start());
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+
+  const ltBtnClickReset = document.getElementById("btnLeft");
+
+  const rtBtnClickReset = document.getElementById("btnRight");
   
+
   // const rtBtnClick = document.getElementById("btnRight");
   // rtBtnClick.innerHTML = "SPLIT";
   // rtBtnClick.style.background = "blue";
