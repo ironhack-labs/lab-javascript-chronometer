@@ -39,9 +39,6 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
 
-    milDecElement.textContent = chronometer.split().charAt(6)
-    milUniElement.textContent = chronometer.split().charAt(7)
-  // ... your code goes here
 }
 
 function printSplit() {
