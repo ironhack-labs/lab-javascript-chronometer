@@ -13,20 +13,34 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+
 function printTime() {
-  // ... your code goes here
+  setInterval(()=>{
+    printMilliseconds()
+    printMinutes()
+    printSeconds()
+
+  },1)
 }
 
 function printMinutes() {
+  minDecElement.textContent = chronometer.split().charAt(0)
+    minUniElement.textContent = chronometer.split().charAt(1)
   // ... your code goes here
 }
 
 function printSeconds() {
+  secDecElement.textContent = chronometer.split().charAt(3)
+    secUniElement.textContent = chronometer.split().charAt(4)
   // ... your code goes here
 }
 
 // ==> BONUS
 function printMilliseconds() {
+
+    milDecElement.textContent = chronometer.split().charAt(6)
+    milUniElement.textContent = chronometer.split().charAt(7)
   // ... your code goes here
 }
 
@@ -56,10 +70,43 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  if(btnLeftElement.textContent === "START")
+  {
+    chronometer.start()
+    printTime()
+    btnLeftElement.textContent = "STOP"
+    btnLeftElement.classList.replace("start", "stop")
+    btnRightElement.textContent = "SPLIT"
+    btnRightElement.classList.replace("reset", "split")
+
+  }
+  else if(btnLeftElement.textContent === "STOP")
+  {
+    chronometer.stop()
+    btnLeftElement.textContent = "START"
+    btnRightElement.textContent = "RESET"
+    btnLeftElement.classList.replace("stop", "start")
+    btnRightElement.classList.replace("split", "reset")
+  }
 });
+
+console.log('hola')
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRightElement.textContent === "RESET")
+  {
+    chronometer.reset()
+  }
+  else if(btnRightElement.textContent === "SPLIT")
+  {
+    console.log('hola')
+    let newElement = document.querySelector("#splits")
+    let newList = document.createElement("li")
+    newList.innerHTML = chronometer.split()
+    newElement.appendChild(newList)
+
+  }
 });
+
