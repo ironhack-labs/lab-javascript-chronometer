@@ -12,14 +12,14 @@ class Chronometer {
 
   getMinutes() {
     let howManyMinutes = this.currentTime / 60;
-    let totalMinutes = Math.floor(howManyMinutes) 
+    let totalMinutes = Math.floor(howManyMinutes); 
     
     return totalMinutes;
     
   }
 
   getSeconds() {
-    return this.currentTime % 60
+    return this.currentTime % 60;
 
   }
 
@@ -40,13 +40,13 @@ class Chronometer {
 
   split() {
     
-    let paddedMinutes = this.computeTwoDigitNumber(this.getMinutes())
+    let paddedMinutes = this.computeTwoDigitNumber(this.getMinutes());
     let paddedSeconds = this.computeTwoDigitNumber(this.getSeconds());
 
-    let minutesAndSeconds = `${paddedMinutes}:${paddedSeconds}`
-    console.log(minutesAndSeconds);
+    let minutesAndSeconds = `${paddedMinutes}:${paddedSeconds}`;
+    //console.log(minutesAndSeconds);
 
-    return minutesAndSeconds
+    return minutesAndSeconds;
   }
 }
 
