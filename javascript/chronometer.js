@@ -28,12 +28,20 @@ class Chronometer {
 
   getMinutes() {
 
-    return Math.floor(this.getSeconds()/60)
+    return Math.floor(Math.floor(this.currentTime/100)/60)
     // ... your code goes here
   }
 
   getSeconds() {
-    return Math.floor(this.currentTime/100)
+    if(Math.floor(this.currentTime/100) < 60)
+    {
+       return Math.floor(this.currentTime/100)
+    }
+    else
+    {
+      return (Math.floor(this.currentTime/100)%60)
+    }
+   
   }
 
   computeTwoDigitNumber(value) {
@@ -63,8 +71,7 @@ class Chronometer {
   }
 
   split() {
-    console.log (this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds()) + ":" + this.computeTwoDigitNumber(this.getMiliSeconds()))
-    return (this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds()) + ":" + this.computeTwoDigitNumber(this.getMiliSeconds()))
+   return (this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds()) + ":" + this.computeTwoDigitNumber(this.getMiliSeconds()))
     // ... your code goes here
   }
 }
