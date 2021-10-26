@@ -14,7 +14,9 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  
+chronometer.getMinutes();
+
 }
 
 function printMinutes() {
@@ -56,10 +58,35 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  const ltBtnClick = document.getElementById("btnLeft");
+
+  if (ltBtnClick.className === 'btn stop') {
+
+    ltBtnClick.innerHTML = "START";
+    ltBtnClick.style.background = "#5fca5f";
+    ltBtnClick.classList.add ('btn stop');
+
+  }
+
+  // ltBtnClick.innerHTML = "STOP";
+  // ltBtnClick.style.background = "red";
+  // ltBtnClick.classList.add('btn stop');
+
+  const rtBtnClick = document.getElementById("btnRight");
+  rtBtnClick.innerHTML = "SPLIT";
+  rtBtnClick.style.background = "blue";
+  ltBtnClick.classList.add('btn split');
+
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  // const rtBtnClick = document.getElementById("btnRight");
+  // rtBtnClick.innerHTML = "SPLIT";
+  // rtBtnClick.style.background = "blue";
+  // rtBtnClick.classList.add('btn reset');
+
 });
