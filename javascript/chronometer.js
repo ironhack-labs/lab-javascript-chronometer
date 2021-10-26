@@ -4,30 +4,34 @@ class Chronometer {
     this.intervalId = null;
   }
 
-
+  getSimpleTime (){
+    return this.currentTime;
+  }
 
   start(callback) {
     this.intervalId = setInterval(() => {
+        if (callback){ callback()};
         this.currentTime++;
-        if (callback){ callback};
       }, 1000);
+      
   }
 
   getMinutes() {
     return Math.floor(this.currentTime/60);
   }
-
+ 
   getSeconds() {
     return (this.currentTime % 60);
   }
 
   computeTwoDigitNumber(value) {
-    if (value > 10 ){
-      return ""+value;
+    if (value < 10 ){
+      return "0"+value;
     } else {
-      return "0" +value;
+      return "" +value;
     }
   }
+
 
   stop() {
     clearInterval(this.intervalId);
@@ -45,6 +49,8 @@ class Chronometer {
     let totalReturn = `${totalMin}:${totalSec}`
     return totalReturn;
   }
+
+
 }
 
 // The following is required to make unit tests work.
