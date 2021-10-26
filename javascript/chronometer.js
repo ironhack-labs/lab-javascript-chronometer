@@ -19,16 +19,7 @@ class Chronometer {
   }
 
   getSeconds() {
-    
-    if (this.currentTime === 0) {
-      return 0;
-    }
-    
-    let howManySeconds = 0;
-    if (this.currentTime > 60) {
-      howManySeconds = this.currentTime % 60;
-    }
-    return howManySeconds;
+    return this.currentTime % 60
 
   }
 
@@ -40,15 +31,22 @@ class Chronometer {
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    
+    let paddedMinutes = this.computeTwoDigitNumber(this.getMinutes())
+    let paddedSeconds = this.computeTwoDigitNumber(this.getSeconds());
+
+    let minutesAndSeconds = `${paddedMinutes}:${paddedSeconds}`
+    console.log(minutesAndSeconds);
+
+    return minutesAndSeconds
   }
 }
 
