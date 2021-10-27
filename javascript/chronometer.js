@@ -46,6 +46,8 @@ class Chronometer {
   reset() {
     this.currentTime = 0
     this.currentMilliseconds = 0
+    printTime()
+    printMilliseconds()
   }
 
   split() {
