@@ -9,20 +9,26 @@ const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
 const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
-const milDecElement = document.getElementById('milDec');
-const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
+// const milDecElement = document.getElementById('milDec');
+// const milUniElement = document.getElementById('milUni');
+// const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes()) //Get the minutes, compute to two digits
+  minDecElement.innerHTML = minutes[0]
+  minUniElement.innerHTML = minutes[1]
+  
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds()) //Do the same but with seconds
+  secDecElement.innerHTML = seconds[0]
+  secUniElement.innerHTML = seconds[1]
 }
 
 // ==> BONUS
@@ -42,8 +48,8 @@ function setStopBtn() {
   btnLeftElement.classList.remove('start')
   btnLeftElement.classList.add('stop')
   btnLeftElement.innerText = 'STOP'
-  chronometer.start()
-}
+  chronometer.start(printTime) //No parenthesis is used to start the function, if you use ()
+}                             //it'll use whatever printTime returns
 
 function setSplitBtn() {
   // ... your code goes here
@@ -68,5 +74,5 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  btnRightElement.innerText = 'SPLIT'
+  
 });
