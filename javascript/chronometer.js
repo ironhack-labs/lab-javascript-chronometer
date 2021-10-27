@@ -4,7 +4,7 @@ class Chronometer {
 
   constructor() {
     this.currentTime= 0;
-    this.intervalId=null
+    this.intervalId=null;
   };
 
   start(callback) {
@@ -34,6 +34,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId); 
+    this.intervalId =null;
   }
 
   reset() {
