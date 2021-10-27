@@ -126,6 +126,8 @@ body {
 }
 
 .btn.start, 
-.btn.reset {
+.btn.reset,
+.btn.stop,
+.btn.split {
   font-size: 15px;
 }
