@@ -80,5 +80,12 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-
+  if (btnRightElement.classList.contains("split")){
+    const splitLine = document.createElement("li");
+    splitsElement.appendChild(splitLine);
+    splitLine.innerText = chronometer.split();
+  }else{
+    // TODO RESET
+  }
+ 
 });
