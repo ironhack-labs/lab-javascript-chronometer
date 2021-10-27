@@ -61,6 +61,7 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains('start')) {
     chronometer.start(printTime);
+
   } else {
     chronometer.stop();
   }
@@ -85,7 +86,11 @@ btnRightElement.addEventListener('click', () => {
     splitsElement.appendChild(splitLine);
     splitLine.innerText = chronometer.split();
   }else{
-    // TODO RESET
+    chronometer.reset();
+    printTime();
+    const removeSplits = document.querySelectorAll("#splits li");
+    for( let i = 0; i<removeSplits.length;i++){
+       splitsElement.removeChild(removeSplits[i]);
+    }
   }
- 
 });
