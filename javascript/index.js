@@ -22,7 +22,8 @@ function printTime() {
   printIntervalId = setInterval (()=>{
     printMinutes();
     printSeconds();
-  }, 1000);
+    printMilliseconds();
+  }, 10);
 }
 
 function printMinutes() {
@@ -39,7 +40,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const miliseconds = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds());
+  milDecElement.innerText = miliseconds[0];
+  milUniElement.innerText = miliseconds[1];
 }
 
 function printSplit() {
@@ -111,6 +114,7 @@ btnRightElement.addEventListener('click', () => {
     chronometer.reset();
     printMinutes();
     printSeconds();
+    printMilliseconds();
     clearSplits();
   } else {
     // Made a li in OL with current time

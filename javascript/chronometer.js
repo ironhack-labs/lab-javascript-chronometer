@@ -3,7 +3,7 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = null;
   }
-  // Increment currentTime every second
+  // Increment currentTime every 10 miliseconds
   start(callback) {
     this.intervalId = setInterval(() => {
       if(callback){
@@ -11,15 +11,18 @@ class Chronometer {
       } else {
         this.currentTime++;
       }   
-    }, 1000);
+    }, 10);
   }
   // Calculate minutes passed
   getMinutes() {
-    return Math.floor(this.currentTime/60);
+    return Math.floor(this.currentTime/6000);
   }
   // Calculate seconds that have passed after the start of the current minute.
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor((this.currentTime / 100) % 60);
+  }
+  getMiliseconds(){
+    return this.currentTime % 100;
   }
   // Transform value received into a string with two digits
   computeTwoDigitNumber(value) {
@@ -33,11 +36,12 @@ class Chronometer {
   reset() {
     this.currentTime = 0;
   }
-  // Return a string with currentTime formatted as "mm:ss"
+  // Return a string with currentTime formatted as "mm:ss:msms"
   split() {
     const minutes = this.computeTwoDigitNumber(this.getMinutes(this.currentTime));
     const seconds = this.computeTwoDigitNumber(this.getSeconds(this.currentTime));
-    return `${minutes}:${seconds}`;
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds(this.currentTime));
+    return `${minutes}:${seconds}:${miliseconds}`;
   }
 }
 
