@@ -1,7 +1,9 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0
+    this.currentMillis = 0
     this.intervalId = null
+    this.milliInterval = null
   }
 
   start(callback) {
@@ -11,6 +13,15 @@ class Chronometer {
         callback()
       }
       this.currentTime++}, 1000)
+
+      this.milliInterval = setInterval(() => { //Create another interval to count the milliseconds
+        if (this.currentMillis < 100 ) { //When the milli counter reaches 100, a new second starts, so set it to 0
+          this.currentMillis++;
+        } else {
+          this.currentMillis = 0
+        }
+        printMilliseconds()
+      }, 10);
   }
 
   getMinutes() {
@@ -38,6 +49,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId)
+    clearInterval(this.milliInterval)
   }
 
   reset() {
@@ -45,10 +57,11 @@ class Chronometer {
   }
 
   split() {
-      const minutes = this.computeTwoDigitNumber(this.getMinutes()) //Get the minutes and seconds in string from the earlier methods
+      const minutes = this.computeTwoDigitNumber(this.getMinutes()) //Get the minutes, seconds and millis in string from the earlier methods
       const seconds = this.computeTwoDigitNumber(this.getSeconds())
+      const milliseconds = this.computeTwoDigitNumber(this.currentMillis)
 
-      return minutes + ':' + seconds //Concatenate
+      return minutes + ':' + seconds + ',' + milliseconds //Concatenate everything
   }
 }
 

@@ -9,8 +9,8 @@ const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
 const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
-// const milDecElement = document.getElementById('milDec');
-// const milUniElement = document.getElementById('milUni');
+const milDecElement = document.getElementById('milDec');
+const milUniElement = document.getElementById('milUni');
 // const splitsElement = document.getElementById('splits');
 
 function printTime() {
@@ -33,7 +33,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milliseconds = chronometer.computeTwoDigitNumber(chronometer.currentMillis)
+  milDecElement.innerText = milliseconds[0]
+  milUniElement.innerText = milliseconds[1]
 }
 
 function printSplit() {
