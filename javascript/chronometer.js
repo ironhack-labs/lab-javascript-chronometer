@@ -18,11 +18,14 @@ class Chronometer {
   }
 
   getSeconds() {
-    let sec = Math.floor(this.currentTime / 100)
+    let min = (this.currentTime / 100)/60
+   
+    
+    let sec = Math.floor((min - Math.floor(min))*60)
     return sec
   }
   getMiliseconds(){
-    console.log(this.currentTime)
+    
       let mil = this.currentTime % 100
       return mil
   }
@@ -47,7 +50,8 @@ class Chronometer {
   split() {
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
-    return `${minutes}:${seconds}`
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds())
+    return `${minutes}:${seconds}:${miliseconds}`
   }
 }
 
