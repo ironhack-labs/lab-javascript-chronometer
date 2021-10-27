@@ -7,7 +7,8 @@ class Chronometer {
 
   start(callback) {
     this.intervalId= setInterval(()=>{
-    return this.currentTime +=1
+      callback()
+    this.currentTime +=1
   }, 1000)
   }
 
