@@ -37,7 +37,15 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const splitList = document.getElementById('splits') //Target the splits list
+  let splitTime = chronometer.split() //Obtain the split
+
+  const splitElement = document.createElement('li') //Create the li tag that'll hold the split
+  splitElement.innerText = splitTime //Put the time inside the li tag
+  splitList.appendChild(splitElement) //Append it to the list
+
+  // const splitElement = `<li><span>${splitTime}</li>` //Template literals, can structure
+  // splitList.innerHTML += splitElement //Adds whats above inside the targeted HTML tag
 }
 
 function clearSplits() {
@@ -52,9 +60,7 @@ function setStopBtn() {
 }                             //it'll use whatever printTime returns
 
 function setSplitBtn() {
-  btnRightElement.classList.remove('reset')
-  btnRightElement.classList.add('split')
-  btnRightElement.innerText = 'SPLIT'
+  printSplit()
 }
 
 function setStartBtn() {
@@ -65,19 +71,19 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  btnRightElement.classList.remove('split')
-  btnRightElement.classList.add('reset')
-  btnRightElement.innerText = 'RESET'
+  
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  if(btnLeftElement.innerText === 'START') setStopBtn() //If the chronometer is started stop it, otherwise start it
-  else setStartBtn()
+  if(btnLeftElement.innerText === 'START') setStopBtn() //If the chronometer is started stop it
+  else setStartBtn() //If it's stopped, start it
 });
 
 // Reset/Split Button
+btnRightElement.classList.remove('reset') 
+btnRightElement.classList.add('split')
+btnRightElement.innerText = 'SPLIT'
 btnRightElement.addEventListener('click', () => {
-  if(btnRightElement.innerText === 'RESET') setSplitBtn()
-  else setResetBtn()
+  setSplitBtn()
 });
