@@ -124,3 +124,8 @@ body {
 .btn.split {
   background: #0851ab;
 }
+
+.btn.start, 
+.btn.reset {
+  font-size: 15px;
+}
