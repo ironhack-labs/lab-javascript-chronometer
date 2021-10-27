@@ -6,7 +6,8 @@ class Chronometer {
 
   start(callback) {
     this.intervalId = setInterval(()=>{
-      return this.currentTime += 1
+      callback()
+      this.currentTime += 1
     }, 1000)
   }
 
@@ -48,7 +49,3 @@ if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
 
-let x = 75
-x = x.toString()
-console.log(typeof x)
-console.log(x)

@@ -19,12 +19,15 @@ function printTime() {
 }
 
 function printMinutes() {
-  minDecElement.innerText = chronometer.computeTwoDigitNumber(getMinutes())
-  
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes())
+  minDecElement.innerText = minutes[0]
+  minUniElement.innerText = minutes[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+ const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds())
+  secDecElement.innerText = seconds[0]
+  secUniElement.innerText = seconds[1]
 }
 
 // ==> BONUS
@@ -48,24 +51,27 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  btnRightElement.classList.remove('reset')
-  btnRightElement.classList.add('split')
-  btnRightElement.innerText = 'SPLIT'
-  chronometer.split()
+  btnRightElement.classList.remove('split')
+  btnRightElement.classList.add('reset')
+  btnRightElement.innerText = 'Reset'
+  const li = document.createElement('li')
+  console.log(li.innerText = chronometer.split())
+  const myList = document.getElementById('split')
+  myList.appendChild(li)
 }
 
 function setStartBtn() {
   btnLeftElement.classList.remove('start')
   btnLeftElement.classList.add('stop')
   btnLeftElement.innerText = 'STOP'
-  chronometer.start()
-  printTime()
+  chronometer.start(printTime)
+  
 }
 
 function setResetBtn() {
-  btnRightElement.classList.remove('split')
-  btnRightElement.classList.add('reset')
-  btnRightElement.innerText = 'RESET'
+  btnRightElement.classList.remove('reset')
+  btnRightElement.classList.add('split')
+  btnRightElement.innerText = 'Split'
   chronometer.reset()
 }
 
@@ -81,9 +87,9 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
 if(btnRightElement.className === 'btn reset'){
-  setSplitBtn()
-}else if(btnRightElement.className === 'btn split'){
   setResetBtn()
+}else if(btnRightElement.className === 'btn split'){
+  setSplitBtn()
 }
   
 });
