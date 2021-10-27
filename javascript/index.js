@@ -32,7 +32,7 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  
 }
 
 function printSplit() {
@@ -43,7 +43,10 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  if(btnLeftElement.className === 'btn start'){
+   const li = document.getElementsByTagName('li')
+  // No puedo borrar el elemento li
+  }
 }
 
 function setStopBtn() {
@@ -58,7 +61,7 @@ function setSplitBtn() {
   btnRightElement.classList.add('reset')
   btnRightElement.innerText = 'Reset'
   printSplit()
-
+  
 }
 
 function setStartBtn() {
@@ -74,6 +77,7 @@ function setResetBtn() {
   btnRightElement.classList.add('split')
   btnRightElement.innerText = 'Split'
   chronometer.reset()
+  clearSplits()
 }
 
 // Start/Stop Button
