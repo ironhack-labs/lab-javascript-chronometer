@@ -17,7 +17,10 @@ function printTime() {
   setInterval(() => {
     printMinutes()
     printSeconds() 
-  }, 1000);
+    printMilliseconds()
+  }, 10);
+  
+  
   
   
 }
@@ -36,9 +39,15 @@ function printSeconds() {
   secUniElement.textContent = newsec[1]
 }
 
+
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let mil = chronometer.getMiliseconds()
+  const newmil = chronometer.computeTwoDigitNumber(mil)
+  console.log(newmil)
+
+   milDecElement.textContent = newmil[0]
+ milUniElement.textContent = newmil[1]
 }
 
 function printSplit() {
