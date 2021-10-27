@@ -52,7 +52,9 @@ function setStopBtn() {
 }                             //it'll use whatever printTime returns
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.classList.remove('reset')
+  btnRightElement.classList.add('split')
+  btnRightElement.innerText = 'SPLIT'
 }
 
 function setStartBtn() {
@@ -63,7 +65,9 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.classList.remove('split')
+  btnRightElement.classList.add('reset')
+  btnRightElement.innerText = 'RESET'
 }
 
 // Start/Stop Button
@@ -74,5 +78,6 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  
+  if(btnRightElement.innerText === 'RESET') setSplitBtn()
+  else setResetBtn()
 });
