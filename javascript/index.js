@@ -36,7 +36,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const li = document.createElement('li')
+  li.innerText = chronometer.split()
+  const myList = document.getElementById('split')
+  myList.appendChild(li)
 }
 
 function clearSplits() {
@@ -54,10 +57,8 @@ function setSplitBtn() {
   btnRightElement.classList.remove('split')
   btnRightElement.classList.add('reset')
   btnRightElement.innerText = 'Reset'
-  const li = document.createElement('li')
-  console.log(li.innerText = chronometer.split())
-  const myList = document.getElementById('split')
-  myList.appendChild(li)
+  printSplit()
+
 }
 
 function setStartBtn() {
