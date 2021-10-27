@@ -39,7 +39,10 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.classList.remove('start')
+  btnLeftElement.classList.add('stop')
+  btnLeftElement.innerText = 'STOP'
+  chronometer.start()
 }
 
 function setSplitBtn() {
@@ -47,7 +50,10 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.classList.remove('stop')
+  btnLeftElement.classList.add('start')
+  btnLeftElement.innerText = 'START'
+  chronometer.stop()
 }
 
 function setResetBtn() {
@@ -56,10 +62,11 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnLeftElement.innerText === 'START') setStopBtn() //If the chronometer is started stop it, otherwise start it
+  else setStartBtn()
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  btnRightElement.innerText = 'SPLIT'
 });
