@@ -1,6 +1,6 @@
 class Chronometer {
   constructor() {
-    this.currentTime = 0
+    this.currentTime = 1
     this.currentMillis = 0
     this.intervalId = null
     this.milliInterval = null

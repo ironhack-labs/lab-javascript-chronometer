@@ -53,7 +53,10 @@ function printSplit() {
 function clearSplits() {
   const splitList = document.getElementById('splits') //Target the splits list
   splitList.innerHTML = '' //This line empties out everything inside an HTML tag, so it can be used
-}                          //to delete all it's internal tags
+                           //to delete all it's internal tags
+
+
+}                          
 
 function setStopBtn() {
   btnLeftElement.classList.remove('start')
