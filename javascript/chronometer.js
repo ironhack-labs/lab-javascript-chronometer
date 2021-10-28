@@ -14,22 +14,25 @@ class Chronometer {
       if (callback) callback();
       this.currentTime += 1;
       //this.currentTime++
-    }, 1000);
+    }, 10);
   }
 
   getMinutes() {
-    let minutes = Math.floor(this.currentTime / 60);
+    let minutes = Math.floor(this.currentTime / 100 / 60);
     return minutes;
     // ... your code goes here
   }
 
   getSeconds() {
-    return this.currentTime % 60;
+    let minutes = this.currentTime / 100 / 60;
+
+    let seconds = Math.floor((minutes - Math.floor(minutes)) * 60);
+    return seconds;
     // ... your code goes here
   }
 
   getMilliseconds() {
-    return Math.round(this.currentTime % 100);
+    return this.currentTime % 100;
   }
 
   computeTwoDigitNumber(value) {
@@ -52,17 +55,11 @@ class Chronometer {
     //Remember you can use a function within a function and pass the return as an argument for another function
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
-
-    return `${minutes}:${seconds}`;
+    const milliseconds = this.computeTwoDigitNumber(this.getMilliseconds());
+    return `${minutes}:${seconds}: ${milliseconds}`;
   }
 }
 
-// let cr = new Chronometer();
-// cr.start();
-// cr.getMinutes();
-// console.log(cr.start());
-// console.log(cr.getSeconds());
-// console.log('mamma');
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {

@@ -1,3 +1,5 @@
+// --------------  UI -------------------- //
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -25,9 +27,10 @@ function printTime() {
 
     minUniElement.innerText = minutes[1];
     minDecElement.innerText = minutes[0];
+
+    printMilliseconds();
   }),
-    1000;
-  // ... your code goes here
+    10;
 }
 
 // function printMinutes() {
@@ -40,22 +43,18 @@ function printTime() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
-
   let milliseconds = chronometer.computeTwoDigitNumber(
-    chronometer.currentMilliseconds
+    chronometer.getMilliseconds()
   );
   milDecElement.textContent = milliseconds[0];
   milUniElement.textContent = milliseconds[1];
 }
 
 function printSplit() {
-  // ... your code goes here
   // btnRightElement.innerText = 'SPLIT';
   // btnRightElement.className = 'btn split';
   let node = document.createElement('li');
   var textnode = document.createTextNode(`${chronometer.split()} `);
-
   node.appendChild(textnode);
   document.getElementById('splits').appendChild(node);
 }
@@ -95,6 +94,7 @@ btnLeftElement.addEventListener('click', () => {
     chronometer.stop();
   }
 });
+
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   if (btnRightElement.innerText === 'SPLIT') printSplit();
