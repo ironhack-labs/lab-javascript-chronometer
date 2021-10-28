@@ -50,7 +50,8 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  let lisElements = splitsElement.querySelectorAll('li')
+  lisElements.forEach( (li) => li.remove() ) 
 }
 
 function setStopBtn() {
@@ -66,8 +67,6 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  let lisElements = splitsElement.querySelectorAll('li')
-  lisElements.forEach( (li) => li.remove() ) 
 }
 
 // Start/Stop Button
@@ -103,7 +102,7 @@ btnRightElement.addEventListener('click', () => {
 
   } else {
     chronometer.reset()
-    setResetBtn()
+    clearSplits()
   }
 
 });
