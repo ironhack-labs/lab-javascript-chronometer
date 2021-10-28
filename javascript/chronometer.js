@@ -53,7 +53,7 @@ class Chronometer {
   split() {
     let mins = this.computeTwoDigitNumber(this.getMinutes())
     let secs = this.computeTwoDigitNumber(this.getSeconds())
-    return `${mins}:${secs}`
+    return `${mins}:${secs}:${chronometer.currentMilliseconds}`
   }
 }
 
