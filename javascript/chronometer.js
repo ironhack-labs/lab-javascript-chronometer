@@ -12,7 +12,7 @@ class Chronometer {
       if (callback){
         callback()
       }
-    },1000)
+    },1)
   }
 
   getMinutes() {
@@ -46,8 +46,8 @@ class Chronometer {
 
   split() {
     // ... your code goes here
-    let getMinute = this.computeTwoDigitNumber(this.getMinutes)
-    let getSecond = this.computeTwoDigitNumber(this.getSeconds)
+    let getMinute = this.computeTwoDigitNumber(this.getMinutes())
+    let getSecond = this.computeTwoDigitNumber(this.getSeconds())
     return `${getMinute}:${getSecond}`
   }
 }
