@@ -44,7 +44,7 @@ Please, open your terminal, change directories into the root of the lab, and run
 
 To see more details about failing tests, open the `tests/chronometer.spec.js` file.
 
-## Instructions
+## Instruction
 
 To kick-off, we are provided with the following files and folders:
 
@@ -72,9 +72,8 @@ We have also created the clock to let you focus on the JavaScript portion of thi
   <summary> Click here </summary>
 
 ![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
+
 </details>
-
-
 
 **This lab is primarily split into two main parts**:
 
@@ -209,11 +208,8 @@ Using our `Chronometer` methods to get the values, this should be easy!
   <summary> Click here </summary>
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png)
-    
+
 </details>
-
-
-
 
 ### Iteration 3: Split time
 
@@ -227,15 +223,12 @@ First of all, we have to create in our `index.html` file an ordered list where w
 
 Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
 
-
 <details>
   <summary> Click here </summary>
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
-    
+
 </details>
-
-
 
 ### Iteration 4: Reset
 
