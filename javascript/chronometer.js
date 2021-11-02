@@ -11,16 +11,15 @@ class Chronometer {
   }
 
   getMinutes() {
-    this.currentTime = this.intervalId/60
-      return this.currentTime;
+    return Math.floor (this.currentTime/60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return Math.floor (this.currentTime%60);
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return this.getMinutes 
   }
 
   stop() {
