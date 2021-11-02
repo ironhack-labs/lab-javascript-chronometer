@@ -8,11 +8,13 @@ class Chronometer {
     }
   
   getMinutes(){
-  return parseInt((Math.floor((this.currentTime / 60))));
+    let min = (Math.floor((this.currentTime / 60)));
+    return min;
   }
 
   getSeconds() {
-    return Number(Math.floor((this.currentTime % 60)));
+    let sec = (Math.floor((this.currentTime % 60)));
+    return sec
   }
 
   computeTwoDigitNumber(value) {
@@ -32,7 +34,7 @@ class Chronometer {
   }
 
   split() {
-return `${this.computeTwoDigitNumber(this.getMinutes)}:${this.computeTwoDigitNumber(this.getSeconds)}`
+return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
    }
 }
 // The following is required to make unit tests work.
