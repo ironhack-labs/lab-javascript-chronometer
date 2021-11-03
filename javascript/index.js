@@ -14,26 +14,18 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-
-  chronometer.split()
-
-  setInterval(() => {
-    printMinutes()
-    printSeconds()
-  }, 1000);
-  
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  minDecElement.innerText = chronometer.split().chartAt(1);
-  minDecElement.setAttribute ('class', 'number');
-  minUniElement.innerText = chronometer.split().chartAt(2);
-  minUniElement.setAttribute ('class', 'number');
+  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[0];
+  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[1];
 }
 
 function printSeconds() {
-  secDecElement.innerText = chronometer.split().chartAt(3);
-  secUniElement.innerText = chronometer.split().chartAt(4);
+  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0];
+  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1];
 }
 
 // ==> BONUS
@@ -42,11 +34,12 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  split()
+  splitsElement.innerHTML = printMinutes(), printSeconds()
+  chronometer.split()
 }
 
 function clearSplits() {
-  reset ()
+  chronometer.reset()
 }
 
 function setStopBtn() {
@@ -72,21 +65,21 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.innerHTML === 'STOP' ) {
-    setStartBtn ();
-    chronometer.start ()
+    setStartBtn();
+    chronometer.stop()
   } else {
-    setStopBtn ()
-    printTime ()
-    chronometer.stop ()
+    setStopBtn()
+    chronometer.start(printTime)
   }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   if (btnRightElement.innerHTML === 'RESET' ) {
-    setSplitBtn ()
-    clearSplits ()
+    setSplitBtn()
+    clearSplits()
   } else {
-    setResetBtn ()
+    setResetBtn()
+    chronometer.reset()
   }
 });
