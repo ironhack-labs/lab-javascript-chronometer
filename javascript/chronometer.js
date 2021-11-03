@@ -4,9 +4,10 @@ class Chronometer {
      this.intervalId = null;
   }
   //aqui obtenemos los segundos
-  start() {
+  start(callback) {
     const chrono = ()=> {
       this.currentTime++;
+      callback();
      } 
      this.intervalId = setInterval(chrono, 1000);
   }
@@ -20,8 +21,11 @@ class Chronometer {
 
   getSeconds() {
     return this.currentTime % 60;
-    
   }
+
+  // getMiliSeconds() {
+  //   return this.currentTime = setInterval(chrono, 1);
+  // }
 
   computeTwoDigitNumber(value) {
     if( value <= 10){
