@@ -14,15 +14,27 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  setInterval(() => {
+    printMinutes()
+    printSeconds() 
+    printMilliseconds()
+  }, 10);
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let min = chronometer.getMinutes()
+  const newmin = chronometer.computeTwoDigitNumber(min)
+  minDecElement.textContent = newmin[0]
+  minUniElement.textContent = newmin[1]
+  return min
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let sec = chronometer.getSeconds()
+  const newsec = chronometer.computeTwoDigitNumber(sec)
+  secDecElement.textContent = newsec[0]
+  secUniElement.textContent = newsec[1]
+  return sec
 }
 
 // ==> BONUS
