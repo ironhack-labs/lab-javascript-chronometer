@@ -12,7 +12,7 @@ class Chronometer {
         }, 1000)
         setTimeout(() => {
             clearInterval(this.intervalId);
-        }, 3000);
+        }, 1000);
     }
 
     getMinutes() {
@@ -27,10 +27,15 @@ class Chronometer {
     }
 
     computeTwoDigitNumber(value) {
-        // ... your code goes here
-        return ('0' + value).slice(-2);
-
-    }
+            // ... your code goes here
+            return ('0' + value).slice(-2);
+        }
+        /* if (value<10){
+            return `0${value}`;
+            else {
+                return `${value}`;
+            }
+        } */
     stop() {
         // ... your code goes here
         clearInterval(this.intervalId);
@@ -45,10 +50,10 @@ class Chronometer {
 
     split() {
         // ... your code goes here
-        const ss = this.computeTwoDigitNumber(this.getSeconds());
-        const mm = this.computeTwoDigitNumber(this.getMinutes());
+        let seg = this.computeTwoDigitNumber(this.getSeconds()); //ss
+        let min = this.computeTwoDigitNumber(this.getMinutes()); //mm
 
-        return `${mm}:${ss}`;
+        return `${min}:${seg}`; // mm ss
     }
 }
 
