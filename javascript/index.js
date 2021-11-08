@@ -66,6 +66,7 @@ function setStartBtn() {
   btnRight.className = 'btn split';
   btnRight.innerText = 'SPLIT';
   chronometer.start()
+  printTime()
 }
 
 function setResetBtn() {
