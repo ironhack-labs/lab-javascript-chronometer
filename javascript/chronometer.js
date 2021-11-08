@@ -13,24 +13,27 @@ class Chronometer {
   }
 
   getMinutes() {
-    this.currentTime = Math.round(currentTime / 60);
-    console.log(this)
+    return this.currentTime = Math.round(currentTime / 60);
+    
   }
 
   getSeconds() {
-    Let secondsLeft = this.currentTime - getMinutes * 60;
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    let valueString = value.toString()
+
+    let zero = 2 - valueString.length;
+    return `${"0".repeat(zeros)}${valueString.toString()}`
   }
 
   stop() {
-    this.intervalId = clearInterval(intervalId)
+    clearInterval(this.intervalId)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
