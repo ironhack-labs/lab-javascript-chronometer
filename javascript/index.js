@@ -14,52 +14,81 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  chronometer.setTime();
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDec.innerHTML = chronometer.minutes[0];
+  minUni.innerHTML = chronometer.minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDec.innerHTML = chronometer.seconds[0];
+  secUni.innerHTML = chronometer.seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milDec.innerHTML = chronometer.milliseconds[0];
+  milUni.innerHTML = chronometer.milliseconds[1];
 }
 
 function printSplit() {
-  // ... your code goes here
+  var newLi = document.createElement("li");
+  splitList.append(newLi);
+  newLi.innerHTML = chronometer.splitClick();
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitList.innerHTML = null;
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("stop");
+  btnLeft.classList.add("start");
+  btnLeft.innerHTML = "START";
+  btnRight.classList.remove("split");
+  btnRight.classList.add("reset");
+  btnRight.innerHTML = "RESET";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.classList.remove("reset");
+  btnRight.classList.add("split");
+  btnRight.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeft.classList.remove("start");
+  btnLeft.classList.add("stop");
+  btnLeft.innerHTML = "STOP";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.resetClick();
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (this.classList.contains("start")) {
+    setStartBtn();
+    setSplitBtn();
+    chronometer.startClick();
+  } else {
+    setStopBtn();
+    chronometer.stopClick();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (this.classList.contains("split")) {
+    printSplit();
+  } else {
+    setResetBtn();
+    clearSplits();
+  }
 });

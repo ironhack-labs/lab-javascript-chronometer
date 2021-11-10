@@ -1,25 +1,21 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
     this.currentTime = 0
     this.intervalId = null
+    this.minutes = 0
+    this.seconds = 0
+    this.milliseconds = 0
 
   }
 
   start(callback) {
 
-    setTimeout(()=>{  
-      
-      console.log(this.currentTime +=1)
-    }, 1000) 
+    let object = this;
+    object.intervalId = setInterval(function(){++object.currentTime}, 1000)
+    object.intervalmillisec = setInterval(function(){++object.milliTime}, 10)
 
-//-----------------------------------
-    // // if(currentTime === 3) {
-    // //   return 3
-    // }
+
   }
-
-
 
 
   getMinutes() {
@@ -33,14 +29,13 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    // revisar, por que?
 
     if (value < 10) return `0${value}`;
     return `${value}`;
   }
 
   stop() {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId);
   }
 
 
@@ -51,8 +46,13 @@ class Chronometer {
 
 
   split() {
-    // ... your code goes here
+    let min = this.computeTwoDigitNumber(this.getMinutes());
+    let sec = this.computeTwoDigitNumber(this.getSeconds());
+    let milisec = this.computeTwoDigitNumber(this.getMilliseconds())
+
+    return `${min} : ${sec} : ${milisec}`
     
+    // return this.minutes + ":" + this.seconds + ":" + this.milliseconds
 
 
   }
