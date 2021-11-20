@@ -18,9 +18,6 @@ class Chronometer {
     return min;
   }
 
-  //We're now able to get the number of minutes that have passed. But what if we wanted to get the number of seconds that have passed after the start of the current minute?
-  //The getSeconds method should return the number of seconds that have passed after the start of the current minute.
-
 
   getSeconds() {
     
@@ -33,8 +30,6 @@ class Chronometer {
     
     return this.currentTime;
   }
-
-  //The computeTwoDigitNumber method should take a number, and return a string where the number received as an argument has been padded with 0s to ensure the value is at least 2 characters long.
 
   computeTwoDigitNumber(value) {
     let str = "0";
@@ -49,7 +44,7 @@ class Chronometer {
   stop() {
     clearInterval(this.intervalId);
   }
-  //The split method should expect no arguments, and return a string where the time since the start is formatted as "mm:ss". Internally, the split method can make usage of previously declared methods such as getMinutes, getSeconds, and computeTwoDigitNumber.
+  
   reset() {
     this.currentTime = 0;
   }
