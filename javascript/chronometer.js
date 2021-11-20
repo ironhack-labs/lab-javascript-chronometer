@@ -10,34 +10,34 @@ class Chronometer {
   }
 
   getMinutes() {
-    let minutes = 0;
-    if (this.currentTime === 0) {
-      return 0;
-    } else if ((this.currentTime = 60000)) {
-      return (minutes += 1);
-    }
-    return minutes;
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // return this.currentTime;
+    return Math.floor(this.currentTime % 60);
   }
 
-  computeTwoDigitNumber(value) {}
+  computeTwoDigitNumber(value) {
+    return ('0' + value).slice(-2);
+  }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    let minutes = this.getMinutes();
+    let seconds = this.getSeconds();
+    return `${this.computeTwoDigitNumber(minutes)}:${this.computeTwoDigitNumber(
+      seconds
+    )}`;
   }
 }
-
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
