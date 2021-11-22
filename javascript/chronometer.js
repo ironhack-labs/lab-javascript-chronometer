@@ -8,18 +8,15 @@ class Chronometer {
   start(callback) {
     // ... your code goes here
 
-    callback ?
+    // callback ?
     this.intervalId = setInterval(
         () => {
           this.currentTime += 1
+          callback ?
           callback()
+          :''
         }, 1000
       )
-    : this.intervalId = setInterval(
-      () => {
-        this.currentTime += 1
-      }, 1000
-    )
   }
 
   getMinutes() {
