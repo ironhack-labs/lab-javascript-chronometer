@@ -1,3 +1,4 @@
+/*jshint esversion:8 */
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -39,27 +40,41 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = "STOP";
+  btnLeftElement.className = "btn stop";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "SPLIT";
+  btnRightElement.className = "btn split";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = "START";
+  btnLeftElement.className = "btn start";
+  console.log("setStartBtn");
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "RESET";
+  btnRightElement.className = "btn reset";
 }
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+btnLeftElement.addEventListener ('click', () => {
+  console.log("eventlistener");
+  if(btnLeftElement.classList.contains('btn start')) {
+
+    //if(chronometer.)
+    setStartBtn();
+    chronometer.start();
+  } else {
+    setStopBtn();
+  }
+  
 });
 
 // Reset/Split Button
-btnRightElement.addEventListener('click', () => {
+btnRightElement.addEventListener = ('click', () => {
   // ... your code goes here
 });
