@@ -18,48 +18,61 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+  Chronometer.getMinutes();
+  minUniElement;
+  minDecElement;
 }
 
 function printSeconds() {
-  // ... your code goes here
+  Chronometer.getSeconds();
+  secDecElement;
+  secUniElement;
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milDecElement;
+  milUniElement;
 }
 
 function printSplit() {
-  // ... your code goes here
+  Chronometer.split();
+  splitsElement;
 }
 
 function clearSplits() {
-  // ... your code goes here
+  Chronometer.reset();
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  Chronometer.stop();
+  btnRightElement;
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  Chronometer.split();
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  Chronometer.start();
+  btnLeftElement;
 }
 
-function setResetBtn() {
-  // ... your code goes here
-}
+function setResetBtn() {}
+Chronometer.reset();
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  Chronometer.start();
+  btnLeftElement.textContent = 'Stop';
+  document.getElementsByClassName('btn stop');
+  btnLeftElement.classList.add('start');
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  Chronometer.stop();
+  btnRightElement.textContent = 'Split';
+  document.getElementsByClassName('btn split');
+  btnRightElement.classList.add('stop');
 });
