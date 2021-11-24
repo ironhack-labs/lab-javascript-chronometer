@@ -4,9 +4,10 @@ class Chronometer {
     this.intervalId = null;
   }
 
-  start() {
+  start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      callback();
     }, 1000);
   }
 
@@ -40,17 +41,11 @@ class Chronometer {
   }
 
   split() {
-    let result = [];
     let minutes = this.getMinutes();
     let seconds = this.getSeconds();
     let minsString = this.computeTwoDigitNumber(minutes);
     let secsString = this.computeTwoDigitNumber(seconds);
     return `${minsString}:${secsString}`;
-    // get mins
-    // mins to two digit num
-    // get seconds
-    // secs two dig num
-    // combinar con "mm":"ss"
   }
 }
 
