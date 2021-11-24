@@ -68,28 +68,31 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // if left button has start, call chrono.start
-  // if left button has stop, call chrono.stop
-  console.log(btnLeftElement.className === 'btn start');
   if (btnLeftElement.className === 'btn start') {
     btnLeftElement.className = 'btn stop';
     btnLeftElement.textContent = 'STOP';
+
+    btnRightElement.className = 'btn split';
+    btnRightElement.textContent = 'SPLIT';
     chronometer.start(printTime);
   } else {
     btnLeftElement.className = 'btn start';
     btnLeftElement.textContent = 'START';
+
+    btnRightElement.className = 'btn reset';
+    btnRightElement.textContent = 'RESET';
     chronometer.stop();
   }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  if (btnRightElement.className === 'btn reset') {
-    btnRightElement.className = 'btn split';
-    btnRightElement.textContent = 'SPLIT';
+  if (btnLeftElement.innerText === 'START') {
+    // btnRightElement.className = 'btn reset';
+    // btnRightElement.textContent = 'RESET';
   } else {
-    btnRightElement.className = 'btn reset';
-    btnRightElement.textContent = 'RESET';
+    // btnRightElement.className = 'btn split';
+    // btnRightElement.textContent = 'SPLIT';
   }
 
   // ... your code goes here
