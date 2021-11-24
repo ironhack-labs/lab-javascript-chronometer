@@ -8,6 +8,9 @@ class Chronometer {
     if(arguments){
       this.intervalId = setInterval(() => {
         this.currentTime ++;
+        if (callback) {
+          callback();
+        }
       }, 1000);
     }
   }
@@ -39,6 +42,7 @@ class Chronometer {
     return `${minutes}:${seconds}`;
   }
 }
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
