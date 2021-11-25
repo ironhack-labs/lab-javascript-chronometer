@@ -18,6 +18,10 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
+  getMilliseconds() {
+    return this.currentTime - this.getSeconds()*100;
+  }
+
   computeTwoDigitNumber(value) {
     if (value < 10) {
       return ('0' + `${value}`);
@@ -31,7 +35,7 @@ class Chronometer {
   }
 
   reset() {
-    this.currentTime = 0;
+    return this.currentTime = 0;
   }
 
   split() {
