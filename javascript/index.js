@@ -58,7 +58,6 @@ btnLeftElement.addEventListener('click', () => {
     printSeconds();
     printMinutes();
   }, 1000);
-  
 });
 
 
