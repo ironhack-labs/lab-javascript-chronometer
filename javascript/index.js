@@ -13,16 +13,53 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+btnLeftElement.addEventListener('click', () => {
+  if (btnLeftElement.innerText === "START"){
+    chronometer.start(printTime)
+    btnLeftElement.innerText = "STOP";
+    btnRightElement.innerText = "SPLIT";
+    btnLeftElement.classList.toggle("start");
+    btnLeftElement.classList.toggle("stop");
+    btnRightElement.classList.toggle("reset");
+    btnRightElement.classList.toggle("split");
+  } else { 
+    chronometer.stop()
+    btnLeftElement.innerText = "START";
+    btnRightElement.innerText = "RESET";
+    btnLeftElement.classList.toggle("start");
+    btnLeftElement.classList.toggle("stop");
+    btnRightElement.classList.toggle("reset");
+    btnRightElement.classList.toggle("split");
+  } 
+});
+
+btnRightElement.addEventListener('click', () => {
+  if (btnRightElement.innerText === "RESET"){
+    chronometer.reset()
+    printTime()
+    while (splitsElement.firstChild) {
+      splitsElement.removeChild(splitsElement.firstChild);
+    }
+  } else { 
+    printSplit()
+  } 
+});
+
 function printTime() {
-  // ... your code goes here
+  printSeconds()
+  printMinutes()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let min = chronometer.getMinutes();
+  minDecElement.innerText = chronometer.computeTwoDigitNumber(min)[0];
+  minUniElement.innerText = chronometer.computeTwoDigitNumber(min)[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let sec = chronometer.getSeconds();
+  secDecElement.innerText = chronometer.computeTwoDigitNumber(sec)[0];
+  secUniElement.innerText = chronometer.computeTwoDigitNumber(sec)[1];
 }
 
 // ==> BONUS
@@ -31,7 +68,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const split = document.createElement("li");
+  split.innerText = minDecElement.innerText + minUniElement.innerText + ":" + secDecElement.innerText + secUniElement.innerText;
+  splitsElement.appendChild(split);
 }
 
 function clearSplits() {
