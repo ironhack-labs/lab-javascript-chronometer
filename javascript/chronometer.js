@@ -8,7 +8,7 @@ class Chronometer {
       this.currentTime += 1;
     }, 1000);
   }
-.
+
   getMinutes() {
     return Math.floor(this.currentTime / 60);
   }
