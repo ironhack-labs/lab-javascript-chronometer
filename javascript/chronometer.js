@@ -5,7 +5,11 @@ class Chronometer {
 
   start(callback) {
     this.intervalId = setInterval(() => {
-      this.currentTime += 1;
+      console.log(this.currentTime);
+      this.currentTime++;
+      if (callback) {
+        callback();
+      }
     }, 1000);
   }
 
@@ -18,7 +22,7 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    return ('0' + value).slice(-2);
+    return value.toString().padStart(2, '0');
   }
 
   stop() {
