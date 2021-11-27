@@ -1,22 +1,33 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval( () => {
+      this.currentTime += 1;
+      // Ponto de dúvida aqui: uso do callback
+      if(callback == undefined){}
+      else {callback()}
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return parseInt(this.currentTime/60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    let number = '0';
+    if(`${value}`.length === 1){
+      return `${number}${value}`; 
+    } else {
+      return `${value}`;
+    }
   }
 
   stop() {
