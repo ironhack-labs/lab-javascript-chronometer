@@ -1,3 +1,4 @@
+
 class Chronometer {
   constructor() {
     // ... your code goes here
@@ -11,10 +12,10 @@ class Chronometer {
     // callback ?
     this.intervalId = setInterval(
         () => {
+          console.log(this.currentTime)
           this.currentTime += 1
-          callback ?
-          callback()
-          :''
+          callback?.()
+          //callback && callback()          
         }, 1000
       )
   }
@@ -57,4 +58,6 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
+/* export default Chronometer */
 
