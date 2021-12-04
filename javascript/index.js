@@ -19,10 +19,6 @@ const splitsElement = document.getElementById('splits');
 
 
 
-
-
-
-
 function printTime() {
   printMinutes();
   printSeconds();
@@ -100,10 +96,9 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  if (this.classList.contains("split")) {
-    printSplit();
-  } else {
-    setResetBtn();
-    clearSplits();
-  }
+    if(btnRightElement.innerText === 'RESET'){ 
+        clearSplits()
+      } else {
+        printSplit() 
+      } 
 });
