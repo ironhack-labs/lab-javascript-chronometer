@@ -14,52 +14,69 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+    let sec = chronometer.getSeconds();
+    let min = chronometer.getMinutes();
+    let secTwoDigits = chronometer.computeTwoDigitNumber(sec);
+    let minTwoDigits = chronometer.computeTwoDigitNumber(min);
+
+
+    secDecElement.innerText = secTwoDigits[0];
+    secUniElement.innerText = secTwoDigits[1];
+    minDecElement.innerText = minTwoDigits[0];
+    minUniElement.innerText = minTwoDigits[1];
+    printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+    return chronometer.getMinutes();
 }
 
 function printSeconds() {
-  // ... your code goes here
+    return chronometer.getSeconds();
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+    let milliseconds = chronometer.milliseconds.toString().split('')
+    if (milliseconds.length < 2) {
+        milUniElement.textContent = 0;
+        milDecElement.textContent = milliseconds[0];
+    } else {
+        milUniElement.textContent = milliseconds[1];
+        milDecElement.textContent = milliseconds[0];
+    }
 }
 
 function printSplit() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function clearSplits() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setResetBtn() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+    // ... your code goes here
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+    // ... your code goes here
 });

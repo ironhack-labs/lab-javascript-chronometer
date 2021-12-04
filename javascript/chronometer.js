@@ -8,22 +8,35 @@ class Chronometer {
     start(callback) {
 
         this.intervalId = setInterval(() => {
-            this.currentTime++
-        }, 1000);
+            this.milliseconds++;
+            if (this.milliseconds >= 99) {
+                this.milliseconds = 0;
+                this.currentTime++
+            }
+            callback();
+        }, 10);
 
     }
 
     getMinutes() {
-        return Math.floor(this.currentTime / 60)
+        let minutes = this.currentTime / 60;
+        let roundDown = Math.floor(minutes);
+        let result = Number(roundDown.toFixed());
+        return result;
     }
 
     getSeconds() {
-        return this.currentTime % 60;
+        let secondsPerMin = 60;
+        let result = this.currentTime % secondsPerMin;
+        return result;
     }
 
     computeTwoDigitNumber(value) {
-        let num = "0" + value
-        return num.slice(-2);
+        if (value.toString().length === 1) {
+            return '0' + value.toString();
+        } else {
+            return value.toString();
+        }
     }
 
     stop() {
@@ -35,7 +48,12 @@ class Chronometer {
     }
 
     split() {
-        return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+        let minutes = this.getMinutes();
+        let seconds = this.getSeconds();
+        let minsString = this.computeTwoDigitNumber(minutes);
+        let secsString = this.computeTwoDigitNumber(seconds);
+        let milliString = this.computeTwoDigitNumber(this.milliseconds);
+        return `${minsString}:${secsString}:${milliString}`;
     }
 }
 
