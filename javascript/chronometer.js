@@ -1,34 +1,60 @@
+/* jshint esversion: 6 */
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    let i = 1;
+    const intervalId = setInterval( callback => {
+      i++;
+      this.currentTime += 0.01;
+      }, 10);
+    this.intervalId = intervalId;
+    if(callback) {
+      callback();
+    }
   }
 
   getMinutes() {
-    // ... your code goes here
+    const minutesElapsed = Math.floor(this.currentTime/60);
+    return minutesElapsed;
   }
 
   getSeconds() {
-    // ... your code goes here
+    const secondsElapsed = Math.floor(this.currentTime % 60);
+    return secondsElapsed;
+  }
+
+  getMilliseconds() {
+    const millisecondsElapsed = (this.currentTime * 1000) % 1000;
+    return millisecondsElapsed.toFixed(0);
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    const test = value.toString();
+    if(test.length === 1) {
+      return `0${test}`;
+    } else {
+      return test;
+    }
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    const mins = this.computeTwoDigitNumber(this.getMinutes());
+    const secs = this.computeTwoDigitNumber(this.getSeconds());
+    const mill = this.computeTwoDigitNumber(this.getMilliseconds());
+    return `${mins}:${secs}:${mill}`;
   }
 }
 

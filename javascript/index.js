@@ -13,53 +13,107 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+let running = false;
+
+// Create a function that runs every second, and prints the minutes and seconds on the watch.
+
+// CHANGED FOR BONUS - every 
+
+function printTime(minutes, seconds) {
+  setInterval(() => {
+    printMinutes();
+    printSeconds();
+    printMilliseconds();
+  }, 10);
 }
 
+// functions that runs within printTime. We use the methods of the chronometer class to get two digits, then access the index of the string to print in the right place.
+
 function printMinutes() {
-  // ... your code goes here
+  const mins = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerText = mins[0];
+  minUniElement.innerText = mins[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const secs = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.innerText = secs[0];
+  secUniElement.innerText = secs[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const milliseconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
+  milDecElement.innerText = milliseconds[0];
+  milUniElement.innerText = milliseconds[1];
 }
+
+// When we click split, we want to print the the timestamp of what we have in the time. We can use DOM manipulation to make a list. the split method already returns the timestamp, so we can make that the text and append it to the list.
 
 function printSplit() {
-  // ... your code goes here
+  const bullets = document.createElement('li');
+  bullets.innerText = chronometer.split();
+  splitsElement.appendChild(bullets);
 }
+
+// clear those splits with an empty string
 
 function clearSplits() {
-  // ... your code goes here
+  document.getElementById('splits').innerHTML = '';
 }
 
+// creating the different states of the two buttons.
+
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.classList.remove('start');
+  btnLeftElement.classList.add('stop');
+  btnLeftElement.innerText = "STOP";  
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.classList.add('split');
+  btnRightElement.classList.remove('reset');
+  btnRightElement.innerText = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    btnLeftElement.classList.remove('stop');
+    btnLeftElement.classList.add('start');
+    btnLeftElement.innerText = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerText = "RESET";
+  btnRightElement.classList.remove('split');
+  btnRightElement.classList.add('reset');
 }
 
-// Start/Stop Button
+// Start/Stop Button - change the running state using a ternary operator.
+// On click, change the buttons && start the (backend) timer && print the (frontend) time
+
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  running ? running = false : running = true;
+  if (running) {
+    setStopBtn();
+    setSplitBtn();
+    chronometer.start();
+    printTime();
+  } else {
+    setStartBtn();
+    setResetBtn();
+    chronometer.stop();
+  }
 });
 
 // Reset/Split Button
+// If we click this one whilst hte watch is running, we print the split and do nothing else.
+// If we click it whilst watch is stopped, we reset the chronometer and remove the splits from HTML
+
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (running) {
+    printSplit();
+  } else {
+    chronometer.reset();
+    clearSplits();
+  }
 });
