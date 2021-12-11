@@ -1,34 +1,45 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
-  }
+    this.currentTime = 0;
+    this.intervalId = null;
+  };
 
-  start(callback) {
-    // ... your code goes here
-  }
+  start(callback) {   
 
+       this.intervalId = setInterval (() => {
+         if(callback) {
+           callback()
+          }
+          this.currentTime += 1;
+       }, 1000)
+     }
+// math function here rounds down, so it'll stay at 1 minute, until it reaches 2
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
+  // this counts the seconds between each minute, it should begin at zero and every time it reaches 60
   getSeconds() {
-    // ... your code goes here
+    // the modular function here counts in 60s, everytime it gets to 60, it starts at 0 again
+    return this.currentTime % 60;
   }
-
+  
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return (value).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
   }
 
   stop() {
-    // ... your code goes here
-  }
+     return clearInterval(this.intervalId)
+    };
+  
 
   reset() {
-    // ... your code goes here
+    return this.currentTime = 0
   }
 
+  //return a string that gives both the minutes and seconds in 2-digit formats
   split() {
-    // ... your code goes here
+    return this.computeTwoDigitNumber(this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds())
   }
 }
 
