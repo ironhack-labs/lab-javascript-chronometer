@@ -1,4 +1,5 @@
 const chronometer = new Chronometer();
+let intervalId = null;
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -13,16 +14,25 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
+
 
 function printMinutes() {
-  // ... your code goes here
+  const minDec = chronometer.split()[0];
+  const minUni = chronometer.split()[1];
+  minDecElement.innerHTML = minDec;
+  minUniElement.innerHTML = minUni;
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const secDec = chronometer.split()[3];
+  const secUni = chronometer.split()[4];
+  secDecElement.innerHTML = secDec;
+  secUniElement.innerHTML = secUni;
+}
+
+function printTime() {
+  printMinutes();
+  printSeconds();
 }
 
 // ==> BONUS
@@ -54,12 +64,44 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+function switchClasses(element, currentClass, nextClass) {
+  element.classList.toggle(currentClass);
+  element.classList.toggle(nextClass);
+}
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+
+  const classArrayLeft = Object.values(btnLeftElement.classList);
+
+  if(classArrayLeft.includes('start')) {
+    switchClasses(btnLeftElement, 'start', 'stop');
+    switchClasses(btnRightElement, 'reset', 'split');
+    btnLeftElement.innerHTML = 'STOP';
+    btnRightElement.innerHTML = 'SPLIT';
+    chronometer.start();
+    intervalId = setInterval(() => {
+      printTime();
+    }, 1000);
+
+  } else {
+    switchClasses(btnLeftElement, 'stop', 'start');
+    switchClasses(btnRightElement, 'split', 'reset');
+    btnLeftElement.innerHTML = 'START';
+    btnRightElement.innerHTML = 'RESET';
+    chronometer.stop();
+    clearInterval(intervalId);
+  }
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  const classArrayRight = Object.values(btnRightElement.classList);
+  if(classArrayRight.includes('reset')) {
+    chronometer.reset();
+    printTime();
+  } else {
+    
+  }
 });
