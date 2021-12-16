@@ -26,7 +26,7 @@ function printTime() {
 
 
 function printMinutes() {
-  let showMinutes =chronometer.computeTwoDigitNumber(chronometer.getMinutes())
+  let showMinutes =chronometer.computeTwoDigitNumber(chronometer.getMinutes)
   minDecElement.innerHTML = showMinutes[0];
   minUniElement.innerHTML = showMinutes[1];
 }
