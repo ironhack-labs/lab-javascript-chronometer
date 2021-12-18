@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateY(-40%) translateX(-53%);
+  transform: translateY(-35%) translateX(-53%);
 }
 
 #sphere {
