@@ -20,7 +20,7 @@ class Chronometer {
 
   getMinutes() {
     // ... your code goes here
-    if (this.currentTime===0) {
+    if (this.currentTime<60) {
       return 0;
     }
     return Math.floor(this.currentTime/60);
