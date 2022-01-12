@@ -11,7 +11,6 @@ class Chronometer {
         if (callback) {
           callback;
         }
-        console.log("this works");
         this.currentTime = this.currentTime+1 }, 1000);
     }
 

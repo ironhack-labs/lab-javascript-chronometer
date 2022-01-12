@@ -74,7 +74,7 @@ btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
  
  if (btnLeftElement.getAttribute("class").includes("start")) {
-  chronometer.start();
+  chronometer.start(()=>{console.log(`this works`)});
   btnLeftElement.innerText="STOP";
   btnRightElement.innerText="SPLIT";
   btnLeftElement.classList.toggle("start");
@@ -100,10 +100,21 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
-if (btnRightElement.getAttribute("class").includes("reset")) {
-  chronometer.reset();
+
+  let orderedList = document.getElementById("splits");
+  let newSplitTime = document.createElement("li");
+if (btnRightElement.getAttribute("class").includes("split")) {
+
+  newSplitTime.innerText = chronometer.split();
+  orderedList.appendChild(newSplitTime);
+
  } else {
-   chronometer.split();
+   chronometer.reset();
+   minDecElement.innerText = 0;
+   minUniElement.innerText = 0;
+   secDecElement.innerText = 0;
+   secUniElement.innerText = 0;
+   orderedList.innerHTML = "";
  }
  
 }
