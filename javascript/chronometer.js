@@ -8,7 +8,7 @@ class Chronometer {
   start(callback) {
     // ... your code goes here
       this.intervalId = setInterval(()=>{ 
-        if (!callback) {
+        if (callback) {
           callback;
         }
         console.log("this works");
@@ -20,9 +20,9 @@ class Chronometer {
 
   getMinutes() {
     // ... your code goes here
-    if (this.currentTime<60) {
-      return 0;
-    }
+    // if (this.currentTime<60) {
+    //   return 0;
+    // }
     return Math.floor(this.currentTime/60);
   }
 
