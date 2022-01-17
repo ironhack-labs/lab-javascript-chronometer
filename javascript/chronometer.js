@@ -52,7 +52,7 @@ class Chronometer {
 
   split() 
   {
-    return this.computeTwoDigitNumber(getMinutes()) + ":" + this.computeTwoDigitNumber(getSeconds())
+    return this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds())
   }
 }
 
