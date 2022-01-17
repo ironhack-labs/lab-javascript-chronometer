@@ -17,15 +17,15 @@ class Chronometer {
   }
 
   getSeconds() {
-    return this.currentTime % 60
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
     
     if (value.toFixed().length < 2) {
-      return "0" + value
+      return "0" + value;
     } else {
-      return value.toFixed() 
+      return value.toFixed();
     }
   }
 
