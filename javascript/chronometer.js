@@ -1,36 +1,66 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      if (callback) {
+        callback();
+      }
+      this.currentTime++;
+    }, 1000);
+    return this.currentTime;
   }
 
   getMinutes() {
-    // ... your code goes here
+    let minutes = Math.floor(this.start() / 60);
+    return minutes;
   }
 
   getSeconds() {
-    // ... your code goes here
+    let seconds = this.start() % 60;
+    return seconds;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    let stringValue = (value).toString();
+    let paddedString;
+    if (stringValue.length === 0) {
+      return "00";
+    }
+    if (stringValue.length === 2) {
+      return stringValue;
+    } else if (stringValue.length === 1) {
+      paddedString = `0${stringValue}`;
+      return paddedString;
+    } else {
+      throw new Error("Something went wrong!");
+    }
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    let minutes = this.getMinutes();
+    let seconds = this.getSeconds();
+    let stringMinutes = this.computeTwoDigitNumber(minutes);
+    let stringSeconds = this.computeTwoDigitNumber(seconds);
+    let formattedTime = `${stringMinutes}:${stringSeconds}`;
+    return formattedTime;
   }
 }
+
+const myChrono = new Chronometer();
+let stringTest = myChrono.computeTwoDigitNumber(2);
+console.log("Stringtest: ", typeof stringTest, stringTest);
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
