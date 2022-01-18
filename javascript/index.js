@@ -40,8 +40,8 @@ function printMilliseconds() {
   let milSeconds = chronometer.computeTwoDigitNumber(
     chronometer.getMilSeconds()
   );
-  milDecElement.innerText = milSeconds[0];
-  milUniElement.innerText = milSeconds[1];
+  milDecElement.innerHTML = milSeconds[0];
+  milUniElement.innerHTML = milSeconds[1];
 }
 
 function printSplit() {
