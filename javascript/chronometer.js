@@ -7,8 +7,12 @@ class Chronometer {
 
   start(callback) {
     // ... your code goes here
+
     this.intervalId = setInterval(() => {
-      return this.currentTime++;
+      this.currentTime++;
+      if (typeof callback === 'function') {
+        callback();
+      }
     }, 1000);
   }
 
