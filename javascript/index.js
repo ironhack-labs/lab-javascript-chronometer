@@ -14,15 +14,23 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  
+  setInterval(() => {
+    printMinutes();
+    printSeconds();
+  }, 1000);
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const currentMins = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerText = currentMins[0];
+  minUniElement.innerText = currentMins[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const currentSecs = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.innerText = currentSecs[0];
+  secUniElement.innerText = currentSecs[1];
 }
 
 // ==> BONUS
@@ -38,28 +46,50 @@ function clearSplits() {
   // ... your code goes here
 }
 
-function setStopBtn() {
-  // ... your code goes here
+function setStopBtn(btn) {
+  btn.className = 'btn stop';
+  btn.innerText = 'STOP';
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+function setSplitBtn(btn) {
+  btn.className = 'btn split';
+  btn.innerText = 'SPLIT';
 }
 
-function setStartBtn() {
-  // ... your code goes here
+function setStartBtn(btn) {
+  btn.className = 'btn start';
+  btn.innerText = 'START';
 }
 
-function setResetBtn() {
-  // ... your code goes here
+function setResetBtn(btn) {
+  btn.className = 'btn reset';
+  btn.innerText = 'RESET';
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+
+  if (btnLeftElement.className === 'btn start') {
+
+    setStopBtn(btnLeftElement);
+    setSplitBtn(btnRightElement);
+    chronometer.start();
+
+  } else if (btnLeftElement.className === 'btn stop') {
+
+    setStartBtn(btnLeftElement);
+    setResetBtn(btnRightElement);
+    chronometer.stop();
+
+  } else {
+    throw new Error('Left Button should be assigned to classes "btn stop" or "btn start".')
+  }
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
 });
+
+printTime();
