@@ -5,7 +5,7 @@ class Chronometer {
   }
 
   start(callback) {
-    if (callback !== undefined) {
+    if (typeof callback === 'function') {
       callback();
     } else {
       this.intervalId = setInterval(() => {
