@@ -1,8 +1,8 @@
-const chronometer = new Chronometer();
+const chronometer = new Chronometer()
 
 // get the buttons:
-const btnLeftElement = document.getElementById('btnLeft');
-const btnRightElement = document.getElementById('btnRight');
+const btnLeftElement = document.getElementById('btnLeft')
+const btnRightElement = document.getElementById('btnRight')
 
 // get the DOM elements that will serve us to display the time:
 const minDecElement = document.getElementById('minDec');
@@ -14,15 +14,18 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+    printMinutes()
+    printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDecElement.innerText = chronometer.split()[0]
+  minUniElement.innerText = chronometer.split()[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDecElement.innerText = chronometer.split()[3]
+  secUniElement.innerText = chronometer.split()[4]
 }
 
 // ==> BONUS
@@ -56,10 +59,36 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.classList.value === 'btn start'){
+    chronometer.start()
+    setInterval(()=>{
+      printTime()
+    }, 1000)
+    btnLeftElement.classList.replace('start', 'stop');
+    chronometer.stop()
+    btnLeftElement.innerText = 'STOP'
+    btnRightElement.classList.replace('reset', 'split')
+    btnRightElement.innerText = 'SPLIT'
+  }
+  else {
+    btnLeftElement.classList.replace('stop', 'start');
+    btnLeftElement.innerText = 'START'
+    btnRightElement.classList.replace('split', 'reset')
+    btnRightElement.innerText = 'RESET'
+
+  }
+
+
+  // btnRightElement
+  // btnLeftElement.innerText = 'STOP'
+  // btnLeftElement.classList.toggle('start')
+  // btnLeftElement.innerText = 'Ssss'
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+
 });
+
+
