@@ -10,17 +10,18 @@ class Chronometer {
         callback();
       }
       this.currentTime++;
+      console.log(this.currentTime);
     }, 1000);
     return this.currentTime;
   }
 
   getMinutes() {
-    let minutes = Math.floor(this.start() / 60);
+    let minutes = Math.floor(this.currentTime / (60));
     return minutes;
   }
 
   getSeconds() {
-    let seconds = this.start() % 60;
+    let seconds = (this.currentTime) % 60;
     return seconds;
   }
 
@@ -57,10 +58,6 @@ class Chronometer {
     return formattedTime;
   }
 }
-
-const myChrono = new Chronometer();
-let stringTest = myChrono.computeTwoDigitNumber(2);
-console.log("Stringtest: ", typeof stringTest, stringTest);
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
