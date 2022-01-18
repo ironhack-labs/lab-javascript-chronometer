@@ -1,34 +1,48 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = null
   }
-
+  //ejecutando una función en un intervalo de 1 segundo
+  //incrementará la cantidad de segundos almacenados en la propiedad currentTime en 1.
   start(callback) {
-    // ... your code goes here
-  }
+    this.intervalId = setInterval((callback)=> {
+    this.currentTime++
+    },1000)
 
+  }
+  //devolver el número de minutos que han pasado como un número entero.
   getMinutes() {
-    // ... your code goes here
+    
+    const minuts = Math.floor(this.currentTime/60)
+    return minuts
   }
-
+  //devolver la cantidad de segundos
   getSeconds() {
-    // ... your code goes here
+    const ofSeconds = (this.currentTime%60)
+    return ofSeconds
   }
-
+  //condicional 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value <10) {
+      return (`0${value}`)
+    } else {
+      return (`${value}`)
+    }
   }
-
+  //crear un método que lo detenga.
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
-
+   //reseteará nuestro cronómetro. 
   reset() {
-    // ... your code goes here
+    return this.currentTime = 0
   }
 
   split() {
-    // ... your code goes here
+    let minutes = this.computeTwoDigitNumber(this.getMinutes())
+    let seconds = this.computeTwoDigitNumber(this.getSeconds())
+    return (`${minutes}:${seconds}`)
   }
 }
 

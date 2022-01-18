@@ -39,24 +39,34 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.style.background = '#5fca5f';
+  btnLeftElement.innerText = 'START';
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.style.background = '#908e8e';
+  btnRightElement.innerText = 'RESET';
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.style.background = '#f14949';
+  btnLeftElement.innerText = 'STOP';
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.style.background = '#0851ab';
+  btnRightElement.innerText = 'SPLIT';
 }
+
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+    printTime();
+    printMinutes();
+    printSeconds();
+    printMilliseconds();
+    setStopBtn();
+    setStartBtn();
 });
 
 // Reset/Split Button
