@@ -16,7 +16,7 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  
+
   printSeconds()
   printMinutes()
 }
@@ -29,10 +29,9 @@ function printMinutes() {
   minUniElement.innerHTML = min[1]
   // ... your code goes here
 
-console.log(min)
-console.log(min[0],min[1], min[2], min[4])
+
 }
-//00:00
+
 function printSeconds() {
   const sec = chronometer.split()
   secDecElement.innerHTML = sec[3]
@@ -55,29 +54,64 @@ function clearSplits() {
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeftElement.className = "btn stop"
+  btnLeftElement.innerHTML = "STOP"
+
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  btnRightElement.className = "btn split"
+  btnRightElement.innerHTML = "SPLIT"
+
+
 }
 
 function setStartBtn() {
+  btnLeftElement.className = "btn start"
+  btnLeftElement.innerHTML = "START"
+  btnRightElement.className = "btn reset"
+  btnRightElement.innerHTML = "RESET"
+
   // ... your code goes here
 }
 
 function setResetBtn() {
+  minDecElement.innerHTML = 0
+  minUniElement.innerHTML = 0
+  secDecElement.innerHTML = 0
+  secUniElement.innerHTML = 0
+
+
   // ... your code goes here
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
-  chronometer.start()
- 
-  intervalId = setInterval(() => {
-    printTime()
+  if (btnLeftElement.className === "btn start") {
 
-  }, 1000)
+    chronometer.start()
+
+    intervalId = setInterval(() => {
+      printTime()
+
+      setStopBtn()
+      setSplitBtn()
+
+    }, 1000)
+
+
+
+  } else {
+
+    btnLeftElement.onclick = () => {
+      chronometer.stop()
+    }
+    setStartBtn()
+    //setResetBtn()
+
+  }
 
 
 
@@ -86,5 +120,19 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+
+  if (btnRightElement.className === 'btn reset') {
+    setResetBtn()
+  } else {
+
+    const li = document.createElement('li')
+    li.innerHTML = `${chronometer.split()}`
+
+    const toSplit = li
+    document.querySelector("#splits").appendChild(toSplit)
+
+  }
+
+
 });
 
