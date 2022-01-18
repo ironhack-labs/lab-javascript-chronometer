@@ -20,7 +20,6 @@ function printTime() {
   stopwatch = setInterval(() => {
     printMinutes()
     printSeconds()
-    printMilliseconds()
 
   }, 1000)
 
@@ -37,19 +36,66 @@ function printSeconds() {
   secUniElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1]
 }
 
-// ==> BONUS
+// ==> BONUS  /La opción es modificar la clase Cronometro. Repitiendo la lógica del getSeconds() y getMinutes,
+// crear un método getMiliseconds
+// y modificar algunos métodos, como el split()
+//function printMiliseconds() {
+
+//milDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0]
+//milUniElement.innerText = chronometer.computeTwoDigitNumber(chronometer.geteconds())[1]
+// }
+
+//he optado por una opción mucho más guarra pero igualmente funcional. lost tests deberían seguir pasando
+
+//function printMiliseconds() {
+//milDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0]
+//milUniElement.innerText = chronometer.computeTwoDigitNumber(chronometer.geteconds())[1]
+
+
+let milUniCounter = 0
+let milDecCounter = 0
+let milwatch
+//he tenido que sacar las variables fuera de la función. casi que habría tardado menos hacieéndolo bien.
+
 function printMilliseconds() {
 
 
+  milwatch = setInterval(() => {
+
+    milUniCounter++
+
+
+    if (milUniCounter > 9) {
+      milUniCounter = 0
+      milDecCounter++
+    }
+
+    if (milDecCounter > 9) {
+      milDecCounter = 0
+    }
+
+
+    milDecElement.innerText = milDecCounter
+    milUniElement.innerText = milUniCounter
+
+  }, 100)
+
 
 }
+
+
+
+
+
 
 function printSplit() {
   if (btnRightElement.innerText === 'SPLIT') {
     let splitLI = document.createElement('li')
     splitLI.classList.add('splitLI')
     splitsElement.appendChild(splitLI)
-    splitLI.innerText = chronometer.split()
+    //me da mucho asquete ver esto así, pero ya que he guarreado en 'printMiliseconds()" toca guarrear aqui tb
+    console.log(`${chronometer.split()}${milDecCounter}${milUniCounter}`)
+    splitLI.innerText = `${chronometer.split()}:${milDecCounter}${milUniCounter}`
   }
 }
 
@@ -62,6 +108,9 @@ function clearSplits() {
     minUniElement.innerText = 0
     secDecElement.innerText = 0
     secUniElement.innerText = 0
+    // añadido para milisegundos
+    milDecElement.innerText = 0
+    milUniElement.innerText = 0
 
     splitsElement.innerHTML = ''
   }
@@ -72,6 +121,9 @@ function setStopBtn() {
   console.log('reloj comienza')
   chronometer.start()
   printTime()
+  printMilliseconds()
+
+
 
   btnLeftElement.innerText = 'STOP'
   btnLeftElement.classList.toggle('stop')
@@ -102,6 +154,8 @@ function setStartBtn() {
   btnLeftElement.classList.toggle("stop")
   setSplitBtn()
   clearInterval(stopwatch)
+  clearInterval(milwatch)
+
 
 
 
