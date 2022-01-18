@@ -33,8 +33,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  milDecElement.innerText = chronometer.getMilliSeconds()[0];
-  milUniElement.innerText = chronometer.getMilliSeconds()[1];
+  const currentMillis = chronometer.computeTwoDigitNumber(chronometer.getMilliSeconds())
+  milDecElement.innerText = currentMillis[0];
+  milUniElement.innerText = currentMillis[1];
 }
 
 function printSplit() {

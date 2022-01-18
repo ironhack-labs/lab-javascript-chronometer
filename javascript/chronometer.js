@@ -10,19 +10,19 @@ class Chronometer {
       this.currentTime++;
       console.log(this.currentTime);
       if(callback) callback();
-    }, 1);
+    }, 10);
   }
 
   getMinutes() {
-    return Math.floor((this.currentTime / 1000) / 60);
+    return Math.floor((this.currentTime / 100) / 60);
   }
 
   getSeconds() {
-    return Math.floor((this.currentTime / 1000) % 60);
+    return Math.floor((this.currentTime / 100) % 60);
   }
 
   getMilliSeconds() {
-    return Math.floor((this.currentTime - 60*this.getSeconds() - 60*1000*this.getMinutes()) / 10);
+    return parseInt(String(this.currentTime).slice(-2));
   }
 
   computeTwoDigitNumber(value) {
