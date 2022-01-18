@@ -45,10 +45,22 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+
+  const parent = document.querySelector('#splits');
+
+  let newRow = document.createElement('li');
+  newRow.innerHTML = chronometer.split();
+  parent.appendChild(newRow);
 }
 
 function clearSplits() {
   // ... your code goes here
+  const childs = document.querySelectorAll('#splits li');
+
+  childs.forEach(eachChild => {
+    eachChild.remove();
+  });
+
 }
 
 function setStopBtn() {
@@ -93,9 +105,10 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
   if (btnRightElement.innerHTML === 'RESET') {
+    clearSplits();
     chronometer.reset();
   }
   else if (btnRightElement.innerHTML === 'SPLIT') {
-    chronometer.split();
+    printSplit();
   }
 });
