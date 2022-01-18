@@ -1,5 +1,9 @@
 const chronometer = new Chronometer();
 
+
+// const person1 = new Person('German', 'Alvarez', 35, 172, false, ['dance', 'beer'])
+// console.log(`Me llamo ${person1.name}`)
+
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
@@ -14,8 +18,20 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+
+  minutes = function getMinutes(min) {
+    seconds = function getSeconds(sec) {
+      return min + sec
+    }
+  }
+  return `${minDecElement.value} ${minUniElement.value} ${secDecElement.value} ${secUniElement.value}`
+
 }
+
+
+//   return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
+// console.log(minDecElement)
+
 
 function printMinutes() {
   // ... your code goes here
@@ -56,10 +72,32 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.classList.value === 'btn start') {
+    btnLeftElement.classList.replace('start', 'stop')
+    btnLeftElement.innerText = 'STOP'
+  } else {
+    btnLeftElement.classList.replace('stop', 'start')
+    btnLeftElement.innerText = 'START'
+  }
+
+
+
+  // const stop = document.querySelector('stop')
+  // stop.textContent = 'STOP'
+  btnLeftElement.querySelector
+
+  // const title = document.querySelector('h1')                  // 3- select title
+  // title.style.textTransform = 'uppercase'    
+  console.log(btnLeftElement)
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.classList.value === 'btn reset') {
+    btnRightElement.classList.replace('reset', 'split')
+    btnRightElement.innerText = 'SPLIT'
+  } else {
+    btnRightElement.classList.replace('split', 'reset')
+    btnRightElement.innerText = 'RESET'
+  }
 });
