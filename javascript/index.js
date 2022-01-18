@@ -16,12 +16,12 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
   let minutes = chronometer.getMinutes();
   let minutesTwoDigit = chronometer.computeTwoDigitNumber(minutes);
-  console.log("Two digit minutes: ", minutesTwoDigit);
   minDecElement.innerText = `${minutesTwoDigit[0]}`;
   minUniElement.innerText = `${minutesTwoDigit[1]}`;
 }
@@ -33,9 +33,11 @@ function printSeconds() {
   secUniElement.innerText = `${secondsTwoDigits[1]}`;
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(){
+  let milliseconds = chronometer.getMilliseconds();
+  let milliString = chronometer.computeTwoDigitNumber(milliseconds);
+  document.querySelector("#milDec").innerText = `${milliString[0]}`;
+  document.querySelector("#milUni").innerText = `${milliString[1]}`;
 }
 
 function printSplit() {
@@ -53,6 +55,8 @@ function clearSplits() {
   minUniElement.innerText = `0`;
   secDecElement.innerText = `0`;
   secUniElement.innerText = `0`;
+  document.querySelector("#milDec").innerText = `0`;
+  document.querySelector("#milUni").innerText = `0`;
 }
 
 function setStopBtn() {

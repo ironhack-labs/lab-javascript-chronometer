@@ -10,19 +10,24 @@ class Chronometer {
         callback();
       }
       this.currentTime++;
-      console.log(this.currentTime);
-    }, 1000);
+    }, 10);
     return this.currentTime;
   }
 
   getMinutes() {
-    let minutes = Math.floor(this.currentTime / (60));
+    let minutes = Math.floor((this.currentTime / 100) / 60);
     return minutes;
   }
 
   getSeconds() {
-    let seconds = (this.currentTime) % 60;
+    let seconds = Math.floor((this.currentTime / 100) % 60);
     return seconds;
+  }
+
+  getMilliseconds() {
+    let milli = this.currentTime % 100;
+    console.log("Milliseconds: ", milli);
+    return milli;
   }
 
   computeTwoDigitNumber(value) {
@@ -37,6 +42,7 @@ class Chronometer {
       paddedString = `0${stringValue}`;
       return paddedString;
     } else {
+      console.log("Logging stringValue in error: ", stringValue);
       throw new Error("Something went wrong!");
     }
   }
@@ -52,12 +58,24 @@ class Chronometer {
   split() {
     let minutes = this.getMinutes();
     let seconds = this.getSeconds();
+    let milliseconds = this.getMilliseconds();
     let stringMinutes = this.computeTwoDigitNumber(minutes);
     let stringSeconds = this.computeTwoDigitNumber(seconds);
-    let formattedTime = `${stringMinutes}:${stringSeconds}`;
+    let milliString = this.computeTwoDigitNumber(milliseconds);
+    let formattedTime = `${stringMinutes}:${stringSeconds}:${milliString}`;
+    console.log("Milliseconds, string: ", milliseconds, milliString);
+    console.log("Seconds, string: ", seconds, stringSeconds);
+    console.log("Minutes, string: ", minutes, stringMinutes);
+    console.log("Formatted time: ", formattedTime);
     return formattedTime;
   }
 }
+
+const myChrono = new Chronometer();
+myChrono.start();
+setInterval(()=>{
+  myChrono.split();
+}, 10)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
