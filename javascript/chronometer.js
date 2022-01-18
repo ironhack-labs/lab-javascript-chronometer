@@ -31,11 +31,15 @@ class Chronometer {
   }
 
   reset() {
-    return (this.currentTime = 0);
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here - I don't know!
+    return (
+      this.computeTwoDigitNumber(this.getMinutes()) +
+      ':' +
+      this.computeTwoDigitNumber(this.getSeconds())
+    );
   }
 }
 
