@@ -13,8 +13,7 @@ class Chronometer {
 
 
       this.currentTime++
-      printSeconds()
-      printMinutes()
+
       console.log(this.currentTime)
     }, 1000);
 
@@ -23,12 +22,12 @@ class Chronometer {
 
   getMinutes() {
     // ... your code goes here
-    return this.computeTwoDigitNumber(Math.floor(this.currentTime / 60))
+    return (Math.floor(this.currentTime / 60))
   }
 
   getSeconds() {
     // ... your code goes here
-    return this.computeTwoDigitNumber(this.currentTime % 60)
+    return (this.currentTime % 60)
 
   }
 

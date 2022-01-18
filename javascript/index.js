@@ -23,10 +23,21 @@ function printMinutes() {
 
 function printSeconds() {
   // ... your code goes here
+  const intervalId2 = setInterval(() => {
+
+    secDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getSeconds())
 
 
-  secDecElement.innerText = chronometer.getSeconds()
-  minDecElement.innerText = chronometer.getMinutes();
+
+    minDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getMinutes())
+
+
+
+
+
+  }, 10);
+
+
 
 }
 
@@ -38,7 +49,7 @@ function printMilliseconds() {
 function printSplit() {
   // ... your code goes here
 
-  //const newLi = `<li> ${chronometer.split()}</li>`
+
   const newLi = document.createElement("li");
   newLi.innerHTML = chronometer.split()
   splitsElement.appendChild(newLi)
@@ -78,16 +89,20 @@ btnLeftElement.addEventListener('click', () => {
     btnRightElement.classList.replace('reset', 'split')
     btnRightElement.innerHTML = 'SPLIT'
     chronometer.start();
+    printSeconds();
 
 
 
 
   } else {
+
     btnLeftElement.classList.replace('stop', 'start')
     btnLeftElement.innerHTML = 'START'
     btnRightElement.classList.replace('split', 'reset')
     btnRightElement.innerHTML = 'RESET'
+
     chronometer.stop();
+
 
   }
 
