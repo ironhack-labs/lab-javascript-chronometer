@@ -14,11 +14,8 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  
-  setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000);
 }
 
 function printMinutes() {
