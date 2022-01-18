@@ -1,3 +1,4 @@
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -56,10 +57,20 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.innerHTML === 'START') {
+    btnLeftElement.classList.replace('start', 'stop')
+    btnLeftElement.innerHTML = 'STOP'
+    btnRightElement.innerHTML = 'SPLIT'
+    btnRightElement.classList.replace('reset', 'split')
+  } else {
+    btnLeftElement.innerHTML = 'START'
+    btnLeftElement.classList.replace('stop', 'start')
+    btnRightElement.innerHTML = 'RESET'
+    btnRightElement.classList.replace('split', 'reset')
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+
 });
