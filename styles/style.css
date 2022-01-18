@@ -56,20 +56,22 @@ body {
 }
 
 .leash {
-  background: rgb(204, 84, 87);
-  border: 2px solid rgb(134, 59, 61);
+  background: rgb(26, 11, 230);
+  border: 2px solid rgb(46, 23, 122);
   height: 50px;
   margin: 0 auto;
   width: 120px;
 }
 
 .leash-top {
+  background-image: url(https://www.originwallcoverings.com/media/catalog/product/cache/a2ff3bab6ccd19c1caabb71d87d63da1/3/5/357247.jpg);
   border-bottom: 0;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .leash-bottom {
+  background-image: url(https://www.originwallcoverings.com/media/catalog/product/cache/a2ff3bab6ccd19c1caabb71d87d63da1/3/5/357247.jpg);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top: 0;
