@@ -39,11 +39,17 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+
+  let secs = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  let mins = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+
+  let listItem = document.createElement('li');
+  listItem.innerText = mins + ":" + secs;
+  document.getElementById('splits').append(listItem);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  document.getElementById('splits').innerHTML = "";
 }
 
 function setStopBtn(btn) {
@@ -73,7 +79,7 @@ btnLeftElement.addEventListener('click', () => {
 
     setStopBtn(btnLeftElement);
     setSplitBtn(btnRightElement);
-    chronometer.start();
+    chronometer.start(printTime);
 
   } else if (btnLeftElement.className === 'btn stop') {
 
@@ -89,7 +95,12 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  
+  if (btnRightElement.className === 'btn split') {
+    printSplit();
+  } else if (btnRightElement.className === 'btn reset') {
+    clearSplits();
+    chronometer.currentTime = 0;
+    printTime();
+  }
 });
-
-printTime();
