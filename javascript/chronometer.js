@@ -31,6 +31,11 @@ class Chronometer {
     return seconds;
   }
 
+getMilSeconds(){
+  let milSeconds = this.currentime % 100;
+  return milSeconds;
+}
+
   computeTwoDigitNumber(value) {
     // ... your code goes here
     if (value < 10) {
