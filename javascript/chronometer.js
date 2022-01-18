@@ -9,15 +9,15 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.currentTime++;
       if(callback) callback();
-    }, 1000);
+    }, 100);
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / (60 * 10));
   }
 
   getSeconds() {
-    return this.currentTime % 60;
+    return (this.currentTime / 10) % 60;
   }
 
   computeTwoDigitNumber(value) {

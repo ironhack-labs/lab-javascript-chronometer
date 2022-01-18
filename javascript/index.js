@@ -32,16 +32,12 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
 }
 
 function printSplit() {
 
-  let secs = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
-  let mins = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
-
   let listItem = document.createElement('li');
-  listItem.innerText = mins + ":" + secs;
+  listItem.innerText = chronometer.split();
   document.getElementById('splits').append(listItem);
 }
 
@@ -97,7 +93,7 @@ btnRightElement.addEventListener('click', () => {
     printSplit();
   } else if (btnRightElement.className === 'btn reset') {
     clearSplits();
-    chronometer.currentTime = 0;
+    chronometer.reset()
     printTime();
   }
 });
