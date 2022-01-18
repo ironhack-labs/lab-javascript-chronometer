@@ -72,15 +72,19 @@ function setStartBtn() {
   btnLeftElement.innerHTML = "START"
   btnRightElement.className = "btn reset"
   btnRightElement.innerHTML = "RESET"
+  chronometer.stop()
 
   // ... your code goes here
 }
 
 function setResetBtn() {
-  minDecElement.innerHTML = 0
-  minUniElement.innerHTML = 0
-  secDecElement.innerHTML = 0
-  secUniElement.innerHTML = 0
+  // minDecElement.innerHTML = 0
+  // minUniElement.innerHTML = 0
+  // secDecElement.innerHTML = 0
+  // secUniElement.innerHTML = 0
+  
+
+  location.reload()
 
 
   // ... your code goes here
@@ -96,10 +100,12 @@ btnLeftElement.addEventListener('click', () => {
     intervalId = setInterval(() => {
       printTime()
 
-      setStopBtn()
-      setSplitBtn()
+      
 
     }, 1000)
+
+    setStopBtn()
+    setSplitBtn()
 
 
 
@@ -109,7 +115,7 @@ btnLeftElement.addEventListener('click', () => {
       chronometer.stop()
     }
     setStartBtn()
-    //setResetBtn()
+    
 
   }
 
