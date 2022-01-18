@@ -16,7 +16,7 @@ class Chronometer {
       printSeconds()
       printMinutes()
       console.log(this.currentTime)
-    }, 10);
+    }, 1000);
 
   }
 
