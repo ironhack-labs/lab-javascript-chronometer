@@ -15,20 +15,24 @@ class Chronometer {
       this.currentTime++
 
       console.log(this.currentTime)
-    }, 1000);
+    }, 10);
 
   }
 
 
   getMinutes() {
     // ... your code goes here
-    return (Math.floor(this.currentTime / 60))
+    return (Math.floor(this.currentTime / 6000))
   }
 
   getSeconds() {
     // ... your code goes here
-    return (this.currentTime % 60)
+    return (Math.floor(this.currentTime / 100)) % 60
 
+  }
+
+  getMilliseconds() {
+    return (this.currentTime % 100)
   }
 
   computeTwoDigitNumber(value) {
@@ -69,8 +73,8 @@ class Chronometer {
     // ... your code goes here
     const a = this.computeTwoDigitNumber(this.getMinutes())
     const b = this.computeTwoDigitNumber(this.getSeconds())
-
-    return `${a}:${b}`
+    const c = this.computeTwoDigitNumber(this.getMilliseconds())
+    return `${a}:${b}:${c}`
   }
 }
 

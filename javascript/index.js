@@ -31,11 +31,13 @@ function printSeconds() {
 
     minDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getMinutes())
 
+    milDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds())
 
 
 
 
-  }, 10);
+
+  }, 1);
 
 
 

@@ -37,6 +37,11 @@ body {
   justify-content:center;
 }
 
+
+#secDec, #minDec, #sphere>span {
+  margin-bottom: 97px;
+}
+
 #splits-container {
   font-size: 20px;
   font-weight: 100;
@@ -52,7 +57,9 @@ body {
 #milliseconds {
   font-size: 36px;
   position: absolute;
-  top: 20px;
+  right: 20px;
+  display: block;
+  margin-top: 15px;
 }
 
 .leash {
