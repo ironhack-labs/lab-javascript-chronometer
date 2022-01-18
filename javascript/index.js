@@ -18,6 +18,14 @@ function printTime() {
   printSeconds();
 }
 
+/*
+I was doing this in a group, but we didn't get far.
+There was then input from other people and I wrote a few things, but I've commented them, since it's not my code. 
+I understand what they wrote, but I would have never done it myself.
+So there's barely anything done for this second part of this lab.
+This was really difficult - and almost impossible to understand. 
+*/
+
 function printMinutes() {
   //   minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[1];
   //   minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[0];
@@ -48,7 +56,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  btnRightElement.classList.remove('');
+  //btnRightElement.classList.remove('');
   // ... your code goes here
 }
 
