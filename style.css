@@ -1,0 +1,23 @@
+/*selector de etiqueta */
+/*llegar a un elemento de html mediante la etiqueta*/
+
+body{
+    background-color: rgb(95, 142, 228);
+}
+
+p{
+    background-color: coral;
+}
+
+/*selector de ID deben coindidir los ID en html y en css */ /*este sirve para elementos unicos e importantes*/
+
+#titulo {
+    color:rgb(135, 212, 243)
+}
+
+/*selector de clase, para todos los elementos */ 
+
+descripcion{
+
+    background: rgba(255, 255, 255, 0.7)
+}
