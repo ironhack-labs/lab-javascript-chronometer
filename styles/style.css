@@ -32,9 +32,9 @@ body {
   position: relative;
   text-align: center;
   width: 220px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #splits-container {
@@ -87,7 +87,7 @@ body {
 }
 
 .number {
-  width:40px;
+  width: 40px;
 }
 
 .btn {
@@ -115,12 +115,15 @@ body {
 .btn.start {
   background: #5fca5f;
 }
+
 .btn.stop {
   background: #f14949;
 }
+
 .btn.reset {
   background: #908e8e;
 }
+
 .btn.split {
   background: #0851ab;
 }
