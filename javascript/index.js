@@ -13,16 +13,33 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function printTime(currentTime) {
+  printSeconds(currentTime);
+  printMinutes(currentTime);
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(currentTime) {
+  if (chronometer.getMinutes(currentTime) < 10) {
+    minUniElement.innerHTML = chronometer.getMinutes(currentTime);
+    minDecElement.innerHTML = '0';
+  } else {
+    minUniElement.innerHTML = '';
+    minDecElement.innerHTML = chronometer.computeTwoDigitNumber(
+      chronometer.getMinutes()
+    );
+  }
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(currentTime) {
+  if (currentTime < 10) {
+    secUniElement.innerHTML = currentTime;
+    secDecElement.innerHTML = '0';
+  } else {
+    secUniElement.innerHTML = '';
+    secDecElement.innerHTML = chronometer.computeTwoDigitNumber(
+      chronometer.getSeconds()
+    );
+  }
 }
 
 // ==> BONUS
@@ -31,35 +48,82 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let liElement = document.createElement('li');
+  liElement.innerHTML = chronometer.split();
+  splitsElement.appendChild(liElement);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stop();
+  toggleBtn({
+    element: btnLeftElement,
+    classToRemove: 'stop',
+    classToToggle: 'start',
+    elementText: 'START'
+  });
+  toggleBtn({
+    element: btnRightElement,
+    classToRemove: 'split',
+    classToToggle: 'reset',
+    elementText: 'RESET'
+  });
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.split();
+  printSplit();
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.start(printTime);
+  toggleBtn({
+    element: btnLeftElement,
+    classToRemove: 'start',
+    classToToggle: 'stop',
+    elementText: 'STOP'
+  });
+  toggleBtn({
+    element: btnRightElement,
+    classToRemove: 'reset',
+    classToToggle: 'split',
+    elementText: 'SPLIT'
+  });
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  chronometer.reset();
+  clearSplits();
+  printTime(0);
 }
 
 // Start/Stop Button
+let toggleBtn = ({ element, classToRemove, classToToggle, elementText }) => {
+  element.classList.remove(classToRemove);
+  element.classList.toggle(classToToggle);
+  element.innerHTML = elementText;
+};
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.innerHTML === 'STOP') {
+    setStopBtn();
+  } else {
+    setStartBtn();
+  }
 });
 
 // Reset/Split Button
-btnRightElement.addEventListener('click', () => {
+btnRightElement.addEventListener(
+  'click',
+  () => {
+    if (btnRightElement.innerHTML === 'SPLIT') {
+      setSplitBtn();
+    } else {
+      setResetBtn();
+    }
+  }
+
   // ... your code goes here
-});
+);
