@@ -12,7 +12,7 @@ const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
-
+console.log(splitsElement);
 function printTime() {
   printSeconds();
   printMinutes();
@@ -36,7 +36,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  splitsElement.appendChild = chronometer.split();
+  let liTag = document.createElement('li');
+  liTag.innerHTML = chronometer.split();
+  splitsElement.appendChild(liTag);
 }
 
 function clearSplits() {
@@ -68,7 +70,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains('start')) {
-    chronometer.start(printTime());
+    chronometer.start(printTime);
     setStopBtn();
     setSplitBtn();
   } else if (btnLeftElement.classList.contains('stop')) {
