@@ -5,9 +5,11 @@ class Chronometer {
   }
 
   start(callback) {
-        this.setintervalId = setInterval(() => {
-      this.currentTime++
-
+      this.setintervalId = setInterval(() => {
+      this.currentTime++;
+      if (typeof callback === 'function') {
+        callback();
+      }
     }, 1000 );
   }
 
@@ -33,7 +35,7 @@ class Chronometer {
     }
     
      value += number
-    //return (value < 10) ? "0"+ value : value + "";
+    // return (value < 10) ? "0"+ value : value + "";
     // ? is amazing but i am not ready for that operator
     
     
