@@ -7,32 +7,23 @@ class Chronometer {
   start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime += 1;
-      if(this.currentTime > 3) {
-        clearInterval(this.intervalId)
-      }
+      callback();
     }, 1000);
   }
 
   getMinutes() {
-    let minute = Math.floor(this.currentTime / 60);
-    return minute;
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    if(this.currentTime === 0) {
-      return 0
-    } else if(this.currentTime <= 9) {
-      
-    }
-    return this.currentTime % 60
+    return (this.currentTime % 60)
   }
 
   computeTwoDigitNumber(value) {
-    let numToString = value.toString();
-    if( value <= 9) {
-      return `0${numToString}`
+    if( value < 10) {
+      return `0${value}`
     } else {
-      return numToString
+      return String(value)
     }
   }
 
