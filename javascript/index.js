@@ -17,7 +17,7 @@ function printTime() {
   // ... your code goes here
   printMinutes();
   printSeconds();
-  printMilliseconds();
+  //printMilliseconds();
 }
 
 function printMinutes() {
@@ -37,19 +37,24 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
-  let milSeconds = chronometer.computeTwoDigitNumber(
-    chronometer.getMilSeconds()
-  );
-  milDecElement.innerHTML = milSeconds[0];
-  milUniElement.innerHTML = milSeconds[1];
+  // let milSeconds = chronometer.computeTwoDigitNumber(
+  //   chronometer.currentTime();
+  // );
+  // milDecElement.innerHTML = milSeconds[0];
+  // milUniElement.innerHTML = milSeconds[1];
 }
 
 function printSplit() {
   // ... your code goes here
+  let newList = document.createElement('li');
+  newList.className = 'list-element';
+  newList.innerText = chronometer.split();
+  document.getElementById('splits').append(newList);
 }
 
 function clearSplits() {
   // ... your code goes here
+  document.getElementById('splits').innerText = '';
 }
 
 function setStopBtn() {

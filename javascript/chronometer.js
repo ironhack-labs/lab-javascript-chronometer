@@ -31,10 +31,11 @@ class Chronometer {
     return seconds;
   }
 
-  getMilSeconds() {
-    let milSeconds = (this.currentime * 1000) % 1000;
-    return milSeconds;
-  }
+  // getMilSeconds() {
+  //   let milSeconds = (this.currentime * 1000) % 1000;
+  //   return milSeconds;
+
+  // }
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
@@ -58,6 +59,7 @@ class Chronometer {
     // ... your code goes here
     let twoDigitMinutes = this.computeTwoDigitNumber(this.getMinutes());
     let twoDigitSeconds = this.computeTwoDigitNumber(this.getSeconds());
+    //let twoDigitMilSeconds = this.computeTwoDigitNumber(this.getMilSeconds());
 
     return twoDigitMinutes + ':' + twoDigitSeconds;
   }
