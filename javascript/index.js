@@ -14,15 +14,24 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  // decirle que imprima los minutos + los segundos llamando a las 2 funciones 
+
+  printMinutes()
+  printSeconds()
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+  // decirle la posición de los minutos
+minDecElement.innerText = chronometer.split()[0]
+minUniElement.innerText = chronometer.split()[1]
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  // decirle la posición de los segundos
+secDecElement.innerText = chronometer.split()[3]
+secUniElement.innerText = chronometer.split()[4]
 }
 
 // ==> BONUS
@@ -32,6 +41,7 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+
 }
 
 function clearSplits() {
@@ -54,12 +64,50 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+
 // Start/Stop Button
+// switch de los contenidos de los botones start/stop  a la vez que añadir split y reset
 btnLeftElement.addEventListener('click', () => {
+
+if (btnLeftElement.innerHTML === 'START') {
+  //botón stop
+  btnLeftElement.innerHTML = 'STOP'
+  btnLeftElement.className = 'btn stop'
+  //botón split
+  btnRightElement.innerHTML = 'SPLIT'
+  btnRightElement.className = 'btn split'
+ //asignar bontón start al cronómetro
+  chronometer.start();
+ // intervalo
+    setInterval(function () {
+      printTime();
+    }, 1000)
+  }
+
+else if (btnLeftElement.innerHTML === 'STOP') {
+  //botón start
+  btnLeftElement.innerHTML = 'START';
+  btnLeftElement.className = 'btn start';
+// botón reset
+  btnRightElement.className = 'btn reset';
+  btnRightElement.innerHTML = 'RESET';
+  //asignar botón stop al cronómetro
+  chronometer.stop();
+    }
   // ... your code goes here
+startButton.onclick(start(callback))
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+
+// asignar funciones reset/ split al cronómetro
+if (btnRightElement.innerHTML === 'RESET') {
+  //cronometro reset
+chronometer.reset();
+  }
+else if (btnRightElement.innerHTML === 'SPLIT') {
+ //cronometro split
+chronometer.split();
+}
 });
