@@ -17,6 +17,16 @@ class Chronometer {
     }, 1000);
     
   }  
+
+  /*start(callback) {
+    if (!callback){
+      this.intervalId = setInterval(()=>this.currentTime++,1000);
+    } else {
+      this.intervalId = setInterval(()=>this.currentTime++,1000);
+      callback();
+    }
+  }*/
+
   
 
   getMinutes() {
