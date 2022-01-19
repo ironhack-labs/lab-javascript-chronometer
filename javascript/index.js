@@ -15,6 +15,7 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+ 
 }
 
 function printMinutes() {
@@ -56,7 +57,18 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.classList.contains('start')) {
+    btnLeftElement.classList.replace('start', 'stop')
+    btnLeftElement.innerText = 'STOP' 
+    btnRightElement.classList.contains ('reset')
+    btnRightElement.innerHTML= 'RESET'
+  }
+  
+  else {
+    btnLeftElement.classList.replace('stop', 'start')
+    btnLeftElement.innerText = 'START'}
+  
+
 });
 
 // Reset/Split Button
