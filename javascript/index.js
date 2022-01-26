@@ -17,6 +17,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printSeconds();
   printMinutes();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -43,7 +44,15 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  
+currentTime = chronometer.currentTime;
+milliseconds = chronometer.getMilliseconds(currentTime)
+millisecDigits = chronometer.computeTwoDigitNumber(milliseconds);
+
+milDecElement.innerHTML = millisecDigits[0];
+milUniElement.innerHTML = millisecDigits[1];
+
+
 }
 
 function printSplit() {
@@ -71,22 +80,6 @@ function clearSplits() {
   }
   
   
-}
-
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
-
-function setResetBtn() {
-  // ... your code goes here
 }
 
 // Start/Stop Button

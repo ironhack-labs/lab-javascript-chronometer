@@ -23,6 +23,10 @@ class Chronometer {
     return this.currentTime % 60;
   }
 
+  getMilliseconds() {
+    return (this.currentTime % 100);
+  }
+
   computeTwoDigitNumber(value) {
     if (value < 10) { 
       return (`0${value}`) }
@@ -41,7 +45,7 @@ class Chronometer {
   }
 
   split() {
-    return (`${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`);
+    return (`${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}:${this.computeTwoDigitNumber(this.getMilliseconds())}`);
   }
 }
 
