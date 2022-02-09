@@ -9,16 +9,20 @@ class Chronometer {
    this.intervalId = setInterval(() => {
       this.currentTime++;
       callback();
-    }, 1000);
+    }, 10);
   }
 
   getMinutes() {
     // ... your code goes here
-    return Math.floor(this.currentTime/60);
+    return Math.floor(this.currentTime/6000);
   }
 
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor(this.currentTime/100) % 60;
+  }
+
+  getMilliseconds() {
+    return this.currentTime % 100;
   }
 
   computeTwoDigitNumber(value) {
