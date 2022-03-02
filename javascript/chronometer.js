@@ -28,7 +28,7 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     const stringValue = value.toString();
-    return stringValue.length > 1 ? stringValue : '0' + stringValue;
+    return stringValue.padStart(2,0);
   }
 
   stop() {
