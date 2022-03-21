@@ -4,15 +4,15 @@
 
 ## Introduction
 
-In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very commonly used in many sports - car racing, athletics, etc. Why wouldn't we practice a bit of our JS and DOM manipulation knowledge and create our own IronChronometer? And then, we can use to see how many minutes and seconds will take us to complete any of our labs. Sounds like a plan.
+In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very commonly used in sports - car racing, athletics, etc. Why wouldn't we practice a bit of our JS and DOM manipulation knowledge and create our own IronChronometer? And then, we can use it to see how many minutes and seconds will take us to complete any of our labs. Sounds like a plan.
 
 Let's go!
 
 These are our milestones:
 
 1. Our chronometer will have an _LCD screen_, where we will see the minutes and seconds moving forward.
-2. It will also have two different buttons that will change their behavior depending on the status of the chronometer. For example, the start button will become a stop button when the chronometer is running.
-3. As a bonus, we are going to add a split functionality. If you are questioning the usefulness of this functionality, well, it could be helpful to remember how much time we spent in each iteration of the exercise. :wink: As we finish an iteration, we will be able to press the split button, so we will know how hard or easy it was, depending on how much time it took us to finish it.
+2. It will also have two different buttons that will change their behavior depending on the status of the chronometer. For example, the start button will become a stop button when the chronometer runs.
+3. As a bonus, we will add a [split functionality](https://www.google.com/search?q=chronometer+split&oq=chronometer+split) allowing us to record the time when we press the split button.
 
 Let's do it!
 
@@ -21,7 +21,10 @@ To check how your final version should look like check this **[demo](https://san
 ## Requirements
 
 - Fork this repo.
+
 - Clone this repo.
+
+  
 
 ## Submission
 
@@ -33,15 +36,31 @@ $ git commit -m "Solved lab"
 $ git push origin master
 ```
 
-- Create Pull Request so your TAs can check up your work.
+- Create a Pull Request so that your TAs can check your work.
+
+  
 
 ## Tests, tests, tests!
 
-As you know by now, most of our labs are supported by tests. In the `tests/chronometer.spec.js` file, you can find the tests you need to pass to finish this exercise successfully.
+This LAB is equipped with unit tests to provide automated feedback on your lab progress. You'll start by working with the tests and using them in conjunction with the iteration instructions.
 
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next run the `npm run test:watch` command to run automated tests. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next run the `npm run test:watch` command to run automated tests.  
 
-To see more details about failing tests, open the `tests/chronometer.spec.js` file.
+```shell
+$ cd lab-javascript-chronometer
+$ npm install
+$ npm run test:watch
+```
+
+<br>
+
+Open the resulting `lab-solution.html` file with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results.
+
+**Note:** The testing environment and the `lab-solution.html` page don’t allow printing the _console logs_ in the browser.  
+
+To see the console.log outputs you write in the `viking.js` file, open the `index.html` file using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension.
+
+
 
 ## Instructions
 
@@ -70,25 +89,30 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 <details>
   <summary> Click here </summary>
 
+
 ![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
 </details>
 
 
 
-**This lab is primarily split into two main parts**:
+**This lab is divided  into two main parts**:
 
 - Part 1: the logic (which you will be adding to the `javascript/chronometer.js` file).
 - Part 2: the DOM manipulation, so we can visually represent and showcase the previously written logic (the code you will add in the `javascript/index.js`).
 
-Your solution will require the usage of the `setInterval` and `clearInterval` globally available methods.
+Your solution will require the usage of the global methods `setInterval` and `clearInterval`.
 
 `setInterval` can be called with a function as first argument and a number of milliseconds as the second argument. It will run said function every number of milliseconds that you passed it.
 
 When called, `setInterval` returns a number that can be used to identify the _interval_ that was initialized. That same interval can later be stopped by running `clearInterval` and passing it the id of the interval we want to interrupt.
 
+
+
 ### Iteration 1: The logic
 
-To start, you should be working on the `javascript/chronometer.js` file.
+In the first part of the LAB, you will be working on the `javascript/chronometer.js` file.
+
+
 
 #### The `Chronometer` class
 
@@ -207,6 +231,7 @@ Using our `Chronometer` methods to get the values, this should be easy!
 <details>
   <summary> Click here </summary>
 
+
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png)
     
 </details>
@@ -229,6 +254,7 @@ Once we have created the ordered list in our HTML, we have to create the button 
 
 <details>
   <summary> Click here </summary>
+
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
     
