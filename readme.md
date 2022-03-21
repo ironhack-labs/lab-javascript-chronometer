@@ -22,7 +22,6 @@ To check how your final version should look like check this **[demo](https://san
 
 - Fork this repo.
 - Clone this repo.
-- Visit the "Actions" tab in your fork, and enable workflows.
 
 ## Submission
 
