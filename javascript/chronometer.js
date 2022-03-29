@@ -6,7 +6,10 @@ class Chronometer {
 
   start(callback) { 
     this.intervalId = setInterval(() => {
-      this.currentTime = (this.currentTime + 1);
+      this.currentTime = (this.currentTime + 1); // could have also been ++ - you are using parenthesis where they are not needed.
+      if(typeof callback === 'function') { //callback added after demo.
+        callback ();
+      }
     }, 1000);
   }
   
@@ -20,7 +23,7 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    let twoDigitString = (value.toString());
+    let twoDigitString = (value.toString()); //see demo notes for another way to solve. Note: a number + 'string' = 'string'
   
       if (twoDigitString.length === 1) {
       twoDigitString = twoDigitString.padStart(2,'0');
@@ -36,8 +39,8 @@ class Chronometer {
     this.currentTime = 0;
   }
 
-  split() {
-    // ... your code goes here
+  split() { //ADDED AFTER DEMO - three other ways demo'd to achieve - see notes.  
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
   }
 }
 
