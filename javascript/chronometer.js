@@ -12,7 +12,7 @@ class Chronometer {
   
 
   getMinutes() {
-      return(Math.floor(this.currentTime / 60));  
+    return(Math.floor(this.currentTime / 60));  
   }
 
   getSeconds() {
@@ -20,7 +20,12 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    let twoDigitString = (value.toString());
+  
+      if (twoDigitString.length === 1) {
+      twoDigitString = twoDigitString.padStart(2,'0');
+      }
+    return(twoDigitString);
   }
 
   stop() {
