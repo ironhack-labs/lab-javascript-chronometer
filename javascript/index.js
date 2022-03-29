@@ -18,7 +18,8 @@ function printTime() {
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDecElement;
+  milUniElement;
 }
 
 function printSeconds() {
@@ -54,14 +55,31 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+/*
+si en el boton izquierdo la clase es estart entonces al hacer clik corre la funcion start y cambia la clase a stop
+
+*/
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  if (btnLeftElement.classList.contains('start')) {
+    chronometer.start();
 
+    btnLeftElement.classList.replace('start', 'stop');
 
-  // ... your code goes here
+    btnLeftElement.innerHTML = "stop"
+  }
+
+  // despues de click en start el texto del boton tiene que cambiar a stop y la clase a btn stop
+
+  //y el color del fondo a rojo
+
+  //el texto btn izquierdo tiene que cambiar a reset y ponerse azul
+
+  chronometer.stop();
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  chronometer.reset();
+  chronometer.split();
 });
