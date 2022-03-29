@@ -1,4 +1,4 @@
-const chronometer = new Chronometer();
+
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -13,16 +13,113 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+
+
+
+
+const chrono = new Chronometer()
+
+let runChrono = true
+let seconds =0
+
+btnLeftElement.onclick = function () {  
+
+
+  if (runChrono) {
+
+    btnLeftElement.classList.remove('start')
+    btnLeftElement.classList.add('btn', 'stop')
+    btnLeftElement.textContent = 'STOP'
+  
+
+    btnRightElement.classList.remove('rest')
+    btnRightElement.classList.add('btn', 'split')
+    btnRightElement.textContent = 'SPLIT'
+    
+    chrono.start()
+
+    printTime()
+    
+    runChrono = false
+
+    
+  
+
+  } else {
+    btnLeftElement.classList.remove('stop')
+    btnLeftElement.classList.add('btn', 'start')
+    btnLeftElement.textContent = 'START'
+  
+
+    btnRightElement.classList.remove('split')
+    btnRightElement.classList.add('btn', 'reset')
+    btnRightElement.textContent = 'RESET'
+
+    chrono.stop()
+
+    runChrono = true
+
+   }
+   
+
+
+   
+}
+
+btnRightElement.onclick = function () { 
+
+  if (!runChrono) {
+    printSplit()
+
+  } else { 
+
+    clearSplits()
+
+
+  }
+
+ 
+   
+}
+
+
+
 function printTime() {
-  // ... your code goes here
+
+  let minutes = getMinutes()
+  let second = getSeconds()
+
+  let firstDigMin = Math.floor(minutes/10)
+  let secondDigMin = minutes % 10
+
+  let firstDigSecond = Math.floor(second/10)
+  let secondtDigSecond = second % 10
+  
+  minDecElement.textContent = firstDigMin
+  minUniElement.textContent = secondDigMin
+  secDecElement.textContent = firstDigSecond
+  secUniElement.textContent = secondtDigSecond
+
+
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = getMinutes()
+  let firstDigMin = Math.floor(minutes/10)
+  let secondDigMin = minutes % 10
+  minDecElement.textContent = firstDigMin
+  minUniElement.textContent = secondDigMin
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  let second = getSeconds()
+  let firstDigSecond = Math.floor(second/10)
+  let secondtDigSecond = second % 10
+  secDecElement.textContent = firstDigSecond
+  secUniElement.textContent = secondtDigSecond
 }
 
 // ==> BONUS
@@ -31,11 +128,23 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+
+  const listElement = splitsElement.createElement('li')
+  const newLi = document.createElement("li");
+  newLi.appendChild(document.createTextNode(chrono.split()));
+  listElement.appendChild(newLi);
+  
+
+
+
 }
 
 function clearSplits() {
-  // ... your code goes here
+  
+  chrono.reset()
+  
+
+
 }
 
 function setStopBtn() {

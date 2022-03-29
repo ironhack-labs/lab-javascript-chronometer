@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="minDec">00</h1>
+
+    <ol id="list"></ol>
+    <script>
+        const minDecElement = document.getElementById('minDec');
+
+    class Chronometer {
+        constructor() {
+            this.currentTime = 0
+            this.intervalId = null
+            
+        }
+
+        start(callback) {
+
+            if (callback) {
+                callback()
+
+            }
+
+           this.intervalId = setInterval( () => {
+             
+            this.currentTime += 1
+            
+            }, 1000)
+            
+        }
+
+        getSeconds() {
+
+        
+         return this.currentTime
+
+        }
+
+        
+    }
+
+const crono1 = new Chronometer()
+
+//crono1.start()
+
+
+   var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode("Four"));
+        ul.appendChild(li);
+    
+
+
+    </script>
+</body>
+</html>
