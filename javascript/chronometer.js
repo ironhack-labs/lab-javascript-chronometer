@@ -5,11 +5,16 @@ class Chronometer {
     this.intervalId = null
   }
 
-  start() {
-    this.intervalID = setInterval(() => {
-      this.currentTime++
-    }, 1000)
+  start(callback) {
+
+    if (callback) {
+      this.intervalID = setInterval(() => {
+        this.currentTime++
+        callback()
+      }, 1000)
+    }
   }
+
 
   getMinutes() {
     return Math.floor(this.currentTime / 60)
@@ -25,7 +30,7 @@ class Chronometer {
     if (value == 0) {
       placeholder = '00'
     }
-    else if (value > 10) {
+    else if (value >= 10) {
       placeholder = `${value}`
     }
     else {
