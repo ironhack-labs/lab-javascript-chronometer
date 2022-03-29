@@ -1,9 +1,6 @@
 const chronometer = new Chronometer();
 
-console.log(setStartBtn())
-console.log(printSeconds())
-
-
+setStartBtn()
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -19,7 +16,7 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  setInterval(() => {
+  let intervalStart = setInterval(() => {
     let totalMinutes = chronometer.getMinutes()
     let computedMinutes = chronometer.computeTwoDigitNumber(totalMinutes)
 
@@ -64,7 +61,6 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  chronometer.start()
 }
 
 function setResetBtn() {
@@ -74,6 +70,11 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   const startButtonClick = document.querySelector('#btn-left')
-  addEventListener('click', chronometer.start);
+  chronometer.start()
   printTime()
+})
+btnRightElement.addEventListener('click', () => {
+  const startButtonClick = document.querySelector('#btn-right')
+  chronometer.reset()
+
 })
