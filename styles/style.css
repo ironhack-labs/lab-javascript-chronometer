@@ -35,6 +35,7 @@ body {
   display:flex;
   align-items:center;
   justify-content:center;
+  /* background-color: green; */
 }
 
 #splits-container {
@@ -117,6 +118,9 @@ body {
 }
 .btn.stop {
   background: #f14949;
+}
+.btn.mid {
+  background: #ffc400;
 }
 .btn.reset {
   background: #908e8e;
