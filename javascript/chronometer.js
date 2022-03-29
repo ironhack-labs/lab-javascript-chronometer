@@ -5,25 +5,41 @@ class Chronometer {
   }
 
   start(callback) {
-    this.intervalId = setInterval(() => {this.currentTime += 1},1000);
-    };
+    this.intervalId = setInterval(() => {
+      this.currentTime = this.currentTime + 1;
+      if(typeof callback === 'function'){
+        callback();
+      }
+    },1000);
+  };
+
+    /* adding the callback function conditional goes like this:
+    start(callback) {
+      this.intervalId = setInterval(() => {
+        this.currentTime = this.currentTime + 1;
+        if(typeOf callback === 'function') {
+          callback();
+        }
+      }, 1000);
+    }
+    */
      
   getMinutes() {
-    let getTotalMinutes = Math.floor(this.currentTime / 60);
-  return getTotalMinutes;
+    return Math.floor(this.currentTime / 60);
+ 
   }
 
   getSeconds() {
-  if (this.currentTime % 60 === 1) {
-  } return this.currentTime%60;
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
     if(value <= 9) {
       return '0' + value;
-    } else { return value.toString();
+      // return `0${value}`; ALT SYNTAX
+      }  
+      return value.toString();
   }
-}
 
   stop() {
    clearInterval(this.intervalId);
@@ -35,6 +51,7 @@ class Chronometer {
 
   split() {
    return (this.computeTwoDigitNumber(this.getMinutes())+':'+this.computeTwoDigitNumber(this.getSeconds()));
+   // return `${this.computeTwoDigitNumber(this.getMinutes)}:${this.computeTwoDigitNumber(this.getSeconds)}`;
   }
 }
 
