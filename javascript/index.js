@@ -12,10 +12,11 @@ const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
-//Global boolean for buttons
+//Globals
 
 let startState = true
 let resetState = true
+let splitsToLi = ""
 
 function printTime() {
 
@@ -63,7 +64,10 @@ function setStopBtn() {
 
 }
 function printSplit() {
-  return chronometer.split()
+  let ol = document.getElementById("splits");
+  let li = document.createElement("li");
+  li.appendChild(document.createTextNode(splitsToLi));
+  ol.appendChild(li);
 }
 
 function clearSplits() {
@@ -98,7 +102,8 @@ btnRightElement.addEventListener('click', () => {
     printTime()
   }
   if (resetState == false) {
-    console.log(chronometer.split())
+    splitsToLi = chronometer.split()
+    printSplit()
   }
 
 })
