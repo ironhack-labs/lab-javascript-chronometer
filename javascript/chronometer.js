@@ -14,6 +14,8 @@ class Chronometer {
             this.currentTime ++
         }, 1000) 
 
+    return currentTime
+
   }
 
 
