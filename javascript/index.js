@@ -15,6 +15,7 @@ const splitsElement = document.getElementById('splits');
 //Global boolean for buttons
 
 let startState = true
+let resetState = true
 
 function printTime() {
 
@@ -38,28 +39,34 @@ function printSeconds() {
 }
 
 function setResetBtn() {
+  resetState = true
+  btnRightElement.textContent = "RESET"
+  btnRightElement.style.backgroundColor = '#908e8e'
 
 }
+
 function setSplitBtn() {
-
-}
-function printSplit() {
-
-}
-
-function clearSplits() {
-
+  resetState = false
+  btnRightElement.textContent = "SPLIT"
+  btnRightElement.style.backgroundColor = '#0851ab'
 }
 
 function setStartBtn() {
   btnLeftElement.textContent = "START"
-  btnLeftElement.style.backgroundColor = 'green'
+  btnLeftElement.style.backgroundColor = '#5fca5f'
   startState = true
 }
 function setStopBtn() {
   btnLeftElement.textContent = "STOP"
-  btnLeftElement.style.backgroundColor = 'red'
+  btnLeftElement.style.backgroundColor = '#f14949'
   startState = false
+
+}
+function printSplit() {
+  return chronometer.split()
+}
+
+function clearSplits() {
 
 }
 
@@ -74,18 +81,24 @@ btnLeftElement.addEventListener('click', () => {
   if (startState == true) {
     chronometer.start(printTime)
     setStopBtn()
+    setSplitBtn()
   }
   else if (startState == false) {
     chronometer.stop()
     setStartBtn()
+    setResetBtn()
   }
-
-
 
 })
 
 btnRightElement.addEventListener('click', () => {
-  const startButtonClick = document.querySelector('#btnright')
-  chronometer.reset()
+  const resetButtonClick = document.querySelector('#btnright')
+  if (resetState == true) {
+    chronometer.reset()
+    printTime()
+  }
+  if (resetState == false) {
+    console.log(chronometer.split())
+  }
 
 })
