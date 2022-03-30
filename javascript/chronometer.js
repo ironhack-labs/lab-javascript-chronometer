@@ -6,8 +6,11 @@ class Chronometer {
   }
 
   start(callback) {
-    const increment = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.currentTime = this.currentTime + 1;
+      if (typeof callback === 'function') {
+        callback();
+      }
     }, 1000);
   }
 
@@ -33,7 +36,7 @@ class Chronometer {
   }
 
   stop() {
-    return clearInterval(this.intervalId);
+    clearInterval(this.intervalId);
     // ... your code goes here
   }
 
@@ -43,10 +46,14 @@ class Chronometer {
   }
 
   split() {
-    const result = increment * 1000;
-    return `${result}`;
-    // ... your code goes here
+    // we can use methods inside of methods
+    return (
+      this.computeTwoDigitNumber(this.getMinutes()) +
+      ':' +
+      this.computeTwoDigitNumber(this.getSeconds())
+    );
   }
+  // ... your code goes here
 }
 
 // The following is required to make unit tests work.
