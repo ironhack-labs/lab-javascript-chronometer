@@ -6,13 +6,12 @@ class Chronometer {
   }
 
   start(callback) {
-
-    if (callback) {
-      this.intervalID = setInterval(() => {
-        this.currentTime++
+    this.intervalID = setInterval(() => {
+      this.currentTime++
+      if (callback) {
         callback()
-      }, 1000)
-    }
+      }
+    }, 1000)
   }
 
 

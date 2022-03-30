@@ -29,43 +29,40 @@ function printTime() {
   minDecElement.textContent = computedMinutes.charAt(0)
   minUniElement.textContent = computedMinutes.charAt(1)
 
-
 }
-
 function printMinutes() {
   return chronometer.getMinutes()
 }
-
 function printSeconds() {
   return chronometer.getSeconds()
-}
-
-function printSplit() {
-
-}
-
-function clearSplits() {
-}
-
-function setStopBtn() {
-  btnLeftElement.textContent = "STOP"
-  btnLeftElement.classList.replace('stop')
-  setStopBtn()
-
-}
-
-function setSplitBtn() {
-
-}
-
-function setStartBtn() {
-  btnLeftElement.textContent = "START"
-  btnLeftElement.classList.replace('start')
 }
 
 function setResetBtn() {
 
 }
+function setSplitBtn() {
+
+}
+function printSplit() {
+
+}
+
+function clearSplits() {
+
+}
+
+function setStartBtn() {
+  btnLeftElement.textContent = "START"
+  btnLeftElement.style.backgroundColor = 'green'
+  startState = true
+}
+function setStopBtn() {
+  btnLeftElement.textContent = "STOP"
+  btnLeftElement.style.backgroundColor = 'red'
+  startState = false
+
+}
+
 /* BONUS
 function printMilliseconds() {
 
@@ -73,12 +70,22 @@ function printMilliseconds() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  const startStopButtonClick = document.querySelector('#btn-left')
-  chronometer.start(printTime)
+  const startStopButtonClick = document.querySelector('#btnleft')
+  if (startState == true) {
+    chronometer.start(printTime)
+    setStopBtn()
+  }
+  else if (startState == false) {
+    chronometer.stop()
+    setStartBtn()
+  }
+
+
+
 })
 
 btnRightElement.addEventListener('click', () => {
-  const startButtonClick = document.querySelector('#btn-right')
+  const startButtonClick = document.querySelector('#btnright')
   chronometer.reset()
 
 })
