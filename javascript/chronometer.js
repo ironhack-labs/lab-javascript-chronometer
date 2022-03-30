@@ -2,16 +2,23 @@ class Chronometer {
 
   constructor() {
     this.currentTime = 0
+    this.currentTime2 = 0
     this.intervalId = null
   }
 
-  start(callback) {
+  start(callback, miliseconds) {
     this.intervalID = setInterval(() => {
       this.currentTime++
       if (callback) {
         callback()
       }
     }, 1000)
+    /*this.intervalID2 = setInterval(() => {
+      this.currentTime2++
+      if (miliseconds) {
+        miliseconds()
+      }
+    }, 1)*/
   }
 
 
@@ -23,6 +30,10 @@ class Chronometer {
     return (this.currentTime % 60)
 
   }
+
+  /*getMS() {
+    return (this.currentTime2)
+  }*/
 
   computeTwoDigitNumber(value) {
     let placeholder = ""
@@ -36,6 +47,7 @@ class Chronometer {
       placeholder = '0' + value
 
     }
+
     return placeholder
   }
 

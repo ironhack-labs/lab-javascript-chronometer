@@ -11,12 +11,14 @@ const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
+let ol = document.getElementById("splits")
+//const splitsElement = document.getElementById('splits');
 //Globals
 
 let startState = true
 let resetState = true
 let splitsToLi = ""
+
 
 function printTime() {
 
@@ -32,6 +34,15 @@ function printTime() {
   minUniElement.textContent = computedMinutes.charAt(1)
 
 }
+
+/*function printMilliseconds() {
+  let totalMS = chronometer.getMS()
+  let computedMS = chronometer.computeTwoDigitNumber(totalMS)
+  milDecElement.textContent = computedMS.charAt(0)
+  milUniElement.textContent = computedMS.charAt(1)
+
+}*/
+
 function printMinutes() {
   return chronometer.getMinutes()
 }
@@ -64,26 +75,22 @@ function setStopBtn() {
 
 }
 function printSplit() {
-  let ol = document.getElementById("splits");
-  let li = document.createElement("li");
-  li.appendChild(document.createTextNode(splitsToLi));
-  ol.appendChild(li);
+
+  let li = document.createElement("li")
+  li.appendChild(document.createTextNode(splitsToLi))
+  ol.appendChild(li)
 }
 
 function clearSplits() {
-
+  ol.innerHTML = ""
 }
-
-/* BONUS
-function printMilliseconds() {
-
-}*/
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   const startStopButtonClick = document.querySelector('#btnleft')
   if (startState == true) {
     chronometer.start(printTime)
+    //chronometer.start(printMilliseconds)
     setStopBtn()
     setSplitBtn()
   }
@@ -100,6 +107,7 @@ btnRightElement.addEventListener('click', () => {
   if (resetState == true) {
     chronometer.reset()
     printTime()
+    clearSplits()
   }
   if (resetState == false) {
     splitsToLi = chronometer.split()
