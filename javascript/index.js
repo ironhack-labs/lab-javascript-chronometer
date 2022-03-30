@@ -41,7 +41,6 @@ function setStartBtn() {
   btnRightElement.className = 'btn split';
   
   chronometer.start(printTime);
-  console.log(chronometer.currentTime);
 }
 
 function setStopBtn() {
