@@ -54,13 +54,37 @@ function setResetBtn() {
   // ... your code goes here
 }
 
+// const btnOne = document.getElementsByClassName('btn')[0];
+// // console.log(btns);
+
+// btnOne.innerHTML = 'STOP';
+
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
 
-  if (btnLeftElement.classList.contains('[btn start]')) {
-    btnLeftElement.classList.remove('[btn start]');
-    console.log('hey');
+  if (btnLeftElement.classList.contains('start')) {
+    btnLeftElement.classList.remove('start');
+    btnLeftElement.classList.add('stop');
+    btnLeftElement.classList.remove('reset');
+    btnRightElement.classList.add('split');
+
+    const btnOne = document.getElementsByClassName('btn')[0];
+    // console.log(btns);
+
+    btnOne.innerHTML = 'STOP';
+  } else {
+    btnLeftElement.classList.remove('stop');
+    btnLeftElement.classList.add('start');
+    btnRightElement.classList.remove('split');
+    btnRightElement.classList.add('reset');
+    const btnOne = document.getElementsByClassName('btn')[0];
+    // console.log(btns);
+
+    btnOne.innerHTML = 'START';
+    console.log(btnOne);
+
+    console.log(btnOne);
   }
   // } else {
   //   // btnLeftElement.classList.remove('btnstart');
@@ -73,4 +97,29 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  if (btnRightElement.classList.contains('reset')) {
+    btnRightElement.classList.remove('reset');
+    btnRightElement.classList.add('split');
+    btnLeftElement.classList.remove('stop');
+    btnLeftElement.classList.add('start');
+
+    const btnTwo = document.getElementsByClassName('btn')[1];
+    // console.log(btns);
+
+    btnOne.innerHTML = 'SPLIT';
+    // // console.log(btns);
+
+    // btnTwo.innerText = 'START';
+    // console.log(btnTwo);
+  } else {
+    btnLeftElement.classList.remove('stop');
+    btnLeftElement.classList.add('start');
+    btnRightElement.classList.remove('split');
+    btnRightElement.classList.add('reset');
+    // const btnTwo = document.getElementsByClassName('btn')[0];
+    // // console.log(btns);
+
+    // btnTwo.innerHTML = 'STOP';
+    // console.log(btnTwo);
+  }
 });
