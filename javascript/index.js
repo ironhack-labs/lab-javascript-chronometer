@@ -62,11 +62,19 @@ si en el boton izquierdo la clase es estart entonces al hacer clik corre la func
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains('start')) {
-    chronometer.start();
+    chronometer.start(printTime());
 
+    
     btnLeftElement.classList.replace('start', 'stop');
 
-    btnLeftElement.innerHTML = "stop"
+    btnLeftElement.innerHTML = "STOP"
+
+    if (btnRightElement.classList.contains('reset')) {
+      btnRightElement.classList.replace('reset', 'split');
+
+      btnRightElement.innerHTML = 'SPLIT';
+    }
+
   }
 
   // despues de click en start el texto del boton tiene que cambiar a stop y la clase a btn stop
@@ -80,6 +88,6 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  chronometer.reset();
-  chronometer.split();
+
+  
 });
