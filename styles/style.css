@@ -33,8 +33,14 @@ body {
   text-align: center;
   width: 220px;
   display:flex;
-  align-items:center;
+  flex-wrap: wrap;  
+  flex-direction: column;
   justify-content:center;
+  align-content: center;
+  align-items: center;
+  /* align-items:flex-start; */
+  /* flex-wrap: wrap; */
+  justify-content: right;
 }
 
 #splits-container {
@@ -51,8 +57,10 @@ body {
 
 #milliseconds {
   font-size: 36px;
-  position: absolute;
-  top: 20px;
+  margin-top: -15px;
+  display: flex;
+  /* position: absolute;
+  top: 20px; */
 }
 
 .leash {
