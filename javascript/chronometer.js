@@ -7,11 +7,13 @@ class Chronometer {
   start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime = this.currentTime + 1;
+      // console.log(this.currentTime)
       if(typeof callback === 'function'){
         callback();
       }
     },1000);
   };
+  //change the '1000' to '10' to count miliseconds.
 
     /* adding the callback function conditional goes like this:
     start(callback) {
@@ -26,7 +28,7 @@ class Chronometer {
      
   getMinutes() {
     return Math.floor(this.currentTime / 60);
- 
+ //     return Math.floor(this.currentTime / 100); for counting milliseconds.
   }
 
   getSeconds() {
@@ -34,7 +36,7 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-    if(value <= 9) {
+    if(value < 10) {
       return '0' + value;
       // return `0${value}`; ALT SYNTAX
       }  
