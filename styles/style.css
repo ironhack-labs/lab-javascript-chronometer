@@ -120,6 +120,10 @@ body {
   right: 10px;
 }
 
+#btnLeft-off, #btnRight-off {
+  display: none;
+}
+
 .btn.start {
   background: #5fca5f;
 }
