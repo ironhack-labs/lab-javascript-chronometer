@@ -9,14 +9,11 @@ class Chronometer {
     setInterval(() => {
       return this.currentTime++;
     },1000);
-    
   }
 
   getMinutes() {
-   
     let timeInMinutes = Math.floor(this.currentTime / 60);
     return timeInMinutes;
-
   }
 
   getSeconds() {
@@ -47,7 +44,7 @@ class Chronometer {
     let sec = this.getSeconds();
     let splitMin = this.computeTwoDigitNumber(min);
     let splitSec = this.computeTwoDigitNumber(sec);
-    let splitTime = `${splitMin}:${splitSec}`;
+    const splitTime = `${splitMin}:${splitSec}`;
     return splitTime;
   }
 }
