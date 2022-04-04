@@ -25,12 +25,13 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
-  let final = "  ";
-  
-  if (final == 0){
-    return '00';
-  }//else if ( final ==)
-  return final;
+  let final = value.toString();
+  if (final.length == 1){
+    var twoDigits = '0' +final;
+    return twoDigits;
+    }else {
+    return final;
+    }
   }
 
   stop() {
@@ -38,11 +39,16 @@ class Chronometer {
   }
 
   reset() {
-    
+    this.currentTime = 0;
   }
 
   split() {
-    
+    let min = this.getMinutes();
+    let sec = this.getSeconds();
+    let splitMin = this.computeTwoDigitNumber(min);
+    let splitSec = this.computeTwoDigitNumber(sec);
+    let splitTime = `${splitMin}:${splitSec}`;
+    return splitTime;
   }
 }
 
