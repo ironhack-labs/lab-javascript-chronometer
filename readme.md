@@ -177,7 +177,6 @@ At certain points, we might want to extract a formatted timestamp for the time e
 
 The `split` method should expect no arguments, and return a string where the time since the start is formatted as "_mm:ss_". Internally, the `split` method can make usage of previously declared methods such as `getMinutes`, `getSeconds`, and `computeTwoDigitNumber`.
 
-### Iteration 2: DOM Manipulation
 
 Your Chronometer class is now complete! That means that we can go ahead and actually create a visual interface that allows us to use all of the logic we've just coded.
 
