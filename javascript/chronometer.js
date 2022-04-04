@@ -1,34 +1,63 @@
+const { start } = require("repl");
+const { number } = require("yargs");
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
-  }
+  this.currentTime = 0;
+  this.intervalId = null;
+   
+  
+  
+ }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) {
+        callback();
+
+      }
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    let minutes = (this.currentTime/60);
+    minutes = Math.floor (minutes);
+    return minutes;
   }
 
+
   getSeconds() {
-    // ... your code goes here
+    if (this.currentTime < 60) {
+    return this.currenTime;
+    } else if (this.currentTime % 60 === 0) {
+      return this.currentTime;
+    }
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+   let number = value.toString();
+   if (number.length === 2) {
+     return number;
+  
+   } else {
+     return `0${value}`;
+   }
+    
+
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.IntervalId)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    return this.computeTwoDigitNumber(minutes)+":"+this.computeTwoDigitNumber(seconds);
+
   }
 }
 
