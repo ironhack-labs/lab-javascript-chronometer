@@ -14,7 +14,10 @@ class Chronometer {
     }, 1000);
   }
 
+  // learn to use these methods inside my functions
   getMinutes() {
+    //
+
     return Math.floor(this.currentTime / 60);
     // ... your code goes here
   }
@@ -26,6 +29,7 @@ class Chronometer {
     // ... your code goes here
   }
 
+  //value is a number here
   computeTwoDigitNumber(value) {
     // ... your code goes here
     if (value < 10) {
