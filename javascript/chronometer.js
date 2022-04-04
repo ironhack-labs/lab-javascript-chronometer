@@ -25,9 +25,7 @@ class Chronometer {
     if (this.currentTime===0) {
       return 0
     } else if (this.currentTime>0) {
-      return seconds;
-    } else if (this.minutes >0) {
-      return seconds - (this.minutes*60)
+      return this.currentTime - (this.getMinutes(this.currentTime)*60)
     }
   
   }
@@ -49,9 +47,9 @@ class Chronometer {
   }
 
   split() {
-    let minutes= this.computeTwoDigitNumber(this.getMinutes())
-    let seconds= this.computeTwoDigitNumber(this.getSeconds())
-    return `${minutes}:${seconds}`;
+    let updatedMinutes= this.computeTwoDigitNumber(this.getMinutes(this.currentTime));
+    let updatedSeconds= this.computeTwoDigitNumber(this.getSeconds(this.currentTime));
+    return updatedMinutes + ":" + updatedSeconds;
   }
 }
 
