@@ -13,17 +13,15 @@ class Chronometer {
   }
 
   getMinutes() {
-    this.minutes = 0;
-    setInterval(() => {
-      return this.minutes++;
-    },60 * 1000);
-    return this.minutes;
+   
+    let timeInMinutes = Math.floor(this.currentTime / 60);
+    return timeInMinutes;
 
   }
 
   getSeconds() {
-  this.seconds = 0;
-  return this.seconds;
+  let seconds = this.currentTime % 60;
+  return seconds;
   }
 
   computeTwoDigitNumber(value) {
@@ -31,7 +29,7 @@ class Chronometer {
   }
 
   stop() {
-  
+  clearInterval(this.intervalId);
   }
 
   reset() {
