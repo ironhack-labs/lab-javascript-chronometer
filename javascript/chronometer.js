@@ -25,7 +25,12 @@ class Chronometer {
   }
 
   computeTwoDigitNumber(value) {
+  let final = "  ";
   
+  if (final == 0){
+    return '00';
+  }//else if ( final ==)
+  return final;
   }
 
   stop() {
