@@ -42,7 +42,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerText = ' ';
 }
 
 function setStopBtn() {
