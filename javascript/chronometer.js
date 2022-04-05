@@ -1,46 +1,47 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = null;
+    this.intervalId = 0;
   }
 
-  start(callback) {
+  startClick(printTime) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      if (typeof callback === 'function') {
-        callback();
-      }
+      if (printTime) printTime();
     }, 1000);
   }
 
   getMinutes() {
-    return Math.round(Math.floor(this.currentTime / 60));
-    //i can't seem to find the last solution of this test
+    let currentTimeMin = Math.floor(this.currentTime / 60);
+    return currentTimeMin;
   }
 
   getSeconds() {
-    return this.currentTime % 60;
-    // i can't seem to find the last solution of this test
+    let currentTimeSec = this.currentTime % 60;
+    return currentTimeSec;
   }
 
-  computeTwoDigitNumber(value) {
-    if (value < 10) {
-      value = '0' + value;
-    }
-    return String(value);
+  twoDigitsNumber(num) {
+    return ('0' + num).slice(-2);
   }
 
-  stop() {
+  stopClick() {
     clearInterval(this.intervalId);
+    clearInterval(this.millisecondsIntervalId);
   }
 
-  reset() {
-    return (this.currentTime = 0);
+  resetClick() {
+    this.currentTime = 0;
+    minDec.innerHTML = 0;
+    minUni.innerHTML = 0;
+    secDec.innerHTML = 0;
+    secUni.innerHTML = 0;
   }
 
-  split() {
-    let seconds = this.computeTwoDigitNumber(this.getSeconds());
-    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+  splitClick() {
+    let minutes = this.twoDigitsNumber(this.getMinutes());
+    let seconds = this.twoDigitsNumber(this.getSeconds());
+
     return `${minutes}:${seconds}`;
   }
 }
