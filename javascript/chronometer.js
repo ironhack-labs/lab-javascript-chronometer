@@ -2,10 +2,28 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = null ;
+    this.miliSecIntervalId= null;
+    this.currentMiliSec = 0;
   }
 
   start(callback) {
-    this.intervalId=setInterval(()=> this.currentTime ++ ,1000)
+    this.intervalId = setInterval(()=> {
+      this.currentTime ++
+      if (callback) {
+        callback();
+      }
+    } ,1000)
+
+    this.miliSecIntervalId = setInterval(()=> {
+      this.currentMiliSec ++;
+      if(this.currentMiliSec === 99){
+        this.currentMiliSec = 0;
+      }
+      if (callback) {
+        callback();
+      }
+    } ,10)
+
   }
 
   getMinutes() {
@@ -13,7 +31,11 @@ class Chronometer {
   }
 
   getSeconds() {
-     return (this.currentTime%3600)%60;
+     return (this.currentTime)%60;
+  }
+
+  getMiliSeconds() {
+    return Math.floor(this.currentMiliSec);
   }
 
   computeTwoDigitNumber(value) {
@@ -23,6 +45,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId);
+    clearInterval(this.miliSecIntervalId);
   }
 
   reset() {
@@ -31,7 +54,7 @@ class Chronometer {
 
   split() {
     
-    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}:${this.computeTwoDigitNumber(this.getMiliSeconds())}`;
   }
 }
 
