@@ -33,7 +33,11 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  // since 1 
+  const millisecondsPassed = chronometer.computeTwoDigitNumber(chronometer.currentMilliseconds);
+  console.log(millisecondsPassed);
+  milDecElement.innerHTML = millisecondsPassed[0];
+  milUniElement.innerHTML = millisecondsPassed[1];
 }
 
 function printSplit() {
@@ -71,6 +75,7 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   if(btnLeftElement.className === 'btn start'){
     chronometer.start(printTime);
+    chronometer.milliseconds(printMilliseconds);
     setStopBtn();
     setSplitBtn();
   } else {
