@@ -46,7 +46,7 @@ function printSplit() {
     let li = document.createElement('li');
     li.textContent = `${splitStep}`;
     return li;
-}
+  }
   splitsElement.appendChild(newLi(splitStep));
 }
 
