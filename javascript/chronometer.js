@@ -7,20 +7,19 @@ class Chronometer {
   start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
+      if (typeof callback === 'function') {
+        callback();
+      }
     }, 1000);
   }
 
   getMinutes() {
-    return Math.round(this.currentTime / 60);
+    return Math.round(Math.floor(this.currentTime / 60));
     //i can't seem to find the last solution of this test
   }
 
   getSeconds() {
-    let holdValue = 0;
-    if (this.currentTime % 60 === 0) {
-      return (holdValue = this.currentTime);
-    }
-    return this.currentTime - holdValue;
+    return this.currentTime % 60;
     // i can't seem to find the last solution of this test
   }
 
