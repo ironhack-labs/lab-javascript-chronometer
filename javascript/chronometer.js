@@ -9,7 +9,7 @@ class Chronometer {
       if(callback){
         callback()
       }
-      this.currentTime ++
+      this.currentTime++
     }, 1000)
   }
 
@@ -20,6 +20,7 @@ class Chronometer {
   getSeconds() {
     return this.currentTime % 60
   }
+
 
   computeTwoDigitNumber(value) {
     let num = value.toString()

@@ -14,52 +14,81 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printSeconds()
+  printMinutes()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  let minutes = chronometer.getMinutes()
+  if (minutes >= 10){
+    secDecElement.innerHTML = Math.floor(minutes / 10)
+    secUniElement.innerText = minutes % 10
+  } else {
+    minDecElement.innerHTML = 0
+    minUniElement.innerText = minutes
+  }
 }
+
 
 function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+  let seconds = chronometer.getSeconds()
+  if (seconds >= 10){
+    secDecElement.innerHTML = Math.floor(seconds / 10)
+    secUniElement.innerText = seconds % 10
+  } else {
+    secDecElement.innerHTML = 0
+    secUniElement.innerText = seconds
+  }
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML += `<li>${chronometer.split()}</li>`
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = ``
+  chronometer.reset()
+  printTime()
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.className = 'btn stop'
+  btnLeftElement.innerHTML = 'STOP'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "SPLIT"
+  btnRightElement.className = "btn split"
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.className = 'btn start'
+  btnLeftElement.innerHTML = 'START'
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = "RESET"
+  btnRightElement.className = "btn reset"
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.className.includes('start')){
+    chronometer.start(printTime)
+    setStopBtn()
+    setSplitBtn()
+  } else {
+    chronometer.stop()
+    setStartBtn()
+    setResetBtn()
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.className.includes('reset')){
+    clearSplits()
+  } else {
+    printSplit()
+  }
 });
