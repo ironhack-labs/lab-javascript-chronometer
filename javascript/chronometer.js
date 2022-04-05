@@ -14,15 +14,11 @@ class Chronometer {
   }
 
   getMinutes() { 
-    return Math.round(this.currentTime / 60);
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    if (this.currentTime <=59) {
-      return this.currentTime;
-    } else if (this.currentTime % 60 === 0) {
-      return this.currentTime - (this.currentTime % 60 === 0);
-    }
+    return Math.floor(this.currentTime % 60);
   }
 
   computeTwoDigitNumber(value) {
@@ -44,7 +40,9 @@ class Chronometer {
   }
 
   split() {
-    return value;
+    // and return a string where the time since the start is formatted as "_mm:ss_".
+
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;q
   }
 }
 
