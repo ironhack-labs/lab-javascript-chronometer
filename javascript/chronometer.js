@@ -36,6 +36,10 @@ class Chronometer {
 
   reset() {
     this.currentTime = 0;
+    minDecElement.innerHTML = "0";
+    minUniElement.innerHTML = "0";
+    secDecElement.innerHTML = "0";
+    secUniElement.innerHTML = "0";
   }
 
   split() {
