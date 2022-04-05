@@ -1,6 +1,7 @@
 const chronometer = new Chronometer();
 
-// get the buttons:
+const chronometerStatus = 'stopped';
+
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
 
@@ -13,53 +14,90 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function printTime() 
+{
+  console.log(chronometer.currentTime)
+  this.printMinutes()
+  this.printSeconds()
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes() 
+{
+  chronometer.computeTwoDigitNumber(chronometer.getMinutes())
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds() 
+{
+  chronometer.computeTwoDigitNumber(chronometer.getSeconds())
 }
 
 // ==> BONUS
-function printMilliseconds() {
+function printMilliseconds() 
+{
   // ... your code goes here
 }
 
-function printSplit() {
+function printSplit() 
+{
   // ... your code goes here
 }
 
-function clearSplits() {
+function clearSplits() 
+{
   // ... your code goes here
 }
 
-function setStopBtn() {
-  // ... your code goes here
+function setStopBtn() 
+{
+  console.log('stop')
+  chronometer.stop()
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+function setSplitBtn() 
+{
+  console.log('split')
 }
 
-function setStartBtn() {
-  // ... your code goes here
+function setStartBtn() 
+{
+  console.log("start")
+  chronometer.start()
 }
 
-function setResetBtn() {
-  // ... your code goes here
+function setResetBtn() 
+{
+  console.log('reset')
+  chronometer.rest()
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if(this.chronometerStatus === undefined  || this.chronometerStatus === 'stopped')
+  {
+    this.setStartBtn()
+    this.intervalId = setInterval(() =>
+    {printTime(), 1000)
+      
+    this chronometerStatus = 'Running'}
+
+    else
+    {
+      this.setStopBtn()
+      this.chronometerStatus = 'Stopped'
+      console.log(chronometer.currentTime)
+    }
+    console.log(this.chronometerStatus)
+    console.log(chronometer.currentTime)
+  }
+);
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (this.chronometerStatus === undefined || this.chronometerStatus === 'stopped'){
+    this.setResetBtn()
+  }
+  else {
+    this.setSplitBtn()
+  }
+  console.log(this.chronometerStatus)
 });
