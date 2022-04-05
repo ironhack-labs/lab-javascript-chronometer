@@ -1,34 +1,46 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.round(this.currentTime / 60);
+    //i can't seem to find the last solution of this test
   }
 
   getSeconds() {
-    // ... your code goes here
+    let holdValue = 0;
+    if (this.currentTime % 60 === 0) {
+      return (holdValue = this.currentTime);
+    }
+    return this.currentTime - holdValue;
+    // i can't seem to find the last solution of this test
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value < 10) {
+      value = '0' + value;
+    }
+    return String(value);
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    return (this.currentTime = 0);
   }
 
   split() {
-    // ... your code goes here
+    // I'll write this one when i have correctly written getSeconds and getMinutes. please give feedback about those 2.
   }
 }
 
