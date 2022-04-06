@@ -13,29 +13,44 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+// Methods to display the timer
 function printTime() {
    printMinutes();
    printSeconds();
+   printMilliseconds();
 }
 
 function printMinutes() {
-  minDecElement.innerHTML = chronometer.split()[0];
-  minUniElement.innerHTML = chronometer.split()[1];
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerText = minutes[0];
+  minUniElement.innerText = minutes[1];
+
+  // minDecElement.innerHTML = chronometer.split()[0];
+  // minUniElement.innerHTML = chronometer.split()[1];
 }
 
 function printSeconds() {
-  secDecElement.innerHTML = chronometer.split()[3];
-  secUniElement.innerHTML = chronometer.split()[4];
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  secDecElement.innerText = seconds[0];
+  secUniElement.innerText = seconds[1];
+
+  // secDecElement.innerHTML = chronometer.split()[3];
+  // secUniElement.innerHTML = chronometer.split()[4];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-
-  // milDecElement.innerHTML = milliseconds.toString()[0];
-  // milUniElement.innerHTML = milliseconds.toString()[1];
+  const milliseconds = chronometer.computeTwoDigitNumber(chronometer.currentMilliseconds);
+  milDecElement.innerText = milliseconds[0];
+  milUniElement.innerText = milliseconds[1];
 }
 
 function printSplit() {
+  let newLi = document.createElement('li');
+  newLi.className = 'list-item';
+  newLi.innerHTML =`${chronometer.split()}`;
+  splitsElement.appendChild(newLi);
+
   // let newList = splitsElement.createElement('li');
   // newList.innerHTML = chronometer.split();
 }
@@ -47,6 +62,8 @@ function clearSplits() {
 function setStopBtn() {
   btnLeftElement.innerText = 'STOP';
   btnLeftElement.className = 'btn stop';
+  // btnLeftElement.classList.add("stop");
+  // btnLeftElement.classList.remove("start");
 }
 
 function setSplitBtn() {
@@ -65,9 +82,10 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
+// For that we can the methods .contains() or .includes();
 btnLeftElement.addEventListener('click', () => {
    if (btnLeftElement.className.includes('start')){
-     chronometer.start(printTime);
+     chronometer.start(printTime, printMilliseconds);
      setStopBtn();
      setSplitBtn();
    } else {
@@ -75,7 +93,7 @@ btnLeftElement.addEventListener('click', () => {
      setStartBtn();
      setResetBtn();
    }
-});
+})
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
@@ -83,6 +101,6 @@ btnRightElement.addEventListener('click', () => {
     chronometer.reset();
     clearSplits();
   } else {
-    chronometer.split();
+    printSplit();
   }
-});
+})
