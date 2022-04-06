@@ -63,13 +63,15 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
+
   // ... your code goes here
+  btnLeftElement.addEventListener('click', () => {
+
   if(btnLeftElement.textContent === 'START' ) {
     btnLeftElement.textContent = 'STOP';
     btnRightElement.textContent = 'SPLIT';
     chronometer.start(callback);
-
+  
   } else  {
     btnLeftElement.textContent = 'START';
     btnRightElement.textContent = 'RESET';
@@ -84,8 +86,10 @@ btnLeftElement.addEventListener('click', () => {
 );
 
 // Reset/Split Button
-btnRightElement.addEventListener('click', () => {
+
   // ... your code goes here
+  btnRightElement.addEventListener('click', () => {
+    
   if (btnRightElement.textContent === 'RESET') {
     btnRightElement.textContent = 'SPLIT';
     btnLeftElement.textContent = 'STOP';
