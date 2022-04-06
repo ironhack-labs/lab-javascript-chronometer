@@ -37,13 +37,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-const newElm = document.createElement('li');
-
-
+let newLi = document.createElement('li');
+newLi.className = 'list-item';
+newLi.innerHTML = `${chronometer.split()}`;
+splitsElement.appendChild(newLi);
 }
 
 function clearSplits() {
-  
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
@@ -82,17 +83,12 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  btnLeftElement.addEventListener('click', () => {
-    if(btnLeftElement.className.includes('start')){
-      chronometer.start(printTime)
-      setStartBtn();
-      setResetBtn();
-      printSplit();
-    }else{
-      chronometer.stop();
-      setStopBtn(); 
-      setSplitBtn();
-      clearSplits();
-    }
-  });
+  if(btnRightElement.className.includes('reset')){
+    clearSplits();
+    chronometer.reset();
+  }else{
+    printSplit();
+
+  }
 });
+
