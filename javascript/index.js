@@ -37,7 +37,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  
+const newElm = document.createElement('li');
+
+
 }
 
 function clearSplits() {
@@ -74,13 +76,23 @@ btnLeftElement.addEventListener('click', () => {
   }else{
     chronometer.stop();
     setStopBtn(); 
-    setSplitBtn();
-    //when we start, button set to stop
-       //when we start,
+    setSplitBtn(); 
   }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  
+  btnLeftElement.addEventListener('click', () => {
+    if(btnLeftElement.className.includes('start')){
+      chronometer.start(printTime)
+      setStartBtn();
+      setResetBtn();
+      printSplit();
+    }else{
+      chronometer.stop();
+      setStopBtn(); 
+      setSplitBtn();
+      clearSplits();
+    }
+  });
 });
