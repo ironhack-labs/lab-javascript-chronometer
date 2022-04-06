@@ -16,6 +16,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -32,9 +33,11 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  const currentMili = chronometer.twoDigitsNumber(
-    chronometer.getSeconds() / 100
+  const currentMiliSeconds = chronometer.twoDigitsNumber(
+    chronometer.getMiliSeconds()
   );
+  milDecElement.innerHTML = currentMiliSeconds[0];
+  milUniElement.innerHTML = currentMiliSeconds[1];
 }
 
 function printSplit() {
@@ -72,6 +75,7 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.className.includes('start')) {
     chronometer.startClick(printTime);
+    chronometer.getMiliSeconds();
     setStopBtn();
     setSplitBtn();
   } else {
