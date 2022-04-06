@@ -3,64 +3,42 @@ const { number } = require("yargs");
 
 class Chronometer {
   constructor() {
-  this.currentTime = 0;
-  this.intervalId = null;
-   
-  
-  
- }
-
-  start(callback) {
+    this.currentTime = 0;
+    this.intervalId = null;
+  }
+  start(printTime) {
     this.intervalId = setInterval(() => {
       this.currentTime++;
-      if (callback) {
-        callback();
-
-      }
+      if (printTime) printTime();
     }, 1000);
   }
-
   getMinutes() {
-    let minutes = (this.currentTime/60);
-    minutes = Math.floor (minutes);
+    let minutes = (this.currentTime / 60);
+    minutes = Math.floor(minutes);
     return minutes;
   }
-
-
   getSeconds() {
-    if (this.currentTime < 60) {
-    return this.currenTime;
-    } else if (this.currentTime % 60 === 0) {
-      return this.currentTime;
+    let currentTimeSec = this.currentTime % 60;
+    return currentTimeSec;
+  }
+  computeTwoDigitNumber(value) {
+    let number = value.toString();
+    if (number.length === 2) {
+      return number;
+    } else {
+      return `0${value}`;
     }
   }
-
-  computeTwoDigitNumber(value) {
-   let number = value.toString();
-   if (number.length === 2) {
-     return number;
-  
-   } else {
-     return `0${value}`;
-   }
-    
-
-  }
-
   stop() {
-    clearInterval(this.IntervalId)
+    clearInterval(this.intervalId)
   }
-
   reset() {
     this.currentTime = 0;
   }
-
   split() {
-    return this.computeTwoDigitNumber(minutes)+":"+this.computeTwoDigitNumber(seconds);
-
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
   }
 }
-
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
