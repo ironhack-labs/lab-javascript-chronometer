@@ -28,7 +28,7 @@ body {
   font-size: 80px;
   height: 210px;
   margin: 0 auto;
-  padding: 35px 0;
+  padding: 35px 0px;
   position: relative;
   text-align: center;
   width: 220px;
@@ -87,7 +87,7 @@ body {
 }
 
 .number {
-  width:40px;
+  width:80px;
 }
 
 .btn {
@@ -124,3 +124,4 @@ body {
 .btn.split {
   background: #0851ab;
 }
+
