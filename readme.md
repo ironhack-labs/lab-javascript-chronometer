@@ -226,7 +226,9 @@ We will be working on the `javascript/index.js` file. We need to do the followin
 
 Each second we need to update our screen. So go ahead and create a function that will receive the value for minutes and seconds, and print that on our HTML.
 
-Using our `Chronometer` methods to get the values, this should be easy!
+You can invoke the method start of your chronometer.
+
+Hint: if you remember, the start method expects a callback as an argument and will execute this callback every second (you can pass as an argument a function to update the user interface)
 
 <details>
   <summary> Click here </summary>
