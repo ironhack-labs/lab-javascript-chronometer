@@ -137,7 +137,8 @@ Additionally, the `start` method should accept a function as an argument. Let's 
 
 We're storing the number of seconds that have passed on the `currentTime` property. However, we might want to find out how many minutes have passed.
 
-The `getMinutes` method should take no arguments, and it should return the _number_ of minutes that have passed as an integer.
+The `getMinutes` method should take no arguments, and it should return the _number_ of minutes that have passed as an integer, as a whole number.
+We could use the Math.floor method to get a rounded number, using the current time and dividing it by 60.
 
 #### Method `getSeconds`
 
@@ -147,13 +148,15 @@ The `getSeconds` method should return the number of seconds that have passed aft
 
 For example, if the property `currentTime` holds `75`, `getSeconds` should return `15`. If `currentTime` holds `210`, `getSeconds` should return `30`, and so on.
 
+We could use the module operator (% 60) to get the final number of seconds.
+
 Hint: The [remainder math operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder) could be tremendously helpful in this situation.
 
 #### Method `computeTwoDigitNumber`
 
 Our chronometer has a super cool screen that needs two digits number to display minutes and seconds. However, sometimes the `getMinutes` and `getSeconds` methods return a single-digit number. Let's create a super simple algorithm that will turn into two-digits number any received value.
 
-The `computeTwoDigitNumber` method should take a number, and return a string where the number received as an argument has been padded with 0s to ensure the value is at least 2 characters long.
+The `computeTwoDigitNumber` method should take a number, and return a string where the number received as an argument has been padded with 0s to ensure the value is at least 2 characters long (we could use the slice method to achieve our goal).
 
 For example, if `computeTwoDigitNumber` is called with the number `7`, it should return a string with the value of `"07"`. If called with with the number `36`, it should return a string with the value of `"36"`.
 
@@ -170,6 +173,8 @@ When invoked, the `stop` method should clear the interval with the id that had b
 #### Method `reset`
 
 The `reset()` will reset our chronometer. Since our code is super clean, we just need to set our `currentTime` property back to 0, and that's it!
+
+We also need to reset the values in our HTML file, by using .innerHTML
 
 #### Method `split`
 
@@ -198,19 +203,21 @@ Both buttons will have different behavior depending on the status of the chronom
 
 You will find two click event listeners that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
 
-:bulb: _Hint_: To change the _status_ of the buttons, we have to _toggle_ their classes.
+:bulb: _Hint_: To change the _status_ of the buttons, we have to _toggle_ their classes depending on _if_ their classes include 'start' or 'reset'.
 
 It means that when we click in the `btnLeft`, if it has the `start` class, you will have to change the `btnLeft` and `btnRight` buttons, setting them up with the Running status described in the table above.
 
 On the other hand, if the `btnLeft` doesn't have the `start` class when we click, we will have to change both `btnLeft` and `btnRight` properties setting them up with the Stopped status described in the table above.
 
+If the btnLeft has the class `start`, we should call the `start`method of chronometer - Remember the arguments! -.
+
 #### Changing buttons texts
 
-We will be working on the `javascript/index.js` file. We need to do the following:
+We will be working on the `javascript/index.js` file. We need to do the following (we could use .className and .innerHTML to do so):
 
 - When the left button is clicked while the chronometer is stopped, we need to:
 
-  - Set the `btnLeft` button with the text STOP, and the class `btn stop`.
+  - Set the `btnLeft` button with the text STOP, and the class `btn stop` 
   - Set the `btnRight` button with the text SPLIT, and the class `btn split`.
 
 - When the left button is clicked while the chronometer is running we need to:
@@ -218,15 +225,17 @@ We will be working on the `javascript/index.js` file. We need to do the followin
   - Set the `btnLeft` button with the text START, and the class `btn start`.
   - Set the `btnRight` button with the text RESET, and the class `btn reset`.
 
-- In the `index.js` file, create a new instance of the `Chronometer` object.
+- In the `index.js` file, create a new instance of the `Chronometer` object (which we already have at the top of the file).
 
 - Create the necessary code in the `index.js` to call the Chronometer's `start` method if the button has the `start` class, or the `stop` method if the button has the `stop` class applied.
 
 #### Print our chronometer
 
-Each second we need to update our screen. So go ahead and create a function that will receive the value for minutes and seconds, and print that on our HTML.
+Each second we need to update our screen. So go ahead and create a function that will receive the value for minutes and seconds, and print that on our HTML - remember to reuse our twodigits method that we have in chronometer!
 
-Using our `Chronometer` methods to get the values, this should be easy!
+You can invoke the method start of your chronometer.
+
+Hint: if you remember, the start method expects a callback as an argument and will execute this callback every second (you can pass as an argument a function to update the user interface)
 
 <details>
   <summary> Click here </summary>
@@ -245,11 +254,17 @@ The following feature we will implement is the split button. Remember that the s
 
 #### HTML & CSS
 
-First of all, we have to create in our `index.html` file an ordered list where we are going to append the current time every time we press the split button.
+First of all, we have to locate in our `index.html` file an ordered list where we are going to append the current time every time we press the split button - it has an id of `splits`, and we have it targeted at the befinning of our index.js file.
+
 
 #### JavaScript
 
-Once we have created the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
+Once we have located the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
+
+Therefore, first we should create a list item every time we click on the button. 
+After that, we should add a classname to this list item ('list-item').
+Then we should update the innerHTML with the result of our method `split`in chronometer.
+And finally we should append it to the parent element in the html file (the ordered list with id of '`splits`)
 
 
 <details>
@@ -261,10 +276,9 @@ Once we have created the ordered list in our HTML, we have to create the button 
 </details>
 
 
-
 ### Iteration 4: Reset
 
-To finish up with this lesson, we are going to create the _clear_ feature. Remember, we will execute this when the chronometer is stopped, and the user clicks on the right button. The behavior here is straightforward: we have to clear all the data on the clock.
+To finish up with this lesson, we are going to create the _clear_ feature. Remember, we will execute this when the chronometer is stopped, and the user clicks on the right button - check the event listener at the bottom of the file. The behavior here is straightforward: we have to clear all the data on the clock.
 
 To do that, we will have to set the minutes and seconds to zero in our clock and remove all the `li` elements that we could have in the list we created in the previous iteration.
 
@@ -272,7 +286,8 @@ To do that, we will have to set the minutes and seconds to zero in our clock and
 
 Now, we can use our chronometer to calculate how much time we spend on each Ironhack exercise. What happens if we want to calculate our time in a race? We need to be more accurate with our chronometer. How can we be more accurate? By adding milliseconds!
 
-If we want to add milliseconds to the chronometer, we will have to manipulate the HTML, the CSS, and the JavaScript. In the HTML, we will have to a container to show the milliseconds, changing the style of this container. Finally, in JavaScript, we will have to add all the logic to show the milliseconds in the clock. You will also have to add these milliseconds to the split counter.
+If we want to add milliseconds to the chronometer, we will have to manipulate the HTML, the CSS, and the JavaScript. In the HTML, we will have to a container to show the milliseconds, changing the style of this container - so we should modify the DOM with the decimal and unit value of the milliseconds (they are targeted at the beginning of the index.js file).
+Finally, in JavaScript, we will have to add all the logic to show the milliseconds in the clock. You will also have to add these milliseconds to the split counter - we should call the twoDigits method as well here.
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_82e9d1fd5976a3f98bb1382f2385f6a1.png)
 
