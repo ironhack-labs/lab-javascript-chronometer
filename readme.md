@@ -21,7 +21,6 @@ To check how your final version should look like check this **[demo](https://san
 ## Requirements
 
 - Fork this repo.
-
 - Clone this repo.
 
   
@@ -32,35 +31,11 @@ To check how your final version should look like check this **[demo](https://san
 
 ```shell
 $ git add .
-$ git commit -m "Solved lab"
+$ git commit -m "solve iteration x, y, z"
 $ git push origin master
 ```
 
 - Create a Pull Request so that your TAs can check your work.
-
-  
-
-## Tests, tests, tests!
-
-This LAB is equipped with unit tests to provide automated feedback on your lab progress. You'll start by working with the tests and using them in conjunction with the iteration instructions.
-
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next run the `npm run test:watch` command to run automated tests.  
-
-```shell
-$ cd lab-javascript-chronometer
-$ npm install
-$ npm run test:watch
-```
-
-<br>
-
-Open the resulting `lab-solution.html` file with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results.
-
-**Note:** The testing environment and the `lab-solution.html` page don’t allow printing the _console logs_ in the browser.  
-
-To see the console.log outputs you write in the `viking.js` file, open the `index.html` file using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension.
-
-
 
 ## Instructions
 
@@ -87,8 +62,9 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 <br>
 
 <details>
-  <summary> Click here </summary>
+  <summary> Click here to see the image</summary>
 
+<br>
 
 ![](https://education-team-2020.s3-eu-west-1.amazonaws.com/web-dev/labs/chronometer.png)
 </details>
@@ -102,11 +78,9 @@ We have also created the clock to let you focus on the JavaScript portion of thi
 
 Your solution will require the usage of the global methods `setInterval` and `clearInterval`.
 
-`setInterval` can be called with a function as first argument and a number of milliseconds as the second argument. It will run said function every number of milliseconds that you passed it.
+[`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) can be called with a function as first argument and a number of milliseconds as the second argument. It will run said function every number of milliseconds that you passed it.
 
 When called, `setInterval` returns a number that can be used to identify the _interval_ that was initialized. That same interval can later be stopped by running `clearInterval` and passing it the id of the interval we want to interrupt.
-
-
 
 ### Iteration 1: The logic
 
@@ -138,7 +112,7 @@ Additionally, the `start` method should accept a function as an argument. Let's 
 We're storing the number of seconds that have passed on the `currentTime` property. However, we might want to find out how many minutes have passed.
 
 The `getMinutes` method should take no arguments, and it should return the _number_ of minutes that have passed as an integer, as a whole number.
-We could use the Math.floor method to get a rounded number, using the current time and dividing it by 60.
+We could use the `Math.floor()` method to get a rounded number, using the current time and dividing it by 60.
 
 #### Method `getSeconds`
 
@@ -156,7 +130,7 @@ Hint: The [remainder math operator](https://developer.mozilla.org/en-US/docs/Web
 
 Our chronometer has a super cool screen that needs two digits number to display minutes and seconds. However, sometimes the `getMinutes` and `getSeconds` methods return a single-digit number. Let's create a super simple algorithm that will turn into two-digits number any received value.
 
-The `computeTwoDigitNumber` method should take a number, and return a string where the number received as an argument has been padded with 0s to ensure the value is at least 2 characters long (we could use the slice method to achieve our goal).
+The `computeTwoDigitNumber` method should take a number, and return a string where the number received as an argument has been padded with 0s to ensure the value is at least 2 characters long (we could use the `.slice()` method to achieve our goal).
 
 For example, if `computeTwoDigitNumber` is called with the number `7`, it should return a string with the value of `"07"`. If called with with the number `36`, it should return a string with the value of `"36"`.
 
@@ -174,7 +148,7 @@ When invoked, the `stop` method should clear the interval with the id that had b
 
 The `reset()` will reset our chronometer. Since our code is super clean, we just need to set our `currentTime` property back to 0, and that's it!
 
-We also need to reset the values in our HTML file, by using .innerHTML
+We also need to reset the values in our HTML file, by using `.innerHTML`.
 
 #### Method `split`
 
@@ -238,15 +212,13 @@ You can invoke the method start of your chronometer.
 Hint: if you remember, the start method expects a callback as an argument and will execute this callback every second (you can pass as an argument a function to update the user interface)
 
 <details>
-  <summary> Click here </summary>
+  <summary> Click here  to see the image </summary>
 
+<br />
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_1a87e0edfb6efea2ae0c77c490e8563b.png)
     
 </details>
-
-
-
 
 ### Iteration 3: Split time
 
@@ -262,14 +234,15 @@ First of all, we have to locate in our `index.html` file an ordered list where w
 Once we have located the ordered list in our HTML, we have to create the button functionality. Every time we click on the split button, we will have to create a new `li` element and append it to the ordered list. The text of this element will be the current time of the chronometer (we have a method on our Chronometer that returns this :wink:).
 
 Therefore, first we should create a list item every time we click on the button. 
-After that, we should add a classname to this list item ('list-item').
+After that, we should add a class name to this list item ('list-item').
 Then we should update the innerHTML with the result of our method `split`in chronometer.
-And finally we should append it to the parent element in the html file (the ordered list with id of '`splits`)
+And finally we should append it to the parent element in the html file (the ordered list with `id`s of '`splits`)
 
 
 <details>
-  <summary> Click here </summary>
+  <summary> Click here to see the image </summary>
 
+<br>
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_a5c9687f25bd710b2e7658ee6d997174.png)
     
@@ -299,5 +272,32 @@ Your goal is to create the JavaScript logic to:
 - Clear the milliseconds when the Reset button is clicked.
 
 This lab is a little bit complex, but it will guide you through the logical process of solving the problem and, at the same time, by following the guidelines, you will learn how to separate concerns between the logic and the DOM manipulation (which are the visuals).
+
+
+## Test Your Code
+
+
+## Tests, tests, tests!
+
+This LAB is equipped with unit tests to provide automated feedback on your lab progress. You'll start by working with the tests and using them in conjunction with the iteration instructions.
+
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next run the `npm run test:watch` command to run automated tests.  
+
+```shell
+$ cd lab-javascript-chronometer
+$ npm install
+$ npm run test:watch
+```
+
+<br>
+
+Open the resulting `lab-solution.html` file with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results.
+
+**Note:** The testing environment and the `lab-solution.html` page don’t allow printing the _console logs_ in the browser.  
+
+To see the console.log outputs you write in any of the JavaScript files, open the `index.html` file using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension.
+
+
+<br>
 
 **Happy coding!** :heart:
