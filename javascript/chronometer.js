@@ -33,14 +33,19 @@ class Chronometer {
   }
 
   stop() {
+    clearInterval(this.intervalId);
     // ... your code goes here
   }
 
   reset() {
+    this.currentTime = 0;
+    return this.currentTime;
+
     // ... your code goes here
   }
 
   split() {
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
     // ... your code goes here
   }
 }
