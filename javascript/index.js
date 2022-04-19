@@ -47,7 +47,11 @@ function printSplit() {
   splitsElement.appendChild(splitItem);
 }
 
-function clearSplits() {}
+function clearSplits() {
+  while (splitsElement.firstChild) {
+    splitsElement.removeChild(splitsElement.firstChild);
+  }
+}
 
 function setStopBtn() {
   btnLeftElement.className = 'btn stop';
@@ -88,6 +92,7 @@ btnRightElement.addEventListener('click', () => {
   if (btnRightElement.className === 'btn reset') {
     chronometer.reset();
     printTime();
+    clearSplits();
   } else {
     printSplit();
   }
