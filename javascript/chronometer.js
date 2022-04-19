@@ -18,11 +18,11 @@ class Chronometer {
   }
 
   getSeconds() {
-    return Math.floor(this.currentTime % 60);
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
-    if (value < 9) {
+    if (value < 10) {
       return '0' + value.toString();
     } else {
       return value.toString();
