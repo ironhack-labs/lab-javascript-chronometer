@@ -6,9 +6,27 @@ class Chronometer {
 
   start(callback) {
     this.intervalId = setInterval(() => {
+      if (callback) {
+        callback()
+        }
       this.currentTime++;
     }, 1000);
   }
+
+  
+    /*You are missing the callback function that could be passed:
+    
+    this.intervalId = setInterval(() => {
+       if (callback) {
+    callback()
+    }
+        this.currentTime++
+    }, 1000) 
+
+*/
+
+
+
 
   getMinutes() {
     return Math.floor(this.currentTime / 60);
