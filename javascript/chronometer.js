@@ -14,16 +14,16 @@ class Chronometer {
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60 / 60);
+    return Math.floor((this.currentTime / 100 / 60) % 60);
   }
 
   getSeconds() {
     //return this.currentTime % 60;
-    return Math.floor((this.currentTime / 60) % 60);
+    return Math.floor((this.currentTime / 100) % 60);
   }
   getMil() {
     //return this.currentTime % 60;
-    return Math.floor(this.currentTime % 60);
+    return Math.floor(this.currentTime % 100);
   }
 
   computeTwoDigitNumber(value) {
