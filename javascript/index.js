@@ -42,7 +42,9 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  chronometer.split();
+  let splitItem = document.createElement('li');
+  splitItem.innerHTML = chronometer.split();
+  splitsElement.appendChild(splitItem);
 }
 
 function clearSplits() {}
@@ -86,5 +88,7 @@ btnRightElement.addEventListener('click', () => {
   if (btnRightElement.className === 'btn reset') {
     chronometer.reset();
     printTime();
+  } else {
+    printSplit();
   }
 });
