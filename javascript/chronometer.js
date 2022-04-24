@@ -6,16 +6,9 @@ class Chronometer {
 
   //incrementa la propiedad currentTime de 1 en 1 cada 1000 milisegundos 
   start(callback){
-
-    if (callback){
-      callback
-      this.intervalId = setInterval(()=> {
-      this.currentTime++}, 1000)
-    } else {
-      this.intervalId = setInterval(()=> {
-      this.currentTime++}, 1000)
-    }
-    
+    if(callback){callback}
+    this.intervalId = setInterval(()=> {
+    this.currentTime++}, 1000)
   }
 
   //retorna el tiempo acumulado en minutos
@@ -42,7 +35,6 @@ class Chronometer {
   //regresa el tiempo a 0
   reset() {
     this.currentTime = 0
-
   }
 
   //retorna un string presentado el tiempo en en 2 digitos de minutos y 2 digitos de segundos -> 00:00
@@ -50,6 +42,17 @@ class Chronometer {
     return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
   }
 }
+
+/* 
+<span id="minDec" class="number">3</span>
+        <span id="minUni" class="number">3</span>
+        <span>:</span>
+        <span id="secDec" class="number">3</span>
+        <span id="secUni" class="number">6</span>
+        <div id="milliseconds">
+          <span id="milDec">0</span>
+          <span id="milUni">0</span>
+*/
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
