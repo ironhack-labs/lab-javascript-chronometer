@@ -5,31 +5,49 @@ class Chronometer {
   }
 
   start(callback) {
-    timeoutID = setTimeout(callback, 1000);
-  }
+  
+    this intervalID = setInterval(() => {
+      this.currentTime = intervalCounter += 1;
+      
+      if(callback){
+      return callback;
+      }
+
+    }, 1000);
+   
+   
+    }
+}
 
   getMinutes() {
-    // ... your code goes here
+  
+    let Minutes = Math.floor this.currentTime /60;
+    return getMinutes;
+
   }
 
   getSeconds() {
-    // ... your code goes here
-  }
+   
+    let numberofSeconds = this.currentTime % 60;
+    return getSeconds;
+}
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if(value < 10 ) return 0
+    return value;
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval this.intervalId;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    let splict `${this.twoDigitsNumber(this.getMinutes())}:${this.twoDigitsNumber(this.getSeconds())}`;
+    return '${getMinutes}: ${getSecond}';
   }
 }
 
