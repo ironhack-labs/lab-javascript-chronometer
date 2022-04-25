@@ -5,7 +5,7 @@ class Chronometer {
   }
 
   start(callback) {
-    const internalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
         this.currentTime++;     
     }, 1000);
     
