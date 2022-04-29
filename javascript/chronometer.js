@@ -1,26 +1,29 @@
 class Chronometer {
   constructor() {
-    this.currentTime =0;
-    this.intervalId = null;  
+    // ... your code goes here
+    this.currentTime=0;
+    this.intervalId=null;
   }
-  
+
   start(callback) {
-    this.intervalId = setInterval(()=>{
-      this.currentTime++ //The increment operator (++) increments (adds one to) its operand and returns a value. If used postfix, with operator after operand (for example, x++), the increment operator increments and returns the value before incrementing.
-    }, 1000) //thousand miliseconds = 1 sec
+    // ... your code goes here
+    this.intervalId = setInterval(()=>(this.currentTime +=1),1000);
   }
 
   getMinutes() {
-    let minutes = this.currentTime  / 60;
-    return Math.floor(minutes)
+    // ... your code goes here
+    let minutes = 0;
+    return Number(Math.floor(this.currentTime/60))
   }
 
   getSeconds() {
-    let seconds = this.currentTime % 60;
-    return seconds
+    // ... your code goes here
+    let seconds = 0;
+    return Number(this.currentTime%60);
   }
 
   computeTwoDigitNumber(value) {
+    // ... your code goes here
     //turn into two-digits number any received value.
     if (value < 10) {
       return 0 + value.toString() 
@@ -32,18 +35,24 @@ class Chronometer {
   }
 
   stop() {
-    clearInterval(this.intervalId);
+    // ... your code goes here
+    let interval = this.intervalId;
+    return clearInterval(interval)
   }
 
   reset() {
+    // ... your code goes here
     this.currentTime=0;
-    // .innerHTML?
   }
 
   split() {
+    // ... your code goes here
     //"mm:ss"
-    let splitTime = this.computeTwoDigitNumber(this.getMinutes()) + ":" + this.computeTwoDigitNumber(this.getSeconds());
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return  `${minutes}:${seconds}`;
   }
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
