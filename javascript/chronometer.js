@@ -9,48 +9,36 @@ class Chronometer {
   start(callback) {
 
     this.intervalId=setInterval(()=>{
-      (this.currentTime +=1)
+      this.currentTime++
+
+      if (callback)callback();
      },1000)
 
    
   }
 
   getMinutes() {
-    let minutos = 0;
-
-    minutos = this.currentTime / 60;
-    minutos = Math.floor(minutos);
-    minutos = minutos.toFixed(0);
- 
-    return Number(minutos)
+    
+    return Math.floor(this.currentTime/60)
    
   }
 
   getSeconds() {
     // ... your code goes here
-    let totalSeconds=this.getMinutes()*60;
+   return this.currentTime % 60;
 
-    let portSeconds= this.currentTime-totalSeconds
-
-    return portSeconds
-
+  }
+  getMiliSeconds(){
+    return this.currentTime % 1000;
   }
 
   computeTwoDigitNumber(value) {
     // ... your code goes here
-    var croSegunds= value;
-
-    if (croSegunds < 10){
-    return (croSegunds = '0' + croSegunds.toFixed(0))
+ 
   }
-  else if (croSegunds >= 10){
-    return(croSegunds= croSegunds.toFixed(0))
-  }
-  }
-
   stop() {
-    let interval =this.intervalId;
-    return clearInterval(interval)
+
+    clearInterval(this.intervalId)
   }
 
   reset() {
@@ -58,10 +46,8 @@ class Chronometer {
   }
 
   split() {
-    let tSeconds= this.computeTwoDigitNumber(this.getSeconds());
-    let tMinutes=this.computeTwoDigitNumber(this.getMinutes());
-  
-    return tMinutes + ':' + tSeconds;
+    
+    return `${this.computeTwoDigitNumber(this.getMinutes())}${this.computeTwoDigitNumber(this.getSeconds())}`
   }
 }
 
