@@ -20,7 +20,7 @@ class Chronometer {
   getSeconds() {
     return this.currentTime % 60
   }
-
+  
   //convierte el tiempo en string y si es menor a 10 le agrega un 0 inicial
   computeTwoDigitNumber(value) {
     value < 10 ? value = `0${value}` : value = `${value}`
