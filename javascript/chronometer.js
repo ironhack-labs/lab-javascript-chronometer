@@ -42,18 +42,5 @@ class Chronometer {
     return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
   }
 }
-
-
-/* 
-<span id="minDec" class="number">3</span>
-        <span id="minUni" class="number">3</span>
-        <span>:</span>
-        <span id="secDec" class="number">3</span>
-        <span id="secUni" class="number">6</span>
-        <div id="milliseconds">
-          <span id="milDec">0</span>
-          <span id="milUni">0</span>
-*/
-
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
