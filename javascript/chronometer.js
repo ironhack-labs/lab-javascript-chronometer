@@ -7,7 +7,12 @@ class Chronometer {
 
   start(callback) {
     // ... your code goes here
-    this.intervalId = setInterval(()=>(this.currentTime +=1),1000);
+    
+    this.itervalId= setInterval(()=>{
+      this.currentTime+= 1;
+    if(callback) callback();
+    }, 1000);
+
   }
 
   getMinutes() {
@@ -20,6 +25,11 @@ class Chronometer {
     // ... your code goes here
     let seconds = 0;
     return Number(this.currentTime%60);
+  }
+
+  getMiliseconds(){
+    let miliseconds=0;
+    return this.currentTime %1000;
   }
 
   computeTwoDigitNumber(value) {
@@ -50,8 +60,11 @@ class Chronometer {
     //"mm:ss"
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
-    return  `${minutes}:${seconds}`;
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds());
+    
+    return  `${minutes}:${seconds}:${miliseconds}`;
   }
+  //no es necesario asignarle variable, o agregar miliseconds en este jest
 }
 
 // The following is required to make unit tests work.
