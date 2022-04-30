@@ -24,7 +24,7 @@ class Chronometer {
     // if (minutes < 10) {
     //   singleNumber = value.toString().slice(0);
     //   compound = cero + singleNumber;
-    // } 
+    // }
 
     // else if (value >= 10 && value < 60) {
 
@@ -32,9 +32,6 @@ class Chronometer {
     // }
 
     // return compound;
-
-
-
   }
 
   getSeconds() {
@@ -57,10 +54,7 @@ class Chronometer {
     if (value < 10) {
       singleNumber = value.toString().slice(0);
       compound = cero + singleNumber;
-    } 
-
-    else if (value >= 10 && value < 60) {
-
+    } else if (value >= 10 && value < 60) {
       compound = value.toString();
     }
 
@@ -68,39 +62,30 @@ class Chronometer {
   }
 
   stop() {
-    return clearInterval(this.intervalId)
+    return clearInterval(this.intervalId);
   }
 
   reset() {
-    this.currentTime = 0
+    this.currentTime = 0;
   }
 
   split() {
+    let ss = this.computeTwoDigitNumber(this.getSeconds()); //texto
+    let mm = this.getMinutes();
+    let singleNumber = '';
+    let cero = '0';
+    let compound = '';
 
-let ss = this.computeTwoDigitNumber(this.getSeconds());//texto
-let mm =  this.getMinutes();
-let singleNumber = '';
-let cero = '0';
-let compound = '';
+    if (mm < 10) {
+      singleNumber = mm.toString().slice(0);
+      compound = cero + singleNumber;
+    } else if (mm >= 10 && mm < 60) {
+      compound = mm.toString();
+    }
 
-if (mm< 10) {
-  singleNumber = mm.toString().slice(0);
-  compound = cero + singleNumber;
-} 
-
-else if (mm>= 10 && mm < 60) {
-
-  compound = mm.toString();
-}
-
-return `${compound}:${ss}`
+    return `${compound}:${ss}`;
   }
 }
-
-
-
-
-
 
 
 // The following is required to make unit tests work.
