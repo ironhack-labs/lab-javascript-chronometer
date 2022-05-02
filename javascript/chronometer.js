@@ -29,7 +29,7 @@ class Chronometer {
   }
 
   reset() {
-    return (this.currentTime = 0);
+  this.currentTime = 0;
   }
 
   split() {
