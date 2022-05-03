@@ -5,33 +5,20 @@ class Chronometer {
   }
 
   start(callback) {
+    
     this.intervalId = setInterval(() => {
+
       this.currentTime += 1;
-      if (callback) {
-        return callback;
-      }
+
+      if (callback) callback();
+
     }, 1000);
+
   }
 
   getMinutes() {
     let minutes = Math.floor(this.currentTime / 60);
     return minutes;
-
-    // let singleNumber = '';
-    // let cero = '0';
-    // let compound = '';
-
-    // if (minutes < 10) {
-    //   singleNumber = value.toString().slice(0);
-    //   compound = cero + singleNumber;
-    // }
-
-    // else if (value >= 10 && value < 60) {
-
-    //   compound = value.toString();
-    // }
-
-    // return compound;
   }
 
   getSeconds() {
