@@ -2,6 +2,8 @@
 
 # LAB | JS IronChronometer
 
+![FamousGrizzledGallinule-size_restricted](https://user-images.githubusercontent.com/76580/167318928-cd7717a2-f6c8-4b8b-ab06-7d9908f2de79.gif)
+
 ## Introduction
 
 In this lab, we are going to create a [chronometer](https://www.dictionary.com/browse/chronometer). Chronometers are very commonly used in sports - car racing, athletics, etc. Why wouldn't we practice a bit of our JS and DOM manipulation knowledge and create our own IronChronometer? And then, we can use it to see how many minutes and seconds will take us to complete any of our labs. Sounds like a plan.
