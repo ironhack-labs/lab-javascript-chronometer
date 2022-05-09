@@ -2,7 +2,7 @@
 
 # LAB | JS IronChronometer
 
-![FamousGrizzledGallinule-size_restricted](https://user-images.githubusercontent.com/76580/167318928-cd7717a2-f6c8-4b8b-ab06-7d9908f2de79.gif)
+![giphy (1)](https://user-images.githubusercontent.com/76580/167427065-a674fb55-44ea-448a-a7ef-940b45eeb9df.gif)
 
 ## Introduction
 
