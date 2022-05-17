@@ -57,6 +57,18 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+  const chronometer = new Chronometer();
+  if (document.querySelector('#btnLeft').textContent === 'START') {
+    document.querySelector('#btnLeft').textContent = 'STOP';
+    document.querySelector('#btnLeft').setAttribute('class', 'btn stop');
+    document.querySelector('#btnRight').textContent = 'SPLIT';
+    document.querySelector('#btnRight').setAttribute('class', 'btn split');
+  } else if (document.querySelector('#btnLeft').textContent === 'STOP') {
+    document.querySelector('#btnLeft').textContent = 'START';
+    document.querySelector('#btnLeft').setAttribute('class', 'btn start');
+    document.querySelector('#btnRight').textContent = 'RESET';
+    document.querySelector('#btnRight').setAttribute('class', 'btn split');
+  }
 });
 
 // Reset/Split Button
