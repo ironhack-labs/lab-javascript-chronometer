@@ -16,6 +16,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -35,6 +36,10 @@ function printSeconds() {
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+  const milliseconds = chronometer.getMilliseconds().toString().padStart(3, `0`);
+
+  milDecElement.textContent = milliseconds.slice(0, 1);
+  milUniElement.textContent = milliseconds.slice(-2);
 }
 
 function printSplit() {
@@ -51,6 +56,8 @@ function clearChoronometer() {
   minUniElement.textContent = `0`;
   secDecElement.textContent = `0`;
   secUniElement.textContent = `0`;
+  milDecElement.textContent = `0`;
+  milUniElement.textContent = `0`;
 }
 
 function clearSplits() {
