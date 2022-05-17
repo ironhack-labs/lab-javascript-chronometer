@@ -14,24 +14,33 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes()
+  printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minDecDigit = document.getElementById('minDec')
+  const minUniDigit = document.getElementById('minUni')
+  minDecDigit.innerText=chronometer.computeTwoDigitNumber()[0]
+  minUniDigit.innerText=chronometer.computeTwoDigitNumber()[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const secDecDigit = document.getElementById('secDec')
+  const secUniDigit = document.getElementById('secUni')
+  secDecDigit.innerText=chronometer.computeTwoDigitNumber()[3]
+  secUniDigit.innerText=chronometer.computeTwoDigitNumber()[4]
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  
 }
 
 function printSplit() {
-  // ... your code goes here
+  const splitLine = document.createElement('li')
+  splitLine.innerText=chronometer.computeTwoDigitNumber()
+  document.querySelector('#splits').appendChild(splitLine)
 }
 
 function clearSplits() {
@@ -56,10 +65,32 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnLeftElement.classList.contains('start')){
+    console.log('start')
+    chronometer.start()
+    btnLeftElement.classList.remove('start')
+    btnLeftElement.classList.add('stop')
+    btnLeftElement.innerText='STOP'
+    btnRightElement.classList.remove('reset')
+    btnRightElement.classList.add('split')
+    btnRightElement.innerText="SPLIT"
+  }else{
+    console.log('stop')
+    chronometer.stop()
+    btnLeftElement.classList.remove('stop')
+    btnLeftElement.classList.add('start')
+    btnLeftElement.innerText='START'
+    btnRightElement.classList.remove('split')
+    btnRightElement.classList.add('reset')
+    btnRightElement.innerText="RESET"
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnRightElement.classList.contains('reset')){
+    chronometer.reset()
+  }else{
+    printSplit()
+  }
 });
