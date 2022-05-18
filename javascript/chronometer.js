@@ -6,32 +6,32 @@ class Chronometer {
 
   start(callback) {
     this.intervalId = setInterval((callback) => {
-      this.currentTime += 1
-    }, 1000)
+      this.currentTime += 1;
+    }, 1000);
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60)
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    return this.currentTime % 60
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
-    return String('0' + value).slice(-2)
+    return String('0' + value).slice(-2);
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`;
   }
 }
 
