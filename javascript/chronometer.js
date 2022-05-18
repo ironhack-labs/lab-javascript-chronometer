@@ -1,9 +1,16 @@
 class Chronometer {
   constructor() {
+    this.currentTime = 0;
+    this.milliIntervalId = 0;
+    this.milliCurrentTime = 0;
+    this.milliseconds = 0;
+    this.intervalId = null;
+
     // ... your code goes here
   }
 
   start(callback) {
+    setInterval(() => {});
     // ... your code goes here
   }
 
