@@ -17,6 +17,7 @@ const splitsElement = document.getElementById('splits');
 
 function printTime() {
   // ... your code goes here
+  printCentiseconds();
   printSeconds();
   printMinutes();
 }
@@ -26,27 +27,29 @@ function printSeconds() {
   const seconds = chrono.getSeconds();
   const seconds2Dig = chrono.computeTwoDigitNumber(seconds);
 
-  const secUni = document.getElementById('secUni');
-  const secDec = document.getElementById('secDec');
-
-  secUni.textContent = seconds2Dig.charAt(1);
-  secDec.textContent = seconds2Dig.charAt(0);
+  secUniElement.textContent = seconds2Dig.charAt(1);
+  secDecElement.textContent = seconds2Dig.charAt(0);
 }
 
 function printMinutes() {
   // ... your code goes here
   const minutes = chrono.getMinutes();
   const minutes2dig = chrono.computeTwoDigitNumber(minutes);
-  const minUni = document.getElementById('minUni');
-  const minDec = document.getElementById('minDec');
 
-  minUni.textContent = minutes2dig.charAt(1);
-  minDec.textContent = minutes2dig.charAt(0);
+  minUniElement.textContent = minutes2dig.charAt(1);
+  minDecElement.textContent = minutes2dig.charAt(0);
 }
 
 // ==> BONUS
-function printMilliseconds() {
+function printCentiseconds() {
   // ... your code goes here
+  const centiseconds = chrono.getCentiseconds()
+  console.log('centiseconds', centiseconds);
+  const centiseconds2dig = chrono.computeTwoDigitNumber(centiseconds);
+
+  milUniElement.textContent = centiseconds2dig.charAt(1);
+  milDecElement.textContent = centiseconds2dig.charAt(0);
+
 }
 
 function printSplit() {
@@ -57,9 +60,7 @@ function printSplit() {
 
   mySplitTimeLi.textContent = mySplitTimeString;
 
-  myOl = document.getElementById('splits');
-  // console.log(myOl);
-  myOl.appendChild(mySplitTimeLi);
+  splitsElement.appendChild(mySplitTimeLi);
 }
 
 function clearSplits() {
