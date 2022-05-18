@@ -4,10 +4,10 @@ class Chronometer {
     this.intervalId = intervalId;
   }
 
-  start(callback = undefined ) {
+  start(callback = undefined) {
     if(!this.intervalId) {
       this.intervalId = setInterval(() => {
-        this.currentTime += 1
+        this.currentTime += 1;
         callback && callback();
       }, 1000)
     }
@@ -27,7 +27,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId);
-    this.intervalId = undefined;
+    this.intervalId = null;
   }
 
   reset() {
