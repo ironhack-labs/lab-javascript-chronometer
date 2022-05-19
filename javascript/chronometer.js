@@ -10,8 +10,13 @@ class Chronometer {
     // ... your code goes here
     // this.status = true;
 
-    this.intervalId = setInterval((callback) => {
+    this.intervalId = setInterval(() => {
       this.currentTime += 1;
+      if (typeof callback === 'function') {
+        callback();
+      }
+
+      // console.log(this.currentTime);
     }, 1000);
   }
 

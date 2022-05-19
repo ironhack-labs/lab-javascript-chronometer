@@ -23,15 +23,17 @@ function printTime() {
 function printMinutes() {
   // ... your code goes here
   let minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
-  minDecElement.textContent = minutes.toString().slice(1, 2);
-  minUniElement.textContent = minutes.toString().slice(0, 1);
+  minDecElement.textContent = minutes.toString().slice(0, 1);
+  minUniElement.textContent = minutes.toString().slice(1);
 }
 
 function printSeconds() {
   // ... your code goes here
   let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
-  secUniElement.textContent = seconds.toString().slice(1, 2);
+  secUniElement.textContent = seconds.toString().slice(1);
   secDecElement.textContent = seconds.toString().slice(0, 1);
+  // console.log(secUniElement.textContent);
+  // console.log(secDecElement.textContent);
 }
 
 // ==> BONUS
@@ -76,21 +78,27 @@ btnLeftElement.addEventListener('click', () => {
   //   chronometer.start();
   // }
   if (btnLeftElement.classList.contains('start')) {
-    chronometer.start(printTime());
+    chronometer.start(printTime);
     btnLeftElement.textContent = 'STOP';
     btnRightElement.textContent = 'SPLIT';
     btnLeftElement.classList.replace('start', 'stop');
     btnRightElement.classList.replace('reset', 'split');
   } else {
-    chronometer.stop();
     btnLeftElement.textContent = 'START';
     btnRightElement.textContent = 'RESET';
     btnLeftElement.classList.replace('stop', 'start');
     btnRightElement.classList.replace('split', 'reset');
+    chronometer.stop();
   }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  if (btnRightElement.classList.contains('split')) {
+    let split = document.createElement('li');
+    split.textContent = chronometer.split();
+
+    splitsElement.appendChild(split);
+  }
 });
