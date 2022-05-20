@@ -1,37 +1,68 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0
+    this.intervalId = null
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() =>{
+this.currentTime ++;
+      if (callback){
+        (callback)
+      }
+    },1000)
   }
 
   getMinutes() {
-    // ... your code goes here
+  //  return this.currentTime = Math.floor(this.currentTime / 60)
+      return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+ // return Math.floor(this.currentTime % 60)
+    return this.currentTime % 60
   }
-
+  //  Versión 1
+  // computeTwoDigitNumber(value) {
+  //   const time = value.toString();
+  //   if(time.length < 2){
+  //     return "0" + time
+  //   }
+  //   return time
+  //  }
+  // versión 2
+  // computeTwoDigitNumber(value) {
+  //   return value.toString().padStart(2, '0');
+  // }
+//     forma 3 con un if diferente también
+  //  computeTwoDigitNumber(value) {
+  //    if(value < 9){
+  //                  //---->>  if(value.toString().length < 2){<<-----//
+  //     return `0${value}`
+  //   } else {
+  //     return `${value}`;
+  //   }
+  // }
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return String("00" + value).slice(-2)
   }
+//creando un const del value y añadiendo un if,
+//podría regresar 00 si no hay nada en el argumento
+//pero esto pasa los tests bien 
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0
   }
 
   split() {
-    // ... your code goes here
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
   }
 }
-
+//no me puedo creer que estuve con el espacio por los lados de ":" dandome error tanto rato....
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
