@@ -2,6 +2,11 @@ const Chronometer = require('../javascript/chronometer');
 
 describe('Chronometer', () => {
   let chronometer;
+  
+  //const millToSecond = 1;
+  // If you decide to work on the bonus iteration,
+  // comment the previous variable millToSecond and uncomment the following
+  const millToSecond = 1000;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -34,13 +39,13 @@ describe('Chronometer', () => {
     it('should increment by 1 the currentTime property on every 1 second interval', () => {
       chronometer.start();
       jest.advanceTimersByTime(1000);
-      expect(chronometer.currentTime).toEqual(1);
+      expect(chronometer.currentTime).toEqual(1 * millToSecond);
     });
 
     it('should hold 3 in currentTime property after 3 seconds', () => {
       chronometer.start();
       jest.advanceTimersByTime(3000);
-      expect(chronometer.currentTime).toEqual(3);
+      expect(chronometer.currentTime).toEqual(3 * millToSecond);
     });
   });
 
@@ -50,17 +55,17 @@ describe('Chronometer', () => {
     });
 
     it('should return a number', () => {
-      chronometer.currentTime = 65;
+      chronometer.currentTime = 65 * millToSecond;
       expect(typeof chronometer.getMinutes()).toEqual('number');
     });
 
     it('should return a number without decimal places', () => {
-      chronometer.currentTime = 65;
+      chronometer.currentTime = 65 * millToSecond;
       expect(chronometer.getMinutes() % 1).toEqual(0);
     });
 
     it('should return the number of entire minutes passed', () => {
-      chronometer.currentTime = 65;
+      chronometer.currentTime = 65 * millToSecond;
       expect(chronometer.getMinutes()).toEqual(1);
     });
 
@@ -69,7 +74,7 @@ describe('Chronometer', () => {
     });
 
     it('should return the number of minutes passed even after a very long time', () => {
-      chronometer.currentTime = 50210;
+      chronometer.currentTime = 50210 * millToSecond;
       expect(chronometer.getMinutes()).toEqual(836);
     });
   });
@@ -80,22 +85,22 @@ describe('Chronometer', () => {
     });
 
     it('should return a number', () => {
-      chronometer.currentTime = 3;
+      chronometer.currentTime = 3 * millToSecond;
       expect(typeof chronometer.getSeconds(0)).toEqual('number');
     });
 
     it("should return 0 when the currentTime counting haven't started", () => {
-      chronometer.currentTime = 0;
+      chronometer.currentTime = 0 * millToSecond;
       expect(chronometer.getSeconds()).toEqual(0);
     });
 
     it('should return the seconds of the currentTime', () => {
-      chronometer.currentTime = 15;
+      chronometer.currentTime = 15 * millToSecond;
       expect(chronometer.getSeconds()).toEqual(15);
     });
 
     it('should return the seconds portion of the currentTime that remains after removing the minutes', () => {
-      chronometer.currentTime = 115;
+      chronometer.currentTime = 115 * millToSecond;
       expect(chronometer.getSeconds()).toEqual(55);
     });
   });
@@ -144,10 +149,10 @@ describe('Chronometer', () => {
     it('should stop a previously started chronometer', () => {
       chronometer.start();
       jest.advanceTimersByTime(1000);
-      expect(chronometer.currentTime).toEqual(1);
+      expect(chronometer.currentTime).toEqual(1 * millToSecond);
       chronometer.stop();
       jest.advanceTimersByTime(2000);
-      expect(chronometer.currentTime).toEqual(1);
+      expect(chronometer.currentTime).toEqual(1 * millToSecond);
     });
   });
 
@@ -157,7 +162,7 @@ describe('Chronometer', () => {
     });
 
     it('should reset the value of the "currentTime" property to 0', () => {
-      chronometer.currentTime = 5;
+      chronometer.currentTime = 5 * millToSecond;
       chronometer.reset();
       expect(chronometer.currentTime).toEqual(0);
     });
