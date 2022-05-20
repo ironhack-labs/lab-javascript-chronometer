@@ -16,12 +16,12 @@ class Chronometer {
   }
 
   getSeconds() {
-    let seconds =this.currentTime
+    let seconds =Math.floor(this.currentTime%60)
     return seconds
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return String(value).padStart(2, '0')
   }
 
   stop() {
@@ -34,6 +34,7 @@ class Chronometer {
   }
 
   split() {
+
     // ... your code goes here
   }
 }
