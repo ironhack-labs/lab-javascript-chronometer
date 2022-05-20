@@ -9,21 +9,21 @@ class Chronometer {
       this.intervalId = setInterval(() => {
         this.currentTime += 1;
         callback && callback();
-        printTime();
-      }, 10)
+        printTime && printTime();
+      }, 1)
     }
   }
 
   getMinutes() {
-    return Math.floor((this.currentTime / 100) / 60);
+    return Math.floor((this.currentTime / 1000) / 60);
   }
 
   getSeconds() {
-    return Math.floor(this.currentTime / 100) % 60;
+    return Math.floor(this.currentTime / 1000) % 60;
   }
 
-  getMiliSeconds() {
-    return this.currentTime % 100;
+  getMilliseconds() {
+    return this.currentTime % 1000;
   }
 
   computeTwoDigitNumber(value) {
@@ -40,7 +40,7 @@ class Chronometer {
   }
 
   split() {
-    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}:${this.computeTwoDigitNumber(this.getMiliSeconds())}`;
+    return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}:${this.computeTwoDigitNumber(this.getMilliseconds())}`;
   }
 }
 
