@@ -104,7 +104,8 @@ btnRightElement.addEventListener('click', () => {
     while (splitsElement.firstChild) {
       splitsElement.removeChild(splitsElement.firstChild);
     }
-    chronometer.currentTime = 0;
+    // chronometer.currentTime = 0;
+    chronometer.reset();
     printTime();
   }
 });
