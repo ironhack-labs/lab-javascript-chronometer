@@ -100,5 +100,14 @@ btnRightElement.addEventListener('click', () => {
     split.textContent = chronometer.split();
 
     splitsElement.appendChild(split);
+  } else if (btnRightElement.classList.contains('reset')) {
+    while (splitsElement.firstChild) {
+      splitsElement.removeChild(splitsElement.firstChild);
+    }
+    chronometer.currentTime = 0;
+    printTime();
   }
 });
+
+//TODO
+// Move logic code to corresponding functions, add functions to event.listener
