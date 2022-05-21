@@ -53,7 +53,7 @@ class Chronometer {
     const baseSeconds = this.getSeconds();
     const paddedMinutes = this.computeTwoDigitNumber(baseMinutes);
     const paddedSeconds = this.computeTwoDigitNumber(baseSeconds);
-    return `${paddedMinutes} : {paddedSeconds}`;
+    return `${paddedMinutes} : ${paddedSeconds}`;
 
     // outra maneira de fazer
     // ${this.computeTwoDigitNumber(
