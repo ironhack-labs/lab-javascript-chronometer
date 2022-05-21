@@ -17,7 +17,6 @@ function printTime() {
   // ... your code goes here
   printSeconds();
   printMinutes();
-  // printMinutes();
 }
 
 function printMinutes() {
@@ -43,51 +42,55 @@ function printMilliseconds() {
 
 function printSplit() {
   // ... your code goes here
+  let split = document.createElement('li');
+  split.textContent = chronometer.split();
+
+  splitsElement.appendChild(split);
 }
 
 function clearSplits() {
   // ... your code goes here
+  while (splitsElement.firstChild) {
+    splitsElement.removeChild(splitsElement.firstChild);
+  }
+  chronometer.reset();
+  printTime();
 }
 
 function setStopBtn() {
   // ... your code goes here
+  btnLeftElement.textContent = 'STOP';
+  btnLeftElement.classList.replace('start', 'stop');
 }
 
 function setSplitBtn() {
   // ... your code goes here
+  btnRightElement.textContent = 'SPLIT';
+  btnRightElement.classList.replace('reset', 'split');
 }
 
 function setStartBtn() {
   // ... your code goes here
+  btnLeftElement.textContent = 'START';
+  btnLeftElement.classList.replace('stop', 'start');
 }
 
 function setResetBtn() {
   // ... your code goes here
+  btnRightElement.textContent = 'RESET';
+  btnRightElement.classList.replace('split', 'reset');
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
-  // if (chronometer.status) {
-  //   btnLeftElement.textContent = 'STOP';
-  //   btnLeftElement.classList.replace('start', 'stop');
-  //   chronometer.stop();
-  // } else if (!chronometer.status) {
-  //   btnLeftElement.textContent = 'START';
-  //   btnLeftElement.classList.replace('stop', 'start');
-  //   chronometer.start();
-  // }
   if (btnLeftElement.classList.contains('start')) {
     chronometer.start(printTime);
-    btnLeftElement.textContent = 'STOP';
-    btnRightElement.textContent = 'SPLIT';
-    btnLeftElement.classList.replace('start', 'stop');
-    btnRightElement.classList.replace('reset', 'split');
+    setStopBtn();
+    setSplitBtn();
   } else {
-    btnLeftElement.textContent = 'START';
-    btnRightElement.textContent = 'RESET';
-    btnLeftElement.classList.replace('stop', 'start');
-    btnRightElement.classList.replace('split', 'reset');
+    setStartBtn();
+    setResetBtn();
     chronometer.stop();
   }
 });
@@ -96,19 +99,8 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
   if (btnRightElement.classList.contains('split')) {
-    let split = document.createElement('li');
-    split.textContent = chronometer.split();
-
-    splitsElement.appendChild(split);
+    printSplit();
   } else if (btnRightElement.classList.contains('reset')) {
-    while (splitsElement.firstChild) {
-      splitsElement.removeChild(splitsElement.firstChild);
-    }
-    // chronometer.currentTime = 0;
-    chronometer.reset();
-    printTime();
+    clearSplits();
   }
 });
-
-//TODO
-// Move logic code to corresponding functions, add functions to event.listener
