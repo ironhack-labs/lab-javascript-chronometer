@@ -28,56 +28,68 @@ function printTime(minutes, seconds) {
   printSeconds(seconds)
 }
 
-function printMinutes(minutes) {
-  // mejorar if
-  if(minutes < 10){
+function printMinutes(minutes) { 
+/*  if(minutes < 10){
     minUniElement.innerHTML = minutes;
-  }else{
+  } else{
     minDecElement.innerHTML = minutes.toString()[0];
     minUniElement.innerHTML = minutes.toString()[1];
+  } */
+  if(minutes >= 10){
+    minUniElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[1]
+    minDecElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[0]
+  } else {
+    minUniElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[1]
+    minDecElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[0]
   }
 }
 
 function printSeconds(seconds) {
-  if(seconds < 10){
+/*  if(seconds < 10){
     secUniElement.innerHTML = seconds;
     secDecElement.innerHTML = 0;
-  }else{
+  } else{
     secDecElement.innerHTML = seconds.toString()[0];
     secUniElement.innerHTML = seconds.toString()[1];
   }
+} */
+  if(seconds >= 10){
+    secUniElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[1]
+    secDecElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[0]
+  } else {
+    secUniElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[1]
+    secDecElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[0]
+  }
 }
-
 
 function setStartBtn() {
   switch (btnLeftElement.innerHTML) {
     case "START":
-      btnLeftElement.innerHTML = "STOP";
+      btnLeftElement.innerText = "STOP";
 //      btnLeftElement.classList.remove("start")
 //      btnLeftElement.classList.add("stop")
       btnLeftElement.className = "btn stop";
       chronometer.start(printTime)
       
       
-      btnRightElement.innerHTML = "SPLIT";
+      btnRightElement.innerText = "SPLIT";
 //     btnRightElement.classList.remove("reset")
 //     btnRightElement.classList.add("split")
       btnRightElement.className = "btn split";
     break;
     
     case "STOP":
-      btnLeftElement.innerHTML = "START";
+      btnLeftElement.innerText = "START";
 //      btnLeftElement.classList.remove("stop")
 //      btnLeftElement.classList.add("start")
       btnLeftElement.className = "btn start";
       chronometer.stop() // 
 
 
-      btnRightElement.innerHTML = "RESET";
+      btnRightElement.innerText = "RESET";
 //      btnRightElement.classList.remove("split");
 //      btnRightElement.classList.add("reset");
       btnRightElement.className = "btn reset";
-
     break;
 
     default:
@@ -86,9 +98,18 @@ function setStartBtn() {
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  switch (btnRightElement.innerHTML) {
+    case "RESET":
+      chronometer.reset()
+      secUniElement.innerHTML = 0
+      secDecElement.innerHTML = 0
+      minUniElement.innerHTML = 0
+      minDecElement.innerHTML = 0
+    break;
+    default:
+      break;
+  }
 }
-
 
 
 
