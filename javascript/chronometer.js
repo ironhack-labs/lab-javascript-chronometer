@@ -5,7 +5,7 @@ class Chronometer {
   }
 
   start(callback) {
-    if (!this.intervalId) {
+ if (!this.intervalId) {
     this.intervalId = setInterval(() => {
       if (callback) {
         callback
@@ -30,6 +30,7 @@ class Chronometer {
 
   stop() {
     clearInterval(this.intervalId)
+    this.intervalId = null
   }
 
   reset() {
