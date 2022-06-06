@@ -36,40 +36,43 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  console.log('print split time');
+  let listItem = document.createElement('li');
+  listItem.innerHTML = chronometer.split();
+  splitsElement.appendChild(listItem);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = '';
+  chronometer.reset();
+  printTime();
 }
 
 function setStopBtn() {
+  chronometer.start(printTime);
   btnLeftElement.innerText = 'STOP';
   btnRightElement.innerText = 'SPLIT';
   btnLeftElement.classList.remove('start');
   btnLeftElement.classList.add('stop');
   btnRightElement.classList.remove('reset');
   btnRightElement.classList.add('split');
-  chronometer.start(printTime);
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  chronometer.split();
 }
 
 function setStartBtn() {
+  chronometer.stop();
   btnLeftElement.innerText = 'START';
   btnRightElement.innerText = 'RESET';
   btnLeftElement.classList.remove('stop');
   btnLeftElement.classList.add('start');
   btnRightElement.classList.remove('split');
   btnRightElement.classList.add('reset');
-  chronometer.stop();
 }
 
 function setResetBtn() {
-  // ... your code goes here
-  console.log('reset');
+  clearSplits();
 }
 
 // Start/Stop Button
