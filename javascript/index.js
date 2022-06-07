@@ -34,20 +34,37 @@ function printSplit() {
   // ... your code goes here
 }
 
+//CLEAR SPLIT
 function clearSplits() {
-  // ... your code goes here
+  btnRightElement.textContent = "SPLIT"
+
+  btnRightElement.classList.remove("reset")
+  btnRightElement.classList.add("split")
 }
 
+//STOP
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.textContent = "START"
+
+  btnLeftElement.classList.remove("stop")
+  btnLeftElement.classList.add("start")
 }
 
+//SPLIT
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.textContent = "CLEAR"
+
+  btnRightElement.classList.remove("split")
+  btnRightElement.classList.add("reset")
 }
 
+//START
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.textContent = "STOP"
+
+  btnLeftElement.classList.remove("start")
+  btnLeftElement.classList.add("stop")
+  chronometer.start()
 }
 
 function setResetBtn() {
@@ -56,10 +73,20 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  let status = document.getElementById("btnLeft").textContent;
+  if (status == "START") {
+    setStartBtn();
+  } else {
+    setStopBtn();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  let status = document.getElementById("btnRight").textContent
+  if (status == "CLEAR") {
+    clearSplits()
+  } else {
+    setSplitBtn()
+  }
 });
