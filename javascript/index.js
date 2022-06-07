@@ -13,9 +13,6 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function stop(){
-
-}
 
 //reset splits TODO
 function printTime() {
@@ -80,6 +77,7 @@ function setResetBtn() {
 
 
 btnLeftElement.addEventListener('click', () => {
+  playBeep();
   if (btnLeftElement.innerText === "START") {
     chronometer.start(printTime);
     setStopBtn();
@@ -92,9 +90,15 @@ btnLeftElement.addEventListener('click', () => {
   }
 });
 
-
+function playBeep() {
+  const audio = new Audio("./Assets/beep.wav");
+  audio.play();
+}
 btnRightElement.addEventListener('click', () => {
+  playBeep();
   if (btnRightElement.innerText === "RESET") {
+    btnRightElement.innerText = "RESET";
+    btnRightElement.className = "btn reset";
     chronometer.stop();
     chronometer.reset();
     minDecElement.innerText = 0;
