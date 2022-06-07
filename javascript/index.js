@@ -14,13 +14,22 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  alert('ahpora si')
+  if (btnLeftElement.innerText === 'START') {
+    btnLeftElement.innerText = 'STOP'
+  }
+  if (btnRightElement.innerText === 'RESET') {
+    btnRightElement.innerText = 'SPLIT'
+  }
 }
 
 function printMinutes() {
-  // ... your code goes here
-}
 
+  minUniElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getMinutes()).charAt(0)
+  minDecElement.innerText = chronometer.computeTwoDigitNumber(chronometer.getSeconds()).charAt(0)
+
+}
+printMinutes()
 function printSeconds() {
   // ... your code goes here
 }
@@ -56,10 +65,12 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  printTime()
+
+
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  printTime()
 });
