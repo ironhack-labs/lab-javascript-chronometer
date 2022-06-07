@@ -12,7 +12,7 @@ const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
-
+console.log(chronometer.split())
 function printTime() {
   // ... your code goes here
 }
