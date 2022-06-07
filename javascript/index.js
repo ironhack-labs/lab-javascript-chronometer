@@ -1,3 +1,4 @@
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -13,12 +14,43 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+
 function printTime() {
   // ... your code goes here
+  const buttonStart = document.querySelector('#btnLeft')
+
+
+  buttonStart.classList.toggle("stop")
+
+  if (buttonStart.innerHTML == 'START') {
+    document.querySelector('#btnLeft').innerHTML = 'STOP'
+  }
+  else {
+    document.querySelector('#btnLeft').innerHTML = 'START'
+  }
+
+
+  //No conseguí el cambio de texto con las clases
+  const buttonReset = document.querySelector('#btnRight')
+  buttonReset.onclick = function () {
+    // buttonReset.classList.toggle("split")
+
+    if (buttonReset.innerHTML == "RESET") {
+      document.querySelector('#btnRight').innerHTML = 'SPLIT'
+    }
+    else {
+      document.querySelector('#btnRight').innerHTML = 'RESET'
+    }
+
+  }
 }
+
 
 function printMinutes() {
   // ... your code goes here
+  const minDecimal = document.querySelector('#minDec')
+
 }
 
 function printSeconds() {
@@ -56,10 +88,13 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  printTime()
+
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+  printTime()
   // ... your code goes here
 });
