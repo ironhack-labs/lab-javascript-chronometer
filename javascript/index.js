@@ -56,10 +56,27 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  function toggleClass() {
+    if (btnLeftElement.classList.contains('start')) {
+      btnLeftElement.classList.remove('start')
+    } else {
+      btnLeftElement.classList.add('start')
+    }
+  }
+  return toggleClass()
+  
   // ... your code goes here
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+  function toggleClass() {
+    if (btnLeftElement.classList.contains('start')) {
+      btnRightElement.classList.remove('reset')
+    } else {
+      btnRightElement.classList.add('reset')
+    }
+  }
+  return toggleClass()
   // ... your code goes here
 });
