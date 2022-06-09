@@ -4,11 +4,16 @@ class Chronometer {
     this.intervalId = null;
   }
 
-  start() {
-    this.intervalId = setInterval(() => this.currentTime++,1000);  
-    
-    if (this.currentTime === 3) {setTimeout(() => this.currentTime,3000)}
+  start(callback) {
+
+    if(callback) {
+      callback();
+    } else {
+        this.intervalId = setInterval(() => {
+        return this.currentTime++;
+        }, 1000);
   }
+}
 
   getMinutes() {
     return Math.floor(this.currentTime / 60);
@@ -18,11 +23,9 @@ class Chronometer {
     return Math.floor(this.currentTime % 60);
   }
 
-  computeTwoDigitNumber(num) {
-    
+  computeTwoDigitNumber(num) {    
     if (num <= 10) {return "0" + num}
-      else {return String(num)}
-  
+      else {return String(num)}  
   }
 
   stop() {
