@@ -50,7 +50,7 @@ function printSplit() {
   li.classList.add('list-item');
   li.textContent = chronometer.split();
 
-  splitsElement.appendChild(splitTime);
+  splitsElement.appendChild(li);
 }
 
 function clearSplits() {
