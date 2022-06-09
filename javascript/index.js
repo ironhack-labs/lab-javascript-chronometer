@@ -11,24 +11,27 @@ if (btnLeftElement.classList.contains('start')) {
   btnLeftElement.textContent = 'STOP';
   btnLeftElement.classList.remove('start');
   btnLeftElement.classList.add('stop');
-} else {
-  chronometer.stop();
-  btnLeftElement.textContent = 'START';
-  btnLeftElement.classList.remove('stop');
-  btnLeftElement.classList.add('start');}
-}
-
-function changeAttrBtnRigth () {
-if (btnRightElement.classList.contains('reset')) {
-  chronometer.reset();
   btnRightElement.textContent = 'SPLIT';
   btnRightElement.classList.remove('reset');
   btnRightElement.classList.add('split');
 } else {
-  chronometer.split();
+  chronometer.stop(); 
+  btnLeftElement.textContent = 'START';
+  btnLeftElement.classList.remove('stop');
+  btnLeftElement.classList.add('start');
   btnRightElement.textContent = 'RESET';
   btnRightElement.classList.remove('split');
   btnRightElement.classList.add('reset');}
+}
+
+function changeAttrBtnRigth () {
+if (btnLeftElement.classList.contains('start')) {  
+  chronometer.reset();
+  printTime();  
+  clearSplits();
+} else {
+  printSplit();
+}
 }
 
 // get the DOM elements that will serve us to display the time:
@@ -46,14 +49,14 @@ const splitsElement = document.getElementById('splits');
 function printTime() {  
   this.printMinutes();
   this.printSeconds();  
+  this.printMilliseconds();
 }
 
 function printMinutes() {  
   let min = chronometer.getMinutes();    
 
   let twoDigitMin = chronometer.computeTwoDigitNumber(min); 
-  console.log(twoDigitMin)
-
+  
   let firstCharMin = twoDigitMin.charAt(0);
   let secondCharMin = twoDigitMin.charAt(1);
 
@@ -66,8 +69,6 @@ function printSeconds() {
   let sec = chronometer.getSeconds();
   let twoDigitSec = chronometer.computeTwoDigitNumber(sec); 
 
-  console.log(twoDigitSec)
-
   let firstCharSec = twoDigitSec.charAt(0);
   let secondCharSec = twoDigitSec.charAt(1);
 
@@ -75,18 +76,30 @@ function printSeconds() {
   secUniElement.textContent = secondCharSec;
 }
 
-
-// ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let mil = chronometer.getMilliseconds();    
+
+  let twoDigitMil = chronometer.computeTwoDigitNumber(mil); 
+  
+  let firstCharMil = twoDigitMil.charAt(0);
+  let secondCharMil = twoDigitMil.charAt(1);
+
+  milDecElement.textContent = firstCharMil;
+  milUniElement.textContent = secondCharMil;
 }
 
 function printSplit() {
-  // ... your code goes here
+  const splitTime = document.createElement('li');
+  splitTime.classList.add('list-item');
+  splitTime.textContent = chronometer.split();
+
+  splitsElement.appendChild(splitTime);  
 }
 
 function clearSplits() {
-  // ... your code goes here
+  while(splitsElement.firstChild ){
+  splitsElement.removeChild(splitsElement.firstChild);
+}  
 }
 
 function setStopBtn() {
@@ -94,7 +107,7 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  
 }
 
 function setStartBtn() {
