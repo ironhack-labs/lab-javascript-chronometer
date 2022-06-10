@@ -1,5 +1,5 @@
 class Chronometer {
-  constructor (){
+  constructor() {
     this.currentTime = 0;
     this.intervalId = null;
     this.minutes = 0;
@@ -7,50 +7,67 @@ class Chronometer {
   }
 
   start(callback) {
+    //método start con parámetro de callback
     if (callback) {
-      return callback()}
-     this.intervalId = setInterval(() => {
-    return this.currentTime += 1
-}, 1000)
-       
+      //sí se llama a callback, me devuelves callback
+      return callback();
+    }
+    this.intervalId = setInterval(() => {
+      // intervalid lo equiparo a setinterval, q tiene una función vacía por primer parámetro
+      return (this.currentTime += 1); // la cual va a devolver q currentime aumente en uno.
+    }, 1000); // y de segundo parámetro de setinterval le paso el delay de 1000 milisegundo = 1 segundo
   }
-  getMinutes() { // should return a number
-    if ( this.currentTime === 0){
-        return 0
+  getMinutes() {
+    if (this.currentTime === 0) {
+      return 0;
     } else if (this.currentTime / 60) {
-      this.minutes +=1}
-     return this.minutes
+      this.minutes += 1;
+    }
+    return (this.minutes = Math.floor(this.currentTime / 60));
   }
 
-  getSeconds() { // should return a number
-    if(this.currentTime === 0){
-      return 0
-  } else if (this.currentTime % 60) {
-      this.seconds +=1}
-    return this.seconds
-  } 
+  getSeconds() {
+    if (this.currentTime === 0) {
+      return 0;
+    } else if (this.currentTime % 60) {
+      this.seconds += 1;
+    }
+    return (this.seconds = this.currentTime % 60);
+  }
 
   computeTwoDigitNumber(value) {
-    // should return a string// if( )  { //should always return a string of length 2 && should return '00' when the value is 0 &&
+    //  && should return '00' when the value is 0 &&
     // should return '15' when the value is 15 && Should return '03' when the value is 3
     //}
-    let result = this.currentTime.toString()
-      
 
-   return result
+    this.currentTime;
+    let twoDigits = value.toString()
+    if ((twoDigits === 0)) {
+      return '00';
+    }
+    else if (twoDigits.length < 2) {
+      return 0 + twoDigits 
+    }
+    return twoDigits
   }
 
-  stop() { // should call clear the interval && should stop a previously started chronometer
-    clearInterval(this.intervalId)
+  stop() {
+      clearInterval(this.intervalId);
   }
 
-  reset() {// should reset the value of the "currentTime" property to 0
-    clearInterval(this.currentTime === 0)
+  reset() {
+    // should reset the value of the "currentTime" property to 0
+
+    clearInterval((this.currentTime = 0));
   }
 
-  split() {// should return valid format with minutes and seconds
-   
-  } 
+  split() {
+    // should return valid format with minutes and seconds
+    
+    let splitForm 
+     return splitForm = this.computeTwoDigitNumber(this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds())
+
+  }
 }
 
 // The following is required to make unit tests work.
