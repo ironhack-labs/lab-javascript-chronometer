@@ -14,8 +14,7 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 
-const startF=chronometer.start(printTime());
-btnLeftElement.addEventListener('click', startF);
+
 
 
 function printTime() {
@@ -66,10 +65,16 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', startF => {
-  
+btnLeftElement.addEventListener('click', event => {
+ 
   btnLeftElement.classList.toggle("btn-stop");
   btnLeftElement.textContent=btnLeftElement.textContent==="START" ? "STOP" : "START"
+  if(btnLeftElement.textContent ==="STOP" ){
+    chronometer.start(printTime);
+    }
+  else if( btnLeftElement.textContent === "START"){
+    chronometer.stop();
+  }
 
 });
 
