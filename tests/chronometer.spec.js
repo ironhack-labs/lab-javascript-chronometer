@@ -1,6 +1,6 @@
 const Chronometer = require('../javascript/chronometer');
 
-describe('Chronometer', () => {
+describe.only('Chronometer', () => {
   let chronometer;
 
   beforeEach(() => {
