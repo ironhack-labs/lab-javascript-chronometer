@@ -75,20 +75,26 @@ btnLeftElement.addEventListener('click', () => {
   
   btnLeftElement.classList.toggle('btn.stop')
   btnRightElement.classList.toggle('btn.split')
-  chronometer.start(printTime)
 
-  if(btnLeftElement.textContent === 'START' ){
+  if(btnLeftElement.classList.contains('start')){
+    chronometer.start(printTime)
     btnLeftElement.textContent = 'STOP'
+    btnLeftElement.classList.remove('start')
+    btnLeftElement.classList.add('stop')
     btnRightElement.textContent = 'SPLIT'
-    
+    btnRightElement.classList.remove('reset')
+    btnRightElement.classList.add('split')
 
   } else{
-    btnLeftElement.textContent = 'START'
-    btnRightElement.textContent = 'RESET'
     chronometer.stop()
+    btnLeftElement.textContent = 'START'
+    btnLeftElement.classList.remove('stop')
+    btnLeftElement.classList.add('start')
+    btnRightElement.textContent = 'RESET'
+    btnRightElement.classList.remove('split')
+    btnRightElement.classList.add('reset')
   }
 
-  
 
   console.log('no cambia bro', secUniElement.textContent)
 
