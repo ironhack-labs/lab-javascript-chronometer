@@ -11,16 +11,21 @@ class Chronometer {
         callback()
       }
       this.currentTime += 1
-      console.log(this.currentTime)
-    }, 1000);  
+    }, 10);  
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60)
+    // return minutes from milliseconds
+    return Math.floor((this.currentTime / 100) / 60)
   }
 
   getSeconds() {
-    return Math.floor(this.currentTime % 60)
+    // return seconds from milliseconds
+    return Math.floor((this.currentTime / 100) % 60)
+  }
+
+  getMiliseconds() {
+    return this.currentTime % 100
   }
  
   computeTwoDigitNumber(value) {
@@ -36,7 +41,7 @@ class Chronometer {
   }
 
   split() {
-    return this.computeTwoDigitNumber( this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds())
+    return this.computeTwoDigitNumber( this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds()) + ':' + this.computeTwoDigitNumber(this.getMiliseconds())
   }
 }
 
