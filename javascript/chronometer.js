@@ -3,6 +3,7 @@ class Chronometer {
     this.currentTime = 0;
     this.intervalId = null;
   }
+  
   start(callback) {
     if(callback){
       this.intervalId = setInterval(callback, 1000)
@@ -41,6 +42,10 @@ class Chronometer {
     return this.computeTwoDigitNumber(this.getMinutes())+":"+this.computeTwoDigitNumber(this.getSeconds())
   }
 }
+
+// the start button should call the "start" function inside the Chronometer 
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
