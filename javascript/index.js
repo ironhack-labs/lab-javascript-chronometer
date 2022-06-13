@@ -48,12 +48,12 @@ splitsElement.appendChild(listElement);
 }
 
 function clearSplits() {
-  minDecElement = "0"
-  minUniElement = "0"
-  secDecElement = "0"
-  secUniElement = "0"
-  const elementsRemove=document.getElementsByClassName("list-item")
-  elementsRemove.remove()
+
+   while(splitsElement.firstChild ){
+    splitsElement.removeChild(splitsElement.firstChild);
+   }
+
+  
   
 }
 
@@ -76,13 +76,24 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', event => {
  
-  btnLeftElement.classList.toggle("btn-stop");
-  btnLeftElement.textContent=btnLeftElement.textContent==="START" ? "STOP" : "START"
-  if(btnLeftElement.textContent ==="STOP" ){
+  if(btnLeftElement.textContent ==="START" ){
     chronometer.start(printTime);
+    btnLeftElement.classList.remove("start");
+    btnLeftElement.classList.add("stop");
+    btnLeftElement.textContent ="STOP" 
+    
+    btnRightElement.classList.toggle("split");
+    btnRightElement.textContent ="SPLIT" 
+
     }
-  else if( btnLeftElement.textContent === "START"){
+  else if( btnLeftElement.textContent === "STOP"){
     chronometer.stop();
+    btnLeftElement.classList.remove("stop");
+    btnLeftElement.classList.add("start");
+    btnLeftElement.textContent ="START" 
+    
+    btnRightElement.classList.toggle("split");
+    btnRightElement.textContent ="RESET"
   }
 
 });
@@ -91,12 +102,12 @@ btnLeftElement.addEventListener('click', event => {
 btnRightElement.addEventListener('click', () => {
 
   
-  btnRightElement.classList.toggle("btn-split");
-  btnRightElement.textContent=btnRightElement.textContent==="RESET" ? "SPLIT" : "RESET";
-  if(btnRightElement.textContent ==="RESET" ){
+  if(btnRightElement.textContent ==="SPLIT" ){
     printSplit()
     }
-  else if( btnRightElement.textContent === "RESET" && btnLeftElement.textContent==="STOP" ){
+  else if( btnLeftElement.classList.contains( "start" ) ){
+    chronometer.reset()
+    printTime()
     clearSplits();
   }
 });
