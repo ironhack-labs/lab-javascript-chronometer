@@ -61,6 +61,7 @@ function printSplit() {
 }
 
 function clearSplits() {
+ splitContainer.innerHTML = ""
   
 }
 
@@ -105,6 +106,15 @@ btnRightElement.addEventListener('click', event => {
   if (btnRightElement.textContent === 'SPLIT') {
     printSplit()
   } else {
+    chronometer.currentTime = 0
+    minDecElement.textContent = "0"
+    minUniElement.textContent = "0"
+    secDecElement.textContent = "0"
+    secUniElement.textContent = "0"
+    milDecElement.textContent = "0"
+    milUniElement.textContent = "0"
+    splitsElement.textContent = "0"
+
     clearSplits()
     btnRightElement.textContent = 'SPLIT'
   }
@@ -113,3 +123,5 @@ btnRightElement.addEventListener('click', event => {
   btnRightElement.classList.toggle('reset')
 
 });
+
+/// cuando corriendo el tiempo es slit y cuando este pausado sea reset
