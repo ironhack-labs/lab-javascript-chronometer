@@ -7,15 +7,12 @@ class Chronometer {
   }
 
   start(callback) {
-    //método start con parámetro de callback
-    if (callback) {
-      //sí se llama a callback, me devuelves callback
-      return callback();
-    }
     this.intervalId = setInterval(() => {
-      // intervalid lo equiparo a setinterval, q tiene una función vacía por primer parámetro
-      return (this.currentTime += 1); // la cual va a devolver q currentime aumente en uno.
-    }, 1000); // y de segundo parámetro de setinterval le paso el delay de 1000 milisegundo = 1 segundo
+      this.currentTime += 1;
+      if (callback) {
+        callback();
+      }
+    }, 1000);
   }
   getMinutes() {
     if (this.currentTime === 0) {
@@ -41,18 +38,17 @@ class Chronometer {
     //}
 
     this.currentTime;
-    let twoDigits = value.toString()
-    if ((twoDigits === 0)) {
+    let twoDigits = value.toString();
+    if (twoDigits === 0) {
       return '00';
+    } else if (twoDigits.length < 2) {
+      return 0 + twoDigits;
     }
-    else if (twoDigits.length < 2) {
-      return 0 + twoDigits 
-    }
-    return twoDigits
+    return twoDigits;
   }
 
   stop() {
-      clearInterval(this.intervalId);
+    clearInterval(this.intervalId );
   }
 
   reset() {
@@ -63,10 +59,12 @@ class Chronometer {
 
   split() {
     // should return valid format with minutes and seconds
-    
-    let splitForm 
-     return splitForm = this.computeTwoDigitNumber(this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds())
 
+    let splitForm;
+    return (splitForm =
+      this.computeTwoDigitNumber(this.getMinutes()) +
+      ':' +
+      this.computeTwoDigitNumber(this.getSeconds()));
   }
 }
 
