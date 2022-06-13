@@ -41,11 +41,20 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const listElement=document.createElement("li")
+  listElement.classList.add("list-item")
+  listElement.textContent= chronometer.split();
+splitsElement.appendChild(listElement);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  minDecElement = "0"
+  minUniElement = "0"
+  secDecElement = "0"
+  secUniElement = "0"
+  const elementsRemove=document.getElementsByClassName("list-item")
+  elementsRemove.remove()
+  
 }
 
 function setStopBtn() {
@@ -80,6 +89,14 @@ btnLeftElement.addEventListener('click', event => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+
+  
   btnRightElement.classList.toggle("btn-split");
-  btnRightElement.textContent=btnRightElement.textContent==="RESET" ? "SPLIT" : "RESET"
+  btnRightElement.textContent=btnRightElement.textContent==="RESET" ? "SPLIT" : "RESET";
+  if(btnRightElement.textContent ==="RESET" ){
+    printSplit()
+    }
+  else if( btnRightElement.textContent === "RESET" && btnLeftElement.textContent==="STOP" ){
+    clearSplits();
+  }
 });
