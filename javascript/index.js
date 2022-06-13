@@ -13,6 +13,9 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+//get #splits where we are going to add the current time every time we press the split button - 
+const splitContainer = document.getElementById('splits');
+
 function printTime() {
   this.printMinutes();
   this.printSeconds();
@@ -45,15 +48,20 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+
 }
 
+
+
 function printSplit() {
-  // ... your code goes here
+  const li = document.createElement('li');
+  li.classList.add('list-item');
+  li.textContent = chronometer.split();
+  splitContainer.appendChild(li);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  
 }
 
 function setStopBtn() {
@@ -65,11 +73,11 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  
 }
 
 function setResetBtn() {
-  // ... your code goes here
+ 
 }
 
 // Start/Stop Button
@@ -89,22 +97,19 @@ btnLeftElement.addEventListener('click', event => {
 
 });
 
-//| Stopped            | `btnRight` | RESET | `btn reset` |
 
-//| Running            | `btnRight` | SPLIT | `btn split` |
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', event => {
   console.log(btnRightElement.textContent)
-  if (btnRightElement.textContent === ' SPLIT ') {
-    chronometer.start(printTime)
-    btnRightElement.textContent = 'RESET'
+  if (btnRightElement.textContent === 'SPLIT') {
+    printSplit()
   } else {
-    chronometer.stop()
-    btnRightElement.textContent = 'RESET'
+    clearSplits()
+    btnRightElement.textContent = 'SPLIT'
   }
 
   btnRightElement.classList.toggle('split')
   btnRightElement.classList.toggle('reset')
- 
+
 });

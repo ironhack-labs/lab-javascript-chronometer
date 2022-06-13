@@ -170,9 +170,9 @@ Both buttons will have different behavior depending on the status of the chronom
 
 | Chronometer Status | Button ID  | Text  | CSS Class   |
 | ------------------ | ---------- | ----- | ----------- |
-| Stopped            | `btnLeft`  | START | `btn start` |
+
 | Stopped            | `btnRight` | RESET | `btn reset` |
-| Running            | `btnLeft`  | STOP  | `btn stop`  |
+
 | Running            | `btnRight` | SPLIT | `btn split` |
 
 You will find two click event listeners that are already linked with both `btnLeft` and `btnRight` buttons. You have to create the necessary code to change the status of buttons.
