@@ -40,7 +40,8 @@ function printSplit() {
 }
 
 function clearSplits() {
-  
+  const resetLaps = document.getElementById('splits');
+  resetLaps.innerText = '';
 }
 
 function setStopBtn() {
@@ -84,9 +85,10 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   if(btnRightElement.classList.contains('reset')) {
-    chronometer.reset()
     printTime()
+    chronometer.reset()
+    clearSplits()
     } else {
-      printSplit()
+    printSplit()
     }
 });
