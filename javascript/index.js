@@ -11,10 +11,11 @@ const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
 
 //get #splits where we are going to add the current time every time we press the split button - 
-const splitContainer = document.getElementById('splits');
+const splitsElement = document.getElementById('splits');
+
+
 
 function printTime() {
   this.printMinutes();
@@ -48,7 +49,14 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
+  const milisecs = chronometer.getMilliseconds();
+  const  milisecsDigit = chronometer.computeTwoDigitNumber(milisecs);
 
+  const  milisecsFirst = secsDigit.charAt(0);
+  const  milisecsSecond = secsDigit.charAt(1);
+
+  milDecElement.textContent = milisecsFirst;
+  milUniElement.textContent = milisecsSecond;
 }
 
 
@@ -57,12 +65,12 @@ function printSplit() {
   const li = document.createElement('li');
   li.classList.add('list-item');
   li.textContent = chronometer.split();
-  splitContainer.appendChild(li);
+  splitsElement.appendChild(li);
 }
 
 function clearSplits() {
- splitContainer.innerHTML = ""
-  
+  splitsElement.innerHTML = ""
+
 }
 
 function setStopBtn() {
@@ -74,30 +82,33 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  
+
 }
 
 function setResetBtn() {
- 
+
 }
 
 // Start/Stop Button
-
+/// cuando  esta corriendo el tiempo es slit y cuando este pausado sea reset
 btnLeftElement.addEventListener('click', event => {
-  console.log(btnLeftElement.textContent)
+
+  btnLeftElement.classList.toggle(`stop`);
+  btnLeftElement.classList.toggle(`start`);
+  btnRightElement.classList.toggle(`reset`);
+  btnRightElement.classList.toggle(`split`);
+
   if (btnLeftElement.textContent === 'START') {
     chronometer.start(printTime)
     btnLeftElement.textContent = 'STOP'
+    btnRightElement.textContent = 'SPLIT';
   } else {
     chronometer.stop()
-    btnLeftElement.textContent = 'START'
+    btnLeftElement.textContent = 'START';
+    btnRightElement.textContent = 'RESET';
   }
 
-  btnLeftElement.classList.toggle('start')
-  btnLeftElement.classList.toggle('stop')
-
 });
-
 
 
 // Reset/Split Button
@@ -123,5 +134,3 @@ btnRightElement.addEventListener('click', event => {
   btnRightElement.classList.toggle('reset')
 
 });
-
-/// cuando corriendo el tiempo es slit y cuando este pausado sea reset
