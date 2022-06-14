@@ -4,6 +4,7 @@ class Chronometer {
     this.intervalId = null;
     this.minutes = 0;
     this.seconds = 0;
+    this.milliseconds = 0
   }
 
   start(callback) {
@@ -12,26 +13,34 @@ class Chronometer {
       if (callback) {
         callback();
       }
-    }, 1000);
+    }, 1);
   }
   getMinutes() {
     if (this.currentTime === 0) {
       return 0;
-    } else if (this.currentTime / 60) {
+    } else if (this.currentTime / 6000) {
       this.minutes += 1;
     }
-    return (this.minutes = Math.floor(this.currentTime / 60));
+    return (this.minutes = Math.floor(this.currentTime / 6000));
   }
 
   getSeconds() {
     if (this.currentTime === 0) {
       return 0;
-    } else if (this.currentTime % 60) {
+    } else if ((this.currentTime/100) % 60) {
       this.seconds += 1;
     }
-    return (this.seconds = this.currentTime % 60);
+    return this.seconds = Math.floor((this.currentTime/100) % 60);
   }
 
+  getMilliSeconds(){
+    if (this.currentTime === 0) {
+      return 0;
+    } else if ( this.currentTime )
+      this.milliseconds += 1;
+    
+    return this.milliseconds 
+  }
   computeTwoDigitNumber(value) {
     //  && should return '00' when the value is 0 &&
     // should return '15' when the value is 15 && Should return '03' when the value is 3
@@ -64,7 +73,9 @@ class Chronometer {
     return (splitForm =
       this.computeTwoDigitNumber(this.getMinutes()) +
       ':' +
-      this.computeTwoDigitNumber(this.getSeconds()));
+      this.computeTwoDigitNumber(this.getSeconds()) +
+      ':' +
+      this.computeTwoDigitNumber(this.getMilliSeconds()))
   }
 }
 
