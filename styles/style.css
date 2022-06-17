@@ -113,13 +113,13 @@ body {
 }
 
 .btn.start {
-  background: #5fca5f;
+  background: cornflowerblue;
 }
 .btn.stop {
   background: #f14949;
 }
 .btn.reset {
-  background: #908e8e;
+  background: #bde80f;
 }
 .btn.split {
   background: #0851ab;

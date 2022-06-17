@@ -13,11 +13,21 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+
+//btnLeftElement.addEventListener('click',chronometer.start)
+
+
+
+
 function printTime() {
   // ... your code goes here
 }
 
 function printMinutes() {
+  minUniElement.innerHTML = Number(chronometer.getMinutes.toString().slice(-1))
+
+
   // ... your code goes here
 }
 
