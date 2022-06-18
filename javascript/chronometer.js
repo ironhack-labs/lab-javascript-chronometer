@@ -16,11 +16,6 @@ class Chronometer {
 
   }
 
-
-
-
-
-
   getMinutes() {
     this.minute = Math.floor(this.currentTime / 60)
     return this.computeTwoDigitNumber(this.minute)
@@ -45,9 +40,10 @@ class Chronometer {
 
   split() {
 
-     console.log( this.getMinutes() + ':' + this.getSeconds())
-    return this.getMinutes() + ':' + this.getSeconds()
    
+    this.splitTime = this.getMinutes() + ':' + this.getSeconds()
+     console.log(this.splitTime)
+    printSplit(this.splitTime)
   }
 }
 
