@@ -15,24 +15,60 @@ const splitsElement = document.getElementById('splits');
 
 
 
-//btnLeftElement.addEventListener('click',chronometer.start)
+
+btnLeftElement.addEventListener('click', function () {
+  if (btnLeftElement.innerHTML === 'START') {
+    chronometer.start()
+    btnLeftElement.classList.add('stop')
+    btnLeftElement.innerHTML = 'STOP'
+
+    btnRightElement.classList.add('split')
+    btnRightElement.innerHTML = 'SPLIT'
+
+   
+
+  } else if (btnLeftElement.innerHTML === 'STOP') {
+    chronometer.stop()
+    btnLeftElement.classList.add('start')
+    btnLeftElement.innerHTML = 'START'
+
+    btnRightElement.classList.add('reset')
+    btnRightElement.innerHTML = 'RESET'
+
+
+
+  }
+})
+
+btnRightElement.addEventListener('click', function () {
+
+  if (btnRightElement.innerHTML === 'SPLIT') {
+    chronometer.split()
+  } else {
+    chronometer.reset()
+  }
+})
+
 
 
 
 
 function printTime() {
-  // ... your code goes here
+
+  printMinutes(chronometer.getMinutes())
+  printSeconds(chronometer.getSeconds())
+
+
 }
 
-function printMinutes() {
-  minUniElement.innerHTML = Number(chronometer.getMinutes.toString().slice(-1))
-
-
-  // ... your code goes here
+function printMinutes(minutes) {
+  minUniElement.innerHTML = Number(minutes.toString().slice(-1))
+  minDecElement.innerHTML = Number(minutes.toString().slice(0, 1))
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(seconds) {
+  secUniElement.innerHTML = Number(seconds.toString().slice(-1))
+  secDecElement.innerHTML = Number(seconds.toString().slice(0, 1))
 }
 
 // ==> BONUS
