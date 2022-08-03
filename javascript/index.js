@@ -12,6 +12,7 @@ const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
+const allElems = [ minDecElement, minUniElement, secDecElement, secUniElement, milDecElement, milUniElement, splitsElement ];
 
 function printTime() {
   // ... your code goes here
