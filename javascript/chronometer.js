@@ -35,14 +35,12 @@ class Chronometer {
     this.getMinutes();
     this.getSeconds();
     this.computeTwoDigitNumber();
-    return (this.currentTime = 0);
+    return this.currentTime = 0
   }
 
   split() {
     const minutes = this.computeTwoDigitNumber(this.getMinutes());
     const seconds = this.computeTwoDigitNumber(this.getSeconds());
-    const milliseconds = this.computeTwoDigitNumber(this.getMillisecond);
-
     return `${minutes}:${seconds}`;
   }
 
