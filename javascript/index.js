@@ -51,6 +51,8 @@ function clearSplits() {
 // BUTTONS
 function setStopBtn() {
   chronometer.stop(); 
+  clearInterval(timer);
+
 }
 
 function setSplitBtn() {
@@ -60,6 +62,7 @@ function setSplitBtn() {
 function setStartBtn() {
     chronometer.start();
   timer = setInterval(() => {
+    console.log('print');
     printTime();
   }, 1000);
     ; 
