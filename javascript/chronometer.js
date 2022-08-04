@@ -6,7 +6,7 @@ class Chronometer {
 
   start(callback) {
     if (callback !== undefined)
-      this.intervalId = setInterval(callback, 1000);
+      this.intervalId = setInterval(() => { this.currentTime++; callback(); }, 1000);
     else
       this.intervalId = setInterval(() => { this.currentTime++; }, 1000);
   }
@@ -27,14 +27,6 @@ class Chronometer {
     return (formattedTime);
   }
 }
-
-
-let lol = new Chronometer();
-
-lol.start();
-setTimeout(() => console.log(lol.split()), 110000);
-setTimeout(() => lol.stop(), 120000);
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
