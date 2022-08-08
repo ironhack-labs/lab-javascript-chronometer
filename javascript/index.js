@@ -19,19 +19,19 @@ function printTime() {
 function printMinutes() {
   minUniElement.innerHTML = chronometer.computeTwoDigitNumber(
     chronometer.getMinutes()
-  )[0];
+  )[1];
   minDecElement.innerHTML = chronometer.computeTwoDigitNumber(
     chronometer.getMinutes()
-  )[1];
+  )[0];
 }
 
 function printSeconds() {
   secUniElement.innerHTML = chronometer.computeTwoDigitNumber(
     chronometer.getSeconds()
-  )[0];
+  )[1];
   secDecElement.innerHTML = chronometer.computeTwoDigitNumber(
     chronometer.getSeconds()
-  )[1];
+  )[0];
 }
 
 function printSplit() {
