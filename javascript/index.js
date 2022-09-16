@@ -32,7 +32,9 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milli = chronometer.twoDigitsNumber(chronometer.milliseconds);
+  milUni.innerHTML = milli[1];
+  milDec.innerHTML = milli[0];
 }
 
 function printSplit() {
@@ -47,7 +49,7 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splits.innerHTML = '';
 }
 
 function setStopBtn() {
@@ -89,7 +91,7 @@ btnRightElement.addEventListener('click', () => {
     printSplit();
   } else {
     chronometer.resetClick();
-    splits.innerHTML = '';
+    clearSplits();
     printTime();
     printMilliseconds();
   }
