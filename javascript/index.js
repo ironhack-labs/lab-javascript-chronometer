@@ -36,7 +36,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  // grab the split time
+  let time = chronometer.splitClick();
+
+  let li = document.createElement('li');
+
+  //<li>03:12</li>
+  li.innerHTML = time;
+  splits.appendChild(li);
 }
 
 function clearSplits() {
@@ -49,7 +56,8 @@ function setStopBtn() {
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRight.innerText = 'SPLIT';
+  btnRight.className = 'btn split';
 }
 
 function setStartBtn() {
