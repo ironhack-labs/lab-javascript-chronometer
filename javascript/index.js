@@ -39,7 +39,11 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.addEventListener('click', () => {
+    if (btnLeftElement.classList.contains("btn start")) {
+      btnLeftElement.classList.toggle("btn start")
+    }
+  })
 }
 
 function setSplitBtn() {
@@ -47,7 +51,11 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.addEventListener('click', () => {
+    if (!btnLeftElement.classList.contains("btn start")) {
+      btnLeftElement.classList.toggle("btn start")
+    }
+  })
 }
 
 function setResetBtn() {
