@@ -14,11 +14,12 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  printMinutes ();
+  printSeconds ();
 }
 
 function printMinutes() {
-  // ... your code goes here
+ 
 }
 
 function printSeconds() {
