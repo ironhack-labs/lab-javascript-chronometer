@@ -183,8 +183,7 @@ describe('Chronometer', () => {
       expect(chronometer.split()).toEqual(`13:20`);
     });
 
-    // If you decide to work on the bonus iteration,
-    // comment the previous test and uncomment the following
+   
     // it('should return valid format with minutes, seconds and milliseconds', () => {
     //   let min = chronometer.getMinutes();
     //   let sec = chronometer.getSeconds();

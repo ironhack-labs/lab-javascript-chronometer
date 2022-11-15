@@ -17,12 +17,16 @@ class Chronometer {
     let minutes = Math.floor(this.currentTime / 60);
     return minutes;
   }
-
+  
   getSeconds() {
     let seconds = this.currentTime % 60;
     return seconds;
   }
 
+  getMilliseconds(){
+    return 0
+  }
+  
   computeTwoDigitNumber(value) {
     return value.toString().padStart(2, '0');
   }
@@ -36,10 +40,11 @@ class Chronometer {
   }
 
   split() {
-    const m = this.getMinutes().toString().padStart(2,'0'),
-          s = this.getSeconds().toString().padStart(2,'0');
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    // const milliseconds = this.computeTwoDigitNumber(this.getMilliseconds());
     
-    return  `${m}:${s}`; 
+    return  `${minutes}:${seconds}`;
   }
 }
 
@@ -48,3 +53,4 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
