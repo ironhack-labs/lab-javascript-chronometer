@@ -9,12 +9,14 @@ class Chronometer {
    /*no sigas leyendo el codigo si no hay un callback de la funcion; en caso de que 
    haya start callback llama el interval ID que luego me representará el currentTime*/
 
-     if (callback){
-      return intervalId
+     if (!callback){
+      return ;
      }
    
     this.intervalId= setInterval (() => {
-      return this.currentTime++ 
+      this.currentTime++ ;
+      callback ();
+      return this.currentTime;
     }, 1000)
   }
 
