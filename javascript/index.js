@@ -27,20 +27,20 @@ function printMinutes() {
 
 function printSeconds() {
   let seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
-  
   secDecElement.innerText = seconds[0];
   secUniElement.innerText = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  let milliSeconds = chronometer.computeTwoDigitNumber(chronometer.milliTime);
+  milDecElement.innerHTML = milliSeconds[0];
+  milUniElement.innerHTML = milliSeconds[1];
 }
 
 function printSplit() {
   let splitTime = chronometer.split();
   let li = document.createElement('li')
-
   li.innerText = splitTime;
   splitsElement.appendChild(li)
 }
@@ -74,7 +74,7 @@ btnLeftElement.addEventListener('click', () => {
   if (btnLeft.classList.contains('start')) {
     setStopBtn();
     setSplitBtn();
-    chronometer.start(printTime);
+    chronometer.start(printTime, printMilliseconds);
   } else {
     setStartBtn();
     setResetBtn();
@@ -89,6 +89,7 @@ btnRightElement.addEventListener('click', () => {
   } else {
     chronometer.reset();
     printTime();
+    printMilliseconds();
     clearSplits();
   }
 });
