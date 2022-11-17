@@ -38,7 +38,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  let splitTime = chronometer.split();
+  let li = document.createElement('li')
+
+  li.innerText = splitTime;
+  splitsElement.appendChild(li)
 }
 
 function clearSplits() {
