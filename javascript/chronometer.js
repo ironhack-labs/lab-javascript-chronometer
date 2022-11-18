@@ -25,18 +25,36 @@ class Chronometer {
 
   computeTwoDigitNumber(value) {
     
+    
+    if(value < 10){
+      return "0"+ value
+    }else{
+      return "" +value
+    }
+
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalID)
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    
   }
 
   split() {
-    // ... your code goes here
+    
+  let strMin=this.getMinutes;
+  let strSec= this.getSeconds;
+  let twoCharMin = this.computeTwoDigitNumber(strMin);
+  let twoCharSec = this.computeTwoDigitNumber(strSec);
+  
+   
+  return `${twoCharMin}:${twoCharSec}`
+
+
+
   }
 }
 
