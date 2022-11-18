@@ -5,17 +5,10 @@ class Chronometer {
   }
 
 
-  // start(callback) {
-  //   this.intervalId = setInterval(() => {
-  //     this.currentTime++;
-  //     if (callback) {
-  //       callback()
-  //     }
-  //   }, 1000);
-  // }
-  start() {
+  start(callback) {
     this.intervalId = setInterval(() => {
       this.currentTime++
+      callback()
     }, 1000)
     return this.intervalId
   }
@@ -57,7 +50,3 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
-
-let chrono = new Chronometer
-// const printTimeCallback = () => { console.log(chrono.currentTime) }
-chrono.start()
