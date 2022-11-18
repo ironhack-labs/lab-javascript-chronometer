@@ -10,7 +10,7 @@ class Chronometer {
         if(callback) 
             callback(
                 this.computeTwoDigitNumber(this.getMinutes()),
-                this.computeTwoDigitNumber(this.getSeconds()), 
+                this.computeTwoDigitNumber(this.getSeconds()) 
             )
     }, 1000)
   }
