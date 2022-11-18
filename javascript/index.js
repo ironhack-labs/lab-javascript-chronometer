@@ -56,10 +56,46 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if(btnLeftElement.className === 'btn start' ){
+    // START THE CHRON
+    btnLeftElement.className = 'btn stop' // left
+    btnLeftElement.innerHTML = 'STOP'
+
+    btnRightElement.className = 'btn split' // right
+    btnRightElement.innerHTML = 'SPLIT'
+    chronometer.start((minutes, seconds, milliseconds) => {
+        
+        minDecElement.innerHTML = minutes[0]
+        minUniElement.innerHTML = minutes[1]
+
+        secDecElement.innerHTML = seconds[0]
+        secUniElement.innerHTML = seconds[1]
+    })
+  } else {
+    // STOP THE CHRON
+    btnLeftElement.className = 'btn start'
+    btnLeftElement.innerHTML = 'START'
+    
+    btnRightElement.className = 'btn reset'
+    btnRightElement.innerHTML = 'RESET'
+    chronometer.stop()
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+    if( btnRightElement.className === 'btn split'){
+        const listItem = document.createElement('li')
+        listItem.innerHTML = `${chronometer.split()}`
+        splitsElement.appendChild(listItem)
+    } else {
+        minDecElement.innerHTML = '0'
+        minUniElement.innerHTML = '0'
+
+        secDecElement.innerHTML = '0'
+        secUniElement.innerHTML = '0'
+
+        splitsElement.innerHTML = ''
+        chronometer.reset()
+    }
 });
