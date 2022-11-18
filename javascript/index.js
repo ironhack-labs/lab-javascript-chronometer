@@ -44,7 +44,7 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML += `<li>${chronometer.computeTwoDigitNumber(chronometer.getMinutes())}:${chronometer.computeTwoDigitNumber(chronometer.getSeconds())}</li>`;
 }
 
 function clearSplits() {
