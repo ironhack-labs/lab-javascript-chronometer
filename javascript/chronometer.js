@@ -12,7 +12,6 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       this.currentTime++;
       callback();
-      return this.currentTime
     }, 10);
   }
 
@@ -43,22 +42,15 @@ class Chronometer {
 
   reset() {
     this.currentTime = 0
-
-    printTime('00', '00', '00');
   }
 
   split() {
 
-    const currentMinutes = this.getMinutes(this.currentTime)
-    const minutesUpTo2Digits = this.computeTwoDigitNumber(currentMinutes)
+    const minutes = this.computeTwoDigitNumber(this.getMinutes())
+    const seconds = this.computeTwoDigitNumber(this.getSeconds())
+    const miliseconds = this.computeTwoDigitNumber(this.getMiliseconds())
 
-    const currentSeconds = this.getSeconds(this.currentTime)
-    const secondsUpTo2Digits = this.computeTwoDigitNumber(currentSeconds)
-
-    const currentMiliseconds = this.getMiliseconds(this.currentTime)
-    const milisecondsUpTo2Digits = this.computeTwoDigitNumber(currentMiliseconds)
-
-    return `${minutesUpTo2Digits}:${secondsUpTo2Digits}:${milisecondsUpTo2Digits}`
+    return `${minutes}:${seconds}:${miliseconds}`
 
   }
 }

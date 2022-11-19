@@ -40,14 +40,6 @@ function printMiliseconds() {
   milUniElement.textContent = miliseconds[1]
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  const miliseconds = 
-
-  milDecElement.textContent = miliseconds[0]
-  milUniElement.textContent = miliseconds[1]
-}
-
 function printSplit() {
   const split = document.createElement('li')
   const time = chronometer.split()
@@ -62,11 +54,11 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  btnLeftElement.classList.remove('stop')
-  btnLeftElement.classList.add('start')
-  btnLeftElement.textContent = 'START'
+  btnLeftElement.classList.remove('start')
+  btnLeftElement.classList.add('stop')
+  btnLeftElement.textContent = 'STOP'
 
-  chronometer.stop()
+  chronometer.start(printTime)
 }
 
 function setSplitBtn() {
@@ -76,11 +68,11 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  btnLeftElement.classList.remove('start')
-  btnLeftElement.classList.add('stop')
-  btnLeftElement.textContent = 'STOP'
+  btnLeftElement.classList.remove('stop')
+  btnLeftElement.classList.add('start')
+  btnLeftElement.textContent = 'START'
 
-  chronometer.start(printTime)
+  chronometer.stop()
 }
 
 function setResetBtn() {
@@ -93,8 +85,13 @@ function setResetBtn() {
 btnLeftElement.addEventListener('click', () => {
   btnStart = btnLeftElement.classList.contains('start')
 
-  btnStart ? setStartBtn() : setStopBtn()
-  btnStart ? setSplitBtn() : setResetBtn()
+  if (btnStart) {
+    setStopBtn()
+    setSplitBtn()
+  } else {
+    setStartBtn()
+    setResetBtn()
+  }
 });
 
 // Reset/Split Button
@@ -103,7 +100,8 @@ btnRightElement.addEventListener('click', () => {
 
   if (btnReset) {
     chronometer.reset();
-    clearSplits()
+    clearSplits();
+    printTime()
   } else {
     printSplit()
   }
