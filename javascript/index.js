@@ -16,6 +16,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
+  printMilliseconds ();
 }
 
 function printMinutes() {
@@ -36,34 +37,50 @@ function printSeconds() {
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  // tenemos que cambiar el intervalo y cada cuanto se produce ( en el codigo)
+  const miliSecStr =chronometer.computeTwoDigitNumber(
+    chronometer.getMilisenconds()
+  );
+  milUniElement.innerText = miliSecStr[0]
+  milUniElement.innerText = miliSecStr[1]
 }
 
+
 function printSplit() {
-  // ... your code goes here
+ const split = document.createElement ("li");
+ const time = chronometer.split();
+
+ split.textContent = time ;
+ splitsElement.appendChild (split);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = "" 
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.classList.remove (`start`);
+ btnLeftElement.classList.add(`stop`);
+  btnLeftElement.textContent = `STOP`
+ 
 }
 
 function setSplitBtn() {
- const split = document.createElement(`li`);
- const time= chronometer.split();
- split.textContent = time ;
- splitsElement.appendChild(split);
+  btnRightElement.classList.remove (`reset`);
+  btnRightElement.classList.add(`split`);
+   btnRightElement.textContent = `SPLIT`
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.classList.remove (`stop`);
+  btnLeftElement.classList.add(`start`);
+   btnLeftElement.textContent = `START`
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.classList.remove (`split`);
+  btnRightElement.classList.add(`reset`);
+   btnRightElement.textContent = `RESET`
 }
 
 // Start/Stop Button
@@ -76,23 +93,18 @@ setSplitBtn ();
 }
 else {
   setStartBtn();
-  setStopBtn();
+  setResetBtn();
 }
-}
-
- //  btnLeftElement.classList.remove (`start`);
- //  btnLeftElement.classList.add(`stop`);
-  // btnLeftElement.textContent = `stop`
- // } else {
- //   chronometer.stop();
-    // contrario que arriba
+});
   
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  //*const isResetButn = btnRightElement.classList.contains(`reset`)
- // if (isResetButn) {
-  //  chronometer.reset(printTime); 
-});
-
-
+  if (isResetButn) {
+  chronometer.reset(); 
+  clearSplits();
+  printTime(); //---> necesito llamarla porque al hacer el reset me tiene que printear 00 
+  } else {
+    printSplit ();
+  }
+})

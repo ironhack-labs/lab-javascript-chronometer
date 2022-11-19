@@ -2,6 +2,7 @@ class Chronometer {
   constructor() {
     this.currentTime = 0; 
     this.intervalId = null
+    this.miliseconds = 0;
   }
 
   start(callback) {
@@ -14,11 +15,22 @@ class Chronometer {
      }
    
     this.intervalId= setInterval (() => {
-      this.currentTime++ ;
-      callback ();
-      return this.currentTime;
-    }, 1000)
+      this.miliseconds ++ ;
+
+      if (this.miliseconds === 99){
+        this.currentTime ++;
+        this.miliseconds = 0; // --- > reseteo el intervalo al cero una vez que se suma el segundo en el currentTime++
+      }
+callback ();
+    } , 10) ;
   }
+
+     /* funcion de primer lab  
+     this.currentTime++ ;
+      callback (); //--> esto es lo que me pinta cosas en el DOM
+      return this.currentTime;
+      }, 1000) // tengo que ejecutar cada decima de segundo si quiero hacer los milisengudos
+  }*/
 
   getMinutes() {
    let minutes = Math.floor(this.currentTime / 60)
@@ -30,11 +42,22 @@ class Chronometer {
     let secnd = Math.ceil (seconds)
     return secnd
   }
-
+  
+  getMiliseconds (){
+    return this.miliseconds
+}
   computeTwoDigitNumber(value) {
-
+/* let up2Digit = ""; --> esta es la forma más larga
+if (value <10){
+  up2Digit = "0" + value;
+} else {
+  up2Digit = value.string()
+}
+ return up2Digit
+} 
+*/
     const twoDigits = value < 10 ? "0" + value : value.toString()
-    return twoDigits 
+    return twoDigits // forma ternaria
      
    /* if (this.getMinutes()< 10 ) {
       return "0" + this.getMinutes()
@@ -67,17 +90,24 @@ class Chronometer {
   }
 
   reset() {
-    return this.currentTime = 0 
+    this.currentTime = 0 
+    this.miliseconds = 0 // añadido para que resetee tambien en el reloj
   }
 
   split() {
-    const currentMinutes = this.getMinutes(this.currentTime);
+
+    // abreviado: return `${this.computeTwoDigitNumber(this.getMinutes())}:${this.computeTwoDigitNumber(this.getSeconds())}`
+    
+    const currentMinutes = this.getMinutes();
     const currentTwoDigitsMinutes = this.computeTwoDigitNumber(currentMinutes);
 
-    const currentSeconds = this.getSeconds(this.currentTime);
+    const currentSeconds = this.getSeconds();
     const currentTwoDigitsSeconds = this.computeTwoDigitNumber(currentSeconds);
+
+    const currentMiliSec = this.getMiliseconds ();
+    const currentTwoDigitsMiliSec = this.computeTwoDigitNumber(currentMiliSec);
     
-    return `${currentTwoDigitsMinutes}:${currentTwoDigitsSeconds}`
+    return `${currentTwoDigitsMinutes}:${currentTwoDigitsSeconds} :${currentTwoDigitsMiliSec}`
   }
 }
 
@@ -86,3 +116,4 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
