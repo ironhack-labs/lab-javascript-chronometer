@@ -7,13 +7,10 @@ const btnRightElement = document.getElementById('btnRight');
 // get the DOM elements that will serve us to display the time:
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
-
 const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
-
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
-
 const splitsElement = document.getElementById('splits');
 
 let fullSecs;
@@ -26,21 +23,20 @@ function printTime() {
 
 function printMinutes() {
   fullMins = chronometer.computeTwoDigitNumber(chronometer.getMinutes())
-  let split = fullMins.split('')
-  minDecElement.innerText = split[0]
-  minUniElement.innerText = split[1]
+  minDecElement.innerText = fullMins[0]
+  minUniElement.innerText = fullMins[1]
 }
 
 function printSeconds() {
   fullSecs = chronometer.computeTwoDigitNumber(chronometer.getSeconds())
-  let split = fullSecs.split('')
-  secDecElement.innerText = split[0]
-  secUniElement.innerText = split[1]
+  secDecElement.innerText = fullSecs[0]
+  secUniElement.innerText = fullSecs[1]
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  milDecElement
+  milUniElement
 }
 
 function printSplit() {
