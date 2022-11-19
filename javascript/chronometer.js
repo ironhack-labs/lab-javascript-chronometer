@@ -9,19 +9,13 @@ class Chronometer {
 
   start(callback) {
     this.intervalId = setInterval(() => {
-      this.currentTime++
-      callback()
-    }, 1000)
+      this.currentTime += 0.1
+      callback
+    }, 10)
     return this.intervalId
   }
 
-  getMillisecs(callback) {
-    this.milliSecsId = setInterval(() => {
-      this.currentMilliSecs++
-      callback()
-    }, 10)
-    return this.milliSecsId
-  }
+// getCentisecs(){}
 
   getMinutes() {
     let minutes = Math.floor((this.currentTime / 60))
@@ -61,3 +55,4 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
