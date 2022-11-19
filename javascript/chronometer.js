@@ -1,5 +1,5 @@
 class Chronometer {
-  constructor() {
+  constructor(currentTime, intervalID) {
     this.currentTime = 0;
     this.intervalId = null;
    }
@@ -8,7 +8,9 @@ class Chronometer {
     this.intervalID = setInterval(() =>{
       this.currentTime ++
       if(callback){
-        callback()}
+        callback(
+          callback()
+        )}
 
     }, 1000);
 
@@ -45,8 +47,8 @@ class Chronometer {
 
   split() {
     
-  let strMin=this.getMinutes;
-  let strSec= this.getSeconds;
+  let strMin=this.getMinutes();
+  let strSec= this.getSeconds();
   let twoCharMin = this.computeTwoDigitNumber(strMin);
   let twoCharSec = this.computeTwoDigitNumber(strSec);
   
