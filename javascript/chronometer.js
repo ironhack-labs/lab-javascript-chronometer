@@ -1,34 +1,58 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(()=> {
+      this.currentTime++;
+      if(callback) callback(callback)
+    }, 10);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime/6000);
   }
 
   getSeconds() {
-    // ... your code goes here
+    console.log(this.currentTime)
+    return Math.floor(this.currentTime/100)%60
+  }
+
+  getMilliseconds() {
+    return this.currentTime%100
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if(value <= 9) return `0${value}`;
+    return value.toString()
   }
 
-  stop() {
-    // ... your code goes here
+  stop() { 
+    return clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    
+    let elements = document.getElementsByClassName('number')
+    // I don't know why with a for loop it doesn't work, so I used while
+    let i = 0;
+    while(i < elements.length){
+      elements[i].innerHTML = '0'
+      i++
+    }
+    document.getElementById('milDec').innerHTML = '0'
+    document.getElementById('milUni').innerHTML = '0'
+    
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    let min = this.computeTwoDigitNumber(this.getMinutes())
+    let sec = this.computeTwoDigitNumber(this.getSeconds())
+    let milSec = this.computeTwoDigitNumber(this.getMilliseconds())
+    return `${min}:${sec}:${milSec}`
   }
 }
 
