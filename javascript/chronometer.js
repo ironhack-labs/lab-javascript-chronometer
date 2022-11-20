@@ -2,15 +2,21 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = null;
+    this.miliseconds = 0;
   }
 
   start(callback) {
-    if (callback) {
-      this.intervalId = setInterval(callback, 1000);
+    if (!callback) {
+      return;
     } else {
       this.intervalId = setInterval(() => {
-        this.currentTime++;
-      }, 1000);
+        this.miliseconds++;
+        if (this.miliseconds === 99){
+          this.currentTime++;
+          this.miliseconds = 0;
+        }
+        callback();
+      }, 10);
     }
   }
 
@@ -24,30 +30,31 @@ class Chronometer {
     return seconds;
   }
 
+  getMiliseconds() {
+    return this.miliseconds;
+  }
+
   computeTwoDigitNumber(value) {
-    if (value < 10) {
-      return `0${value}`
-    } else {
-      return `${value}`
-    }
+   const twoDigit = value < 10 ? '0' + value : value.toString();
+   return twoDigit;
   }
 
   stop() {
-    clearInterval (this.intervalId);
+    clearInterval(this.intervalId);
   }
 
   reset() {
     this.currentTime = 0;
-    this.currentTime.innerHTML;
+    this.miliseconds = 0;
+    
   }
 
   split() {
-    let currentMinutes = this.getMinutes(this.currentTime);
-    let twoDigitMin = this.computeTwoDigitNumber(currentMinutes);
-    let currentSeconds = this.getSeconds(this.currentTime);
-    let twoDigitSec = this.computeTwoDigitNumber(currentSeconds);
+    const mins = this.computeTwoDigitNumber(this.getMinutes());
+    const secs = this.computeTwoDigitNumber(this.getSeconds());
+    const milSecs = this.computeTwoDigitNumber(this.getMiliseconds());
 
-    return `${twoDigitMin}:${twoDigitSec}`
+    return `${mins}:${secs}:${milSecs}`;
   }
 }
 
