@@ -9,7 +9,7 @@ class Chronometer {
       this.intervalId = setInterval(()=>{
         this.currentTime++
         if(callback){
-          callback
+          callback ()
         }
       }, 1000)
     }
@@ -35,6 +35,7 @@ class Chronometer {
   reset() {
     this.currentTime = 0 
     this.stop()
+    this.intervalId = null;
   }
 
   split() {
