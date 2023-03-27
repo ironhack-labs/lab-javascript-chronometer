@@ -14,7 +14,12 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
+  minDecElement.innerHTML = minutes[0];
+  minUniElement.innerHTML = minutes[1];
+  secDecElement.innerHTML = seconds[0];
+  secUniElement.innerHTML = seconds[1];
 }
 
 function printMinutes() {
@@ -31,7 +36,10 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  const splitTime = chronometer.split();
+  const splitItem = document.createElement('li');
+  splitItem.innerHTML = splitTime;
+  splitsElement.appendChild(splitItem);
 }
 
 function clearSplits() {
@@ -56,10 +64,31 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.innerHTML == 'START') {
+    btnLeftElement.classList.replace("start", "stop")
+    btnRightElement.classList.replace("reset", "split")
+    btnLeftElement.innerHTML = 'STOP'
+    btnRightElement.innerHTML = 'SPLIT'
+    chronometer.start(printTime)
+  } else if (btnLeftElement.innerHTML == 'STOP') {
+    btnLeftElement.classList.replace("stop", "start")
+    btnRightElement.classList.replace("split", "reset")
+    btnLeftElement.innerHTML = 'START'
+    btnRightElement.innerHTML = 'RESET'
+    chronometer.stop()
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.innerHTML == 'RESET') {
+    chronometer.reset();
+    minDecElement.innerHTML = '0';
+    minUniElement.innerHTML = '0';
+    secDecElement.innerHTML = '0';
+    secUniElement.innerHTML = '0';
+    splitsElement.innerHTML = '';
+  } else {
+    printSplit();
+  }
 });
