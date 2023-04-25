@@ -1,65 +1,48 @@
-const chronometer = new Chronometer();
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = null;
+  }
 
-// get the buttons:
-const btnLeftElement = document.getElementById('btnLeft');
-const btnRightElement = document.getElementById('btnRight');
+  start(callback) {
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
 
-// get the DOM elements that will serve us to display the time:
-const minDecElement = document.getElementById('minDec');
-const minUniElement = document.getElementById('minUni');
-const secDecElement = document.getElementById('secDec');
-const secUniElement = document.getElementById('secUni');
-const milDecElement = document.getElementById('milDec');
-const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
+      if (callback) {
+        callback();
+      }
+    }, 1000);
+  }
 
-function printTime() {
-  // ... your code goes here
+  getMinutes() {
+    return Math.floor(this.currentTime / 60);
+  }
+
+  getSeconds() {
+    return this.currentTime % 60;
+  }
+
+  computeTwoDigitNumber(value) {
+    return value.toString().padStart(2, '0');
+  }
+
+  stop() {
+    clearInterval(this.intervalId);
+  }
+
+  reset() {
+    this.currentTime = 0;
+  }
+
+  split() {
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
+  }
 }
 
-function printMinutes() {
-  // ... your code goes here
+// The following is required to make unit tests work.
+/* Environment setup. Do not modify the below code. */
+if (typeof module !== 'undefined') {
+  module.exports = Chronometer;
 }
-
-function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
-
-function printSplit() {
-  // ... your code goes here
-}
-
-function clearSplits() {
-  // ... your code goes here
-}
-
-function setStopBtn() {
-  // ... your code goes here
-}
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
-function setStartBtn() {
-  // ... your code goes here
-}
-
-function setResetBtn() {
-  // ... your code goes here
-}
-
-// Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
-
-// Reset/Split Button
-btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
-});
