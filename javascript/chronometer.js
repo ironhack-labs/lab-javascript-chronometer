@@ -2,6 +2,7 @@ class Chronometer {
   constructor() {
     this.currentTime = 0;
     this.intervalId = null;
+    this.milliseconds = 0;
   }
 
   start(callback) {
@@ -9,8 +10,12 @@ class Chronometer {
       if (callback) {                       // Si hay un callback
         callback()                          //ejecuta callback
       }  
-      this.currentTime++                    // suma 1 a currentTime
-    }, 1000);                               // cada 1 segundo         
+      this.miliseconds++;                   //suma uno a miliseconds
+      if (this.miliseconds === 99){         //si miliseconds llega a 99
+        this.currentTime++                  //suma 1 a currentTime
+        this.milliseconds = 0               //resetea a 0 los milisegundos
+      }                                    // suma 1 a currentTime
+    }, 10);                               // cada 10 milisecinds         
   }
 
   getMinutes() {
@@ -34,13 +39,15 @@ class Chronometer {
   }
 
   reset() {
-    this.currentTime = 0;           //vuleve a poner el currentTime a 0
+    this.currentTime = 0; 
+    this.milliseconds = 0;          //vuleve a poner el currentTime y miliseconds a 0
   }
 
   split() {
     const minutes = this.computeTwoDigitNumber(this.getMinutes());  //uso la funcion para conseguir minutos
     const seconds = this.computeTwoDigitNumber(this.getSeconds());  //uso la funcion para conseguir segundos
-    return `${minutes}:${seconds}`
+    const milisecond = this.computeTwoDigitNumber(this.miliseconds)
+    return `${minutes}:${seconds}:${milisecond}`
   }
 }
 
