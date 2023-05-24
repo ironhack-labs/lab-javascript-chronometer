@@ -1,53 +1,63 @@
 class Chronometer {
+
   constructor() {
     this.currentTime = 0;
     this.intervalId = null;
     this.milliseconds = 0;
   }
 
+
   start(callback) {
-    this.intervalId = setInterval(() => {   //un intervalo
-      if (callback) {                       // Si hay un callback
-        callback()                          //ejecuta callback
-      }  
-      this.miliseconds++;                   //suma uno a miliseconds
-      if (this.miliseconds === 99){         //si miliseconds llega a 99
-        this.currentTime++                  //suma 1 a currentTime
-        this.milliseconds = 0               //resetea a 0 los milisegundos
-      }                                    // suma 1 a currentTime
-    }, 10);                               // cada 10 milisecinds         
+    this.intervalId = setInterval(() => {
+
+      if (callback) { // si el método start recibe la función callback tenemos que ejecutar la función callback
+       callback();
+      }
+
+      this.milliseconds++; // cada 10 milisegundos sumamos un número a milliseconds
+
+      if(this.milliseconds === 99){ //si los miliseconds son igual a 99 (pq no queremos que los milliseconds lleguen a 100);
+      this.currentTime++; // mientras la condición suceda sumamos un número a currentTime
+      this.milliseconds = 0; // reseteamos los milliseconds para que se produzca todo el rato un bucle.
+      }
+    }, 10);
   }
+
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60);//dividimos currentTime entre 60 para saber los minutos y redondeamos para número redondo
+    return Math.floor(this.currentTime / 60); // dividimos el currentTime entre 60 para que nos de los minutos y con Math.Floor redondeamos el resultado para que nos de un número exacto. 
   }
+
 
   getSeconds() {
-    return this.currentTime % 60; //hacemos resto para saber los segundo que nos "sobran"
+    return this.currentTime % 60; // utilizamos el módulo para que de currentTime al dividirlo entre sesenta nos de el resto, esto nos daría el número de segundos que hay en ese momento entre un minuto y otro. 
   }
+
 
   computeTwoDigitNumber(value) {
-    if (value < 10) {             //si valor es menor de 10
-      return `0${value}`;           // devuelve un string con un 0 delante del valor
-    }
+    if (value < 10) { // si el valor es menor de 10, es decir, sólo tiene un dígito, le estamos indicando que nos devuelva ese dígito con un 0 delante. 
+    return `0${value}`;
+    } 
 
-    return value.toString();      // si no devuelve el valor en formato string
+    return value.toString(); // si es 10 o mayor, es decir, tiene más de un dígito, le estamos indicando que nos devuelva ese número convertido a string. 
   }
 
+
   stop() {
-    clearInterval(this.intervalId); //para el intervalo
+    clearInterval(this.intervalId); // estamos parando el contador haciendo que el intervalo que sumaba segundos deje de producirse.
+    this.intervalId = null;
   }
 
   reset() {
-    this.currentTime = 0; 
-    this.milliseconds = 0;          //vuleve a poner el currentTime y miliseconds a 0
+    this.currentTime = 0; // hemos reseteado el currentTime.
+    this.milliseconds = 0;
   }
 
   split() {
-    const minutes = this.computeTwoDigitNumber(this.getMinutes());  //uso la funcion para conseguir minutos
-    const seconds = this.computeTwoDigitNumber(this.getSeconds());  //uso la funcion para conseguir segundos
-    const milisecond = this.computeTwoDigitNumber(this.miliseconds)
-    return `${minutes}:${seconds}:${milisecond}`
+    const minutes = this.computeTwoDigitNumber(this.getMinutes()); // asignamos a una constante la función computeTwoDigitNumber y le pasamos como parámetro los minutos para que nos devuelva un string con 2 cifras
+    const seconds = this.computeTwoDigitNumber(this.getSeconds()); // igual que arriba
+    const milliseconds = this.computeTwoDigitNumber(this.milliseconds); // igual que arriba
+    return `${minutes}:${seconds}`; // interpolamos las tres constantes con 2 puntos entre medias. "00:00:00"
   }
 }
 
