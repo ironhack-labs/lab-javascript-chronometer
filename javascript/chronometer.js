@@ -57,7 +57,7 @@ class Chronometer {
     const minutes = this.computeTwoDigitNumber(this.getMinutes()); // asignamos a una constante la función computeTwoDigitNumber y le pasamos como parámetro los minutos para que nos devuelva un string con 2 cifras
     const seconds = this.computeTwoDigitNumber(this.getSeconds()); // igual que arriba
     const milliseconds = this.computeTwoDigitNumber(this.milliseconds); // igual que arriba
-    return `${minutes}:${seconds}`; // interpolamos las tres constantes con 2 puntos entre medias. "00:00:00"
+    return `${minutes}:${seconds}:${milliseconds}`; // interpolamos las tres constantes con 2 puntos entre medias. "00:00:00"
   }
 }
 

@@ -1,4 +1,5 @@
 const chronometer = new Chronometer();
+const splitList = document.getElementById('splits');
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -17,6 +18,7 @@ function printTime() {
   // ... your code goes here
   printMinutes();
   printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
@@ -34,11 +36,18 @@ secUniElement.textContent = seconds[1];
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const milliseconds = chronometer.computeTwoDigitNumber(chronometer.milliseconds)
+  milDecElement.textContent = milliseconds[0];
+  milUniElement.textContent = milliseconds[1];
 }
 
 function printSplit() {
   // ... your code goes here
+  const splitElement = document.createElement('li');
+  splitElement.classList.add('list-item');
+  splitElement.innerHTML = chronometer.split()
+
+  splitList.appendChild(splitElement);
 }
 
 function clearSplits() {
@@ -84,5 +93,8 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
+  if (chronometer.intervalId){
+    printSplit();
+  }
   // ... your code goes here
 });
