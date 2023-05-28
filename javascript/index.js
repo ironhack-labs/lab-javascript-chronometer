@@ -1,3 +1,5 @@
+const Chronometer = require("./chronometer");
+
 const chronometer = new Chronometer();
 
 // get the buttons:
@@ -23,6 +25,7 @@ function printMinutes() {
 
 function printSeconds() {
   // ... your code goes here
+  Chronometer.getSeconds();
 }
 
 // ==> BONUS
@@ -48,6 +51,7 @@ function setSplitBtn() {
 
 function setStartBtn() {
   // ... your code goes here
+  Chronometer.start()
 }
 
 function setResetBtn() {
@@ -62,4 +66,5 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
+  setStartBtn()
 });
