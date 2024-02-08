@@ -1,30 +1,49 @@
+/* The Chronometer class needs to have a start method. When called, start will start keeping track of time, by running a function in a 1 second interval, which will increment the amount of seconds stored in the property currentTime by 1. */
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
-  }
+    this.currentTime = 0,
+    this.intervalId = null
+  };
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      if (!callback) {
+        this.currentTime += 1;
+      } else {
+        callback();
+      }
+      
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    let numberOfMinutes = Math.floor(this.currentTime / 60);
+    return numberOfMinutes;
   }
 
   getSeconds() {
-    // ... your code goes here
+    let numberOfSeconds = this.currentTime % 60;
+    return numberOfSeconds;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value <= 9) {
+      value = "0" + value.toString();
+    }
+    return value;
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    let clockNumbersEls = document.querySelectorAll(".number");
+    clockNumbersEls.forEach(el => {
+      el.innerHTML = 0;
+    });
   }
 
   split() {
@@ -37,3 +56,46 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
+
+/* let currentTime = 0;
+let intervalId = null;
+
+function start(callback) {
+  intervalId = setInterval(() => {
+    if (!callback) {
+      currentTime += 1;
+      console.log(currentTime);
+    } else {
+      callback();
+    }
+  }, 1000);
+  console.log("interval ID ---> " + intervalId);
+}
+
+function getMinutes() {
+
+  setTimeout(() => {
+    let numberOfMinutes = Math.floor(currentTime / 6);
+  console.log("Minutes ----> " + numberOfMinutes);
+  }, 10000);
+  
+  return numberOfMinutes;
+};
+
+
+start();
+getMinutes(); */
+
+/* let remainder = 210 % 60;
+
+console.log(remainder); */
+
+
+/* let value = 8;
+
+if (value <= 9) {
+  value = "0" + value.toString();
+  console.log(value);
+  console.log(typeof(value));
+} */
