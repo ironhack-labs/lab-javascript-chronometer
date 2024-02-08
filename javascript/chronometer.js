@@ -47,7 +47,10 @@ class Chronometer {
   }
 
   split() {
-    // ... your code goes here
+    /* Is this code correct? */
+    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+    let seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return minutes + ":" + seconds;
   }
 }
 
@@ -99,3 +102,24 @@ if (value <= 9) {
   console.log(value);
   console.log(typeof(value));
 } */
+
+/* split() {
+    let minutes = this.computeTwoDigitNumber(this.getMinutes);
+    let seconds = this.computeTwoDigitNumber(this.getSeconds);
+    return minutes + ":" + seconds;
+  } */
+
+/*   function split() {
+    let answer = stringFor(calcFor())
+    console.log(answer);
+  }
+
+  function stringFor(value) {
+    return value.toString();
+  }
+
+  function calcFor() {
+    return 4*4;
+  }
+
+  split(); */
