@@ -2,7 +2,7 @@ class Chronometer {
   constructor() {
     this.startTime = 0,
     this.currentTime = 0;
-    this.elapseTime = 0;
+    this.elapsedTime = 0;
     this.intervalId = null
   };
 
@@ -11,28 +11,28 @@ class Chronometer {
     this.intervalId = setInterval(() => {
       if (!callback) {
         this.currentTime = Date.now();
-        this.elapseTime = this.startTime - this.currentTime;
+        this.elapsedTime = this.startTime - this.currentTime;
         console.log(this.currentTime);
       } else {
         this.currentTime = Date.now();
-        this.elapseTime = this.currentTime - this.startTime;
+        this.elapsedTime = this.currentTime - this.startTime;
         callback();
       }
     }, 10);
   }
 
   getMilliseconds() {
-    const numberOfMilliseconds = Math.floor((this.elapseTime % 1000) / 10);
+    const numberOfMilliseconds = Math.floor((this.elapsedTime % 1000) / 10);
     return numberOfMilliseconds;
   }
 
   getMinutes() {
-    const numberOfMinutes = Math.floor(this.elapseTime / (1000 * 60)) % 60;
+    const numberOfMinutes = Math.floor(this.elapsedTime / (1000 * 60)) % 60;
     return numberOfMinutes;
   }
 
   getSeconds() {
-    const numberOfSeconds = Math.floor(this.elapseTime / 1000) % 60;
+    const numberOfSeconds = Math.floor(this.elapsedTime / 1000) % 60;
     return numberOfSeconds;
   }
 
