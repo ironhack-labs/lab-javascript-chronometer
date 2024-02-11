@@ -83,7 +83,7 @@ function setResetBtn() {
 }
 
 // Start/Stop Button
-btnLeft.addEventListener('click', function () {
+btnLeftElement.addEventListener('click', function () {
   if (btnLeftElement.innerHTML === 'START') {
     chronometer.start();
     setStopBtn();
@@ -96,12 +96,12 @@ btnLeft.addEventListener('click', function () {
 });
 
 // Reset/Split Button
-btnRight.addEventListener('click', function () {
+btnRightElement.addEventListener('click', function () {
   if (btnRightElement.innerHTML === 'RESET') {
     chronometer.reset();
     clearSplits();
   } else {
-    chronometer.split();
+    printSplit(chronometer.split());
   }
 });
 
