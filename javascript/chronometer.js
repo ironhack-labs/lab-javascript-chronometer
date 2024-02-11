@@ -36,12 +36,11 @@ class Chronometer {
     clearInterval(this.intervalId)
   }
 
-  reset() {
+  reset(callback) {
     this.currentTime = 0
-    document.querySelector("#minDec").innerHTML = this.computeTwoDigitNumber(this.getMinutes())[0];
-    document.querySelector("#minUni").innerHTML = this.computeTwoDigitNumber(this.getMinutes())[1];
-    document.querySelector("#secDec").innerHTML = this.computeTwoDigitNumber(this.getSeconds())[0];
-    document.querySelector("#secUni").innerHTML = this.computeTwoDigitNumber(this.getSeconds())[1];
+    if (callback) {
+      callback()
+    }
   }
 
   split() {

@@ -31,14 +31,22 @@ function printMilliseconds() {
 function printTime() {
   printMinutes()
   printSeconds()
+  printMilliseconds()
 }
 
 function printSplit() {
-  // ... your code goes here
+  const newSplitElem = document.createElement('li')
+  newSplitElem.classList.add("list-item")
+  newSplitElem.innerHTML = chronometer.split()
+  document.getElementById("splits").appendChild(newSplitElem);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  chronometer.reset(printTime)
+  const listOfSplits = document.getElementById("splits")
+  while (listOfSplits.firstChild) {
+    listOfSplits.removeChild(listOfSplits.firstChild);
+  }
 }
 
 // Change left button from start to stop (by clicking START)
@@ -83,5 +91,12 @@ btnLeftElement.addEventListener('click', () => {
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.className === 'btn reset') // Chronometer stopped
+  {
+    clearSplits()
+  }
+  else if (btnRightElement.className === 'btn split') // Chronometer running
+  {
+    printSplit()
+  }
 });
