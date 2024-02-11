@@ -14,18 +14,21 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printMinutes() {
-  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[0]
-  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[1]
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes())
+  minDecElement.innerHTML = minutes[0]
+  minUniElement.innerHTML = minutes[1]
 }
 
 function printSeconds() {
-  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0]
-  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1]
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds())
+  secDecElement.innerHTML = seconds[0]
+  secUniElement.innerHTML = seconds[1]
 }
 
 function printMilliseconds() {
-  milDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[0]
-  milUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[1]
+  const miliseconds = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())
+  milDecElement.innerHTML = miliseconds[0]
+  milUniElement.innerHTML = miliseconds[1]
 }
 
 function printTime() {
