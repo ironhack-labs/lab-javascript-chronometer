@@ -23,15 +23,15 @@ function printSeconds() {
   secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1]
 }
 
-// function printMilliseconds() {
-//   milDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[0]
-//   milUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[1]
-// }
+function printMilliseconds() {
+  milDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[0]
+  milUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[1]
+}
 
 function printTime() {
   printMinutes()
   printSeconds()
-  // printMilliseconds()
+  printMilliseconds()
 }
 
 function printSplit() {

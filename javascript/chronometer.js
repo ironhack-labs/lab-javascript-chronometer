@@ -10,29 +10,30 @@ class Chronometer {
       if (callback) {
         callback()
       }
-      this.currentTime += 1
-    },1000)
+      this.currentTime += 10
+    },10)
   }
 
   getMinutes() {
-    // let numMin = Math.floor((this.currentTime/1000)/60)
-    let numMin = Math.floor(this.currentTime/60)
+    let numMin = Math.floor((this.currentTime/1000)/60)
+    // let numMin = Math.floor(this.currentTime/60)
     return numMin
   }
 
   getSeconds() {
-    // let numSec = (this.currentTime/1000)%60
-    let numSec = this.currentTime%60
+    let numSec = Math.floor((this.currentTime/1000)%60)
+    // let numSec = this.currentTime%60
     return numSec
   }
 
-  // getMiliseconds() {
-  //   let numMili = this.currentTime%1000
-  //   return numMili
-  // }
+  getMiliseconds() {
+    let numMili = this.currentTime%1000
+    return numMili
+  }
 
   computeTwoDigitNumber(value) {
     let stringValue = value.toString()
+    debugger
     if (stringValue.length === 1) {
       return '0' + stringValue
     }
@@ -53,9 +54,9 @@ class Chronometer {
   split() {
     let minutes = this.computeTwoDigitNumber(this.getMinutes())
     let seconds = this.computeTwoDigitNumber(this.getSeconds())
-    // let miliseconds = this.computeTwoDigitNumber(this.getMiliseconds())
-    // return `${minutes}:${seconds}:${miliseconds}`
-    return `${minutes}:${seconds}`
+    let miliseconds = this.computeTwoDigitNumber(this.getMiliseconds())
+    return `${minutes}:${seconds}:${miliseconds}`
+    // return `${minutes}:${seconds}`
   }
 }
 
