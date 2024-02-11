@@ -34,14 +34,13 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  const splitsOlElement = document.getElementById('splits');
   const splitLi = document.createElement('li');
   splitLi.textContent = chronometer.split();
-  splitsOlElement.appendChild(splitLi);
+  splitsElement.appendChild(splitLi);
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML='';
 }
 
 function setStopBtn() {
@@ -81,6 +80,7 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   if (btnRightElement.className === 'btn reset'){
     chronometer.reset(printTime);
+    clearSplits();
   } else {
     printSplit();
   }
