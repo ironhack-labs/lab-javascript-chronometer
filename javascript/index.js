@@ -1,5 +1,3 @@
-const chronometer = new Chronometer();
-
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
@@ -13,53 +11,102 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+var chronometer = new Chronometer();
+
+function printTime(minutes, seconds, milliseconds) {
+  printMinutes(minutes);
+  printSeconds(seconds);
 }
 
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(minutes) {
+  try {
+    minDecElement.innerHTML = minutes[0];
+    minUniElement.innerHTML = minutes[1];
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(seconds) {
+  try {
+    secDecElement.innerHTML = seconds[0];
+    secUniElement.innerHTML = seconds[1];
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(miliseconds) {
+  try {
+    milDecElement.innerHTML = miliseconds[0];
+    milUniElement.innerHTML = miliseconds[1];
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(time) {
+  try {
+    let newLi = document.createElement('li');
+    let timeText = document.createTextNode(time);
+
+    newLi.appendChild(timeText);
+
+    splitsElement.appendChild(newLi);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function clearSplits() {
-  // ... your code goes here
+  splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = 'STOP';
+  btnLeftElement.setAttribute('class', 'btn stop');
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = 'SPLIT';
+  btnRightElement.setAttribute('class', 'btn split');
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = 'START';
+  btnLeftElement.setAttribute('class', 'btn start');
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = 'RESET';
+  btnRightElement.setAttribute('class', 'btn reset');
 }
 
 // Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+btnLeft.addEventListener('click', function () {
+  if (btnLeftElement.innerHTML === 'START') {
+    chronometer.start();
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stop();
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
-btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+btnRight.addEventListener('click', function () {
+  if (btnRightElement.innerHTML === 'RESET') {
+    chronometer.reset();
+    clearSplits();
+  } else {
+    chronometer.split();
+  }
 });
+
+// The following is required to make unit tests work.
+/* Environment setup. Do not modify the below code. */
+if (typeof module !== 'undefined') {
+  module.exports = index;
+}
