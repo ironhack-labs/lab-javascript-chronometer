@@ -7,25 +7,18 @@ class Chronometer {
     this.milliseconds = 0;
   }
 
-  start(callback) {
+  start() {
     let that = this;
-    this.intervalId = setInterval(function () {
+    this.intervalId = setInterval(() => {
       that.currentTime++;
       that.getTime();
       printTime(that.minutes, that.seconds);
-
-      if (callback) {
-        callback();
-      }
     }, 1000);
 
-    this.milliIntervalId = setInterval(function () {
+    this.milliIntervalId = setInterval( () => {
       that.milliCurrentTime++;
       that.milliseconds = that.computeTwoDigitNumber(that.getMilliseconds());
       printMilliseconds(that.milliseconds);
-      if (callback) {
-        callback();
-      }
       if (that.milliseconds === 99) that.milliseconds = 0;
     }, 10);
   }
@@ -73,7 +66,7 @@ class Chronometer {
       this.seconds = '00';
     }
     let time = `${this.minutes}:${this.seconds}:${this.milliseconds}`;
-    printSplit(time);
+    return time;
   }
 }
 
