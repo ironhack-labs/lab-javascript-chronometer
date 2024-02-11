@@ -70,9 +70,6 @@ function setResetBtn() {
   btnRightElement.setAttribute('class', 'btn reset');
 }
 
-function updateNumbers() {
-
-}
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', (e) => {

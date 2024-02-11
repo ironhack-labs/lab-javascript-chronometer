@@ -9,6 +9,7 @@ class Chronometer {
   }
 
   start(callback) {
+    if (this.intervalId) clearInterval(this.intervalId);
     this.intervalId = setInterval(() => {
       this.currentTime++;
       this.setTime()
@@ -21,13 +22,14 @@ class Chronometer {
     }, 1000);
 
     // Miliseconds interval
+    if (this.miliIntervalID) clearInterval(this.miliIntervalID);
     this.miliIntervalID = setInterval(() => {
       // Cuenta en milisegundos
       this.miliCurrentTime++
       // Valor de milisegundos en string y con 0 delante con nuestra función que lo transforma
       this.miliseconds = this.computeTwoDigitNumber(this.miliCurrentTime)
       // Resetear a 00 la cuenta al llegar a 99
-      if (this.miliseconds === "99") this.milliseconds = 0; 
+      if (this.miliseconds === "99") this.miliCurrentTime = 0; 
       printMilliseconds(this.miliseconds)
     }, 10)
     
