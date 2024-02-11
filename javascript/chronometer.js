@@ -19,13 +19,18 @@ class Chronometer {
         callback();
       }
     }, 1000);
+
     // Miliseconds interval
     this.miliIntervalID = setInterval(() => {
+      // Cuenta en milisegundos
       this.miliCurrentTime++
-      this.miliseconds = this.computeTwoDigitNumber(this.setTimeMiliseconds())
-      if (this.milliseconds === 99) this.milliseconds = 0; 
+      // Valor de milisegundos en string y con 0 delante con nuestra función que lo transforma
+      this.miliseconds = this.computeTwoDigitNumber(this.miliCurrentTime)
+      // Resetear a 00 la cuenta al llegar a 99
+      if (this.miliseconds === "99") this.milliseconds = 0; 
       printMilliseconds(this.miliseconds)
     }, 10)
+    
   }
 
   // Transformar el tiempo en minutos
@@ -48,11 +53,6 @@ class Chronometer {
   setTime() {
     this.minutes = this.computeTwoDigitNumber(this.getMinutes())
     this.seconds = this.computeTwoDigitNumber(this.getSeconds())
-  }
-
-  // Crear valores finales para los milisegundos
-  setTimeMiliseconds() {
-    return this.miliCurrentTime.toString().slice(-2);
   }
 
   // Pausar el paso del tiempo
