@@ -13,21 +13,24 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
-}
-
 function printMinutes() {
-  // ... your code goes here
+  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[0]
+  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes())[1]
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[0]
+  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1]
 }
 
 // ==> BONUS
 function printMilliseconds() {
   // ... your code goes here
+}
+
+function printTime() {
+  printMinutes()
+  printSeconds()
 }
 
 function printSplit() {
@@ -38,25 +41,44 @@ function clearSplits() {
   // ... your code goes here
 }
 
-function setStopBtn() {
-  // ... your code goes here
+// Change left button from start to stop (by clicking START)
+function setStopBtn(btn) {
+  btn.classList.replace("start","stop")
+  btn.innerHTML = 'STOP'
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+// Change right button from reset to split (by clicking START)
+function setSplitBtn(btn) {
+  btn.classList.replace("reset","split")
+  btn.innerHTML = 'SPLIT'
 }
 
-function setStartBtn() {
-  // ... your code goes here
+// Change left button from stop to start (by clicking STOP)
+function setStartBtn(btn) {
+  btn.classList.replace("stop","start")
+  btn.innerHTML = 'START'
 }
 
-function setResetBtn() {
-  // ... your code goes here
+// Change right button from split to reset (by clicking STOP)
+function setResetBtn(btn) {
+  btn.classList.replace("split","reset")
+  btn.innerHTML = 'RESET'
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnLeftElement.className === 'btn start') // Chronometer stopped
+  {
+    setStopBtn(btnLeftElement)
+    setSplitBtn(btnRightElement)
+    chronometer.start(printTime)
+  }
+  else if (btnLeftElement.className === 'btn stop') // Chronometer running
+  {
+    setStartBtn(btnLeftElement)
+    setResetBtn(btnRightElement)
+    chronometer.stop()
+  }
 });
 
 // Reset/Split Button
