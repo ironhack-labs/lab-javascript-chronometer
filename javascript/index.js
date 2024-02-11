@@ -23,29 +23,28 @@ function printSeconds() {
   secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds())[1]
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
-}
+// function printMilliseconds() {
+//   milDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[0]
+//   milUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMiliseconds())[1]
+// }
 
 function printTime() {
   printMinutes()
   printSeconds()
-  printMilliseconds()
+  // printMilliseconds()
 }
 
 function printSplit() {
   const newSplitElem = document.createElement('li')
   newSplitElem.classList.add("list-item")
   newSplitElem.innerHTML = chronometer.split()
-  document.getElementById("splits").appendChild(newSplitElem);
+  splitsElement.appendChild(newSplitElem);
 }
 
 function clearSplits() {
   chronometer.reset(printTime)
-  const listOfSplits = document.getElementById("splits")
-  while (listOfSplits.firstChild) {
-    listOfSplits.removeChild(listOfSplits.firstChild);
+  while (splitsElement.firstChild) {
+    splitsElement.removeChild(splitsElement.firstChild);
   }
 }
 
