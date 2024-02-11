@@ -13,27 +13,39 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+// Mostrar el tiempo en el DOM
+function printTime(min, sec) {
+  printMinutes(min)
+  printSeconds(sec)
 }
 
-function printMinutes() {
-  // ... your code goes here
+// Mostrar cada uno de los elementos del string en su elemento html
+function printMinutes(minutes) {
+  minDecElement.innerHTML = minutes[0]
+  minUniElement.innerHTML = minutes[1]
 }
 
-function printSeconds() {
-  // ... your code goes here
+// Mostrar cada uno de los elementos del string en su elemento html
+
+function printSeconds(seconds) {
+  secDecElement.innerHTML = seconds[0]
+  secUniElement.innerHTML = seconds[1]
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(miliseconds) {
+  milDecElement.innerHTML = miliseconds[0]
+  milUniElement.innerHTML = miliseconds[1]
 }
 
-function printSplit() {
-  // ... your code goes here
+// Crear un nuevo elemento li para la lista de splits. Esta función se ejecuta en el otro JS y time hace referencia al tiempo actual
+function printSplit(time) {
+  let newSplit = document.createElement("li")
+  newSplit.innerHTML = time
+  splitsElement.appendChild(newSplit)
 }
 
+// Limpiar la lista de splits
 function clearSplits() {
   splitsElement.innerHTML = '';
 }
@@ -56,6 +68,10 @@ function setStartBtn() {
 function setResetBtn() {
   btnRightElement.innerHTML = 'RESET';
   btnRightElement.setAttribute('class', 'btn reset');
+}
+
+function updateNumbers() {
+
 }
 
 // Start/Stop Button
