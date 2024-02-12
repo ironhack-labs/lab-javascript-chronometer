@@ -18,7 +18,7 @@ class Chronometer {
           this.seconds = 0;
           this.minutes++;
         }
-        //Update the clock:
+        //Update(render) the clock:
         printTime({
           minutes: this.minutes,
           seconds: this.seconds,
@@ -26,23 +26,23 @@ class Chronometer {
           flag: true
         });
       } else {
-        //Update only the milliseconds display
+        //Update(render) milliseconds
         printTime({ milliSeconds: this.milliSeconds });
       }
     }, 10);
   }
 
-  // getMinutes() {
-  //   return this.minutes;
-  // }
+  getMinutes() {
+    return this.minutes;
+  }
 
-  // getSeconds() {
-  //   return this.seconds;
-  // }
+  getSeconds() {
+    return this.seconds;
+  }
 
-  // getMilliSeconds() {
-  //   return this.milliSeconds;
-  // }
+  getMilliSeconds() {
+    return this.milliSeconds;
+  }
 
   computeTwoDigitNumber(value) {
     return value < 10 ? '0' + value.toString() : value.toString();

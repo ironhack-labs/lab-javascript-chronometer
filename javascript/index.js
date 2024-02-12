@@ -35,7 +35,6 @@ function printSeconds(seconds) {
 }
 
 function printMilliSeconds(milliSeconds) {
-  console.log(chronometer.milliSeconds);
   milDecElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[0];
   milUniElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[1];
 }
