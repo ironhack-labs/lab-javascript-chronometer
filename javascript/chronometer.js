@@ -29,7 +29,7 @@ class Chronometer {
         //Update only the milliseconds display
         printTime({ milliSeconds: this.milliSeconds });
       }
-    }, 1);
+    }, 10);
   }
 
   // getMinutes() {
