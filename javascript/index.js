@@ -25,18 +25,18 @@ function printTime({minutes = null, seconds = null, milliSeconds = null, flag = 
 }
 
 function printMinutes(minutes) {
-  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[0];
-  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(minutes)[1];
+  minDecElement.textContent = chronometer.computeTwoDigitNumber(minutes)[0];
+  minUniElement.textContent = chronometer.computeTwoDigitNumber(minutes)[1];
 }
 
 function printSeconds(seconds) {
-  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[0];
-  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[1];
+  secDecElement.textContent = chronometer.computeTwoDigitNumber(seconds)[0];
+  secUniElement.textContent = chronometer.computeTwoDigitNumber(seconds)[1];
 }
 
 function printMilliSeconds(milliSeconds) {
-  milDecElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[0];
-  milUniElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[1];
+  milDecElement.textContent = chronometer.computeTwoDigitNumber(milliSeconds)[0];
+  milUniElement.textContent = chronometer.computeTwoDigitNumber(milliSeconds)[1];
 }
 
 function printSplit() {
@@ -51,22 +51,22 @@ function clearSplits() {
 
 function setStopBtn() {
   btnLeftElement.className = 'btn stop';
-  btnLeftElement.innerHTML = 'STOP';
+  btnLeftElement.textContent = 'STOP';
 }
 
 function setSplitBtn() {
   btnRightElement.className = 'btn split';
-  btnRightElement.innerHTML = 'SPLIT';
+  btnRightElement.textContent = 'SPLIT';
 }
 
 function setStartBtn() {
   btnLeftElement.className = 'btn start';
-  btnLeftElement.innerHTML = 'START';
+  btnLeftElement.textContent = 'START';
 }
 
 function setResetBtn(printTime) {
   btnRightElement.className = 'btn reset';
-  btnRightElement.innerHTML = 'RESET';
+  btnRightElement.textContent = 'RESET';
 }
 
 // Start/Stop Button
