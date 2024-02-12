@@ -12,9 +12,16 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-function printTime(minutes, seconds) {
-  printMinutes(minutes);
-  printSeconds(seconds);
+//will print minutes and seconds if we pass the flag as true
+//otherwise, will render the milliseconds
+function printTime({minutes = null, seconds = null, milliSeconds = null, flag = false}) {
+  if(flag){
+    printMinutes(minutes);
+    printSeconds(seconds);
+    printMilliSeconds(milliSeconds);
+  } else {
+    printMilliSeconds(milliSeconds);
+  }
 }
 
 function printMinutes(minutes) {
@@ -27,10 +34,10 @@ function printSeconds(seconds) {
   secUniElement.innerHTML = chronometer.computeTwoDigitNumber(seconds)[1];
 }
 
-// ==> BONUS
-function printMilliseconds() {
-
-  // ... your code goes here
+function printMilliSeconds(milliSeconds) {
+  console.log(chronometer.milliSeconds);
+  milDecElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[0];
+  milUniElement.innerHTML = chronometer.computeTwoDigitNumber(milliSeconds)[1];
 }
 
 function printSplit() {
