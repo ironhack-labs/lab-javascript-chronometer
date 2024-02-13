@@ -50,3 +50,20 @@ module.exports = Chronometer;
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
+// Get the clear button
+const btnRightElement = document.getElementById('btnRight');
+
+// Handle clear button click
+btnRightElement.addEventListener('click', () => {
+  // Reset the time displayed on the clock
+  minDecElement.textContent = '0';
+  minUniElement.textContent = '0';
+  secDecElement.textContent = '0';
+  secUniElement.textContent = '0';
+  milDecElement.textContent = '0';
+  milUniElement.textContent = '0';
+
+  // Remove all split items from the list
+  splitsContainer.innerHTML = '';
+});

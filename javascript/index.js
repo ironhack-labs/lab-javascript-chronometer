@@ -64,3 +64,26 @@ btnRightElement.addEventListener('click', () => {
 
 // Start updating the time display
 chronometer.start(printTime);
+
+const chronometer = new Chronometer();
+
+// Get the split button
+const btnRightElement = document.getElementById('btnRight');
+
+// Get the splits container
+const splitsContainer = document.getElementById('splits');
+
+// Handle split button click
+btnRightElement.addEventListener('click', () => {
+  // Create a new list item
+  const splitItem = document.createElement('li');
+
+  // Add class name to the list item
+  splitItem.classList.add('list-item');
+
+  // Update innerHTML with the split time from the chronometer
+  splitItem.innerHTML = chronometer.split();
+
+  // Append the list item to the splits container
+  splitsContainer.appendChild(splitItem);
+});
