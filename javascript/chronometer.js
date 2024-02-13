@@ -3,11 +3,10 @@ class Chronometer {
     this.currenTime = 0;
     this.intervalId = null;
   }
-  
+
 
   start(callback) {
-    console.log("started")
-    if (callback){
+    if (callback) {
       this.intervalId = setInterval(() => {
         this.currenTime++;
         callback();
@@ -30,8 +29,18 @@ class Chronometer {
     return (remainingSeconds);
   }
 
+  getMilliseconds() {
+    let now = Date.now();
+    let elapsedMilliseconds = now - this.startTime;
+    return elapsedMilliseconds % 1000;
+  }
   computeTwoDigitNumber(value) {
-    return("0" + value).slice(-2);
+    const valueStrigify = value.toString();
+    if (value <= 9) {
+      return "0" + valueStrigify;
+    }
+
+    return valueStrigify;
   }
 
   stop() {
@@ -46,7 +55,7 @@ class Chronometer {
 
   split() {
     let mm = this.computeTwoDigitNumber(this.getMinutes());
-    let ss =this.computeTwoDigitNumber(this.getSeconds());
+    let ss = this.computeTwoDigitNumber(this.getSeconds());
 
     return mm + ":" + ss;
   }

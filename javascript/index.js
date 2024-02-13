@@ -14,34 +14,32 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-//  console.log("printing");
   printMinutes();
   printSeconds();
+ // printMilliseconds();
 }
 
 function printMinutes() {
-  //console.log("printing minutes");
   const numberOfMinutes = chronometer.computeTwoDigitNumber(
     chronometer.getMinutes()
   );
-//  console.log(numberOfMinutes);
   minDecElement.innerHTML = numberOfMinutes[0];
   minUniElement.innerHTML = numberOfMinutes[1];
 }
 
 function printSeconds() {
- // console.log("printing seconds");
   const numberOfSeconds = chronometer.computeTwoDigitNumber(
     chronometer.getSeconds()
   );
-//  console.log(numberOfSeconds);
   secDecElement.innerHTML = numberOfSeconds[0];
   secUniElement.innerHTML = numberOfSeconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const numberOfMilliseconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds());
+  milDecElement.innerHTML = numberOfMilliseconds[0];
+  milUniElement.innerHTML = numberOfMilliseconds[1];
 }
 
 function printSplit() {
@@ -93,10 +91,7 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if(btnLeftElement.classList.contains("start")){
-    console.log("starting")
-    chronometer.start();
     setStartBtn();
-    printTime();
   } else {
     setStopBtn();
   }
