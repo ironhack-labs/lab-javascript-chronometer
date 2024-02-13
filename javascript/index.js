@@ -1,14 +1,17 @@
 const chronometer = new Chronometer();
 
-// Get the buttons
+// get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
 
-// Get the DOM elements for displaying time
-const minDecElement = document.getElementById('minDec');
-const minUniElement = document.getElementById('minUni');
-const secDecElement = document.getElementById('secDec');
-const secUniElement = document.getElementById('secUni');
+// get the DOM elements that will serve us to display the time:
+let minDecElement = document.getElementById('minDec');
+let minUniElement = document.getElementById('minUni');
+let secDecElement = document.getElementById('secDec');
+let secUniElement = document.getElementById('secUni');
+//const milDecElement = document.getElementById('milDec');
+//const milUniElement = document.getElementById('milUni');
+const splitsElement = document.getElementById('splits');
 
 function printTime() {
   printMinutes();
@@ -16,74 +19,79 @@ function printTime() {
 }
 
 function printMinutes() {
-  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
-  minDecElement.textContent = minutes[0];
-  minUniElement.textContent = minutes[1];
+  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(
+    chronometer.getMinutes()
+  )[1];
+  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(
+    chronometer.getMinutes()
+  )[0];
 }
 
 function printSeconds() {
-  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds());
-  secDecElement.textContent = seconds[0];
-  secUniElement.textContent = seconds[1];
+  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(
+    chronometer.getSeconds()
+  )[1];
+  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(
+    chronometer.getSeconds()
+  )[0];
 }
 
-// Handle left button click
+// ==> BONUS
+function printMilliseconds() {
+  // ... your code goes here
+}
+
+function printSplit() {
+  let splitRow = document.createElement('li');
+  // console.log(splitRow);
+  splitRow.innerHTML = chronometer.split();
+  splitsElement.appendChild(splitRow);
+}
+
+function clearSplits() {
+  splitsElement.innerHTML = '';
+}
+
+function setStopBtn() {
+  btnLeftElement.className = 'btn stop';
+  btnLeftElement.textContent = 'STOP';
+}
+
+function setSplitBtn() {
+  btnRightElement.className = 'btn split';
+  btnRightElement.textContent = 'SPLIT';
+}
+
+function setStartBtn() {
+  btnLeftElement.className = 'btn start';
+  btnLeftElement.textContent = 'START';
+}
+
+function setResetBtn() {
+  btnRightElement.className = 'btn reset';
+  btnRightElement.textContent = 'RESET';
+}
+
+// Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   if (btnLeftElement.classList.contains('start')) {
-    btnLeftElement.textContent = 'STOP';
-    btnLeftElement.classList.remove('start');
-    btnLeftElement.classList.add('stop');
-
-    btnRightElement.textContent = 'SPLIT';
-    btnRightElement.classList.remove('reset');
-    btnRightElement.classList.add('split');
-
     chronometer.start(printTime);
+    setStopBtn();
+    setSplitBtn();
   } else {
-    btnLeftElement.textContent = 'START';
-    btnLeftElement.classList.remove('stop');
-    btnLeftElement.classList.add('start');
-
-    btnRightElement.textContent = 'RESET';
-    btnRightElement.classList.remove('split');
-    btnRightElement.classList.add('reset');
-
     chronometer.stop();
+    setStartBtn();
+    setResetBtn();
   }
 });
 
-// Handle right button click
+// Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  if (btnRightElement.classList.contains('split')) {
-    // Implement split functionality here if needed
-  } else {
+  if (btnRightElement.classList.contains('reset')) {
     chronometer.reset();
+    clearSplits();
     printTime();
+  } else {
+    printSplit();
   }
-});
-
-// Start updating the time display
-chronometer.start(printTime);
-
-const chronometer = new Chronometer();
-
-// Get the split button
-const btnRightElement = document.getElementById('btnRight');
-
-// Get the splits container
-const splitsContainer = document.getElementById('splits');
-
-// Handle split button click
-btnRightElement.addEventListener('click', () => {
-  // Create a new list item
-  const splitItem = document.createElement('li');
-
-  // Add class name to the list item
-  splitItem.classList.add('list-item');
-
-  // Update innerHTML with the split time from the chronometer
-  splitItem.innerHTML = chronometer.split();
-
-  // Append the list item to the splits container
-  splitsContainer.appendChild(splitItem);
 });
