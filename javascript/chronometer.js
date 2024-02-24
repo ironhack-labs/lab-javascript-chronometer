@@ -1,34 +1,63 @@
 class Chronometer {
+
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
+    this.milliseconds = 0;
   }
+
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+
+      if (callback) { 
+       callback();
+      }
+
+      this.milliseconds++; 
+
+      if(this.milliseconds === 99){ 
+      this.currentTime++; 
+      this.milliseconds = 0; 
+      }
+    }, 10);
   }
+
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60); 
   }
+
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60; 
   }
+
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value < 10) { 
+    return `0${value}`;
+    } 
+
+    return value.toString(); 
   }
 
+
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId); 
+    this.intervalId = null;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0; 
+    this.milliseconds = 0;
   }
 
   split() {
-    // ... your code goes here
+    const minutes = this.computeTwoDigitNumber(this.getMinutes()); // asignamos a una constante la función computeTwoDigitNumber y le pasamos como parámetro los minutos para que nos devuelva un string con 2 cifras
+    const seconds = this.computeTwoDigitNumber(this.getSeconds()); // igual que arriba
+    const milliseconds = this.computeTwoDigitNumber(this.milliseconds); // igual que arriba
+    return `${minutes}:${seconds}:${milliseconds}`; // interpolamos las tres constantes con 2 puntos entre medias. "00:00:00"
   }
 }
 
