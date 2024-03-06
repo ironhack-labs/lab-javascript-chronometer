@@ -30,9 +30,10 @@ class Chronometer {
   }
 
   getMilliseconds() {
-    console.log("Current time:", this.currenTime);
-    let remainingMilliseconds = this.currenTime % 1000; // Calculate remaining milliseconds
+    let remainingMilliseconds = this.currenTime * 1000; // Calculate remaining milliseconds
+    console.log("Current time:", remainingMilliseconds);
     return remainingMilliseconds;
+    
   }
 
 
