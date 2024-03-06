@@ -30,10 +30,12 @@ class Chronometer {
   }
 
   getMilliseconds() {
-    let now = Date.now();
-    let elapsedMilliseconds = now - this.startTime;
-    return elapsedMilliseconds % 1000;
+    console.log("Current time:", this.currenTime);
+    let remainingMilliseconds = this.currenTime % 1000; // Calculate remaining milliseconds
+    return remainingMilliseconds;
   }
+
+
   computeTwoDigitNumber(value) {
     const valueStrigify = value.toString();
     if (value <= 9) {

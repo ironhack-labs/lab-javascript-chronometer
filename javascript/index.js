@@ -16,7 +16,7 @@ const splitsElement = document.getElementById('splits');
 function printTime() {
   printMinutes();
   printSeconds();
- // printMilliseconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
