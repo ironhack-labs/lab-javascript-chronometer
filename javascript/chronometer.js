@@ -1,48 +1,66 @@
-class Chronometer {
+class TimeTracker {
   constructor() {
+    this.startTime = 0,
     this.currentTime = 0;
-    this.intervalId = null;
-  }
+    this.elapsedTime = 0;
+    this.intervalId = null
+  };
 
-  start(callback) {
+  beginTracking(callback) {
+    this.startTime = Date.now();
     this.intervalId = setInterval(() => {
-      this.currentTime++;
-    }, 1000)
+      if (!callback) {
+        this.currentTime = Date.now();
+        this.elapsedTime = this.startTime - this.currentTime;
+        console.log(this.currentTime);
+      } else {
+        this.currentTime = Date.now();
+        this.elapsedTime = this.currentTime - this.startTime;
+        callback();
+      }
+    }, 10);
   }
 
-  getMinutes() {
-    return Math.floor(this.currentTime / 60);
+  countMilliseconds() {
+    const numberOfMilliseconds = Math.floor((this.elapsedTime % 1000) / 10);
+    return numberOfMilliseconds;
   }
 
-  getSeconds() {
-    return this.currentTime % 60;
+  calculateMinutes() {
+    const numberOfMinutes = Math.floor(this.elapsedTime / (1000 * 60)) % 60;
+    return numberOfMinutes;
   }
 
-  computeTwoDigitNumber(value) {
-    let res = value;
+  calculateSeconds() {
+    const numberOfSeconds = Math.floor(this.elapsedTime / 1000) % 60;
+    return numberOfSeconds;
+  }
 
+  formatTwoDigitNumber(value) {
+    const valueStringify = value.toString();
     if (value <= 9) {
-      res = `0${value}`
+      return "0" + valueStringify;
     }
 
-    return res
+    return valueStringify;
   }
 
-  stop() {
-    // ... your code goes here
+  stopTracking() {
+    clearInterval(this.intervalId);
   }
 
-  reset() {
-    // ... your code goes here
+  resetTracking() {
+    this.currentTime = 0;
   }
 
-  split() {
-    // ... your code goes here
+  recordSplitTime() {
+    const minutes = this.formatTwoDigitNumber(this.calculateMinutes());
+    const seconds = this.formatTwoDigitNumber(this.calculateSeconds());
+    const milliseconds = this.formatTwoDigitNumber(this.countMilliseconds());
+    return minutes + ":" + seconds + ":" + milliseconds;
   }
 }
 
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
-  module.exports = Chronometer;
+  module.exports = TimeTracker;
 }
