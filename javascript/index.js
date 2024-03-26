@@ -1,65 +1,92 @@
-const chronometer = new Chronometer();
+const timeTracker = new TimeTracker();
 
-// get the buttons:
-const btnLeftElement = document.getElementById('btnLeft');
-const btnRightElement = document.getElementById('btnRight');
+const startStopButton = document.getElementById('btnLeft');
+const resetSplitButton = document.getElementById('btnRight');
 
-// get the DOM elements that will serve us to display the time:
-const minDecElement = document.getElementById('minDec');
-const minUniElement = document.getElementById('minUni');
-const secDecElement = document.getElementById('secDec');
-const secUniElement = document.getElementById('secUni');
-const milDecElement = document.getElementById('milDec');
-const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
+const minutesTensElement = document.getElementById('minDec');
+const minutesUnitsElement = document.getElementById('minUni');
+const secondsTensElement = document.getElementById('secDec');
+const secondsUnitsElement = document.getElementById('secUni');
+const millisecondsTensElement = document.getElementById('milDec');
+const millisecondsUnitsElement = document.getElementById('milUni');
+const splitsListElement = document.getElementById('splits');
 
-function printTime() {
-  // ... your code goes here
+function updateUI() {
+  updateMinutes();
+  updateSeconds();
+  updateMilliseconds();
 }
 
-function printMinutes() {
-  // ... your code goes here
+function updateMinutes() {
+  const minutes = timeTracker.formatTwoDigitNumber(timeTracker.calculateMinutes());
+  minutesTensElement.textContent = minutes[0];
+  minutesUnitsElement.textContent = minutes[1];
 }
 
-function printSeconds() {
-  // ... your code goes here
+function updateSeconds() {
+  const seconds = timeTracker.formatTwoDigitNumber(timeTracker.calculateSeconds());
+  secondsTensElement.textContent = seconds[0];
+  secondsUnitsElement.textContent = seconds[1];
 }
 
-// ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function updateMilliseconds() {
+  const milliseconds = timeTracker.formatTwoDigitNumber(timeTracker.calculateMilliseconds());
+  millisecondsTensElement.textContent = milliseconds[0];
+  millisecondsUnitsElement.textContent = milliseconds[1];
 }
 
-function printSplit() {
-  // ... your code goes here
+function addSplitToList() {
+  const newSplitListItem = document.createElement('li');
+  newSplitListItem.classList.add('list-item');
+  newSplitListItem.textContent = timeTracker.recordSplitTime();
+  splitsListElement.appendChild(newSplitListItem);
 }
 
-function clearSplits() {
-  // ... your code goes here
+function toggleStartStopButton() {
+  startStopButton.classList.toggle('stop');
+  startStopButton.classList.toggle('start');
+  startStopButton.textContent = startStopButton.classList.contains('start') ? 'START' : 'STOP';
+  resetSplitButton.classList.toggle('reset');
+  resetSplitButton.classList.toggle('split');
+  resetSplitButton.textContent = resetSplitButton.classList.contains('reset') ? 'RESET' : 'SPLIT';
 }
 
-function setStopBtn() {
-  // ... your code goes here
+function handleStartStopButtonClick() {
+  if (startStopButton.classList.contains('start')) {
+    startTracking();
+  } else {
+    stopTracking();
+  }
 }
 
-function setSplitBtn() {
-  // ... your code goes here
+function startTracking() {
+  toggleStartStopButton();
+  timeTracker.beginTracking(updateUI);
 }
 
-function setStartBtn() {
-  // ... your code goes here
+function stopTracking() {
+  toggleStartStopButton();
+  timeTracker.stopTracking();
 }
 
-function setResetBtn() {
-  // ... your code goes here
+function handleResetSplitButtonClick() {
+  if (resetSplitButton.classList.contains('reset')) {
+    resetTracking();
+  } else {
+    addSplitToList();
+  }
 }
 
-// Start/Stop Button
-btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+function resetTracking() {
+  minutesTensElement.textContent = '0';
+  minutesUnitsElement.textContent = '0';
+  secondsTensElement.textContent = '0';
+  secondsUnitsElement.textContent = '0';
+  millisecondsTensElement.textContent = '0';
+  millisecondsUnitsElement.textContent = '0';
+  splitsListElement.innerHTML = '';
+  timeTracker.resetTracking();
+}
 
-// Reset/Split Button
-btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+startStopButton.addEventListener('click', handleStartStopButtonClick);
+resetSplitButton.addEventListener('click', handleResetSplitButtonClick);

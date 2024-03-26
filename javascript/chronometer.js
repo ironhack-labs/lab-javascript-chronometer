@@ -1,39 +1,56 @@
-class Chronometer {
+class TimeTracker {
   constructor() {
-    // ... your code goes here
+    this.startTime = 0;
+    this.currentTime = 0;
+    this.elapsedTime = 0;
+    this.intervalId = null;
   }
 
-  start(callback) {
-    // ... your code goes here
+  beginTracking(callback) {
+    this.startTime = Date.now();
+    this.intervalId = setInterval(() => {
+      this.currentTime = Date.now();
+      this.elapsedTime = this.currentTime - this.startTime;
+      if (callback) {
+        callback();
+      }
+    }, 10);
   }
 
-  getMinutes() {
-    // ... your code goes here
+  calculateMilliseconds() {
+    return Math.floor((this.elapsedTime % 1000) / 10);
   }
 
-  getSeconds() {
-    // ... your code goes here
+  calculateMinutes() {
+    return Math.floor(this.elapsedTime / (1000 * 60)) % 60;
   }
 
-  computeTwoDigitNumber(value) {
-    // ... your code goes here
+  calculateSeconds() {
+    return Math.floor(this.elapsedTime / 1000) % 60;
   }
 
-  stop() {
-    // ... your code goes here
+  formatTwoDigitNumber(value) {
+    return value < 10 ? '0' + value : value.toString();
   }
 
-  reset() {
-    // ... your code goes here
+  stopTracking() {
+    clearInterval(this.intervalId);
   }
 
-  split() {
-    // ... your code goes here
+  resetTracking() {
+    this.currentTime = 0;
+    this.startTime = 0;
+    this.elapsedTime = 0;
+  }
+
+  recordSplitTime() {
+    const minutes = this.formatTwoDigitNumber(this.calculateMinutes());
+    const seconds = this.formatTwoDigitNumber(this.calculateSeconds());
+    const milliseconds = this.formatTwoDigitNumber(this.calculateMilliseconds());
+    return `${minutes}:${seconds}:${milliseconds}`;
   }
 }
 
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
-  module.exports = Chronometer;
+  module.exports = TimeTracker;
 }
