@@ -57,6 +57,14 @@ function setResetBtn() {
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
   // ... your code goes here
+  chronometer.start(() => {
+    const minutes = chronometer.getMinutes()
+    const minutesParsed = chronometer.computeTwoDigitNumber(minutes)
+    const seconds = chronometer.getSeconds()
+    const secondsParsed = chronometer.computeTwoDigitNumber(seconds)
+
+    console.log(`${minutesParsed}:${secondsParsed}`)
+  })
 });
 
 // Reset/Split Button
