@@ -1,48 +1,36 @@
 class TimeTracker {
   constructor() {
-    this.startTime = 0,
+    this.startTime = 0;
     this.currentTime = 0;
     this.elapsedTime = 0;
-    this.intervalId = null
-  };
+    this.intervalId = null;
+  }
 
   beginTracking(callback) {
     this.startTime = Date.now();
     this.intervalId = setInterval(() => {
-      if (!callback) {
-        this.currentTime = Date.now();
-        this.elapsedTime = this.startTime - this.currentTime;
-        console.log(this.currentTime);
-      } else {
-        this.currentTime = Date.now();
-        this.elapsedTime = this.currentTime - this.startTime;
+      this.currentTime = Date.now();
+      this.elapsedTime = this.currentTime - this.startTime;
+      if (callback) {
         callback();
       }
     }, 10);
   }
 
-  countMilliseconds() {
-    const numberOfMilliseconds = Math.floor((this.elapsedTime % 1000) / 10);
-    return numberOfMilliseconds;
+  calculateMilliseconds() {
+    return Math.floor((this.elapsedTime % 1000) / 10);
   }
 
   calculateMinutes() {
-    const numberOfMinutes = Math.floor(this.elapsedTime / (1000 * 60)) % 60;
-    return numberOfMinutes;
+    return Math.floor(this.elapsedTime / (1000 * 60)) % 60;
   }
 
   calculateSeconds() {
-    const numberOfSeconds = Math.floor(this.elapsedTime / 1000) % 60;
-    return numberOfSeconds;
+    return Math.floor(this.elapsedTime / 1000) % 60;
   }
 
   formatTwoDigitNumber(value) {
-    const valueStringify = value.toString();
-    if (value <= 9) {
-      return "0" + valueStringify;
-    }
-
-    return valueStringify;
+    return value < 10 ? '0' + value : value.toString();
   }
 
   stopTracking() {
@@ -51,13 +39,15 @@ class TimeTracker {
 
   resetTracking() {
     this.currentTime = 0;
+    this.startTime = 0;
+    this.elapsedTime = 0;
   }
 
   recordSplitTime() {
     const minutes = this.formatTwoDigitNumber(this.calculateMinutes());
     const seconds = this.formatTwoDigitNumber(this.calculateSeconds());
-    const milliseconds = this.formatTwoDigitNumber(this.countMilliseconds());
-    return minutes + ":" + seconds + ":" + milliseconds;
+    const milliseconds = this.formatTwoDigitNumber(this.calculateMilliseconds());
+    return `${minutes}:${seconds}:${milliseconds}`;
   }
 }
 
