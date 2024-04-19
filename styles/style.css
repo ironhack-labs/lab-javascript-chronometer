@@ -30,10 +30,10 @@ body {
   margin: 0 auto;
   padding: 35px 0;
   position: relative;
-  text-align: center;
+  text-align: flex-start;
   width: 220px;
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
 }
 
@@ -52,7 +52,8 @@ body {
 #milliseconds {
   font-size: 36px;
   position: absolute;
-  top: 20px;
+  top: 100px;
+  right: 20px;
 }
 
 .leash {
