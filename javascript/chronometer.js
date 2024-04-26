@@ -1,34 +1,51 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
+
   }
 
   start(callback) {
-    // ... your code goes here
+    let count = 0;
+
+    function updatecurrentTime() {
+      currentTime++;
+      if (callback) {
+        callback();
+      }
+      console.log('Contador: ' + currentTime);
+    }
+    intervalId = setInterval(updatecurrentTime, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor (this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return Mthis.currentTime % 60; // me explota la cabeza
   }
-
+ 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if (value < 10 ){
+      return "0"+value; // trampilla clasica para agregar un 0 antes de un numero menor 10.
+    } else {
+      return value.toString()
+    }
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId) //con esto llevo a cero el currentTime tageado con interval id
   }
 
   reset() {
-    // ... your code goes here
+   this.stop();
+   this.currentTime = 0
+   //aqui sacar el element (id o lo que sea) del temporizador y liuego hacer el inner.html = 00:00,00
   }
 
   split() {
-    // ... your code goes here
+    return computeTwoDigitNumber(this.getMinutes())+ ":" + computeTwoDigitNumber(this.getSeconds()) //no estoy seguro pero no le veo otra lógica.
   }
 }
 
