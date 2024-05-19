@@ -4,31 +4,42 @@ class Chronometer {
   }
 
   start(callback) {
-    // ... your code goes here
+    setInterval(() => {
+      let seconds = printSeconds(60);
+      let minutes = printMinutes(60);
+  
+      minDecElement.innerText = minutes[0];
+      minUniElement.innerText = minutes[1];
+      secUniElement.innerText = seconds[1];
+      secDecElement.innerText = seconds[0];
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return chronometer.computeTwoDigitNumber(chronometer.getMinutes());
   }
 
   getSeconds() {
-    // ... your code goes here
+    return chronometer.computeTwoDigitNumber(chronometer.getSeconds());
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return chronometer.computeTwoDigitNumber(chronometer.getValue());
   }
 
   stop() {
-    // ... your code goes here
+    btnLeftElement.innerText = 'STOP';
+    btnLeftElement.className = 'btn stop';
   }
 
   reset() {
-    // ... your code goes here
+    btnRightElement.innerText = 'RESET';
+    btnRightElement.className = 'btn reset';
   }
 
   split() {
-    // ... your code goes here
+    btnRightElement.innerText = 'SPLIT';
+    btnRightElement.className = 'btn split';
   }
 }
 
