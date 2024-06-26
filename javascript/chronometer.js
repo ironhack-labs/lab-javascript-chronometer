@@ -1,34 +1,58 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+   
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
+      if (callback) {  
+        callback();
+      }
+      printTime();
+    }, 1000);
   }
 
   getMinutes() {
-    // ... your code goes here
+   
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+   
+    return this.currentTime % 60;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+  }
+  getMilliseconds() {
+   
+    return (this.currentTime * 1000) % 1000;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
-  }
+    return value < 10 ? `0${value}` : value.toString();
+  }   
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    minDecElement.innerHTML = '0';
+    secDecElement.innerHTML = '0';
+    minUniElement.innerHTML = '0';
+    secUniElement.innerHTML = '0';
+    milDecElement.innerHTML = '0';
+    milUniElement.innerHTML = '0';
   }
 
   split() {
-    // ... your code goes here
+    let minDec = this.computeTwoDigitNumber(this.getMinutes());
+    let secDec = this.computeTwoDigitNumber(this.getSeconds());
+    let milDec = this.computeTwoDigitNumber(this.getMilliseconds());
+    return `${minDec}:${secDec}:${milDec}`;
   }
 }
 
