@@ -1,9 +1,8 @@
-const chronometer = new Chronometer();
 
+const chronometer = new Chronometer();
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
 const btnRightElement = document.getElementById('btnRight');
-
 // get the DOM elements that will serve us to display the time:
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
@@ -11,55 +10,77 @@ const secDecElement = document.getElementById('secDec');
 const secUniElement = document.getElementById('secUni');
 const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
-const splitsElement = document.getElementById('splits');
-
-function printTime() {
-  // ... your code goes here
+function printTime(minutes, seconds) {
+  printMinutes(minutes);
+  printSeconds(seconds);
 }
-
-function printMinutes() {
-  // ... your code goes here
+function printMinutes(minutes) {
+  minDecElement.innerHTML = minutes[0];
+  minUniElement.innerHTML = minutes[1];
 }
-
-function printSeconds() {
-  // ... your code goes here
+function printSeconds(seconds) {
+  secDecElement.innerHTML = seconds[0];
+  secUniElement.innerHTML = seconds[1];
 }
-
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(miliseconds) {
+  milDecElement.innerHTML = miliseconds[0];
+  milUniElement.innerHTML = miliseconds[1];
 }
-
-function printSplit() {
-  // ... your code goes here
+function printSplit(time) {
+  const newSplitNode = document.createElement('li');
+  newSplitNode.textContent = time;
+  const splitArea = getSplitAreaNode();
+  splitArea.appendChild(newSplitNode);
 }
-
 function clearSplits() {
-  // ... your code goes here
+  const splitArea = getSplitAreaNode();
+  splitArea.innerHTML = '';
 }
-
 function setStopBtn() {
-  // ... your code goes here
+  setButtonRole(btnLeftElement, 'stop');
 }
-
-function setSplitBtn() {
-  // ... your code goes here
-}
-
 function setStartBtn() {
-  // ... your code goes here
+  setButtonRole(btnLeftElement, 'start');
 }
-
+function setSplitBtn() {
+  setButtonRole(btnRightElement, 'split');
+}
 function setResetBtn() {
-  // ... your code goes here
+  setButtonRole(btnRightElement, 'reset');
 }
-
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (checkIsRunning()) {
+    chronometer.start(printTime, printMilliseconds);
+    setStopBtn();
+    setSplitBtn();
+  } else {
+    chronometer.stop();
+    setStartBtn();
+    setResetBtn();
+  }
 });
-
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (checkIsRunning()) {
+    chronometer.reset();
+    printTime('00', '00');
+    printMilliseconds('00');
+    clearSplits();
+  } else {
+    const time = chronometer.split();
+    printSplit(time);
+  }
 });
+//
+function checkIsRunning() {
+  return btnLeftElement.classList.contains('start');
+}
+function getSplitAreaNode() {
+  return document.querySelector('#splits');
+}
+function setButtonRole(buttonNode, newRole) {
+  buttonNode.innerHTML = newRole.toUpperCase();
+  buttonNode.className = `btn ${newRole}`;
+}
