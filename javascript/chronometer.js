@@ -1,34 +1,51 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    if (callback) callback();
+    this.intervalId = setInterval(() => {
+      return this.currentTime++;
+    }, 1000);
+    this.intervalId = setInterval();
   }
+  
 
   getMinutes() {
-    // ... your code goes here
+    if (this.currentTime === 0) {
+      return 0;
+    }
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    if (this.currentTime === 0) {
+      return 0;
+    }
+    return this.currentTime % 60;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    zeroDigits = `0${value}`;
+    return zeroDigits.slice(-2);
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    document.getElementsByClassName('numbers').innerHTML = '00:00';
   }
 
   split() {
-    // ... your code goes here
+    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+    let seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
   }
 }
 
@@ -37,3 +54,5 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+
+
