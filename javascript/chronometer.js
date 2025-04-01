@@ -1,34 +1,59 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId = null;
+    this.milliseconds = 0;
+    this.millisecondsIntervalId = null;
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentTime += 1;
+      if (callback) {
+        callback();
+      }
+    }, 1000);
+
+    // For milliseconds (bonus)
+    this.millisecondsIntervalId = setInterval(() => {
+      this.milliseconds = (this.milliseconds + 1) % 100;
+    }, 10);
   }
 
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
+  }
+
+  getMilliseconds() {
+    return this.milliseconds;
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return value < 10 ? `0${value}` : `${value}`;
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    clearInterval(this.millisecondsIntervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.milliseconds = 0;
   }
 
   split() {
-    // ... your code goes here
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    const milliseconds = this.computeTwoDigitNumber(this.getMilliseconds());
+
+    // Uncomment the line below and comment out the next line to enable milliseconds in split
+    // return `${minutes}:${seconds}:${milliseconds}`;
+    return `${minutes}:${seconds}`;
   }
 }
 
