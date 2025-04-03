@@ -1,34 +1,55 @@
+/*chronometer.js: Define la clase Chronometer con la lógica del 
+ cronómetro (inicio, parada, reseteo, obtención de tiempo, etc.). */
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
+    this.currentTime = 0; // Guarda el tiempo actual en segundos
+    this.currentMilliseconds = 0; // Guarda los milisegundos actuales
+    this.intervalId = null; // El ID del intervalo que se usará para detener el cronómetro
   }
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {
+      this.currentMilliseconds += 10; // Incrementa los milisegundos
+      if (this.currentMilliseconds >= 1000) {
+        this.currentTime++; // Incrementa el tiempo en segundos
+        this.currentMilliseconds = 0; // Resetea los milisegundos
+      }
+      if (callback) callback(); //Llama al callback si se pasa (se usa para actualizar la vista)
+    }, 10); // El intervalo se ejecuta cada 10ms
   }
 
+  // metodos para luego sacar el split
   getMinutes() {
-    // ... your code goes here
+    return Math.floor(this.currentTime / 60);
   }
 
   getSeconds() {
-    // ... your code goes here
+    return this.currentTime % 60;
+  }
+  getMilliseconds() {
+    return Math.floor((this.currentMilliseconds % 1000) / 10);
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return value.toString().padStart(2, '0');
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
+    this.intervalId = null;
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
+    return `${this.computeTwoDigitNumber(
+      this.getMinutes()
+    )}:${this.computeTwoDigitNumber(
+      this.getSeconds()
+    )}:${this.computeTwoDigitNumber(this.getMilliseconds())}`;
   }
 }
 
