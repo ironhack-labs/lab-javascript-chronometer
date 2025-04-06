@@ -185,15 +185,15 @@ describe('Chronometer', () => {
 
     // If you decide to work on the bonus iteration,
     // comment the previous test and uncomment the following
-    // it('should return valid format with minutes, seconds and milliseconds', () => {
-    //   let min = chronometer.getMinutes();
-    //   let sec = chronometer.getSeconds();
-    //   let milli = chronometer.getMilliseconds();
-    //   if (min < 10) {
-    //     expect(chronometer.split()).toEqual(`0${min}:0${sec}:0${milli}`);
-    //   } else {
-    //     expect(chronometer.split()).toEqual(`${min}:${sec}:${milli}`);
-    //   }
-    // });
+    it('should return valid format with minutes, seconds and milliseconds', () => {
+      let min = chronometer.getMinutes();
+      let sec = chronometer.getSeconds();
+      let milli = chronometer.getMilliseconds();
+      if (min < 10) {
+        expect(chronometer.split()).toEqual(`0${min}:0${sec}:0${milli}`);
+      } else {
+        expect(chronometer.split()).toEqual(`${min}:${sec}:${milli}`);
+      }
+    });
   });
 });
