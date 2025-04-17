@@ -18,15 +18,12 @@ function printTime() {
 }
 
 function printMinutes() {
+  minUniElement.innerText = chronometer.getMinutes() 
   // ... your code goes here
 }
 
 function printSeconds() {
-  // ... your code goes here
-}
-
-// ==> BONUS
-function printMilliseconds() {
+  secUniElement.innerText = chronometer.getSeconds()
   // ... your code goes here
 }
 
@@ -47,6 +44,7 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
+  chronometer.start()
   // ... your code goes here
 }
 
@@ -56,6 +54,18 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
+  const leftButton = document.getElementById("btnLeft");
+  const rightButton = document.getElementById("btnRight");
+  if (leftButton.innerHTML === "START") {
+    btnLeftElement.addEventListener('click', chronometer.start());
+    leftButton.innerHTML = "STOP";
+    rightButton.innerHTML = "SLICE";
+  } else {
+    btnLeftElement.addEventListener('click', setStopBtn);
+    leftButton.innerHTML = "START";
+    rightButton.innerHTML = "RESET";
+  }
+
   // ... your code goes here
 });
 
@@ -63,3 +73,5 @@ btnLeftElement.addEventListener('click', () => {
 btnRightElement.addEventListener('click', () => {
   // ... your code goes here
 });
+
+
