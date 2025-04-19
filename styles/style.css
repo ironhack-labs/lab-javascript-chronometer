@@ -52,7 +52,8 @@ body {
 #milliseconds {
   font-size: 36px;
   position: absolute;
-  top: 20px;
+  top: 10px;
+  right: 20px;
 }
 
 .leash {
@@ -123,4 +124,10 @@ body {
 }
 .btn.split {
   background: #0851ab;
+}
+
+.list-item {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 5px 0;
 }
