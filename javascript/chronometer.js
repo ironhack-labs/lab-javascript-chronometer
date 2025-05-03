@@ -1,34 +1,43 @@
 class Chronometer {
   constructor() {
-    // ... your code goes here
-  }
+  this.currentTime = 0;
+  this.intervalId = null
+}
 
   start(callback) {
-    // ... your code goes here
+    this.intervalId = setInterval(() => {// se usa función flecha para referenciar al chronometer
+      this.currentTime += 1;
+      if (callback){ 
+        callback();
+      }
+      }, 1000); 
   }
 
-  getMinutes() {
-    // ... your code goes here
+  getMinutes() { //math floor redondea el valor de la opereción
+    return Math.floor(this.currentTime /60); // extraer minutos enteros
   }
 
-  getSeconds() {
-    // ... your code goes here
+  getSeconds() { // calcular segundos restantes de la función anterior
+    return Math.floor (this.currentTime%60);
   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return("0" + value).slice(-2) // esta función devuelve 0 + el parametro y el slice lo que hace es que siempre devuelva dos digitos
   }
 
   stop() {
-    // ... your code goes here
+    clearInterval(this.intervalId);
   }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
+    this.intervalId= null;
   }
 
-  split() {
-    // ... your code goes here
+  split() { // crear el diseño mm:ss creando dos contaste donde se llama los minutos y segundo previamente creados. Para combinarlos y devolverlos en forma de cadena
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+    return `${minutes}:${seconds}`;
   }
 }
 
