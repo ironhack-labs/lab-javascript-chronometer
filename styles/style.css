@@ -33,8 +33,20 @@ body {
   text-align: center;
   width: 220px;
   display:flex;
+  flex-direction: column;
   align-items:center;
   justify-content:center;
+}
+
+
+#time-container {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  font-size: 85px;
+  margin-bottom: 35px;
+  position: relative;
+ 
 }
 
 #splits-container {
@@ -51,8 +63,19 @@ body {
 
 #milliseconds {
   font-size: 36px;
+  align-self: flex-end;
+  padding-right: 20px;
   position: absolute;
-  top: 20px;
+  top: 110px;
+letter-spacing: -3px;
+  
+}
+
+
+#milDec,
+#milUni {
+  width: 14px;
+ 
 }
 
 .leash {
@@ -124,3 +147,6 @@ body {
 .btn.split {
   background: #0851ab;
 }
+
+
+
