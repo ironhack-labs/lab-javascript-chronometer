@@ -14,52 +14,100 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  return{
+    mainDisplay: () => {
+      printMinutes();
+      printSeconds();
+    },
+    millisDisplay: () => {
+      printMilliseconds();
+    }
+
+  }
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minutes = chronometer.getMinutes();
+  const minutesToString = chronometer.computeTwoDigitNumber(minutes);
+
+  minDecElement.textContent = minutesToString[ 0 ];
+  minUniElement.textContent = minutesToString[ 1 ];
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const seconds = chronometer.getSeconds();
+  const secondsToString = chronometer.computeTwoDigitNumber(seconds);
+
+  secDecElement.textContent = secondsToString[ 0 ];
+  secUniElement.textContent = secondsToString[ 1 ];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const milliseconds = chronometer.getMilliseconds();
+  const millisecondsToString = chronometer.computeTwoDigitNumber(milliseconds);
+  milDecElement.textContent = millisecondsToString[ 0 ];
+  milUniElement.textContent = millisecondsToString[ 1 ];
+
 }
 
-function printSplit() {
-  // ... your code goes here
+function printSplit(listItem) {
+  splitsElement.append(listItem)
 }
 
 function clearSplits() {
-  // ... your code goes here
+   splitsElement.innerHTML = '';
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  chronometer.stop();
+  btnLeftElement.textContent = "START"
+  btnLeftElement.className = "btn start";
+  btnRightElement.textContent = "RESET";
+  btnRightElement.className = "btn reset";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  const split= chronometer.split()
+  const listItem=document.createElement('li')
+  listItem.className="list-item"
+  listItem.textContent=split;
+  printSplit(listItem);
+  
 }
 
+
 function setStartBtn() {
-  // ... your code goes here
+  chronometer.start(printTime); // pasamos el callback para que actualize UI del timer
+  btnLeftElement.textContent = "STOP";
+  btnLeftElement.className = "btn stop";
+  btnRightElement.textContent = "SPLIT";
+  btnRightElement.className = "btn split";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  // resetea el crhono
+  chronometer.reset();
+
+  // resetea los splits
+  clearSplits();
+
+  // resetea la UI
+  minDecElement.textContent = '0';
+  minUniElement.textContent = '0';
+  secDecElement.textContent = '0';
+  secUniElement.textContent = '0';
+  milDecElement.textContent = '0';
+  milUniElement.textContent = '0';
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  (btnLeftElement.textContent === "START") ? setStartBtn() : setStopBtn();
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  (btnRightElement.textContent === "RESET") ? setResetBtn() : setSplitBtn();
 });
