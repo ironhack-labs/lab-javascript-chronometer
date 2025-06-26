@@ -1,34 +1,80 @@
-class Chronometer {
-  constructor() {
-    // ... your code goes here
+class Chronometer
+{
+  constructor()
+  {
+    this.currentTime = 0;
+    this.intervalId = null;
   }
 
-  start(callback) {
-    // ... your code goes here
+  start(callback)
+  {  
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) callback();
+    } , 1000);
+  }
+  
+  getMinutes()
+  {
+    let minutes = 0;
+
+    if (typeof this.currentTime !== 'number' || isNaN(this.currentTime)) {
+      throw new Error('Invalid currentTime value');
+    }
+    minutes = Math.floor(this.currentTime / 60);
+    
+    return (minutes);
   }
 
-  getMinutes() {
-    // ... your code goes here
+  getSeconds()
+  {
+    let seconds = 0;
+
+    if (typeof this.currentTime !== 'number' || isNaN(this.currentTime)) {
+      throw new Error('Invalid currentTime value');
+    }
+    seconds = Math.floor(this.currentTime % 60);
+
+    return (seconds);
   }
 
-  getSeconds() {
-    // ... your code goes here
+  // getMiliSeconds()
+  // {
+  //   let miliSeconds = 0;
+    
+  //   if (typeof this.currentTime !== 'number' || isNaN(this.currentTime)) {
+  //     throw new Error('Invalid currentTime value');
+  //   }
+
+  //   miliSeconds = Math.floor(this.currentTime % 100);
+
+  //   return (miliSeconds);
+  // }
+
+  computeTwoDigitNumber(value)
+  {
+    if (typeof value !== 'number')
+      throw new Error('Invalid type of value');
+
+    return (('0' + value).slice(-2));
   }
 
-  computeTwoDigitNumber(value) {
-    // ... your code goes here
+  stop()
+  {
+    clearInterval(this.intervalId);
   }
 
-  stop() {
-    // ... your code goes here
+  reset() 
+  {
+    this.currentTime = 0;
   }
 
-  reset() {
-    // ... your code goes here
-  }
+  split()
+  {
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
 
-  split() {
-    // ... your code goes here
+    return (`${minutes}:${seconds}`);
   }
 }
 
