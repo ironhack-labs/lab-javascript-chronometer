@@ -6,6 +6,7 @@ const btnRightElement = document.getElementById('btnRight');
 
 
 
+
 // get the DOM elements that will serve us to display the time:
 const minDecElement = document.getElementById('minDec');
 const minUniElement = document.getElementById('minUni');
@@ -15,21 +16,33 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
+
+
 function printTime() {
-  // ... your code goes here
+  printMinutes();
+  printSeconds();
+  printMilliseconds();
 }
 
 function printMinutes() {
-  // ... your code goes here
+  const minutes = chronometer.computeTwoDigitNumber(chronometer.getMinutes());
+  minDecElement.innerHTML = minutes.slice(0, 1);
+  minUniElement.innerHTML = minutes.slice(1);
 }
 
 function printSeconds() {
-  // ... your code goes here
+  const seconds = chronometer.computeTwoDigitNumber(chronometer.getSeconds())
+  secDecElement.innerHTML = seconds[0]
+  secUniElement.innerHTML = seconds[1]
+  
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  const milliSeconds = chronometer.computeTwoDigitNumber(chronometer.getMilliseconds())
+  milDecElement.innerHTML = milliSeconds.slice(0, 1)
+  milUniElement.innerHTML = milliSeconds.slice(1)
+
 }
 
 function printSplit() {
@@ -49,19 +62,60 @@ function setSplitBtn() {
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  
 }
 
 function setResetBtn() {
   // ... your code goes here
 }
 
+
+//HAY QUE HACER UN toogle (alternar estados)
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnLeftElement.innerText === 'START') {
+    btnLeftElement.innerText = 'STOP';
+    btnRightElement.innerText = 'SPLIT';
+    btnLeftElement.className = "btn stop";
+    btnRightElement.className = 'btn split';
+    chronometer.start(printTime);
+
+  } else if (btnLeftElement.innerText === 'STOP') {
+    btnLeftElement.innerText = 'START';
+    btnRightElement.innerText = 'RESET';
+    btnLeftElement.className = "btn start";
+    btnRightElement.className = "btn reset";
+    chronometer.stop()
+  }
+
+
+  }
+);
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnRightElement.innerText === "SPLIT") {
+    const tablaSplits = document.getElementById('splits'); //es mejor meterlos fuera de la funcion?
+    const newSplit = document.createElement('li');
+    tablaSplits.appendChild(newSplit);
+    newSplit.innerText = chronometer.split() 
+  }
+
+  else if (btnRightElement.innerText === "RESET") {
+    chronometer.reset()
+    const ilSplits = document.querySelectorAll("#splits li")
+    const ilSplitsArr = [...ilSplits]
+    for (let split of ilSplitsArr) {
+      split.remove();
+    };
+  }
+})
+    
+
+
+
+  
+
+
+
+  

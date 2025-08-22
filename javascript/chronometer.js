@@ -1,44 +1,48 @@
 class Chronometer {
   constructor() {
     this.currentTime = 0;
-    this.intervalId = 0;
+    this.milliSeconds = 0; //centesimas
+    this.intervalId = null;
   }
 
   start(callback) {
     this.intervalId = setInterval(() => {
+      this.milliSeconds += 1; // cada 10 ms se suma 1 centesima
+
+      if (this.milliSeconds === 100) {
       this.currentTime += 1;
+      this.milliSeconds = 0;
+      }
 
       if (callback) {
         callback();
       }
-  }, 1000);
+  }, 10);
   }
 
+  // mejor hacerlo sin this. no guardas nada extra en el objeto.
   getMinutes() {
-    this.minutes = Math.floor(this.currentTime / 60);
-    console.log(`${this.minutes}`);
-    return `${this.minutes}`;
+    return Math.floor(this.currentTime / 60);
+    
   }
 
   getSeconds() {
-    this.seconds = Math.floor(this.currentTime % 60);
-    console.log(`${this.seconds}`)
-    return `${this.seconds}`
+    return this.currentTime % 60;
+    
+  }
+
+  getMilliseconds() {
+    return this.milliSeconds;
   }
 
   computeTwoDigitNumber(value) {
-    let valueString = value + ""
+    let valueString = "0" + value 
 
-
-    if (valueString.length < 2) {
-    valueString = "0" + valueString;
-    }
-
-    return valueString;
+    return valueString.slice(-2);
   }
 
   stop() {
-    clearInterval(this.intervalId)
+    clearInterval(this.intervalId);
   }
 
   reset() {
@@ -48,10 +52,15 @@ class Chronometer {
     document.getElementById("minUni").innerHTML = "0";
     document.getElementById("secDec").innerHTML = "0";
     document.getElementById("secUni").innerHTML = "0";
+    milDecElement.innerHTML = "0";
+    milUniElement.innerHTML = "0";
   }
 
   split() {
-    return `${this.computeTwoDigitNumber(this.getMinutes())} : ${this.computeTwodigitNumber(this.getSeconds)}`
+    const mm = this.computeTwoDigitNumber(this.getMinutes())
+    const ss = this.computeTwoDigitNumber(this.getSeconds())
+    const cc = this.computeTwoDigitNumber(this.getMilliseconds())
+    return `${mm}:${ss}:${cc}`
   }
 }
 
